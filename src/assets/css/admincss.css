@@ -1,0 +1,61 @@
+.admin_dashboard_container{ background: url("../images/dashboardbg.jpg") no-repeat center center;
+    min-height: 300px;
+    background-size: cover;
+}
+.admin_dashboard_container .content_text{ width: 580px; text-align: center;  padding: 50px 0; margin-left: 45px; }
+.admin_dashboard_container .content_text h2{ font-family: 'RalewayBold'; font-size: 60px;
+    color: #fff;  text-transform: uppercase; text-shadow: 0px 1px #6b6b6b;}
+.admin_dashboard_container .content_text p{ color: #1e2b43; font-size: 20px; font-family: 'RalewaySemiBold'; margin-bottom: 0;}
+.dashboard_block2{ padding: 15px;}
+
+.dashboard_block2 .row{  margin-left: 0;}
+.dashboard_block2 .col-md-4{display: inline-flex; justify-content: space-between; padding-left: 0;   }
+
+.dashboard_block2 .col-md-4 table{
+    padding-bottom: 90px;
+    margin-bottom: 0;
+}
+.dashboard_block2 .col-md-4 .reps_inner_block1{
+    width: 100%;
+    padding: 15px;
+    background: url("../images/reps_inner_block1bg.png")no-repeat; background-position: center bottom;
+    background-color:  #26aa02;
+    background-size: 100%;
+    color: #fff;
+}
+
+
+.dashboard_block2 .col-md-4 .reps_inner_block2{
+    width: 100%;
+    background: url("../images/reps_inner_block2bg.png")no-repeat; background-position: center bottom;
+    background-color:  #9400d3 ;
+    padding: 15px;
+    color: #fff;
+    background-size: 100%;
+}
+.dashboard_block2 .col-md-4 .reps_inner_block3{
+    width: 100%;
+    background: url("../images/reps_inner_block3bg.png")no-repeat; background-position: left bottom;
+    background-color:  #ffdab9 ;
+    padding-bottom: 90px;
+    padding: 15px;
+    background-size: 100%;
+}
+.dashboard_block2 .col-md-4 .reps_inner_block3 h3{ color: #000;}
+.dashboard_block2 .col-md-4 button:focus{
+    outline: none;
+}
+.dashboard_block2 .col-md-4 button{
+     float: right;
+     background: #000;
+    font-size: 28px;
+    font-family: 'RalewaySemiBold';
+    color: #fff;
+    border:none;
+    padding: 1px 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.dashboard_block2 .table td, .table th{ border-top: 1px solid #fff;}
+.dashboard_block2 .col-md-4 h3{ font-family: RalewaySemiBold; font-size: 30px; margin-bottom: 12px;
+    color: #fff;}

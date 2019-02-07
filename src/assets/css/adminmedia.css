@@ -1,0 +1,108 @@
+@media screen  and  (max-width: 1900px){
+    .admin_dashboard_container {
+        background-position: 100% center;
+    }
+}
+@media screen  and  (max-width: 1400px){
+    .admin_dashboard_container .content_text {
+        width: 450px;
+        padding: 34px 0;
+    }
+
+}
+@media screen and (max-width: 1199px){
+    .admin_dashboard_container {
+        background: #16343c url("../images/dashboardbg_small.jpg") no-repeat center top;
+        background-size: 100%;
+        padding-top: 25%;
+
+    }
+    .admin_dashboard_container .content_text {
+        width: 100%;
+        margin-left: 0;
+        padding: 30px;
+        padding-top: 25px;
+    }
+    .admin_dashboard_container .content_text h2{ font-size: 54px; }
+    .admin_dashboard_container .content_text p{
+        color: #fff;}
+
+
+
+    /*Table Responsive*/
+
+        table {display: block; width: 100%;}
+        tr {display: block; width: 100%;}
+        th {display: block; width: 100%;}
+        td{display: block; width: 100%;}
+        thead {display: block; width: 100%;}
+        tbody {display: block; width: 100%;}
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+    .dashboard_block2 .col-md-4 .reps_inner_block1  table tbody tr{
+            margin-bottom: 15px;
+            background: #228e06;;
+        }
+    .dashboard_block2 .col-md-4 .reps_inner_block2  table tbody tr{
+        margin-bottom: 15px;
+        background: #7305a2;
+    }
+
+    .dashboard_block2 .col-md-4 .reps_inner_block3  table tbody tr{
+        margin-bottom: 15px;
+        background: #f5c89f;
+    }
+
+    table tr td {
+            /* Behave  like a "row" */
+            border: none;
+            /*border-bottom: 1px solid #eee;*/
+            position: relative;
+            padding-left: 50%!important;
+            white-space: normal;
+            text-align:left;
+
+        }
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align:left;
+            font-weight: bold;
+            content: attr(data-title);
+        }
+
+}
+
+
+@media screen and (max-width: 1040px) {
+    .dashboard_block2 .col-md-4 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard_block2 .col-md-4 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+}
+@media screen and (max-width:480px) {
+    .admin_dashboard_container .content_text h2 {
+        font-size: 36px;
+    }
+}

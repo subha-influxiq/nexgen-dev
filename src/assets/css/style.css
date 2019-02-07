@@ -1,0 +1,457 @@
+@font-face {
+    font-family: 'RalewayBold';
+    src: url('../fonts/Raleway-Bold.woff2') format('woff2'),
+    url('../fonts/Raleway-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RalewaySemiBold';
+    src: url('../fonts/Raleway-SemiBold.woff2') format('woff2'),
+    url('../fonts/Raleway-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RalewayRegular';
+    src: url('../fonts/Raleway-Regular.woff2') format('woff2'),
+    url('../fonts/Raleway-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'RalewayMedium';
+    src: url('../fonts/Raleway-Medium.woff2') format('woff2'),
+    url('../fonts/Raleway-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansSemiBold';
+    src: url('../fonts/OpenSans-Semibold.woff2') format('woff2'),
+    url('../fonts/OpenSans-Semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
+    url('../fonts/OpenSans-Bold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+    url('../fonts/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MayQueen';
+    src: url('../fonts/MayQueen.woff2') format('woff2'),
+    url('../fonts/MayQueen.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{ padding:0; margin: 0; background: red;}
+
+/*Start Header*/
+.header_bg{ background: #efefef; padding: 15px 0;}
+.nexgen_header_wrapper{width: 1610px; margin: 0 auto; }
+.nexgen_header_wrapper .social_media_container{ display: flex; align-items: center; width: auto; height: 100%; float: right; }
+.nexgen_header_wrapper .social_media_container .social_media_icon{
+    width: 85px;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-right: 30px;
+}
+.nexgen_header_wrapper .hidden_logo{ display: none;}
+.nexgen_header_wrapper .social_media_container .social_media_icon i {
+    overflow: hidden;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.nexgen_header_wrapper .col-md-4 .social_media_container .profile_section .dropdown .dropdown-menu.show {
+    top: 41px !important;
+    left:-123%!important;}
+.dropdown-toggle::after{color: #000;}
+
+.nexgen_header_wrapper .social_media_container .social_media_icon i:nth-child(1) { background: #3b579d;     padding: 4px;
+    color: #FFF;
+    vertical-align: bottom;
+    text-align: center;
+}
+.nexgen_header_wrapper .social_media_container .social_media_icon i:nth-child(2) { background: #2aaae0;     padding: 5px;
+    color: #FFF;
+    vertical-align: bottom;
+    text-align: center;
+}
+.nexgen_header_wrapper .social_media_container .social_media_icon i:nth-child(3) { background: #1d75bc;     padding: 5px;
+    color: #FFF;
+    vertical-align: bottom;
+    text-align: center;
+}
+.nexgen_header_wrapper .social_media_container .call_container p a{ color: #000; font-family: 'RalewayBold'; text-decoration: none;}
+.nexgen_header_wrapper .social_media_container .call_container p a span { color: #ff0000;}
+
+.nexgen_header_wrapper .social_media_container .profile_section ul{ margin:0; }
+.nexgen_header_wrapper .social_media_container .profile_section ul li{list-style: none; }
+.nexgen_header_wrapper .social_media_container .profile_section ul li a .user_image{  width: 40px; height: 40px; border-radius: 50%; border: 3px solid #414548; display: inline-table; overflow: hidden; }
+.nexgen_header_wrapper .social_media_container .profile_section ul li a .user_image img{ width: 100%;}
+.nexgen_header_wrapper .social_media_container .profile_section ul li .nav-link{ padding: 0px;}
+.nexgen_header_wrapper .social_media_container p{margin: 0;}
+.nexgen_header_wrapper  .navbar-expand-lg .navbar-nav{ width:800px; }
+.nexgen_header_wrapper .navbar-expand-lg .navbar-nav .nav-link{  color: #3d3d3d!important; font-family: 'RalewaySemiBold'; font-size: 13px; padding: 10px; text-transform: uppercase;}
+.nexgen_header_wrapper .col-md-8{padding: 0;}
+.nexgen_header_wrapper .col-md-4{padding: 0;}
+
+    /*end header section*/
+
+/*Start Footer Section*/
+    .nex_text_footer{background: #efefef; padding: 11px 0;}
+    .nex_text_footer ul{text-align: center; margin-bottom: 0; padding-left: 0; }
+    .nex_text_footer ul li {display: inline-block; padding: 10px; list-style: none; }
+    .nex_text_footer ul li a{ font-family: 'RalewayMedium'; font-size: 13px; color: #616161; }
+/*Start Footer Section end*/
+.nextgen_login_wrapper {background: url("../images/login_bg.jpg") no-repeat;
+    width:100vw;
+    height:100vh;
+    background-size: cover;
+    position: relative;
+}
+.login_container{
+    width: 750px; margin: 0 auto;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top:50%;
+    left:50%;
+    background: rgba(255,255,255, 0.8);
+    padding:60px 90px;
+    box-shadow: 1px -1px 7px -4px #000;
+}
+.login_container .logo_inner{ text-align: center; width: auto;}
+.login_container .logo_inner img{ width: 100%; height:auto;}
+
+.login_container form{
+    margin-top: 40px;
+}
+.login_container form .form-group{margin-bottom: 24px;}
+.login_container form .form-group .form-control::-webkit-input-placeholder{ color: #0d0d0d; font-family: 'RalewaySemiBold'; font-size: 18px; }
+.login_container form .form-group .form-control{height: 50px; border: 1px solid #757a7a; border-radius: 2px; padding: 0 20px; box-shadow: none;}
+
+
+.login_container form .form-group .form-control:focus{ box-shadow: none; outline:none;}
+  .form-group .error{ color: #f30000; margin-top: 7px; font-size: 16px; font-family: 'RalewayRegular'; display: block;}
+
+.login_container form .form-group .signin_button{background: rgba(24,196,253,1);
+    background: -moz-linear-gradient(top, rgba(24,196,253,1) 0%, rgba(2,167,222,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(24,196,253,1)), color-stop(100%, rgba(2,167,222,1)));
+    background: -webkit-linear-gradient(top, rgba(24,196,253,1) 0%, rgba(2,167,222,1) 100%);
+    background: -o-linear-gradient(top, rgba(24,196,253,1) 0%, rgba(2,167,222,1) 100%);
+    background: -ms-linear-gradient(top, rgba(24,196,253,1) 0%, rgba(2,167,222,1) 100%);
+    background: linear-gradient(to bottom, rgba(24,196,253,1) 0%, rgba(2,167,222,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#18c4fd', endColorstr='#02a7de', GradientType=0 );
+    width: 100%;
+    outline: none;
+    border: none;
+    font-family: 'RalewayBold';
+    color: #fff;
+    font-size: 36px;
+    text-transform: uppercase;
+    padding: 5px 0;
+    cursor: pointer;
+    margin-top: 36px;
+}
+.login_container form .form-group .signin_button:focus{ outline: none;}
+.login_container form .form-group  p{ font-family: 'RalewayRegular'; font-size: 18px; color:#444444; display: inline-block; }
+.login_container form .form-group  p:nth-child(1){width: auto;}
+.login_container form .form-group  p:nth-child(2){width: 35%; text-align: right; float: right;}
+.login_container form .form-group  p span a{ color: #ff2a00; text-transform: capitalize;}
+.login_container form .form-group  .forgot_pass a{text-align: right; color:#444444; }
+
+
+/*Forgot contaner*/
+.forgot_container .form-group h3{ color: #01a2d8; font-family: 'RalewaySemiBold'; font-size: 24px; text-transform: uppercase; font-style: italic;}
+.forgot_container form .form-group .signin_button{margin-top: 0px;}
+
+.forgot_container form .form-group .forgetpass_instruction{ width: 100%; text-align: left; font-size: 16px; }
+
+
+/*sign up section Starts here*/
+
+.signup_wrapper{
+    background: url("../images/signupbg.jpg") no-repeat;
+    background-size: cover;
+    height: 90vh;
+    position: relative;
+}
+.signup_wrapper .sign_inner_wrapper{
+    width:1600px; margin: 0 auto;
+    opacity:0.98;
+    background: rgba(235,235,235,1);
+    background: -moz-linear-gradient(-45deg, rgba(235,235,235,1) 0%, rgba(237,221,215,1) 31%, rgba(239,242,246,1) 63%, rgba(241,218,209,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(235,235,235,1)), color-stop(31%, rgba(237,221,215,1)), color-stop(63%, rgba(239,242,246,1)), color-stop(100%, rgba(241,218,209,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(235,235,235,1) 0%, rgba(237,221,215,1) 31%, rgba(239,242,246,1) 63%, rgba(241,218,209,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(235,235,235,1) 0%, rgba(237,221,215,1) 31%, rgba(239,242,246,1) 63%, rgba(241,218,209,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(235,235,235,1) 0%, rgba(237,221,215,1) 31%, rgba(239,242,246,1) 63%, rgba(241,218,209,1) 100%);
+    background: linear-gradient(135deg, rgba(235,235,235,1) 0%, rgba(237,221,215,1) 31%, rgba(239,242,246,1) 63%, rgba(241,218,209,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#f1dad1', GradientType=1 );
+
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+.signup_wrapper .inner_block .form_section .form-row>.col, .form-row>[class*=col-]{
+    padding-right: 15px!important;
+}
+
+.signup_wrapper .inner_block{height: auto; padding:30px ; padding-right: 20px;}
+.signup_wrapper .inner_block h2{ font-family: 'RalewayBold'; font-size: 60px; color:#0c0c0c; text-transform: uppercase;
+    background: url("../images/signup-underline.jpg") no-repeat center bottom;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.signup_wrapper .inner_block .form_section{ margin-top: 20px;}
+.signup_wrapper .inner_block .form_section .form-group label{ color: #000; font-family: 'RalewaySemiBold'; font-size: 16px; margin-bottom: 2px;}
+.signup_wrapper .inner_block .form_section .form-group .form-control:focus{ box-shadow: none; outline: none; border: 1px solid #c5bebe;}
+.signup_wrapper .inner_block .form_section  .sign_upbutton{ width: 165px; font-family: 'RalewayBold'; font-size: 30px; text-transform: uppercase;
+    color: #fff;
+    margin-top: 20px;
+    border-radius: 0;
+    background: rgba(0,191,255,1);
+    background: -moz-linear-gradient(-45deg, rgba(0,191,255,1) 0%, rgba(7,176,232,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,191,255,1)), color-stop(100%, rgba(7,176,232,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(0,191,255,1) 0%, rgba(7,176,232,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(0,191,255,1) 0%, rgba(7,176,232,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(0,191,255,1) 0%, rgba(7,176,232,1) 100%);
+    background: linear-gradient(135deg, rgba(0,191,255,1) 0%, rgba(7,176,232,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00bfff', endColorstr='#07b0e8', GradientType=1 );
+}
+.signup_wrapper .inner_block .form_section  .sign_upbutton:focus{ outline: none; box-shadow: none;}
+.signup_wrapper .inner_block .form_section .form-group textarea{ resize: none; height: 100px;}
+
+.signup_wrapper .inner_block .form_section  .first_section .form-group{ margin-bottom: 10px;}
+.signup_wrapper .inner_block .form_section  .User_section{ padding: 30px 0;}
+.signup_wrapper .inner_block .form_section .last_section .form-group{margin-bottom: 10px;}
+
+
+/*SALES AGREEMENT START*/
+
+.sales_agreement_wrapper{ background: url("../images/signupbg.jpg") no-repeat center; background-attachment: fixed; padding: 50px 0;}
+
+.sales_agreement_wrapper .sales_inner_wrapper{
+    padding: 50px;
+    width:1600px;
+    margin: 0 auto;
+    opacity:0.98;
+    background: rgba(219,220,217,1);
+    background: -moz-linear-gradient(-45deg, rgba(219,220,217,1) 0%, rgba(255,255,255,1) 35%, rgba(247,247,247,1) 66%, rgba(208,209,207,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(219,220,217,1)), color-stop(35%, rgba(255,255,255,1)), color-stop(66%, rgba(247,247,247,1)), color-stop(100%, rgba(208,209,207,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(219,220,217,1) 0%, rgba(255,255,255,1) 35%, rgba(247,247,247,1) 66%, rgba(208,209,207,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(219,220,217,1) 0%, rgba(255,255,255,1) 35%, rgba(247,247,247,1) 66%, rgba(208,209,207,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(219,220,217,1) 0%, rgba(255,255,255,1) 35%, rgba(247,247,247,1) 66%, rgba(208,209,207,1) 100%);
+    background: linear-gradient(135deg, rgba(219,220,217,1) 0%, rgba(255,255,255,1) 35%, rgba(247,247,247,1) 66%, rgba(208,209,207,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdcd9', endColorstr='#d0d1cf', GradientType=1 );
+}
+
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block h2{
+    font-family: 'RalewayBold';
+    font-size: 60px;
+    color: #0c0c0c;
+    background: url("../images/sales-underline.jpg") no-repeat center bottom;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content{
+    margin-top: 40px;
+    font-size: 16px;
+    font-family:"OpenSansSemiBold";
+}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input{ padding: 0 3px; background: transparent; border: none; border-bottom: 1px solid #000; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:nth-child(1){ width: 100px;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:focus{ outline: none;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .heading{
+    color: #0196cd;
+    font-family: "OpenSansBold";
+    font-size: 30px;
+    margin: 12px 0;
+}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content label{ color: #ff1e00; font-family: 'OpenSansBold'; font-size: 16px; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content {display:inline; width:100%;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol {  counter-reset: li; list-style: none; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li { font-size: 16px; color: #000; line-height: 30px; font-family: 'OpenSansRegular'; margin: 15px 0; margin-top: 0; counter-increment: li}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li::before {
+    content: counter(li)'.';
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 18px;
+    width: 30px;
+    margin-left: -35px;
+    font-family: 'OpenSansBold';
+}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content{ font-size: 16px; }
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content b{ font-family: 'OpenSansBold';}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li span{ color: #ff0000; font-family: 'OpenSansSemiBold';  }
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li{ list-style-type: lower-roman;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li:before{ content: ''; margin-left: -30px;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li .inner_alfa_content2{margin-left: 30px;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li .inner_alfa_content {margin-left: 30px;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li .inner_para {margin-left: 50px;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li .inner_alfa_content .li_with_no {display: inline-flex; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li .inner_alfa_content .li_with_no p {
+    width: 30px;
+    display: block;
+    position: relative;
+    top: -3px;
+    padding-right: 15px;
+}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li ol li .inner_alfa_content .li_with_no h6{  line-height: 25px; }
+
+/*Part for outer section Lists*/
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li .inner_alfa_content2 .li_with_no {display: inline-flex; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li .inner_alfa_content2 .li_with_no p{width: 30px;
+    display: block;
+    position: relative;
+    top: -3px;
+    padding-right: 15px; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li .inner_alfa_content2 .li_with_no  h6{  line-height: 25px; }
+
+/*End*/
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content{ font-size: 18px; font-weight: normal; font-family: 'RalewayRegular';}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement p{ margin-top: 15px; font-weight: normal; font-family: 'RalewayRegular';}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .row .col-md-6 .consultant_input input{
+    line-height: 30px;
+    width: 100%;
+    padding: 0 10px;
+ }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .row .col-md-6 .consultant_input input:nth-last-of-type(1){ width: 75%; }
+
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 input { width: 75%; padding: 0 10px; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 .printname_box { width: 86%;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 input:nth-last-of-type(1){ width: 72%;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 h3{ font-family: RalewayRegular; font-size: 16px; }
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 p{ line-height: 30px; font-size: 16px;}
+
+/*scheduledA_section*/
+
+.sales_agreement_wrapper .sales_inner_wrapper  .scheduledA_section h3 { font-family: 'OpenSansRegular'; font-size: 18px; text-align: center; font-weight: bold; }
+
+.sales_agreement_wrapper .sales_inner_wrapper  .scheduledA_section .exhibit_b_heading input{ padding: 0 10px; background: none; border: none; border-bottom: 1px solid #000; }
+.sales_agreement_wrapper .sales_inner_wrapper  .inner_scheduled_list .li_with_no{ display: inline-flex; }
+.sales_agreement_wrapper .sales_inner_wrapper  .inner_scheduled_list .li_with_no p {
+    width: 40px;
+    display: block;
+    position: relative;
+    top: 0px;
+    font-family: OpenSansRegular;
+    font-size: 16px;
+    padding-right: 15px;
+}
+.sales_agreement_wrapper .sales_inner_wrapper  .inner_scheduled_list .li_with_no h6 {
+    line-height: 25px;
+    font-size: 16px;
+    font-family: 'OpenSansRegular';
+}
+
+.sales_agreement_wrapper .sales_inner_wrapper  .inner_scheduled_list .sub_heading{ display: inline-flex; margin-left: 50px;}
+.sales_agreement_wrapper .sales_inner_wrapper  .inner_scheduled_list .sub_heading p{  width: 30px;
+    display: block;
+    position: relative;
+    top: -3px;
+    padding-right: 15px;
+    font-family: OpenSansRegular;
+    font-size: 16px;
+}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_scheduled_list .sub_heading h6{ font-family: OpenSansRegular; font-size: 16px; font-weight: normal; line-height: 24px; margin-bottom: 20px;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .exhibit_section h4{ text-align: center; font-size: 18px; font-family: 'OpenSansSemiBold';}
+.sales_agreement_wrapper .sales_inner_wrapper .exhibit_section .exhibit_heading{ font-family: 'OpenSansRegular'; text-decoration: underline; font-size: 20px; }
+.sales_agreement_wrapper .sales_inner_wrapper .exhibit_section ul li{ list-style-type: square; padding-top: 10px; font-size: 16px; }
+
+.code_conduct_wrapper h2{ font-size: 18px; font-family: 'OpenSansSemiBold'; text-align: center; margin-top: 40px; margin-bottom:20px; }
+.code_conduct_wrapper input{ padding: 0 10px; background: none; border:none; border-bottom: 1px solid #000; height: 40px; }
+.code_conduct_wrapper input:focus{outline: none; }
+.code_conduct_wrapper .signature_wrapper input{width: 70%;}
+.code_conduct_wrapper .signature_wrapper input:nth-last-of-type(1){width: 60%;}
+.code_conduct_wrapper .signature_wrapper .digital_signature{
+    font-family: 'MayQueen';
+    font-size: 44px;
+    color: black;
+}
+
+.footer_contractform .bottom_form_section{ font-family: 'OpenSansRegular'; font-size: 16px; }
+.footer_contractform .bottom_form_section input{ padding: 0 10px; background: none; border: none; border-bottom: 1px solid #000; margin: 5px 0; }
+
+.footer_contractform .bottom_form_section .by{ width: 60%;}
+.footer_contractform .bottom_form_section .print{ width: 52%;}
+.footer_contractform .bottom_form_section .title{ width: 59%;}
+.footer_contractform .bottom_form_section .date{ width: 58%;}
+
+.footer_contractform .bottom_form_section .nex_right_inp{ width: 64%;}
+.footer_contractform .bottom_form_section input:focus{ outline: none; }
+
+/*Home Page css*/
+.home_wrapper .carousel-item .carousel-caption {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 515px;
+    position: absolute;
+    right: 15%;
+    bottom: 35%;
+    left: 11%;
+    z-index: 10;
+    padding-top: 13px;
+    color: #fff;
+    text-align: left;
+}
+.home_wrapper .carousel-item .carousel-caption h2{ font-family: 'RalewayBold'; font-size: 60px; text-transform: uppercase;  margin-bottom: 0px;}
+
+.home_wrapper .carousel-item .carousel-caption h5{background: url("../images/home caption underline.jpg") no-repeat bottom; padding-bottom: 15px;
+    color: #d4d9dc; font-size: 22px; font-family: 'RalewayRegular';}
+
+.home_wrapper .carousel-item .carousel-caption p{ font-family: 'RalewayRegular'; font-size: 16px; }
+.home_wrapper .carousel-item .carousel-caption button{ background: rgba(65,193,235,1);
+    background: #00c0ff;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#41c1eb', endColorstr='#10aade', GradientType=1 );
+    padding: 6px 23px 3px;
+    border: none;
+    color: #fff;
+    font-family: 'RalewayBold';
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.home_wrapper .carousel-item .carousel-caption button:focus{ outline: none;}
+
+.home_wrapper .carousel  .carousel-control-next, .carousel-control-prev{width: 4%!important; }
+
+.carousel-control-prev-icon {
+    background-image:  url("../images/prev_icon.png")!important;
+    padding: 30px;
+}
+.carousel-control-next-icon {
+    background-image:  url("../images/next_icon.png")!important;
+    padding: 30px;
+}
+
+/**/

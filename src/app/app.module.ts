@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { FunnelComponent } from './funnel/funnel.component';
 import { SignupComponent } from './signup/signup.component';
 import {appRoutingProviders, routing} from './route';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import {appRoutingProviders, routing} from './route';
     LoginComponent,
     FunnelComponent,
     SignupComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
