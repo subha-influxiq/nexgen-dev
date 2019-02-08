@@ -86,7 +86,7 @@ export class ListingComponent implements OnInit {
     console.log(this.sourceconditionval);
   }
 
- constructor(public _commonservice:Commonservices,public _routes:Router,public _http:HttpClient,public modal:BsModalService,formgroup:FormBuilder,private cookeiservice: CookieService)
+ constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,formgroup:FormBuilder,private cookeiservice: CookieService)
   {
    this.formgroup=formgroup;
    this._commonservice=_commonservice;
@@ -116,24 +116,29 @@ export class ListingComponent implements OnInit {
             });
     }
   getdatalist() {
-    const link = this._commonservice.nodesslurl+'datalist';
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
    /* console.log('link');
     console.log(link);*/
-    this._http.post(link,{source:this.sourceval,condition:this.sourceconditionval})
-        .subscribe(res => {
-          let result;
-          result = res;
-          this.datalist = [];
-          this.datalist = result.res;
-          console.log('datalist:');
-          console.log(this.datalist);
-        }, error => {
-          console.log('Oooops!');
-          this.datalist = [];
-        });
+      this._http.post(link,{source:this.sourceval,condition:this.sourceconditionval})
+          .subscribe(res => {
+              let result;
+              result = res;
+              if(result.status=='error'){
+                  this.router.navigate(['/']);
+              }else{
+                  this.datalist = [];
+                  this.datalist = result.res;
+                  console.log('datalist:');
+                  console.log(this.datalist);
+              }
+          }, error => {
+              console.log('Oooops!');
+              this.datalist = [];
+          });
   }
+
   geteditdata() {
-    const link = this._commonservice.nodesslurl+'datalist';
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
    /* console.log('link');
     console.log(link);*/
    console.log('this.formsourceval');
@@ -144,6 +149,9 @@ export class ListingComponent implements OnInit {
           result = res;
           console.log('result:');
           console.log(result);
+            if(result.status=='error'){
+                this.router.navigate(['/']);
+            }else{
           let folder:any='';
             console.log(this.dataForm.controls);
             for (let c in this.dataForm.controls){
@@ -197,21 +205,25 @@ export class ListingComponent implements OnInit {
                 }
             }
             this.dataForm.addControl('id', new FormControl(this.selecteditem._id, Validators.required));
-
+            }
         }, error => {
           console.log('Oooops!');
           this.datalist = [];
         });
   }
   getselectdata(source:any,c:any) {
-    const link = this._commonservice.nodesslurl+'datalist';
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
   /*  console.log('link');
     console.log(link);*/
     this._http.post(link,{source:source})
         .subscribe(res => {
           let result;
           result = res;
-            this.formdataval[c].sourceval = result.res;
+            if(result.status=='error'){
+                this.router.navigate(['/']);
+            }else {
+                this.formdataval[c].sourceval = result.res;
+            }
         }, error => {
             console.log('Oooops!');
             this.formdataval[c].sourceval = [];

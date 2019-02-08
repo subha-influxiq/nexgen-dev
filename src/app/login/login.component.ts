@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
+              this.cookeiservice.set('jwttoken', result.token);
               this.cookeiservice.set('userid', result.item[0]._id);
               this.cookeiservice.set('usertype', result.item[0].type);
               this.cookeiservice.set('useremail', result.item[0].email);
@@ -93,6 +94,8 @@ export class LoginComponent implements OnInit {
               {
                 this.router.navigate(['/repdashboard']);
               }
+              console.log('jwttoken');
+              console.log(this.cookeiservice.get('jwttoken'));
             }
           }, error => {
             console.log('Oooops!');

@@ -19,7 +19,7 @@ import {ContractComponent} from "./contract/contract.component";
 
 
 const appRoutes: Routes = [
-    { path: '', component: LoginComponent},
+    { path: 'login', component: LoginComponent},
     { path: 'funnel', component: FunnelComponent},
     { path: 'dashboard', component: DashboardComponent},
     { path: 'admin', component: AdminmanagementComponent},
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
     { path: 'signup', component: SignupComponent},
-    { path: 'home', component: HomeComponent},
+    { path: '', component: HomeComponent},
     { path: 'contract', component: ContractComponent},
 
 ];
