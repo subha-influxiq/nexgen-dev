@@ -113,7 +113,7 @@
     background: #ff0000;
     text-align: center;
     margin: 0 auto;
-
+    cursor: pointer;
 }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
 
@@ -121,7 +121,27 @@
     background: #00d400;
     margin: 0 auto;
     display: inline-flex;
+    cursor: pointer;
     align-items: flex-end;
+}
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .edit_user{
+    background: #00a8ef;
+    font-family: 'RalewaySemiBold';
+    color: #fff;
+    font-size: 16px;
+    padding: 2px 5px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .delete_user{
+    background: #000;
+    font-family: 'RalewaySemiBold';
+    color: #fff;
+    font-size: 16px;
+    padding: 2px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
 }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination .pagination{ justify-content: center;  margin-bottom: 0;}
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul span{ font-family: 'RalewaySemiBold'; }
