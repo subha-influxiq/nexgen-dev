@@ -10,7 +10,11 @@ import { FunnelComponent } from './funnel/funnel.component';
 import { SignupComponent } from './signup/signup.component';
 import {appRoutingProviders, routing} from './route';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import {ListingComponent  } from './listing/listing.component';
+import { AdminmanagementComponent } from './adminmanagement/adminmanagement.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FunnelComponent,
     SignupComponent,
     DashboardComponent,
+    ListingComponent,
+    AdminmanagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     routing,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule,
+    BsDatepickerModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
