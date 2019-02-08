@@ -105,15 +105,23 @@
     margin-bottom:5px;}
 .nextGen_admin_mainwrapper  .content_header_block ol li:after{content: '/'; display: inline; padding-left: 5px; padding-right: 5px; }
 .nextGen_admin_mainwrapper  .content_header_block ol li:last-child:after{display: none; }
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusinactive{  display: inline-flex;
+    align-items: flex-end; width: 100%;}
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive{  display: inline-flex;
+    align-items: flex-end; width: 100%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
-    background: #00d400;
+    background: #ff0000;
     text-align: center;
     margin: 0 auto;
+
  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
-    background: red;
+
     text-align: center;
+    background: #00d400;
     margin: 0 auto;
+    display: inline-flex;
+    align-items: flex-end;
 }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination .pagination{ justify-content: center;  margin-bottom: 0;}
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul span{ font-family: 'RalewaySemiBold'; }
