@@ -1,3 +1,101 @@
-<p>
-  funnel works!
-</p>
+<div class="funnel">
+  <button (click)="hi()">hieeeeeeeee</button>
+<div class="funnel_block1">
+  <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-2">
+
+
+      <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+        <div class="form-group">
+          <label> First Name:</label>
+          <input type="text" class="form-control" placeholder="Enter your First name" [formControl]="dataForm.controls['firstname']">
+          <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name field can not be blank</span>
+        </div>
+        <div class="form-group">
+          <label> Last Name:</label>
+          <input type="text" class="form-control" placeholder="Enter your Last name" [formControl]="dataForm.controls['lastname']">
+          <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name field can not be blank</span>
+        </div>
+        <div class="form-group">
+          <label> Email:</label>
+          <input type="email" class="form-control" placeholder="Enter your email" [formControl]="dataForm.controls['email']">
+          <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched">Email field can not be blank & give proper email id</span>
+        </div>
+        <div class="form-group">
+          <label>Phone:</label>
+          <input type="text" class="form-control" placeholder="Enter your Phone nunmber" [formControl]="dataForm.controls['phoneno']">
+          <span class="error" *ngIf="!dataForm.controls['phoneno'].valid && dataForm.controls['phoneno'].touched">Phone no field can not be blank</span>
+        </div>
+        <div class="form-group">
+          <label> City:</label>
+          <input type="text" class="form-control" placeholder="Enter your City" [formControl]="dataForm.controls['city']">
+          <span class="error" *ngIf="!dataForm.controls['city'].valid && dataForm.controls['city'].touched">City field can not be blank</span>
+        </div>
+        <div class="form-group">
+          <label> State:</label>
+          <select [formControl]="dataForm.controls['state']">
+            <option value="">Choose State</option>
+            <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
+          </select>
+          <span class="error" *ngIf="!dataForm.controls['state'].valid && dataForm.controls['state'].touched">State field can not be blank</span>
+        </div>
+        <button type="submit" value="Submit" class="loginsubmit">Submit</button>
+        <div class="clearfix"></div>
+      </form>
+
+
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+  <div class="funnel_block1_1"><img src="https://demo.presscustomizr.com/wp-content/uploads/2008/04/city-1200x500.jpg"></div>
+  <div class="clearfix"></div>
+  <div class="funnel_block1_2" id="funnel_block1_2">
+
+    <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm1" (ngSubmit)="dosubmit1(dataForm1.value)">
+      <input type="hidden" class="form-control" placeholder="Enter your First name" [formControl]="dataForm1.controls['id']">
+      <div class="form-group">
+        <label> First Name:</label>
+        <input type="text" class="form-control" placeholder="Enter your First name" [formControl]="dataForm1.controls['firstname']">
+        <span class="error" *ngIf="!dataForm1.controls['firstname'].valid && dataForm1.controls['firstname'].touched">First Name field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> Last Name:</label>
+        <input type="text" class="form-control" placeholder="Enter your Last name" [formControl]="dataForm1.controls['lastname']">
+        <span class="error" *ngIf="!dataForm1.controls['lastname'].valid && dataForm1.controls['lastname'].touched">Last Name field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> Email:</label>
+        <input type="email" class="form-control" placeholder="Enter your email" [formControl]="dataForm1.controls['email']">
+        <span class="error" *ngIf="!dataForm1.controls['email'].valid && dataForm1.controls['email'].touched">Email field can not be blank & give proper email id</span>
+      </div>
+      <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" class="form-control" placeholder="Enter your Phone nunmber" [formControl]="dataForm1.controls['phoneno']">
+        <span class="error" *ngIf="!dataForm1.controls['phoneno'].valid && dataForm1.controls['phoneno'].touched">Phone no field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> City:</label>
+        <input type="text" class="form-control" placeholder="Enter your City" [formControl]="dataForm1.controls['city']">
+        <span class="error" *ngIf="!dataForm1.controls['city'].valid && dataForm1.controls['city'].touched">City field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> State:</label>
+        <select [formControl]="dataForm1.controls['state']">
+          <option value="">Choose State</option>
+          <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
+        </select>
+        <span class="error" *ngIf="!dataForm1.controls['state'].valid && dataForm1.controls['state'].touched">State field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> How many practices/clinics do you currently do with business?:</label>
+        <input type="text" class="form-control" placeholder="Enter your noofclinics" [formControl]="dataForm1.controls['noofclinics']">
+        <span class="error" *ngIf="!dataForm1.controls['noofclinics'].valid && dataForm1.controls['noofclinics'].touched">This field can not be blank</span>
+      </div>
+      <button type="submit" value="Submit" class="loginsubmit">Submit</button>
+      <div class="clearfix"></div>
+    </form>
+
+  </div>
+</div>
