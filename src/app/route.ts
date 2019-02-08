@@ -14,6 +14,8 @@ import {RepComponent} from "./rep/rep.component";
 import {RegionalDashboardComponent} from "./regional-dashboard/regional-dashboard.component";
 import {RepDashboardComponent} from "./rep-dashboard/rep-dashboard.component";
 import {SignupComponent} from "./signup/signup.component";
+import {HomeComponent} from "./home/home.component";
+import {ContractComponent} from "./contract/contract.component";
 
 
 const appRoutes: Routes = [
@@ -26,6 +28,8 @@ const appRoutes: Routes = [
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
     { path: 'signup', component: SignupComponent},
+    { path: 'home', component: HomeComponent},
+    { path: 'contract', component: ContractComponent},
 
 ];
 

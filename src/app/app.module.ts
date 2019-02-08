@@ -19,6 +19,10 @@ import { RegionalRecruiterComponent } from './regional-recruiter/regional-recrui
 import { RepComponent } from './rep/rep.component';
 import { RegionalDashboardComponent } from './regional-dashboard/regional-dashboard.component';
 import { RepDashboardComponent } from './rep-dashboard/rep-dashboard.component';
+import { HomeComponent } from './home/home.component';
+import { ContractComponent } from './contract/contract.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { RepDashboardComponent } from './rep-dashboard/rep-dashboard.component';
     RepComponent,
     RegionalDashboardComponent,
     RepDashboardComponent,
+    HomeComponent,
+    ContractComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
