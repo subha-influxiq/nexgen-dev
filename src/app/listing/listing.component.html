@@ -82,9 +82,8 @@
                                         <span *ngIf="item1.type=='daterange'" [ngClass]="item1.class">{{showdate(item[item1.value])}}</span>
                                     </td>
                                     <td>
-                    <span (click)="deletdata(item,commonconfirmmodal)"><i class="fa fa-trash-o" aria-hidden="true"></i>
-</span>
-                                        <span (click)="editmodal(formtemplate,item)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                    <span class=" delete_user" (click)="deletdata(item,commonconfirmmodal)">delete</span>
+                                        <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span>
                                     </td>
                                 </tr>
                                 </tbody>
