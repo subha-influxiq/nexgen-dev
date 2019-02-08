@@ -212,22 +212,36 @@ export class ListingComponent implements OnInit {
         });
   }
   getselectdata(source:any,c:any) {
-    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-  /*  console.log('link');
-    console.log(link);*/
-    this._http.post(link,{source:source})
-        .subscribe(res => {
-          let result;
-          result = res;
-            if(result.status=='error'){
-                this.router.navigate(['/']);
-            }else {
-                this.formdataval[c].sourceval = result.res;
-            }
-        }, error => {
-            console.log('Oooops!');
-            this.formdataval[c].sourceval = [];
-        });
+      if(this.formdataval[c].sourcetype==null || this.formdataval[c].sourcetype!='static') {
+          const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+          /*  console.log('link');
+           console.log(link);*/
+          this._http.post(link, {source: source})
+              .subscribe(res => {
+                  let result;
+                  result = res;
+                  if (result.status == 'error') {
+                      this.router.navigate(['/']);
+                  } else {
+                      this.formdataval[c].sourceval = result.res;
+                  }
+              }, error => {
+                  console.log('Oooops!');
+                  this.formdataval[c].sourceval = [];
+              });
+      }else{
+         // this.formdataval[c].sourceval=this._http.get("assets/data/states_titlecase.json");
+          this._http.get("assets/data/"+source+".json")
+              .subscribe(res => {
+                  let result;
+                  this.formdataval[c].sourceval=result = res;
+                 console.log(result);
+              }, error => {
+                  console.log('Oooops!');
+                  this.formdataval[c].sourceval = [];
+              });
+      }
+
   }
 
   deletdata(val:any,template:TemplateRef<any>){
