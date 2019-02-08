@@ -18,6 +18,7 @@ import {HomeComponent} from "./home/home.component";
 import {ContractComponent} from "./contract/contract.component";
 
 
+
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'funnel', component: FunnelComponent},
@@ -30,10 +31,11 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: '', component: HomeComponent},
     { path: 'contract', component: ContractComponent},
+    {path: 'regionaldashboard', component: RegionalRecruiterComponent}
 
 ];
 
 
 export const appRoutingProviders: any[] = [
 ];
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes,{ useHash: true });
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes,{ useHash: false });
