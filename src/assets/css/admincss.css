@@ -59,3 +59,22 @@
 .dashboard_block2 .table td, .table th{ border-top: 1px solid #fff;}
 .dashboard_block2 .col-md-4 h3{ font-family: RalewaySemiBold; font-size: 30px; margin-bottom: 12px;
     color: #fff;}
+
+/*USER MANAGEMENT STARTS HERE*/
+
+.user_management_wrapper .user_management_inner h2{ font-size: 40px; font-family: 'RalewayBold'; background: #00a8ef; padding: 15px 0; text-align: center; margin-bottom: 0;
+    color: #fff; text-transform: uppercase; }
+
+.user_management_wrapper .user_management_inner .inner_search_wrapper { background: #000; padding: 10px 0;   width: 100%; }
+
+.user_management_wrapper .user_management_inner  .inner_content_wrapper .search_content{ width:50%;  float: left;}
+.user_management_wrapper .user_management_inner  .inner_content_wrapper{ width:1400px; margin: 0 auto; }
+.user_management_wrapper .user_management_inner  .inner_content_wrapper h3{ display: inline; font-family: 'RalewaySemiBold'; font-size: 18px; color: #fff; }
+.user_management_wrapper .user_management_inner  .inner_content_wrapper input{
+    height: 38px;
+}
+.user_management_wrapper .user_management_inner  .inner_content_wrapper button{font-size: 18px; color: #fff; font-family: 'RalewaySemiBold'; background: #00c0ff; border:none; padding: 0px 30px;
+    height: 38px;  text-transform: uppercase; margin-left: 7px;
+    cursor: pointer;}
+
+.user_management_wrapper .user_management_inner  .inner_content_wrapper button:focus{ outline: none; }

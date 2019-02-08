@@ -15,6 +15,10 @@ import { AdminmanagementComponent } from './adminmanagement/adminmanagement.comp
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import { RegionalRecruiterComponent } from './regional-recruiter/regional-recruiter.component';
+import { RepComponent } from './rep/rep.component';
+import { RegionalDashboardComponent } from './regional-dashboard/regional-dashboard.component';
+import { RepDashboardComponent } from './rep-dashboard/rep-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     DashboardComponent,
     ListingComponent,
     AdminmanagementComponent,
+    RegionalRecruiterComponent,
+    RepComponent,
+    RegionalDashboardComponent,
+    RepDashboardComponent,
   ],
   imports: [
     BrowserModule,
