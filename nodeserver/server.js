@@ -30,6 +30,7 @@ var options = {
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config'); // get our config file
 var User   = require('./models/user'); // get our mongoose model
+app.set('superSecret', config.secret); // secret variable
 
 /*Access token JWT Verification*/
 
@@ -73,6 +74,7 @@ MongoClient.connect(url, function (err, database) {
     }
 });
 
+var tokenstatus='';
 app.get('/test1',function(req,resp){
     console.log('etgggggggggggeset');
     var collection= db.collection('test');
@@ -96,6 +98,66 @@ var server = app.listen(port,'nodessl.influxiq.com', function () {
     var port = server.address().port;
 });
 
+app.post('/leadsignup', function (req, resp) {
+    var collection = db.collection('users');
+    collection.insert([{
+        email: req.body.email,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phoneno: req.body.phoneno,
+        city: req.body.city,
+        state: req.body.state,
+        type: req.body.type,
+    }], function (err, result) {
+        if (err) {
+            console.log('error'+err);
+            resp.send(JSON.stringify({'status':'error','id':0}));
+        } else {
+            var tokenis = createjwttoken();
+            if(tokenis!=null){
+    /*            resp.send(JSON.stringify({'status':'success','id':result.ops[0]._id,token:createjwttoken()})); return;*/
+                var o_id = new mongodb.ObjectID(result.ops[0]._id);
+                collection.find({_id:o_id}).toArray(function(err, items) {
+                    if (err) {
+                        resp.send(JSON.stringify({'status':'error','id':0}));
+                        return;
+                    } else {
+                        resitem = items[0];
+                        resp.send(JSON.stringify({'status':'success','item':resitem,token:createjwttoken()}));
+                      //  resp.send(JSON.stringify({'status':'success','id':result.ops[0]._id,token:createjwttoken()}));
+                        return;
+                    }
+                });
+            }else{
+                resp.send(JSON.stringify({'status':'error','msg':'Contact to site administrator for further information!'}));
+                return;
+            }
+        }
+    });
+});
+
+
+app.post('/leadsignupupdate',function (req,resp) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    verifytoken(token);
+    console.log('tokenstatus');
+    console.log(tokenstatus);
+    if(tokenstatus!=true){
+        resp.send(JSON.stringify({'status':'error',token:token,errormessage:tokenstatus}));
+        return;
+    }
+    else{
+        if(typeof(req.body.data.id)!='undefined'){
+            var o_id = new mongodb.ObjectID(req.body.data.id);
+            collection.update({_id:o_id}, {$set: req.body.data}, true, true);
+            resp.send(JSON.stringify({'status':'success',update:1}));
+            return;
+        }
+    }
+
+});
+
+/*COMMON FUNCTIONS*/
 app.post('/login', function (req, resp) {
     var crypto = require('crypto');
     var secret = req.body.password;
@@ -117,38 +179,28 @@ app.post('/login', function (req, resp) {
             return;
         }
         if(items.length>0 && items[0].password==hash){
-            resp.send(JSON.stringify({'status':'success','item':items}));
-            return;
+            var tokenis = createjwttoken();
+            if(tokenis!=null){
+                resp.send(JSON.stringify({'status':'success','item':items,token:createjwttoken()}));
+                return;
+            }else{
+                resp.send(JSON.stringify({'status':'error','msg':'Contact to site administrator for further information!'}));
+                return;
+            }
+
         }
     });
 });
 
-
 app.post('/datalist',function (req,resp) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-    if (token) {
-        jwt.verify(token, app.get('superSecret'), function(err, decoded) {
-            if(typeof (req.body.condition) !='undefined' && typeof (req.body.condition._id)!='undefined' ){
-                req.body.condition._id=new mongodb.ObjectID(req.body.condition._id);
-            }
-            var cond=req.body.condition;
-            var collection = db.collection(req.body.source.toString());
-            collection.find(cond).sort({_id:-1}).toArray(function(err, items) {
-                if (err) {
-                    console.log(err);
-                    resp.send(JSON.stringify({'res':[]}));
-
-                } else {
-                    resp.send(JSON.stringify({'res':items,'resc':items.length}));
-                }
-            });
-        });
-    } else {
-         resp.send(JSON.stringify({success: false, message: 'No token provided.'}));
+    verifytoken(token);
+    console.log('tokenstatus');
+    console.log(tokenstatus);
+    if(tokenstatus!=true){
+        resp.send(JSON.stringify({'status':'error',token:token,errormessage:tokenstatus}));
+        return;
     }
-});
-
-app.post('/datalist1',function (req,resp) {
     if(typeof (req.body.condition) !='undefined' && typeof (req.body.condition._id)!='undefined' ){
         req.body.condition._id=new mongodb.ObjectID(req.body.condition._id);
     }
@@ -163,6 +215,7 @@ app.post('/datalist1',function (req,resp) {
             resp.send(JSON.stringify({'res':items,'resc':items.length}));
         }
     });
+
 });
 
 
@@ -196,7 +249,6 @@ app.post('/addorupdatedata', function (req, resp) {
     }
 });
 
-
 app.get('/deletesingledata',function(req,resp) {
     var collection = db.collection(req.body.source.toString());
     var o_id = new mongodb.ObjectID(req.body.id);
@@ -209,4 +261,64 @@ app.get('/deletesingledata',function(req,resp) {
         }
     });
 });
+
+function createjwttoken(){
+    var older_token = jwt.sign({ foo: 'bar', exp: Math.floor(Date.now() / 1000) + (60 * 60)}, app.get('superSecret'));
+    /*const payload = {
+        admin: true     };
+    var token = jwt.sign(payload, app.get('superSecret'), {
+        //expiresInMinutes: 1440 // expires in 24 hours
+    });*/
+    //resp.send(JSON.stringify({'status':'success',token:token,oldtoken:older_token}));
+    return older_token;
+};
+
+function verifytoken(token){
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+        console.log('token');
+        console.log(token);
+        if (err) {
+            //resp.send(JSON.stringify({'status':'success',error:err}));
+            console.log('in error');
+            tokenstatus= err.message;
+        }
+        else{
+            console.log('in success !!');
+            tokenstatus= true;
+        }
+    });
+};
+
+
 https.createServer(options, app).listen(6027);
+
+
+app.get('/createtoken',function(req,resp) {
+    var older_token = jwt.sign({ foo: 'bar', exp: Math.floor(Date.now() / 1000) + (60 * 60 * 3)}, app.get('superSecret'));
+
+    const payload = {
+        admin: true     };
+    var token = jwt.sign(payload, app.get('superSecret'), {
+        //expiresInMinutes: 1440 // expires in 24 hours
+    });
+    resp.send(JSON.stringify({'status':'success',token:token,oldtoken:older_token}));
+    return;
+});
+app.get('/checktoken',function(req,resp) {
+
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+        if (err) {
+            resp.send(JSON.stringify({'status':'success',error:err}));
+            return;
+        }
+        else{
+            resp.send(JSON.stringify({'status':'success',token:'success'}));
+        }
+    });
+
+    return;
+});
+
+
