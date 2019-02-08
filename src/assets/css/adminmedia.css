@@ -15,7 +15,9 @@
         width: 450px;
         padding: 34px 0;
     }
-
+    .r_r_dashboard_innerblock {
+        width: 95%;
+    }
 }
 @media screen and (max-width: 1199px){
     .admin_dashboard_container {

@@ -1,3 +1,6 @@
+.hide{  display:none!important;}
+
+
 .admin_dashboard_container{ background: url("../images/dashboardbg.jpg") no-repeat center center;
     min-height: 300px;
     background-size: cover;
@@ -102,10 +105,30 @@
     margin-bottom:5px;}
 .nextGen_admin_mainwrapper  .content_header_block ol li:after{content: '/'; display: inline; padding-left: 5px; padding-right: 5px; }
 .nextGen_admin_mainwrapper  .content_header_block ol li:last-child:after{display: none; }
-
-
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+    background: #00d400;
+    text-align: center;
+    margin: 0 auto;
+ }
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+    background: red;
+    text-align: center;
+    margin: 0 auto;
+}
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination .pagination{ justify-content: center;  margin-bottom: 0;}
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul span{ font-family: 'RalewaySemiBold'; }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul li { background: #00a8ef;  margin-left: 5px; padding: 2px 6px; border-radius: 2px; }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul li a {  color:#fff;  }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul li.active{ background: #000; }
+
+
+/*REGIONAL RECRUITER*/
+.r_r_dashboard_innerblock{ width: 85%; margin: 0 auto; }
+.r_r_dashboard_innerblock .col-md-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.r_r_dashboard_innerblock .col-md-4 table{ margin-bottom: 100px;}
+.r_r_dashboard_innerblock .col-md-4 .reps_inner_block1 h3{  font-family: 'RalewaySemiBold'; text-transform: uppercase; }
+.r_r_dashboard_innerblock .col-md-4 .reps_inner_block2 h3{  font-family: 'RalewaySemiBold'; text-transform: uppercase; }
