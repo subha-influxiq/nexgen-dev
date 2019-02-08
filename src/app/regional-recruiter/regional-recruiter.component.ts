@@ -19,8 +19,10 @@ export class RegionalRecruiterComponent implements OnInit {
       {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
       {value:'email',name:'Email Id',role:0,func:'',class:'email',type:'text'},
       {value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},
+      {value:'state',name:'State/Region',role:0,func:'',class:'state',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'text'},
+      {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
     ];
     this.formdata=[
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
@@ -35,6 +37,7 @@ export class RegionalRecruiterComponent implements OnInit {
       {inputtype:'select',name:'state',label:'State/Region',defaultchoice:'Select a State/region',sourceview:'states',sourcetype:'static',selectvalue:'name',selectid:'abbreviation',validationrule:{required:true},validationerrormsg:'is required'},
       //{inputtype:'text',name:'telephone',label:'Telephone No',placeholder:'Enter Telephone No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'phoneno',label:'Mobile No',placeholder:'Enter Mobile No',validationrule:{required:true},validationerrormsg:'is required'},
+      {inputtype:'checkbox',name:'status',label:'Status',value:false},
     ];
     this.datasource={table:'users',objarr:[]};
   }
