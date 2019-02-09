@@ -1,5 +1,4 @@
 <div class="funnel">
-  <button (click)="hi()">hieeeeeeeee</button>
 <div class="funnel_block1">
   <div class="row">
     <div class="col-md-9"></div>
@@ -49,14 +48,17 @@
     <div class="col-md-1"></div>
   </div>
 </div>
-  <div class="funnel_block1_1"><img src="https://demo.presscustomizr.com/wp-content/uploads/2008/04/city-1200x500.jpg"></div>
+  <div class="funnel_block1_1">
+
+  </div>
   <div class="clearfix"></div>
   <div class="funnel_block1_2" id="funnel_block1_2">
-
-    <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm1" (ngSubmit)="dosubmit1(dataForm1.value)">
+<h3>Questionnaire</h3>
+    <div class="col-md-8">
+    <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm1" (ngSubmit)="dosubmit1(dataForm1.value,messagemodal)">
       <input type="hidden" class="form-control" placeholder="Enter your First name" [formControl]="dataForm1.controls['id']">
       <div class="form-group">
-        <label> First Name:</label>
+        <label > First Name:</label>
         <input type="text" class="form-control" placeholder="Enter your First name" [formControl]="dataForm1.controls['firstname']">
         <span class="error" *ngIf="!dataForm1.controls['firstname'].valid && dataForm1.controls['firstname'].touched">First Name field can not be blank</span>
       </div>
@@ -89,13 +91,73 @@
         <span class="error" *ngIf="!dataForm1.controls['state'].valid && dataForm1.controls['state'].touched">State field can not be blank</span>
       </div>
       <div class="form-group">
-        <label> How many practices/clinics do you currently do with business?:</label>
-        <input type="text" class="form-control" placeholder="Enter your noofclinics" [formControl]="dataForm1.controls['noofclinics']">
+        <label> How many years have you been in the medical health industry?</label>
+        <input type="text" class="form-control" placeholder="Enter your no of years" [formControl]="dataForm1.controls['noofyears']">
+        <span class="error" *ngIf="!dataForm1.controls['noofyears'].valid && dataForm1.controls['noofyears'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> How many practices/clinics do you currently do business with?</label>
+        <input type="text" class="form-control" placeholder="Enter your no of clinics" [formControl]="dataForm1.controls['noofclinics']">
         <span class="error" *ngIf="!dataForm1.controls['noofclinics'].valid && dataForm1.controls['noofclinics'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> What type of doctors do you work with?</label><br/>
+        <input type="checkbox" [formControl]="dataForm1.controls['primarycare']">Primarycare
+        <input type="checkbox" [formControl]="dataForm1.controls['pediatrics']">Pediatrics
+        <input type="checkbox"  [formControl]="dataForm1.controls['podiatrist']">Podiatrist
+        <input type="checkbox"  [formControl]="dataForm1.controls['hospitals_that_outsource']">Hospitals That Outsource
+        <input type="checkbox"  [formControl]="dataForm1.controls['nursing']">Nursing
+        <input type="checkbox" [formControl]="dataForm1.controls['homesorhomehealthcare']">Homes Or Home Health Care
+      </div>
+      <div class="form-group">
+        <label>Other</label>
+        <input type="text" class="form-control" placeholder="Other" [formControl]="dataForm1.controls['other']">
+      </div>
+      <div class="form-group">
+        <label> How many practices/clinics do you personally/actively call on into weekly?</label>
+        <input type="text" class="form-control" placeholder="Enter your no of clinics call" [formControl]="dataForm1.controls['noofpersonallycall']">
+        <span class="error" *ngIf="!dataForm1.controls['noofpersonallycall'].valid && dataForm1.controls['noofpersonallycall'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> How often do you call each office?</label>
+        <input type="text" class="form-control" placeholder="Enter your no of calls" [formControl]="dataForm1.controls['calleachoffice']">
+        <span class="error" *ngIf="!dataForm1.controls['calleachoffice'].valid && dataForm1.controls['calleachoffice'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> How many practices do you have direct access to when you walk in their door?</label>
+        <input type="text" class="form-control" placeholder="Enter your no of direct access" [formControl]="dataForm1.controls['noofdirectaccess']">
+        <span class="error" *ngIf="!dataForm1.controls['noofdirectaccess'].valid && dataForm1.controls['noofdirectaccess'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> What are you currently doing in the medical field?</label>
+        <input type="text" class="form-control" placeholder="Enter your work in medical field" [formControl]="dataForm1.controls['workinmedicalfield']">
+        <span class="error" *ngIf="!dataForm1.controls['workinmedicalfield'].valid && dataForm1.controls['workinmedicalfield'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label>Have you represented a company that does Molecular PCR testing in the past?</label><br/>
+        <input type="radio" name="pcr" value="1" [formControl]="dataForm1.controls['pcrtesting']">YES
+        <input type="radio"  name="pcr" value="0" [formControl]="dataForm1.controls['pcrtesting']">NO
+        <span class="error" *ngIf="!dataForm1.controls['pcrtesting'].valid && dataForm1.controls['pcrtesting'].touched">This field can not be blank</span>
+      </div>
+      <div class="form-group">
+        <label> Company Name:</label>
+        <input type="text" class="form-control" placeholder="Enter your company name" [formControl]="dataForm1.controls['companyname']">
+        <span class="error" *ngIf="!dataForm1.controls['companyname'].valid && dataForm1.controls['companyname'].touched">This field can not be blank</span>
       </div>
       <button type="submit" value="Submit" class="loginsubmit">Submit</button>
       <div class="clearfix"></div>
     </form>
-
+</div>
+    <div class="col-md-4"></div>
   </div>
 </div>
+
+<ng-template #messagemodal>
+  <div class="modal-body brandmanagement_modal">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="message_success">{{message}}</div>
+
+  </div>
+</ng-template>

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Router} from '@angular/router';
 import {Commonservices} from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 declare var $: any;
 @Component({
   selector: 'app-funnel',
@@ -18,12 +21,12 @@ export class FunnelComponent implements OnInit {
   public serverurl;
   public states;
   public errormg='';
+  public message=null;
+  modalRef: BsModalRef;
 
-  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient ,private cookeiservice: CookieService) {
+  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient ,private cookeiservice: CookieService,public modal:BsModalService) {
     this.kp = kp;
     this.serverurl = _commonservices.url;
-  /*  this.states=listing.getselectdata('states',0);
-    console.log(this.states);*/
   this.getstates('states');
   }
   getstates(source){
@@ -52,7 +55,21 @@ export class FunnelComponent implements OnInit {
       phoneno: ['',Validators.required],
       city: ['',Validators.required],
       state: ['',Validators.required],
+      noofyears: ['',Validators.required],
       noofclinics: ['',Validators.required],
+      primarycare: [''],
+      pediatrics: [''],
+      podiatrist: [''],
+      hospitals_that_outsource: [''],
+      nursing: [''],
+      homesorhomehealthcare: [''],
+      other: ['',Validators.required],
+      noofpersonallycall: ['',Validators.required],
+      calleachoffice: ['',Validators.required],
+      noofdirectaccess: ['',Validators.required],
+      workinmedicalfield: ['',Validators.required],
+      pcrtesting: ['',Validators.required],
+      companyname: ['',Validators.required],
     });
   }
 
@@ -90,6 +107,7 @@ export class FunnelComponent implements OnInit {
         phoneno: formval.phoneno,
         city: formval.city,
         state: formval.state,
+        lead_step:1,
         type: 'rep',
       };
       this._http.post(link, data)
@@ -108,7 +126,9 @@ export class FunnelComponent implements OnInit {
               this.cookeiservice.set('userfirstname', result.item.firstname);
               this.cookeiservice.set('userlastname', result.item.lastname);
               this.cookeiservice.set('usertype', result.item.type);
-             $("#funnel_block1_2").offset().top;
+              $('html, body').animate({
+                scrollTop: $("#funnel_block1_2").offset().top
+              }, 2000);
                 let userdet = result.item;
                 this.dataForm1 = this.kp.group({
                   firstname: [userdet.firstname, Validators.required],
@@ -118,34 +138,36 @@ export class FunnelComponent implements OnInit {
                   city: [userdet.city,Validators.required],
                   state: [userdet.state,Validators.required],
                   id: [userdet._id],
-                  noofclinics: ['',Validators.required]
+                  noofyears: ['',Validators.required],
+                  noofclinics: ['',Validators.required],
+                  primarycare: [''],
+                  pediatrics: [''],
+                  podiatrist: [''],
+                  hospitals_that_outsource: [''],
+                  nursing: [''],
+                  homesorhomehealthcare: [''],
+                  other: ['',Validators.required],
+                  noofpersonallycall: ['',Validators.required],
+                  calleachoffice: ['',Validators.required],
+                  noofdirectaccess: ['',Validators.required],
+                  workinmedicalfield: ['',Validators.required],
+                  pcrtesting: ['',Validators.required],
+                  companyname: ['',Validators.required]
                 });
-            /*
-              if (result.msg.type == 'admin' || result.msg.type == 'brand' || result.msg.type == 'Customerservice') {
-                this.router.navigate(['/dashboard']);
-              }
-              if (result.msg.type == 'employee') {
-                this.router.navigate(['/training']);
-              }*/
             }
           }, error => {
             console.log('Oooops!');
           });
     }
   }
-  dosubmit1(formval){
+  dosubmit1(formval,template:TemplateRef<any>){
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
-      console.log(this.dataForm.controls[x].valid);
     }
-    console.log("this.dataForm.value");
-    console.log(this.dataForm.value);
-    console.log("this.dataForm.valid");
-    console.log(this.dataForm.valid);
 
     if (this.dataForm.valid) {
-      let link = this._commonservices.nodesslurl + 'leadsignupupdate?token='+this.cookeiservice.get('jwttoken');
+      let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
         id: formval.id,
         email: formval.email,
@@ -154,7 +176,22 @@ export class FunnelComponent implements OnInit {
         phoneno: formval.phoneno,
         city: formval.city,
         state: formval.state,
-        noofclinics: formval.noofclinics
+        noofyears:formval.noofyears,
+        noofclinics: formval.noofclinics,
+        primarycare: formval.primarycare,
+        pediatrics: formval.pediatrics,
+        podiatrist: formval.podiatrist,
+        hospitals_that_outsource: formval.hospitals_that_outsource,
+        nursing: formval.nursing,
+        homesorhomehealthcare: formval.homesorhomehealthcare,
+        other: formval.other,
+        noofpersonallycall: formval.noofpersonallycall,
+        calleachoffice: formval.calleachoffice,
+        noofdirectaccess: formval.noofdirectaccess,
+        workinmedicalfield: formval.workinmedicalfield,
+        pcrtesting: formval.pcrtesting,
+        companyname: formval.companyname,
+        questionnaire_step:1,
       };
       this._http.post(link, data)
           .subscribe(res => {
@@ -166,31 +203,19 @@ export class FunnelComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-              console.log('login success');
-              this.cookeiservice.set('userid', result.id);
-              this.cookeiservice.set('jwttoken', result.token);
-              //  $( "p:last" ).text( "scrollTop:" + p.scrollTop() );
-              $("#funnel_block1_2").offset().top;
-              /*  console.log(result.msg.type);
-               this.cookeiservice.set('useremail', result.msg.email);
-               this.cookeiservice.set('userfirstname', result.msg.firstname);
-               this.cookeiservice.set('userlastname', result.msg.lastname);
-               this.cookeiservice.set('usertype', result.msg.type);
-               if (result.msg.type == 'admin' || result.msg.type == 'brand' || result.msg.type == 'Customerservice') {
-               this.router.navigate(['/dashboard']);
-               }
-               if (result.msg.type == 'employee') {
-               this.router.navigate(['/training']);
-               }*/
+             if(formval.noofclinics>40){
+               this.router.navigate(['/signup']);
+             }else{
+               this.message='You have done your business with less than 40 clinics';
+               this.modalRef=this.modal.show(template);
+               setTimeout(() => {
+                 this.modalRef.hide();
+               }, 2000);
+             }
             }
           }, error => {
             console.log('Oooops!');
           });
     }
-  }
-  hi(){
-    console.log($('#funnel_block1_2').html());
-      $("#funnel_block1_2").offset().top;
-
   }
 }

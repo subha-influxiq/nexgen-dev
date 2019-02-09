@@ -1,8 +1,9 @@
 .funnel{
-    height: 2000px;
+    height: auto;
     background-color: seashell;
 }
 
-.funnel_block1.funnel_block1_1{
-    height: 1000px;
+.funnel_block1_1{
+    height: 500px;
+    background-color: mintcream;
 }
