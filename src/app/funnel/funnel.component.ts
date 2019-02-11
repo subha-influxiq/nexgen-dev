@@ -66,7 +66,8 @@ export class FunnelComponent implements OnInit {
       hospitals_that_outsource: [''],
       nursing: [''],
       homesorhomehealthcare: [''],
-      other: ['',Validators.required],
+      other: [''],
+      othertext: [''],
       noofpersonallycall: ['',Validators.required],
       calleachoffice: ['',Validators.required],
       noofdirectaccess: ['',Validators.required],
@@ -152,7 +153,8 @@ export class FunnelComponent implements OnInit {
                 hospitals_that_outsource: [''],
                 nursing: [''],
                 homesorhomehealthcare: [''],
-                other: ['',Validators.required],
+                other: [''],
+                othertext: [''],
                 noofpersonallycall: ['',Validators.required],
                 calleachoffice: ['',Validators.required],
                 noofdirectaccess: ['',Validators.required],
@@ -167,11 +169,15 @@ export class FunnelComponent implements OnInit {
     }
   }
   dosubmit1(template:TemplateRef<any>){
+    if(this.dataForm1.value['other']==true){
+      this.dataForm1.controls['othertext'].setValidators(Validators.required);
+    }else{
+      this.dataForm1.controls['othertext'].setValidators('');
+    }
     let x: any;
     for (x in this.dataForm1.controls) {
       this.dataForm1.controls[x].markAsTouched();
     }
-// console.log(this.da);
     if (this.dataForm1.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
@@ -191,6 +197,7 @@ export class FunnelComponent implements OnInit {
         nursing:  this.dataForm1.value['nursing'],
         homesorhomehealthcare:  this.dataForm1.value['homesorhomehealthcare'],
         other:  this.dataForm1.value['other'],
+        othertext:  this.dataForm1.value['othertext'],
         noofpersonallycall:  this.dataForm1.value['noofpersonallycall'],
         calleachoffice: this.dataForm1.value['calleachoffice'],
         noofdirectaccess:  this.dataForm1.value['noofdirectaccess'],

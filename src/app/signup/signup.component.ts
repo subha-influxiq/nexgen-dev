@@ -158,43 +158,8 @@ export class SignupComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-              this.cookeiservice.set('userid', result.item._id);
-              this.cookeiservice.set('jwttoken', result.token);
-              this.cookeiservice.set('useremail', result.item.email);
-              this.cookeiservice.set('userfirstname', result.item.firstname);
-              this.cookeiservice.set('userlastname', result.item.lastname);
-              this.cookeiservice.set('usertype', result.item.type);
-              this.dataForm.reset();
-              this.dataForm.value['state']='';
-              $('html, body').animate({
-                scrollTop: $("#alanding_bootmblock_wrapper").offset().top
-              }, 2000);
-              let userdet = result.item;
-              this.dataForm1 = this.kp.group({
-                firstname: [userdet.firstname, Validators.required],
-                lastname: [userdet.lastname, Validators.required],
-                email: [userdet.email,Validators.compose([Validators.required, SignupComponent.customValidator])],
-                phoneno: [userdet.phoneno,Validators.required],
-                city: [userdet.city,Validators.required],
-                state: [userdet.state,Validators.required],
-                id: [userdet._id],
-                noofyears: ['',Validators.required],
-                noofclinics: ['',Validators.required],
-                primarycare: [''],
-                pediatrics: [''],
-                podiatrist: [''],
-                hospitals_that_outsource: [''],
-                nursing: [''],
-                homesorhomehealthcare: [''],
-                other: ['',Validators.required],
-                noofpersonallycall: ['',Validators.required],
-                calleachoffice: ['',Validators.required],
-                noofdirectaccess: ['',Validators.required],
-                workinmedicalfield: ['',Validators.required],
-                pcrtesting: ['',Validators.required],
-                companyname: ['',Validators.required]
-              });
             this.dataForm.reset();
+              this.router.navigate(['/contract']);
             }
           }, error => {
             console.log('Oooops!');
