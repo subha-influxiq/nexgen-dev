@@ -25,7 +25,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpage.component';
 import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
-// import { AdminheaderComponent } from './adminheader/adminheader.component';
+import { AdminheaderComponent } from './adminheader/adminheader.component';
 
 
 @NgModule({
@@ -47,7 +47,7 @@ import { TranningcategorymanagementComponent } from './tranningcategorymanagemen
     FooterComponent,
     FunnellandingpageComponent,
     TranningcategorymanagementComponent,
-    // AdminheaderComponent,
+    AdminheaderComponent,
 
   ],
   imports: [
