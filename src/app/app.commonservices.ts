@@ -25,10 +25,6 @@ export class Commonservices {
             {type1:'regional_recruiter'},
             {type2:'rep'},
         ];
-      /* this.roletypes=[];
-        this.roletypes['type1'] = "35";
-        this.roletypes['type21'] = "37";
-        this.roletypes['type3'] = "43";*/
         console.log(this.roletypes);
     }
     shorten(str, maxLen, separator = '') {
