@@ -104,7 +104,7 @@ export class ListingComponent implements OnInit {
       let status:any;
       if(item.status!=null) status=1-item.status;
       if(item.status==null) status=1;
-        const link = this._commonservice.url+'togglestatus?token='+this.cookeiservice.get('jwttoken');
+        const link = this._commonservice.nodesslurl+'togglestatus?token='+this.cookeiservice.get('jwttoken');
         /* console.log('link');
     console.log(link);*/
         this._http.post(link,{id:item._id,source:this.formsourceval.table,status:status})
