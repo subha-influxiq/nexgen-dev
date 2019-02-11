@@ -169,15 +169,23 @@ export class FunnelComponent implements OnInit {
     }
   }
   dosubmit1(template:TemplateRef<any>){
-    if(this.dataForm1.value['other']==true){
-      this.dataForm1.controls['othertext'].setValidators(Validators.required);
-    }else{
-      this.dataForm1.controls['othertext'].setValidators('');
-    }
     let x: any;
     for (x in this.dataForm1.controls) {
       this.dataForm1.controls[x].markAsTouched();
     }
+
+    if(this.dataForm1.value['other']==true){
+      this.dataForm1.controls['othertext'].setValidators(Validators.required);
+      this.dataForm1.controls['othertext'].markAsTouched();
+      this.dataForm1.controls["othertext"].updateValueAndValidity();
+    }
+    else{
+      this.dataForm1.controls['othertext'].setValidators();
+      this.dataForm1.controls["othertext"].updateValueAndValidity();
+    }
+
+
+
     if (this.dataForm1.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {

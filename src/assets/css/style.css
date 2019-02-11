@@ -1,4 +1,10 @@
 @font-face {
+    font-family: 'Notera';
+    src: url('../fonts/notera_personaluseonly-webfont.woff2') format('woff2'),
+    url('../fonts/notera_personaluseonly-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}@font-face {
     font-family: 'RalewayBold';
     src: url('../fonts/Raleway-Bold.woff2') format('woff2'),
     url('../fonts/Raleway-Bold.woff') format('woff');
@@ -1081,6 +1087,10 @@ body{ padding:0; margin: 0;}
     .alanding_block2_wrappertext h2 {
         font-size: 62px;
     }
+}
+.stylesignature {
+    font-family: 'Notera';
+    font-size: 40px;
 }
 
 /*----------------------------------------AMITAV DA END--------------------------------------------*/
