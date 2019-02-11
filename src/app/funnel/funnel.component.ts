@@ -199,7 +199,7 @@ export class FunnelComponent implements OnInit {
         companyname:  this.dataForm1.value['companyname'],
         questionnaire_step:1,
       };
-      this._http.post(link, data)
+      this._http.post(link, {data:data})
           .subscribe(res => {
             let result:any ={};
             result = res;

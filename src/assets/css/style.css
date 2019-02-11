@@ -461,6 +461,9 @@ body{ padding:0; margin: 0;}
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+
+/*----------------------------------------------------------------------------------------------------------*/
+
 .alanding_topblock{ width: 100%; position: relative; padding: 0px;}
 
 .alanding_topblock_con{ width: 1120px; position: relative; margin-right: 136px; float: right;}
@@ -680,7 +683,7 @@ body{ padding:0; margin: 0;}
 
 .landing_form_right input[type="checkbox"]{
     width: 18px; /*Desired width*/
-    height: 18px; /*Desired height*/ float:left; margin:8px 6px 0 0;  border: solid 1px #b9baba;
+    height: 18px; /*Desired height*/ float:left; margin:4px 6px 0 0;  border: solid 1px #b9baba;
 
 }
 
@@ -690,7 +693,7 @@ body{ padding:0; margin: 0;}
 
 .landing_form_right input[type="radio"]{
     width: 18px; /*Desired width*/
-    height: 18px; /*Desired height*/ float:left; margin:8px 6px 0 0;  border: solid 1px #b9baba;
+    height: 18px; /*Desired height*/ float:left; margin:5px 6px 0 0;  border: solid 1px #b9baba;
 
 }
 
@@ -905,6 +908,178 @@ body{ padding:0; margin: 0;}
 @media screen and (max-width: 1320px) {
     .landing_form_right .form-group label {
         font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .alanding_topblock_con {
+        margin-right: 20px;
+        width: 990px;
+    }
+
+    .alanding_topblock_con_left {
+        width: 590px;}
+    .alanding_arrowdiv {
+        right: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1199px) {
+    .landing_form_left {
+        width: 100%;
+        float: none; padding-right: 0px;
+    }
+
+    .formlandinglogo {
+        width: auto;
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .landing_form_right{ background: none; padding: 0px; width: 100%;}
+
+
+    .a_new_landing_img1{ display: none;}
+
+    .alanding_topblock_con {
+        margin-right: auto; margin-left: auto; float: none;
+        width: 100%;
+    }
+
+    .alanding_topblock_con_left { margin-right: auto; margin-left: auto; float: none;
+        width: 98%;
+        float: none;
+    }
+
+    .a_new_landing_img2{ right: 0;}
+    .alanding_arrowdiv{ width: 100%; background: rgba(55,246,30,1); right: 0px;
+        background: -moz-linear-gradient(top, rgba(55,246,30,1) 0%, rgba(12,165,17,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(55,246,30,1)), color-stop(100%, rgba(12,165,17,1)));
+        background: -webkit-linear-gradient(top, rgba(55,246,30,1) 0%, rgba(12,165,17,1) 100%);
+        background: -o-linear-gradient(top, rgba(55,246,30,1) 0%, rgba(12,165,17,1) 100%);
+        background: -ms-linear-gradient(top, rgba(55,246,30,1) 0%, rgba(12,165,17,1) 100%);
+        background: linear-gradient(to bottom, rgba(55,246,30,1) 0%, rgba(12,165,17,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#37f61e', endColorstr='#0ca511', GradientType=0 ); height: auto; padding: 15px; text-align: center; margin-top: 0px;}
+
+    .alanding_arrowdiv h1{ padding: 0px; text-align: center;}
+
+    .alanding_topblock_con_right{ width: 90%; float: none; margin-left: auto; margin-right: auto; }
+
+
+    .alanding_topblock_bootomtext{ width: auto; padding: 25px 15px; margin: 0px; text-align: center;}
+
+    .alanding_block2 {
+        background-position: right top;
+        background-size: 114%;
+        padding-top: 65%;
+    }
+
+    .alanding_block2_wrappertext {
+        width: auto;
+        margin: 0px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .alanding_block2_wrappertext h2{ font-size: 72px;}
+
+    .alanding_block3 {
+        margin-top: 0;
+    }
+
+    .alanding_block3 {
+        background-position: left top;
+        background-size: 150%;
+        padding-top: 120%;
+        margin-top: -110px;
+    }
+
+    .alanding_block3_wrapper {
+        width: auto; margin-right: 0px; padding: 25px 15px; float: none;
+    }
+
+    .alanding_bootmblock{ margin-top: -80px;}
+
+    .alanding_block3_wrapper h2{ text-align: center;     font-size: 72px; line-height: 56px;}
+
+    .alanding_block3_wrappersub {
+        margin: 38px 0 0 0; text-align: center;
+    }
+
+    .alanding_block3_wrappersub h3{ width: 100%;}
+
+    .consublandinleft {
+        width: 100%;
+        float: none;
+    }
+
+    .consublandinright{
+        width: 100%;
+        float: none;
+    }
+
+    .labeldiv1{ width: 100%; float: none;}
+
+    .alandingsubbtn2{ float: none;     margin-top: 25px;}
+
+    .consublandin label{ background-position: center top; padding: 15px 0 20px 0;}
+
+    .alanstartedbtn2{ margin: 0 auto;}
+
+    .consublandin {
+        margin-bottom: 20px;
+    }
+
+    .alandingsubbtn {  margin-top: 0px;}
+
+    .alanstartedbtn {
+        margin-left: auto; margin-right: auto; margin-top: 40px;
+    }
+    .alanding_block2_wrappertext p{ padding-top: 25px;}
+}
+
+
+@media screen and (max-width: 767px) {
+
+    .alanding_block3{ margin-top: -20px;}
+
+    .landingfooter span {
+        padding-left: 0;
+        display: block;
+        padding-top: 15px;
+    }
+}
+@media screen and (max-width: 480px) {
+
+    .landing_form_right .form-group .alaninput2 {
+        width: 100%;
+        display: block;
+    }
+
+    .landing_form_right .form-group .alaninput1{ width: 100%;
+        display: block;}
+    .alanding_block3_wrapper h2 {
+        text-align: center;
+        font-size: 42px;
+        line-height: 36px;
+    }
+
+    .alanding_topblock_con_left .alandinglogo {
+        width: auto; max-width: 100%;}
+
+    .alandingsubbtn2{ width: 280px;}
+
+    .alanding_bootmblock_wrapper h2{ font-size: 30px;}
+
+    .alanding_bootmblock_formwrapper{ padding: 15px;}
+
+    .alandingsubbtn2 {
+        width: 250px;
+    }
+
+    .alanding_block2_wrappertext h2 {
+        font-size: 62px;
     }
 }
 

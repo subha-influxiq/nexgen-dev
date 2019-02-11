@@ -1,7 +1,7 @@
 
-
+<!--<up?-->
 <div class="container-fluid alanding_topblock">
-  <img src="../../assets/images/a_new_landing_img1.png" alt="#" class="a_new_landing_img1">
+  <img src="../../assets/images/a_new_landing_img.png" alt="#" class="a_new_landing_img1">
 
   <div class="alanding_topblock_con">
 
@@ -230,20 +230,20 @@
 
           <div class="form-group ">
             <label class="labellantextmain">What type of doctors do you work with?</label>
-            <input type="checkbox" [formControl]="dataForm1.controls['primarycare']">
-            <label class="labellantext">Primary Care  </label>
-            <input type="checkbox" [formControl]="dataForm1.controls['pediatrics']">
-            <label class="labellantext"> Pediatrics</label>
-            <input type="checkbox" [formControl]="dataForm1.controls['podiatrist']">
-            <label class="labellantext">Podiatrist  </label>
-            <input type="checkbox" [formControl]="dataForm1.controls['hospitals_that_outsource']">
-            <label class="labellantext">Hospitals That Outsource   </label>
-            <input type="checkbox" [formControl]="dataForm1.controls['nursing']">
-            <label class="labellantext">Nursing   </label>
-            <input type="checkbox" [formControl]="dataForm1.controls['homesorhomehealthcare']">
-            <label class="labellantext">Homes/Home Health Care    </label>
-            <input type="checkbox" [formControl]="dataForm1.controls['other']">
-            <label class="labellantext">Other:    </label>
+
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['primarycare']"> Primary Care  </label>
+
+            <label class="labellantext">  <input type="checkbox" [formControl]="dataForm1.controls['pediatrics']">  Pediatrics</label>
+
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['podiatrist']"> Podiatrist  </label>
+
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['hospitals_that_outsource']"> Hospitals That Outsource   </label>
+
+            <label class="labellantext"><input type="checkbox" [formControl]="dataForm1.controls['nursing']"> Nursing   </label>
+
+            <label class="labellantext">  <input type="checkbox" [formControl]="dataForm1.controls['homesorhomehealthcare']"> Homes/Home Health Care    </label>
+
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['other']"> Other:    </label>
             <input type="text"  class="alaninput2">
             <div class="clearfix"></div>
 
@@ -269,8 +269,8 @@
             <div class="clearfix"></div></div>
 
           <div class="form-group "><label class="labellantextmain">Have you represented a company that does Molecular PCR testing in the past?  </label>
-            <input type="radio" value="1" [formControl]="dataForm1.controls['pcrtesting']"> <label class="labellantext">Yes</label>
-            <input type="radio"  value="0" [formControl]="dataForm1.controls['pcrtesting']"> <label class="labellantext">NO</label>
+            <label class="labellantext"> <input type="radio" value="1" [formControl]="dataForm1.controls['pcrtesting']"> Yes</label>
+         <label class="labellantext">   <input type="radio"  value="0" [formControl]="dataForm1.controls['pcrtesting']">  NO</label>
             <span class="errortext" *ngIf="!dataForm1.controls['pcrtesting'].valid && dataForm1.controls['pcrtesting'].touched">This field can not be blank</span>
             <div class="clearfix"></div>
 
