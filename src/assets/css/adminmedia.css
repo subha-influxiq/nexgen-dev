@@ -103,8 +103,6 @@
 
 }
 
-
-
 @media screen and (max-width: 1040px) {
     .dashboard_block2 .col-md-4 {
         -ms-flex: 0 0 50%;
@@ -113,11 +111,13 @@
         margin-bottom: 15px;
     }
 }
-@media screen and (max-width: 991px) {
-    .admin_header .col-md-8 {
-        -ms-flex: 0 0 100%!important;
-        flex: 0 0 100%!important;
-        max-width: 100%!important;
+
+
+@media screen and (max-width: 992px) {
+    .admin_header .row .col-md-8 {
+        -ms-flex:none!important;
+        flex: none!important;
+        max-width: none!important;
     }
     .admin_header .col-md-4 {
         -ms-flex: 0 0 100%!important;

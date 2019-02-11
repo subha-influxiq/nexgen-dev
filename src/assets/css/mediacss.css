@@ -217,6 +217,7 @@
         padding: 0 8px;
     }
     .sales_agreement_wrapper .sales_inner_wrapper .inner_block h2{ font-size: 48px; }
+
 }
 @media screen and (max-width: 860px){
     .home_wrapper .carousel .carousel-control-next, .carousel-control-prev {
