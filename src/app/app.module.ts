@@ -24,6 +24,8 @@ import { ContractComponent } from './contract/contract.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpage.component';
+import { AdminheaderComponent } from './adminheader/adminheader.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpag
     ContractComponent,
     HeaderComponent,
     FooterComponent,
-    FunnellandingpageComponent
+    FunnellandingpageComponent,
+    AdminheaderComponent,
+
   ],
   imports: [
     BrowserModule,

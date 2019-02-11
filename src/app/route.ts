@@ -19,6 +19,7 @@ import {ContractComponent} from "./contract/contract.component";
 
 
 
+
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
     { path: 'login', component:  LoginComponent},
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: '', component: HomeComponent},
     { path: 'contract', component: ContractComponent},
-    {path: 'regionaldashboard', component: RegionalRecruiterComponent}
+    {path: 'regionaldashboard', component: RegionalRecruiterComponent},
+
 
 ];
 

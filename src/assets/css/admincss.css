@@ -208,3 +208,19 @@ text-transform: uppercase; }
 .r_r_dashboard_innerblock .col-md-4 table{ margin-bottom: 100px;}
 .r_r_dashboard_innerblock .col-md-4 .reps_inner_block1 h3{  font-family: 'RalewaySemiBold'; text-transform: uppercase; }
 .r_r_dashboard_innerblock .col-md-4 .reps_inner_block2 h3{  font-family: 'RalewaySemiBold'; text-transform: uppercase; }
+
+/*admin_header*/
+.admin_header .col-md-8 ul {  width: 1060px!important; }
+.admin_header .col-md-8 {
+    -ms-flex: 0 0 90%!important;
+    flex: 0 0 90%!important;
+    max-width: 90%!important;
+}
+.admin_header .col-md-4 {
+    -ms-flex: 0 0 20%!important;
+    flex: 0 0 10%!important;
+    max-width: 10%!important;
+}
+/*REP DASHBOARD*/
+.rep_dashboard_wrapper1{ background: url("../images/rep_dashboardbg.jpg") no-repeat!important;}
+.rep_dashboard_wrapper1 .admin_dashboard_container{ background: none; }
