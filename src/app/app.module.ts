@@ -25,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpage.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
+import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { AdminheaderComponent } from './adminheader/adminheader.component';
     FooterComponent,
     FunnellandingpageComponent,
     AdminheaderComponent,
+    UseraccountsettingComponent,
 
   ],
   imports: [

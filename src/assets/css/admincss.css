@@ -225,3 +225,42 @@ text-transform: uppercase; }
 .rep_dashboard_wrapper1{ background: url("../images/rep_dashboardbg.jpg") no-repeat!important;}
 .rep_dashboard_wrapper1 .admin_dashboard_container{ background: none; }
 
+.rep_dashboard_wrapper2{ background: url("../images/rep_dashboardbg2.jpg") no-repeat center center;
+    min-height:316px;
+    position: relative;
+    margin-top: 15px;
+}
+.rep_dashboard_wrapper2 .inner_content{
+    position: absolute;
+    top: 48%;
+    left: 61%;
+    transform: translate(-50%, -50%);
+}
+.rep_dashboard_wrapper2 .inner_content h2{
+    font-family: 'RalewayBold'; font-size: 60px;
+    color: #fff;  text-transform: uppercase;
+}
+.rep_dashboard_wrapper2 .inner_content h4{ color: #fff; font-size: 20px; font-family: 'RalewayRegular'; }
+.rep_dashboard_wrapper2 .inner_content h4 span{ color: #040506; }
+
+
+.rep_dashboard_wrapper2 .inner_content .appointment_booking_button:focus { outline: none; }
+.rep_dashboard_wrapper2 .inner_content .appointment_booking_button{
+    background: #000;
+    color: #fff;
+    font-family: RalewaySemiBold;
+    font-size:24px;
+    text-transform: uppercase;
+    border: none;
+    padding: 5px 30px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.rep_dashboard_wrapper3{ width: 98.2%; margin: 0 auto; }
+.rep_dashboard_wrapper3 .row{ margin: 0; }
+.rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0; }
+.rep_dashboard_wrapper3 .row .col-md-4:nth-last-child(1) { padding-right: 0; }
+
+.rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 30px; text-transform: uppercase; }
+.rep_dashboard_wrapper3 button:focus{ outline: none;}

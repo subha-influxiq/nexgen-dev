@@ -3,11 +3,10 @@
         background-position: 100% center;
     }
 }
-@media screen  and  (max-width: 1340px){
-    .dashboard_block2 .col-md-4 button {
-        font-size: 24px;
-        line-height: 23px;
-        padding: 10px;
+
+@media screen  and  (max-width: 1480px){
+    .rep_dashboard_wrapper1 {
+        background-position: 25% center!important;
     }
 }
 @media screen  and  (max-width: 1400px){
@@ -19,12 +18,32 @@
         width: 95%;
     }
 }
+@media screen  and  (max-width: 1340px){
+    .dashboard_block2 .col-md-4 button {
+        font-size: 24px;
+        line-height: 23px;
+        padding: 10px;
+    }
+    .rep_dashboard_wrapper1 {
+        background-position: 30% center!important;
+    }
+}@media screen  and  (max-width: 1240px){
+    .rep_dashboard_wrapper1 {
+        background-position: 40% center!important;
+    }
+}
+
 @media screen and (max-width: 1199px){
     .admin_dashboard_container {
         background: #16343c url("../images/dashboardbg_small.jpg") no-repeat center top;
         background-size: 100%;
         padding-top: 25%;
 
+    }
+    .rep_dashboard_wrapper1 {
+        background: #16343c url(../images/rep_dashboardbgsmall.jpg) no-repeat center top!important;
+        background-size: 100%!important;
+        padding-top: 30%;
     }
     .admin_dashboard_container .content_text {
         width: 100%;
