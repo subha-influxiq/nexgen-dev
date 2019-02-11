@@ -252,7 +252,7 @@ export class ListingComponent implements OnInit {
     this.modalRef1.hide();
       this.isedit=0;
     this.message="Record deleted successfully!!";
-    const link = this._commonservice.url+'deletesingledata';
+    const link = this._commonservice.nodesslurl+'deletesingledata?token='+this.cookeiservice.get('jwttoken');
    /* console.log('link');
     console.log(link);*/
     this._http.post(link,{source:this.formsourceval.table,id:this.selecteditem._id})

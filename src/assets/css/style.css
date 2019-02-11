@@ -455,3 +455,457 @@ body{ padding:0; margin: 0;}
 }
 
 /**/
+
+
+/*----------------------------------------AMITAV DA--------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+.alanding_topblock{ width: 100%; position: relative; padding: 0px;}
+
+.alanding_topblock_con{ width: 1120px; position: relative; margin-right: 136px; float: right;}
+
+.alanding_topblock_con_left{ width:660px; float: left; text-align: center; }
+
+.alanding_topblock_con_left .alandinglogo{ width: 348px; display: block; margin: 50px auto; margin-bottom: 15px;}
+
+.alanding_topblock_con_left h2{ margin: 0; padding: 0px; font-size: 72px; color: #1865a4; font-family: 'RalewayBold'; text-transform: uppercase;}
+.alanding_topblock_con_left h3{ margin: 0 0 20px 0; padding: 0px; font-size: 30px; color: #0b0c0c; font-family: 'RalewayBold'; text-transform: uppercase;}
+.alanding_topblock_con_left h4{ margin: 0; padding: 0px; font-size: 36px; color: #1866a5; font-family: 'RalewayBold'; text-transform: uppercase;}
+.alanding_topblock_con_left h5{ margin: 0; padding: 5px; font-size: 25px; color: #ffffff; font-family: 'RalewayBold'; text-align: center; background: #2aaae0; text-transform: uppercase;}
+
+.alanding_topblock_con_left h6{ margin:20px 0 15px 0; padding: 0px; font-size: 20px; color: #0b0c0c;  font-family: 'RalewaySemiBold'; line-height: 30px;  }
+
+.alanding_topblock_con_left label{ margin:0; padding: 0px; font-size: 30px; color: #0b0c0c;  font-family: 'RalewayBold'; text-transform: uppercase;   }
+
+.a_new_landing_img2{ display: block; width: 100%; position: relative; right: -6%;}
+
+.alanding_arrowdiv {
+    background: url(../images/a_new_landing_arrowimg.png) no-repeat;
+    width: 666px;
+    height: 205px;
+    background-size: 100%;
+    margin-top: -100px;
+
+    position: relative;
+    margin-right: 40px;
+    right: -75px;
+}
+
+.alanding_arrowdiv h1{ display: block; font-size: 32px; color: #ffffff; font-family: 'RalewayBold'; text-transform: uppercase; text-shadow: 0 0 2px #888; margin: 0px; padding: 80px 75px 0 0; text-align: right;}
+
+.alanding_topblock_con_right{ width:380px; float: right; background: #fff; border: solid 3px #e2e4e4; padding: 1px; margin-top: 50px; }
+
+.alanding_topblock_con_right h2{ background: #2aaae0; margin: 0px; padding: 34px 5px; text-align: center; font-size: 30px; color: #fff;  font-family: 'RalewayBold';  text-transform: uppercase;}
+
+.alanding_topblock_con_right h3{ background: #3e5e7c; margin: 1px 0 0 0; padding: 20px 5px; text-align: center; font-size: 22px; color: #fff;  font-family: 'RalewayBold';  text-transform: uppercase;}
+
+.alanding_topblock_con_right h4{  margin: 45px 0; padding: 0 10px; text-align: center; font-size: 22px; color: #515659;  font-family: 'RalewayBold';  text-transform: uppercase;}
+
+.alanding_topblock_con_right h4 span{ display: block; color: #00c314;}
+
+.alanding_formdiv{ margin: 25px;}
+
+.alanding_formdiv .form-group{ width: 100%; margin-bottom: 25px;}
+
+.alanding_formdiv .form-group .form-control{ width: 100%; border-radius: 0px; border: solid 1px #b9baba; box-shadow: none; outline: none; padding: 0 16px; font-family: 'OpenSansRegular'; font-size: 14px; color: #646464; height:40px;}
+
+.alanding_formdiv .errortext{ font-family: 'OpenSansRegular'; font-size: 14px; color: #ff0000; display: block; margin-top: 2px;}
+
+
+.alanding_formdiv  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #646464;
+    opacity:10;
+}
+
+.alanding_formdiv  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #646464;
+    opacity:10;
+}
+
+.alanding_formdiv  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #646464;
+    opacity:10;
+}
+
+.alandingsubbtn{background: rgba(40,48,56,1);
+    background: -moz-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(40,48,56,1)), color-stop(100%, rgba(4,4,5,1)));
+    background: -webkit-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -o-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -ms-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: linear-gradient(to bottom, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#283038', endColorstr='#040405', GradientType=0 ); border-radius: 4px; margin-top: 56px; display: block; width: 100%; border: none; padding: 10px 0; cursor: pointer; font-size: 36px; color: #ffffff; font-family: 'RalewayBold'; text-transform: uppercase;}
+
+
+.a_new_landing_img1{ position: absolute; left: 0; top: 0;}
+
+.alanding_topblock_bootomtext{ width: 934px; float: right; margin-right: 140px; font-size: 18px; color: #15191e; line-height: 30px;  font-family: 'RalewaySemiBold'; position: relative;}
+
+
+.alanding_block2{ width: 100%; padding: 0px; background: url("../images/a_new_landing_img3.png") no-repeat right top; min-height: 877px;      }
+
+.alanding_block2_wrapper{ width: 1625px; margin: 0 auto; overflow:hidden;}
+
+.alanding_block2_wrappertext{ width: 800px; margin:80px 0 0 0;}
+.alanding_block2_wrappertext h2{ margin:0; padding:0px; font-size:72px; color:#15191e;  font-family: 'RalewaySemiBold';}
+
+.alanding_block2_wrappertext h2 span{font-family: 'RalewayBold'; color:#1865a4;}
+
+.alanding_block2_wrappertext p{ margin:0px; padding:35px 0 30px 0; font-size:18px; color:#3f4040; line-height:30px; font-family: 'RalewaySemiBold';}
+
+.alanding_block2_wrappertext h3{ margin:0px; padding: 0; font-size:28px; color:#3f4040; line-height:40px; font-family: 'RalewaySemiBold'; width:760px;}
+
+.alanding_block3{ width: 100%; padding: 0px; background: url("../images/a_new_landing_img4.png") no-repeat left top; min-height: 1197px;     margin-top: -215px; }
+
+.alanding_block3_wrapper{ width: 1020px;  float: right;}
+
+.alanstartedbtn{ width:250px; height:58px; border:solid 1px #fff; background:#2fabe0;  color:#fff!important; text-decoration: none!important; text-transform:uppercase; font-family: 'RalewayBold'; font-size:30px; text-align:center; line-height:58px; display:block; margin:20px 0 0 660px;}
+
+
+.alanding_block3_wrapper h2{ font-size:72px; color:#1865a4; text-transform:uppercase; font-family: 'RalewayBold';     line-height: 56px; margin:0; padding:0;}
+
+.alanding_block3_wrappersub{ margin:38px 0 0 38px;}
+
+.alanding_block3_wrappersub h3{ font-size:20px; color:#3f4040; font-family: 'RalewaySemiBold'; line-height:30px; margin:30px 0; padding:0px; width:700px;}
+
+.consublandinleft{ width:410px; float:left;}
+.consublandinright{ width:510px; float:right;}
+
+.consublandin{ margin-bottom:40px;}
+
+.consublandin h6{ margin:0; padding:0 0 16px 0; font-family: 'RalewayBold'; font-size:30px; color:#3f4040;}
+
+.consublandin label{ display:block; width:100%; background:url(../images/a_new_landing_bullate.png) no-repeat  left 7px; margin:0px; padding:0 0 10px 30px;  font-family: 'RalewaySemiBold'; line-height:30px; font-size:18px; color:#3f4040;}
+
+.labeldiv1{ width:50%; float:left;}
+
+.alanstartedbtn2{ width:250px; height:58px; border:solid 1px #fff; background:#2fabe0;  color:#fff!important; text-decoration: none!important; text-transform:uppercase; font-family: 'RalewayBold'; font-size:30px; text-align:center; line-height:58px; display:block; margin:0; position:relative; z-index:9;}
+
+
+.alanding_bootmblock{ width: 100%; padding: 0px; background: url("../images/a_new_landing_img5.png") no-repeat right top; padding-top:200px; margin-top:-288px;   }
+
+.alanding_bootmblock_wrapper{ width:1600px; margin:0 auto; background: rgba(232,232,232,1);
+    background: -moz-linear-gradient(45deg, rgba(232,232,232,1) 0%, rgba(243,248,249,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(232,232,232,1)), color-stop(100%, rgba(243,248,249,1)));
+    background: -webkit-linear-gradient(45deg, rgba(232,232,232,1) 0%, rgba(243,248,249,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(232,232,232,1) 0%, rgba(243,248,249,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(232,232,232,1) 0%, rgba(243,248,249,1) 100%);
+    background: linear-gradient(45deg, rgba(232,232,232,1) 0%, rgba(243,248,249,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#f3f8f9', GradientType=1 );}
+
+.alanding_bootmblock_wrapper h2{ padding:6px 24px; background:#2aaae0; font-size:48px; color:#fcfdfd; font-family: 'RalewayBold'; margin:0px;}
+
+.alanding_bootmblock_formwrapper{background: url("../images/a_new_landing_formbg.png") no-repeat right bottom; padding:28px 260px 28px 28px;}
+
+.landingfooter{ display:block; width:100%; background:#fff; padding:35px 10px; text-align:center;  font-family: 'RalewayRegular'; font-size:14px; color:#393a3a;}
+
+.landingfooter a{color:#393a3a; display:inline-block; padding:0 5px; text-decoration:none;}
+.landingfooter a:hover{ color:#2aaae0;}
+
+.landingfooter span{ padding-left:30px;}
+
+
+.landing_form_left{padding-right:28px; width:460px; float:left;}
+
+.formlandinglogo{ width:auto; max-width:100%; margin-bottom:65px;}
+
+.landing_form_left .form-group{ width:100%; margin-bottom:20px;}
+
+.landing_form_left .form-group input{ width: 100%;
+    border-radius: 0px;
+    border: solid 1px #b9baba;
+    box-shadow: none;
+    outline: none;
+    padding: 0 16px;
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    color: #646464; height:40px; }
+
+.alanding_bootmblock_wrapper .errortext{ font-family: 'OpenSansRegular'; font-size: 14px; color: #ff0000; display: block; margin-top: 2px;}
+
+
+.landing_form_left  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #646464;
+    opacity:10;
+}
+
+.landing_form_left  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #646464;
+    opacity:10;
+}
+
+.landing_form_left  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #646464;
+    opacity:10;
+}
+
+
+.landing_form_right{ width:800px;  float:left; background:url(../images/landingformdevider.png) repeat-y; padding-left:28px; padding-top:10px; padding-bottom:10px;}
+
+.landing_form_right .form-group{ width:100%; margin-bottom:10px;}
+
+.landing_form_right .form-group label{ font-size:18px; color:#393a3a; font-family: 'OpenSansRegular'; display:inline-block; padding:4px 18px 0 0;}
+
+.landing_form_right .form-group .alaninput1{ width: 90px;
+    border-radius: 0px;
+    border: solid 1px #b9baba;
+    box-shadow: none;
+    outline: none;
+    padding: 0 16px;
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    color: #646464; height:40px; }
+
+.landing_form_right .form-group .alaninput2{ width: 320px;
+    border-radius: 0px;
+    border: solid 1px #b9baba;
+    box-shadow: none;
+    outline: none;
+    padding: 0 16px;
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    color: #646464; height:40px; }
+
+
+.alandingsubbtn2{background: rgba(40,48,56,1);
+    background: -moz-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(40,48,56,1)), color-stop(100%, rgba(4,4,5,1)));
+    background: -webkit-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -o-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: -ms-linear-gradient(top, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    background: linear-gradient(to bottom, rgba(40,48,56,1) 0%, rgba(4,4,5,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#283038', endColorstr='#040405', GradientType=0 ); border-radius: 4px; display: block; width: 350px; border: none; padding: 10px 0; cursor: pointer; font-size: 36px; color: #ffffff; font-family: 'RalewayBold'; text-transform: uppercase; float:right;}
+
+
+.landing_form_right input[type="checkbox"]{
+    width: 18px; /*Desired width*/
+    height: 18px; /*Desired height*/ float:left; margin:8px 6px 0 0;  border: solid 1px #b9baba;
+
+}
+
+.labellantext{ display:inline-block; float:left;}
+
+.labellantextmain{ width:100%; display:block;}
+
+.landing_form_right input[type="radio"]{
+    width: 18px; /*Desired width*/
+    height: 18px; /*Desired height*/ float:left; margin:8px 6px 0 0;  border: solid 1px #b9baba;
+
+}
+
+
+@media screen and (max-width: 1840px){
+
+    .a_new_landing_img1 {left: -130px;}
+
+    .alanding_block2{ background-position: 120% top;}
+
+    .alanding_block3_wrapper {
+        margin-right: 56px;
+    }
+}
+
+@media screen and (max-width: 1680px){
+    .a_new_landing_img1 {left: -250px; }
+
+}
+
+@media screen and (max-width: 1660px){
+    .alanding_block2 {
+        background-position: 150% top;
+    }
+
+    .alanding_block2_wrappertext {
+        width: 800px;
+        margin: 80px 0 0 60px;
+    }
+    .alanding_block2_wrapper {
+        width: 100%;}
+}
+
+@media screen and (max-width: 1600px){
+    .alanding_bootmblock_wrapper {
+        width: 90%;}
+
+    .landing_form_left{ width: 34%;}
+    .landing_form_right {
+        width: 60%;}
+
+    .landing_form_right .form-group .alaninput2 {
+        width: 180px;}
+
+    .alanding_topblock_con{ margin-right: 40px;}
+    .alanding_topblock_bootomtext{ margin-right: 40px;}
+    .alanding_block2 {
+        background-position: 162% top;
+    }
+
+    .alanding_block3{ background-position: -20% top;}
+
+}
+
+@media screen and (max-width: 1560px) {
+    .alanding_bootmblock_formwrapper{ padding-right: 220px;}
+}
+
+
+@media screen and (max-width: 1540px) {
+    .alanding_block2_wrappertext {
+        width: 680px;
+    }
+
+    .alanding_block2_wrappertext h2{ font-size: 62px;}
+
+    .alanding_block2_wrappertext h3{ width: 100%; font-size: 26px;}
+}
+
+@media screen and (max-width: 1500px) {
+    .alanding_block2 {
+        background-position: 182% top;
+    }
+
+    .alanding_block3 {
+        background-position: -60% top;
+    }
+
+    .alanding_block3_wrapper{ width: 890px;}
+
+    .alanding_block3_wrapper h2 {
+        font-size: 62px; ;
+        line-height: 46px;
+    }
+
+    .consublandinright {
+        width: 410px;
+        float: right;
+    }
+
+    .consublandinleft {
+        width: 400px;
+        float: left;
+    }
+    .consublandin h6{ font-size: 26px;}
+    .consublandin h6 br{ display: none;}
+
+    .alanding_bootmblock_formwrapper{ padding: 28px;    background-size: 380px;     padding-right: 170px;}
+
+    .alanstartedbtn{ margin-left: 480px;}
+}
+
+
+@media screen and (max-width: 1460px) {
+    .a_new_landing_img1 {
+        left: -340px;
+    }
+
+    .alanding_block2 {
+        background-position: 200% top;
+    }
+
+    .alandingsubbtn2{ margin-top: 15px;}
+    .alanding_bootmblock_formwrapper{    padding-right: 130px;}
+}
+
+@media screen and (max-width: 1400px) {
+
+    .landing_form_right .form-group .alaninput1{ width: 80px; padding: 0 5px;}
+    .landing_form_right .form-group label{ font-size: 17px;}
+    .alanding_block2 {
+        background-position: 230% top;
+    }
+
+    .alanding_block2_wrappertext {
+        width: 580px;
+    }
+
+    .alanding_block3 {
+        margin-top: -120px;
+    }
+
+    .alanding_block2_wrappertext h2 {
+        font-size: 52px;
+    }
+
+    .alanding_block3 {
+        background-position: 440% top;}
+
+}
+
+@media screen and (max-width: 1380px) {
+
+    .alanding_bootmblock_formwrapper{ background-image: none;}
+
+    .alanding_bootmblock_formwrapper {
+        padding-right: 28px;
+    }
+    .landing_form_right .form-group label {
+        font-size: 19px;
+    }
+    .a_new_landing_img1 {
+        left: -320px;
+        width: 930px;
+    }
+
+    .alanding_topblock_con {
+        margin-right: 20px;
+        width: 1070px;
+    }
+    .alanding_arrowdiv{ right: -25px;}
+
+
+
+    .alanding_topblock_bootomtext {
+        width: 1110px;
+        margin-right: 25px;
+    }
+
+    .alanding_block2_wrappertext {
+        width: 560px;
+    }
+
+    .alanding_block2_wrappertext h2 {
+        font-size: 50px;
+    }
+
+    .alanding_block2_wrappertext h3 {
+        width: 100%;
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .alanding_block3 {
+        background-position: left top;
+    }
+
+
+
+    .alanding_block3{   margin-top: -60px;}
+
+
+
+}
+
+@media screen and (max-width: 1360px) {
+
+    .landing_form_right {
+        width: 62%;
+    }
+}
+@media screen and (max-width: 1340px) {
+
+    .alanding_block2 {
+        background-position: 220% top;
+        background-size: 86%;
+    }
+    .alanding_block3 {
+        margin-top: -160px;
+    }
+}
+@media screen and (max-width: 1320px) {
+    .landing_form_right .form-group label {
+        font-size: 18px;
+    }
+}
+
+/*----------------------------------------AMITAV DA END--------------------------------------------*/
