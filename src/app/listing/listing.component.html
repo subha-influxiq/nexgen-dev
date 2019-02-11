@@ -74,8 +74,8 @@
                                     <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col">
                                         <span *ngIf="item1.type=='text'" [ngClass]="item1.class">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='checkbox'" [ngClass]="item1.class">
-                        <span  class="statusactive" *ngIf="item[item1.value]==true"> Active &nbsp;&nbsp; <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"  (click)="togglestatus(item)"  class="ticon_active"> 6 </span></span>
-                        <span class="statusinactive"  *ngIf="item[item1.value]!=true"> Inactive <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1" (click)="togglestatus(item)" class="ticon_inactive">8</span> </span>
+                        <span  class="statusactive" *ngIf="item[item1.value]==true"> Active &nbsp;&nbsp; <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"  (click)="togglestatus(item)"  class="ticon_active"></span></span>
+                        <span class="statusinactive"  *ngIf="item[item1.value]!=true"> Inactive <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1" (click)="togglestatus(item)" class="ticon_inactive"></span> </span>
 
 
                                             <!--toggle button end-->
