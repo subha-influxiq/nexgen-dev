@@ -10,6 +10,7 @@ export class Commonservices {
     public filepathurl: string;
     public base64encode: any;
     public nodesslurl: any;
+    public roletypes: any;
 
     constructor(private http: HttpClient) {
         this.url = 'https://nexgen.influxiq.com/php/index.php?q=';
@@ -19,6 +20,16 @@ export class Commonservices {
         this.fileurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.filepathurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.base64encode = 'https://nexgen.influxiq.com/php/index.php?encode=encodefile';
+        this.roletypes=[
+            {type0:'admin'},
+            {type1:'regional_recruiter'},
+            {type2:'rep'},
+        ];
+      /* this.roletypes=[];
+        this.roletypes['type1'] = "35";
+        this.roletypes['type21'] = "37";
+        this.roletypes['type3'] = "43";*/
+        console.log(this.roletypes);
     }
     shorten(str, maxLen, separator = '') {
         if (str.length <= maxLen) return str;

@@ -27,13 +27,14 @@ export class FunnelComponent implements OnInit {
   constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient ,private cookeiservice: CookieService,public modal:BsModalService) {
     this.kp = kp;
     this.serverurl = _commonservices.url;
-  this.getstates('states');
+    this.getstates('states');
+    console.log(this._commonservices.roletypes[0].type0);
   }
   getstates(source){
     this._http.get("assets/data/"+source+".json")
         .subscribe(res => {
-         this.states = res;
-        //  console.log(this.states);
+          this.states = res;
+          //  console.log(this.states);
         }, error => {
           console.log('Oooops!');
         });
@@ -86,7 +87,8 @@ export class FunnelComponent implements OnInit {
     }
   }
 
-  dosubmit(formval) {
+  dosubmit() {
+    // console.log(this.dataForm.value['email']);
     this.errormg='';
     let x: any;
     for (x in this.dataForm.controls) {
@@ -101,14 +103,14 @@ export class FunnelComponent implements OnInit {
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignup';
       let data = {
-        email: formval.email,
-        firstname: formval.firstname,
-        lastname: formval.lastname,
-        phoneno: formval.phoneno,
-        city: formval.city,
-        state: formval.state,
+        email: this.dataForm.value['email'],
+        firstname: this.dataForm.value['firstname'],
+        lastname: this.dataForm.value['lastname'],
+        phoneno: this.dataForm.value['phoneno'],
+        city: this.dataForm.value['city'],
+        state: this.dataForm.value['state'],
         lead_step:1,
-        type: 'rep',
+        type: this._commonservices.roletypes[2].type2
       };
       this._http.post(link, data)
           .subscribe(res => {
@@ -129,38 +131,38 @@ export class FunnelComponent implements OnInit {
               $('html, body').animate({
                 scrollTop: $("#funnel_block1_2").offset().top
               }, 2000);
-                let userdet = result.item;
-                this.dataForm1 = this.kp.group({
-                  firstname: [userdet.firstname, Validators.required],
-                  lastname: [userdet.lastname, Validators.required],
-                  email: [userdet.email,Validators.compose([Validators.required, FunnelComponent.customValidator])],
-                  phoneno: [userdet.phoneno,Validators.required],
-                  city: [userdet.city,Validators.required],
-                  state: [userdet.state,Validators.required],
-                  id: [userdet._id],
-                  noofyears: ['',Validators.required],
-                  noofclinics: ['',Validators.required],
-                  primarycare: [''],
-                  pediatrics: [''],
-                  podiatrist: [''],
-                  hospitals_that_outsource: [''],
-                  nursing: [''],
-                  homesorhomehealthcare: [''],
-                  other: ['',Validators.required],
-                  noofpersonallycall: ['',Validators.required],
-                  calleachoffice: ['',Validators.required],
-                  noofdirectaccess: ['',Validators.required],
-                  workinmedicalfield: ['',Validators.required],
-                  pcrtesting: ['',Validators.required],
-                  companyname: ['',Validators.required]
-                });
+              let userdet = result.item;
+              this.dataForm1 = this.kp.group({
+                firstname: [userdet.firstname, Validators.required],
+                lastname: [userdet.lastname, Validators.required],
+                email: [userdet.email,Validators.compose([Validators.required, FunnelComponent.customValidator])],
+                phoneno: [userdet.phoneno,Validators.required],
+                city: [userdet.city,Validators.required],
+                state: [userdet.state,Validators.required],
+                id: [userdet._id],
+                noofyears: ['',Validators.required],
+                noofclinics: ['',Validators.required],
+                primarycare: [''],
+                pediatrics: [''],
+                podiatrist: [''],
+                hospitals_that_outsource: [''],
+                nursing: [''],
+                homesorhomehealthcare: [''],
+                other: ['',Validators.required],
+                noofpersonallycall: ['',Validators.required],
+                calleachoffice: ['',Validators.required],
+                noofdirectaccess: ['',Validators.required],
+                workinmedicalfield: ['',Validators.required],
+                pcrtesting: ['',Validators.required],
+                companyname: ['',Validators.required]
+              });
             }
           }, error => {
             console.log('Oooops!');
           });
     }
   }
-  dosubmit1(formval,template:TemplateRef<any>){
+  dosubmit1(template:TemplateRef<any>){
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
@@ -169,28 +171,28 @@ export class FunnelComponent implements OnInit {
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
-        id: formval.id,
-        email: formval.email,
-        firstname: formval.firstname,
-        lastname: formval.lastname,
-        phoneno: formval.phoneno,
-        city: formval.city,
-        state: formval.state,
-        noofyears:formval.noofyears,
-        noofclinics: formval.noofclinics,
-        primarycare: formval.primarycare,
-        pediatrics: formval.pediatrics,
-        podiatrist: formval.podiatrist,
-        hospitals_that_outsource: formval.hospitals_that_outsource,
-        nursing: formval.nursing,
-        homesorhomehealthcare: formval.homesorhomehealthcare,
-        other: formval.other,
-        noofpersonallycall: formval.noofpersonallycall,
-        calleachoffice: formval.calleachoffice,
-        noofdirectaccess: formval.noofdirectaccess,
-        workinmedicalfield: formval.workinmedicalfield,
-        pcrtesting: formval.pcrtesting,
-        companyname: formval.companyname,
+        id: this.dataForm1.value['id'],
+        email: this.dataForm1.value['email'],
+        firstname: this.dataForm1.value['firstname'],
+        lastname: this.dataForm1.value['lastname'],
+        phoneno: this.dataForm1.value['phoneno'],
+        city: this.dataForm1.value['city'],
+        state: this.dataForm1.value['state'],
+        noofyears: this.dataForm1.value['noofyears'],
+        noofclinics: this.dataForm1.value['noofclinics'],
+        primarycare: this.dataForm1.value['primarycare'],
+        pediatrics: this.dataForm1.value['pediatrics'],
+        podiatrist: this.dataForm1.value['podiatrist'],
+        hospitals_that_outsource:  this.dataForm1.value['hospitals_that_outsource'],
+        nursing:  this.dataForm1.value['nursing'],
+        homesorhomehealthcare:  this.dataForm1.value['homesorhomehealthcare'],
+        other:  this.dataForm1.value['other'],
+        noofpersonallycall:  this.dataForm1.value['noofpersonallycall'],
+        calleachoffice: this.dataForm1.value['calleachoffice'],
+        noofdirectaccess:  this.dataForm1.value['noofdirectaccess'],
+        workinmedicalfield:  this.dataForm1.value['workinmedicalfield'],
+        pcrtesting:  this.dataForm1.value['pcrtesting'],
+        companyname:  this.dataForm1.value['companyname'],
         questionnaire_step:1,
       };
       this._http.post(link, data)
@@ -203,15 +205,15 @@ export class FunnelComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-             if(formval.noofclinics>40){
-               this.router.navigate(['/signup']);
-             }else{
-               this.message='You have done your business with less than 40 clinics';
-               this.modalRef=this.modal.show(template);
-               setTimeout(() => {
-                 this.modalRef.hide();
-               }, 2000);
-             }
+              if(this.dataForm1.value['noofclinics']>40){
+                this.router.navigate(['/signup']);
+              }else{
+                this.message='You have done your business with less than 40 clinics';
+                this.modalRef=this.modal.show(template);
+                setTimeout(() => {
+                  this.modalRef.hide();
+                }, 2000);
+              }
             }
           }, error => {
             console.log('Oooops!');

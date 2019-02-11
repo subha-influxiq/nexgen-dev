@@ -5,7 +5,7 @@
     <div class="col-md-2">
 
 
-      <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+      <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
         <div class="form-group">
           <label> First Name:</label>
           <input type="text" class="form-control" placeholder="Enter your First name" [formControl]="dataForm.controls['firstname']">
@@ -55,7 +55,7 @@
   <div class="funnel_block1_2" id="funnel_block1_2">
 <h3>Questionnaire</h3>
     <div class="col-md-8">
-    <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm1" (ngSubmit)="dosubmit1(dataForm1.value,messagemodal)">
+    <form class="funnel_leadform" name="formLogin" novalidate [formGroup]="dataForm1" (ngSubmit)="dosubmit1(messagemodal)">
       <input type="hidden" class="form-control" placeholder="Enter your First name" [formControl]="dataForm1.controls['id']">
       <div class="form-group">
         <label > First Name:</label>
