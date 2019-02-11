@@ -23,7 +23,8 @@ export class Commonservices {
         this.roletypes=[
             {type0:'admin'},
             {type1:'regional_recruiter'},
-            {type2:'rep'}
+            {type2:'rep'},
+            {type3:'tranningcategory'}
         ];
         console.log(this.roletypes);
     }

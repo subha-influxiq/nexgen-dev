@@ -24,7 +24,8 @@ import { ContractComponent } from './contract/contract.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpage.component';
-import { AdminheaderComponent } from './adminheader/adminheader.component';
+import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
+// import { AdminheaderComponent } from './adminheader/adminheader.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AdminheaderComponent } from './adminheader/adminheader.component';
     HeaderComponent,
     FooterComponent,
     FunnellandingpageComponent,
-    AdminheaderComponent,
+    TranningcategorymanagementComponent,
+    // AdminheaderComponent,
 
   ],
   imports: [

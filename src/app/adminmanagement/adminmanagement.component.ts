@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import {Commonservices} from '../app.commonservices' ;
 
 @Component({
   selector: 'app-adminmanagement',
   templateUrl: './adminmanagement.component.html',
-  styleUrls: ['./adminmanagement.component.css']
+  styleUrls: ['./adminmanagement.component.css'],
+  providers : [Commonservices]
 })
 export class AdminmanagementComponent implements OnInit {
 
   public tabledatalis:any=[];
   public formdata:any;
   public datasource:any;
-  public sourcecondition:any={type:'admin'};
-  constructor() {
+  public sourcecondition:any={type:this._commonservices.roletypes[0].type0};
+  constructor(public _commonservices:Commonservices) {
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'firstname',name:'First Name',role:0,func:'',class:'firstname',type:'text'},
@@ -25,7 +27,7 @@ export class AdminmanagementComponent implements OnInit {
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'lastname',label:'Last Name',placeholder:'Enter Last Name',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'email',name:'email',label:'Email Id',placeholder:'Enter Your Email',validationrule:{required:true,email:true},validationerrormsg:'is required and should be valid'},
-      {inputtype:'hidden',name:'type',label:"type",placeholder:"Enter Password",value:'admin'},
+      {inputtype:'hidden',name:'type',label:"type",placeholder:"Enter Password",value:this._commonservices.roletypes[0].type0},
 
       {inputtype:'password',name:'password',label:"Password",placeholder:"Enter Password",validationrule:{required:true},validationerrormsg:'is required',isaddonly:true},
       {inputtype:'password',name:'confirmpassword',label:"Confirm Password",placeholder:"Retype Password Again",validationrule:{required:true,confirmpass:true},validationerrormsg:'is required and should match password field',isaddonly:true},
