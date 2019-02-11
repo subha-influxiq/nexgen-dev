@@ -193,7 +193,7 @@
         padding: 10px;
         border-bottom: 1px solid #d0d0d0;
     }
-    .nexgen_header_wrapper .navbar-expand-lg .navbar-toggler{ margin: 0 auto; padding: 8px; padding-bottom: 0; border: 1px solid #696767; }
+    .nexgen_header_wrapper .navbar-expand-lg .navbar-toggler{ margin: 0 auto; padding: 8px; padding-bottom: 0; border: 1px solid #696767;}
     .nexgen_header_wrapper .navbar-expand-lg .col-md-8 .navbar-toggler:focus, .navbar-toggler:hover {
         text-decoration: none;
         outline: none;
