@@ -8,6 +8,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 declare var $: any;
+//declare var moment: any;
 @Component({
   selector: 'app-funnel',
   templateUrl: './funnel.component.html',
@@ -28,7 +29,8 @@ export class FunnelComponent implements OnInit {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.getstates('states');
-    console.log(this._commonservices.roletypes[0].type0);
+   // console.log(moment(result.item[23].created_at).format('YYYY MM DD'));
+
   }
   getstates(source){
     this._http.get("assets/data/"+source+".json")
@@ -128,8 +130,10 @@ export class FunnelComponent implements OnInit {
               this.cookeiservice.set('userfirstname', result.item.firstname);
               this.cookeiservice.set('userlastname', result.item.lastname);
               this.cookeiservice.set('usertype', result.item.type);
+              this.dataForm.reset();
+              this.dataForm.value['state']='';
               $('html, body').animate({
-                scrollTop: $("#funnel_block1_2").offset().top
+                scrollTop: $("#alanding_bootmblock_wrapper").offset().top
               }, 2000);
               let userdet = result.item;
               this.dataForm1 = this.kp.group({
@@ -164,11 +168,11 @@ export class FunnelComponent implements OnInit {
   }
   dosubmit1(template:TemplateRef<any>){
     let x: any;
-    for (x in this.dataForm.controls) {
-      this.dataForm.controls[x].markAsTouched();
+    for (x in this.dataForm1.controls) {
+      this.dataForm1.controls[x].markAsTouched();
     }
-
-    if (this.dataForm.valid) {
+// console.log(this.da);
+    if (this.dataForm1.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
         id: this.dataForm1.value['id'],
@@ -205,13 +209,16 @@ export class FunnelComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
+              console.log(this.dataForm1.value['noofclinics']);
               if(this.dataForm1.value['noofclinics']>40){
-                this.router.navigate(['/signup']);
+                this.router.navigate(['/signup',this.dataForm1.value['id']]);
               }else{
                 this.message='You have done your business with less than 40 clinics';
                 this.modalRef=this.modal.show(template);
                 setTimeout(() => {
                   this.modalRef.hide();
+                  this.dataForm1.reset();
+                  this.dataForm1.value['state']='';
                 }, 2000);
               }
             }

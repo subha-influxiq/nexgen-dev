@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     { path: 'rep', component: RepComponent},
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
-    { path: 'signup', component: SignupComponent},
+    { path: 'signup/:id', component: SignupComponent},
     { path: '', component: HomeComponent},
     { path: 'contract', component: ContractComponent},
     {path: 'regionaldashboard', component: RegionalRecruiterComponent},
