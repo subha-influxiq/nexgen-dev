@@ -210,7 +210,7 @@ text-transform: uppercase; }
 .r_r_dashboard_innerblock .col-md-4 .reps_inner_block2 h3{  font-family: 'RalewaySemiBold'; text-transform: uppercase; }
 
 /*admin_header*/
-.admin_header .col-md-8 ul {  width: 1060px!important; }
+.admin_header .col-md-8 ul {  width: 100%!important; }
 .admin_header .col-md-8 {
     -ms-flex: 0 0 90%!important;
     flex: 0 0 90%!important;
