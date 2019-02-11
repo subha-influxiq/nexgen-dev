@@ -7,7 +7,7 @@
       <h2>SALES CONSULTANTS AGREEMENT</h2>
       <div class="form_section">
         <div class="sales_agreement_Content">
-          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text"  [formControl]="dataForm.controls['firstaddress']">, having a business address at<input type="text" [formControl]="dataForm.controls['fullname']"> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
+          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text"  [formControl]="dataForm.controls['firstaddress']">, having a business address at<input type="text" [formControl]="dataForm.controls['fullname']"> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
 
           <h3 class="heading">The parties hereby agree as follows:</h3>
 
@@ -243,18 +243,18 @@
                   <div class="row">
                     <div class="col-md-6">
                       <h3>Thomas Willis d/b/a NexGenTesting</h3>
-                      <p>  <span (click)="sign1(signmodal)">By</span><input type="text" class="stylesignature" [formControl]="dataForm.controls['by1']"><br> </p>
-                      <p class="printname_box">Print Name<input type="text"><br> </p>
-                      <p>Title<input type="text"><br> </p>
+                      <p>  <span (click)="sign1(signmodal,1)">By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br> </p>
+                      <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname1']"><br> </p>
+                      <p>Title<input type="text" readonly [formControl]="dataForm.controls['title1']"><br> </p>
 
                     </div>
                     <div class="col-md-6">
 
                       <h3>Name</h3>
                       <p>
-                        By<input type="text"></p>
-                      <p class="printname_box">Print Name<input type="text"></p>
-                      <p> Title<input type="text"></p>
+                        <span (click)="sign1(signmodal,2)">By</span><input type="text" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p>
+                      <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname2']"></p>
+                      <p> Title<input type="text" readonly [formControl]="dataForm.controls['title2']"></p>
 
                     </div>
                   </div>
@@ -474,15 +474,15 @@
       <div class="code_conduct_wrapper">
         <h2>NGT SALES AND MARKETING CODE OF CONDUCT CERTIFICATION </h2>
 
-        <p> I, <input type="text">, certify to having read the NGT Sales and Marketing Code of Conduct (Code) and agree to perform my job duties in accordance with the Code and NGT’s Compliance Plan. I understand the principles and requirements set forth in the Code and understand that violation of the Code or the Compliance Plan can result in termination of the Agreement and/or legal action to recover damages.  I understand my responsibilities to disclose fraudulent or unethical business practices to NGT’s management and will honestly and accurately complete surveys performed by NGT to document continuing compliance with the Code and the Compliance Plan.
+        <p> I, <input type="text" [formControl]="dataForm.controls['printvalue']" readonly>, certify to having read the NGT Sales and Marketing Code of Conduct (Code) and agree to perform my job duties in accordance with the Code and NGT’s Compliance Plan. I understand the principles and requirements set forth in the Code and understand that violation of the Code or the Compliance Plan can result in termination of the Agreement and/or legal action to recover damages.  I understand my responsibilities to disclose fraudulent or unethical business practices to NGT’s management and will honestly and accurately complete surveys performed by NGT to document continuing compliance with the Code and the Compliance Plan.
         </p>
         <div class="row signature_wrapper">
           <div class="col-md-6">
-            <input class="digital_signature" type="text"><br>
+            <input class="digital_signature" type="text" [formControl]="dataForm.controls['consultant1']"><br>
             SIGNATURE OF CONSULTANT
           </div>
           <div class="col-md-6">
-            <input type="text"><br>
+            <input type="text" readonly [formControl]="dataForm.controls['date2']"><br>
             DATE
           </div>
         </div>
@@ -496,7 +496,7 @@
         <h3>CONFIDENTIALITY AND NON-SOLICITATION AGREEMENT</h3>
 
 
-        <p class="exhibit_b_heading">I,  <input type="text"> (print name)(“Consultant) acknowledge that, as an independent consultant for Nex Gen Testing( “NGT”), and in consideration for my right to commission payments by Nex Gen Testing (“NGT”).
+        <p class="exhibit_b_heading">I,  <input type="text" readonly [formControl]="dataForm.controls['printname2']"> (print name)(“Consultant) acknowledge that, as an independent consultant for Nex Gen Testing( “NGT”), and in consideration for my right to commission payments by Nex Gen Testing (“NGT”).
           I agree to the following restrictive covenants, which shall be for the benefit of Nex Gen Testing :
         </p>
         <div class="inner_scheduled_list">
@@ -583,20 +583,26 @@
             <div class="bottom_form_section">
               Nex Gen Testing<br>
 
-              By: <input class="by" type="text"><br>
-              Print Name:<input class="print" type="text"><br>
-              Title:<input type="text" class="title"><br>
-              Date: <input type="text" class="date"><br>
+             <!-- By: <input class="by" type="text" [formControl]="dataForm1.controls['by3']"><br>-->
+
+
+                <span (click)="sign1(signmodal,3)">By</span><input type="text" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br>
+
+
+
+              Print Name:<input class="print" readonly type="text" [formControl]="dataForm.controls['printname3']"><br>
+              Title:<input type="text" readonly class="title" [formControl]="dataForm.controls['title3']"><br>
+              Date: <input type="text" readonly class="date" [formControl]="dataForm.controls['date3']"><br>
             </div>
           </div>
           <div class="col-md-6">
             <div class="bottom_form_section">
-              <input type="text" class="nex_right_inp"><br>
+              <input type="text" class="nex_right_inp" [formControl]="dataForm.controls['blank1']"><br>
 
-              By: <input class="by" type="text"><br>
-              Print Name:<input class="print" type="text"><br>
-              Title:<input type="text" class="title"><br>
-              Date: <input type="text" class="date"><br>
+                <span (click)="sign1(signmodal,4)">By</span> <input type="text" readonly [formControl]="dataForm.controls['by4']" class="by stylesignature"><br>
+              Print Name:<input class="print" type="text" readonly [formControl]="dataForm.controls['printname4']"><br>
+              Title:<input type="text" class="title" readonly [formControl]="dataForm.controls['title4']"><br>
+              Date: <input type="text" class="date" readonly [formControl]="dataForm.controls['date4']"><br>
             </div>
           </div>
         </div>
