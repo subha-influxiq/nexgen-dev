@@ -36,6 +36,7 @@ import { TranningsectionComponent } from './tranningsection/tranningsection.comp
 import { TrialsComponent } from './trials/trials.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxUploaderModule } from 'ngx-uploader';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { NgxUploaderModule } from 'ngx-uploader';
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
-    NgxUploaderModule
+    NgxUploaderModule,
+    CarouselModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
