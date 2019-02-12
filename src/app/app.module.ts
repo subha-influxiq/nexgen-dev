@@ -27,6 +27,7 @@ import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpag
 import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
+import { RepresentativelistComponent } from './representativelist/representativelist.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { UseraccountsettingComponent } from './useraccountsetting/useraccountset
     TranningcategorymanagementComponent,
     AdminheaderComponent,
     UseraccountsettingComponent,
+    RepresentativelistComponent,
 
   ],
   imports: [
