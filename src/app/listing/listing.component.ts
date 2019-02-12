@@ -296,14 +296,18 @@ export class ListingComponent implements OnInit {
                 formgrp[this.formdataval[c].name] = [false];
                 //alert(6);
             }else{
+                let tempdefault='';
+                if(this.formdataval[c].multiple!=null && this.formdataval[c].multiple==true)
+                    tempdefault=[];
             console.log('inside it');
-            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.required) formgrp[this.formdataval[c].name] = ['', Validators.required];
-            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.email) formgrp[this.formdataval[c].name] = ['', Validators.compose([Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')])];
-            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.confirmpass) formgrp[this.formdataval[c].name] = ['', Validators.compose([Validators.required, this.equalToPass('password')])];
-            if (this.formdataval[c].validationrule != null && !this.formdataval[c].validationrule && this.formdataval[c].value == null) formgrp[this.formdataval[c].name] = [''];
-            if (this.formdataval[c].validationrule == null && !this.formdataval[c].validationrule && this.formdataval[c].value == null) formgrp[this.formdataval[c].name] = [''];
+            console.log(tempdefault);
+            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.required) formgrp[this.formdataval[c].name] = [tempdefault, Validators.required];
+            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.email) formgrp[this.formdataval[c].name] = [tempdefault, Validators.compose([Validators.required, Validators.pattern('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')])];
+            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.confirmpass) formgrp[this.formdataval[c].name] = [tempdefault, Validators.compose([Validators.required, this.equalToPass('password')])];
+            if (this.formdataval[c].validationrule != null && !this.formdataval[c].validationrule && this.formdataval[c].value == null) formgrp[this.formdataval[c].name] = [tempdefault];
+            if (this.formdataval[c].validationrule == null && !this.formdataval[c].validationrule && this.formdataval[c].value == null) formgrp[this.formdataval[c].name] = [tempdefault];
             if (this.formdataval[c].validationrule == null && !this.formdataval[c].validationrule && this.formdataval[c].value != null) formgrp[this.formdataval[c].name] = [this.formdataval[c].value];
-            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.url) formgrp[this.formdataval[c].name] = ['', Validators.compose([Validators.required, Validators.pattern('^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$')])];
+            if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.url) formgrp[this.formdataval[c].name] = [tempdefault, Validators.compose([Validators.required, Validators.pattern('^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$')])];
             if (this.formdataval[c].inputtype == 'select') {
                 this.getselectdata(this.formdataval[c].sourceview, c);
             }
@@ -311,6 +315,7 @@ export class ListingComponent implements OnInit {
             this.croppedImage = [];
 
         }
+
             if(this.formdataval[c].role!=null){
                 console.log('this.formdataval[c].role');
                 console.log(this.formdataval[c].role);
@@ -321,7 +326,7 @@ export class ListingComponent implements OnInit {
                     this.formdataval[c].inputtype='hidden';
                     setTimeout(() => {
                         this.dataForm.controls[this.formdataval[c].name].patchValue(this.cookeiservice.get(this.formdataval[c].defaultval));
-                    }, 3000);
+                    }, 1000);
                 }
             }
         }
@@ -366,6 +371,7 @@ export class ListingComponent implements OnInit {
     }
     console.log('this.dataForm.value');
     console.log(this.dataForm.value);
+    console.log($('select[name="roleaccess"]').val());
     if(this.dataForm.valid){
       const link = this._commonservice.nodesslurl+'addorupdatedata';
       console.log('link');

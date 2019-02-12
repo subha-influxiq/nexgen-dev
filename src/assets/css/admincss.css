@@ -125,13 +125,13 @@ text-transform: uppercase; }
     align-items: flex-end; width: 100%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive{  display: inline-flex;
     align-items: flex-end; width: 100%;}
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusinactive .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
     background: #ff0000;
     text-align: center;
     margin: 0 auto;
     cursor: pointer;
 }
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
 
     text-align: center;
     background: #00d400;
@@ -296,3 +296,22 @@ text-transform: uppercase; }
 .user_account_setting_wrapper .account_inner_wrapper .form_wrapper .form-group .form-control:focus{ box-shadow: none; }
 .user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button:nth-child(1){ background: #00c0ff; }
 .user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button:nth-child(2){ background: #000; margin-left: 10px; }
+
+
+/*REPRESENTATIVE LIST*/
+.representative_list_wrapper { width: 1610px; margin: 0 auto; }
+.representative_list_wrapper .inner_content_section h1{ background: #00a8ef; font-family: 'RalewayBold'; font-size: 40px; padding: 13px 0 11px 0;
+    color: #fff; text-align: center; }
+.representative_list_wrapper .inner_main_wrap .left_content { width: 1200px;
+    float: left;}
+.representative_list_wrapper .inner_main_wrap .left_content h2{
+    background: #00a8ef; font-family: 'RalewayBold'; font-size: 30px; padding: 13px 15px 11px 15px;
+    color: #fff; }
+
+.representative_list_wrapper .inner_main_wrap .left_content h3{
+    background: #000; font-family: 'RalewayBold'; font-size: 24px; padding: 13px 15px 11px 15px;
+    color: #fff; }
+
+
+.representative_list_wrapper .inner_main_wrap .right_content { width: 380px;
+    float: left; margin-left: 20px; }

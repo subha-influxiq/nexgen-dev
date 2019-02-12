@@ -137,7 +137,11 @@
                         <input *ngIf="item.inputtype=='email' " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder">
 
 
-                        <select *ngIf="item.inputtype=='select'" [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control">
+                        <select *ngIf="item.inputtype=='select' && item.multiple==true" [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control" multiple="multiple">
+                            <option value="">{{item.defaultchoice}}</option>
+                            <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">{{selectval[item.selectvalue]}}</option>
+                        </select>
+                        <select *ngIf="item.inputtype=='select' && item.multiple==null" [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control" >
                             <option value="">{{item.defaultchoice}}</option>
                             <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">{{selectval[item.selectvalue]}}</option>
                         </select>
