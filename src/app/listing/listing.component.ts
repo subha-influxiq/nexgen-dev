@@ -298,7 +298,7 @@ export class ListingComponent implements OnInit {
             }else{
                 let tempdefault='';
                 if(this.formdataval[c].multiple!=null && this.formdataval[c].multiple==true)
-                    tempdefault=[];
+                    let  tempdefault=[];
             console.log('inside it');
             console.log(tempdefault);
             if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.required) formgrp[this.formdataval[c].name] = [tempdefault, Validators.required];
