@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Admin",
+    "id": "admin"
+  },
+  {
+    "name": "Regional Recruiter",
+    "id": "regional_recruiter"
+  },
+  {
+    "name": "Representative",
+    "id": "rep"
+  }
+
+]
