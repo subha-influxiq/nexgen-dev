@@ -100,7 +100,7 @@
     text-align: center;
     cursor: pointer;
     color: #fff;
-text-transform: uppercase; }
+    text-transform: uppercase; }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper{  padding: 0; }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper  { width: 95%; margin: 0 auto;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr th {
@@ -300,7 +300,7 @@ text-transform: uppercase; }
 
 /*REPRESENTATIVE LIST*/
 
-  .inner_content_section h1{ background: #00a8ef; font-family: 'RalewayBold'; font-size: 40px; padding: 13px 0 11px 0;
+.inner_content_section h1{ background: #00a8ef; font-family: 'RalewayBold'; font-size: 40px; padding: 13px 0 11px 0;
     color: #fff; text-align: center;  margin-bottom: 25px; }
 .representative_list_wrapper { width: 1610px; margin: 0 auto; }
 .representative_list_wrapper .inner_main_wrap .left_content { width: 1200px;
@@ -364,8 +364,46 @@ text-transform: uppercase; }
 
 .traing_innerwrapper { width: 1610px; margin: 0 auto; margin-top: 15px;}
 .traing_innerwrapper .training_leftpart{ width: 1200px; float: left;}
+.traing_innerwrapper .training_leftpart { width: 1200px; float: left;}
+
+
+
+
+
+
+
+
 .traing_innerwrapper .training_rightpart{ width: 390px; float: left; margin-left: 15px; }
-.traing_innerwrapper .training_rightpart h1{ background: #000; font-family: 'RalewayBold'; margin-bottom: 0; font-size: 30px;     color: #fff;
-    padding: 10px;
+.traing_innerwrapper .training_rightpart h1{ background: #000; font-family: 'RalewayBold'; margin-bottom: 0; font-size: 28px;     color: #fff;
+    padding: 8px;
     padding-left: 14px;
-text-transform: uppercase;  }
+    text-transform: uppercase;
+}
+.traing_innerwrapper .training_rightpart ul{ padding-left: 0; }
+.traing_innerwrapper .training_rightpart ul li{ list-style: none; background: #e6e8e9; padding: 18px; border-bottom: 1px solid #fff; cursor: pointer; }
+.traing_innerwrapper .training_rightpart ul li:hover{ background: #bcc4c7; }
+.traing_innerwrapper .training_rightpart ul li span{ padding-right: 20px; }
+.traing_innerwrapper .training_rightpart ul li a{ text-decoration: none; color: #3f4040;  font-family: 'RalewayMedium'; font-size: 20px; text-transform: capitalize; }
+.traing_innerwrapper .training_rightpart ul li a:hover{ color: #3f4040; }
+
+.training_leftpart .carousal_content .carousel-caption{ background: #fff;}
+.training_leftpart .carousal_content .carousel-caption h3{ color: #000; }
+
+.training_leftpart .carousel .carousel-control-next, .carousel-control-prev{ width: 15%!important; }
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 59%;
+    height: 70%;
+}
