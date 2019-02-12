@@ -90,9 +90,18 @@ export class LoginComponent implements OnInit {
                 {
                   this.router.navigate(['/regionaldashboard']);
                 }
-              if(result.item[0].type=='rep')
+             /* if(result.item[0].type=='rep')
               {
                 this.router.navigate(['/repdashboard']);
+              }*/
+              if(result.item[0].type=='rep')
+              {
+                if(result.item[0].signup_step2==1 && result.item[0].contractstep==null && result.item[0].trainingstep==null) this.router.navigate(['/contract']);
+
+                if(result.item[0].signup_step2==1 && result.item[0].contractstep==1 && result.item[0].trainingstep==null) this.router.navigate(['/training']);
+
+                if(result.item[0].signup_step2==1 && result.item[0].contractstep==1 && result.item[0].trainingstep==1) this.router.navigate(['/repdashboard']);
+
               }
               console.log('jwttoken');
               console.log(this.cookeiservice.get('jwttoken'));

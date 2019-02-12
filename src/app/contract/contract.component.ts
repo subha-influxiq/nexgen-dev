@@ -36,23 +36,23 @@ export class ContractComponent implements OnInit {
       id: [''],
       firstdate: [moment().format("Do, MMM, YYYY")],
       firstaddress: [''],
-      fullname: [''],
-      by1: [''],
-      by2: [''],
+      fullname: ['',Validators.required],
+      by1: ['',Validators.required],
+      by2: ['',Validators.required],
       printname1: [''],
       printname2: [''],
       title1: [''],
       title2: [''],
       printvalue: [''],
-      consultant1: [''],
+      consultant1: ['',Validators.required],
       date2: [''],
       printname3: [''],
-      by3: [''],
+      by3: ['',Validators.required],
       printname4: [''],
       title3: [''],
       date3: [''],
       blank1: [''],
-      by4: [''],
+      by4: ['',Validators.required],
       printname5: [''],
       title4: [''],
       date4: [''],
@@ -75,28 +75,28 @@ export class ContractComponent implements OnInit {
             if(this.datalist.length>0){
               this.dataForm = this.kp.group({
                 id: [this.cookeiservice.get('userid')],
-                firstdate: [moment().format("Do, MMM, YYYY"),Validators.required],
-                firstaddress: [this.datalist[0].address1,Validators.required],
+                firstdate: [moment().format("Do, MMM, YYYY")],
+                firstaddress: [this.datalist[0].address1],
                 fullname: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 by1: ['',Validators.required],
                 by2: ['',Validators.required],
-                printname1: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                title1: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                title2: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                consultant1: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                date2: [moment().format("Do, MMM, YYYY"),Validators.required],
-                printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
+                printname1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                consultant1: ['',Validators.required],
+                date2: [moment().format("Do, MMM, YYYY")],
+                printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                 by3: ['',Validators.required],
-                printname4: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                title3: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                date3: [moment().format("Do, MMM, YYYY"),Validators.required],
+                printname4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                date3: [moment().format("Do, MMM, YYYY")],
                 blank1: [''],
                 by4: ['',Validators.required],
-                printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                title4: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                date4: [moment().format("Do, MMM, YYYY"),Validators.required],
+                printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                date4: [moment().format("Do, MMM, YYYY")],
               });
             }
           }
@@ -110,6 +110,22 @@ export class ContractComponent implements OnInit {
    // console.log('sign1');
     this.signval=null;
     this.modalRef=this.modal.show(template);
+
+    if(this.val==1 && this.dataForm.value['by1']!=null){
+      this.signval=this.dataForm.value['by1'];
+    }
+    if(this.val==2 && this.dataForm.value['by2']!=null){
+      this.signval=this.dataForm.value['by2'];
+    }
+    if(this.val==3 && this.dataForm.value['by3']!=null){
+      this.signval=this.dataForm.value['by3'];
+    }
+    if(this.val==4 && this.dataForm.value['by4']!=null){
+      this.signval=this.dataForm.value['by4'];
+    }
+    if(this.val==5 && this.dataForm.value['consultant1']!=null){
+      this.signval=this.dataForm.value['consultant1'];
+    }
   }
   savesignval(){
     if(this.val==1){
@@ -124,6 +140,30 @@ export class ContractComponent implements OnInit {
     if(this.val==4){
     this.dataForm.controls['by4'].patchValue(this.signval);
     }
+    if(this.val==5){
+    this.dataForm.controls['consultant1'].patchValue(this.signval);
+    }
     this.modalRef.hide();
+  }
+  dosubmit(){
+    let x: any;
+    for (x in this.dataForm.controls) {
+      this.dataForm.controls[x].markAsTouched();
+    }
+    if (this.dataForm.valid) {
+      console.log('valid');
+      let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
+      let data = {
+        id: this.cookeiservice.get('userid'),
+        contractstep: 1
+      }
+      this._http.post(link, {data:data})
+          .subscribe(res => {
+            let result: any = {};
+            result = res;
+            console.log('result....');
+            console.log(result);
+          });
+    }
   }
 }
