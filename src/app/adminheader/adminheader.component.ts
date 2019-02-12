@@ -21,6 +21,8 @@ public type:any;
     this.router.navigate(['/login']);
   }
 
+
+
   ngOnInit() {
   }
 
