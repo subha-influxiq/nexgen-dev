@@ -17,6 +17,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {HomeComponent} from "./home/home.component";
 import {ContractComponent} from "./contract/contract.component";
 import {TranningcategorymanagementComponent} from "./tranningcategorymanagement/tranningcategorymanagement.component";
+import {UseraccountsettingComponent} from "./useraccountsetting/useraccountsetting.component";
 
 
 
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
     { path: 'contract', component: ContractComponent},
     {path: 'regionaldashboard', component: RegionalRecruiterComponent},
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
+    { path:'useraccountsetting', component: UseraccountsettingComponent}
 
 
 ];

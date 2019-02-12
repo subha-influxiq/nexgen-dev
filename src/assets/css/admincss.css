@@ -225,3 +225,74 @@ text-transform: uppercase; }
 .rep_dashboard_wrapper1{ background: url("../images/rep_dashboardbg.jpg") no-repeat!important;}
 .rep_dashboard_wrapper1 .admin_dashboard_container{ background: none; }
 
+.rep_dashboard_wrapper2{ background: url("../images/rep_dashboardbg2.jpg") no-repeat center center;
+    min-height:316px;
+    position: relative;
+    margin-top: 15px;
+}
+.rep_dashboard_wrapper2 .inner_content{
+    position: absolute;
+    top: 48%;
+    left: 61%;
+    transform: translate(-50%, -50%);
+}
+.rep_dashboard_wrapper2 .inner_content h2{
+    font-family: 'RalewayBold'; font-size: 60px;
+    color: #fff;  text-transform: uppercase;
+}
+.rep_dashboard_wrapper2 .inner_content h4{ color: #fff; font-size: 20px; font-family: 'RalewayRegular'; }
+.rep_dashboard_wrapper2 .inner_content h4 span{ color: #040506; }
+
+
+.rep_dashboard_wrapper2 .inner_content .appointment_booking_button:focus { outline: none; }
+.rep_dashboard_wrapper2 .inner_content .appointment_booking_button{
+    background: #000;
+    color: #fff;
+    font-family: RalewaySemiBold;
+    font-size:24px;
+    text-transform: uppercase;
+    border: none;
+    padding: 5px 30px;
+    margin-top: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.rep_dashboard_wrapper3{ width: 98.2%; margin: 0 auto; }
+.rep_dashboard_wrapper3 .row{ margin: 0; }
+.rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0; }
+.rep_dashboard_wrapper3 .row .col-md-4:nth-last-child(1) { padding-right: 0; }
+
+.rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; }
+.rep_dashboard_wrapper3 button:focus{ outline: none;}
+
+
+/*USER ACCOUNT SETTING*/
+.user_account_setting_wrapper .account_inner_wrapper{  background-color: #efefef; width: 90%; margin: 0 auto; padding: 15px; margin-bottom: 65px; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper{  width: 750px;  }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper form label{ font-family: 'RalewaySemiBold'; text-transform: uppercase; padding-right: 0;  }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .form-group:nth-last-child(1){ margin-bottom: 0; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper form .col-sm-2 {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper form .col-sm-10 {
+    -ms-flex: 0 0 80%;
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-right: 0;
+}
+.user_account_setting_wrapper .header{ background: #00c0ff; color: #fff; font-family: 'RalewayBold'; font-size: 40px; padding: 10px 0 9px  0; text-transform: uppercase; text-align: center; margin-bottom: 35px; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper{ width: 100%; padding: 0 20px; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button:focus{ outline: none;}
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button{
+    cursor: pointer; padding: 5px 13px 4px 13px; border:none;
+    background: #00c0ff; color: #fff; font-family: 'RalewayBold';
+    font-size: 22px; text-transform: uppercase;
+    border: none;
+    margin-bottom: 40px;
+    margin-top: 25px;
+}
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .form-group .form-control:focus{ box-shadow: none; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button:nth-child(1){ background: #00c0ff; }
+.user_account_setting_wrapper .account_inner_wrapper .form_wrapper .button_wrapper button:nth-child(2){ background: #000; margin-left: 10px; }

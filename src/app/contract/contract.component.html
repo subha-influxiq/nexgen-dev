@@ -1,13 +1,13 @@
 <app-header></app-header>
 
 <div class="sales_agreement_wrapper">
-  <form [formGroup]="dataForm" >
+  <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
   <div class="sales_inner_wrapper">
     <div class="inner_block">
       <h2>SALES CONSULTANTS AGREEMENT</h2>
       <div class="form_section">
         <div class="sales_agreement_Content">
-          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text"  [formControl]="dataForm.controls['firstaddress']">, having a business address at<input type="text" [formControl]="dataForm.controls['fullname']"> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
+          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text" readonly [formControl]="dataForm.controls['firstaddress']">, having a business address at<input type="text" [formControl]="dataForm.controls['fullname']"><span class="errortext" *ngIf="!dataForm.controls['fullname'].valid && dataForm.controls['fullname'].touched">This field can not be blank</span> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
 
           <h3 class="heading">The parties hereby agree as follows:</h3>
 
@@ -243,7 +243,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <h3>Thomas Willis d/b/a NexGenTesting</h3>
-                      <p>  <span (click)="sign1(signmodal,1)">By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br> </p>
+                      <p>  <span (click)="sign1(signmodal,1)">By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field can not be blank</span> </p>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname1']"><br> </p>
                       <p>Title<input type="text" readonly [formControl]="dataForm.controls['title1']"><br> </p>
 
@@ -252,7 +252,7 @@
 
                       <h3>Name</h3>
                       <p>
-                        <span (click)="sign1(signmodal,2)">By</span><input type="text" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p>
+                        <span (click)="sign1(signmodal,2)">By</span><input type="text" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p><span class="errortext" *ngIf="!dataForm.controls['by2'].valid && dataForm.controls['by2'].touched">This field can not be blank</span>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname2']"></p>
                       <p> Title<input type="text" readonly [formControl]="dataForm.controls['title2']"></p>
 
@@ -478,8 +478,9 @@
         </p>
         <div class="row signature_wrapper">
           <div class="col-md-6">
-            <input class="digital_signature" type="text" [formControl]="dataForm.controls['consultant1']"><br>
-            SIGNATURE OF CONSULTANT
+            <input class="digital_signature" type="text" readonly [formControl]="dataForm.controls['consultant1']"><br>
+              <span class="errortext" *ngIf="!dataForm.controls['consultant1'].valid && dataForm.controls['consultant1'].touched">This field can not be blank</span>
+              <span (click)="sign1(signmodal,5)">SIGNATURE OF CONSULTANT</span>
           </div>
           <div class="col-md-6">
             <input type="text" readonly [formControl]="dataForm.controls['date2']"><br>
@@ -586,7 +587,7 @@
              <!-- By: <input class="by" type="text" [formControl]="dataForm1.controls['by3']"><br>-->
 
 
-                <span (click)="sign1(signmodal,3)">By</span><input type="text" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br>
+                <span (click)="sign1(signmodal,3)">By</span><input type="text" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field can not be blank</span>
 
 
 
@@ -599,7 +600,7 @@
             <div class="bottom_form_section">
               <input type="text" class="nex_right_inp" [formControl]="dataForm.controls['blank1']"><br>
 
-                <span (click)="sign1(signmodal,4)">By</span> <input type="text" readonly [formControl]="dataForm.controls['by4']" class="by stylesignature"><br>
+                <span (click)="sign1(signmodal,4)">By</span> <input type="text" readonly [formControl]="dataForm.controls['by4']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by4'].valid && dataForm.controls['by4'].touched">This field can not be blank</span>
               Print Name:<input class="print" type="text" readonly [formControl]="dataForm.controls['printname5']"><br>
               Title:<input type="text" class="title" readonly [formControl]="dataForm.controls['title4']"><br>
               Date: <input type="text" class="date" readonly [formControl]="dataForm.controls['date4']"><br>
@@ -609,6 +610,8 @@
       </div>
     </div> <!--end inner-->
   </div>
+      <input type="submit" value="Submit" class="alandingsubbtn2">
+      <div class="clearfix"></div>
   </form>
 </div>
 

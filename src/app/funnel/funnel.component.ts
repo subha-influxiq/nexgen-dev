@@ -91,18 +91,13 @@ export class FunnelComponent implements OnInit {
   }
 
   dosubmit() {
+   // console.log(this.dataForm.value['state']);
     // console.log(this.dataForm.value['email']);
     this.errormg='';
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
-      console.log(this.dataForm.controls[x].valid);
     }
-    console.log("this.dataForm.value");
-    console.log(this.dataForm.value);
-    console.log("this.dataForm.valid");
-    console.log(this.dataForm.valid);
-
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignup';
       let data = {
@@ -180,7 +175,8 @@ export class FunnelComponent implements OnInit {
       this.dataForm1.controls["othertext"].updateValueAndValidity();
     }
     else{
-      this.dataForm1.controls['othertext'].setValidators();
+     // this.dataForm1.controls['othertext'].clearAsyncValidators();
+      this.dataForm1.controls['othertext'].clearValidators();
       this.dataForm1.controls["othertext"].updateValueAndValidity();
     }
 
