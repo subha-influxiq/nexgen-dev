@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Commonservices} from '../app.commonservices' ;
@@ -22,6 +22,7 @@ export class ContractComponent implements OnInit {
   public dataForm: FormGroup;
   public kp;
   public signval;
+  public val;
   modalRef: BsModalRef;
 
   constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService,public modal:BsModalService) {
@@ -45,14 +46,14 @@ export class ContractComponent implements OnInit {
       printvalue: [''],
       consultant1: [''],
       date2: [''],
-      printname2: [''],
-      by3: [''],
       printname3: [''],
+      by3: [''],
+      printname4: [''],
       title3: [''],
       date3: [''],
       blank1: [''],
       by4: [''],
-      printname4: [''],
+      printname5: [''],
       title4: [''],
       date4: [''],
     });
@@ -86,14 +87,14 @@ export class ContractComponent implements OnInit {
                 printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 consultant1: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 date2: [moment().format("Do, MMM, YYYY"),Validators.required],
-                printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                by3: ['',Validators.required],
                 printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
+                by3: ['',Validators.required],
+                printname4: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 title3: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 date3: [moment().format("Do, MMM, YYYY"),Validators.required],
                 blank1: [''],
                 by4: ['',Validators.required],
-                printname4: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
+                printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 title4: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
                 date4: [moment().format("Do, MMM, YYYY"),Validators.required],
               });
