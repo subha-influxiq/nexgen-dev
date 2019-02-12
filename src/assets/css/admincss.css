@@ -125,13 +125,13 @@ text-transform: uppercase; }
     align-items: flex-end; width: 100%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive{  display: inline-flex;
     align-items: flex-end; width: 100%;}
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusinactive .ticon_inactive{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
     background: #ff0000;
     text-align: center;
     margin: 0 auto;
     cursor: pointer;
 }
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive .ticon_active{ width: 20px; height: 20px; border-radius: 50%; display: inline-block;
 
     text-align: center;
     background: #00d400;
