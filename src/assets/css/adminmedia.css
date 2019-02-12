@@ -4,6 +4,12 @@
     }
 }
 
+@media screen  and  (max-width: 1680px){
+    .representative_list_wrapper {
+        width: 90%;
+    }
+}
+
 @media screen  and  (max-width: 1480px){
     .rep_dashboard_wrapper1 {
         background-position: 25% center!important;
@@ -119,7 +125,7 @@
         font-weight: bold;
         content: attr(data-title);
     }
-
+    .nextGen_admin_mainwrapper .nexgen_admin_table{ padding-right: 0; }
 }
 
 @media screen and (max-width: 1040px) {
@@ -153,6 +159,17 @@
         margin-bottom: 15px;
     }
 }
+@media screen and (max-width:520px) {
+    .user_management_wrapper .user_management_inner .inner_content_wrapper input {
+        margin-bottom: 10px;
+        width: 95%;
+        margin-top: 7px;
+    }
+    .user_management_wrapper .user_management_inner .inner_content_wrapper button {
+        width: 95%;
+        margin-left: 0;
+    }
+}
 @media screen and (max-width:480px) {
     .admin_dashboard_container .content_text h2 {
         font-size: 36px;
@@ -171,11 +188,24 @@
     }
 
     .dashboard_block2 .col-md-4 h3{ text-align: center; font-size: 28px; }
-    table tr td { padding-left: 55% !important; }
+    table tr td { padding-left: 50% !important; }
     td{
         font-size: 15px;
     }
     td:before{
         font-weight: 600;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email{ word-break: break-all; }
+
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3 {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 14px;
+        text-align: center;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
+        font-size: 18px;
+        float: none;
+        padding: 8px 15px 8px 15px;
     }
 }

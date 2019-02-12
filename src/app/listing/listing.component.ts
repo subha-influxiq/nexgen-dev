@@ -297,7 +297,7 @@ export class ListingComponent implements OnInit {
             }else{
                 let tempdefault:any='';
                 if(this.formdataval[c].multiple!=null && this.formdataval[c].multiple==true)
-                    tempdefault=[];
+                    let  tempdefault=[];
             console.log('inside it');
             console.log(tempdefault);
             if (this.formdataval[c].validationrule != null && this.formdataval[c].validationrule.required) formgrp[this.formdataval[c].name] = [tempdefault, Validators.required];
@@ -340,6 +340,7 @@ export class ListingComponent implements OnInit {
 
   equalToPass(fieldname): ValidatorFn {                                 //password match custom function
     return (control: AbstractControl): { [key: string]: any } => {      ///abstractcontrol function call here with key string any type
+
       let input = control.value;      //class create here
       let isValid = control.root.value[fieldname] == input;       //value valid or not
       if (!isValid)

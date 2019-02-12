@@ -27,8 +27,13 @@ import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpag
 import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
+
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
-import { TranningsectionComponent } from './tranningsection/tranningsection.component';
+import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
+
+
+import { TrialsComponent } from './trials/trials.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 
 @NgModule({
@@ -53,7 +58,8 @@ import { TranningsectionComponent } from './tranningsection/tranningsection.comp
     AdminheaderComponent,
     UseraccountsettingComponent,
     RepresentativelistComponent,
-    TranningsectionComponent,
+    RepTraingcenterComponent,
+    TrialsComponent,
 
   ],
   imports: [
@@ -65,7 +71,8 @@ import { TranningsectionComponent } from './tranningsection/tranningsection.comp
     FormsModule,
     ImageCropperModule,
     BsDatepickerModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

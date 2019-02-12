@@ -105,7 +105,7 @@ text-transform: uppercase; }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper  { width: 95%; margin: 0 auto;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr th {
     color: #00a8ef; border-top: 1px solid #cecdcd;  font-family: 'RalewayBold'; font-size: 18px;}
-.nextGen_admin_mainwrapper .nexgen_admin_table{ padding: 0 12px; padding-left: 0;}
+.nextGen_admin_mainwrapper .nexgen_admin_table{ padding: 0; padding-left: 0;}
 
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table{ width: 99.9%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr th{margin-bottom: 5px; background: #efefef;  }
@@ -299,19 +299,73 @@ text-transform: uppercase; }
 
 
 /*REPRESENTATIVE LIST*/
+
+  .inner_content_section h1{ background: #00a8ef; font-family: 'RalewayBold'; font-size: 40px; padding: 13px 0 11px 0;
+    color: #fff; text-align: center;  margin-bottom: 25px; }
 .representative_list_wrapper { width: 1610px; margin: 0 auto; }
-.representative_list_wrapper .inner_content_section h1{ background: #00a8ef; font-family: 'RalewayBold'; font-size: 40px; padding: 13px 0 11px 0;
-    color: #fff; text-align: center; }
 .representative_list_wrapper .inner_main_wrap .left_content { width: 1200px;
     float: left;}
 .representative_list_wrapper .inner_main_wrap .left_content h2{
     background: #00a8ef; font-family: 'RalewayBold'; font-size: 30px; padding: 13px 15px 11px 15px;
-    color: #fff; }
+    color: #fff; margin-bottom: 0; }
+.representative_list_wrapper .inner_main_wrap .left_content .table  { border: 1px solid #efefef; }
+.representative_list_wrapper .inner_main_wrap .left_content .table thead th{ background: #ebebeb; padding-top: 20px; padding-bottom: 20px; color: #00a8ef; vertical-align: text-top; }
+.representative_list_wrapper .inner_main_wrap .left_content  .table-striped tbody tr:nth-of-type(odd) {background-color: #fff; }
+.representative_list_wrapper .inner_main_wrap .left_content  .table-striped tbody tr:nth-of-type(even) {
+    background-color: #efefef;
+}
+.representative_list_wrapper .inner_main_wrap .left_content  .table td, .table th td{
+    margin-bottom: 0; padding-top: 20px; padding-bottom: 20px; border-top:  4px double #e4e3e3;  border-bottom: 2px solid #e4e3e3; width: 20%; }
 
 .representative_list_wrapper .inner_main_wrap .left_content h3{
-    background: #000; font-family: 'RalewayBold'; font-size: 24px; padding: 13px 15px 11px 15px;
+    background: #000; font-family: 'opensans_italic'; font-size: 22px; padding: 13px 15px 11px 15px; margin-bottom: 0;
     color: #fff; }
 
 
-.representative_list_wrapper .inner_main_wrap .right_content { width: 380px;
+.representative_list_wrapper .inner_main_wrap .right_content { width: 390px;
     float: left; margin-left: 20px; }
+.representative_list_wrapper .inner_main_wrap .right_content .search_header{ background: #00c0ff;     padding: 6px 8px;
+    display: flex;
+    padding-right: 5px;}
+.representative_list_wrapper .inner_main_wrap .right_content .search_header input{ width: 92%; padding: 0 10px; border: none; height: 30px; }
+.representative_list_wrapper .inner_main_wrap .right_content .search_header input:focus{ outline: none; }
+.representative_list_wrapper .inner_main_wrap .right_content .search_header button {
+    cursor: pointer; border: none;
+    border-left:1px solid #fff;}
+.representative_list_wrapper .inner_main_wrap .right_content .search_header button:focus{ outline: none; }
+
+.representative_list_wrapper .inner_main_wrap .right_content h3{ background: #000; color: #fff; font-family: 'RalewayBold'; font-size: 22px;
+    padding: 10px;
+    text-transform: uppercase;
+    padding-top: 12px;
+    margin-bottom: 0px;
+}
+.representative_list_wrapper .inner_main_wrap .right_content .search_inp input{ height: 38px; margin-top: 10px; display: block; width: 100%; padding: 0 10px; border: 1px solid #cecdcd;}
+.representative_list_wrapper .inner_main_wrap .right_content .search_inp input:focus{ outline: none;}
+
+.representative_list_wrapper .inner_main_wrap .pagination_sec{ text-align: center; margin-bottom: 50px; margin-top: 11px; }
+.representative_list_wrapper .inner_main_wrap .pagination_sec ul { padding-left: 0; display: inline-block; text-align: center; margin-bottom: 0;}
+.representative_list_wrapper .inner_main_wrap .pagination_sec ul li {
+    cursor: pointer; float: left; list-style: none; border-radius: 3px; }
+.representative_list_wrapper .inner_main_wrap .pagination_sec ul li a{ background: #00c0ff;
+    color: #fff;
+    padding: 1px 9px;
+    border-radius: 3px; }
+.representative_list_wrapper .inner_main_wrap .pagination_sec ul li a.active { background: #000;
+    color: #fff; }
+.representative_list_wrapper .inner_main_wrap .pagination_sec ul li a{ margin: 4px;
+    padding-bottom: 3px; }
+
+
+
+/*REP TRAINING CENTER*/
+.rep_training_wrapper h2{ color: #22bdff; background: #000; text-transform: uppercase; text-align: center;
+    padding: 3px 5px 5px 5px; margin-bottom: 0; }
+
+.traing_innerwrapper { width: 1610px; margin: 0 auto; margin-top: 15px;}
+.traing_innerwrapper .training_leftpart{ width: 1200px; float: left;}
+.traing_innerwrapper .training_rightpart{ width: 390px; float: left; margin-left: 15px; }
+.traing_innerwrapper .training_rightpart h1{ background: #000; font-family: 'RalewayBold'; margin-bottom: 0; font-size: 30px;     color: #fff;
+    padding: 10px;
+    padding-left: 14px;
+text-transform: uppercase;  }
