@@ -18,8 +18,11 @@ import {HomeComponent} from "./home/home.component";
 import {ContractComponent} from "./contract/contract.component";
 import {TranningcategorymanagementComponent} from "./tranningcategorymanagement/tranningcategorymanagement.component";
 import {UseraccountsettingComponent} from "./useraccountsetting/useraccountsetting.component";
+
 import {RepresentativelistComponent} from "./representativelist/representativelist.component";
 import {RepTraingcenterComponent} from "./rep-traingcenter/rep-traingcenter.component";
+
+import {TrialsComponent} from "./trials/trials.component";
 
 
 
@@ -42,6 +45,7 @@ const appRoutes: Routes = [
     { path:'useraccountsetting', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent}
+    { path:'trial', component: TrialsComponent}
 
 
 ];

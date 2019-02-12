@@ -27,9 +27,14 @@ import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpag
 import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
+<<<<<<< HEAD
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
 import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
 
+=======
+import { TrialsComponent } from './trials/trials.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+>>>>>>> 4b5aadaec8496b565cb1da8c016899032186deb1
 
 @NgModule({
   declarations: [
@@ -52,8 +57,12 @@ import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.co
     TranningcategorymanagementComponent,
     AdminheaderComponent,
     UseraccountsettingComponent,
+<<<<<<< HEAD
     RepresentativelistComponent,
     RepTraingcenterComponent,
+=======
+    TrialsComponent,
+>>>>>>> 4b5aadaec8496b565cb1da8c016899032186deb1
 
   ],
   imports: [
@@ -65,7 +74,8 @@ import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.co
     FormsModule,
     ImageCropperModule,
     BsDatepickerModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
