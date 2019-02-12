@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
     { path:'useraccountsetting', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
-    { path: 'reptrainingcenter', component: RepTraingcenterComponent}
+    { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     { path:'trial', component: TrialsComponent}
 
 
