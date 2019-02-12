@@ -28,6 +28,7 @@ import { TranningcategorymanagementComponent } from './tranningcategorymanagemen
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
+import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { RepresentativelistComponent } from './representativelist/representative
     AdminheaderComponent,
     UseraccountsettingComponent,
     RepresentativelistComponent,
+    RepTraingcenterComponent,
 
   ],
   imports: [
