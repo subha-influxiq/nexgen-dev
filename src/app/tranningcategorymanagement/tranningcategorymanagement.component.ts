@@ -28,7 +28,7 @@ public sourcecondition:any={type:'tranning'}
     {inputtype:'select',name:'type1',label:'Trainning Type',defaultchoice:'Select Trainning',sourceview:'tranning',sourcetype:'static',selectvalue:'name',selectid:'name',validationrule:{required:true},validationerrormsg:'is required'},
 
     // {inputtype:'select',name:'roleaccess',label:'Roles can Access',defaultchoice:'Select Roles',sourceview:'roles',sourcetype:'static',selectvalue:'name',selectid:'id',validationrule:{required:true},validationerrormsg:'is required',multiple:true},
-    {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
+    // {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
   ];
     this.datasource={table:'tranningcategory',objarr:[]};

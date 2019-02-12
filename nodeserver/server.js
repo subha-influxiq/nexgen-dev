@@ -107,7 +107,8 @@ app.post('/leadsignup', function (req, resp) {
         phoneno: req.body.phoneno,
         city: req.body.city,
         state: req.body.state,
-        type: req.body.type,
+        lead_step: req.body.lead_step,
+        type: req.body.type
     }], function (err, result) {
         if (err) {
             console.log('error'+err);
@@ -137,7 +138,8 @@ app.post('/leadsignup', function (req, resp) {
 });
 
 
-app.post('/leadsignupupdate',function (req,resp) {
+app.post('/leadsignupquestionnaireupdate',function (req,resp) {
+    var collection = db.collection('users');
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
     verifytoken(token);
     console.log('tokenstatus');
@@ -147,15 +149,18 @@ app.post('/leadsignupupdate',function (req,resp) {
         return;
     }
     else{
-        if(typeof(req.body.data.id)!='undefined'){
-            var o_id = new mongodb.ObjectID(req.body.data.id);
-            collection.update({_id:o_id}, {$set: req.body.data}, true, true);
-            resp.send(JSON.stringify({'status':'success',update:1}));
-            return;
-        }
+        var o_id = new mongodb.ObjectID(req.body.data.id);
+        var crypto = require('crypto');
+        if(typeof(req.body.data)!='undefined' && typeof(req.body.data.password)!='undefined')  req.body.data.password = crypto.createHmac('sha256', req.body.data.password)
+            .update('password')
+            .digest('hex');
+        if(typeof(req.body.data)!='undefined' && typeof(req.body.data.id)!='undefined')  req.body.data.id = null;
+        collection.update({_id:o_id}, {$set: req.body.data}, true, true);
+        resp.send(JSON.stringify({'status':'success',update:1}));
+        return;
     }
-
 });
+
 app.post('/togglestatus',function(req,resp){
 
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -239,6 +244,7 @@ app.post('/datalist',function (req,resp) {
 
 app.post('/addorupdatedata', function (req, resp) {
     var crypto = require('crypto');
+    var added_time= new Date().getTime();
     if(typeof(req.body.data)!='undefined' && typeof(req.body.data.password)!='undefined')  req.body.data.password = crypto.createHmac('sha256', req.body.data.password)
         .update('password')
         .digest('hex');
@@ -247,8 +253,8 @@ app.post('/addorupdatedata', function (req, resp) {
     }
     if(typeof(req.body.data)!='undefined' && typeof(req.body.data.confirmpassword)!='undefined')  req.body.data.confirmpassword = null;
     var collection = db.collection(req.body.source.toString());
-
     if(typeof(req.body.data.id)=='undefined'){
+        req.body.data['created_at']=added_time;
         collection.insert([req.body.data], function (err, result) {
             if (err) {
                 resp.send(JSON.stringify({'status':'failed','id':0}));
@@ -260,6 +266,7 @@ app.post('/addorupdatedata', function (req, resp) {
     }
 
     if(typeof(req.body.data.id)!='undefined'){
+        req.body.data['updated_at']=added_time;
         var o_id = new mongodb.ObjectID(req.body.data.id);
         collection.update({_id:o_id}, {$set: req.body.data}, true, true);
         resp.send(JSON.stringify({'status':'success',update:1}));
@@ -267,7 +274,7 @@ app.post('/addorupdatedata', function (req, resp) {
     }
 });
 
-app.get('/deletesingledata',function(req,resp) {
+app.post('/deletesingledata',function(req,resp) {
     var collection = db.collection(req.body.source.toString());
     var o_id = new mongodb.ObjectID(req.body.id);
     // collection.remove({_id:o_id}, true);
@@ -281,7 +288,7 @@ app.get('/deletesingledata',function(req,resp) {
 });
 
 function createjwttoken(){
-    var older_token = jwt.sign({ foo: 'bar', exp: Math.floor(Date.now() / 1000) + (60 * 60)}, app.get('superSecret'));
+    var older_token = jwt.sign({ foo: 'bar', exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24)}, app.get('superSecret'));
     /*const payload = {
         admin: true     };
     var token = jwt.sign(payload, app.get('superSecret'), {

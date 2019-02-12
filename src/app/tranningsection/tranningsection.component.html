@@ -1,0 +1,87 @@
+<div class="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content_header_block">
+        <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+            <div class="box-body">
+              <div class="form-group">
+                <label >Title :</label>
+                <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
+                <!--<input type="hidden" class="form-control" placeholder="Brand Name" [formControl]="dataForm.controls['id']">-->
+                <span class="error" *ngIf="!dataForm.controls['title'].valid && dataForm.controls['title'].touched">Title field can not be blank</span>
+              </div>
+              <div class="form-group email_div">
+                <label >Description :</label>
+                <textarea class="form-control" placeholder="Description" [formControl]="dataForm.controls['description']">
+                  </textarea>
+                <span class="error" *ngIf="!dataForm.controls['description'].valid && dataForm.controls['description'].touched ">Description field can not be blank</span>
+                 </div>
+              <div class="form-group email_div">
+                <label >Type :</label>
+                <select class="form-control"  [formControl]="dataForm.controls['filetype']">
+                  <option value="">Select File Type</option>
+                  <option value="video">Video</option>
+                  <option value="audio">Audio</option>
+                  <option value="html">Html</option>
+                  <option value="file">File</option>
+                </select>
+                <div *ngIf="dataForm.value['html']"><textarea class="form-control"></textarea></div>
+                <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any of file type</span>
+              </div>
+
+              <div class="form-group email_div">
+                <label >Location Of Tranning :</label>
+                <select class="form-control"  [formControl]="dataForm.controls['location']">
+                  <option value="">Select Anyone</option>
+                  <option value="initial">Initial</option>
+                  <option value="advance">Advance</option>
+                </select>
+                <span class="error" *ngIf="!dataForm.controls['location'].valid && dataForm.controls['location'].touched ">Location of tranning is required</span>
+              </div>
+              <div class="form-group email_div">
+                <label >Is there a test associated with tranning :</label>
+                <input type="radio" value="yes" class="form-control" [formControl]="dataForm.controls['yesorno']" name="yesno">
+                <label>Yes</label>
+                <input type="radio" value="no" class="form-control" [formControl]="dataForm.controls['yesorno']" name="yesno">
+                <label>No</label>
+                <span class="error" *ngIf="!dataForm.controls['yesorno'].valid && dataForm.controls['yesorno'].touched ">Have to choose any option</span>
+              </div>
+              <!--<div class="form-group">-->
+                <!--<label >Paragraph :</label>-->
+                <!--<textarea class="form-control2"  placeholder="Please Write Something" [formControl]="dataForm.controls['paragraph']" style="columns: 20;"></textarea>-->
+                <!--<span class="error" *ngIf="!dataForm.controls['paragraph'].valid && dataForm.controls['paragraph'].touched">Paragraph is required</span>-->
+              <!--</div>-->
+
+              <!--<div class="form-group">-->
+                <!--<div class="s_getmyoffer_uploaded_image" (click)="fileInput.click()">-->
+                  <!--<button type="button" class="s_getmyoffer_uploadButton">Upload Offer Image</button>-->
+                  <!--<input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>-->
+                  <!--<span class="error" *ngIf="!dataForm.controls['image'].valid && dataForm.controls['image'].touched">Please upload Brand image</span>-->
+                <!--</div><br>-->
+                <!--<div class="col-md-4 imguploadsuccess" *ngIf="image">-->
+                  <!--<img style="width: 100%" src="{{image}}" >-->
+                  <!--<button class="s_getmyoffer_image_crop"><span>Crop Image </span> </button>-->
+                <!--</div>-->
+                <!--<div class="clear"></div>-->
+                <!--<span class="has-error" *ngIf ="imageserror"> Upload image here</span>-->
+              <!--</div>-->
+
+              <!--<div class="form-group">-->
+                <!--<label >Mobile Number<span>*</span> :</label>-->
+                <!--<input type="text" class="form-control" placeholder="Mobile Number" [formControl]="dataForm.controls['mobileno']">-->
+                <!--<span class="error" *ngIf="dataForm.controls['mobileno'].touched && !dataForm.controls['mobileno'].valid">mobile-no Required!</span>-->
+              <!--</div>-->
+            </div>
+            <div class="form-group form-check custom_checkbox">
+              <input type="checkbox" class="form-check-input" [formControl]="dataForm.controls['status']">
+              <label class="form-check-label">Active</label>
+            </div>
+            <div class="box-footer" style="background:none; height:auto; padding-bottom:0px; padding-top:0px;">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

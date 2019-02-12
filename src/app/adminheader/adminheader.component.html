@@ -23,20 +23,23 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto justify-content-center" >
               <li class="nav-item active">
-                <a class="nav-link" href="#" [routerLink]="['/']">Admin Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/dashboard']">Admin Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">about us</a>
+                <a class="nav-link" href="#">About us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">contact</a>
+                <a class="nav-link" href="#">Contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/login']">login</a>
+                <a class="nav-link" href="#" (click)="logout()">Sign Out</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" [routerLink]="['/signup/:id']">sign up</a>
-              </li>
+              <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="#" [routerLink]="['/login']">login</a>-->
+              <!--</li>-->
+              <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="#" [routerLink]="['/signup/:id']">sign up</a>-->
+              <!--</li>-->
             </ul>
 
           </div>
@@ -144,11 +147,10 @@
 <!--rep header 3-->
 <!--hi-->
 <!--hie-->
-<<<<<<< HEAD
-<div class="header_bg admin_header">
-=======
+
+
 <div class="header_bg admin_header" *ngIf="type=='regional_recruiter'">
->>>>>>> ac2a786e2f57c2059050c8ef09a55bdea2601bc6
+
   <div class="nexgen_header_wrapper">
     <div class="hidden_logo">
       <img src="assets/images/logo.png">
@@ -168,20 +170,23 @@
           </button>
 
           <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto justify-content-center" *ngIf="type=='regional_recruiter'">
+            <ul class="navbar-nav mr-auto justify-content-center">
               <li class="nav-item active">
                 <a class="nav-link" href="#"[routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">about us</a>
+                <a class="nav-link" href="#">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" (click)="logout()">Sign Out</a>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="#"[routerLink]="['/login']">login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"[routerLink]="['/signup/:id']">sign up</a>
-              </li>
+              <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="#"[routerLink]="['/login']">login</a>-->
+              <!--</li>-->
+              <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="#"[routerLink]="['/signup/:id']">sign up</a>-->
+              <!--</li>-->
             </ul>
 
           </div>
@@ -213,4 +218,3 @@
     </div>
   </div>
 </div>
-<!--End rep header 3-->

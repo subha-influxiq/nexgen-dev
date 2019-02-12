@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 /*h*/
@@ -10,10 +11,14 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AdminheaderComponent implements OnInit {
 public type:any;
-  constructor(public cookie:CookieService) {
+  constructor(public cookie:CookieService,public router:Router) {
     this.type=this.cookie.get('usertype');
     console.log('type');
     console.log(this.type);
+  }
+  logout(){
+    this.cookie.deleteAll();
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {
