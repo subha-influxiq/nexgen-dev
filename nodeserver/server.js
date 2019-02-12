@@ -156,6 +156,24 @@ app.post('/leadsignupupdate',function (req,resp) {
     }
 
 });
+app.post('/togglestatus',function(req,resp){
+
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    verifytoken(token);
+    console.log('tokenstatus');
+    console.log(tokenstatus);
+    if(tokenstatus!=true){
+        resp.send(JSON.stringify({'status':'error',token:token,errormessage:tokenstatus}));
+        return;
+    }
+    req.query=req.body;
+    var collection = db.collection(req.query.source.toString());
+    var o_id = new mongodb.ObjectID(req.query.id);     //[we use ObjectId to convert the data otherwise we could not get it]
+    collection.update({_id:o_id}, {$set: {status:req.query.status}}, true, true);  //[_id defined that in database it is defined  _id so we used _id here to match field]
+
+    resp.send(JSON.stringify({'status':'success'}));
+});
+
 
 /*COMMON FUNCTIONS*/
 app.post('/login', function (req, resp) {

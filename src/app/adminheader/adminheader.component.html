@@ -1,5 +1,6 @@
 <!--rep header 1-->
-<div class="header_bg admin_header">
+<!--rep header 2-->
+<div class="header_bg admin_header"*ngIf="type=='admin'">
   <div class="nexgen_header_wrapper">
     <div class="hidden_logo">
       <img src="assets/images/logo.png">
@@ -20,9 +21,9 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto justify-content-center">
+            <ul class="navbar-nav mr-auto justify-content-center" >
               <li class="nav-item active">
-                <a class="nav-link" href="#">Admin Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#" [routerLink]="['/']">Admin Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">about us</a>
@@ -31,10 +32,10 @@
                 <a class="nav-link" href="#">contact</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">login</a>
+                <a class="nav-link" href="#" [routerLink]="['/login']">login</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">sign up</a>
+                <a class="nav-link" href="#" [routerLink]="['/signup/:id']">sign up</a>
               </li>
             </ul>
 
@@ -71,7 +72,7 @@
 
 
 <!--rep header 2-->
-<div class="header_bg admin_header">
+<div class="header_bg admin_header" *ngIf="type=='rep'">
   <div class="nexgen_header_wrapper">
     <div class="hidden_logo">
       <img src="assets/images/logo.png">
@@ -143,7 +144,11 @@
 <!--rep header 3-->
 <!--hi-->
 <!--hie-->
+<<<<<<< HEAD
 <div class="header_bg admin_header">
+=======
+<div class="header_bg admin_header" *ngIf="type=='regional_recruiter'">
+>>>>>>> ac2a786e2f57c2059050c8ef09a55bdea2601bc6
   <div class="nexgen_header_wrapper">
     <div class="hidden_logo">
       <img src="assets/images/logo.png">
@@ -163,7 +168,7 @@
           </button>
 
           <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto justify-content-center">
+            <ul class="navbar-nav mr-auto justify-content-center" *ngIf="type=='regional_recruiter'">
               <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>

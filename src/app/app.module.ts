@@ -24,6 +24,7 @@ import { ContractComponent } from './contract/contract.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpage.component';
+import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
 
@@ -46,6 +47,7 @@ import { UseraccountsettingComponent } from './useraccountsetting/useraccountset
     HeaderComponent,
     FooterComponent,
     FunnellandingpageComponent,
+    TranningcategorymanagementComponent,
     AdminheaderComponent,
     UseraccountsettingComponent,
 

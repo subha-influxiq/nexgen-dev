@@ -244,7 +244,8 @@
             <label class="labellantext">  <input type="checkbox" [formControl]="dataForm1.controls['homesorhomehealthcare']"> Homes/Home Health Care    </label>
 
             <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['other']"> Other:    </label>
-            <input type="text"  class="alaninput2">
+            <input type="text"  [formControl]="dataForm1.controls['othertext']" class="alaninput2">
+            <span class="errortext" *ngIf="!dataForm1.controls['othertext'].valid && dataForm1.controls['othertext'].touched">This field can not be blank</span>
             <div class="clearfix"></div>
 
           </div>
