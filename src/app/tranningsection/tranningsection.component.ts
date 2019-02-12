@@ -13,6 +13,7 @@ export class TranningsectionComponent implements OnInit {
   public dataForm: FormGroup;
   public es;
   public serverurl;
+  public divforhtml=false;
 
   constructor(es: FormBuilder,public _commonservices: Commonservices)
   {
@@ -26,6 +27,13 @@ export class TranningsectionComponent implements OnInit {
       yesorno:['',Validators.required],
       status:['',Validators.required],
     });
+  }
+  typefile(){
+    this.divforhtml=false;
+    if(this.dataForm.value['filetype']=='html'){
+      console.log(this.dataForm.value['filetype']);
+      this.divforhtml=true;
+    }
   }
   dosubmit()
   {
