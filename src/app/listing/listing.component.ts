@@ -295,7 +295,8 @@ export class ListingComponent implements OnInit {
             if(this.formdataval[c].inputtype=='checkbox') {
                 formgrp[this.formdataval[c].name] = [false];
             }else{
-                let tempdefault:any='';
+             //   let tempdefault:any='';
+                let  tempdefault=[];
                 if(this.formdataval[c].multiple!=null && this.formdataval[c].multiple==true)
                     let  tempdefault=[];
             console.log('inside it');
