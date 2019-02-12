@@ -23,6 +23,7 @@ import {RepresentativelistComponent} from "./representativelist/representativeli
 import {RepTraingcenterComponent} from "./rep-traingcenter/rep-traingcenter.component";
 
 import {TrialsComponent} from "./trials/trials.component";
+import {TranningsectionComponent} from "./tranningsection/tranningsection.component";
 
 
 
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     { path:'useraccountsetting', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
-    { path:'trial', component: TrialsComponent}
+    { path:'trial', component: TrialsComponent},
+    { path:'trainingsection', component: TranningsectionComponent}
 
 
 ];

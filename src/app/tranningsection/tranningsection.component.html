@@ -18,15 +18,17 @@
                  </div>
               <div class="form-group email_div">
                 <label >Type :</label>
-                <select class="form-control"  [formControl]="dataForm.controls['filetype']">
+                <select class="form-control"  [formControl]="dataForm.controls['filetype']" (change)="typefile()">
                   <option value="">Select File Type</option>
                   <option value="video">Video</option>
                   <option value="audio">Audio</option>
                   <option value="html">Html</option>
                   <option value="file">File</option>
                 </select>
-                <div *ngIf="dataForm.value['html']"><textarea class="form-control"></textarea></div>
                 <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any of file type</span>
+
+                <div *ngIf="divforhtml"><textarea class="form-control" ></textarea></div>
+
               </div>
 
               <div class="form-group email_div">

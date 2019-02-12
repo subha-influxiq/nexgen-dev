@@ -30,11 +30,13 @@ import { UseraccountsettingComponent } from './useraccountsetting/useraccountset
 
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
 import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
+import { TranningsectionComponent } from './tranningsection/tranningsection.component';
 
 
 import { TrialsComponent } from './trials/trials.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxUploaderModule } from 'ngx-uploader';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { NgxUploaderModule } from 'ngx-uploader';
     RepresentativelistComponent,
     RepTraingcenterComponent,
     TrialsComponent,
+    TranningsectionComponent,
 
   ],
   imports: [
