@@ -1,3 +1,10 @@
+<input class="img-responsive center-block clearfix" type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+
+<div *ngIf="files.length>0">
+    <img style="width: 100%; height: auto" src="http://nexgen.influxiq.com/assets/images/uploads/{{files[0].response}}">
+</div>
+<!--
+
 <accordion>
   <accordion-group heading="Header">
     This content is straight in the template.
@@ -11,3 +18,4 @@
 </accordion>
 
 
+-->

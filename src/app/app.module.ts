@@ -34,7 +34,7 @@ import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.co
 
 import { TrialsComponent } from './trials/trials.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-
+import { NgxUploaderModule } from 'ngx-uploader';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     ImageCropperModule,
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    NgxUploaderModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
