@@ -180,7 +180,7 @@ export class FunnelComponent implements OnInit {
       this.dataForm1.controls["othertext"].updateValueAndValidity();
     }
     else{
-    //  this.dataForm1.controls['othertext'].setValidators();
+      this.dataForm1.controls['othertext'].setValidators();
       this.dataForm1.controls["othertext"].updateValueAndValidity();
     }
 
