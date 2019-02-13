@@ -39,7 +39,7 @@ export class TranningsectionComponent implements OnInit {
       title:['',Validators.required],
       description:['',Validators.required],
       filetype:['',Validators.required],
-      location:['',Validators.required],
+      // location:['',Validators.required],
       yesorno:['',Validators.required],
       status:['',Validators.required],
       trainingcategory:['',Validators.required],
@@ -94,6 +94,7 @@ export class TranningsectionComponent implements OnInit {
   }
 
   onUploadOutput(output:UploadOutput):void {
+      this.errormg='';
     this.uploaderInput.nativeElement.value = '';
     if (output.type === 'allAddedToQueue') {
       const event:UploadInput = {
@@ -108,6 +109,7 @@ export class TranningsectionComponent implements OnInit {
         this.files.push(output.file);
       }
     } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
+      console.log('this.files');
       console.log(this.files);
       const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
       this.files[index] = output.file;
@@ -122,28 +124,55 @@ export class TranningsectionComponent implements OnInit {
     }
     console.log('files');
     console.log(this.files);
-    if(this.files.length>0 && this.files[0].name!=null && this.files[0].response != null){
-      if(this.dataForm.value['filetype']=='file'){
-      this.dataForm.patchValue({
-        fileservername : this.files[0].response,
-        filelocalname : this.files[0].name,
-      });
-    }
-    else if(this.dataForm.value['filetype']=='audio'){
-        this.dataForm.patchValue({
-          audioservername : this.files[0].response,
-          audiolocalname : this.files[0].name
-        });}
+      if(this.files.length>0 && this.files[0].name!=null && this.files[0].response != null){
+          if(this.dataForm.value['filetype']=='file'){
+              var last = this.files[0].name.substring(this.files[0].name.lastIndexOf(".") + 1, this.files[0].name.length);
+              if(last!='doc' && last!='docx'  && last!='pdf' && last!='ppt' && last!='txt' && last!='xls' ){
+                  console.log('No');
+                  this.errormg='in error , wrong file uploader ..';
+              }
+              else {
+                  console.log('yes');
+                  this.dataForm.patchValue({
+                      fileservername : this.files[0].response,
+                      filelocalname : this.files[0].name
+                  });
+              }
+          }
+          else if(this.dataForm.value['filetype']=='audio'){
+
+              console.log('in audio patch block');
+              console.log(this.files);
+              console.log(this.files[0].type);
+              if(this.files[0].type.indexOf('audio')==-1){
+                  console.log('in error , wrong audio file uploader ..');
+                  console.log('No');
+                  this.errormg='in error , wrong audio file uploader ..';
+              }
+          else {
+                  console.log('yes');
+              this.dataForm.patchValue({
+                  audioservername : this.files[0].response,
+                  audiolocalname : this.files[0].name
+              });
+          }
+         }
       else if(this.dataForm.value['filetype']=='video'){
-          this.dataForm.patchValue({
-            videoservername : this.files[0].response,
-            videolocalname : this.files[0].name
-          });
+          if(this.files[0].type.indexOf('video')==-1){
+              console.log('in error , wrong video file uploader ..');
+              this.errormg='in error , wrong video file uploader ..';
+          }
+          else {
+              this.dataForm.patchValue({
+                  videoservername : this.files[0].response,
+                  videolocalname : this.files[0].name
+              });
+          }
       }
     }
   }
 
-  dosubmit() {
+    dosubmit() {
     this.errormg='';
 
     /*mark all touch*/

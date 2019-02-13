@@ -34,12 +34,12 @@
                 <div *ngIf="divforfile">
                   <input type="hidden" [formControl]="dataForm.controls['fileservername']">
                   <input type="hidden" [formControl]="dataForm.controls['filelocalname']">
-                  <input style="display: none" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain,application/pdf" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
+                  <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
                   <button (click)="fileInput1.click()" type="button">Update File</button>
 
                   <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
                   </div>
                   <span class="error" *ngIf="!dataForm.controls['fileservername'].valid && dataForm.controls['fileservername'].touched ">Upload a file!</span>
                 </div>
@@ -52,8 +52,8 @@
                   <button (click)="fileInput1.click()" type="button">Update Audio</button>
 
                   <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
                   </div>
                   <span class="error" *ngIf="!dataForm.controls['audioservername'].valid && dataForm.controls['audioservername'].touched ">Upload a audio!</span>
                 </div>
@@ -66,23 +66,23 @@
                   <button (click)="fileInput1.click()" type="button">Update Video</button>
 
                   <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
                   </div>
                   <span class="error" *ngIf="!dataForm.controls['videoservername'].valid && dataForm.controls['videoservername'].touched ">Upload a video!</span>
                 </div>
-
+                  <span *ngIf="errormg">{{errormg}}</span>
               </div>
 
-              <div class="form-group email_div">
-                <label >Location Of Tranning :</label>
-                <select class="form-control"  [formControl]="dataForm.controls['location']">
-                  <option value="">Select Anyone</option>
-                  <option value="initial">Initial</option>
-                  <option value="advance">Advance</option>
-                </select>
-                <span class="error" *ngIf="!dataForm.controls['location'].valid && dataForm.controls['location'].touched">Location of training is required</span>
-              </div>
+              <!--<div class="form-group email_div">-->
+                <!--<label >Location Of Tranning :</label>-->
+                <!--<select class="form-control"  [formControl]="dataForm.controls['location']">-->
+                  <!--<option value="">Select Anyone</option>-->
+                  <!--<option value="initial">Initial</option>-->
+                  <!--<option value="advance">Advance</option>-->
+                <!--</select>-->
+                <!--<span class="error" *ngIf="!dataForm.controls['location'].valid && dataForm.controls['location'].touched">Location of training is required</span>-->
+              <!--</div>-->
               <div class="form-group email_div">
                 <label >Is there a test associated with tranning :</label>
                 <input type="radio" value="yes" class="form-control" [formControl]="dataForm.controls['yesorno']" name="yesno">
