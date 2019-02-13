@@ -175,6 +175,7 @@ export class TranningsectionComponent implements OnInit {
     dosubmit() {
     this.errormg='';
 
+        
     /*mark all touch*/
     let x: any;
     for (x in this.dataForm.controls) {
