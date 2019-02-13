@@ -92,8 +92,8 @@ export class TrialsComponent implements OnInit {
     } else if (output.type === 'drop') {
       this.dragOver = false;
     }
-    // console.log('files');
-    // console.log(this.files);
+     console.log('files');
+     console.log(this.files);
   }
 
   onUploadOutput1(output:UploadOutput):void {

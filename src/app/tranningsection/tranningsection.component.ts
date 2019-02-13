@@ -144,13 +144,26 @@ export class TranningsectionComponent implements OnInit {
   }
 
   dosubmit() {
-    console.log(this.dataForm.value['fileservername']);
     this.errormg='';
+
+    /*mark all touch*/
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
       console.log(this.dataForm.controls[x].valid);
     }
+
+    /*Clear dynamic validations*/
+    this.dataForm.controls['htmleditorvalue'].clearValidators();
+    this.dataForm.controls["htmleditorvalue"].updateValueAndValidity();
+    this.dataForm.controls['fileservername'].clearValidators();
+    this.dataForm.controls["fileservername"].updateValueAndValidity();
+    this.dataForm.controls['audioservername'].clearValidators();
+    this.dataForm.controls["audioservername"].updateValueAndValidity();
+    this.dataForm.controls['videoservername'].clearValidators();
+    this.dataForm.controls["videolocalname"].updateValueAndValidity();
+
+    //Dynamically add validation
     if(this.dataForm.value['filetype']=='html')
     {
       this.dataForm.controls['htmleditorvalue'].setValidators(Validators.required);
@@ -161,6 +174,8 @@ export class TranningsectionComponent implements OnInit {
       this.dataForm.value['filelocalname']=null;
       this.dataForm.value['audioservername']=null;
       this.dataForm.value['audiolocalname']=null;
+      this.dataForm.value['videoservername']=null;
+      this.dataForm.value['videolocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='file')
     {
@@ -171,6 +186,8 @@ export class TranningsectionComponent implements OnInit {
       this.dataForm.value['htmleditorvalue']=null;
       this.dataForm.value['audioservername']=null;
       this.dataForm.value['audiolocalname']=null;
+      this.dataForm.value['videoservername']=null;
+      this.dataForm.value['videolocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='audio')
     {
@@ -181,6 +198,8 @@ export class TranningsectionComponent implements OnInit {
       this.dataForm.value['htmleditorvalue']=null;
       this.dataForm.value['filelocalname']=null;
       this.dataForm.value['fileservername']=null;
+      this.dataForm.value['videoservername']=null;
+      this.dataForm.value['videolocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='video')
     {
@@ -191,20 +210,14 @@ export class TranningsectionComponent implements OnInit {
       this.dataForm.value['htmleditorvalue']=null;
       this.dataForm.value['filelocalname']=null;
       this.dataForm.value['fileservername']=null;
+      this.dataForm.value['audioservername']=null;
+      this.dataForm.value['audiolocalname']=null;
     }
-    else{
-      this.dataForm.controls['htmleditorvalue'].clearValidators();
-      this.dataForm.controls["htmleditorvalue"].updateValueAndValidity();
-      this.dataForm.controls['fileservername'].clearValidators();
-      this.dataForm.controls["fileservername"].updateValueAndValidity();
-      this.dataForm.controls['audioservername'].clearValidators();
-      this.dataForm.controls["audioservername"].updateValueAndValidity();
-    }
+
 
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'addtraininglesson?token='+this._cookieservice.get('jwttoken');
       let objarr=['trainingcategory'];
-     // this._http.post(link, {source:'traininglesson',data:data,sourceobj:objarr})
       this._http.post(link, {source:'traininglesson',data:this.dataForm.value,sourceobj:objarr})
           .subscribe(res => {
             let result:any ={};
