@@ -10,10 +10,16 @@
     }
 }
 
+@media screen  and  (max-width: 1640px){
+    .traing_innerwrapper { width: 94% }
+    .traing_innerwrapper .training_leftpart { width: 79%; }
+    .traing_innerwrapper .training_rightpart { width: 19.5%; margin-left: 15px;}
+}
 @media screen  and  (max-width: 1480px){
     .rep_dashboard_wrapper1 {
         background-position: 25% center!important;
     }
+
 }
 @media screen  and  (max-width: 1400px){
     .admin_dashboard_container .content_text {
@@ -37,6 +43,9 @@
     .rep_dashboard_wrapper1 {
         background-position: 40% center!important;
     }
+    .training_leftpart .carousal_content .carousel-caption{ width: 80%; padding: 30px; }
+    .training_leftpart .carousel .carousel-control-next, .carousel-control-prev{ width: 8%!important; }
+    .training_leftpart .carousel .carousel-control-next, .carousel-control-next{ width: 8%!important; }
 }
 
 @media screen and (max-width: 1199px){
@@ -126,6 +135,18 @@
         content: attr(data-title);
     }
     .nextGen_admin_mainwrapper .nexgen_admin_table{ padding-right: 0; }
+
+    /*Training center dashboard*/
+    .traing_innerwrapper .training_leftpart {
+        width: 100%;
+        float: none;
+    }
+}
+.traing_innerwrapper .training_rightpart {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
 @media screen and (max-width: 1040px) {

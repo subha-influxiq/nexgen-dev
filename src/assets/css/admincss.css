@@ -386,10 +386,43 @@
 .traing_innerwrapper .training_rightpart ul li a{ text-decoration: none; color: #3f4040;  font-family: 'RalewayMedium'; font-size: 20px; text-transform: capitalize; }
 .traing_innerwrapper .training_rightpart ul li a:hover{ color: #3f4040; }
 
+.training_leftpart .carousal_content .carousel-caption .carousal_inner p{ font-family: 'RalewayMedium'; font-size: 26px; color: #000; margin-bottom: 5px; }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner h1{ font-family: 'RalewayBold';  margin-bottom: 0; color: #000; }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner h4{ color: #000; font-family: RalewaySemiBold; font-size: 24px; text-align: left; }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner{ position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 45px;
+}
+
+.training_leftpart .carousal_content  .lucoplast1{ width: 35px; height: 35px; position: absolute; background: #f0f0f0; border:1px solid #c4c8cd; top:-15px; left: -15px; transform: rotate(-15deg); }
+.training_leftpart .carousal_content  .lucoplast2{ width: 35px; height: 35px;  position: absolute; background: #f0f0f0; border:1px solid #c4c8cd; top:-15px; right: -15px; transform: rotate(-15deg); }
+
+.training_leftpart .carousal_content .carousel-caption .carousal_inner .header_list{ padding-left: 10px; list-style: none;  text-align: left;  }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner .header_list li{  font-size: 30px;  }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner .header_list li::before{
+    content: '\f10c'; font-family: 'FontAwesome';
+    margin:0 5px 0 -15px;
+    color: orangered; text-align: left; }
+.training_leftpart .carousal_content .carousel-caption .desease_list{ text-align: left; list-style-type: none; }
+.training_leftpart .carousal_content .carousel-caption .desease_list div{ margin-top: 10px; }
+.training_leftpart .carousal_content .carousel-caption .desease_list li::before{   content: '\f10c'; font-family: 'FontAwesome';
+    margin:0 5px 0 -15px;
+    color: orangered;  }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner ul li{ color: #000; font-family: RalewaySemiBold; font-size: 18px; margin-bottom: 1px; }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner   .under_list_part{ list-style: none;  }
+.training_leftpart .carousal_content .carousel-caption .carousal_inner   .under_list_part li:before{ font-family: 'FontAwesome';
+    content: '\f10c';
+    margin:0 5px 0 -15px;
+    color: orangered;  }
+
+
 .training_leftpart .carousal_content .carousel-caption{ background: #fff;}
-.training_leftpart .carousal_content .carousel-caption h3{ color: #000; }
+.training_leftpart .carousal_content .carousel-caption h3{ color: #415591; font-family: 'RalewayBold'; text-transform: capitalize; font-size: 40px;  }
+.training_leftpart .carousal_content .carousel-caption h3 span {  text-transform: uppercase; font-size: 50px;   }
 
 .training_leftpart .carousel .carousel-control-next, .carousel-control-prev{ width: 15%!important; }
+.training_leftpart .carousel .carousel-indicators{ display: none; }
 
 .carousel-caption {
     position: absolute;
@@ -397,13 +430,33 @@
     bottom: 20px;
     left: 15%;
     z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     color: #fff;
     text-align: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 59%;
-    height: 70%;
+    width: 65%;
+    height: 90%;
+    box-shadow: 0px 6px 9px -1px #616161;
+}
+.training_leftpart .panel{ background:#22bdff; }
+.training_leftpart .panel button{ color: #fff; text-decoration: none; font-family: 'RalewayMedium'; font-size: 24px; text-transform: uppercase; }
+.training_leftpart .panel  .card-body{ background: #fff; padding: 0;}
+
+.training_leftpart  .carousel-control-prev-icon {
+    background-image: url(../images/prev_icon1.png)!important;
+     padding: 15px;
+    height: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.training_leftpart  .carousel-control-next-icon {
+    background-image: url(../images/next_icon1.png)!important;
+     padding: 15px;
+    height: 35px;
+    font-weight: bold;
+    cursor: pointer;
+
 }
