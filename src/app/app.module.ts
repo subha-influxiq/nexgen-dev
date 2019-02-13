@@ -37,7 +37,7 @@ import { TrialsComponent } from './trials/trials.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
+import { CKEditorModule } from 'ngx-ckeditor';
 
 @NgModule({
   declarations: [
@@ -65,6 +65,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     TrialsComponent,
     TranningsectionComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -78,7 +79,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     NgxUploaderModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    CKEditorModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

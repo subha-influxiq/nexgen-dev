@@ -19,15 +19,58 @@
               <div class="form-group email_div">
                 <label >Type :</label>
                 <select class="form-control"  [formControl]="dataForm.controls['filetype']" (change)="typefile()">
-                  <option value="">Select File Type</option>
+                  <option value="">Select Type</option>
                   <option value="video">Video</option>
                   <option value="audio">Audio</option>
                   <option value="html">Html</option>
                   <option value="file">File</option>
                 </select>
-                <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any of file type</span>
+                <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any file type</span>
+                <div *ngIf="divforhtml">
+                  <ck-editor [formControl]="dataForm.controls['htmleditorvalue']"></ck-editor>
+                  <span class="error" *ngIf="!dataForm.controls['htmleditorvalue'].valid && dataForm.controls['htmleditorvalue'].touched ">This field is required</span>
+                </div>
 
-                <div *ngIf="divforhtml"><textarea class="form-control" ></textarea></div>
+                <div *ngIf="divforfile">
+                  <input type="hidden" [formControl]="dataForm.controls['fileservername']">
+                  <input type="hidden" [formControl]="dataForm.controls['filelocalname']">
+                  <input style="display: none" type="file" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain,application/pdf" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
+                  <button (click)="fileInput1.click()" type="button">Update File</button>
+
+                  <div *ngIf="files?.length>0">
+                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  </div>
+                  <span class="error" *ngIf="!dataForm.controls['fileservername'].valid && dataForm.controls['fileservername'].touched ">Upload a file!</span>
+                </div>
+
+                <div *ngIf="divforaudio">
+                  <input type="hidden" [formControl]="dataForm.controls['audioservername']">
+                  <input type="hidden" [formControl]="dataForm.controls['audiolocalname']">
+                  <input style="display: none" type="file" accept="audio/mp3 , audio/wav" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1>
+                 <!-- <input style="display: none" accept="audio/mp3 , audio/wav" type="file" (change)="onUploadOutput($event)" #fileInput2>-->
+                  <button (click)="fileInput1.click()" type="button">Update Audio</button>
+
+                  <div *ngIf="files?.length>0">
+                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  </div>
+                  <span class="error" *ngIf="!dataForm.controls['audioservername'].valid && dataForm.controls['audioservername'].touched ">Upload a audio!</span>
+                </div>
+
+                <div *ngIf="divforvideo">
+                  <input type="hidden" [formControl]="dataForm.controls['videoservername']">
+                  <input type="hidden" [formControl]="dataForm.controls['videolocalname']">
+                  <input style="display: none" type="file" accept="video/mp4, video/*" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1>
+
+                  <button (click)="fileInput1.click()" type="button">Update Video</button>
+
+                  <div *ngIf="files?.length>0">
+                    <span *ngIf="files[0].progress.data.percentage==100"><label> File Name: {{files[0].name}}</label></span>
+                    <label *ngIf="files[0].progress.data.percentage!=100">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  </div>
+                  <span class="error" *ngIf="!dataForm.controls['videoservername'].valid && dataForm.controls['videoservername'].touched ">Upload a video!</span>
+                </div>
 
               </div>
 
@@ -38,7 +81,7 @@
                   <option value="initial">Initial</option>
                   <option value="advance">Advance</option>
                 </select>
-                <span class="error" *ngIf="!dataForm.controls['location'].valid && dataForm.controls['location'].touched ">Location of tranning is required</span>
+                <span class="error" *ngIf="!dataForm.controls['location'].valid && dataForm.controls['location'].touched">Location of training is required</span>
               </div>
               <div class="form-group email_div">
                 <label >Is there a test associated with tranning :</label>
@@ -48,6 +91,19 @@
                 <label>No</label>
                 <span class="error" *ngIf="!dataForm.controls['yesorno'].valid && dataForm.controls['yesorno'].touched ">Have to choose any option</span>
               </div>
+              <div class="form-group email_div">
+                <label >Training Category :</label>
+                <select class="form-control"  [formControl]="dataForm.controls['trainingcategory']">
+                  <option value="">Select Category</option>
+                 <option *ngFor="let item of datalist" value="{{item._id}}">{{item.categoryname}}</option>
+                </select>
+                <span class="error" *ngIf="!dataForm.controls['trainingcategory'].valid && dataForm.controls['trainingcategory'].touched ">Location of training is required</span>
+              </div>
+
+
+
+
+
               <!--<div class="form-group">-->
                 <!--<label >Paragraph :</label>-->
                 <!--<textarea class="form-control2"  placeholder="Please Write Something" [formControl]="dataForm.controls['paragraph']" style="columns: 20;"></textarea>-->
