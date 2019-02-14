@@ -38,6 +38,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CKEditorModule } from 'ngx-ckeditor';
+import { TrainingsectionlistComponent } from './trainingsectionlist/trainingsectionlist.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { CKEditorModule } from 'ngx-ckeditor';
     RepTraingcenterComponent,
     TrialsComponent,
     TranningsectionComponent,
+    TrainingsectionlistComponent,
 
 
   ],

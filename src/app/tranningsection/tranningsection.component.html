@@ -34,7 +34,7 @@
                 <div *ngIf="divforfile">
                   <input type="hidden" [formControl]="dataForm.controls['fileservername']">
                   <input type="hidden" [formControl]="dataForm.controls['filelocalname']">
-                  <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
+                  <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt,.xlx" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
                   <button (click)="fileInput1.click()" type="button">Update File</button>
 
                   <div *ngIf="files?.length>0">

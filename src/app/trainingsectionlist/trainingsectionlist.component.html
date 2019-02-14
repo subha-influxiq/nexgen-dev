@@ -1,0 +1,76 @@
+<div class="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="admintable">
+        <h3>Manage Training Section List :</h3>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">File Name</th>
+              <th scope="col">Test Associated Training</th>
+              <th scope="col">Training Category</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of traininglist; let i=index">
+              <td>{{i+1}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.description}}</td>
+              <td>
+                <div *ngIf="item.filetype=='file'">
+                  {{item.filelocalname}}
+
+                </div>
+                <div *ngIf="item.filetype=='audio'">
+                  {{item.audiolocalname}}
+                  <audio controls>
+                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="audio">
+                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="audio">
+                  </audio>
+
+                </div>
+                <div *ngIf="item.filetype=='video'">
+                  {{item.videolocalname }}
+                  <video width="320" height="240" controls>
+                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="video">
+                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="video">
+                  </video>
+
+                </div>
+              </td>
+              <td>{{item.yesorno}}</td>
+              <td>{{item.trainingcategory}}</td>
+              <td><span *ngIf="item.status==true">Active</span>
+                <span *ngIf="item.status==false">Inactive</span></td>
+
+              <td ><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
+                <span class="deletebtn" [routerLink]="['/trainingsection',item._id]">Edit</span>
+              </td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #template>
+  <div class="modal-body">
+    <h1>Do you want to delete?</h1>
+    <button type="button" class="btn btn-default" (click)="delete(customerid,templatecommon)" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+
+<ng-template #templatecommon>
+  <div class="modal-body">
+    <h1>{{message}}</h1>
+
+  </div>
+</ng-template>

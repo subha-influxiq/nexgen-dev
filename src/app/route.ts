@@ -24,6 +24,7 @@ import {RepTraingcenterComponent} from "./rep-traingcenter/rep-traingcenter.comp
 
 import {TrialsComponent} from "./trials/trials.component";
 import {TranningsectionComponent} from "./tranningsection/tranningsection.component";
+import {TrainingsectionlistComponent} from "./trainingsectionlist/trainingsectionlist.component";
 
 
 
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     { path:'trial', component: TrialsComponent},
-    { path:'trainingsection', component: TranningsectionComponent}
+    { path:'trainingsection', component: TranningsectionComponent},
+    { path:'trainingsectionlist', component: TrainingsectionlistComponent}
 
 
 ];
