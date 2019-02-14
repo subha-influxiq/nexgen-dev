@@ -447,16 +447,34 @@
 
 .training_leftpart  .carousel-control-prev-icon {
     background-image: url(../images/prev_icon1.png)!important;
-     padding: 15px;
+    padding: 15px;
     height: 35px;
     font-weight: bold;
     cursor: pointer;
 }
 .training_leftpart  .carousel-control-next-icon {
     background-image: url(../images/next_icon1.png)!important;
-     padding: 15px;
+    padding: 15px;
     height: 35px;
     font-weight: bold;
     cursor: pointer;
 
 }
+
+/*admin_training_center_manage_popup*/
+.admin_training_center_manage_popup {background: #efefef; width: 700px; margin: 0 auto; padding: 15px; border: 2px solid #22bdff; border-radius: 5px; }
+.admin_training_center_manage_popup .content_header_block h3{ text-align: center; text-transform: uppercase; font-family: 'RalewayBold'; font-size: 40px; background: url("../images/signup-underline.jpg") no-repeat center bottom; padding-bottom: 10px; }
+.admin_training_center_manage_popup .content_header_block .button_upload{ display: inline-flex; margin: 15px 0 0 0; }
+.admin_training_center_manage_popup .content_header_block .button_upload span{font-family: "RalewaySemiBold"; font-size: 20px; text-transform: capitalize; }
+.admin_training_center_manage_popup .content_header_block .button_upload button {cursor: pointer; margin-left: 10px; font-family: "OpenSansRegular"; font-size: 20px; background: #000; color:#fff; border:none; text-transform: uppercase; }
+
+.admin_training_center_manage_popup .content_header_block .form-group .form-control{ box-shadow: none; }
+
+.admin_training_center_manage_popup .content_header_block .email_div .radio_part{ display: inline ; width: auto; vertical-align: middle;
+    margin-left: 24px;  }
+.admin_training_center_manage_popup .content_header_block  .radio_content{ background: #e0dfdf; padding: 10px;}
+.admin_training_center_manage_popup .content_header_block .button_section{ float: right;}
+.admin_training_center_manage_popup .content_header_block .button_section button{ cursor: pointer; font-family: 'RalewayMedium'; color: #fff; background: #000; border: none; padding: 4px 15px 3px 15px; text-transform: uppercase; }
+.admin_training_center_manage_popup .content_header_block .button_section button:nth-last-child(1){ margin-left: 10px;}
+.admin_training_center_manage_popup .content_header_block .box-footer button{text-transform: uppercase; background:#22bdff; border:none; padding: 5px 15px 4px 15px; color: #fff; font-family: 'RalewayBold' }
+.admin_training_center_manage_popup .content_header_block .box-footer button:nth-last-child(1){margin-left: 15px;  cursor: pointer; outline: none;}
