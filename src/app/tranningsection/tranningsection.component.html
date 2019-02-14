@@ -137,7 +137,7 @@
 
               <div class="form-group email_div">
                 <label >Training Category :</label>
-                <select class="form-control"  [formControl]="dataForm.controls['trainingcategory']">
+                <select class="form-control" (change)="getdata()"  [formControl]="dataForm.controls['trainingcategory']">
                   <option value="">Select Category</option>
                   <option *ngFor="let item of datalist" value="{{item._id}}">{{item.categoryname}}</option>
                 </select>
@@ -147,7 +147,8 @@
               <div>
                 <label>Prerequisite Lesson :</label>
                 <select class="form-control">
-                <option value="" (change)="getdata()">Select Prerequisite Lesson</option>
+                <option value="" >Select Prerequisite Lesson</option>
+                  <option *ngFor="let item of datalist1" value="{{item._id}}">{{item.title}}</option>
                 </select>
               </div>
 

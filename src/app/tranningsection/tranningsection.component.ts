@@ -21,6 +21,7 @@ export class TranningsectionComponent implements OnInit {
   public divforvideo=false;
   public sourceconditionval:any;
   public datalist;
+  public datalist1;
   public htmleditorvalue;
   public errormg='';
   public sourceval='tranningcategory';
@@ -174,6 +175,17 @@ export class TranningsectionComponent implements OnInit {
   getdata()
   {
     console.log("Change...");
+    console.log(this.dataForm.controls['trainingcategory'].value);
+      const link = this._commonservices.nodesslurl+'datalist?token='+this._cookieservice.get('jwttoken');
+      this._http.post(link,{source:'traininglesson',condition:{trainingcategory_object:this.dataForm.controls['trainingcategory'].value}})
+          .subscribe(res=>{
+              let result;
+              result=res;
+              this.datalist1=result.res;
+              console.log('lessonresult');
+              console.log(result);
+          })
+
   }
 
     dosubmit() {
