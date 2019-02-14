@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {Commonservices} from '../app.commonservices' ;
 
 @Component({
   selector: 'app-tranningcategorymanagement',
   templateUrl: './tranningcategorymanagement.component.html',
   styleUrls: ['./tranningcategorymanagement.component.css'],
-  providers: [Commonservices]
+
 })
 export class TranningcategorymanagementComponent implements OnInit {
 public formdata:any;
 public datasource:any;
 public tabledatalis:any[];
-public sourcecondition:any={type:'tranning'}
+public sourcecondition:any={};
 
-  constructor(public _commonservices: Commonservices) {
+  constructor() {
   this.tabledatalis=[
     {value:'id',name:'Id',role:0,func:'',class:'id',type:'#'},
     {value:'categoryname',name:'Category Name',role:0,func:'',class:'categoryname',type:'text'},

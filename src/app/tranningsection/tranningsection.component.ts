@@ -171,6 +171,10 @@ export class TranningsectionComponent implements OnInit {
       }
     }
   }
+  getdata()
+  {
+    console.log("Change...");
+  }
 
     dosubmit() {
     this.errormg='';

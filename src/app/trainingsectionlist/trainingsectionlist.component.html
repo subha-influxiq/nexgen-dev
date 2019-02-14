@@ -7,14 +7,14 @@
           <table class="table">
             <thead>
             <tr>
-
               <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
-              <th scope="col">File Name</th>
+              <th scope="col">File</th>
               <th scope="col">Test Associated Training</th>
               <th scope="col">Training Category</th>
               <th scope="col">Status</th>
+              <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -24,28 +24,39 @@
               <td>{{item.description}}</td>
               <td>
                 <div *ngIf="item.filetype=='file'">
-                  {{item.filelocalname}}
+                  {{item.filelocalname}}<br/>
+                  <a href="http://nexgen.influxiq.com/assets/uploads/{{item.fileservername}}" >Download</a>
 
                 </div>
                 <div *ngIf="item.filetype=='audio'">
-                  {{item.audiolocalname}}
+                  {{item.audiolocalname}}<br/>
                   <audio controls>
-                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="audio">
-                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="audio">
+                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/mp3">
+                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/wav">
                   </audio>
 
                 </div>
                 <div *ngIf="item.filetype=='video'">
-                  {{item.videolocalname }}
+                  {{item.videolocalname }}<br/>
                   <video width="320" height="240" controls>
-                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="video">
-                    <source src="http://nexgen.influxiq.com/assets/images/uploads/" type="video">
+                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/mp4">
+                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/*">
                   </video>
 
                 </div>
+
+
+
+                <!--<div *ngIf="item.filetype=='html'">-->
+                  <!--sanitizer.bypassSecurityTrustHtml({{item.htmleditorvalue}})-->
+                  <!--{{trusthtml(item.htmleditorvalue)}}-->
+                <!--</div>-->
+                <!--data-label="Group Description" [routerLink]="['/mastergroupedit',item._id]" [innerHTML]=-->
+
+              <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>
               </td>
               <td>{{item.yesorno}}</td>
-              <td>{{item.trainingcategory}}</td>
+              <td>{{gettrainingcategoryname(item.trainingcategory)}}</td>
               <td><span *ngIf="item.status==true">Active</span>
                 <span *ngIf="item.status==false">Inactive</span></td>
 

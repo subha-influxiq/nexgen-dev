@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { CookieService } from 'ngx-cookie-service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 
 @Component({
@@ -19,16 +20,40 @@ public traininglist:any=[];
 public message:any;
 modalref:BsModalRef;
 public selectedid:any;
+public tarainingcategorylist:any=[];
 public sourceval:any="traininglesson";
+public sourceval2:any="tranningcategory";
 
-  constructor(public _Commonservices:Commonservices,public router:Router,public http:HttpClient,public modalservices:BsModalService,public cookie:CookieService)
+  constructor(public _Commonservices:Commonservices,public router:Router,public http:HttpClient,public modalservices:BsModalService,public cookie:CookieService,public sanitizer: DomSanitizer)
   {
     this.serverurl=_Commonservices.nodesslurl;
+    this.sanitizer=sanitizer;
   }
 
   ngOnInit()
   {
     this.gettrainingsection();
+    this.gettraininglist()
+  }
+  gettraininglist()
+  {
+    const link = this._Commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+    this.http.post(link,{source:this.sourceval2})
+        .subscribe(res=>{
+          let result=res;
+          this.tarainingcategorylist=[];
+          this.tarainingcategorylist=result.res;
+          console.log(this.tarainingcategorylist);
+        })
+  }
+  gettrainingcategoryname(trainingcategory)
+  {
+    let i:any;
+    for(i in this.tarainingcategorylist){
+    if(this.tarainingcategorylist[i]._id==trainingcategory){
+      return this.tarainingcategorylist[i].categoryname;
+    }
+    }
   }
   gettrainingsection()
   {
@@ -38,11 +63,16 @@ public sourceval:any="traininglesson";
           let result = res;
           this.traininglist=[];
           this.traininglist=result.res;
-          console.log(this.traininglist);
+      //    console.log(this.traininglist);
+        //  console.log(this.traininglist[0].htmleditorvalue);
+          console.log(this.sanitizer.bypassSecurityTrustHtml(this.traininglist[0].htmleditorvalue));
         },
         error=>{
           console.log("Can not get");
         });
+  }
+  trusthtml(htmlval){
+    return this.sanitizer.bypassSecurityTrustHtml(htmlval);
   }
   deletetrainingsection(id:any,template:TemplateRef<any>)
   {
