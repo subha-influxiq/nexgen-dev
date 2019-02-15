@@ -101,37 +101,37 @@
                 <span class="error" *ngIf="!dataForm.controls['yesorno'].valid && dataForm.controls['yesorno'].touched ">Have to choose any option</span>
               </div>
 
-              <div class="radio_content">
-                <div class="row">
-                  <div class="col-md-2">
-                    <h5>question</h5>
-                  </div>
-                  <div class="col-md-10">
-                    <p>Provides Provides an ability to use Bootstrap's contextual panel classes an ability to use Bootstrap's contextual panel classes</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-2">
-                    <h5>answer</h5>
-                  </div>
-                  <div class="col-md-10">
-                    <p>Provides Provides an ability to use Bootstrap's contextual panel classes an ability to use Bootstrap's contextual panel classes</p>
-                  </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="button_section">
-                  <button>Edit</button>
-                  <button>delete</button>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-              <div class="form-group email_div">
-                <label > Answer Type :</label>
-                <input type="radio" value="yes" class="form-control radio_part">
-                <label>Multiple Choice</label>
-                <input type="radio" value="no" class="form-control radio_part">
-                <label>one Answer</label>
-              </div>
+              <!--<div class="radio_content">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-2">-->
+                    <!--<h5>question</h5>-->
+                  <!--</div>-->
+                  <!--<div class="col-md-10">-->
+                    <!--<p>Provides Provides an ability to use Bootstrap's contextual panel classes an ability to use Bootstrap's contextual panel classes</p>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-2">-->
+                    <!--<h5>answer</h5>-->
+                  <!--</div>-->
+                  <!--<div class="col-md-10">-->
+                    <!--<p>Provides Provides an ability to use Bootstrap's contextual panel classes an ability to use Bootstrap's contextual panel classes</p>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="clearfix"></div>-->
+                <!--<div class="button_section">-->
+                  <!--<button>Edit</button>-->
+                  <!--<button>delete</button>-->
+                <!--</div>-->
+                <!--<div class="clearfix"></div>-->
+              <!--</div>-->
+              <!--<div class="form-group email_div">-->
+                <!--<label > Answer Type :</label>-->
+                <!--<input type="radio" value="yes" class="form-control radio_part">-->
+                <!--<label>Multiple Choice</label>-->
+                <!--<input type="radio" value="no" class="form-control radio_part">-->
+                <!--<label>one Answer</label>-->
+              <!--</div>-->
 
 
 
@@ -146,7 +146,7 @@
 
               <div>
                 <label>Prerequisite Lesson :</label>
-                <select class="form-control">
+                <select class="form-control" [formControl]="dataForm.controls['prerequisite_lesson']">
                 <option value="" >Select Prerequisite Lesson</option>
                   <option *ngFor="let item of datalist1" value="{{item._id}}">{{item.title}}</option>
                 </select>

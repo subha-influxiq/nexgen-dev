@@ -51,6 +51,7 @@ export class TranningsectionComponent implements OnInit {
       audiolocalname:[''],
       videoservername:[''],
       videolocalname:[''],
+      prerequisite_lesson:[''],
     });
     this.uploadInput = new EventEmitter<UploadInput>();
     this.humanizeBytes = humanizeBytes;
@@ -263,7 +264,7 @@ export class TranningsectionComponent implements OnInit {
 
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'addtraininglesson?token='+this._cookieservice.get('jwttoken');
-      let objarr=['trainingcategory'];
+      let objarr=['trainingcategory','prerequisite_lesson'];
       this._http.post(link, {source:'traininglesson',data:this.dataForm.value,sourceobj:objarr})
           .subscribe(res => {
             let result:any ={};
@@ -272,6 +273,10 @@ export class TranningsectionComponent implements OnInit {
             console.log(result);
             if(result.status=='error'){
               this.errormg=result.msg;
+            }
+            else {
+                this.dataForm.reset();
+                 this.files=[];
             }
             // if(result.status=='success') {
             //   this.dataForm.reset();

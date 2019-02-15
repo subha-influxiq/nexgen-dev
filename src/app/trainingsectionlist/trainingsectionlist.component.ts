@@ -40,7 +40,8 @@ public sourceval2:any="tranningcategory";
     const link = this._Commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
     this.http.post(link,{source:this.sourceval2})
         .subscribe(res=>{
-          let result=res;
+          let result:any;
+          result=res;
           this.tarainingcategorylist=[];
           this.tarainingcategorylist=result.res;
           console.log(this.tarainingcategorylist);
@@ -60,7 +61,8 @@ public sourceval2:any="tranningcategory";
     const link = this._Commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
     this.http.post(link,{source:this.sourceval})
         .subscribe(res=> {
-          let result = res;
+          let result:any;
+           result = res;
           this.traininglist=[];
           this.traininglist=result.res;
       //    console.log(this.traininglist);
@@ -81,6 +83,7 @@ public sourceval2:any="tranningcategory";
   }
   delete(id:any,template:TemplateRef<any>)
   {
+
 
   }
 
