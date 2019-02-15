@@ -49,6 +49,7 @@ const appRoutes: Routes = [
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     { path:'trial', component: TrialsComponent},
     { path:'trainingsection', component: TranningsectionComponent},
+    { path:'trainingsection/:id', component: TranningsectionComponent},
     { path:'trainingsectionlist', component: TrainingsectionlistComponent}
 
 

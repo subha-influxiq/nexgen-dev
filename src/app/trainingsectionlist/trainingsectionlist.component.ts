@@ -81,10 +81,32 @@ public sourceval2:any="tranningcategory";
     this.modalref=this.modalservices.show(template);
     this.selectedid=id;
   }
-  delete(id:any,template:TemplateRef<any>)
+  delete(template:TemplateRef<any>)
   {
+        this.message='Delete Successfully!!';
+      const link = this._Commonservices.nodesslurl+'deletesingledata?token='+this.cookie.get('jwttoken');
+   //   this.http.post(link,{source:'trainingsection'})
+     // let data={id:this.selectedid,source:'trainingsection'}
 
+      this.modalref.hide();
+    //  this.http.post(link,data)
+      this.http.post(link,{source:'traininglesson',id:this.selectedid})
+          .subscribe(res => {
+              let result;
+              result = res;
+              if(result.status=='success'){
+                  setTimeout(()=> {
+                      this.modalref = this.modalservices.show(template);
+                      this.gettrainingsection();
+                  }, 2000);
+              }
+          }, error => {
+              console.log('Oooops!');
+          });
 
   }
+    nodelete(){
+      this.modalref.hide();
+    }
 
 }

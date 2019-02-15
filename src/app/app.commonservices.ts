@@ -29,7 +29,6 @@ export class Commonservices {
             {type0:'admin'},
             {type1:'regional_recruiter'},
             {type2:'rep'},
-            {type3:'tranning'},
         ];
         console.log(this.roletypes);
         this.sanitizer=sanitizer;
