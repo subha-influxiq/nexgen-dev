@@ -7,7 +7,29 @@
     <div class="training_leftpart">
 
       <accordion>
-        <accordion-group heading="Powerpoint Slide">
+        <accordion-group heading="{{item.title}} Lesson" *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)">
+          <div class="accordian_image">
+            <div class="content_background">
+
+          <div *ngIf="item.filetype=='html'" class="content_area">
+            <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
+
+          </div>
+            </div>
+            <!--<div>Done</div>-->
+          </div>
+          <a class="mark_done" *ngIf="getdoneclass(item._id)==false"  (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+         <!-- <div *ngIf="item.filetype=='file'">
+            <p>{{item.filelocalname}}</p>
+          </div>
+          <div *ngIf="item.filetype=='audio'">
+            <p>{{item.audiolocalname}}</p>
+          </div>
+          <div *ngIf="item.filetype=='video'">
+            <p>{{item.videolocalname}}</p>
+          </div>-->
+        </accordion-group>
+        <!-- <accordion-group heading="Powerpoint Slide">
           <carousel class="carousal_content">
 
             <slide>
@@ -23,7 +45,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide 1-->
+            &lt;!&ndash;End slide 1&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="second slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -51,7 +73,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide 2-->
+            &lt;!&ndash;End slide 2&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -62,9 +84,9 @@
                 <div class="carousal_inner">
                   <h3><span>Nex Gen Testing</span></h3>
 
-                  <!--<ul class="header_list">-->
-                    <!--<li> <h4 class="list_header">  What We Are Testing For? </h4></li>-->
-                  <!--</ul>-->
+                  &lt;!&ndash;<ul class="header_list">&ndash;&gt;
+                    &lt;!&ndash;<li> <h4 class="list_header">  What We Are Testing For? </h4></li>&ndash;&gt;
+                  &lt;!&ndash;</ul>&ndash;&gt;
 
                   <ul class="desease_list">
                     <li> 5 Infectious Disease Panels</li><br>
@@ -85,7 +107,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide 3-->
+            &lt;!&ndash;End slide 3&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -96,9 +118,9 @@
                 <div class="carousal_inner">
                   <h3><span>Nex Gen Testing</span></h3>
 
-                  <!--<ul class="header_list">-->
-                  <!--<li> <h4 class="list_header">  What We Are Testing For? </h4></li>-->
-                  <!--</ul>-->
+                  &lt;!&ndash;<ul class="header_list">&ndash;&gt;
+                  &lt;!&ndash;<li> <h4 class="list_header">  What We Are Testing For? </h4></li>&ndash;&gt;
+                  &lt;!&ndash;</ul>&ndash;&gt;
 
                   <ul class="desease_list">
                     <li>  Real Time Polymerase Chain Reaction
@@ -118,7 +140,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide 4-->
+            &lt;!&ndash;End slide 4&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -129,9 +151,9 @@
                 <div class="carousal_inner">
                   <h3><span>Nex Gen Testing</span></h3>
 
-                  <!--<ul class="header_list">-->
-                  <!--<li> <h4 class="list_header">  What We Are Testing For? </h4></li>-->
-                  <!--</ul>-->
+                  &lt;!&ndash;<ul class="header_list">&ndash;&gt;
+                  &lt;!&ndash;<li> <h4 class="list_header">  What We Are Testing For? </h4></li>&ndash;&gt;
+                  &lt;!&ndash;</ul>&ndash;&gt;
 
                   <ul class="desease_list">
                     <li>  Rapid Influenza Detection Testing (RIDT)
@@ -154,7 +176,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide  5-->
+            &lt;!&ndash;End slide  5&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -196,7 +218,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide  6-->
+            &lt;!&ndash;End slide  6&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -225,7 +247,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide  7-->
+            &lt;!&ndash;End slide  7&ndash;&gt;
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
               <div class="carousel-caption d-none d-md-block">
@@ -252,7 +274,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide  8-->
+            &lt;!&ndash;End slide  8&ndash;&gt;
 
             <slide>
               <img src="assets/images/trainin_lesson_bg.png" alt="third slide" style="display: block; width: 100%;">
@@ -268,7 +290,7 @@
                 </div>
               </div>
             </slide>
-            <!--End slide  9-->
+            &lt;!&ndash;End slide  9&ndash;&gt;
           </carousel>
 
         </accordion-group>
@@ -281,11 +303,11 @@
 
         <accordion-group heading="File Download">
           <p>File Download</p>
-        </accordion-group>
+        </accordion-group>-->
       </accordion>
     </div>
-    <div class="training_rightpart">
-      <!--top part-->
+   <!-- <div class="training_rightpart">
+      &lt;!&ndash;top part&ndash;&gt;
       <div class="inner_training_list">
         <h1>Incomplete Trainings</h1>
         <ul>
@@ -295,7 +317,7 @@
         </ul>
       </div>
 
-      <!--bottom part-->
+      &lt;!&ndash;bottom part&ndash;&gt;
       <div class="inner_training_list">
         <h1>Completed Trainings</h1>
         <ul>
@@ -305,7 +327,7 @@
 
         </ul>
       </div>
-    </div>
+    </div>-->
     <div class="clearfix"></div>
   </div>
 </div>

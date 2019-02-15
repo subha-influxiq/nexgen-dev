@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {  HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Injectable()
 export class Commonservices {
@@ -11,8 +12,12 @@ export class Commonservices {
     public base64encode: any;
     public nodesslurl: any;
     public roletypes: any;
+/*    public traininglessonflag: boolean = false;
+    public traininglessoncount: any = 0;
+    public lasttrainingid: any = 0;
+    public lessonarray: any = [];*/
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, public sanitizer: DomSanitizer) {
         this.url = 'https://nexgen.influxiq.com/php/index.php?q=';
         this.nodesslurl = 'https://nodessl.influxiq.com:6027/';
         this.uploadurl = 'http://nexgen.influxiq.com/php/index.php';
@@ -27,9 +32,40 @@ export class Commonservices {
             {type3:'tranning'},
         ];
         console.log(this.roletypes);
+        this.sanitizer=sanitizer;
     }
     shorten(str, maxLen, separator = '') {
         if (str.length <= maxLen) return str;
         return str.substr(0, maxLen);
     }
+    /*htmlshow(htmlarray){
+
+        if(this.traininglessonflag==false){
+            for(let i in htmlarray){
+                if(htmlarray[i].prerequisite_lesson==null && htmlarray[i].filetype=='html')
+                { this.traininglessonflag = true;
+                    this.traininglessoncount++;
+                    this.lasttrainingid=htmlarray[i]._id;
+                 //   return this.sanitizer.bypassSecurityTrustHtml(htmlarray[i].htmleditorvalue);
+                 //    return htmlarray[i].htmleditorvalue;
+                    return '<p>testing</p>';
+                    break;
+                }
+            }
+        }else{
+            for(let i in htmlarray){
+                if(htmlarray[i].prerequisite_lesson==this.lasttrainingid  && htmlarray[i].filetype=='html')
+                {
+                    this.traininglessoncount++;
+                    this.lasttrainingid=htmlarray[i]._id;
+                    //return this.sanitizer.bypassSecurityTrustHtml(htmlarray[i].htmleditorvalue);
+                    console.log('htmlarray[i].htmleditorvalue');
+                    console.log(htmlarray[i].htmleditorvalue);
+                    return '<p>testing</p>';
+                    //return htmlarray[i].htmleditorvalue;
+                    break;
+                }
+            }
+        }
+    }*/
 }

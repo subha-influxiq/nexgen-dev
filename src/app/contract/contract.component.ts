@@ -163,6 +163,7 @@ export class ContractComponent implements OnInit {
             result = res;
             console.log('result....');
             console.log(result);
+            this.router.navigate(['/reptrainingcenter'])
           });
     }
   }
