@@ -6,6 +6,7 @@
         <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
             <div class="box-body">
               <div class="form-group">
+                <input type="hidden" [formControl]="dataForm.controls['id']">
                 <label >Title :</label>
                 <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
                 <!--<input type="hidden" class="form-control" placeholder="Brand Name" [formControl]="dataForm.controls['id']">-->
@@ -28,7 +29,7 @@
                 </select>
                 <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any file type</span>
                 <div *ngIf="divforhtml">
-                  <ck-editor [formControl]="dataForm.controls['htmleditorvalue']"></ck-editor>
+                  <ck-editor [formControl]="dataForm.controls['htmleditorvalue']" [config]="editorconfig"></ck-editor>
                   <span class="error" *ngIf="!dataForm.controls['htmleditorvalue'].valid && dataForm.controls['htmleditorvalue'].touched ">This field is required</span>
                 </div>
 

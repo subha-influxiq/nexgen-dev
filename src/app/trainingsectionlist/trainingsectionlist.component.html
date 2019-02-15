@@ -61,7 +61,7 @@
                 <span *ngIf="item.status==false">Inactive</span></td>
 
               <td ><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
-                <span class="deletebtn" [routerLink]="['/trainingsection',item._id]">Edit</span>
+                <span class="deletebtn" [routerLink]="['/trainingsection' ,item._id]">Edit</span>
               </td>
             </tr>
             </tbody>
@@ -75,14 +75,12 @@
 <ng-template #template>
   <div class="modal-body">
     <h1>Do you want to delete?</h1>
-    <button type="button" class="btn btn-default" (click)="delete(customerid,templatecommon)" >Yes</button>
-    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    <button type="button" class="btn btn-default" (click)="delete(templatecommon)" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="nodelete()">No</button>
   </div>
 </ng-template>
-
 <ng-template #templatecommon>
   <div class="modal-body">
     <h1>{{message}}</h1>
-
   </div>
 </ng-template>
