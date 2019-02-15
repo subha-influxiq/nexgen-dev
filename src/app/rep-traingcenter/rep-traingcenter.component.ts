@@ -106,7 +106,7 @@ export class RepTraingcenterComponent implements OnInit {
             //this.getdatalist();
             // last lesson coompleted
             if(item._id == this.sorteddatalist[this.sorteddatalist.length-1]._id){
-              let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
+              let link = this._commonservice.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
               let data = {
                 id: this.cookeiservice.get('userid'),
                 reptraininglessonstep: 1
