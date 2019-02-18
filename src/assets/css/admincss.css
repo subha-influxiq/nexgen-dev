@@ -510,5 +510,53 @@
 .admin_training_center_manage_popup .content_header_block .box-footer button{text-transform: uppercase; background:#22bdff; border:none; padding: 5px 15px 4px 15px; color: #fff; font-family: 'RalewayBold' }
 .admin_training_center_manage_popup .content_header_block .box-footer button:nth-last-child(1){margin-left: 15px;  cursor: pointer; outline: none;}
 
+/*Signature DIV*/
+.brandmanagement_modal { border: 3px solid #00c0ff; border-radius: 2px; }
+.brandmanagement_modal .logo_wrapper{ text-align: center; }
+.brandmanagement_modal .digital_sign h3{ color: #00c0ff; text-transform: capitalize;font-family: 'RalewayMedium'; margin-top: 25px; }
+.brandmanagement_modal .message_success{  margin-top: 25px; }
+.brandmanagement_modal .message_success label{display: block;}
+.brandmanagement_modal .message_success input{ width: 100%; border: 1px solid #b5b5b5; font-family: RalewaySemiBold; font-size: 16px; padding: 7px; }
+.brandmanagement_modal .message_success input:focus
+.brandmanagement_modal .message_success p{ line-height: 25px; font-family: 'RalewayRegular'; font-size: 16px; }
+
+.brandmanagement_modal .first_sign_wrapper{ margin-top: 25px; }
+.brandmanagement_modal .first_sign_wrapper p{ background: url(../images/digital-sign-fieldseticon1.png) no-repeat left center;
+    padding-left: 65px;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #0baade;
+    font-family: 'RalewayRegular';
+    background-size: 12%;
+    margin-bottom: 0;
+}
+.brandmanagement_modal .third_sign_wrapper { margin-bottom: 25px; }
+.brandmanagement_modal .third_sign_wrapper p{
+    background: url(../images/digital-sign-fieldseticon2.png) no-repeat left -5px;
+    padding-left: 65px;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #0baade;
+    font-family: 'RalewayRegular';
+    background-size: 12%;
+    margin-bottom: 0;
+
+}
+.brandmanagement_modal .second_sign_wrapper{ border-left:2px solid #0baade; padding: 0 15px;}
+.brandmanagement_modal .second_sign_wrapper .sign_text input{ padding: 0; font-family: 'Notera'; font-size: 44px; border: none; }
+.brandmanagement_modal .second_sign_wrapper .sign_text input:focus{outline: none; box-shadow: none; }
+
+
+.brandmanagement_modal .button_div button {
+    background: #231a1a;
+    border: none;
+    padding: 5px 15px;
+    font-family: 'RalewayMedium';
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-top: 15px;
+}
+
 
 

@@ -15,9 +15,9 @@
           <div *ngIf="item.filetype=='html'" class="content_area">
             <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
           </div>
-         <!-- <div *ngIf="item.filetype=='file'">
+          <div *ngIf="item.filetype=='file'">
             <p>{{item.filelocalname}}</p>
-          </div>-->
+          </div>
               <div *ngIf="item.filetype=='audio'">
                 {{item.audiolocalname}}<br/>
                 <audio controls>

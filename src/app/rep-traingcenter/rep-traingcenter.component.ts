@@ -49,6 +49,17 @@ export class RepTraingcenterComponent implements OnInit {
           console.log('Oooops!');
         });
   }
+    dynamicSort(property) {
+        var sortOrder = 1;
+        if(property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a,b) {
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
+    }
 
   getdatalist() {
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
@@ -62,6 +73,11 @@ export class RepTraingcenterComponent implements OnInit {
             this.sorteddatalist = [];
             this.traininglessonflag=false;
             this.datalist = result.res;
+            console.log(this.datalist);
+              this.datalist.sort(this.dynamicSort("_id"));
+
+
+
             for(let i in this.datalist){
                 console.log("========================+=========================");
               //1st time

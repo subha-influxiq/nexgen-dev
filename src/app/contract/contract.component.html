@@ -618,7 +618,7 @@
 
 <app-footer></app-footer>
 
-<ng-template #signmodal>
+<!--<ng-template #signmodal>
   <div class="modal-body brandmanagement_modal">
     <div class="logo_wrapper">
       <img src="../../assets/images/logo.png">
@@ -626,6 +626,43 @@
     <div class="message_success">
       <input type="text" class="nex_right_inp" [(ngModel)]="signval">
       <button (click)="savesignval()">Save</button>
+    </div>
+
+  </div>
+</ng-template>-->
+
+<ng-template #signmodal>
+  <div class="modal-body brandmanagement_modal">
+    <div class="logo_wrapper">
+      <img src="../../assets/images/logo.png">
+    </div>
+
+    <div class="digital_sign">
+      <h3>Digital signature</h3>
+    </div>
+    <div class="message_success">
+      <label>Full Name</label>
+      <input type="text" class="nex_right_inp" [(ngModel)]="signval">
+
+
+      <div class="first_sign_wrapper">
+        <p>digitally signed by</p>
+      </div>
+      <div class="second_sign_wrapper">
+      <div class="sign_text">
+        <input type="text" [(ngModel)]="signval" readonly>
+      </div>
+      </div>
+      <div class="third_sign_wrapper">
+        <p>Date</p>
+      </div>
+
+      <p>
+        By selecting “agree”, the parties agree that this agreement may be electronically signed. The parties agree that the electronic signatures appearing on this agreement are the same as handwritten signatures for the purposes of validity, enforceability, and admissibility.
+      </p>
+      <div class="button_div">
+        <button (click)="savesignval()">Save</button>
+      </div>
     </div>
 
   </div>

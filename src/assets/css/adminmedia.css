@@ -12,13 +12,35 @@
 
 @media screen  and  (max-width: 1640px){
     .traing_innerwrapper { width: 94% }
-    .traing_innerwrapper .training_leftpart { width: 79%; }
+    .traing_innerwrapper .training_leftpart { width: 100%; }
     .traing_innerwrapper .training_rightpart { width: 19.5%; margin-left: 15px;}
+    .traing_innerwrapper .training_rightpart h1{ font-size: 21px; text-align: center; padding: 20px 5px; line-height: 23px!important; }
+    .traing_innerwrapper .training_rightpart ul li a { font-size: 18px; }
+    .training_leftpart .panel button{ font-size: 22px; }
 }
 @media screen  and  (max-width: 1480px){
     .rep_dashboard_wrapper1 {
         background-position: 25% center!important;
     }
+
+}
+@media screen  and  (max-width: 1440px){
+    .traing_innerwrapper .training_rightpart h1{ font-size: 20px; }
+
+    .training_leftpart .panel .card-body{ height: 100%; padding: 55px 0; }
+    .training_leftpart .accordian_image {
+        background: #fff;
+        width: 60%;
+        top: 0;
+        position: inherit;
+        left: 0;
+        transform: inherit;
+        padding: 40px;
+        padding-left: 0;
+        margin: 0 auto;
+    }
+
+    .mark_done {bottom: 4px;}
 
 }
 @media screen  and  (max-width: 1400px){
@@ -141,13 +163,27 @@
         width: 100%;
         float: none;
     }
+    .traing_innerwrapper .training_rightpart {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+
+    .training_leftpart .accordian_image {
+        background: #fff;
+        width: 80%;
+        top: 0;
+        position: inherit;
+        left: 0;
+        transform: inherit;
+        padding: 40px;
+        padding-left: 0;
+        margin: 0 auto;
+    }
+    .training_leftpart .panel .card-body{ height:100%; }
 }
-.traing_innerwrapper .training_rightpart {
-    width: 100%;
-    float: none;
-    margin: 0 auto;
-    margin-top: 15px;
-}
+
 
 @media screen and (max-width: 1040px) {
     .dashboard_block2 .col-md-4 {

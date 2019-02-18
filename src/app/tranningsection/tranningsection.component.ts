@@ -19,7 +19,7 @@ export class TranningsectionComponent implements OnInit {
   public last;
   public percentageis;
   public nameis;
-  public servernameis;
+  public servernameis=null;
   public lengthis=0;
   public divforhtml=false;
   public divforfile=false;
@@ -156,6 +156,7 @@ export class TranningsectionComponent implements OnInit {
     }
 
     onUploadOutput(output:UploadOutput):void {
+        this.servernameis = null;
         this.errormg='';
         this.uploaderInput.nativeElement.value = '';
         if (output.type === 'allAddedToQueue') {
@@ -169,6 +170,8 @@ export class TranningsectionComponent implements OnInit {
             if (output.file.response != "") {
                 this.files = [];
                 this.files.push(output.file);
+                console.log('this.files*********');
+                console.log(this.files);
                 this.lengthis = this.files.length;
                 this.percentageis = this.files[0].progress.data.percentage;
             }
@@ -177,6 +180,8 @@ export class TranningsectionComponent implements OnInit {
             this.files[index] = output.file;
             this.lengthis = this.files.length;
             this.percentageis = this.files[0].progress.data.percentage;
+            console.log('this.files==================');
+            console.log(this.files);
         } else if (output.type === 'removed') {
             this.files = this.files.filter((file:UploadFile) => file !== output.file);
         } else if (output.type === 'dragOver') {
@@ -186,8 +191,8 @@ export class TranningsectionComponent implements OnInit {
         } else if (output.type === 'drop') {
             this.dragOver = false;
         }
-        // console.log('files');
-        // console.log(this.files);
+         console.log('files-');
+         console.log(this.files);
         if(this.files.length>0 && this.files[0].name!=null && this.files[0].response != null){
             this.lengthis = this.files.length;
             this.percentageis = this.files[0].progress.data.percentage;
