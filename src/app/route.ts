@@ -25,7 +25,9 @@ import {RepTraingcenterComponent} from "./rep-traingcenter/rep-traingcenter.comp
 import {TrialsComponent} from "./trials/trials.component";
 import {TranningsectionComponent} from "./tranningsection/tranningsection.component";
 import {TrainingsectionlistComponent} from "./trainingsectionlist/trainingsectionlist.component";
-
+import {FrontendheaderComponent} from "./frontendheader/frontendheader.component";
+import {FrontendfooterComponent} from "./frontendfooter/frontendfooter.component";
+import {FrontendhomeComponent} from "./frontendhome/frontendhome.component";
 
 
 
@@ -40,7 +42,7 @@ const appRoutes: Routes = [
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
     { path: 'signup/:id', component: SignupComponent},
-    { path: '', component: HomeComponent},
+   /* { path: '', component: HomeComponent},*/
     { path: 'contract', component: ContractComponent},
     {path: 'regionaldashboard', component: RegionalRecruiterComponent},
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
@@ -50,8 +52,10 @@ const appRoutes: Routes = [
     { path:'trial', component: TrialsComponent},
     { path:'trainingsection', component: TranningsectionComponent},
     { path:'trainingsection/:id', component: TranningsectionComponent},
-    { path:'trainingsectionlist', component: TrainingsectionlistComponent}
-
+    { path:'trainingsectionlist', component: TrainingsectionlistComponent},
+    { path:'frontendheader', component: FrontendheaderComponent},
+    { path:'frontendfooter', component: FrontendfooterComponent},
+    { path:'', component: FrontendhomeComponent},
 
 ];
 

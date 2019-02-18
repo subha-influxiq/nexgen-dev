@@ -363,13 +363,7 @@
     padding: 3px 5px 5px 5px; margin-bottom: 0; }
 
 .traing_innerwrapper { width: 1610px; margin: 0 auto; margin-top: 15px;}
-.traing_innerwrapper .training_leftpart{ width: 1200px; float: left;}
-.traing_innerwrapper .training_leftpart { width: 1200px; float: left;}
-
-
-
-
-
+.traing_innerwrapper .training_leftpart{ width: 1610px; float: none;}
 
 
 
@@ -424,7 +418,7 @@
 .training_leftpart .carousel .carousel-control-next, .carousel-control-prev{ width: 15%!important; }
 .training_leftpart .carousel .carousel-indicators{ display: none; }
 
-.carousel-caption {
+.training_leftpart  .carousel-caption {
     position: absolute;
     right: 15%;
     bottom: 20px;
@@ -442,7 +436,7 @@
     box-shadow: 0px 6px 9px -1px #616161;
 }
 .training_leftpart .panel{ background:#22bdff; }
-.training_leftpart .panel button{ color: #fff; text-decoration: none; font-family: 'RalewayMedium'; font-size: 24px; text-transform: uppercase; }
+.training_leftpart .panel button{ color: #fff; text-decoration: none; font-family: 'OpenSansSemiBold'; font-size: 24px; text-transform: uppercase; }
 .training_leftpart .panel  .card-body{ background: url("../images/trainin_lesson_bg.png") no-repeat; background-size: cover;  position: relative; height: 70vh; padding: 20px 0; }
 
 .training_leftpart  .carousel-control-prev-icon {
@@ -487,7 +481,14 @@
     cursor: pointer;
 }
 /*admin_training_center_manage_popup*/
-.admin_training_center_manage_popup {background: #efefef; width: 700px; margin: 0 auto; padding: 15px; border: 2px solid #22bdff; border-radius: 5px; }
+.admin_training_center_manage_popup {background: #efefef; width: 900px; margin: 0 auto; padding: 15px; border: 3px solid #22bdff; border-radius: 5px; position: relative; }
+.admin_training_center_manage_popup .cancel_icon{ background: url(../images/close_iconbg.png) no-repeat; position: absolute;  right: 0;
+    top: 0;
+    width: 50px;
+    height: 65px;
+
+}
+.admin_training_center_manage_popup .cancel_icon button { font-family: 'RalewayBold'; font-size: 20px; color: #fff; border:none; color: #efefef; width: 30px; height: 30px; border-radius: 50%; }
 .admin_training_center_manage_popup .content_header_block h3{ text-align: center; text-transform: uppercase; font-family: 'RalewayBold'; font-size: 40px; background: url("../images/signup-underline.jpg") no-repeat center bottom; padding-bottom: 10px; }
 .admin_training_center_manage_popup .content_header_block .button_upload{ display: inline-flex; margin: 15px 0 0 0; }
 .admin_training_center_manage_popup .content_header_block .button_upload span{font-family: "RalewaySemiBold"; font-size: 20px; text-transform: capitalize; }
@@ -495,9 +496,14 @@
 
 .admin_training_center_manage_popup .content_header_block .form-group .form-control{ box-shadow: none; }
 
-.admin_training_center_manage_popup .content_header_block .email_div .radio_part{ display: inline ; width: auto; vertical-align: middle;
-    margin-left: 24px;  }
+.admin_training_center_manage_popup .content_header_block .email_div .radio_part{ display: inline ; width: auto; vertical-align: middle; margin-left: 24px;  }
 .admin_training_center_manage_popup .content_header_block  .radio_content{ background: #e0dfdf; padding: 10px;}
+.admin_training_center_manage_popup .content_header_block  .radio_content .col-md-2  { padding-right: 0;}
+.admin_training_center_manage_popup .content_header_block  .radio_content .col-md-10  { padding-left: 5px;}
+.admin_training_center_manage_popup .content_header_block  .radio_content .col-md-2 h5{ color: #22bdff; text-transform: capitalize; }
+
+
+
 .admin_training_center_manage_popup .content_header_block .button_section{ float: right;}
 .admin_training_center_manage_popup .content_header_block .button_section button{ cursor: pointer; font-family: 'RalewayMedium'; color: #fff; background: #000; border: none; padding: 4px 15px 3px 15px; text-transform: uppercase; }
 .admin_training_center_manage_popup .content_header_block .button_section button:nth-last-child(1){ margin-left: 10px;}

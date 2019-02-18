@@ -243,7 +243,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <h3>Thomas Willis d/b/a NexGenTesting</h3>
-                      <p>  <span (click)="sign1(signmodal,1)">By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field can not be blank</span> </p>
+                      <p>  <span >By</span><input (click)="sign1(signmodal,1)" type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field can not be blank</span> </p>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname1']"><br> </p>
                       <p>Title<input type="text" readonly [formControl]="dataForm.controls['title1']"><br> </p>
 
@@ -252,7 +252,7 @@
 
                       <h3>Name</h3>
                       <p>
-                        <span (click)="sign1(signmodal,2)">By</span><input type="text" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p><span class="errortext" *ngIf="!dataForm.controls['by2'].valid && dataForm.controls['by2'].touched">This field can not be blank</span>
+                        <span >By</span><input type="text" (click)="sign1(signmodal,2)" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p><span class="errortext" *ngIf="!dataForm.controls['by2'].valid && dataForm.controls['by2'].touched">This field can not be blank</span>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname2']"></p>
                       <p> Title<input type="text" readonly [formControl]="dataForm.controls['title2']"></p>
 
@@ -478,9 +478,9 @@
         </p>
         <div class="row signature_wrapper">
           <div class="col-md-6">
-            <input class="digital_signature" type="text" readonly [formControl]="dataForm.controls['consultant1']"><br>
+            <input class="digital_signature" type="text" readonly [formControl]="dataForm.controls['consultant1']" (click)="sign1(signmodal,5)"><br>
               <span class="errortext" *ngIf="!dataForm.controls['consultant1'].valid && dataForm.controls['consultant1'].touched">This field can not be blank</span>
-              <span (click)="sign1(signmodal,5)">SIGNATURE OF CONSULTANT</span>
+              <span >SIGNATURE OF CONSULTANT</span>
           </div>
           <div class="col-md-6">
             <input type="text" readonly [formControl]="dataForm.controls['date2']"><br>
@@ -587,7 +587,7 @@
              <!-- By: <input class="by" type="text" [formControl]="dataForm1.controls['by3']"><br>-->
 
 
-                <span (click)="sign1(signmodal,3)">By</span><input type="text" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field can not be blank</span>
+                <span >By</span><input type="text" (click)="sign1(signmodal,3)" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field can not be blank</span>
 
 
 
@@ -600,7 +600,7 @@
             <div class="bottom_form_section">
               <input type="text" class="nex_right_inp" [formControl]="dataForm.controls['blank1']"><br>
 
-                <span (click)="sign1(signmodal,4)">By</span> <input type="text" readonly [formControl]="dataForm.controls['by4']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by4'].valid && dataForm.controls['by4'].touched">This field can not be blank</span>
+                <span >By</span> <input type="text" readonly (click)="sign1(signmodal,4)" [formControl]="dataForm.controls['by4']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by4'].valid && dataForm.controls['by4'].touched">This field can not be blank</span>
               Print Name:<input class="print" type="text" readonly [formControl]="dataForm.controls['printname5']"><br>
               Title:<input type="text" class="title" readonly [formControl]="dataForm.controls['title4']"><br>
               Date: <input type="text" class="date" readonly [formControl]="dataForm.controls['date4']"><br>

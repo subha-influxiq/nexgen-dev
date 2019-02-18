@@ -31,6 +31,9 @@ import { UseraccountsettingComponent } from './useraccountsetting/useraccountset
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
 import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
 import { TranningsectionComponent } from './tranningsection/tranningsection.component';
+import { FrontendfooterComponent } from './frontendfooter/frontendfooter.component';
+import { FrontendheaderComponent } from './frontendheader/frontendheader.component';
+import { FrontendhomeComponent } from './frontendhome/frontendhome.component';
 
 
 import { TrialsComponent } from './trials/trials.component';
@@ -66,6 +69,9 @@ import { TrainingsectionlistComponent } from './trainingsectionlist/trainingsect
     TrialsComponent,
     TranningsectionComponent,
     TrainingsectionlistComponent,
+    FrontendfooterComponent,
+    FrontendheaderComponent,
+    FrontendhomeComponent
 
 
   ],
