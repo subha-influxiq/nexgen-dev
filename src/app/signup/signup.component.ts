@@ -53,6 +53,7 @@ export class SignupComponent implements OnInit {
         city: ['',Validators.required],
         state: ['',Validators.required],
         zip: ['',Validators.required],
+        regionalrecruiter_id: [''],
       });
     });
   }
@@ -115,6 +116,7 @@ export class SignupComponent implements OnInit {
               address2: [''],
               city: [this.datalist[0].city,Validators.required],
               state: [this.datalist[0].state,Validators.required],
+              regionalrecruiter_id: [this.datalist[0].regionalrecruiter_id],
               zip: ['',Validators.required]
             });
             }
@@ -133,6 +135,7 @@ export class SignupComponent implements OnInit {
     }
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
+      let objarr=['regionalrecruiter_id'];
       let data = {
         id: this.dataForm.value['id'],
         firstname: this.dataForm.value['firstname'],
@@ -146,9 +149,10 @@ export class SignupComponent implements OnInit {
         city: this.dataForm.value['city'],
         state: this.dataForm.value['state'],
         zip: this.dataForm.value['zip'],
+        regionalrecruiter_id: this.dataForm.value['regionalrecruiter_id'],
         signup_step2:1,
       };
-      this._http.post(link, {data:data})
+      this._http.post(link, {data:data,sourceobj:objarr})
           .subscribe(res => {
             let result:any ={};
             result = res;
@@ -165,5 +169,22 @@ export class SignupComponent implements OnInit {
             console.log('Oooops!');
           });
     }
+  }
+  addregional_recruiter(){
+    const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{source:'statewise_regional_rep_view',condition:{state: this.dataForm.value['state']}})
+        .subscribe(res => {
+          let result;
+          result = res;
+          if(result.status=='error'){
+          }else{
+            console.log(result.res);
+            if(result.res.length>0){
+              this.dataForm.patchValue({regionalrecruiter_id : result.res[0]._id});
+            }
+          }
+        }, error => {
+          console.log('Oooops!');
+        });
   }
 }

@@ -27,29 +27,21 @@
           </thead>
           <tbody>
 
-          <tr>
+          <!--<tr>
             <td data-title="Date Added" scope="row">01/15/2019</td>
             <td data-title="User ID">001</td>
             <td data-title="Name">Jane Doe</td>
             <td data-title="Initial Training">100%</td>
             <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
+          </tr>-->
+          <tr *ngFor="let item of repdetails_under_this_regional">
+            <td data-title="Date Added" scope="row">{{_commonservice.showdate(item.created_at)}}</td>
+            <td data-title="User ID">{{item.unique_id}}</td>
+            <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
             <td data-title="Initial Training">100%</td>
             <td data-title="Additional Training">100%</td>
           </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
+         <!-- <tr>
             <td data-title="Date Added" scope="row">01/15/2019</td>
             <td data-title="User ID">001</td>
             <td data-title="Name">Jane Doe</td>
@@ -64,6 +56,14 @@
             <td data-title="Initial Training">100%</td>
             <td data-title="Additional Training">100%</td>
           </tr>
+
+          <tr>
+            <td data-title="Date Added" scope="row">01/15/2019</td>
+            <td data-title="User ID">001</td>
+            <td data-title="Name">Jane Doe</td>
+            <td data-title="Initial Training">100%</td>
+            <td data-title="Additional Training">100%</td>
+          </tr>-->
           </tbody>
         </table>
 

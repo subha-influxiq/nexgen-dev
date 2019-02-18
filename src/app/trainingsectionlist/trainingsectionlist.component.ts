@@ -44,7 +44,7 @@ public sourceval2:any="tranningcategory";
           result=res;
           this.tarainingcategorylist=[];
           this.tarainingcategorylist=result.res;
-          console.log(this.tarainingcategorylist);
+        //  console.log(this.tarainingcategorylist);
         })
   }
   gettrainingcategoryname(trainingcategory)
@@ -59,7 +59,7 @@ public sourceval2:any="tranningcategory";
   gettrainingsection()
   {
     const link = this._Commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-    this.http.post(link,{source:this.sourceval})
+    this.http.post(link,{source:'traininglesson'})
         .subscribe(res=> {
           let result:any;
            result = res;
@@ -67,7 +67,7 @@ public sourceval2:any="tranningcategory";
           this.traininglist=result.res;
       //    console.log(this.traininglist);
         //  console.log(this.traininglist[0].htmleditorvalue);
-          console.log(this.sanitizer.bypassSecurityTrustHtml(this.traininglist[0].htmleditorvalue));
+         // console.log(this.sanitizer.bypassSecurityTrustHtml(this.traininglist[0].htmleditorvalue));
         },
         error=>{
           console.log("Can not get");

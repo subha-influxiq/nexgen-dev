@@ -28,7 +28,7 @@ export class RepTraingcenterComponent implements OnInit {
     this._commonservice=_commonservice;
     this.getmarkasdonelist();
 
-    console.log(this.cookeiservice.get('userid'));
+   // console.log(this.cookeiservice.get('userid'));
   }
   ngOnInit() {
   }
@@ -52,7 +52,7 @@ export class RepTraingcenterComponent implements OnInit {
 
   getdatalist() {
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'traininglesson'})
+    this._http.post(link,{source:'traininglesson',condition:{trainingcategory_object:'5c664284065aaf332831948c'}})
         .subscribe(res => {
           let result:any;
           result = res;
@@ -63,6 +63,7 @@ export class RepTraingcenterComponent implements OnInit {
             this.traininglessonflag=false;
             this.datalist = result.res;
             for(let i in this.datalist){
+                console.log("========================+=========================");
               //1st time
               if(this.datalist[i].prerequisite_lesson==null && this.traininglessonflag==false){
                 this.sorteddatalist.push(this.datalist[i]);
@@ -70,15 +71,22 @@ export class RepTraingcenterComponent implements OnInit {
               }
               //2nd time
               if(this.datalist[i].prerequisite_lesson!=null && this.traininglessonflag==true){
-                for(let k in this.datalist){
-                  if(this.sorteddatalist[this.sorteddatalist.length-1]._id==this.datalist[k].prerequisite_lesson){
-                    this.sorteddatalist.push(this.datalist[k]);
+                for(let h in this.datalist){
+                     console.log("================");
+                   // console.log(h);
+                   //  console.log(this.sorteddatalist[this.sorteddatalist.length-1]._id);
+                   //  console.log(this.datalist[h].prerequisite_lesson);
+                   // console.log(this.sorteddatalist[this.sorteddatalist.length-1]);
+
+                  if(this.sorteddatalist[this.sorteddatalist.length-1]._id==this.datalist[h].prerequisite_lesson){
+                      //console.log(this.datalist[k]);
+                    this.sorteddatalist.push(this.datalist[h]);
                   }
                 }
               }
             }
-           // console.log('this.sorteddatalist');
-           // console.log(this.sorteddatalist);
+           console.log('this.sorteddatalist');
+           console.log(this.sorteddatalist);
           }
         }, error => {
           console.log('Oooops!');
@@ -117,7 +125,7 @@ export class RepTraingcenterComponent implements OnInit {
                     result = res;
                   //  console.log('result....');
                    // console.log(result);
-                    this.router.navigate(['/dashboard'])
+                    this.router.navigate(['/repdashboard'])
                   });
             }
           }
@@ -130,15 +138,15 @@ export class RepTraingcenterComponent implements OnInit {
     //return 'show';
     for(let i in this.markasdonedatalist){
       if(this.markasdonedatalist[i].traininglesson==id){
-        console.log('??');
+       // console.log('??');
         return true;
       }
     }
     return false;
   }
   disableaccor(item,i1){
-    console.log('this.sorteddatalist');
-    console.log(this.sorteddatalist);
+  //  console.log('this.sorteddatalist');
+    //console.log(this.sorteddatalist);
 
     if(i1==0) {
       this.sorteddatalist[i1+1].openaccordian=true;
@@ -147,16 +155,16 @@ export class RepTraingcenterComponent implements OnInit {
     else{
       for(let i in this.markasdonedatalist){
         if(this.markasdonedatalist[i].traininglesson==item._id){
-          console.log('--===--');
+        //  console.log('--===--');
           this.sorteddatalist[i1+1].openaccordian=true;
           this.sorteddatalist[i1].markasdone=true;
-          console.log('this.sorteddatalist');
-          console.log(this.sorteddatalist);
+          //console.log('this.sorteddatalist');
+          //console.log(this.sorteddatalist);
           return false;
         }
         if(this.markasdonedatalist[i].traininglesson!=item._id && item.openaccordian!=null && item.openaccordian==true){
           //this.sorteddatalist[i+1].openaccordian=false;
-          console.log('-----');
+         // console.log('-----');
           return false;
         }
       }

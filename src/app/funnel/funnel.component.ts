@@ -21,6 +21,7 @@ export class FunnelComponent implements OnInit {
   public kp;
   public serverurl;
   public states;
+  public regionalrecruiter_id;
   public errormg='';
   public message=null;
   modalRef: BsModalRef;
@@ -49,6 +50,7 @@ export class FunnelComponent implements OnInit {
       phoneno: ['',Validators.required],
       city: ['',Validators.required],
       state: ['',Validators.required],
+    //  regionalrecruiter_id: ['']
     });
     this.dataForm1 = this.kp.group({
       email: ['', Validators.compose([Validators.required, FunnelComponent.customValidator])],
@@ -74,6 +76,7 @@ export class FunnelComponent implements OnInit {
       workinmedicalfield: ['',Validators.required],
       pcrtesting: ['',Validators.required],
       companyname: ['',Validators.required],
+   //   regionalrecruiter_id: ['']
     });
   }
 
@@ -107,9 +110,11 @@ export class FunnelComponent implements OnInit {
         phoneno: this.dataForm.value['phoneno'],
         city: this.dataForm.value['city'],
         state: this.dataForm.value['state'],
+        regionalrecruiter_id: this.regionalrecruiter_id,
         lead_step:1,
         type: this._commonservices.roletypes[2].type2
       };
+    //  this.dataForm.patchValue({regionalrecruiter_id : this.regionalrecruiter_id});
       this._http.post(link, data)
           .subscribe(res => {
             let result:any ={};
@@ -155,7 +160,8 @@ export class FunnelComponent implements OnInit {
                 noofdirectaccess: ['',Validators.required],
                 workinmedicalfield: ['',Validators.required],
                 pcrtesting: ['',Validators.required],
-                companyname: ['',Validators.required]
+                companyname: ['',Validators.required],
+            //    regionalrecruiter_id: ['']
               });
             }
           }, error => {
@@ -183,6 +189,7 @@ export class FunnelComponent implements OnInit {
 
 
     if (this.dataForm1.valid) {
+      let objarr=['regionalrecruiter_id'];
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
         id: this.dataForm1.value['id'],
@@ -208,9 +215,10 @@ export class FunnelComponent implements OnInit {
         workinmedicalfield:  this.dataForm1.value['workinmedicalfield'],
         pcrtesting:  this.dataForm1.value['pcrtesting'],
         companyname:  this.dataForm1.value['companyname'],
+        regionalrecruiter_id: this.regionalrecruiter_id,
         questionnaire_step:1,
       };
-      this._http.post(link, {data:data})
+      this._http.post(link, {data:data,sourceobj:objarr})
           .subscribe(res => {
             let result:any ={};
             result = res;
@@ -237,5 +245,26 @@ export class FunnelComponent implements OnInit {
             console.log('Oooops!');
           });
     }
+  }
+  addregional_recruiter(val){
+    this.regionalrecruiter_id=null;
+    const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
+    let con;
+    if(val==0) con={state: this.dataForm.value['state']}
+    if(val==1) con={state: this.dataForm1.value['state']}
+    this._http.post(link,{source:'statewise_regional_rep_view',condition:con})
+        .subscribe(res => {
+          let result;
+          result = res;
+          if(result.status=='error'){
+          }else{
+            console.log(result.res);
+            if(result.res.length>0){
+              this.regionalrecruiter_id=result.res[0]._id;
+            }
+          }
+        }, error => {
+          console.log('Oooops!');
+        });
   }
 }

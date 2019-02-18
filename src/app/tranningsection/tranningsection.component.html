@@ -6,7 +6,7 @@
         <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
             <div class="box-body">
               <div class="form-group">
-                <input type="hidden" [formControl]="dataForm.controls['id']">
+               <!-- <input type="hidden" [formControl]="dataForm.controls['id']">-->
                 <label >Title :</label>
                 <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
                 <!--<input type="hidden" class="form-control" placeholder="Brand Name" [formControl]="dataForm.controls['id']">-->
@@ -49,9 +49,17 @@
                   <div class="button_upload">
                     <span>upload file: </span> <button (click)="fileInput1.click()" type="button">upload</button>
                   </div>
-                  <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  <div *ngIf="lengthis>0">
+                    <span *ngIf="percentageis==100 && errormg==''">
+                      <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
+                      <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
+                      <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
+                      <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
+                      <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
+                      <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
+                      <label> File Name: {{nameis}}</label>
+                    </span>
+                    <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
                   </div>
                   <span class="error" *ngIf="!dataForm.controls['fileservername'].valid && dataForm.controls['fileservername'].touched ">Upload a file!</span>
                 </div>
@@ -66,10 +74,20 @@
                     <span>upload audio: </span> <button (click)="fileInput1.click()" type="button">upload</button>
                   </div>
 
-                  <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  <div *ngIf="lengthis>0">
+                    <span *ngIf="percentageis==100 && errormg==''"><label> File Name: {{nameis}}</label></span>
+                    <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
+                    <audio controls *ngIf="percentageis==100 && errormg==''">
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{servernameis}}" type="audio/mp3">
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{servernameis}}" type="audio/wav">
+                    </audio>
                   </div>
+                  <!--<div *ngIf="this.id!=null"> 
+                    <audio controls>
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{dataForm.value['audioservername']}}" type="audio/mp3">
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{dataForm.value['audioservername']}}" type="audio/wav">
+                    </audio>
+                  </div>-->
                   <span class="error" *ngIf="!dataForm.controls['audioservername'].valid && dataForm.controls['audioservername'].touched ">Upload an audio!</span>
                 </div>
 
@@ -82,10 +100,22 @@
                   <div class="button_upload">
                     <span>upload video: </span> <button (click)="fileInput1.click()" type="button">upload</button>
                   </div>
-                  <div *ngIf="files?.length>0">
-                    <span *ngIf="files[0].progress.data.percentage==100 && errormg==''"><label> File Name: {{files[0].name}}</label></span>
-                    <label *ngIf="files[0].progress.data.percentage!=100 && errormg==''">Upload Percentage:{{files[0].progress.data.percentage}}%</label>
+                  <div *ngIf="lengthis>0">
+                    <span *ngIf="percentageis==100 && errormg==''"><label> File Name: {{nameis}}</label></span>
+                    <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
+
+                    <video width="320" height="240" controls *ngIf="percentageis==100 && errormg==''">
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{servernameis}}" type="video/mp4">
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{servernameis}}" type="video/*">
+                    </video>
+
                   </div>
+                  <!--<div *ngIf="this.id!=null"> 
+                    <video width="320" height="240" controls>
+                    <source src="http://nexgen.influxiq.com/assets/uploads/{{dataForm.value['videoservername']}}" type="video/mp4"> 
+                      <source src="http://nexgen.influxiq.com/assets/uploads/{{dataForm.value['videoservername']}}" type="video/*"> 
+                    </video> 
+                  </div>-->
                   <span class="error" *ngIf="!dataForm.controls['videoservername'].valid && dataForm.controls['videoservername'].touched ">Upload a video!</span>
                 </div>
                   <span *ngIf="errormg">{{errormg}}</span>

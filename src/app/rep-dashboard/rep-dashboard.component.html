@@ -10,11 +10,11 @@
 
 
 <div class="rep_dashboard_wrapper2">
-  <div class="inner_content">
+  <div class="inner_content" *ngIf="repdetails?.length>0">
     <h2>Regional Recruiter </h2>
-    <h4> Your Regional Recruiter is:  <span> Lorem Ipsum </span></h4>
-    <h4>Email Address: <span> loremipsum@mail.com </span></h4>
-    <h4>Contact Number:<span> +00 000-000-000 </span></h4>
+    <h4> Your Regional Recruiter is:  <span> {{repdetails[0].recdetails[0].firstname}} {{repdetails[0].recdetails[0].lastname}}</span></h4>
+    <h4>Email Address: <span> {{repdetails[0].recdetails[0].email}} </span></h4>
+    <h4>Contact Number:<span> {{repdetails[0].recdetails[0].phoneno}} </span></h4>
 
     <button class="appointment_booking_button">Book Appointment Now</button>
   </div>

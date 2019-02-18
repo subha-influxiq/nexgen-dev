@@ -11,23 +11,34 @@
           <div class="accordian_image">
             <div class="content_background">
 
+
           <div *ngIf="item.filetype=='html'" class="content_area">
             <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
-
           </div>
+         <!-- <div *ngIf="item.filetype=='file'">
+            <p>{{item.filelocalname}}</p>
+          </div>-->
+              <div *ngIf="item.filetype=='audio'">
+                {{item.audiolocalname}}<br/>
+                <audio controls>
+                  <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/mp3">
+                  <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/wav">
+                </audio>
+              </div>
+              <div *ngIf="item.filetype=='video'">
+                {{item.videolocalname }}<br/>
+                <video width="320" height="240" controls>
+                  <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/mp4">
+                  <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/*">
+                </video>
+              </div>
+
+
+
             </div>
             <!--<div>Done</div>-->
           </div>
           <a class="mark_done" *ngIf="getdoneclass(item._id)==false"  (click)="markasdonetraninglesson(item,i)">Mark as done</a>
-         <!-- <div *ngIf="item.filetype=='file'">
-            <p>{{item.filelocalname}}</p>
-          </div>
-          <div *ngIf="item.filetype=='audio'">
-            <p>{{item.audiolocalname}}</p>
-          </div>
-          <div *ngIf="item.filetype=='video'">
-            <p>{{item.videolocalname}}</p>
-          </div>-->
         </accordion-group>
         <!-- <accordion-group heading="Powerpoint Slide">
           <carousel class="carousal_content">

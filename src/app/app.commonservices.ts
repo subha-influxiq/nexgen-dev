@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {  HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+declare var moment:any;
 
 @Injectable()
 export class Commonservices {
@@ -37,6 +38,7 @@ export class Commonservices {
         if (str.length <= maxLen) return str;
         return str.substr(0, maxLen);
     }
+    
     /*htmlshow(htmlarray){
 
         if(this.traininglessonflag==false){
@@ -67,4 +69,8 @@ export class Commonservices {
             }
         }
     }*/
+    showdate(dt){
+     //   return moment(dt).format("Do, MMM, YYYY");
+        return moment(dt).format("MM-DD-YYYY");
+    }
 }

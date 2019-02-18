@@ -72,7 +72,7 @@
        </div>
        <div class="form-group col-md-4">
         <label for="inputState">State</label>
-           <select id="inputState"  class="form-control" [formControl]="dataForm.controls['state']">
+           <select id="inputState"  class="form-control" [formControl]="dataForm.controls['state']" (change)="addregional_recruiter()">
                <option value="">Choose State</option>
                <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
            </select>

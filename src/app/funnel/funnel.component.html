@@ -33,6 +33,7 @@
 
       <div class="alanding_formdiv">
         <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+          <!--<input type="hidden" class="form-control" [formControl]="dataForm.controls['regionalrecruiter_id']">-->
 
           <div class="form-group"><input type="text" class="form-control" placeholder="First Name*" [formControl]="dataForm.controls['firstname']">
             <span class="errortext" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name field can not be blank</span>
@@ -51,7 +52,7 @@
 
           </div>
           <div class="form-group">
-            <select class="form-control" [formControl]="dataForm.controls['state']">
+            <select class="form-control" [formControl]="dataForm.controls['state']" (change)="addregional_recruiter(0)">
               <option value="">Choose State</option>
               <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
             </select>
@@ -206,7 +207,7 @@
             <span class="errortext" *ngIf="!dataForm1.controls['city'].valid && dataForm1.controls['city'].touched">City field can not be blank</span>
           </div>
           <div class="form-group">
-            <select [formControl]="dataForm1.controls['state']" class="form-control">
+            <select [formControl]="dataForm1.controls['state']" class="form-control" (change)="addregional_recruiter(1)">
               <option value="">Choose State</option>
               <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
             </select>
