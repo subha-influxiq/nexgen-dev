@@ -27,52 +27,23 @@
           </thead>
           <tbody>
 
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
+          <tr *ngFor="let item of repdetails | slice:0:5; let i=index">
+                <td data-title="Date Added" scope="row">{{commonservices.showdate(item.created_at)}}</td>
+                <td data-title="User ID">{{item.unique_id}}</td>
+                <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
+                <td data-title="Initial Training">0%</td>
+                <td data-title="Additional Training">0%</td>
           </tr>
 
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
           </tbody>
         </table>
 
-        <button>View all reps</button>
+        <button [routerLink]="['/rep']">View all reps</button>
       </div>
     </div>
     <div class="col-md-4 ">
       <div class="reps_inner_block2" >
-        <h3>Recent Reps Added</h3>
+        <h3>LEGAL DOCUMENT</h3>
 
         <table class="table table-responsive" >
           <thead>
@@ -133,7 +104,7 @@
     </div>
     <div class="col-md-4">
       <div class="reps_inner_block3" >
-        <h3>Recent Reps Added</h3>
+        <h3>TRAINING CENTER</h3>
 
         <table class="table table-responsive" >
           <thead>

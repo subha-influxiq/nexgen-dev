@@ -13,6 +13,7 @@ export class Commonservices {
     public base64encode: any;
     public nodesslurl: any;
     public roletypes: any;
+    public uploadsslurl: any;
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
@@ -20,12 +21,20 @@ export class Commonservices {
 
     constructor(private http: HttpClient, public sanitizer: DomSanitizer) {
         this.url = 'https://nexgen.influxiq.com/php/index.php?q=';
-        this.nodesslurl = 'https://nodessl.influxiq.com:6027/';
+      //  this.nodesslurl = 'https://nodessl.influxiq.com:6027/';
         this.uploadurl = 'http://nexgen.influxiq.com/php/index.php';
         this.filedeleteurl = 'http://nexgen.influxiq.com/php/scrappage.php';
         this.fileurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.filepathurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.base64encode = 'https://nexgen.influxiq.com/php/index.php?encode=encodefile';
+
+
+
+        this.nodesslurl = 'http://api.nexgentesting.com:7001/';
+        this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
+
+
+
         this.roletypes=[
             {type0:'admin'},
             {type1:'regional_recruiter'},

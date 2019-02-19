@@ -18,18 +18,20 @@ import {HomeComponent} from "./home/home.component";
 import {ContractComponent} from "./contract/contract.component";
 import {TranningcategorymanagementComponent} from "./tranningcategorymanagement/tranningcategorymanagement.component";
 import {UseraccountsettingComponent} from "./useraccountsetting/useraccountsetting.component";
-
 import {RepresentativelistComponent} from "./representativelist/representativelist.component";
 import {RepTraingcenterComponent} from "./rep-traingcenter/rep-traingcenter.component";
-
 import {TrialsComponent} from "./trials/trials.component";
-import {TranningsectionComponent} from "./tranningsection/tranningsection.component";
+import {TrainingsectionComponent} from "./trainingsection/trainingsection.component";
 import {TrainingsectionlistComponent} from "./trainingsectionlist/trainingsectionlist.component";
 import {FrontendheaderComponent} from "./frontendheader/frontendheader.component";
 import {FrontendfooterComponent} from "./frontendfooter/frontendfooter.component";
 import {FrontendhomeComponent} from "./frontendhome/frontendhome.component";
 
-
+import {WhoWeAreComponent} from "./who-we-are/who-we-are.component";
+import {AboutPcrTestingComponent} from "./about-pcr-testing/about-pcr-testing.component";
+import {GetStartedComponent} from "./get-started/get-started.component";
+import {ContactUsComponent} from "./contact-us/contact-us.component";
+import {RepdetailsComponent} from "./repdetails/repdetails.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -50,12 +52,17 @@ const appRoutes: Routes = [
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     { path:'trial', component: TrialsComponent},
-    { path:'trainingsection', component: TranningsectionComponent},
-    { path:'trainingsection/:id', component: TranningsectionComponent},
     { path:'trainingsectionlist', component: TrainingsectionlistComponent},
+    { path:'trainingsection', component: TrainingsectionComponent},
+    { path:'trainingsection/:id', component: TrainingsectionComponent},
     { path:'frontendheader', component: FrontendheaderComponent},
     { path:'frontendfooter', component: FrontendfooterComponent},
     { path:'', component: FrontendhomeComponent},
+    { path:'who_we_are', component: WhoWeAreComponent},
+    { path:'about_pcr_testing', component: AboutPcrTestingComponent},
+    { path:'get_started', component: GetStartedComponent},
+    { path:'contact_us', component: ContactUsComponent},
+    { path:'repdetails', component: RepdetailsComponent}
 
 ];
 

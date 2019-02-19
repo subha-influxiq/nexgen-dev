@@ -15,8 +15,7 @@
 .dashboard_block2 .col-md-4{display: inline-flex; justify-content: space-between; padding-left: 0;   }
 
 .dashboard_block2 .col-md-4 table{
-    padding-bottom: 90px;
-    margin-bottom: 0;
+    margin-bottom: 110px;
 }
 .dashboard_block2 .col-md-4 .reps_inner_block1{
     width: 100%;
@@ -59,10 +58,20 @@
     text-transform: uppercase;
     cursor: pointer;
 }
-.dashboard_block2 .table td, .table th{ border-top: 1px solid #fff;}
+.dashboard_block2 .col-md-4:nth-last-child(1){ padding-right: 0;}
+.dashboard_block2 .table td, .table th {
+    border-top: 1px solid #fff;
+    padding-left: 0;
+    width: 20%;
+    vertical-align: top!important;
+}
 .dashboard_block2 .col-md-4 h3{ font-family: RalewaySemiBold; font-size: 30px; margin-bottom: 12px;
     color: #fff;}
 
+.dashboard_block2  .table-responsive {
+    display: inline-table;
+    width: 100%;
+}
 /*USER MANAGEMENT STARTS HERE*/
 
 .user_management_wrapper .user_management_inner h2{ font-size: 40px; font-family: 'RalewayBold'; background: #00a8ef; padding: 15px 0; text-align: center; margin-bottom: 0;
@@ -121,6 +130,8 @@
     margin-bottom:5px;}
 .nextGen_admin_mainwrapper  .content_header_block ol li:after{content: '/'; display: inline; padding-left: 5px; padding-right: 5px; }
 .nextGen_admin_mainwrapper  .content_header_block ol li:last-child:after{display: none; }
+
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email{ word-break: break-all; }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusinactive{  display: inline-flex;
     align-items: flex-end; width: 100%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive{  display: inline-flex;
@@ -170,7 +181,7 @@
     border:2px solid #00a8ef;}
 .newNexgen_modal h1{  background: #00a8ef; color: #fff; font-family: RalewayBold; font-size: 22px; padding: 10px; text-transform: uppercase; text-align: center; }
 .newNexgen_modal form .row{ display: inherit; }
-.newNexgen_modal form .row .form_floating_div label{ font-family: 'RalewaySemiBold';}
+.newNexgen_modal form .row .form_floating_div label{ font-family: 'RalewaySemiBold'; padding-left: 0; padding-right: 0; }
 .newNexgen_modal form .row .form_floating_div .col-sm-8 input:focus{ box-shadow: none;}
 .newNexgen_modal form .row .form_floating_div .col-sm-8 select:focus{ box-shadow: none;}
 .newNexgen_modal form .row .form_floating_div .col-sm-8 input[type=checkbox]{ width: 20px; height: 20px; }
@@ -196,8 +207,12 @@
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 100%;
     max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 
 }
+.newNexgen_modal form .row .form_floating_div .col-sm-8 textarea{ box-shadow: none;}
+.newNexgen_modal form .row .form_floating_div .col-sm-8 textarea:focus{ box-shadow: none;}
 /*REGIONAL RECRUITER*/
 .r_r_dashboard_innerblock{ width: 85%; margin: 0 auto; }
 .r_r_dashboard_innerblock .col-md-4 {
@@ -521,7 +536,7 @@
 .brandmanagement_modal .message_success p{ line-height: 25px; font-family: 'RalewayRegular'; font-size: 16px; }
 
 .brandmanagement_modal .first_sign_wrapper{ margin-top: 25px; }
-.brandmanagement_modal .first_sign_wrapper p{ background: url(../images/digital-sign-fieldseticon1.png) no-repeat left center;
+.brandmanagement_modal .first_sign_wrapper p{ background: url(../images/digital-sign-fieldseticon1.png) no-repeat -3px 2px;;
     padding-left: 65px;
     font-size: 18px;
     text-transform: capitalize;
@@ -532,17 +547,17 @@
 }
 .brandmanagement_modal .third_sign_wrapper { margin-bottom: 25px; }
 .brandmanagement_modal .third_sign_wrapper p{
-    background: url(../images/digital-sign-fieldseticon2.png) no-repeat left -5px;
+    background: url(../images/digital-sign-fieldseticon2.png) no-repeat -4px -10px;
     padding-left: 65px;
     font-size: 18px;
     text-transform: capitalize;
     color: #0baade;
     font-family: 'RalewayRegular';
-    background-size: 12%;
+    background-size: 13%;
     margin-bottom: 0;
 
 }
-.brandmanagement_modal .second_sign_wrapper{ border-left:2px solid #0baade; padding: 0 15px;}
+.brandmanagement_modal .second_sign_wrapper{ border-left: 3px solid #9de7ff; padding: 0 15px;}
 .brandmanagement_modal .second_sign_wrapper .sign_text input{ padding: 0; font-family: 'Notera'; font-size: 44px; border: none; }
 .brandmanagement_modal .second_sign_wrapper .sign_text input:focus{outline: none; box-shadow: none; }
 
@@ -557,6 +572,7 @@
     color: #fff;
     margin-top: 15px;
 }
+.brandmanagement_modal .button_div button:focus{ outline: none; }
 
 
 

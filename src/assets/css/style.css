@@ -122,8 +122,16 @@ body{ padding:0; margin: 0;}
 .nexgen_header_wrapper  .navbar-expand-lg .navbar-nav{ width:800px; }
 .nexgen_header_wrapper .navbar-expand-lg .navbar-nav .nav-link{  color: #3d3d3d!important; font-family: 'RalewaySemiBold'; font-size: 13px; padding: 10px; text-transform: uppercase;}
 .nexgen_header_wrapper .col-md-8{padding: 0;}
-.nexgen_header_wrapper .col-md-4{padding: 0;}
-
+.nexgen_header_wrapper .col-md-4{padding: 0;
+    display: flex;}
+.nexgen_header_wrapper .social_media_container {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+    float: right;
+    margin-left: auto;
+}
     /*end header section*/
 
 /*Start Footer Section*/

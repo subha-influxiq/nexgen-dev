@@ -75,7 +75,7 @@ export class FunnelComponent implements OnInit {
       noofdirectaccess: ['',Validators.required],
       workinmedicalfield: ['',Validators.required],
       pcrtesting: ['',Validators.required],
-      companyname: ['',Validators.required],
+      companyname: [''],
    //   regionalrecruiter_id: ['']
     });
   }
@@ -185,8 +185,17 @@ export class FunnelComponent implements OnInit {
       this.dataForm1.controls['othertext'].clearValidators();
       this.dataForm1.controls["othertext"].updateValueAndValidity();
     }
-
-
+    if(this.dataForm1.value['pcrtesting']==1){
+      this.dataForm1.controls['companyname'].setValidators(Validators.required);
+      this.dataForm1.controls['companyname'].markAsTouched();
+      this.dataForm1.controls["companyname"].updateValueAndValidity();
+    }else{
+      this.dataForm1.controls['companyname'].clearValidators();
+      this.dataForm1.controls["companyname"].updateValueAndValidity();
+    }
+    if(this.dataForm1.value['pcrtesting']!=1){
+      this.dataForm1.value['companyname'] = null;
+    }
 
     if (this.dataForm1.valid) {
       let objarr=['regionalrecruiter_id'];

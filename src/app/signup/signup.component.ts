@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit {
       console.log(this.id);
       this.sourceconditionval ={_id:this.id};
       this.getsignupdetails();
-      this.dataForm = this.kp.group({
+      this.dataForm =  this.kp.group({
         id: [''],
         firstname: ['',Validators.required],
         lastname: ['',Validators.required],
@@ -45,8 +45,8 @@ export class SignupComponent implements OnInit {
         phoneno: ['',Validators.required],
         username: ['',Validators.required],
         password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)])],
-        confirmpassword: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15),
-          this.equalToPass('password')
+        confirmpassword:['',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(15),
+          this.equalToPass('password')  //confirm pass ''blank', equalTopass means if passwrd match or not..
         ])],
         address1: ['',Validators.required],
         address2: [''],
