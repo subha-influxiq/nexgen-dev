@@ -27,21 +27,24 @@ import { FunnellandingpageComponent } from './funnellandingpage/funnellandingpag
 import { TranningcategorymanagementComponent } from './tranningcategorymanagement/tranningcategorymanagement.component';
 import { AdminheaderComponent } from './adminheader/adminheader.component';
 import { UseraccountsettingComponent } from './useraccountsetting/useraccountsetting.component';
-
 import { RepresentativelistComponent } from './representativelist/representativelist.component';
 import { RepTraingcenterComponent } from './rep-traingcenter/rep-traingcenter.component';
-import { TranningsectionComponent } from './tranningsection/tranningsection.component';
 import { FrontendfooterComponent } from './frontendfooter/frontendfooter.component';
 import { FrontendheaderComponent } from './frontendheader/frontendheader.component';
 import { FrontendhomeComponent } from './frontendhome/frontendhome.component';
-
-
 import { TrialsComponent } from './trials/trials.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CKEditorModule } from 'ngx-ckeditor';
 import { TrainingsectionlistComponent } from './trainingsectionlist/trainingsectionlist.component';
+import { TrainingsectionComponent } from './trainingsection/trainingsection.component';
+
+import { WhoWeAreComponent } from './who-we-are/who-we-are.component';
+import { AboutPcrTestingComponent } from './about-pcr-testing/about-pcr-testing.component';
+import { GetStartedComponent } from './get-started/get-started.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { RepdetailsComponent } from './repdetails/repdetails.component';
 
 @NgModule({
   declarations: [
@@ -67,13 +70,16 @@ import { TrainingsectionlistComponent } from './trainingsectionlist/trainingsect
     RepresentativelistComponent,
     RepTraingcenterComponent,
     TrialsComponent,
-    TranningsectionComponent,
     TrainingsectionlistComponent,
     FrontendfooterComponent,
     FrontendheaderComponent,
-    FrontendhomeComponent
-
-
+    FrontendhomeComponent,
+    TrainingsectionComponent,
+    WhoWeAreComponent,
+    AboutPcrTestingComponent,
+    GetStartedComponent,
+    ContactUsComponent,
+    RepdetailsComponent
   ],
   imports: [
     BrowserModule,

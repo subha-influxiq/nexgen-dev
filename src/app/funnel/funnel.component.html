@@ -278,7 +278,7 @@
 
           </div>
 
-          <div class="form-group "><label>Company Name:  </label>
+          <div class="form-group " *ngIf="dataForm1.value['pcrtesting']==1"><label>Company Name:  </label>
             <input type="text"  class="alaninput2" [formControl]="dataForm1.controls['companyname']">
             <span class="errortext" *ngIf="!dataForm1.controls['companyname'].valid && dataForm1.controls['companyname'].touched">This field can not be blank</span>
             <div class="clearfix"></div></div>

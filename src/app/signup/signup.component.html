@@ -11,12 +11,12 @@
       <div class="form-row first_section">
        <div class="form-group col-md-6">
            <input type="hidden" [formControl]="dataForm.controls['id']">
-        <label>First Name??</label>
+        <label>First Name</label>
         <input type="text" class="form-control" [formControl]="dataForm.controls['firstname']">
            <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name field can not be blank</span>
        </div>
        <div class="form-group col-md-6">
-        <label>Lastname</label>
+        <label>Last Name</label>
         <input type="text" class="form-control" [formControl]="dataForm.controls['lastname']">
            <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name field can not be blank</span>
        </div>
@@ -38,7 +38,7 @@
        <div class="form-group col-md-4">
         <label> Username</label>
         <input type="text" class="form-control" [formControl]="dataForm.controls['username']">
-           <span class="error" *ngIf="!dataForm.controls['phoneno'].valid && dataForm.controls['phoneno'].touched">Username field can not be blank</span>
+           <span class="error" *ngIf="!dataForm.controls['username'].valid && dataForm.controls['username'].touched">Username field can not be blank</span>
        </div>
        <div class="form-group col-md-4">
         <label>Password</label>
@@ -48,7 +48,7 @@
        <div class="form-group col-md-4">
         <label> Confirm Password</label>
         <input type="password" class="form-control" [formControl]="dataForm.controls['confirmpassword']">
-           <span class="error" *ngIf="dataForm.controls['confirmpassword'].hasError('equalTo') && dataForm.controls['confirmpassword'].touched">*Password is not matched!</span>
+           <span  class="error" *ngIf="dataForm.controls['confirmpassword'].hasError('equalTo') && dataForm.controls['confirmpassword'].touched">*Password is not matched!</span>
        </div>
       </div>
 <!--END middle section-->

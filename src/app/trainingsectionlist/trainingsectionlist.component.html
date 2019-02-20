@@ -31,16 +31,16 @@
                 <div *ngIf="item.filetype=='audio'">
                   {{item.audiolocalname}}<br/>
                   <audio controls>
-                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/mp3">
-                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.audioservername}}" type="audio/wav">
+                    <source src="{{uploadsslurl}}{{item.audioservername}}" type="audio/mp3">
+                    <source src="{{uploadsslurl}}{{item.audioservername}}" type="audio/wav">
                   </audio>
 
                 </div>
                 <div *ngIf="item.filetype=='video'">
                   {{item.videolocalname }}<br/>
                   <video width="320" height="240" controls>
-                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/mp4">
-                    <source src="http://nexgen.influxiq.com/assets/uploads/{{item.videoservername}}" type="video/*">
+                    <source src="{{uploadsslurl}}{{item.videoservername}}" type="video/mp4">
+                    <source src="{{uploadsslurl}}{{item.videoservername}}" type="video/*">
                   </video>
 
                 </div>

@@ -1,0 +1,148 @@
+<div class="page-wrapper admin_training_center_manage_popup">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content_header_block">
+        <h3> training section</h3>
+        <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+          <div class="box-body">
+            <div class="form-group">
+              <label >Title :</label>
+              <input type="text" class="form-control" placeholder="Title" [formControl]="dataForm.controls['title']">
+              <span class="error" *ngIf="!dataForm.controls['title'].valid && dataForm.controls['title'].touched">Title field can not be blank</span>
+            </div>
+            <div class="form-group email_div">
+              <label >Description :</label>
+              <textarea class="form-control" placeholder="Description" [formControl]="dataForm.controls['description']">
+                  </textarea>
+              <span class="error" *ngIf="!dataForm.controls['description'].valid && dataForm.controls['description'].touched ">Description field can not be blank</span>
+            </div>
+            <div class="form-group email_div">
+              <label >Type :</label>
+              <select class="form-control"  [formControl]="dataForm.controls['filetype']" (change)="typefile()">
+                <option value="">Select Type</option>
+                <option value="video">Video</option>
+                <option value="audio">Audio</option>
+                <option value="html">Html</option>
+                <option value="file">File</option>
+              </select>
+              <span class="error" *ngIf="!dataForm.controls['filetype'].valid && dataForm.controls['filetype'].touched ">Have to choose any file type</span>
+              <div *ngIf="divforhtml">
+                <ck-editor [formControl]="dataForm.controls['htmleditorvalue']" [config]="editorconfig"></ck-editor>
+                <span class="error" *ngIf="!dataForm.controls['htmleditorvalue'].valid && dataForm.controls['htmleditorvalue'].touched ">This field is required</span>
+              </div>
+              <div *ngIf="divforfile">
+                <input type="hidden" [formControl]="dataForm.controls['fileservername']">
+                <input type="hidden" [formControl]="dataForm.controls['filelocalname']">
+                <input type="hidden" [formControl]="dataForm.controls['filelocalname']">
+                <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
+                <div class="button_upload">
+                  <span>upload file: </span> <button (click)="fileInput1.click()" type="button">upload</button>
+                </div>
+
+
+
+
+
+
+                <div *ngIf="lengthis>0">
+                    <span *ngIf="percentageis==100 && errormg==''">
+                      <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
+                      <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
+                      <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
+                      <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
+                      <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
+                      <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
+                      <label> File Name: {{nameis}}</label>
+                    </span>
+                  <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <span class="error" *ngIf="!dataForm.controls['fileservername'].valid && dataForm.controls['fileservername'].touched ">Upload a file!</span>
+              </div>
+              <div *ngIf="divforaudio">
+                <input type="hidden" [formControl]="dataForm.controls['audioservername']">
+                <input type="hidden" [formControl]="dataForm.controls['audiolocalname']">
+                <input style="display: none" type="file" accept="audio/mp3 , audio/wav" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1>
+                <div class="button_upload">
+                  <span>upload audio: </span> <button (click)="fileInput1.click()" type="button">upload</button>
+                </div>
+                <div *ngIf="lengthis>0">
+                  <span *ngIf="percentageis==100 && errormg==''"><label> File Name: {{nameis}}</label></span>
+                  <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
+                  <audio controls *ngIf="percentageis==100 && errormg==''&& servernameis!=null">
+                    <source src="{{uploadsslurl}}{{servernameis}}" type="audio/mp3">
+                    <source src="{{uploadsslurl}}/{{servernameis}}" type="audio/wav">
+                  </audio>
+                </div>
+                <span class="error" *ngIf="!dataForm.controls['audioservername'].valid && dataForm.controls['audioservername'].touched ">Upload an audio!</span>
+              </div>
+              <div *ngIf="divforvideo">
+                <input type="hidden" [formControl]="dataForm.controls['videoservername']">
+                <input type="hidden" [formControl]="dataForm.controls['videolocalname']">
+                <input style="display: none" type="file" accept="video/mp4, video/*" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1>
+                <div class="button_upload">
+                  <span>upload video: </span> <button (click)="fileInput1.click()" type="button">upload</button>
+                </div>
+                <div *ngIf="lengthis>0">
+                  <span *ngIf="percentageis==100 && errormg==''"><label> File Name: {{nameis}}</label></span>
+                  <label *ngIf="percentageis!=100 && errormg==''">Upload Percentage:{{percentageis}}%</label>
+
+                  <video width="320" height="240" controls *ngIf="percentageis==100 && servernameis!=null && errormg==''">
+                    <source src="{{uploadsslurl}}{{servernameis}}" type="video/mp4">
+                   </video>
+                </div>
+                <span class="error" *ngIf="!dataForm.controls['videoservername'].valid && dataForm.controls['videoservername'].touched ">Upload a video!</span>
+              </div>
+              <span *ngIf="errormg">{{errormg}}</span>
+            </div>
+            <div class="form-group email_div">
+              <label >Is there a test associated with tranning :</label>
+              <input type="radio" value="yes" class="form-control radio_part" [formControl]="dataForm.controls['yesorno']" name="yesno">
+              <label>Yes</label>
+              <input type="radio" value="no" class="form-control radio_part" [formControl]="dataForm.controls['yesorno']" name="yesno">
+              <label>No</label>
+              <span class="error" *ngIf="!dataForm.controls['yesorno'].valid && dataForm.controls['yesorno'].touched ">Have to choose any option</span>
+            </div>
+            <div class="form-group email_div">
+              <label >Training Category :</label>
+              <select class="form-control" (change)="getdata()"  [formControl]="dataForm.controls['trainingcategory']">
+                <option value="">Select Category</option>
+                <option *ngFor="let item of datalist" value="{{item._id}}">{{item.categoryname}}</option>
+              </select>
+              <span class="error" *ngIf="!dataForm.controls['trainingcategory'].valid && dataForm.controls['trainingcategory'].touched ">Location of training is required</span>
+            </div>
+
+            <div>
+              <label>Prerequisite Lesson :</label>
+              <select class="form-control" [formControl]="dataForm.controls['prerequisite_lesson']">
+                <option value="" >Select Prerequisite Lesson</option>
+                <option *ngFor="let item of datalist1" value="{{item._id}}">{{item.title}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-check custom_checkbox">
+            <input type="checkbox" class="form-check-input" [formControl]="dataForm.controls['status']">
+            <label class="form-check-label">Active</label>
+          </div>
+          <div class="box-footer" style="background:none; height:auto; padding-bottom:0px; padding-top:0px;">
+            <button type="submit">Submit</button>
+            <button type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

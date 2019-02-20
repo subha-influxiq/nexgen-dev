@@ -18,7 +18,7 @@ public type:any;
   }
   logout(){
     this.cookie.deleteAll();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 
