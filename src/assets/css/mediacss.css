@@ -14,7 +14,7 @@
         background-size: 124%;
         background-position: 45% 0%;
     }
-    .nexgen_header_wrapper{ width:90%;}
+    .nexgen_header_wrapper{ width:95%;}
     .home_wrapper .carousel-item .carousel-caption {
         left: 7%;
     }
@@ -116,7 +116,7 @@
 
     .nexgen_header_wrapper .col-md-4{ max-width: inherit;
         flex:1;}
-    .nexgen_header_wrapper .social_media_container{float:none;}
+    .nexgen_header_wrapper .social_media_container{float:none; margin: 0 auto; }
     .nexgen_header_wrapper .col-md-8 { max-width: inherit; flex: 1; display: block; width: 100%; }
 
 
@@ -181,7 +181,7 @@
         display: block;
         align-items: center;
         width: auto;
-        height: 100%;
+        height: auto;
         float: none;
         margin: 0;
     }

@@ -41,20 +41,19 @@ export class SignupComponent implements OnInit {
         id: [''],
         firstname: ['',Validators.required],
         lastname: ['',Validators.required],
-        email: ['', Validators.compose([Validators.required, SignupComponent.customValidator])],
+        email: ["", SignupComponent.validateEmail],
         phoneno: ['',Validators.required],
-        username: ['',Validators.required],
+       // username: ['',Validators.required],
+        username: ["", SignupComponent.validateUsername],
         password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)])],
-        confirmpassword:['',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(15),
-          this.equalToPass('password')  //confirm pass ''blank', equalTopass means if passwrd match or not..
-        ])],
+        confirmpassword: ["", Validators.required],
         address1: ['',Validators.required],
         address2: [''],
         city: ['',Validators.required],
         state: ['',Validators.required],
         zip: ['',Validators.required],
         regionalrecruiter_id: [''],
-      });
+      },{validator: this.matchingPasswords('password', 'confirmpassword')});
     });
   }
   getstates(source){
@@ -65,27 +64,39 @@ export class SignupComponent implements OnInit {
           console.log('Oooops!');
         });
   }
-  static customValidator(inputemail): any {
-    if (inputemail.pristine) {
-      return null;
+
+  static validateUsername(control: FormControl){
+    if(control.value==''){
+      return { 'invalidusername': true };
     }
-    inputemail.markAsTouched();
-    let filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
-    if (String(inputemail.value).search(filter) == -1) {
-      return {
-        invalidemail: true
-      }
+
+    if ( !control.value.match(/^\S*$/)){
+      return { 'invalidusername': true };
     }
   }
-  equalToPass(fieldname): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } => {
-      const input = control.value;
-      const isValid = control.root.value[fieldname] === input;
-      if (!isValid)
+
+  static validateEmail(control: FormControl){
+    if(control.value==''){
+      return { 'invalidemail': true };
+    }
+    if ( !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
+      return { 'invalidemail': true };
+    }
+  }
+  public matchingPasswords(passwordKey: string, confirmPasswordKey: string){
+    return (group: FormGroup): {[key: string]: any} => {
+
+      let password = group.controls[passwordKey];
+      let confirmPassword = group.controls[confirmPasswordKey];
+
+      if (password.value !== confirmPassword.value){
+        confirmPassword.setErrors({'incorrect': true});
+        console.log('true');
         return {
-          equalTo: true
+          mismatchedPasswords: true
         };
-    };
+      }
+    }
   }
   getsignupdetails() {
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
@@ -105,20 +116,18 @@ export class SignupComponent implements OnInit {
               id: [this.id],
               firstname: [this.datalist[0].firstname,Validators.required],
               lastname: [this.datalist[0].lastname,Validators.required],
-              email: [this.datalist[0].email, Validators.compose([Validators.required, SignupComponent.customValidator])],
+              email: [this.datalist[0].email, SignupComponent.validateEmail],
               phoneno: [this.datalist[0].phoneno,Validators.required],
-              username: ['',Validators.required],
+              username: ["", SignupComponent.validateUsername],
               password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)])],
-              confirmpassword: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15),
-                this.equalToPass('password')
-              ])],
+              confirmpassword: ["", Validators.required],
               address1: ['',Validators.required],
               address2: [''],
               city: [this.datalist[0].city,Validators.required],
               state: [this.datalist[0].state,Validators.required],
               regionalrecruiter_id: [this.datalist[0].regionalrecruiter_id],
-              zip: ['',Validators.required]
-            });
+              zip: ['',Validators.required],
+            },{validator: this.matchingPasswords('password', 'confirmpassword')});
             }
           }
         }, error => {
@@ -162,7 +171,7 @@ export class SignupComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-            this.dataForm.reset();
+          //  this.dataForm.reset();
               this.router.navigate(['/contract']);
             }
           }, error => {

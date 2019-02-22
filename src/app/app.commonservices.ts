@@ -40,7 +40,7 @@ export class Commonservices {
             {type1:'regional_recruiter'},
             {type2:'rep'},
         ];
-        console.log(this.roletypes);
+      //  console.log(this.roletypes);
         this.sanitizer=sanitizer;
     }
     shorten(str, maxLen, separator = '') {
@@ -80,6 +80,6 @@ export class Commonservices {
     }*/
     showdate(dt){
      //   return moment(dt).format("Do, MMM, YYYY");
-        return moment(dt).format("MM-DD-YYYY");
+        return moment(dt).format("MMM Mo YY");
     }
 }

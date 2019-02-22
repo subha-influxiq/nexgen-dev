@@ -327,7 +327,7 @@ a{cursor: pointer; outline: none;}
 .frontslidercontentinner{
     position: absolute;
     top:50%;
-    left: 50%;
+    left: 53%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -346,6 +346,10 @@ a{cursor: pointer; outline: none;}
 .homeblock2wrapper{padding-top: 50px; padding-bottom: 50px; width: 1622px; margin: 0 auto; display: block;}
 .homeblock2content{display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
 .homeblock2content ul.list-inline li {width: 50%; padding: 10px !important;}
+
+.homeblock2content ul.list-inline li:nth-child(1){padding-left: 0px !important;}
+.homeblock2content ul.list-inline li:nth-child(3){padding-left: 0px !important;}
+
 /*.homeblock2content ul.list-inline li img{width: 100%;}*/
 .homeblock2contentleft{margin-right: 48px;width: 40%;}
 .homeblock2contentright{width: 60%;}
@@ -375,7 +379,7 @@ a{cursor: pointer; outline: none;}
 .homeblock3wrapper{ width: 1622px; margin: 0 auto; display: block;}
 .homeblock3content{width: 51%; display: inline-block;}
 .homeblock3content .btnblue{float: right;}
-.homeblock3content p{width: 70%;}
+.homeblock3content p{width: 70%; margin-bottom: 20px;}
 
 
 .homeblock4{background: url(../images/homeblock4bgwrapper.jpg) no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-position: center; position: relative;}
@@ -680,7 +684,7 @@ a{cursor: pointer; outline: none;}
 
 .whoweareblock4{background: #dbeae7 url(../images/whoweareblock4bgleft.png) no-repeat top left; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 0 !important;}
 
-.whoweareblock4bgright{background: url(../images/whoweareblock4bgright.png) no-repeat top right; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding-top: 60px; padding-bottom: 60px;}
+.whoweareblock4bgright{background: url(../images/whoweareblock4bgright.png) no-repeat top right; -webkit-background-size: contain; -moz-background-size: contain; -o-background-size: contain; background-size: contain; padding-top: 35px; padding-bottom: 35px;}
 
 .whoweareblock4 .homeblock3wrapper {
     width: 1100px;
@@ -1009,8 +1013,8 @@ a{cursor: pointer; outline: none;}
 
 
 .aboutpcrblock5{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .aboutpcrblock5 .pcrfeatureswrapper{

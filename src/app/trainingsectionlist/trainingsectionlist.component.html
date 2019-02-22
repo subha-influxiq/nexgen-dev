@@ -1,4 +1,131 @@
-<div class="page-wrapper">
+<app-adminheader></app-adminheader>
+<div class="nextGen_admin_mainwrapper">
+  <div class="page-wrapper s_getmybrand_adminlist">
+    <div class="nexgen_adminlist">
+      <div class="user_management_wrapper"  >
+        <div class="user_management_inner">
+          <h2>manage Training Section</h2>
+
+          <!--<div class="inner_search_wrapper">
+            <div class="inner_content_wrapper">
+              <div class="search_content">
+                <h3><span>Search by UserId: </span> <input type="text" ><button>search</button> </h3>
+              </div>
+              <div class="search_content">
+                <h3> <span>Search by Name:  </span> <input type="text" ><button>search</button> </h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>-->
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 admin_inner_wrapper">
+        <div class="clearfix"></div>
+        <div class="content_header_block">
+          <div class="clearfix"></div>
+          <div class="newblock1 ">
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="nexgen_admin_table">
+          <div class="action_section">
+            <div class="inner_actionblock">
+              <h3> Training Section List</h3>
+              <a class="addfrinderbtn s_getmybrand_savebutton" [routerLink]="['/trainingsection']"> Add Training</a>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="table-responsive admin_table_wrapper generaltablecls">
+            <div>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">File</th>
+                  <th scope="col">Test Associated Training</th>
+                  <th scope="col">Training Category</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of traininglist; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.title}}</td>
+                  <td>{{item.description}}</td>
+                  <td class="filedetails">
+                    <div *ngIf="item.filetype=='file'">
+                      {{item.filelocalname}}<br/>
+                      <a href="http://nexgen.influxiq.com/assets/uploads/{{item.fileservername}}" >Download</a>
+
+                    </div>
+                    <div *ngIf="item.filetype=='audio'">
+                      {{item.audiolocalname}}<br/>
+                      <audio controls>
+                        <source src="{{_Commonservices.uploadsslurl}}{{item.audioservername}}" type="audio/mp3">
+                        <source src="{{_Commonservices.uploadsslurl}}{{item.audioservername}}" type="audio/wav">
+                      </audio>
+
+                    </div>
+                    <div *ngIf="item.filetype=='video'">
+                      {{item.videolocalname }}<br/>
+                      <video width="320" height="240" controls>
+                        <source src="{{_Commonservices.uploadsslurl}}{{item.videoservername}}" type="video/mp4">
+                        <source src="{{_Commonservices.uploadsslurl}}{{item.videoservername}}" type="video/*">
+                      </video>
+
+                    </div>
+
+
+
+                    <!--<div *ngIf="item.filetype=='html'">-->
+                    <!--sanitizer.bypassSecurityTrustHtml({{item.htmleditorvalue}})-->
+                    <!--{{trusthtml(item.htmleditorvalue)}}-->
+                    <!--</div>-->
+                    <!--data-label="Group Description" [routerLink]="['/mastergroupedit',item._id]" [innerHTML]=-->
+
+                    <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>
+                  </td>
+                  <td>{{item.yesorno}}</td>
+                  <td>{{gettrainingcategoryname(item.trainingcategory)}}</td>
+                  <td><span *ngIf="item.status==true">Active</span>
+                    <span *ngIf="item.status==false">Inactive</span></td>
+
+                  <td ><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
+                    <span class="editbtn" [routerLink]="['/trainingsection' ,item._id]">Edit</span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin_table_pagination hide">
+          <ul class="pagination">
+            <span>Page 1 of 3</span>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">Next</a></li>
+            <li><a href="#">Last</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<!--<div class="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
       <div class="admintable">
@@ -47,11 +174,11 @@
 
 
 
-                <!--<div *ngIf="item.filetype=='html'">-->
-                  <!--sanitizer.bypassSecurityTrustHtml({{item.htmleditorvalue}})-->
-                  <!--{{trusthtml(item.htmleditorvalue)}}-->
-                <!--</div>-->
-                <!--data-label="Group Description" [routerLink]="['/mastergroupedit',item._id]" [innerHTML]=-->
+                &lt;!&ndash;<div *ngIf="item.filetype=='html'">&ndash;&gt;
+                  &lt;!&ndash;sanitizer.bypassSecurityTrustHtml({{item.htmleditorvalue}})&ndash;&gt;
+                  &lt;!&ndash;{{trusthtml(item.htmleditorvalue)}}&ndash;&gt;
+                &lt;!&ndash;</div>&ndash;&gt;
+                &lt;!&ndash;data-label="Group Description" [routerLink]="['/mastergroupedit',item._id]" [innerHTML]=&ndash;&gt;
 
               <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>
               </td>
@@ -71,16 +198,17 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 <ng-template #template>
-  <div class="modal-body">
+  <div class="modal-body training_listmodal">
     <h1>Do you want to delete?</h1>
     <button type="button" class="btn btn-default" (click)="delete(templatecommon)" >Yes</button>
     <button type="button" class="btn btn-primary" (click)="nodelete()">No</button>
   </div>
 </ng-template>
 <ng-template #templatecommon>
-  <div class="modal-body">
+  <div class="modal-body success_notify">
     <h1>{{message}}</h1>
   </div>
 </ng-template>
+

@@ -83,7 +83,7 @@ public sourceval2:any="tranningcategory";
   }
   delete(template:TemplateRef<any>)
   {
-        this.message='Delete Successfully!!';
+        this.message='Deleted Successfully!!';
       const link = this._Commonservices.nodesslurl+'deletesingledata?token='+this.cookie.get('jwttoken');
    //   this.http.post(link,{source:'trainingsection'})
      // let data={id:this.selectedid,source:'trainingsection'}
@@ -110,3 +110,4 @@ public sourceval2:any="tranningcategory";
     }
 
 }
+

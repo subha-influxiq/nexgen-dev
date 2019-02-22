@@ -21,18 +21,27 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto justify-content-center" >
+            <ul class="navbar-nav mr-auto justify-content-center">
               <li class="nav-item active">
-                <a class="nav-link" href="#" [routerLink]="['/dashboard']">Admin Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/dashboard']">Dashboard<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
+                <a class="nav-link" >User Management</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link">Training Center</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" (click)="logout()">Sign Out</a>
+                <a class="nav-link">Contract Manager</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Legal Documents</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Calender Manager</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/regional']">Regional Manager</a>
               </li>
               <!--<li class="nav-item">-->
               <!--<a class="nav-link" href="#" [routerLink]="['/login']">login</a>-->
@@ -58,10 +67,11 @@
                   </div>
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Separated link</a>
+                  <a class="dropdown-item" (click)="logout()">Log Out</a>
+                 <!-- <a class="dropdown-item" >Action</a>
+                  <a class="dropdown-item" >Another action</a>
+                  <a class="dropdown-item" >Something else here</a>
+                  <a class="dropdown-item" >Separated link</a>-->
                 </div>
               </li>
             </ul>
@@ -96,12 +106,25 @@
             </span>
           </button>
 
-          <div class="collapse navbar-collapse" >
+          <div class="collapse navbar-collapse" *ngIf="router.url!='/reptrainingcenter'">
             <ul class="navbar-nav mr-auto justify-content-center">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Rep Home <span class="sr-only">(current)</span></a>
+                <!--<a class="nav-link" href="#">Rep Home <span class="sr-only">(current)</span></a>-->
+                <a class="nav-link" [routerLink]="['/repdashboard']">Dashboard <span class="sr-only"></span></a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" (click)="gototrainingsectionwithcat()">Training Center</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Digital Contract</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Legal Documents</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Calender</a>
+              </li>
+              <!--<li class="nav-item">
                 <a class="nav-link" href="#">about us</a>
               </li>
               <li class="nav-item">
@@ -110,7 +133,7 @@
 
               <li class="nav-item">
                 <a class="nav-link" href="#">sign out</a>
-              </li>
+              </li>-->
             </ul>
 
           </div>
@@ -118,7 +141,9 @@
       </div>
       <div class="col-md-4">
         <div class="social_media_container">
-
+          <div class="call_container">
+            <p>Regional Recruiter: &nbsp; <a *ngIf="recphoneno!=null">{{recphoneno}}</a></p>
+          </div>
           <div class="profile_section">
             <ul>
               <li class="nav-item dropdown">
@@ -128,10 +153,11 @@
                   </div>
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" (click)="logout()">Log out</a>
+                  <!--<a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Separated link</a>
+                  <a class="dropdown-item" href="#">Separated link</a>-->
                 </div>
               </li>
             </ul>
@@ -173,13 +199,16 @@
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto justify-content-center">
               <li class="nav-item active">
-                <a class="nav-link" href="#"[routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/regionaldashboard']">Dashboard <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
+                <a class="nav-link" [routerLink]="['/regionaldashboard']">My Rep</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" (click)="logout()">Sign Out</a>
+                <a class="nav-link">Calender Settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">Training Center</a>
               </li>
 
               <!--<li class="nav-item">-->
@@ -205,10 +234,10 @@
                   </div>
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Account Settiong</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Log Out</a>
+                  <a class="dropdown-item" (click)="logout()">Log out</a>
+                <!--  <a class="dropdown-item">Account Settiong</a>
+                  <a class="dropdown-item">Another action</a>
+                  <a class="dropdown-item">Something else here</a>-->
                 </div>
               </li>
             </ul>

@@ -3,16 +3,18 @@
     <h1>Contact us</h1>
     <div class="formdivwrapper">
       <div class="formdivwrapper_content">
-        <form>
+        <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value,mysuccessapplication)">
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First Name">
+                <input type="text" class="form-control" placeholder="First Name" [formControl]="dataForm.controls['firstname']">
+                <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name Field can not be blank</span>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last Name">
+                <input type="text" class="form-control" placeholder="Last Name" [formControl]="dataForm.controls['lastname']">
+                <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name Field can not be blank</span>
               </div>
             </div>
           </div>
@@ -20,27 +22,35 @@
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email *">
+                <input type="email" class="form-control" placeholder="Email *" [formControl]="dataForm.controls['email']">
+                <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched">Email Field can not be blank</span>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone *">
+                <input type="text" class="form-control" placeholder="Phone *" [formControl]="dataForm.controls['phone']">
+                <span class="error" *ngIf="!dataForm.controls['phone'].valid && dataForm.controls['phone'].touched">Phone Field can not be blank</span>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <textarea class="form-control" name="message" id="validationTextarea" placeholder="Message *" rows="3" required></textarea>
+                <textarea class="form-control" placeholder="Message *" [formControl]="dataForm.controls['message']"></textarea>
+                <span class="error" *ngIf="!dataForm.controls['message'].valid && dataForm.controls['message'].touched">Message Field can not be blank</span>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <input type="text" class="form-control" name="state" id="state" placeholder="State">
+                <select class="form-control" [formControl]="dataForm.controls['states']">
+                  <option value="">Select State</option>
+                  <option *ngFor="let item of stateslist" value="{{item.abbreviation}}">{{item.name}}</option>
+                </select>
+                <span class="error" *ngIf="!dataForm.controls['states'].valid && dataForm.controls['states'].touched">Have to choose any States</span>
               </div>
             </div>
             <div class="col">
               <div class="form-group text-right">
-                <button type="submit" class="btnblack" data-toggle="modal" data-target="#mysuccessapplication">Submit</button>
+                <button type="submit" class="btnblack">Submit</button>
+                <!--data-toggle="modal" data-target="#mysuccessapplication"-->
               </div>
             </div>
           </div>
@@ -49,8 +59,6 @@
     </div>
   </div>
 </div>
-
-
 <div class="container-fluid nexgen_frontfooter">
   <div class="nexgen_frontfooterwrapper">
     <div class="row">
@@ -68,12 +76,12 @@
       <div class="col-md-4">
         <div class="footerlists">
           <ul>
-            <li><a [routerLink]="['/frontendhome/']">Home Page</a></li>
+            <li><a [routerLink]="['/']">Home Page</a></li>
            <!-- <li><a href="javascript:void(0)">Why Us</a></li>-->
-            <li><a [routerLink]="['/who_we_are/']">Who We Are</a></li>
-            <li><a [routerLink]="['/about-pcr-testing/']">About PCR Testing</a></li>
-            <li><a [routerLink]="['/get-started/']">Get Started</a></li>
-            <li><a [routerLink]="['/contact-us/']">Contact Us</a></li>
+            <li><a [routerLink]="['/who_we_are']">Who We Are</a></li>
+            <li><a [routerLink]="['/about_pcr_testing']">About PCR Testing</a></li>
+            <li><a [routerLink]="['/get_started']">Get Started</a></li>
+            <li><a [routerLink]="['/contact_us']">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -98,10 +106,24 @@
 </div>
 
 
+<!--<ng-template #mysuccessapplication>
+  <div class="modal fade modaldefault" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="logoshatterblock">
+            <img src="../assets/images/logo-header.png" class="newhomelogo">
+          </div>
+          <p>Thank you for contacting Nexgen! We will get back to you with a response as soon as possible.</p>
+        </div>
 
+      </div>&lt;!&ndash; /.modal-content &ndash;&gt;
+    </div>&lt;!&ndash; /.modal-dialog &ndash;&gt;
+  </div>&lt;!&ndash; /.modal &ndash;&gt;
+</ng-template>-->
 
-<!-- Modal -->
-<div class="modal fade modaldefault" id="mysuccessapplication" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<ng-template #mysuccessapplication>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -111,7 +133,6 @@
         </div>
         <p>Thank you for contacting Nexgen! We will get back to you with a response as soon as possible.</p>
       </div>
-
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</ng-template>

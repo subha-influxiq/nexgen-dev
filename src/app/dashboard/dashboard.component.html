@@ -38,7 +38,7 @@
           </tbody>
         </table>
 
-        <button [routerLink]="['/rep']">View all reps</button>
+        <button [routerLink]="['/rep']" *ngIf="repdetails?.length>5">View all reps</button>
       </div>
     </div>
     <div class="col-md-4 ">
@@ -47,59 +47,34 @@
 
         <table class="table table-responsive" >
           <thead>
-
-
           <tr>
             <th data scope="col">Date Added</th>
             <th scope="col">User ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Initial Training</th>
-            <th scope="col"> Additional Training</th>
+            <th scope="col">Document Type</th>
           </tr>
           </thead>
           <tbody>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
+          <tr *ngFor="let item of legaldocs | slice:0:5; let i=index">
+            <td data-title="Date Added" scope="row">{{commonservices.showdate(item.created_at)}}</td>
+            <td data-title="User ID">{{item.unique_id}}</td>
+            <td data-title="Name">{{item.fullname}}</td>
+            <td data-title="Document Type">
+              <span *ngIf="item.doctype=='ID'">Insurance Docket</span>
+              <span *ngIf="item.doctype=='W9'">W9</span></td>
           </tr>
           </tbody>
+
+         <!-- <tr>
+            <td data-title="Date Added" scope="row">01/15/2019</td>
+            <td data-title="User ID">001</td>
+            <td data-title="Name">Jane Doe</td>
+            <td data-title="Initial Training">100%</td>
+            <td data-title="Additional Training">100%</td>
+          </tr>  -->
         </table>
 
-        <button>Go To Legal Documents</button>
+        <button [routerLink]="['/replegaldocuments']" *ngIf="legaldocs?.length>5">Go To Legal Documents</button>
       </div>
     </div>
     <div class="col-md-4">
@@ -166,3 +141,4 @@
 
   </div>
 </div>
+<app-footer></app-footer>

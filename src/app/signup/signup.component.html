@@ -48,7 +48,7 @@
        <div class="form-group col-md-4">
         <label> Confirm Password</label>
         <input type="password" class="form-control" [formControl]="dataForm.controls['confirmpassword']">
-           <span  class="error" *ngIf="dataForm.controls['confirmpassword'].hasError('equalTo') && dataForm.controls['confirmpassword'].touched">*Password is not matched!</span>
+           <span class="error" *ngIf ="dataForm.controls['confirmpassword'].touched && !dataForm.controls['confirmpassword'].valid">Passwords must match</span>
        </div>
       </div>
 <!--END middle section-->
