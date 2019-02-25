@@ -47,6 +47,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RepdetailsComponent } from './repdetails/repdetails.component';
 import { ManageavailabilityComponent } from './manageavailability/manageavailability.component';
 import { ReplegaldocumentComponent } from './replegaldocument/replegaldocument.component';
+import { LegaldoclistComponent } from './legaldoclist/legaldoclist.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { ReplegaldocumentComponent } from './replegaldocument/replegaldocument.c
     ContactUsComponent,
     RepdetailsComponent,
     ManageavailabilityComponent,
-    ReplegaldocumentComponent
+    ReplegaldocumentComponent,
+    LegaldoclistComponent
   ],
   imports: [
     BrowserModule,

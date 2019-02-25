@@ -1,0 +1,60 @@
+<div class="nextGen_admin_mainwrapper">
+  <div class="page-wrapper s_getmybrand_adminlist">
+    <div class="nexgen_adminlist">
+      <div class="user_management_wrapper"  >
+        <div class="user_management_inner">
+          <h2>Manage Rep Legal Document List</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 admin_inner_wrapper">
+        <div class="clearfix"></div>
+        <div class="content_header_block">
+          <div class="clearfix"></div>
+          <div class="newblock1 ">
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="nexgen_admin_table">
+          <div class="action_section">
+            <div class="inner_actionblock">
+              <h3> Training Section List</h3>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="table-responsive admin_table_wrapper generaltablecls">
+            <div>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Date </th>
+                  <th scope="col">Documents</th>
+                  <th scope="col">Files</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of legaldocument; let i=index">
+                  <td>{{i+1}}</td>
+                  <td>{{_commonservices.showdate(item.created_at)}}</td>
+                  <td>{{item.doctype}}</td>
+                  <td>{{item.filelocalname}}</td>
+                </tr>
+                </tbody>
+
+
+
+
+              </table>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

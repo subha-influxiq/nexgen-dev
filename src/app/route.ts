@@ -33,6 +33,7 @@ import {GetStartedComponent} from "./get-started/get-started.component";
 import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {RepdetailsComponent} from "./repdetails/repdetails.component";
 import {ReplegaldocumentComponent} from "./replegaldocument/replegaldocument.component";
+import {LegaldoclistComponent} from "./legaldoclist/legaldoclist.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
     { path:'get_started', component: GetStartedComponent},
     { path:'contact_us', component: ContactUsComponent},
     { path:'repdetails', component: RepdetailsComponent},
-    { path:'replegaldocuments', component: ReplegaldocumentComponent}
+    { path:'replegaldocuments', component: ReplegaldocumentComponent},
+    { path:'legaldoclist', component: LegaldoclistComponent}
 
 ];
 
