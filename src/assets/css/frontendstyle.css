@@ -288,8 +288,8 @@ a{cursor: pointer; outline: none;}
 
 .frontslider .carousel-control-next-icon {background-image:  url("../images/front_next_icon.png")!important; padding: 30px;}
 
-.frontslider .carousel-control-prev{width: 3% !important;}
-.frontslider .carousel-control-next{Width: 3% !important;}
+.frontslider .carousel-control-prev{width: 3% !important; display: none;}
+.frontslider .carousel-control-next{Width: 3% !important; display: none;}
 
 .frontslider .carousel-caption{width: 460px; height: 70%;}
 .frontslider .carousel-caption {position: absolute;
@@ -416,6 +416,15 @@ a{cursor: pointer; outline: none;}
     padding-left: 7px;
 }
 
+.formdivwrapper form .form-group{
+    margin-bottom: 16px;
+}
+
+/*.formdivwrapper form.ng-touched .form-group {
+    margin-bottom: 5px;
+}*/
+
+
 .formdivwrapper form .form-control{
     background-color: #f2f3f3;
     color:#000;
@@ -517,8 +526,8 @@ a{cursor: pointer; outline: none;}
 
 /*----Modal css---*/
 
-.modaldefault{z-index: 9999999999; margin-top: 10%;}
-.modaldefault button.close {
+modal-container{z-index: 9999999999;}
+modal-container button.close {
     -webkit-appearance: none;
     padding: 0px;
     cursor: pointer;
@@ -527,7 +536,7 @@ a{cursor: pointer; outline: none;}
     position: absolute;
     right: -15px;
     top: -14px;
-    background: #00c0ff;
+    background: #fff;
     opacity: 1 !important;
     font-size: 30px;
     font-weight: 700;
@@ -538,45 +547,71 @@ a{cursor: pointer; outline: none;}
 }
 
 
-.modaldefault .modal-body{
+modal-container .modal-body{
     font-family: "BebasNeueBold";
     text-transform: uppercase;
     color: #fff;
     text-align: center;
     margin: 0px;
-    -moz-text-shadow: rgb(3, 3, 3) 3px 4px 7px;
-    -webkit-text-shadow: rgb(3, 3, 3) 3px 4px 7px;
-    text-shadow: rgb(3, 3, 3) 3px 4px 7px;
+    text-shadow:none !important;
     background: rgb(20, 26, 31);
-    background: -moz-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    /*background: -moz-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
     background: -webkit-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
     background: -o-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
     background: -ms-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
-    background: linear-gradient(311deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    background: linear-gradient(311deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);*/
+    background: -moz-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(105, 192, 57, 0.9)), color-stop(100%, rgba(0, 148, 187, 0.8)));
+    background: -webkit-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -o-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -ms-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: linear-gradient(132deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ace4c', endColorstr='#007d9e',GradientType=1 );
     padding: 21px 15px 25px 15px;
     border-radius: 0 !important;
     margin: 0;
     letter-spacing: 1px;
+    border: 5px solid #fff;
 
 }
 
-.modaldefault .modal-body p{
+modal-container .modal-body p{
     font-family: "CenturyGothic";
-    font-size: 16px;
-    line-height: 30px;
-    color: #fff !important;
+    font-size: 19px;
+    line-height: 25px;
+    color: #000 !important;
     text-align: center;
-    margin: 10px 0px 0px 0px;
+    margin: 18px 0px 0px 0px;
+    text-transform: initial;
 }
 
-.modaldefault .logoshatterblock{
+modal-container .logoshatterblock{
     width: 300px;
     margin: 0 auto;
     display: block;
 }
 
-.modaldefault .logoshatterblock img{
+modal-container .logoshatterblock img{
     max-width: 100%;
+}
+
+modal-container {
+    padding: 0 !important;
+}
+
+
+modal-container .modal-dialog {
+    width: 500px;
+    margin: 1.75rem auto;
+    position: absolute;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+}
+
+modal-container {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 
@@ -590,7 +625,7 @@ a{cursor: pointer; outline: none;}
 /*Start Footer Section*/
 
 .nexgen_frontfooter{background: #33434a url(../images/nexgen_frontfooterbgwrapper.png) no-repeat; background-position: bottom left 100%;}
-.nexgen_frontfooterwrapper{padding-top: 50px; padding-bottom: 50px; width: 1397px;    margin: 0 auto; display: block;}
+.nexgen_frontfooterwrapper{padding-top: 50px; padding-bottom: 50px; width: 952px;    margin: 0 auto; display: block;}
 
 .customernumber{font-family: 'RalewaySemiBold'; font-size: 14px; color:#ff6000; margin: 0px; padding: 0; line-height: 36px; font-weight: normal; text-transform: uppercase;
     margin-bottom: 25px;
@@ -608,14 +643,21 @@ a{cursor: pointer; outline: none;}
 .footercontentright p{line-height: 30px;}
 
 .footercontentright p span{color:#50f5ff;}
+
+.nexgen_frontfooter p a{font-family: 'RalewaySemiBold'; font-size: 15px; color:#b3c3ca; margin: 0px; padding: 0; line-height: 36px; font-weight: normal;}
+.nexgen_frontfooter p a:hover{color:#fff; text-decoration: none !important;}
+
 .footerlogo{
-    margin-top: 30px;
-    float: right;
-    width: 267px;
+    margin-top: 10px;
+    width: 240px;
 }
 .footerlogo img{
     max-width: 100%;
     width: 100%;
+}
+
+.bhblock{
+    margin-top: 20px !important;
 }
 
 
@@ -1176,6 +1218,21 @@ a{cursor: pointer; outline: none;}
     color: #fff;
     margin-top: 7px;
 }
+
+
+
+.getstaredfooternew{}
+.getstaredfooternew .homeblock4 {
+    background: url(../images/getstaredfooternewbg.jpg) no-repeat bottom left!important;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+
 
 
 

@@ -90,8 +90,10 @@
                     <!--{{trusthtml(item.htmleditorvalue)}}-->
                     <!--</div>-->
                     <!--data-label="Group Description" [routerLink]="['/mastergroupedit',item._id]" [innerHTML]=-->
-
-                    <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>
+                    <div *ngIf="item.filetype=='html'">
+                      <span (click)="showhtmlval(item.htmleditorvalue,showhtmlmodal)"><i title="View More" class="fa fa-eye" aria-hidden="true"></i></span>
+                      <!--  <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>-->
+                    </div>
                   </td>
                   <td>{{item.yesorno}}</td>
                   <td>{{gettrainingcategoryname(item.trainingcategory)}}</td>
@@ -206,9 +208,15 @@
     <button type="button" class="btn btn-primary" (click)="nodelete()">No</button>
   </div>
 </ng-template>
+
 <ng-template #templatecommon>
-  <div class="modal-body success_notify">
+  <div class="modal-body ">
     <h1>{{message}}</h1>
   </div>
 </ng-template>
 
+<ng-template #showhtmlmodal>
+  <div class="modal-body modal_viewmore">
+    <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(editorval)"></div>
+  </div>
+</ng-template>

@@ -662,6 +662,7 @@
       <p>
         By selecting “agree”, the parties agree that this agreement may be electronically signed. The parties agree that the electronic signatures appearing on this agreement are the same as handwritten signatures for the purposes of validity, enforceability, and admissibility.
       </p>
+      <span class="errortext" *ngIf="signerror">{{signerror}}</span>
       <div class="button_div">
         <button (click)="savesignval()">Save</button>
       </div>

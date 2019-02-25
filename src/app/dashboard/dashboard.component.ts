@@ -49,8 +49,9 @@ export class DashboardComponent implements OnInit {
     getlegaldocs()
     {
         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'legaldocuser_view'})
-            .subscribe(res=>{
+        // this.http.post(link,{source:'legaldocuser_view'})
+        this.http.post(link,{source:'user_regional_legaldoc_view'})
+    .subscribe(res=>{
                 let result;
                 result=res;
                 console.log('result.......');

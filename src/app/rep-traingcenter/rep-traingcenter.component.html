@@ -11,7 +11,8 @@
         <accordion-group heading="{{item.title}} Lesson" *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
           <div class="accordian_image">
             <div class="content_background">
-
+              <div class="lucoplast1"> </div>
+              <div class="lucoplast2"> </div>
 
           <div *ngIf="item.filetype=='html'" class="content_area">
             <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
@@ -320,7 +321,7 @@
       <div class="inner_training_list" *ngIf="trainingcategory?.length>0">
         <h1>Incomplete Trainings</h1>
         <ul>
-          <li *ngFor="let item of notdonecategory"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> <a (click)="cid=item._id;getdatalist()" href="javascript:void(0)">{{item.categoryname}}</a></li>
+          <li *ngFor="let item of notdonecategory"><a (click)="cid=item._id;getdatalist()" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
          <!-- <li> <span><img src="assets/images/filemanager_icon.png"></span> <a href="javascript:void(0)">training 5</a></li>
 -->
         </ul>
@@ -330,7 +331,7 @@
       <div class="inner_training_list">
         <h1>Completed Trainings</h1>
         <ul>
-          <li *ngFor="let item of donecategory" > <span (click)="cid=item._id;getdatalist()" ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> <a (click)="cid=item._id;getdatalist()" href="javascript:void(0)">{{item.categoryname}}</a></li>
+          <li *ngFor="let item of donecategory" ><a (click)="cid=item._id;getdatalist()" href="javascript:void(0)"> <span (click)="cid=item._id;getdatalist()" ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
 
 
         </ul>

@@ -23,6 +23,7 @@ public selectedid:any;
 public tarainingcategorylist:any=[];
 public sourceval:any="traininglesson";
 public sourceval2:any="tranningcategory";
+public editorval: any=null;
 
   constructor(public _Commonservices:Commonservices,public router:Router,public http:HttpClient,public modalservices:BsModalService,public cookie:CookieService,public sanitizer: DomSanitizer)
   {
@@ -108,6 +109,10 @@ public sourceval2:any="tranningcategory";
     nodelete(){
       this.modalref.hide();
     }
-
+    showhtmlval(editorval,showhtmlmodal:TemplateRef<any>){
+        this.editorval=null;
+        this.editorval=editorval;
+        this.modalref = this.modalservices.show(showhtmlmodal);
+    }
 }
 

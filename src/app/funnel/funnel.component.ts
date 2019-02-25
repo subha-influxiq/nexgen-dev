@@ -44,7 +44,8 @@ export class FunnelComponent implements OnInit {
   }
   ngOnInit() {
     this.dataForm = this.kp.group({
-      email: ['', Validators.compose([Validators.required, FunnelComponent.customValidator])],
+   //   email: ['', Validators.compose([Validators.required, FunnelComponent.customValidator])],
+      email: ["", FunnelComponent.validateEmail],
       firstname: ['',Validators.required],
       lastname: ['',Validators.required],
       phoneno: ['',Validators.required],
@@ -53,7 +54,8 @@ export class FunnelComponent implements OnInit {
     //  regionalrecruiter_id: ['']
     });
     this.dataForm1 = this.kp.group({
-      email: ['', Validators.compose([Validators.required, FunnelComponent.customValidator])],
+    //  email: ['', Validators.compose([Validators.required, FunnelComponent.customValidator])],
+      email: ["", FunnelComponent.validateEmail],
       id: [''],
       firstname: ['',Validators.required],
       lastname: ['',Validators.required],
@@ -80,7 +82,7 @@ export class FunnelComponent implements OnInit {
     });
   }
 
-  static customValidator(inputemail): any {
+ /* static customValidator(inputemail): any {
     if (inputemail.pristine) {
       return null;
     }
@@ -91,8 +93,18 @@ export class FunnelComponent implements OnInit {
         invalidemail: true
       }
     }
-  }
+  }*/
+  static validateEmail(control: FormControl){
+    if(control.value==''){
+      return { 'invalidemail': true };
+    }
 
+    /*if ( !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){*/
+    let filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+    if (String(control.value).search(filter) == -1) {
+      return { 'invalidemail': true };
+    }
+  }
   dosubmit() {
    // console.log(this.dataForm.value['state']);
     // console.log(this.dataForm.value['email']);
@@ -140,7 +152,8 @@ export class FunnelComponent implements OnInit {
               this.dataForm1 = this.kp.group({
                 firstname: [userdet.firstname, Validators.required],
                 lastname: [userdet.lastname, Validators.required],
-                email: [userdet.email,Validators.compose([Validators.required, FunnelComponent.customValidator])],
+             //   email: [userdet.email,Validators.compose([Validators.required, FunnelComponent.customValidator])],
+                email: [userdet.email, FunnelComponent.validateEmail],
                 phoneno: [userdet.phoneno,Validators.required],
                 city: [userdet.city,Validators.required],
                 state: [userdet.state,Validators.required],

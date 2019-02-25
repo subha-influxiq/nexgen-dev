@@ -1,87 +1,111 @@
-<div class="page-wrapper">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="admintable">
-        <h3>Legal Documents:</h3>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Document</th>
-              <th scope="col">Status</th>
-              <th scope="col">Edit</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <tr>
-              <td>
-                <span *ngIf="getw9values==null">-</span>
-                <span *ngIf="getw9values!=null">{{commonservices.showdate(getw9values.created_at)}}</span>
-              </td>
-              <td>W-9</td>
-              <td>
-                <span *ngIf="getw9values!=null">Submitted</span>
-                <span *ngIf="getw9values==null">Not Submitted</span></td>
-              <td>
-
-                <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'W9')" [uploadInput]="uploadInput" #fileInput1 >
-
-                <button (click)="fileInput1.click()" type="button">Upload</button><br>
-                <label *ngIf="filesw9==null && getw9values!=null">Uploaded File Name: {{getw9values.filelocalname}}</label>
-                <div *ngIf="filesw9?.length>0">
-                  <span *ngIf="percentageisw9==100 && errormg==''">
-                    <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
-                    <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
-                    <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
-                    <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
-                    <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
-                    <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
-                    <label> File Name: {{filesw9[0].name}}</label>
-                  </span>
-                  <label *ngIf="percentageisw9!=100 && errormg==''">Upload Percentage:{{percentageisw9}}%</label>
-                  <br>
+<app-adminheader></app-adminheader>
+<div class="nextGen_admin_mainwrapper">
+  <div class="page-wrapper s_getmybrand_adminlist">
+    <div class="nexgen_adminlist">
+      <div class="user_management_wrapper">
+        <div class="user_management_inner">
+          <h2>Legal Documents</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 admin_inner_wrapper">
+            <div class="clearfix"></div>
+            <div class="content_header_block">
+              <div class="clearfix"></div>
+              <div class="newblock1 ">
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="nexgen_admin_table">
+              <div class="action_section">
+                <div class="inner_actionblock">
+                  <div class="clearfix"></div>
                 </div>
-                <button type="button" (click)="deletdata(getw9values,commonconfirmmodal)" *ngIf="filesw9?.length>0">Delete</button></td>
-            </tr>
+              </div>
+              <div class="table-responsive admin_table_wrapper generaltablecls">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Document</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Edit</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 
-            <tr>
-              <td>
-                <span *ngIf="getidvalues==null">-</span>
-                <span *ngIf="getidvalues!=null">{{commonservices.showdate(getidvalues.created_at)}}</span>
-              </td>
-              <td>Insurance Docket</td>
-              <td>
-                <span *ngIf="getidvalues!=null">Submitted</span>
-                <span *ngIf="getidvalues==null">Not Submitted</span></td>
-              <td>
-                <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'ID')" [uploadInput]="uploadInput" #fileInput2 >
-                <button (click)="fileInput2.click()" type="button">Upload</button><br>
-                <label *ngIf="filesid==null && getidvalues!=null">Uploaded File Name: {{getidvalues.filelocalname}}</label>
-                <div *ngIf="filesid?.length>0">
-                   <span *ngIf="percentageisid==100 && errormg==''">
-                    <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
-                    <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
-                    <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
-                    <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
-                    <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
-                    <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
-                    <label> File Name: {{filesid[0].name}}</label>
-                  </span>
-                <label *ngIf="percentageisid!=100 && errormg==''">Upload Percentage:{{percentageisid}}%</label>
-                </div>
-                <button type="button" (click)="deletdata(getidvalues,commonconfirmmodal)" *ngIf="filesid?.length>0">Delete</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+                  <tr>
+                    <td>
+                      <span *ngIf="getw9values==null">-</span>
+                      <span *ngIf="getw9values!=null">{{commonservices.showdate(getw9values.created_at)}}</span>
+                    </td>
+                    <td>W-9</td>
+                    <td>
+                      <span *ngIf="getw9values!=null">Submitted</span>
+                      <span *ngIf="getw9values==null">Not Submitted</span></td>
+                    <td>
+
+                      <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'W9')" [uploadInput]="uploadInput" #fileInput1 >
+
+                      <button (click)="fileInput1.click()" type="button" class="deletebtn"  *ngIf="getw9values!=null">Upload New</button>
+                      <button (click)="fileInput1.click()" type="button" class="deletebtn"  *ngIf="getw9values==null">Upload</button> <button type="button" (click)="deletdata(getw9values,commonconfirmmodal)" *ngIf="getw9values" class="deletebtn">Delete</button>
+                    <!--  <label *ngIf="filesw9==null && getw9values!=null">Uploaded File Name: {{getw9values.filelocalname}}</label>-->
+                      <div *ngIf="filesw9?.length>0">
+                      <!--  <span *ngIf="percentageisw9==100 && errormg==''">
+                          <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
+                          <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
+                          <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
+                          <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
+                          <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
+                          <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
+                          <label> File Name: {{filesw9[0].name}}</label>
+                        </span>-->
+                        <label *ngIf="percentageisw9!=100 && errormg==''">Upload Percentage:{{percentageisw9}}%</label>
+                        <br>
+                      </div>
+                     </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <span *ngIf="getidvalues==null">-</span>
+                      <span *ngIf="getidvalues!=null">{{commonservices.showdate(getidvalues.created_at)}}</span>
+                    </td>
+                    <td>Insurance Docket</td>
+                    <td>
+                      <span *ngIf="getidvalues!=null">Submitted</span>
+                      <span *ngIf="getidvalues==null">Not Submitted</span></td>
+                    <td>
+                      <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'ID')" [uploadInput]="uploadInput" #fileInput2 >
+                      <button (click)="fileInput2.click()" type="button" class="deletebtn" *ngIf="getidvalues!=null">Upload New</button>         <button (click)="fileInput2.click()" type="button" class="deletebtn" *ngIf="getidvalues==null">Upload</button>
+                      <button type="button" (click)="deletdata(getidvalues,commonconfirmmodal)" *ngIf="getidvalues" class="deletebtn">Delete</button>
+                      <!--<label *ngIf="filesid==null && getidvalues!=null">Uploaded File Name: {{getidvalues.filelocalname}}</label>-->
+                      <div *ngIf="filesid?.length>0">
+                       <!-- <span *ngIf="percentageisid==100 && errormg==''">
+                          <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
+                          <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
+                          <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
+                          <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
+                          <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
+                          <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
+                          <label> File Name: {{filesid[0].name}}</label>
+                        </span>-->
+                        <label *ngIf="percentageisid!=100 && errormg==''">Upload Percentage:{{percentageisid}}%</label>
+                      </div>
+
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+<app-footer></app-footer>
 <ng-template #commonconfirmmodal>
   <div class="modal-body brandmanagement_modal">
     <div class="logo_wrapper">

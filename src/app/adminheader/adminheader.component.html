@@ -28,14 +28,18 @@
               <li class="nav-item">
                 <a class="nav-link" >User Management</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link">Training Center</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/tranningcategory']">Manage Category</a>
+                  <a class="dropdown-item" [routerLink]="['/trainingsectionlist']">Manage Lesson</a>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link">Contract Manager</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">Legal Documents</a>
+                <a class="nav-link" [routerLink]="['/legaldoclist']">Legal Documents</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link">Calender Manager</a>
@@ -119,7 +123,7 @@
                 <a class="nav-link">Digital Contract</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link">Legal Documents</a>
+                <a class="nav-link" [routerLink]="['/replegaldocuments']">Legal Documents</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link">Calender</a>

@@ -67,10 +67,8 @@ export class FrontendfooterComponent implements OnInit {
   }
 
   dosubmit(formval,template:TemplateRef<any>) {
-console.log(template);
     for (let x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
-      console.log(this.dataForm.controls[x].valid);
     }
     if (this.dataForm.valid) {
       let data = {
@@ -94,7 +92,7 @@ console.log(template);
               this.modalRef1=this.modal.show(template);
               setTimeout(() =>{
                 this.modalRef1.hide();
-              });
+              },2000);
             }
           }, error => {
             console.log('Oooops!');
@@ -102,4 +100,7 @@ console.log(template);
     }
 
   }
+    ofmodal(){
+        this.modalRef1.hide();
+    }
 }

@@ -157,7 +157,7 @@ export class RepTraingcenterComponent implements OnInit {
                         if(this.datalist[i].prerequisite_lesson!=null && this.traininglessonflag==true){
                             for(let h in this.datalist){
                                 //  console.log("================");
-                                 console.log(h);
+                              //   console.log(h);
                                 //  console.log(this.sorteddatalist[this.sorteddatalist.length-1]._id);
                                 //  console.log(this.datalist[h].prerequisite_lesson);
                                 // console.log(this.sorteddatalist[this.sorteddatalist.length-1]);
@@ -253,8 +253,10 @@ export class RepTraingcenterComponent implements OnInit {
 
         if(i1==0) {
             this.sorteddatalist[i1].openaccordian=true;
+            if(this.markasdonedatalist.length>0){
             if(this.markasdonedatalist[0].traininglesson==item._id){
                 this.sorteddatalist[i1+1].openaccordian=true;
+            }
             }
             return false;
         }

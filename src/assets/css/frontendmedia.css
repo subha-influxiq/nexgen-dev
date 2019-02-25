@@ -85,9 +85,7 @@
     .homeblock2wrapper{
         width: 98%;
     }
-    .nexgen_frontfooterwrapper{
-        width: 94%;
-    }
+
     .homeblock3wrapper{
         width: 98%;
     }
@@ -366,6 +364,10 @@
 
 
 @media screen  and  (max-width: 1199px){
+    .getstaredfooternew .homeblock4 {
+        background: none !important;
+    }
+
     .frontslider .frontslidercontent p {
         margin-left: 0;
         margin-top: 10px;
@@ -693,6 +695,10 @@
 }
 
 @media screen  and  (max-width: 991px) {
+    .nexgen_frontfooterwrapper{
+        width: 94%;
+    }
+
     .callnewdivinner {
         padding: 10px !important;
         text-align: center;
@@ -872,6 +878,8 @@
 
 
 @media screen  and  (max-width: 767px) {
+
+
     .generalcls .homeblock2 p span.bigtextwrapper {
         width: 98%;
     }
@@ -922,6 +930,10 @@
 }
 
 @media screen  and  (max-width: 540px) {
+    modal-container .modal-dialog{
+        width: 90%;
+    }
+
     .generalcls .homeblock2 p span.bigtextwrapper {
         width: 90%;
     }
