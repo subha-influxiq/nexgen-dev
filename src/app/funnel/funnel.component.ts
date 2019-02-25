@@ -257,7 +257,8 @@ export class FunnelComponent implements OnInit {
   }
   addregional_recruiter(val){
     this.regionalrecruiter_id=null;
-    const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
+    // const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
+    const link = this._commonservices.nodesslurl+'getregionalrecruiter';
     let con;
     if(val==0) con={state: this.dataForm.value['state']}
     if(val==1) con={state: this.dataForm1.value['state']}

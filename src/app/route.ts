@@ -32,6 +32,7 @@ import {AboutPcrTestingComponent} from "./about-pcr-testing/about-pcr-testing.co
 import {GetStartedComponent} from "./get-started/get-started.component";
 import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {RepdetailsComponent} from "./repdetails/repdetails.component";
+import {ReplegaldocumentComponent} from "./replegaldocument/replegaldocument.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -51,6 +52,8 @@ const appRoutes: Routes = [
     { path:'useraccountsetting', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
+    { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent}, // cat id
+    { path: 'reptrainingcenter/:cid/:lid', component: RepTraingcenterComponent}, // lesson id
     { path:'trial', component: TrialsComponent},
     { path:'trainingsectionlist', component: TrainingsectionlistComponent},
     { path:'trainingsection', component: TrainingsectionComponent},
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
     { path:'about_pcr_testing', component: AboutPcrTestingComponent},
     { path:'get_started', component: GetStartedComponent},
     { path:'contact_us', component: ContactUsComponent},
-    { path:'repdetails', component: RepdetailsComponent}
+    { path:'repdetails', component: RepdetailsComponent},
+    { path:'replegaldocuments', component: ReplegaldocumentComponent}
 
 ];
 

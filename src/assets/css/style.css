@@ -74,7 +74,7 @@ body{ padding:0; margin: 0;}
 
 /*Start Header*/
 .header_bg{ background: #efefef; padding: 15px 0;}
-.nexgen_header_wrapper{width: 1610px; margin: 0 auto; }
+.nexgen_header_wrapper{width: 1700px; margin: 0 auto; }
 .nexgen_header_wrapper .social_media_container{ display: flex; align-items: center; width: auto; height: 100%; float: right; }
 .nexgen_header_wrapper .social_media_container .social_media_icon{
     width: 85px;
@@ -118,7 +118,7 @@ body{ padding:0; margin: 0;}
 .nexgen_header_wrapper .social_media_container .profile_section ul li a .user_image{  width: 40px; height: 40px; border-radius: 50%; border: 3px solid #414548; display: inline-table; overflow: hidden; }
 .nexgen_header_wrapper .social_media_container .profile_section ul li a .user_image img{ width: 100%;}
 .nexgen_header_wrapper .social_media_container .profile_section ul li .nav-link{ padding: 0px;}
-.nexgen_header_wrapper .social_media_container p{margin: 0;}
+.nexgen_header_wrapper .social_media_container p{margin: 0; font-size: 15px;}
 .nexgen_header_wrapper  .navbar-expand-lg .navbar-nav{ width:800px; }
 .nexgen_header_wrapper .navbar-expand-lg .navbar-nav .nav-link{  color: #3d3d3d!important; font-family: 'RalewaySemiBold'; font-size: 13px; padding: 10px; text-transform: uppercase;}
 .nexgen_header_wrapper .col-md-8{padding: 0;}
@@ -298,10 +298,10 @@ body{ padding:0; margin: 0;}
     font-size: 16px;
     font-family:"OpenSansSemiBold";
 }
-
+.sales_agreement_wrapper .sub_contract{ width: 84%; margin: 30px auto;  margin-bottom: 0; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input{ padding: 0 3px; background: transparent; border: none; border-bottom: 1px solid #000; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:nth-child(1){ width: 100px;}
-.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:focus{ outline: none;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:focus{ outline: none; box-shadow: none; }
 
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .heading{
     color: #0196cd;
@@ -371,7 +371,7 @@ body{ padding:0; margin: 0;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 .printname_box { width: 86%;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 input:nth-last-of-type(1){ width: 72%;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 h3{ font-family: RalewayRegular; font-size: 16px; }
-.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 p{ line-height: 30px; font-size: 16px;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 p{ line-height: 30px; font-size: 16px; margin-bottom: 0;}
 
 /*scheduledA_section*/
 

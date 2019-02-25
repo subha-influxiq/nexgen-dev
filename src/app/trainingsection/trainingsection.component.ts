@@ -147,6 +147,10 @@ export class TrainingsectionComponent implements OnInit {
           this.dataForm.controls['fileservername'].patchValue(datalist2[0].fileservername);
           this.dataForm.controls['audioservername'].patchValue(datalist2[0].audioservername);
           this.dataForm.controls['videoservername'].patchValue(datalist2[0].videoservername);
+          // if(this.dataForm.controls['trainingcategory'].value!='')
+          // {
+            this.getdata();
+          // }
           this.editid = datalist2[0]._id;
           this.typefile();
           if(datalist2[0].filetype=='audio'){
@@ -164,6 +168,7 @@ export class TrainingsectionComponent implements OnInit {
           this.percentageis = 100;
           this.lengthis=datalist2.length;
         })
+
   }
 
   onUploadOutput(output:UploadOutput):void {

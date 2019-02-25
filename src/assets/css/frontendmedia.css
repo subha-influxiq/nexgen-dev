@@ -10,12 +10,26 @@
     .aboutpcrblock3inner {
         background: url(../images/aboutpcrblock3inner.png) no-repeat top left -15% !important;
     }
+    .aboutpcrblock6 .homeblock3wrapper{
+        width: 96%;
+    }
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -20% !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-right: 0px;
+        padding-left: 0px;
+        background-size: contain!important;
+    }
 }
 
 
 @media screen  and  (max-width: 1700px) {
+
+
+
     .aboutpcrblock6inner {
-        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -48% !important;
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -30% !important;
         background-size: contain!important;
     }
     .aboutpcrblock7inner {
@@ -40,6 +54,12 @@
 
 
 @media screen  and  (max-width: 1666px){
+
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -48% !important;
+        background-size: contain!important;
+    }
+
     .whoweareblock3 {
         background: #dbeae7 url(../images/whoweareblock3bgwrapper.png) no-repeat top right -15% !important;
         background-size: contain !important;
@@ -63,13 +83,13 @@
         width: inherit !important;
     }
     .homeblock2wrapper{
-        width: 100%;
+        width: 98%;
     }
     .nexgen_frontfooterwrapper{
-        width: 100%;
+        width: 94%;
     }
     .homeblock3wrapper{
-        width: 100%;
+        width: 98%;
     }
 
     .nexgen_frontheader_wrapper .social_media_container .call_container {
@@ -82,8 +102,8 @@
 
 @media screen  and  (max-width: 1600px) {
     .whoweareblock4bgright {
-        background: url(../images/whoweareblock4bgright.png) no-repeat top right 60%;
-        background-size: cover;
+        background: url(../images/whoweareblock4bgright.png) no-repeat top right -300%;
+        background-size: contain;
     }
 
     .aboutpcrblock7inner {
@@ -91,7 +111,7 @@
         background-size: contain!important;
     }
     .aboutpcrblock6inner {
-        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -74% !important;
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -55% !important;
         background-size: contain!important;
     }
     .aboutpcrblock3inner {
@@ -104,13 +124,26 @@
 
 }
 
+
+@media screen  and  (max-width: 1540px) {
+    .whoweareblock4bgright {
+        background: url(../images/whoweareblock4bgright.png) no-repeat top right -135%;
+        background-size: contain;
+    }
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -70% !important;
+        background-size: contain!important;
+    }
+}
+
+
 @media screen  and  (max-width: 1500px) {
     .whoweareblock3 {
         background: #dbeae7 url(../images/whoweareblock3bgwrapper.png) no-repeat top right -5% !important;
         background-size: contain !important;
     }
     .aboutpcrblock6inner {
-        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -74% !important;
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -40% !important;
         background-size: contain!important;
     }
 
@@ -120,7 +153,7 @@
     }
 
     .aboutpcrblock3inner {
-        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -50% !important;
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -15% !important;
         background-size: contain!important;
     }
 
@@ -164,29 +197,76 @@
     }
 }
 
+@media screen  and  (max-width: 1440px) {
+    .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -25% !important;
+        background-size: contain !important;
+    }
+}
 
-@media screen  and  (max-width: 1400px) {
+
+@media screen  and  (max-width: 1400px){
+    .aboutpcrblock7inner {
+        background: url(../images/aboutpcrblock7inner.png) no-repeat left -31% top!important;
+        background-size: contain!important;
+    }
+
+    .whoweareblock4bgright {
+        background: url(../images/whoweareblock4bgright.png) no-repeat top right 170%;
+        background-size: cover;
+    }
+
     .aboutpcrblock2inner {
         background: url(../images/aboutpcrblock2inner.png) no-repeat top right -30% !important;
         background-size: contain!important;
     }
+
+    .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -30% !important;
+        background-size: contain!important;
+    }
+
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -60% !important;
+        background-size: contain!important;
+    }
+
 }
 
 @media screen  and  (max-width: 1366px) {
+    .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -50% !important;
+        background-size: contain!important;
+    }
+
     .aboutpcrblock7inner {
         background: url(../images/aboutpcrblock7inner.png) no-repeat left -34% top!important;
         background-size: contain!important;
     }
 
-    .aboutpcrblock3inner {
-        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -65% !important;
-    }
+
+/*    .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -70% !important;
+    }*/
+
+
     .aboutpcrblock3 .homeblock3content {
         width: 46% !important;
     }
+    .aboutpcrblock3 .homeblock3content {
+        margin-left: 54%;
+    }
+
+
+    .aboutpcrblock7 .homeblock3content {
+        width: 46% !important;
+    }
+    .aboutpcrblock7 .homeblock3content {
+        margin-left: 54%;
+    }
 
     .aboutpcrblock1 .homeblock1wrapper {
-        width: 100%;
+        width: 98%;
     }
     .aboutpcrblock6 .homeblock3content p span {
         display: block;
@@ -204,14 +284,43 @@
     .nexgen_frontheader_wrapper .navbarblockwrapperinner {
         padding-right: 0;
     }
+
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -60% !important;
+        background-size: contain!important;
+    }
 }
 
-@media screen  and  (max-width: 1280px) {
+@media screen  and  (max-width: 1300px) {
+
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -70% !important;
+        background-size: contain!important;
+    }
+
     .aboutpcrblock3inner {
-        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -135% !important;
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -65% !important;
+        background-size: contain !important;
+    }
+}
+
+
+@media screen  and  (max-width: 1280px) {
+    .aboutpcrblock7 .homeblock3content {
+        margin-left: 56%;
+        width: 44% !important;
+    }
+
+    .whoweareblock4bgright {
+        background: url(../images/whoweareblock4bgright.png) no-repeat top right 125%;
+        background-size: cover;
+    }
+
+    .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -100% !important;
     }
     .aboutpcrblock6inner {
-        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -82% !important;
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -55% !important;
         background-size: contain!important;
     }
     .aboutpcrblock7inner {
@@ -238,12 +347,42 @@
 }
 
 @media screen  and  (max-width: 1240px) {
-    .aboutpcrblock3inner {
-        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -170% !important;
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -70% !important;
+        background-size: contain!important;
+    }
+
+     .aboutpcrblock3inner {
+        background: url(../images/aboutpcrblock3inner.png) no-repeat top left -120% !important;
     }
 }
 
+@media screen  and  (max-width: 1220px) {
+    .aboutpcrblock6inner {
+        background: url(../images/aboutpcrblock6inner.png) no-repeat top right -80% !important;
+        background-size: contain !important;
+    }
+}
+
+
 @media screen  and  (max-width: 1199px){
+    .frontslider .frontslidercontent p {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .homeblock2content ul.list-inline li:nth-child(1){padding-left: 5px !important;}
+    .homeblock2content ul.list-inline li:nth-child(3){padding-left: 5px !important;}
+
+
+    .generalcls .homeblock2 p span.bigtextwrapper {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .getstartedpage .frontslider .carousel-item img {
         width: 130%!important;
         margin-left: -30%;
@@ -281,13 +420,13 @@
     }
     .aboutpcrblock7inner .homeblock3wrapper {
         padding-left: 0px;
-        padding-top: 48% !important;
+        padding-top: 46% !important;
         text-align: center;
         width: 100%;
-        padding: 25px 0px;
+        padding: 25px 0px 10px;
     }
     .aboutpcrblock7 .homeblock3content {
-        width: 94%;
+        width: 94% !important;
         display: inline-block;
     }
     .aboutpcrblock7 .homeblock3content {
@@ -362,16 +501,22 @@
 
 
     .whoweareblock4bgright {
-        background: #dbeae7 url(../images/whoweareblock4bgright.png) no-repeat top left;
+        /*background: #dbeae7 url(../images/whoweareblock4bgright.png) no-repeat top left 100%;*/
         background-size: 108% !important;
         padding-top: 30px;
         padding-bottom: 20px;
     }
 
-    .whoweareblock4{
-        padding:  0!important;
+    .whoweareblock4 {
+        background: #dbeae7 url(../images/whoweareblock4bgleft.png) no-repeat top left;
+        background-size: 147%;
+        padding: 0 !important;
     }
 
+    /*.whoweareblock4{
+        padding:  0!important;
+    }
+*/
 
 
     .frontslidercontentinner {
@@ -565,9 +710,11 @@
     }
 
     .pcrfeatureslist ul.list-inline li {
-        width: 33.33%;
+        width: 32.33% !important;
     }
-
+    .aboutpcrblock5 .pcrfeatureslist ul.list-inline li{
+        width:49% !important;
+    }
 
     .nexgen_frontheader_wrapper .social_media_container .call_container p {
         text-align: center;
@@ -725,6 +872,17 @@
 
 
 @media screen  and  (max-width: 767px) {
+    .generalcls .homeblock2 p span.bigtextwrapper {
+        width: 98%;
+    }
+
+    .outteamcontentdoc .paddingdoc:nth-child(3) {
+        margin-right: -6%;
+    }
+    .outteamcontentdoc .paddingdoc:nth-child(1) {
+        margin-left: -6%;
+    }
+
     .outteamcontentdoc {
         width: 100%;
     }
@@ -746,14 +904,17 @@
         margin-left: auto !important;
         width: 100%;
     }
-
+    .pcrfeatureslist ul.list-inline li {
+        width: 49% !important;
+    }
 
 
 }
 
 @media screen  and  (max-width: 600px) {
-    .pcrfeatureslist ul.list-inline li {
-        width: 50%;
+    .paddingdoc h3 {
+        font-size: 20px;
+        line-height: 36px;
     }
     .pathogenpanelslist ul.list-inline li {
         width: 49.43%;
@@ -761,6 +922,10 @@
 }
 
 @media screen  and  (max-width: 540px) {
+    .generalcls .homeblock2 p span.bigtextwrapper {
+        width: 90%;
+    }
+
     .homeblock2content {
         display: block;
     }
@@ -825,6 +990,10 @@
 
 
 @media screen  and  (max-width: 480px) {
+    .pcrfeatureslist ul.list-inline li {
+        width: 100% !important;
+    }
+
     .frontslider .frontslidercontent h2 {
         font-size: 28px;
     }
@@ -851,7 +1020,7 @@
     }
 
     .aboutpcrblock5 .pcrfeatureslist ul.list-inline li {
-        width: 100%;
+        width: 100% !important;
     }
     .homeblock2imgwrapper {
         height: 90px;

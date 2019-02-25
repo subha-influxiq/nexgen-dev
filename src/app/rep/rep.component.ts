@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Commonservices} from '../app.commonservices' ;
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-rep',
@@ -11,17 +12,23 @@ export class RepComponent implements OnInit {
   public tabledatalis:any=[];
   public formdata:any;
   public datasource:any;
-  public sourcecondition:any={type:this._commonservices.roletypes[2].type2};
-  constructor(private _commonservices: Commonservices) {
+  public sourcecondition:any={};
+  constructor(private _commonservices: Commonservices,private cookeiservice: CookieService) {
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
+      {value:'created_at',name:'Date Joined',role:0,func:'',class:'id',type:'unixdate'},
+      {value:'unique_id',name:'User Id',role:0,func:'',class:'id',type:'text'},
       {value:'firstname',name:'First Name',role:0,func:'',class:'firstname',type:'text'},
       {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
       {value:'email',name:'Email Id',role:0,func:'',class:'email',type:'text'},
-      {value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},
+      /*{value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},*/
+      {value:'recruiter',name:'Owner',role:0,func:'',class:'owner',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
-      {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'text'},
+      {value:'phoneno',name:'Phone',role:0,func:'',class:'mobile',type:'text'},
     ];
+    if(this.cookeiservice.get('usertype')=='regional_recruiter'){
+      this.sourcecondition={regionalrecruiter_id_object:this.cookeiservice.get('userid')};
+    }
     this.formdata=[
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'lastname',label:'Last Name',placeholder:'Enter Last Name',validationrule:{required:true},validationerrormsg:'is required'},

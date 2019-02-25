@@ -45,6 +45,8 @@ import { AboutPcrTestingComponent } from './about-pcr-testing/about-pcr-testing.
 import { GetStartedComponent } from './get-started/get-started.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { RepdetailsComponent } from './repdetails/repdetails.component';
+import { ManageavailabilityComponent } from './manageavailability/manageavailability.component';
+import { ReplegaldocumentComponent } from './replegaldocument/replegaldocument.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { RepdetailsComponent } from './repdetails/repdetails.component';
     AboutPcrTestingComponent,
     GetStartedComponent,
     ContactUsComponent,
-    RepdetailsComponent
+    RepdetailsComponent,
+    ManageavailabilityComponent,
+    ReplegaldocumentComponent
   ],
   imports: [
     BrowserModule,
