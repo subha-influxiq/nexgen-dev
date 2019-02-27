@@ -80,6 +80,21 @@ export class Commonservices {
     }*/
     showdate(dt){
      //   return moment(dt).format("Do, MMM, YYYY");
-        return moment(dt).format("MMM Mo YY");
+        return moment(dt).format("MMM Do YY");
+    }
+    showunixtodate(dt){
+     //   return moment(dt).format("Do, MMM, YYYY");
+        if(dt ==null || dt.length<5) return "N/A";
+        return moment.unix(dt/1000).format("MMM Do YY");
+    }
+    gettype(filename){
+       var last;
+        last = filename.substring(filename.lastIndexOf(".") + 1, filename.length);
+        if(last=='doc') return 'DOC';
+        if(last=='docx') return 'DOCX';
+        if(last=='pdf') return 'PDF';
+        if(last=='ppt') return 'PPT';
+        if(last=='txt') return 'TXT';
+        if(last=='xls') return 'XLS';
     }
 }

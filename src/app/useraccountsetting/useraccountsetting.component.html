@@ -1,8 +1,4 @@
 <app-adminheader></app-adminheader>
-<!--l-->
-
-
-
 
 <div class="user_account_setting_wrapper">
   <h1 class="header">user account setting</h1>
@@ -11,136 +7,129 @@
   <div class="account_inner_wrapper">
 
     <div class="form_wrapper">
-    <form>
+    <form novalidate [formGroup]="dataForm" (ngSubmit)="formsubmit()">
+
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">Date joined</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text" disabled="disabled"  class="form-control" [formControl]="dataForm.controls['datejoin']">
         </div>
       </div>
 
       <div class="form-group row">
-        <label class="col-sm-2 col-form-label"> user id</label>
+        <label class="col-sm-2 col-form-label">User Id</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  disabled="disabled"  class="form-control" [formControl]="dataForm.controls['userids']">
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">first name:</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['firstname']">
+          <span  class="error" *ngIf="dataForm.controls['firstname']!=null && !dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched && issubmitted==1">First Name Required</span>
         </div>
+
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">last name:</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['lastname']">
+          <span  class="error" *ngIf="dataForm.controls['lastname']!=null && !dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched && issubmitted==1">Last Name Required</span>
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">username</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">password</label>
-        <div class="col-sm-10">
-          <input type="password"  class="form-control" >
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Date joined</label>
-        <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text" disabled="disabled"  class="form-control" [formControl]="dataForm.controls['username']">
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">email address</label>
         <div class="col-sm-10">
-          <input type="email"  class="form-control" >
+          <input type="email" disabled="disabled"  class="form-control" [formControl]="dataForm.controls['email']">
         </div>
       </div>
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">phone number</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['phonenumber']">
+          <span  class="error" *ngIf="dataForm.controls['phonenumber']!=null && !dataForm.controls['phonenumber'].valid && dataForm.controls['phonenumber'].touched && issubmitted==1">Phone Number Required</span>
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">address</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['address']">
+          <span  class="error" *ngIf="dataForm.controls['address']!=null && !dataForm.controls['address'].valid && dataForm.controls['address'].touched && issubmitted==1">Address Required</span>
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">address 2</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Date joined</label>
-        <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['address2']">
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">city</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['city']">
+          <span  class="error" *ngIf="dataForm.controls['city']!=null && !dataForm.controls['city'].valid && dataForm.controls['city'].touched && issubmitted==1">City Required</span>
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">state</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+
+            <select [formControl]="dataForm.controls['state']" class="form-control" >
+                <option value="">Select A State </option>
+                <option *ngFor="let selectval of states" value="{{selectval.abbreviation}}">{{selectval.name}}</option>
+            </select>
+
+          <span  class="error" *ngIf="dataForm.controls['state']!=null && !dataForm.controls['state'].valid && dataForm.controls['state'].touched && issubmitted==1">State Required</span>
         </div>
       </div>
-
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">zip code</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['zip']">
+          <span  class="error" *ngIf="dataForm.controls['zip']!=null && !dataForm.controls['zip'].valid && dataForm.controls['zip'].touched && issubmitted==1">Zip Required</span>
         </div>
       </div>
-
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label">account type</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text" disabled="disabled"  class="form-control" [formControl]="dataForm.controls['accounttype']">
         </div>
       </div>
 
       <div class="form-group row">
         <label class="col-sm-2 col-form-label"> owner</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['owner']">
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-sm-2 col-form-label"> locked status</label>
+
+   <!--   <div class="form-group row">
+        <label class="col-sm-2 col-form-label">status</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" >
+          <input type="text"  class="form-control" [formControl]="dataForm.controls['status']">
         </div>
-      </div>
+      </div>-->
 
       <div class="form-group row">
         <div class="button_wrapper form-group">
            <button> save</button>
-           <button> cancel</button>
+           <button type="button"> cancel</button>
           <div class="clearfix"></div>
         </div>
       </div>

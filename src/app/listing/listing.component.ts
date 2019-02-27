@@ -491,6 +491,9 @@ export class ListingComponent implements OnInit {
     loadImageFailed() {
         // show message
     }
-
+    gotorepdetails(idis){
+        console.log(idis);
+        this.router.navigate(['/repdetails',idis]);
+    }
 
 }

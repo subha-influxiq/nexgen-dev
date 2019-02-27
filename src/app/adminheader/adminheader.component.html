@@ -26,7 +26,7 @@
                 <a class="nav-link" [routerLink]="['/dashboard']">Dashboard<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" >User Management</a>
+                <a class="nav-link" [routerLink]="['/usermanagement']">User Management</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
@@ -36,7 +36,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link">Contract Manager</a>
+                <a class="nav-link" [routerLink]="['/digitalcontract']">Contract Manager</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/legaldoclist']">Legal Documents</a>
@@ -70,7 +70,9 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
                   </div>
                 </a>
+
                 <div class="dropdown-menu">
+                  <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
                   <a class="dropdown-item" (click)="logout()">Log Out</a>
                  <!-- <a class="dropdown-item" >Action</a>
                   <a class="dropdown-item" >Another action</a>

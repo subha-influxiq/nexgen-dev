@@ -72,7 +72,8 @@
                                 <tbody>
                                 <tr *ngFor="let item of datalist; index as i">
                                     <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col">
-                                        <span *ngIf="item1.type=='text'" [ngClass]="item1.class">{{item[item1.value]}}</span>
+                                        <span *ngIf="item1.type=='text' && router.url!='/rep'" [ngClass]="item1.class">{{item[item1.value]}}</span>
+                                        <span *ngIf="item1.type=='text'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='checkbox'" [ngClass]="item1.class">
                         <span  class="statusactive" *ngIf="item[item1.value]==true"> Active &nbsp;&nbsp; <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"  (click)="togglestatus(item)"  class="ticon_active"></span></span>
                         <span class="statusinactive"  *ngIf="item[item1.value]!=true"> Inactive <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1" (click)="togglestatus(item)" class="ticon_inactive"></span> </span>
@@ -82,12 +83,14 @@
                         <span class="hide">Toggle</span>
 
                     </span>
-                                        <span *ngIf="item1.type=='#'" [ngClass]="item1.class">{{i+1}}</span>
+                                        <span *ngIf="item1.type=='#'&& router.url!='/rep'" [ngClass]="item1.class">{{i+1}}</span>
+                                        <span *ngIf="item1.type=='#'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{i+1}}</span>
                                         <span *ngIf="item1.type=='image'" [ngClass]="item1.class"><img src="{{_commonservice.filepathurl }}{{item1.foldername}}/crop/{{item[item1.value]}}" /></span>
                                         <!-- <span *ngIf="item1.type=='image'" [ngClass]="item1.class"><img src="{{_commonservice.filepathurl}}{{item1.foldername}}/{{item1.filename}}" /></span>-->
                                         <span *ngIf="item1.type=='url'" [ngClass]="item1.class">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='daterange'" [ngClass]="item1.class">{{showdate(item[item1.value])}}</span>
-                                        <span *ngIf="item1.type=='unixdate'" [ngClass]="item1.class">{{showrealdate(item[item1.value])}}</span>
+                                        <span *ngIf="item1.type=='unixdate'&& router.url!='/rep'" [ngClass]="item1.class">{{showrealdate(item[item1.value])}}</span>
+                                        <span *ngIf="item1.type=='unixdate'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                     </td>
                                     <td *ngIf="hideaction!=null && hideaction!='true' ">
                     <span class=" delete_user" (click)="deletdata(item,commonconfirmmodal)">delete</span>

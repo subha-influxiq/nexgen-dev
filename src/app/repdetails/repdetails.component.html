@@ -1,129 +1,237 @@
 <app-adminheader></app-adminheader>
 
 
+
 <div class="details_header">
   <h2>manage contact</h2>
 </div>
 
-
 <div class="user_details_wrapper">
   <div class="left_wrapper">
-    <h3>interview questions</h3>
-    <div class="repdeatails_form_wrapper">
-      <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>User ID</label>
-            <input type="text" class="form-control" placeholder="User ID" >
+    <form novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+      <div class="left_wrapper_bg">
+        <h3>manage contact</h3>
+        <div class="repdeatails_form_wrapper">
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>User ID</label>
+              <input type="hidden" class="form-control" [formControl]="dataForm.controls['id']">
+              <input type="text" class="form-control" placeholder="User ID" readonly [formControl]="dataForm.controls['userid']">
+            </div>
+            <div class="form-group col-md-6">
+              <label >User Name</label>
+              <input type="text" class="form-control" placeholder="User Name" [formControl]="dataForm.controls['username']">
+              <span class="errortext" *ngIf="!dataForm.controls['username'].valid && dataForm.controls['username'].touched">User Name field can not be blank</span>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label >User Name</label>
-            <input type="text" class="form-control" placeholder="User Name">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>First Name</label>
+              <input type="text" class="form-control" placeholder="First Name" [formControl]="dataForm.controls['firstname']">
+              <span class="errortext" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name field can not be blank</span>
+            </div>
+            <div class="form-group col-md-6">
+              <label >Last Name</label>
+              <input type="text" class="form-control" placeholder="Last Name" [formControl]="dataForm.controls['lastname']">
+              <span class="errortext" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name field can not be blank</span>
+            </div>
           </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Email Address</label>
+              <input type="email" class="form-control" placeholder=" Email Address" [formControl]="dataForm.controls['email']" readonly>
+            </div>
+            <div class="form-group col-md-6">
+              <label > Phone Number</label>
+              <input type="text" class="form-control" placeholder="User Name" [formControl]="dataForm.controls['phoneno']">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Address 1</label>
+              <textarea  cols="30" type="text" class="form-control" placeholder=" Address 1" [formControl]="dataForm.controls['address1']"></textarea>
+              <span class="errortext" *ngIf="!dataForm.controls['address1'].valid && dataForm.controls['address1'].touched">Address field can not be blank</span>
+            </div>
+            <div class="form-group col-md-6">
+              <label >Address 2</label>
+              <textarea cols="30"  type="text" class="form-control" placeholder="Address 2" [formControl]="dataForm.controls['address2']"></textarea>
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity" [formControl]="dataForm.controls['city']">
+              <span class="errortext" *ngIf="!dataForm.controls['city'].valid && dataForm.controls['city'].touched">City field can not be blank</span>
+            </div>
+            <div class="form-group col-md-4">
+              <label>State</label>
+              <select class="form-control" [formControl]="dataForm.controls['state']">
+                <option value="">Choose State</option>
+                <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
+              </select>
+              <span class="errortext" *ngIf="!dataForm.controls['state'].valid && dataForm.controls['state'].touched">State field can not be blank</span>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Zip</label>
+              <input type="text" class="form-control" [formControl]="dataForm.controls['zip']">
+              <span class="errortext" *ngIf="!dataForm.controls['zip'].valid && dataForm.controls['zip'].touched">Zip field can not be blank</span>
+            </div>
+          </div>
+
+
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>First Name</label>
-            <input type="text" class="form-control" placeholder="First Name" >
+
+        <h3>interview questions</h3>
+        <div style="padding: 15px;">
+          <div class="row">
+            <div class="col">
+              <label>How many years have you been in the medical health industry?</label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="No of years" [formControl]="dataForm.controls['noofyears']">
+              <span class="errortext" *ngIf="!dataForm.controls['noofyears'].valid && dataForm.controls['noofyears'].touched">This field can not be blank</span>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label >Last Name</label>
-            <input type="text" class="form-control" placeholder="Last Name">
+
+          <div class="doctor_section">
+            <p>What type of doctors do You work with?</p>
+
+
+
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['primarycare']">Primary Care</label>
+            </label>
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['pediatrics']">Pediatrics</label>
+            </label>
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['podiatrist']">Podiatrist</label>
+            </label>
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['hospitals_that_outsource']">Hospitals That Outsource</label>
+            </label>
+
+            <br>
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['nursing']">Nursing Homes/Home Health Care</label>
+            </label>
+
+            <label>
+              <label><input type="checkbox"  value="value" [formControl]="dataForm.controls['other']">Other:</label>
+            </label>
+
+            <!--Hidden Senction for OTHERS Type-->
+            <div style="float: right; width: 50%;">
+              <label style="width: 100%;">
+                <input type="text" class=" form-control other_input_form"  [formControl]="dataForm.controls['othertext']">
+              </label>
+              <span class="errortext" *ngIf="!dataForm.controls['othertext'].valid && dataForm.controls['othertext'].touched">This field can not be blank</span>
+            </div>
+            <!--End Hidden Senction for OTHERS Type-->
           </div>
+
+          <div class="row">
+            <div class="col">
+              <label>How many practices/clinics do you personally/actively call on into weekly? </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Actively Call"  [formControl]="dataForm.controls['noofpersonallycall']">
+              <span class="errortext" *ngIf="!dataForm.controls['noofpersonallycall'].valid && dataForm.controls['noofpersonallycall'].touched">This field can not be blank</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label> How often do you call each office?  </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Last name" [formControl]="dataForm.controls['calleachoffice']">
+              <span class="errortext" *ngIf="!dataForm.controls['calleachoffice'].valid && dataForm.controls['calleachoffice'].touched">This field can not be blank</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label> How many practices do you have direct access to when you walk in their door? </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Last name" [formControl]="dataForm.controls['noofdirectaccess']">
+              <span class="errortext" *ngIf="!dataForm.controls['noofdirectaccess'].valid && dataForm.controls['noofdirectaccess'].touched">This field can not be blank</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label> What are you currently doing in the medical field?  </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Last name" [formControl]="dataForm.controls['workinmedicalfield']">
+              <span class="errortext" *ngIf="!dataForm.controls['workinmedicalfield'].valid && dataForm.controls['workinmedicalfield'].touched">This field can not be blank</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label> Have you represented a company that does Molecular PCR testing in the past? </label>
+            </div>
+            <div class="col">
+              <label>
+                <input type="radio" value="1" [formControl]="dataForm.controls['pcrtesting']"> Yes
+              </label>
+              <label>
+                <input type="radio" value="0" [formControl]="dataForm.controls['pcrtesting']"> No
+              </label>
+              <span class="errortext" *ngIf="!dataForm.controls['pcrtesting'].valid && dataForm.controls['pcrtesting'].touched">This field can not be blank</span>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="dataForm.value['pcrtesting']==1">
+            <div class="col">
+              <label> Company Name  </label>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Company name" [formControl]="dataForm.controls['companyname']">
+              <span class="errortext" *ngIf="!dataForm.controls['companyname'].valid && dataForm.controls['companyname'].touched">This field can not be blank</span>
+            </div>
+          </div>
+         <!-- <div class="row">
+            <div class="col" *ngIf="dataForm.value['pcrtesting']==1"><label>Company Name:  </label>
+              <input type="text"  class="alaninput2" [formControl]="dataForm.controls['companyname']">
+              <span class="errortext" *ngIf="!dataForm.controls['companyname'].valid && dataForm.controls['companyname'].touched">This field can not be blank</span>
+              <div class="clearfix"></div></div>
+          </div>
+-->
+
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Email Address</label>
-            <input type="email" class="form-control" placeholder=" Email Address" >
-          </div>
-          <div class="form-group col-md-6">
-            <label > Phone Number</label>
-            <input type="text" class="form-control" placeholder="User Name">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Address 1</label>
-            <textarea  cols="30" type="text" class="form-control" placeholder=" Address 1" ></textarea>
-          </div>
-          <div class="form-group col-md-6">
-            <label >Address 2</label>
-            <textarea cols="30"  type="text" class="form-control" placeholder="Address 2"></textarea>
-          </div>
-        </div>
-
-
-        <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-        </div>
-
-
-      </form>
-
-
-    </div>
-
-    <h3>manage contact</h3>
-    <div class="row">
-      <div class="col">
-        <label>How many years have you been in the medical health industry?</label>
       </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Last name">
+      <input type="submit" value="Submit" class="alandingsubbtn2">
+    </form>
+    <!--NOTE SECTION -->
+  <!--  <div class="note_wrap">
+      <h2>notes</h2>
+
+      <div class="inner_note_wrapper">
+        <button class="add_button"><i class="fa fa-plus" aria-hidden="true"></i> add a simple note</button>
+
+        <div class="note_text_wrap">
+          <textarea class="note_area"></textarea>
+
+          <button>save</button>
+          <button>cancel</button>
+        </div>
       </div>
-    </div>
+    </div>-->
+    <!--NOTE SECTION END-->
 
-    <div class="doctor_section">
-      <p>What type of doctors do You work with?</p>
-
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-
-
-      <br>
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-
-      <label>
-        <label><input type="checkbox"  value="value">Primary Care</label>
-      </label>
-
-      <!--Hidden Senction for OTHERS Type-->
-      <div style="float: right; width: 49%;">
-        <label style="width: 100%;">
-          <input type="text"  value="value">
-        </label>
-      </div>
-      <!--End Hidden Senction for OTHERS Type-->
-    </div>
-
-
-    <div class="right_wrapper"></div>
+  </div>
+  <!--End left wrapper-->
+  <div class="right_wrapper">
+    <h3 [routerLink]="['/rep']">list view</h3>
   </div>
 </div>
-
+<div class="clearfix"></div>
+<br><br><br>
+<app-footer></app-footer>

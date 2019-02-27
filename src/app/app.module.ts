@@ -48,6 +48,10 @@ import { RepdetailsComponent } from './repdetails/repdetails.component';
 import { ManageavailabilityComponent } from './manageavailability/manageavailability.component';
 import { ReplegaldocumentComponent } from './replegaldocument/replegaldocument.component';
 import { LegaldoclistComponent } from './legaldoclist/legaldoclist.component';
+import { DigitalcontractComponent } from './digitalcontract/digitalcontract.component';
+import { UsermanagementComponent } from './usermanagement/usermanagement.component';
+import { TrainingcenterreoprtComponent } from './trainingcenterreoprt/trainingcenterreoprt.component';
+
 
 @NgModule({
   declarations: [
@@ -85,7 +89,11 @@ import { LegaldoclistComponent } from './legaldoclist/legaldoclist.component';
     RepdetailsComponent,
     ManageavailabilityComponent,
     ReplegaldocumentComponent,
-    LegaldoclistComponent
+    LegaldoclistComponent,
+    DigitalcontractComponent,
+    UsermanagementComponent,
+    TrainingcenterreoprtComponent,
+
   ],
   imports: [
     BrowserModule,

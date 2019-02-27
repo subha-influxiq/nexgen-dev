@@ -34,6 +34,9 @@ import {ContactUsComponent} from "./contact-us/contact-us.component";
 import {RepdetailsComponent} from "./repdetails/repdetails.component";
 import {ReplegaldocumentComponent} from "./replegaldocument/replegaldocument.component";
 import {LegaldoclistComponent} from "./legaldoclist/legaldoclist.component";
+import {DigitalcontractComponent} from "./digitalcontract/digitalcontract.component";
+import {UsermanagementComponent} from "./usermanagement/usermanagement.component";
+import {TrainingcenterreoprtComponent} from "./trainingcenterreoprt/trainingcenterreoprt.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -66,9 +69,12 @@ const appRoutes: Routes = [
     { path:'about_pcr_testing', component: AboutPcrTestingComponent},
     { path:'get_started', component: GetStartedComponent},
     { path:'contact_us', component: ContactUsComponent},
-    { path:'repdetails', component: RepdetailsComponent},
+    { path:'repdetails/:id', component: RepdetailsComponent},
     { path:'replegaldocuments', component: ReplegaldocumentComponent},
-    { path:'legaldoclist', component: LegaldoclistComponent}
+    { path:'legaldoclist', component: LegaldoclistComponent},
+    { path:'digitalcontract', component: DigitalcontractComponent},
+    { path:'usermanagement', component: UsermanagementComponent},
+    { path:'trainingreport', component: TrainingcenterreoprtComponent}
 
 ];
 

@@ -50,8 +50,8 @@ export class AdminheaderComponent implements OnInit {
           }else{
             this.datalist = [];
             this.datalist = result.res;
-            console.log('datalist:');
-            console.log(this.datalist);
+           /* console.log('datalist:');
+            console.log(this.datalist);*/
             if(this.datalist.length>0 && this.datalist[0].recdetails.length>0){
               this.recphoneno=this.datalist[0].recdetails[0].phoneno;
             }
@@ -78,8 +78,8 @@ export class AdminheaderComponent implements OnInit {
           }else{
             this.repdetails = result.res;
             this.reptraininglessondetails = result.res2;
-            console.log(this.repdetails);
-            console.log(this.reptraininglessondetails);
+          /*  console.log(this.repdetails);
+            console.log(this.reptraininglessondetails);*/
           }
         }, error => {
           console.log('Oooops!');

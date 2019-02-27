@@ -44,9 +44,12 @@ export class RepComponent implements OnInit {
     console.log('console.log(this._commonservices.roletypes[2].type2');
     console.log(this._commonservices.roletypes[2].type2);
     this.datasource={table:'users',objarr:[]};
+    /*this.datasource={table:'user_training',objarr:[]};*/
   }
 
   ngOnInit() {
   }
-
+/*  gotorepdetails(idis){
+    console.log(idis[0][idis.value]);
+  }*/
 }

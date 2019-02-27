@@ -352,9 +352,10 @@
         font-size: 44px;
         margin-bottom: 15px;
     }
+    .traing_innerwrapper .training_rightpart ul li a{ padding: 10px 18px; }
 
     .admin_training_center_manage_popup{ width: 85%; }
-    .traing_innerwrapper{ flex-direction: column;}
+    .traing_innerwrapper{ flex-direction: column-reverse;}
     .traing_innerwrapper .training_rightpart {
         width: 100%;
         float: left;
@@ -364,6 +365,7 @@
     .traing_innerwrapper {
         width: 90%;
     }
+    .sales_agreement_wrapper .sales_inner_wrapper{ padding: 15px;}
 }
 
 

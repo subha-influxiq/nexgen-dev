@@ -22,7 +22,7 @@ export class FunnelComponent implements OnInit {
   public serverurl;
   public states;
   public regionalrecruiter_id;
-  public errormg='';
+
   public message=null;
   modalRef: BsModalRef;
 
