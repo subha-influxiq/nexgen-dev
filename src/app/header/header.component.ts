@@ -23,6 +23,9 @@ export class HeaderComponent implements OnInit {
     this.idis=this.cookeiservice.get('userid');
     this.sourceconditionval ={_id:this.idis};
     if(this.type=='rep'){ this.getsignupdetails(); }
+    if(this.cookeiservice.get('jwttoken')=='' || this.cookeiservice.get('userid') == ''){
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {

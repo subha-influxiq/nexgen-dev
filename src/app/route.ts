@@ -37,6 +37,7 @@ import {LegaldoclistComponent} from "./legaldoclist/legaldoclist.component";
 import {DigitalcontractComponent} from "./digitalcontract/digitalcontract.component";
 import {UsermanagementComponent} from "./usermanagement/usermanagement.component";
 import {TrainingcenterreoprtComponent} from "./trainingcenterreoprt/trainingcenterreoprt.component";
+import {EventmanagementComponent} from "./eventmanagement/eventmanagement.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     { path:'legaldoclist', component: LegaldoclistComponent},
     { path:'digitalcontract', component: DigitalcontractComponent},
     { path:'usermanagement', component: UsermanagementComponent},
-    { path:'trainingreport', component: TrainingcenterreoprtComponent}
+    { path:'trainingreport', component: TrainingcenterreoprtComponent},
+    { path:'event', component: EventmanagementComponent},
 
 ];
 

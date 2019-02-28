@@ -23,10 +23,9 @@ export class LoginComponent implements OnInit {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.nodesslurl = _commonservices.nodesslurl;
-    /*console.log(this.cookeiservice.get('userid'));
     if(this.cookeiservice.get('userid')!=''){
-      this.router.navigate(['/dashboard']);
-    }*/
+      this.router.navigate(['/useraccountsetting']);
+    }
   }
 
   ngOnInit() {

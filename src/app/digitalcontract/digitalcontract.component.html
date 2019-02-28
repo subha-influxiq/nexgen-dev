@@ -65,15 +65,15 @@
                   <td>{{item.lastname}}</td>
                   <td>{{item.recruiter}}</td>
                   <td>
-                    <a class="download">download</a>
+                    <a class="download" (click)="downloadfullcontract(item._id)">download</a>
                     <a class="view" (click)="getsignupdetails(item._id,lgModal)">view</a>
                   </td>
                   <td>
-                    <a class="download">download</a>
+                    <a class="download" (click)="downloadexhibit1contract(item._id)">download</a>
                     <a class="view" (click)="getexhibit1(item._id,lgModal1)">view</a>
                   </td>
                   <td>
-                    <a class="download">download</a>
+                    <a class="download" (click)="downloadexhibit2contract(item._id)">download</a>
                     <a class="view" (click)="getexhibit2(item._id,lgModal2)">view</a>
                   </td>
 

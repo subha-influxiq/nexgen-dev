@@ -53,6 +53,9 @@
                           <li class="nav-item">
                             <a class="nav-link" [routerLink]="['/contact_us']">Contact Us</a>
                           </li>
+                          <li class="nav-item" *ngIf="cookie.get('userid') == ''">
+                            <a class="nav-link" [routerLink]="['/login']">Login</a>
+                          </li>
                         </ul>
 
                       </div>

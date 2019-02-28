@@ -17,6 +17,8 @@ declare var $:any;
   providers: [Commonservices],
 })
 export class ListingComponent implements OnInit {
+  public start_time: any;
+  public end_time: any;
   public message: any = '';
   public datalist: any = [];
   public formdataval: any = [];
@@ -42,6 +44,11 @@ export class ListingComponent implements OnInit {
         minDate: moment().format("DD/MM/YYYY"),
         noDefaultRangeSelected : true,
        /* singleCalendar : true,*/
+    }
+    bsDatepicker = {
+        format: 'DD/MM/YYYY',
+        minDate: moment().format("DD/MM/YYYY"),
+        noDefaultRangeSelected : true
     }
   public formsourceval: any=[];
   public selecteditem: any;
@@ -176,6 +183,25 @@ export class ListingComponent implements OnInit {
                         console.log((result.res[0][c][0]));
                         console.log((result.res[0][c][1]));
                         $('#inputdate'+this.formdataval[j].name).val(this.showdate(result.res[0][c]));
+                        console.log(this.dataForm.controls[c].value);
+                        let bsValue = new Date(result.res[0][c][0]);
+                        //bsRangeValue: Date[];
+                        let maxDate = new Date(result.res[0][c][1]);
+                        //maxDate= maxDate.setDate(maxDate.getDate() + 7);
+                        console.log('maxDate');
+                        console.log(maxDate);
+                        console.log('bsValue');
+                        console.log(bsValue);
+                        let datearr=[bsValue,maxDate];
+                        this.dataForm.controls[c].patchValue(datearr);
+                    }
+                    if(this.formdataval[j].name==c && this.formdataval[j].inputtype=='dateis'){
+                        console.log('date picker !!!');
+                        console.log(this.showdate(result.res[0][c]));
+                        console.log((result.res[0][c]));
+                        console.log((result.res[0][c][0]));
+                        console.log((result.res[0][c][1]));
+                        $('#inputdateis'+this.formdataval[j].name).val(this.showdate(result.res[0][c]));
                         console.log(this.dataForm.controls[c].value);
                         let bsValue = new Date(result.res[0][c][0]);
                         //bsRangeValue: Date[];
@@ -373,6 +399,14 @@ export class ListingComponent implements OnInit {
   }
 
   formsubmit(){
+      if(this.start_time!=null)
+      {
+          this.dataForm.controls['start_time'].patchValue(this.start_time);
+      }
+      if(this.end_time!=null)
+      {
+          this.dataForm.controls['end_time'].patchValue(this.end_time);
+      }
     let y: any;
     for (y in this.dataForm.controls) {
       this.dataForm.controls[y].markAsTouched();
@@ -413,6 +447,14 @@ export class ListingComponent implements OnInit {
     this.dataForm.controls[controlname].patchValue(dval);
   }
 
+    showsingledate(dateis){
+       let st=moment(dateis).format('MMM Do YY');
+        return st;
+    }
+    showtime(dateis){
+       let st=moment(dateis).format('H.mm A');
+        return st;
+    }
     showdate(dateis){
         let st=dateis[0];
         let endt=dateis[1];
@@ -495,5 +537,9 @@ export class ListingComponent implements OnInit {
         console.log(idis);
         this.router.navigate(['/repdetails',idis]);
     }
+   /* showname(i){
+        console.log(i);
+        console.log(this.formdataval['timezone'].sourceval);
+    }*/
 
 }

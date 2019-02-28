@@ -72,7 +72,11 @@
                                 <tbody>
                                 <tr *ngFor="let item of datalist; index as i">
                                     <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col">
-                                        <span *ngIf="item1.type=='text' && router.url!='/rep'" [ngClass]="item1.class">{{item[item1.value]}}</span>
+                                        <span *ngIf="item1.type=='text' && router.url!='/rep'" [ngClass]="item1.class">
+                                           <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
+                                           <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->
+                                            {{item[item1.value]}}
+                                        </span>
                                         <span *ngIf="item1.type=='text'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='checkbox'" [ngClass]="item1.class">
                         <span  class="statusactive" *ngIf="item[item1.value]==true"> Active &nbsp;&nbsp; <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"  (click)="togglestatus(item)"  class="ticon_active"></span></span>
@@ -89,6 +93,8 @@
                                         <!-- <span *ngIf="item1.type=='image'" [ngClass]="item1.class"><img src="{{_commonservice.filepathurl}}{{item1.foldername}}/{{item1.filename}}" /></span>-->
                                         <span *ngIf="item1.type=='url'" [ngClass]="item1.class">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='daterange'" [ngClass]="item1.class">{{showdate(item[item1.value])}}</span>
+                                        <span *ngIf="item1.type=='dateis'" [ngClass]="item1.class">{{showsingledate(item[item1.value])}}</span>
+                                        <span *ngIf="item1.type=='timeis'" [ngClass]="item1.class">{{showtime(item[item1.value])}}</span>
                                         <span *ngIf="item1.type=='unixdate'&& router.url!='/rep'" [ngClass]="item1.class">{{showrealdate(item[item1.value])}}</span>
                                         <span *ngIf="item1.type=='unixdate'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                     </td>
@@ -154,8 +160,15 @@
 
                         <!--<date-range-picker *ngIf="item.inputtype=='daterange'" [options]="daterangepickerOptions" [class]="'col-md-12 form-control'"  (rangeSelected)="rangeSelected($event,item.name)" ></date-range-picker>-->
                         <input *ngIf="item.inputtype=='daterange' " id="inputdate{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker  [minDate]="minDate">
+                        <input *ngIf="item.inputtype=='dateis' " id="inputdateis{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate">
 
 
+
+                        <timepicker *ngIf="item.inputtype=='timeis' && item.name=='start_time'" [(ngModel)]="start_time" [ngModelOptions]="{standalone: true}"></timepicker>
+                        <timepicker *ngIf="item.inputtype=='timeis' && item.name=='end_time'" [(ngModel)]="end_time" [ngModelOptions]="{standalone: true}"></timepicker>
+
+
+                        <!--[formControl]="dataForm.controls['start_time']"-->
                         <!-- <input *ngIf="item.inputtype=='daterange' " [name]="item.name" [formControl]="dataForm.controls[item.name]" type="hidden" class="form-control" [placeholder]="item.placeholder">-->
 
                         <input *ngIf="item.inputtype=='url'"  pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$" [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder">

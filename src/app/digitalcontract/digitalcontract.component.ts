@@ -185,7 +185,17 @@ export class DigitalcontractComponent implements OnInit {
             });
     }
 
-
-
+    downloadfullcontract(idis) {
+        var url = this.commonservice.pdfsslurl + 'nexgenpdf.php?id=' + idis;
+        window.open(url, '_blank');
+    }
+    downloadexhibit1contract(idis) {
+        var url = this.commonservice.pdfsslurl + 'nexgen-exhibit-a.php?id=' + idis;
+        window.open(url, '_blank');
+    }
+    downloadexhibit2contract(idis) {
+        var url = this.commonservice.pdfsslurl + 'nexgen-exhibit-b.php?id=' + idis;
+        window.open(url, '_blank');
+    }
 
 }

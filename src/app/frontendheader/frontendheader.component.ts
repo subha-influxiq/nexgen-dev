@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-frontendheader',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontendheaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public cookie:CookieService) { }
 
   ngOnInit() {
   }

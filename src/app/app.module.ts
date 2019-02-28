@@ -14,6 +14,7 @@ import {ListingComponent  } from './listing/listing.component';
 import { AdminmanagementComponent } from './adminmanagement/adminmanagement.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import { RegionalRecruiterComponent } from './regional-recruiter/regional-recruiter.component';
 import { RepComponent } from './rep/rep.component';
@@ -51,6 +52,7 @@ import { LegaldoclistComponent } from './legaldoclist/legaldoclist.component';
 import { DigitalcontractComponent } from './digitalcontract/digitalcontract.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { TrainingcenterreoprtComponent } from './trainingcenterreoprt/trainingcenterreoprt.component';
+import { EventmanagementComponent } from './eventmanagement/eventmanagement.component';
 
 
 @NgModule({
@@ -93,6 +95,7 @@ import { TrainingcenterreoprtComponent } from './trainingcenterreoprt/trainingce
     DigitalcontractComponent,
     UsermanagementComponent,
     TrainingcenterreoprtComponent,
+    EventmanagementComponent,
 
   ],
   imports: [
@@ -104,6 +107,7 @@ import { TrainingcenterreoprtComponent } from './trainingcenterreoprt/trainingce
     FormsModule,
     ImageCropperModule,
     BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     NgxUploaderModule,

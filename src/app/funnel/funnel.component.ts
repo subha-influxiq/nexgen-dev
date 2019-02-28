@@ -15,10 +15,12 @@ declare var $: any;
   styleUrls: ['./funnel.component.css'],
   providers: [Commonservices],
 })
+
 export class FunnelComponent implements OnInit {
   public dataForm: FormGroup;
   public dataForm1: FormGroup;
   public kp;
+  public errormg;
   public serverurl;
   public states;
   public regionalrecruiter_id;

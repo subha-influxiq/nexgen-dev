@@ -57,7 +57,8 @@ export class UseraccountsettingComponent implements OnInit {
   }
   alluserdata() {
     const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-    this._http.post(link, {source: 'rep_view',condition:{_id_object:this.cookeiservice.get('userid')}})
+   // this._http.post(link, {source: 'rep_view',condition:{_id_object:this.cookeiservice.get('userid')}})
+    this._http.post(link, {source: 'user_view',condition:{_id_object:this.cookeiservice.get('userid')}})
         .subscribe(res => {
           let result:any={};
           result = res;

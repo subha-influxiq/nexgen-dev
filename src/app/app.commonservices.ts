@@ -14,6 +14,7 @@ export class Commonservices {
     public nodesslurl: any;
     public roletypes: any;
     public uploadsslurl: any;
+    public pdfsslurl: any;
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
@@ -32,6 +33,7 @@ export class Commonservices {
 
         this.nodesslurl = 'http://api.nexgentesting.com:7001/';
         this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
+        this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
 
 
 
