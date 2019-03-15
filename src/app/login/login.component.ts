@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   public serverurl;
   public nodesslurl;
   public errormg: any = '';
-
+  public issubmit=0;
 
   constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService) {
     this.kp = kp;
@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
   }
 
   dosubmit(formval) {
+    this.issubmit=1;
     this.errormg = '';
     let x: any;
     for (x in this.dataForm.controls) {
@@ -73,6 +74,7 @@ export class LoginComponent implements OnInit {
             result = res;
             console.log('result:');
             console.log(result);
+            this.issubmit=0;
             if (result.status == 'error') {
               this.errormg = result.msg;
             }
@@ -95,6 +97,11 @@ export class LoginComponent implements OnInit {
               }*/
               if(result.item[0].type=='rep')
               {
+                if(result.item[0].lock==1) {
+                  this.router.navigate(['/tempaccess']);
+                  return;
+                }
+
                 if(result.item[0].signup_step2==1 && result.item[0].contractstep==null && result.item[0].reptraininglessonstep==null) this.router.navigate(['/contract']);
 
                 if(result.item[0].signup_step2==1 && result.item[0].contractstep==1 && result.item[0].reptraininglessonstep==null) this.router.navigate(['/reptrainingcenter']);

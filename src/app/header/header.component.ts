@@ -29,6 +29,23 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    setInterval(() => {
+      this.getslidervalueforimage();
+    }, 15000);
+  }
+  // http://api.nexgentesting.com:7001/modifyemptyslides
+  getslidervalueforimage() {
+    const link = this._commonservices.nodesslurl+'modifyemptyslides';
+    this._http.get(link)
+        .subscribe(res => {
+          let result;
+          result = res;
+          if(result.status=='error'){
+          }else{
+          }
+        }, error => {
+          console.log('Oooops!');
+        });
   }
 
   getsignupdetails() {
@@ -55,6 +72,16 @@ export class HeaderComponent implements OnInit {
   }
   logout(){
     this.cookeiservice.deleteAll();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
+  }
+  showphoneno(phn){
+/*    let p03=phn.slice(0,3);
+    console.log(p03);
+    let p36=phn.slice(3,6);
+    console.log(p36);
+    let p610=phn.slice(6,10);
+    console.log(p610);*/
+    if(phn !=null) return '('+phn.slice(0,3)+')'+phn.slice(3,6)+'-'+phn.slice(6,10);
+    else return phn;
   }
 }

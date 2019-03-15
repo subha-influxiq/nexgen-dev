@@ -7,7 +7,7 @@
       <h2>SALES CONSULTANTS AGREEMENT</h2>
       <div class="form_section">
         <div class="sales_agreement_Content">
-          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text" readonly [formControl]="dataForm.controls['fullname']">, having a business address at<input type="text" [formControl]="dataForm.controls['firstaddress']"><span class="errortext" *ngIf="!dataForm.controls['fullname'].valid && dataForm.controls['fullname'].touched">This field can not be blank</span> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
+          THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input class="full_name" type="text" readonly [formControl]="dataForm.controls['fullname']">, having a business address at<input class="address_bar" type="text" [formControl]="dataForm.controls['firstaddress']"><span class="errortext" *ngIf="!dataForm.controls['fullname'].valid && dataForm.controls['fullname'].touched">This field is required.</span> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
 
           <h3 class="heading">The parties hereby agree as follows:</h3>
 
@@ -220,14 +220,14 @@
                     <div class="cons_agreement_right">
                       <div class="row">
                         <div class="col-md-4">
-                          If to CONSULTANT:
+                         <p class="consult_p"> If to CONSULTANT: </p>
                         </div>
-                        <div class="col-md-6">
-                          <div class="consultant_input">
-                            <input type="text"><br>
-                            <input type="text"><br>
-                            <input type="text"><br>
-                            <span>Attn: </span><input type="text"><br>
+                        <div class="col-md-8">
+                          <div class="consultant_input ">
+                            <input class="typed_input" type="text" [formControl]="dataForm.controls['iftoconsultant1']"><br>
+                            <input type="text" [formControl]="dataForm.controls['iftoconsultant2']"><br>
+                            <input type="text" [formControl]="dataForm.controls['iftoconsultant3']"><br>
+                            <span>Attn: </span><input type="text" [formControl]="dataForm.controls['iftoconsultant4']"><br>
                           </div>
                         </div>
                       </div>
@@ -243,7 +243,8 @@
                   <div class="row">
                     <div class="col-md-6">
                       <h3>Thomas Willis d/b/a NexGenTesting</h3>
-                      <p>  <span >By</span><input (click)="sign1(signmodal,1)" type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field can not be blank</span> </p>
+                     <!-- <p>  <span >By</span><input (click)="sign1(signmodal,1)" type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']" ><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field is required.</span> </p>-->
+                      <p>  <span >By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']" ><br></p>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname1']"><br> </p>
                       <p>Title<input type="text" readonly [formControl]="dataForm.controls['title1']"><br> </p>
 
@@ -252,7 +253,7 @@
 
                       <h3>Name</h3>
                       <p>
-                        <span >By</span><input type="text" (click)="sign1(signmodal,2)" readonly [formControl]="dataForm.controls['by2']" class="stylesignature"></p><span class="errortext" *ngIf="!dataForm.controls['by2'].valid && dataForm.controls['by2'].touched">This field can not be blank</span>
+                        <span >By</span><input type="text" (click)="sign1(signmodal,2)" readonly [formControl]="dataForm.controls['by2']" class="stylesignature yellow"></p><span class="errortext" *ngIf="!dataForm.controls['by2'].valid && dataForm.controls['by2'].touched">This field is required.</span>
                       <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname2']"></p>
                       <p> Title<input type="text" readonly [formControl]="dataForm.controls['title2']"></p>
 
@@ -273,6 +274,7 @@
 
     <div class="clearfix">
       <br> <br>
+      <hr>
       <div class="scheduledA_section">
         <h3>SCHEDULE A</h3>
         <h3>COMPENSATION</h3>
@@ -407,7 +409,7 @@
 
 
       <!--Exhibit Section -->
-
+<hr>
       <div class="exhibit_section">
         <h4>EXHIBIT A</h4>
         <h4>SALES AND MARKETING CODE OF CONDUCT OF<br>
@@ -478,8 +480,8 @@
         </p>
         <div class="row signature_wrapper">
           <div class="col-md-6">
-            <input class="digital_signature" type="text" readonly [formControl]="dataForm.controls['consultant1']" (click)="sign1(signmodal,5)"><br>
-              <span class="errortext" *ngIf="!dataForm.controls['consultant1'].valid && dataForm.controls['consultant1'].touched">This field can not be blank</span>
+            <input class="digital_signature yellow" type="text" readonly [formControl]="dataForm.controls['consultant1']" (click)="sign1(signmodal,5)"><br>
+              <span class="errortext" *ngIf="!dataForm.controls['consultant1'].valid && dataForm.controls['consultant1'].touched">This field is required.</span>
               <span >SIGNATURE OF CONSULTANT</span>
           </div>
           <div class="col-md-6">
@@ -490,14 +492,14 @@
       </div>
       <br> <br><br>
 
-
+<hr>
       <!-- EXHIBIT B-->
       <div class="scheduledA_section">
         <h3>Exhibit B</h3>
         <h3>CONFIDENTIALITY AND NON-SOLICITATION AGREEMENT</h3>
 
 
-        <p class="exhibit_b_heading">I,  <input type="text" readonly [formControl]="dataForm.controls['printname3']"> (print name)(“Consultant) acknowledge that, as an independent consultant for Nex Gen Testing( “NGT”), and in consideration for my right to commission payments by Nex Gen Testing (“NGT”).
+        <p class="exhibit_b_heading">I,  <input type="text" readonly [formControl]="dataForm.controls['printname3']"> (“Consultant) acknowledge that, as an independent consultant for Nex Gen Testing( “NGT”), and in consideration for my right to commission payments by Nex Gen Testing (“NGT”).
           I agree to the following restrictive covenants, which shall be for the benefit of Nex Gen Testing :
         </p>
         <div class="inner_scheduled_list">
@@ -587,8 +589,8 @@
              <!-- By: <input class="by" type="text" [formControl]="dataForm1.controls['by3']"><br>-->
 
 
-                <span >By</span><input type="text" (click)="sign1(signmodal,3)" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field can not be blank</span>
-
+                <!--<span >By</span><input type="text" (click)="sign1(signmodal,3)" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field is required.</span>-->
+              <span >By</span><input type="text" readonly [formControl]="dataForm.controls['by3']" class="by stylesignature"><br>
 
 
               Print Name:<input class="print" readonly type="text" [formControl]="dataForm.controls['printname4']"><br>
@@ -600,7 +602,7 @@
             <div class="bottom_form_section">
               <input type="text" class="nex_right_inp" [formControl]="dataForm.controls['blank1']"><br>
 
-                <span >By</span> <input type="text" readonly (click)="sign1(signmodal,4)" [formControl]="dataForm.controls['by4']" class="by stylesignature"><br><span class="errortext" *ngIf="!dataForm.controls['by4'].valid && dataForm.controls['by4'].touched">This field can not be blank</span>
+                <span >By</span> <input type="text" readonly (click)="sign1(signmodal,4)" [formControl]="dataForm.controls['by4']" class="by stylesignature yellow"><br><span class="errortext" *ngIf="!dataForm.controls['by4'].valid && dataForm.controls['by4'].touched">This field is required.</span>
               Print Name:<input class="print" type="text" readonly [formControl]="dataForm.controls['printname5']"><br>
               Title:<input type="text" class="title" readonly [formControl]="dataForm.controls['title4']"><br>
               Date: <input type="text" class="date" readonly [formControl]="dataForm.controls['date4']"><br>
@@ -656,7 +658,7 @@
       </div>
       </div>
       <div class="third_sign_wrapper">
-        <p>Date</p>
+       <p>{{_commonservices.showcontractdate()}}</p>
       </div>
 
       <p>

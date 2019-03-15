@@ -1,9 +1,11 @@
 <app-adminheader></app-adminheader>
 <div class="admin_dashboard_container ">
   <div class="content_text">
-    <h2>Lorem Ipsum</h2>
+  <!--  <h2>Lorem Ipsum</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco</p>
+      quis nostrud exercitation ullamco</p>-->
+    <h2>Welcome</h2>
+    <p>We’d like to welcome you to NexGen Testing - a national sales organization that specialize with Molecular PCR Testing which has better results sooner! NexGen takes pride in training you, the representative, to be ready to support any physician and to feel confident in what you do.</p>
   </div>
 </div>
 
@@ -29,7 +31,7 @@
 
           <!--   <tr *ngFor="let item of repdetails | slice:0:5; let i=index">-->
           <tr *ngFor="let item of getonedetails | slice:0:5; let i=index">
-            <td data-title="Date Added" scope="row">{{commonservices.showdate(item.created_at)}}</td>
+            <td data-title="Date Added" scope="row">{{commonservices.showdateforreplegal(item.created_at)}}</td>
             <td data-title="User ID">{{item.unique_id}}</td>
             <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
             <td data-title="Initial Training">
@@ -61,7 +63,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of legaldocs | slice:0:5; let i=index">
-            <td data-title="Date Added" scope="row">{{commonservices.showdate(item.created_at)}}</td>
+            <td data-title="Date Added" scope="row">{{commonservices.showdateforreplegal(item.created_at)}}</td>
             <td data-title="User ID">{{item.unique_id}}</td>
             <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
             <td data-title="Document Type">
@@ -119,7 +121,7 @@
 
          <!-- <tr *ngFor="let item of getonedetails|slice:0:5">-->
           <tr *ngFor="let item of traininglist|slice:0:5">
-            <td data-title="Date Added" scope="row">{{commonservices.showunixtodate(item.created_at)}}</td>
+            <td data-title="Date Added" scope="row">{{commonservices.showunixtodate1(item.created_at)}}</td>
            <!-- <td data-title="User ID">{{item.unique_id}}</td>-->
             <td data-title="Name">{{item.title}}</td>
             <td data-title="Media Type">
@@ -127,6 +129,7 @@
               <span *ngIf="item.filetype=='audio'">Audio</span>
               <span *ngIf="item.filetype=='video'">Video</span>
               <span *ngIf="item.filetype=='html'">HTML</span>
+              <span *ngIf="item.filetype=='image'">Image</span>
             </td>
           <!--  <td data-title="Initial Training">
 

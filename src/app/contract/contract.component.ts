@@ -37,24 +37,30 @@ export class ContractComponent implements OnInit {
       firstdate: [moment().format("Do, MMM, YYYY")],
       firstaddress: [''],
       fullname: ['',Validators.required],
-      by1: ['',Validators.required],
+    //  by1: ['',Validators.required],
+      iftoconsultant1: [''],
+      iftoconsultant2: [''],
+      iftoconsultant3: [''],
+      iftoconsultant4: [''],
+      by1: [''],
       by2: ['',Validators.required],
       printname1: [''],
       printname2: [''],
       title1: [''],
-      title2: [''],
+      title2: ['Consultant'],
       printvalue: [''],
       consultant1: ['',Validators.required],
       date2: [''],
       printname3: [''],
-      by3: ['',Validators.required],
+     // by3: ['',Validators.required],
+      by3: [''],
       printname4: [''],
       title3: [''],
       date3: [''],
       blank1: [''],
       by4: ['',Validators.required],
       printname5: [''],
-      title4: [''],
+      title4: ['Consultant'],
       date4: [''],
     });
   }
@@ -73,22 +79,36 @@ export class ContractComponent implements OnInit {
             console.log('datalist:');
             console.log(this.datalist);
             if(this.datalist.length>0){
+              let fulladress;
+              if(this.datalist[0].address2==''){
+                fulladress=this.datalist[0].address1+', '+this.datalist[0].city +', '+this.datalist[0].state+' '+this.datalist[0].zip;
+              }else{
+                fulladress=this.datalist[0].address1+', '+this.datalist[0].address2+ ', '+this.datalist[0].city +', '+this.datalist[0].state+' '+this.datalist[0].zip;
+              }
               this.dataForm = this.kp.group({
                 id: [this.cookeiservice.get('userid')],
                 firstdate: [moment().format("Do, MMM, YYYY")],
-                firstaddress: [this.datalist[0].address1],
+                firstaddress: [fulladress],
                 fullname: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
-                by1: ['',Validators.required],
+             //   by1: ['',Validators.required],
+                iftoconsultant1: [this.datalist[0].iftoconsultant1],
+                iftoconsultant2: [this.datalist[0].iftoconsultant2],
+                iftoconsultant3: [this.datalist[0].iftoconsultant3],
+                iftoconsultant4: [this.datalist[0].iftoconsultant4],
+                by1: [''],
                 by2: ['',Validators.required],
-                printname1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+              //  printname1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                printname1: [''],
                 printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                title1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                title2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+               // title1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title1: [''],
+                title2: ['Consultant'],
                 printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                 consultant1: ['',Validators.required],
                 date2: [moment().format("Do, MMM, YYYY")],
                 printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                by3: ['',Validators.required],
+              //  by3: ['',Validators.required],
+                by3: [''],
              //   printname4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                 printname4: [''],
               //  title3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
@@ -98,7 +118,7 @@ export class ContractComponent implements OnInit {
                 blank1: [''],
                 by4: ['',Validators.required],
                 printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                title4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                title4: ['Consultant'],
                 date4: [moment().format("Do, MMM, YYYY")],
               });
             }
@@ -152,13 +172,24 @@ export class ContractComponent implements OnInit {
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
+      if(this.dataForm.controls[x].valid==false){
+        console.log(this.dataForm.controls[x]);
+        console.log(this.dataForm.controls[x]);
+       /* $('html, body').animate({
+          scrollTop: $("#alanding_bootmblock_wrapper").offset().top
+        }, 2000);*/
+      }
     }
     if (this.dataForm.valid) {
       console.log('valid');
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
       let data = {
         id: this.cookeiservice.get('userid'),
-        contractstep: 1
+        contractstep: 1,
+        iftoconsultant1:  this.dataForm.controls['iftoconsultant1'].value,
+        iftoconsultant2:  this.dataForm.controls['iftoconsultant2'].value,
+        iftoconsultant3:  this.dataForm.controls['iftoconsultant3'].value,
+        iftoconsultant4:  this.dataForm.controls['iftoconsultant4'].value
       }
       this._http.post(link, {data:data})
           .subscribe(res => {

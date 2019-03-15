@@ -2,9 +2,15 @@
 
 <div class="admin_dashboard_container rep_dashboard_wrapper1">
   <div class="content_text">
-    <h2>Lorem Ipsum</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco</p>
+
+    <h2>WELCOME</h2>
+
+    <p>We’d like to welcome you to NexGen Testing - a national sales organization that specialize with Molecular PCR Testing which has better results sooner! NexGen takes pride in training you, the representative, to be ready to support any physician and to feel confident in what you do. If you have any questions, please contact your Regional Recruiter below.</p>
+
+
+    <!--<h2>Lorem Ipsum</h2>-->
+    <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco</p>-->
   </div>
 </div>
 
@@ -12,11 +18,11 @@
 <div class="rep_dashboard_wrapper2">
   <div class="inner_content" *ngIf="repdetails?.length>0">
     <h2>Regional Recruiter </h2>
-    <h4> Your Regional Recruiter is:  <span> {{repdetails[0].recdetails[0].firstname}} {{repdetails[0].recdetails[0].lastname}}</span></h4>
-    <h4>Email Address: <span> {{repdetails[0].recdetails[0].email}} </span></h4>
-    <h4>Contact Number:<span> {{repdetails[0].recdetails[0].phoneno}} </span></h4>
+    <h4> Your Regional Recruiter is :   <span> {{repdetails[0].recdetails[0].firstname}} {{repdetails[0].recdetails[0].lastname}}</span></h4>
+    <h4>Email Address :  <span> {{repdetails[0].recdetails[0].email}} </span></h4>
+    <h4>Contact Number : <span class="contact_no"> {{showphoneno(repdetails[0].recdetails[0].phoneno)}} </span></h4>
 
-    <button class="appointment_booking_button">Book Appointment Now</button>
+    <button class="appointment_booking_button" (click)="gotorepevents()">Book Appointment Now</button>
   </div>
 </div>
 

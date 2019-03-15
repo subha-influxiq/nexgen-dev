@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import {Commonservices} from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { CookieService } from 'ngx-cookie-service';
+declare var $:any;
 
 @Component({
   selector: 'app-repdetails',
@@ -19,8 +21,15 @@ public repdetails;
   public kp;
   public states;
   public errormg='';
+  public issubmit=0;
+  public addnote=0;
+  public addthisnote: any;
+  public notelist: any;
+  public editnoteid: any=null;
+ // public addorupdatenote: any='Add';
 
-  constructor(kp: FormBuilder, public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService,private route: ActivatedRoute)
+modalRef: BsModalRef;
+  constructor(kp: FormBuilder, public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
   {
     this.kp = kp;
     this._commonservice=_commonservice;
@@ -41,7 +50,6 @@ public repdetails;
       this.id = params['id'];
       this.geteditdata();
     });
-
     this.dataForm = this.kp.group({
       userid: [""],
       username: [""],
@@ -56,6 +64,7 @@ public repdetails;
       zip: ['',Validators.required],
       id: [''],
       noofyears: ['',Validators.required],
+      noofclinics: ['',Validators.required],
       primarycare: [''],
       pediatrics: [''],
       podiatrist: [''],
@@ -70,19 +79,31 @@ public repdetails;
       pcrtesting: ['',Validators.required],
       companyname: [''],
     });
+
+    $('td').each(function () {
+
+    //  console.log($(this).text());
+    });
+  }
+
+  ngAfterViewChecked(){
+   // console.log($(this).text());
   }
 
   geteditdata() {
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'users',condition:{_id:this.id}})
+    this._http.post(link,{source:'user_regional_legaldoc_status_view',condition:{_id:this.id}})
         .subscribe(res => {
           let result;
           result = res;
-        //  console.log(result);
+          console.log('result');
+          console.log(result);
           if(result.status=='error'){
           }else{
             let userdet;
             userdet = result.res[0];
+            this.repdetails = result.res[0];
+            this.notes();
             this.dataForm = this.kp.group({
               userid: [userdet.unique_id],
               username: [userdet.username, Validators.required],
@@ -97,6 +118,7 @@ public repdetails;
               zip: [userdet.zip,Validators.required],
               id: [userdet._id],
               noofyears: [userdet.noofyears,Validators.required],
+              noofclinics: [userdet.noofclinics,Validators.required],
               primarycare: [userdet.primarycare],
               pediatrics: [userdet.pediatrics],
               podiatrist: [userdet.podiatrist],
@@ -116,7 +138,8 @@ public repdetails;
           console.log('Oooops!');
         });
 }
-  dosubmit(){
+  dosubmit(template:TemplateRef<any>){
+    this.issubmit=1;
     this.errormg='';
     let x: any;
     for (x in this.dataForm.controls) {
@@ -157,6 +180,7 @@ public repdetails;
         address2: this.dataForm.value['address2'],
         zip: this.dataForm.value['zip'],
         noofyears: this.dataForm.value['noofyears'],
+        noofclinics: this.dataForm.value['noofclinics'],
         primarycare: this.dataForm.value['primarycare'],
         pediatrics: this.dataForm.value['pediatrics'],
         podiatrist: this.dataForm.value['podiatrist'],
@@ -175,13 +199,19 @@ public repdetails;
           .subscribe(res => {
             let result:any ={};
             result = res;
+            this.issubmit=0;
             console.log('result....');
             console.log(result);
             if(result.status=='error'){
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-                this.router.navigate(['/rep']);
+              this.modalRef = this.modal.show(template, {class: 'successmodal'});
+              setTimeout(()=> {
+                this.geteditdata();
+                this.modalRef.hide();
+              },2000);
+              // this.router.navigate(['/rep']);
             }
           }, error => {
             console.log('Oooops!');
@@ -189,4 +219,96 @@ public repdetails;
     }  
     
   }
+
+
+  togglelockedstatus() {
+    let status:any;
+    status=this.repdetails.lock;
+    if(this.repdetails.lock==null && this.repdetails.lock!=1 && this.repdetails.lock!=0){
+      status=1;
+    }
+    const link = this._commonservice.nodesslurl+'togglelockedstatus?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{id:this.repdetails._id,source:'users',status:status})
+        .subscribe(res => {
+          this.geteditdata();
+        }, error => {
+          console.log('Oooops!');
+        });
+  }
+
+  addnotetodb() {
+    let link = this._commonservice.nodesslurl + 'addorupdatedata?token='+this.cookeiservice.get('jwttoken');
+    let objarr=['added_to_rep','added_by'];
+    let data;
+    if(this.editnoteid!=null){
+      data={
+        id: this.editnoteid,
+        note: this.addthisnote,
+        added_to_rep: this.repdetails._id,
+        added_by: this.cookeiservice.get('userid')
+      }
+    }else{
+      data={
+        note: this.addthisnote,
+        added_to_rep: this.repdetails._id,
+        added_by: this.cookeiservice.get('userid')
+      }
+    }
+
+    this._http.post(link, {source:'note',data:data,sourceobj:objarr})
+        .subscribe(res => {
+          let result:any ={};
+          result = res;
+          console.log('result....');
+          console.log(result);
+          if(result.status=='error'){
+          }
+          else {
+            this.addthisnote = null;
+            this.addnote = 0;
+            this.editnoteid=null;
+            this.notes();
+          }
+        }, error => {
+          console.log('Oooops!');
+        });
+  }
+  notes(){
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{source:'note_view',condition:{'added_to_rep_object':this.repdetails._id}})
+        .subscribe(res => {
+          let result;
+          result = res;
+          this.notelist=result.res;
+          console.log(this.notelist);
+        }, error => {
+          console.log('Oooops!');
+        });
+  }
+  editnote(id){
+    this.editnoteid=id;
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{source:'note_view',condition:{'_id':id}})
+        .subscribe(res => {
+          let result;
+          result = res;
+          this.addnote = 1;
+          this.addthisnote=result.res[0].note;
+          console.log(this.addthisnote);
+        }, error => {
+          console.log('Oooops!');
+        });
+  }
+  deletenote(id){
+    const link = this._commonservice.nodesslurl+'deletesingledata?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{source:'note',id:id})
+        .subscribe(res => {
+          let result;
+          result = res;
+          this.notes();
+        }, error => {
+          console.log('Oooops!');
+        });
+  }
+
 }

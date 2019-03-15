@@ -14,7 +14,10 @@ export class Commonservices {
     public nodesslurl: any;
     public roletypes: any;
     public uploadsslurl: any;
+    public fileimgsslurl: any;
+    public gapisslurl: any;
     public pdfsslurl: any;
+    public totaltimezone: any;
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
@@ -31,9 +34,13 @@ export class Commonservices {
 
 
 
-        this.nodesslurl = 'http://api.nexgentesting.com:7001/';
+     //   this.nodesslurl = 'http://api.nexgentesting.com:7001/';
+      //  this.nodesslurl = 'https://api.nexgentesting.com:6027/test1';
+        this.nodesslurl = 'https://api.nexgentesting.com:6027/';
         this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
+        this.fileimgsslurl = 'http://api.nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
+        this.gapisslurl = 'http://api.nexgentesting.com/gapi/t2.php';
 
 
 
@@ -44,6 +51,16 @@ export class Commonservices {
         ];
       //  console.log(this.roletypes);
         this.sanitizer=sanitizer;
+
+
+        this.http.get("assets/data/timezone.json")
+            .subscribe(res => {
+                let result;
+                this.totaltimezone=result = res;
+                console.log(result);
+            }, error => {
+                console.log('Oooops!');
+            });
     }
     shorten(str, maxLen, separator = '') {
         if (str.length <= maxLen) return str;
@@ -84,10 +101,29 @@ export class Commonservices {
      //   return moment(dt).format("Do, MMM, YYYY");
         return moment(dt).format("MMM Do YY");
     }
+    showdateforreplegal(dt){
+        //return moment(dt).format("MMMM Do, YYYY");
+        return moment(dt).format("MM/DD/YYYY");
+    }
     showunixtodate(dt){
      //   return moment(dt).format("Do, MMM, YYYY");
         if(dt ==null || dt.length<5) return "N/A";
         return moment.unix(dt/1000).format("MMM Do YY");
+    }
+    showunixtodate1(dt){
+     //   return moment(dt).format("Do, MMM, YYYY");
+        if(dt ==null || dt.length<5) return "N/A";
+        return moment.unix(dt/1000).format("MM/DD/YYYY");
+    }
+    unixtodate(dt){
+     //   return moment(dt).format("Do, MMM, YYYY");
+        if(dt ==null || dt.length<5) return "N/A";
+        return moment.unix(dt).format("MMM Do YY , HH:mm");
+    }
+    unixtotime(dt){
+        //   return moment(dt).format("Do, MMM, YYYY");
+        if(dt ==null || dt.length<5) return "N/A";
+        return moment.unix(dt).format(" HH:mm A");
     }
     gettype(filename){
        var last;
@@ -98,5 +134,17 @@ export class Commonservices {
         if(last=='ppt') return 'PPT';
         if(last=='txt') return 'TXT';
         if(last=='xls') return 'XLS';
+        if(last=='jpg') return 'JPG';
+        if(last=='png') return 'PNG';
+    }
+    showtimezone(timezn){
+        for(let i in this.totaltimezone){
+            if(this.totaltimezone[i].value==timezn){
+                return this.totaltimezone[i].show;
+            }
+        }
+    }
+    showcontractdate(){
+        return moment().format("MM/DD/YYYY");
     }
 }

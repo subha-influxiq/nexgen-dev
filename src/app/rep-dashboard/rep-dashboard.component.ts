@@ -14,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class RepDashboardComponent implements OnInit {
   public repdetails;
   public reptraininglessondetails;
+  public recid:any;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService)
   {
@@ -40,6 +41,7 @@ export class RepDashboardComponent implements OnInit {
             this.repdetails = result.res;
             this.reptraininglessondetails = result.res2;
             console.log(this.repdetails);
+            this.recid=this.repdetails[0].recdetails[0]._id;
             console.log(this.reptraininglessondetails);
             }
         }, error => {
@@ -50,4 +52,15 @@ export class RepDashboardComponent implements OnInit {
       var link = 'reptrainingcenter/'+this.reptraininglessondetails.trainingcategory;
       this.router.navigate([link]);
     }
+  showphoneno(phn){
+    if(phn !=null) return '('+phn.slice(0,3)+')'+phn.slice(3,6)+'-'+phn.slice(6,10);
+    else return phn;
+  }
+  gotorepevents(){
+    if(this.recid!=null){
+      var link = 'repevent/'+this.recid;
+      this.router.navigate([link]);
+    }
+  }
+
 }

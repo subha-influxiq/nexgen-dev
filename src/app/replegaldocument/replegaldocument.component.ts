@@ -188,7 +188,7 @@ export class ReplegaldocumentComponent implements OnInit {
             this.percentageisid=null;
           }
 
-          this.modalRef1=this.modal.show(template);
+          this.modalRef1=this.modal.show(template, {class: 'successmodal'});
           setTimeout(() => {
             this.modalRef1.hide();
             this.callvaluesfromdb();
@@ -202,4 +202,8 @@ export class ReplegaldocumentComponent implements OnInit {
   nodelete(){
     this.modalRef1.hide();
   }
+    downloadfullcontract(){
+        var url = this.commonservices.pdfsslurl + 'nexgenpdf.php?id=' + this._cookieservice.get('userid');
+        window.open(url, '_blank');
+    }
 }

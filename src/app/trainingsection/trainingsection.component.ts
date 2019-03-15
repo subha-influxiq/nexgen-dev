@@ -16,6 +16,7 @@ export class TrainingsectionComponent implements OnInit {
   public dataForm: FormGroup;
   public es;
   public serverurl;
+  public sliderresult;
   public editid;
   public last;
   public percentageis;
@@ -26,6 +27,7 @@ export class TrainingsectionComponent implements OnInit {
   public divforfile=false;
   public divforaudio=false;
   public divforvideo=false;
+  public divforimage=false;
   public sourceconditionval:any;
   public datalist;
   public datalist1;
@@ -40,6 +42,7 @@ export class TrainingsectionComponent implements OnInit {
   dragOver:boolean;
   options: UploaderOptions;
   @ViewChild('fileInput1') uploaderInput: ElementRef;
+  public issubmit=0;
 
   constructor(es: FormBuilder,public _commonservices: Commonservices,public _cookieservice:CookieService,public _http:HttpClient,public router:Router,public _router:ActivatedRoute)
   {
@@ -61,6 +64,8 @@ export class TrainingsectionComponent implements OnInit {
       audiolocalname:[''],
       videoservername:[''],
       videolocalname:[''],
+      imageservername:[''],
+      imagelocalname:[''],
       prerequisite_lesson:[''],
     });
     this.uploadInput = new EventEmitter<UploadInput>();
@@ -86,6 +91,7 @@ export class TrainingsectionComponent implements OnInit {
     this.divforfile=false;
     this.divforaudio=false;
     this.divforvideo=false;
+    this.divforimage=false;
 
     if(this.dataForm.value['filetype']=='html'){
       this.divforhtml=true;
@@ -99,6 +105,9 @@ export class TrainingsectionComponent implements OnInit {
     }
     if(this.dataForm.value['filetype']=='video'){
       this.divforvideo=true;
+    }
+    if(this.dataForm.value['filetype']=='image'){
+      this.divforimage=true;
     }
 
 
@@ -147,6 +156,7 @@ export class TrainingsectionComponent implements OnInit {
           this.dataForm.controls['fileservername'].patchValue(datalist2[0].fileservername);
           this.dataForm.controls['audioservername'].patchValue(datalist2[0].audioservername);
           this.dataForm.controls['videoservername'].patchValue(datalist2[0].videoservername);
+          this.dataForm.controls['imageservername'].patchValue(datalist2[0].imageservername);
           // if(this.dataForm.controls['trainingcategory'].value!='')
           // {
             this.getdata();
@@ -160,6 +170,10 @@ export class TrainingsectionComponent implements OnInit {
           if(datalist2[0].filetype=='video'){
             this.nameis = datalist2[0].videolocalname;
             this.servernameis = datalist2[0].videoservername;
+          }
+          if(datalist2[0].filetype=='image'){
+            this.nameis = datalist2[0].imagelocalname;
+            this.servernameis = datalist2[0].imageservername;
           }
           if(datalist2[0].filetype=='file'){
             this.nameis = datalist2[0].filelocalname;
@@ -219,11 +233,24 @@ export class TrainingsectionComponent implements OnInit {
       this.servernameis = this.files[0].response;
       if(this.dataForm.value['filetype']=='file'){
         this.last = this.files[0].name.substring(this.files[0].name.lastIndexOf(".") + 1, this.files[0].name.length);
-        if(this.last!='doc' && this.last!='docx'  && this.last!='pdf' && this.last!='ppt' && this.last!='txt' && this.last!='xls' ){
+        if(this.last!='doc' && this.last!='docx'  && this.last!='pdf' && this.last!='ppt' && this.last!='pptx' && this.last!='txt' && this.last!='xls' ){
           console.log('No');
           this.errormg='in error , wrong file uploader ..';
         }
         else {
+      /*    /!*POST - st*!/
+          let data={
+            filename:this.files[0].response
+          }
+          const link = this._commonservices.nodesslurl+'getslidevalues';
+          this._http.post(link,data)
+        .subscribe(res=>{
+            let result;
+            result=res;
+            console.log(result);
+            console.log(result.imagePaths);
+          })
+          /!*POST - end*!/*/
           console.log('yes');
           this.dataForm.patchValue({
             fileservername : this.files[0].response,
@@ -261,6 +288,18 @@ export class TrainingsectionComponent implements OnInit {
           });
         }
       }
+      else if(this.dataForm.value['filetype']=='image'){
+        if(this.files[0].type.indexOf('image')==-1){
+          console.log('in error , wrong video file uploader ..');
+          this.errormg='in error , wrong video file uploader ..';
+        }
+        else {
+          this.dataForm.patchValue({
+            imageservername : this.files[0].response,
+            imagelocalname : this.files[0].name
+          });
+        }
+      }
     }
   }
   getdata()
@@ -279,6 +318,7 @@ export class TrainingsectionComponent implements OnInit {
 
   }
   dosubmit() {
+    this.issubmit=1;
     this.errormg='';
 
 
@@ -298,6 +338,8 @@ export class TrainingsectionComponent implements OnInit {
     this.dataForm.controls["audioservername"].updateValueAndValidity();
     this.dataForm.controls['videoservername'].clearValidators();
     this.dataForm.controls["videolocalname"].updateValueAndValidity();
+    this.dataForm.controls['imageservername'].clearValidators();
+    this.dataForm.controls["imagelocalname"].updateValueAndValidity();
 
     //Dynamically add validation
     if(this.dataForm.value['filetype']=='html')
@@ -312,6 +354,8 @@ export class TrainingsectionComponent implements OnInit {
       this.dataForm.value['audiolocalname']=null;
       this.dataForm.value['videoservername']=null;
       this.dataForm.value['videolocalname']=null;
+      this.dataForm.value['imageservername']=null;
+      this.dataForm.value['imagelocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='file')
     {
@@ -324,6 +368,8 @@ export class TrainingsectionComponent implements OnInit {
       this.dataForm.value['audiolocalname']=null;
       this.dataForm.value['videoservername']=null;
       this.dataForm.value['videolocalname']=null;
+      this.dataForm.value['imageservername']=null;
+      this.dataForm.value['imagelocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='audio')
     {
@@ -336,6 +382,8 @@ export class TrainingsectionComponent implements OnInit {
       this.dataForm.value['fileservername']=null;
       this.dataForm.value['videoservername']=null;
       this.dataForm.value['videolocalname']=null;
+      this.dataForm.value['imageservername']=null;
+      this.dataForm.value['imagelocalname']=null;
     }
     else if(this.dataForm.value['filetype']=='video')
     {
@@ -348,6 +396,22 @@ export class TrainingsectionComponent implements OnInit {
       this.dataForm.value['fileservername']=null;
       this.dataForm.value['audioservername']=null;
       this.dataForm.value['audiolocalname']=null;
+      this.dataForm.value['imageservername']=null;
+      this.dataForm.value['imagelocalname']=null;
+    }
+    else if(this.dataForm.value['filetype']=='image')
+    {
+      this.dataForm.controls['imageservername'].setValidators(Validators.required);
+      this.dataForm.controls['imagelocalname'].markAsTouched();
+      this.dataForm.controls["imageservername"].updateValueAndValidity();
+
+      this.dataForm.value['htmleditorvalue']=null;
+      this.dataForm.value['filelocalname']=null;
+      this.dataForm.value['fileservername']=null;
+      this.dataForm.value['audioservername']=null;
+      this.dataForm.value['audiolocalname']=null;
+      this.dataForm.value['videoservername']=null;
+      this.dataForm.value['videolocalname']=null;
     }
 
 // console.log('this.dataForm.value====================');
@@ -365,19 +429,43 @@ export class TrainingsectionComponent implements OnInit {
           .subscribe(res => {
             let result:any ={};
             result = res;
+            this.issubmit=0;
             console.log('result....');
             console.log(result);
+            this.sliderresult=result;
             if(result.status=='error'){
               this.errormg=result.msg;
             }
             else {
+              if(this.dataForm.value['filetype']=='file'){
+                this.callslider();
+              }
+
               this.router.navigate(['/trainingsectionlist']);
               this.dataForm.reset();
               this.files=[];
             }
           }, error => {
+            this.callslider();
             console.log('Oooops!');
           });
     }
+  }
+  callslider(){
+    let data={
+      filename:this.files[0].response,
+      lessonid:this.sliderresult.res,
+    }
+    const link = this._commonservices.nodesslurl+'getslidevalues';
+    this._http.post(link,data)
+        .subscribe(res=>{
+          let result;
+          result=res;
+          console.log(result);
+          console.log(result.imagePaths);
+        }, error =>{
+          this.callslider();
+          console.log('Ooops');
+        });
   }
 }

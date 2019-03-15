@@ -4,7 +4,7 @@
         <div class="row">
           <div class="col-md-4 headerleft">
             <div class="logonewblock">
-              <a class="navbar-brand" [routerLink]="['/frontendhome/']">
+              <a class="navbar-brand" [routerLink]="['/']">
                 <div class="nex_frontheader_logo">
                   <img src="assets/images/logo-header.png">
                 </div>
@@ -54,7 +54,10 @@
                             <a class="nav-link" [routerLink]="['/contact_us']">Contact Us</a>
                           </li>
                           <li class="nav-item" *ngIf="cookie.get('userid') == ''">
-                            <a class="nav-link" [routerLink]="['/login']">Login</a>
+                            <a class="nav-link" target="_blank" [routerLink]="['/login']">Login</a>
+                          </li>
+                          <li class="nav-item" *ngIf="cookie.get('userid') != ''">
+                            <a class="nav-link" (click)="logout()">Logout</a>
                           </li>
                         </ul>
 

@@ -5,6 +5,8 @@
       <div class="user_management_wrapper">
         <div class="user_management_inner">
           <h2>Legal Documents</h2>
+          <a class="w_9_download_btn" href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank">Click Here To Download W-<span>9</span></a>
+          <div class="clearfix"></div>
         </div>
         <div class="row">
           <div class="col-lg-12 admin_inner_wrapper">
@@ -37,7 +39,7 @@
                   <tr>
                     <td>
                       <span *ngIf="getw9values==null">-</span>
-                      <span *ngIf="getw9values!=null">{{commonservices.showdate(getw9values.created_at)}}</span>
+                      <span *ngIf="getw9values!=null">{{commonservices.showdateforreplegal(getw9values.created_at)}}</span>
                     </td>
                     <td>W-9</td>
                     <td>
@@ -69,7 +71,7 @@
                   <tr>
                     <td>
                       <span *ngIf="getidvalues==null">-</span>
-                      <span *ngIf="getidvalues!=null">{{commonservices.showdate(getidvalues.created_at)}}</span>
+                      <span *ngIf="getidvalues!=null">{{commonservices.showdateforreplegal(getidvalues.created_at)}}</span>
                     </td>
                     <td>Insurance Docket</td>
                     <td>
@@ -105,6 +107,47 @@
     </div>
   </div>
 </div>
+<div class="clearfix"></div>
+
+
+
+
+<!--ConTRACT DOC DOWNLOAD SEC-->
+<div class="contract_doc_wrapper">
+  <div class="header_p">
+    <!--<h2> contract</h2>-->
+  </div>
+  <div class="contract_doc_content_w bg-light_rep_w">
+    <p class="ins_w">Instructions For Uploading W-9:</p>
+  <div class="instruction_list_w9">
+      <ol>
+        <li> Click here to download the W-9 (links here: <a class="pdf_link" href="https://www.irs.gov/pub/irs-pdf/fw9.pdf)" target="_blank">https://www.irs.gov/pub/irs-pdf/fw9.pdf)</a> </li>
+        <li> Fill out the form </li>
+        <li> Print the form </li>
+        <li> Sign </li>
+        <li> Take a clear picture of the form via your cellphone or scan the form. </li>
+        <li> Upload. </li>
+      </ol>
+  </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<!--END DOC DOWNLOAD SEC-->
+
+
+<!--ConTRACT DOC DOWNLOAD SEC-->
+  <div class="contract_doc_wrapper">
+    <div class="header_p">
+        <h2> contract</h2>
+    </div>
+    <div class="contract_doc_content_w">
+      <h3>download your digital contract here</h3>
+      <a (click)="downloadfullcontract()">download</a>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+<!--END DOC DOWNLOAD SEC-->
+
 <app-footer></app-footer>
 <ng-template #commonconfirmmodal>
   <div class="modal-body brandmanagement_modal">

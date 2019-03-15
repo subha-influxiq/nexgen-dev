@@ -11,6 +11,9 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UsermanagementComponent implements OnInit {
   public singleuserdata: any;
+    public filterval;
+    public filterval1;
+    public filterval2;
 
   constructor(public commonservices:Commonservices,public cookieservice:CookieService,public _http:HttpClient)
   {
@@ -57,4 +60,14 @@ export class UsermanagementComponent implements OnInit {
           this.userdetails();
         });
   }
+    searchbyval() {
+        this.filterval = '';
+        if (this.filterval1 != '' && this.filterval1 != null) {
+            this.filterval = this.filterval1 + '|';
+        }
+        if (this.filterval2 != '' && this.filterval2 != null) {
+            this.filterval = this.filterval2 + '|';
+        }
+        console.log(this.filterval);
+    }
 }

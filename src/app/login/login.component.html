@@ -6,12 +6,12 @@
     </div>
     <form  novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
       <div class="form-group">
-        <input type="text"  class="form-control" placeholder="Email" [formControl]="dataForm.controls['email']">
-        <span *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched" class="error">Email field can not be blank & give proper email id</span>
+        <input type="text"  class="form-control" placeholder="Email" [formControl]="dataForm.controls['email']" (keyup)="issubmit=0">
+        <span *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched && issubmit==1" class="error">Email is required.</span>
       </div>
       <div class="form-group">
-        <input type="password" class="form-control"  placeholder="Password" [formControl]="dataForm.controls['password']">
-        <span *ngIf="!dataForm.controls['password'].valid && dataForm.controls['password'].touched" class="error">Give proper password</span>
+        <input type="password" class="form-control"  placeholder="Password" [formControl]="dataForm.controls['password']" (keyup)="issubmit=0">
+        <span *ngIf="!dataForm.controls['password'].valid && dataForm.controls['password'].touched && issubmit==1" class="error">Password is required.</span>
       </div>
 
       <div class="form-group">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <p class="register">Not registered? <span><a href="javascript-void:0"> request sign up here</a></span></p>
+        <p class="register">Not registered? <span><a [routerLink]="['/get_started']"> request sign up here</a></span></p>
         <p class="forgot_pass"><a href="javascript-void:0"> Forgot your password? </a></p>
         <div class="clearfix"></div>
       </div>

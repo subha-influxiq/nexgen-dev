@@ -14,9 +14,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class AdminheaderComponent implements OnInit {
   public type:any;
   public recphoneno:any;
+  public recid:any;
   public sourceval='rep_recruiter_view';
   public sourceconditionval:any;
   public datalist:any;
+  public allresourcecategory:any;
   public idis:any;
   public repdetails:any;
   public reptraininglessondetails:any;
@@ -34,10 +36,30 @@ export class AdminheaderComponent implements OnInit {
         this.getsignupdetails();
       }
     }
+      if(this.type=='rep' || this.type=='regional_recruiter'){
+      this.resourcecat();
+  }
   }
 
   ngOnInit() {
+          setInterval(() => {
+              this.getslidervalueforimage();
+          }, 15000);
   }
+   // http://api.nexgentesting.com:7001/modifyemptyslides
+    getslidervalueforimage() {
+        const link = this._commonservices.nodesslurl+'modifyemptyslides';
+        this._http.get(link)
+            .subscribe(res => {
+                let result;
+                result = res;
+                if(result.status=='error'){
+                }else{
+                }
+            }, error => {
+                console.log('Oooops!');
+            });
+    }
 
   getsignupdetails() {
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
@@ -50,10 +72,11 @@ export class AdminheaderComponent implements OnInit {
           }else{
             this.datalist = [];
             this.datalist = result.res;
-           /* console.log('datalist:');
+        /*    console.log('datalist:');
             console.log(this.datalist);*/
             if(this.datalist.length>0 && this.datalist[0].recdetails.length>0){
               this.recphoneno=this.datalist[0].recdetails[0].phoneno;
+              this.recid=this.datalist[0].recdetails[0]._id;
             }
           }
         }, error => {
@@ -63,8 +86,11 @@ export class AdminheaderComponent implements OnInit {
   }
 
   logout(){
+      console.log('logout');
+      console.log(this.cookie.get('userid'));
     this.cookie.deleteAll();
-    this.router.navigate(['/']);
+      console.log(this.cookie.get('userid'));
+    this.router.navigate(['/login']);
   }
 
   getrepdetails(){
@@ -78,15 +104,55 @@ export class AdminheaderComponent implements OnInit {
           }else{
             this.repdetails = result.res;
             this.reptraininglessondetails = result.res2;
-          /*  console.log(this.repdetails);
+            /*console.log('this.repdetails');
+            console.log(this.repdetails);*/
+           /* console.log('this.reptraininglessondetails');
             console.log(this.reptraininglessondetails);*/
           }
         }, error => {
           console.log('Oooops!');
         });
   }
-  gototrainingsectionwithcat(){
-    var link = 'reptrainingcenter/'+this.reptraininglessondetails.trainingcategory;
-    this.router.navigate([link]);
+  gototrainingsectionwithcat() {
+    if (this.reptraininglessondetails != null){
+      console.log('rep');
+      var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
+      this.router.navigate([link]);
+    }else{
+      console.log('regional');
+      var link = 'reptrainingcenter/5c86b8e9d9705867cdd792e1';
+   //   var link = 'reptrainingcenter/5c6d54656fac495dd5c209e9';
+      this.router.navigate([link]);
+    }
   }
+  gotorepevents(){
+    if(this.recid!=null){
+      var link = 'repevent/'+this.recid;
+      this.router.navigate([link]);
+    }
+  }
+
+  resourcecat() {
+    this.sourceconditionval ={status:true};
+    const link = this._commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+    this._http.post(link,{source:'resourcecategory',condition:this.sourceconditionval})
+        .subscribe(res => {
+          let result;
+          result = res;
+          if(result.status=='error'){
+          }else{
+            this.allresourcecategory = [];
+            this.allresourcecategory = result.res;
+            /*console.log('allresourcecategory:');
+            console.log(this.allresourcecategory);*/
+          }
+        }, error => {
+            console.log('Oooops!');
+            this.allresourcecategory = [];
+        });
+  }
+    showphoneno(phn){
+        if(phn !=null) return '('+phn.slice(0,3)+')'+phn.slice(3,6)+'-'+phn.slice(6,10);
+        else return phn;
+    }
 }

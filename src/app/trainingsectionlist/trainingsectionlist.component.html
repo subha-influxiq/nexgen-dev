@@ -1,10 +1,10 @@
 <app-adminheader></app-adminheader>
-<div class="nextGen_admin_mainwrapper">
+<div class="nextGen_admin_mainwrapper trainingsection">
   <div class="page-wrapper s_getmybrand_adminlist">
     <div class="nexgen_adminlist">
       <div class="user_management_wrapper"  >
         <div class="user_management_inner">
-          <h2>manage Training Section</h2>
+          <h2>manage Lesson</h2>
 
           <!--<div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
@@ -34,8 +34,8 @@
         <div class="nexgen_admin_table">
           <div class="action_section">
             <div class="inner_actionblock">
-              <h3> Training Section List</h3>
-              <a class="addfrinderbtn s_getmybrand_savebutton" [routerLink]="['/trainingsection']"> Add Training</a>
+              <!--<h3> Training Section List</h3>-->
+              <a class="addfrinderbtn s_getmybrand_savebutton" [routerLink]="['/trainingsection']"> Add Lesson</a>
               <div class="clearfix"></div>
             </div>
           </div>
@@ -45,12 +45,12 @@
               <table class="table">
                 <thead>
                 <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Title</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Lesson Title</th>
                   <th scope="col">Description</th>
                   <th scope="col">File</th>
-                  <th scope="col">Test Associated Training</th>
-                  <th scope="col">Training Category</th>
+                  <th scope="col">Test</th>
+                  <th scope="col">Training</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -63,8 +63,8 @@
                   <td class="filedetails">
                     <div *ngIf="item.filetype=='file'">
                       {{item.filelocalname}}<br/>
-                      <a href="http://nexgen.influxiq.com/assets/uploads/{{item.fileservername}}" >Download</a>
-
+                      <a href="{{_Commonservices.uploadsslurl}}{{item.fileservername}}" target="_blank">Download</a>
+                      <a class="peview_btn" (click)="callslider(item,showfilemodal)">Preview</a>
                     </div>
                     <div *ngIf="item.filetype=='audio'">
                       {{item.audiolocalname}}<br/>
@@ -72,7 +72,6 @@
                         <source src="{{_Commonservices.uploadsslurl}}{{item.audioservername}}" type="audio/mp3">
                         <source src="{{_Commonservices.uploadsslurl}}{{item.audioservername}}" type="audio/wav">
                       </audio>
-
                     </div>
                     <div *ngIf="item.filetype=='video'">
                       {{item.videolocalname }}<br/>
@@ -81,6 +80,10 @@
                         <source src="{{_Commonservices.uploadsslurl}}{{item.videoservername}}" type="video/*">
                       </video>
 
+                    </div>
+                    <div *ngIf="item.filetype=='image'">
+                      {{item.imagelocalname }}<br/>
+                      <img width="320" height="240" src="{{_Commonservices.uploadsslurl}}{{item.imageservername}}">
                     </div>
 
 
@@ -101,7 +104,8 @@
                     <span *ngIf="item.status==false">Inactive</span></td>
 
                   <td ><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
-                    <span class="editbtn" [routerLink]="['/trainingsection' ,item._id]">Edit</span>
+                    <span class="editbtn" [routerLink]="['/trainingsection' ,item._id]">Edit</span><br/>
+                    <span *ngIf="item.yesorno=='yes'" class="editbtn manageanswer" [routerLink]="['/managequiz' ,item._id]">Manage Quiz</span>
                   </td>
                 </tr>
                 </tbody>
@@ -218,5 +222,13 @@
 <ng-template #showhtmlmodal>
   <div class="modal-body modal_viewmore">
     <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(editorval)"></div>
+  </div>
+</ng-template>
+
+<ng-template #showfilemodal>
+  <div class="modal-body ">
+    <div *ngFor="let item of imagePaths" class="docx_image_wrap">
+      <img src="{{showimag(item)}}">
+    </div>
   </div>
 </ng-template>

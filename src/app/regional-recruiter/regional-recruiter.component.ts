@@ -26,7 +26,7 @@ export class RegionalRecruiterComponent implements OnInit {
     /*  {value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},*/
       {value:'state',name:'State/Region',role:0,func:'',class:'state',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
-      {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'text'},
+      {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'phoneno'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
     ];
     this.formdata=[
@@ -38,8 +38,8 @@ export class RegionalRecruiterComponent implements OnInit {
       {inputtype:'password',name:'password',label:"Password",placeholder:"Enter Password",validationrule:{required:true},validationerrormsg:'is required',isaddonly:true},
       {inputtype:'password',name:'confirmpassword',label:"Confirm Password",placeholder:"Retype Password Again",validationrule:{required:true,confirmpass:true},validationerrormsg:'is required and should match password field',isaddonly:true},
 
-      {inputtype:'text',name:'address',label:'Address',placeholder:'Enter Your Address',validationrule:{required:true},validationerrormsg:'is required'},
-      {inputtype:'select',name:'state',label:'State/Region',defaultchoice:'Select a State/region',sourceview:'states',sourcetype:'static',selectvalue:'name',selectid:'abbreviation',validationrule:{required:true},validationerrormsg:'is required'},
+      /*{inputtype:'text',name:'address',label:'Address',placeholder:'Enter Your Address',validationrule:{required:true},validationerrormsg:'is required'},*/
+      {inputtype:'select',name:'state',label:'State/Region',defaultchoice:'Select a State/region',sourceview:'states',multiple:true,sourcetype:'static',selectvalue:'name',selectid:'abbreviation',validationrule:{required:true},validationerrormsg:'is required'},
       //{inputtype:'text',name:'telephone',label:'Telephone No',placeholder:'Enter Telephone No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'phoneno',label:'Mobile No',placeholder:'Enter Mobile No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'status',label:'Status',value:false},

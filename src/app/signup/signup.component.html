@@ -11,77 +11,77 @@
       <div class="form-row first_section">
        <div class="form-group col-md-6">
            <input type="hidden" [formControl]="dataForm.controls['id']">
-        <label>First Name</label>
-        <input type="text" class="form-control" [formControl]="dataForm.controls['firstname']">
-           <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name field can not be blank</span>
+        <label>First Name*</label>
+        <input type="text" class="form-control" [formControl]="dataForm.controls['firstname']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched && issubmit==1">First Name field is required.</span>
        </div>
        <div class="form-group col-md-6">
-        <label>Last Name</label>
-        <input type="text" class="form-control" [formControl]="dataForm.controls['lastname']">
-           <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name field can not be blank</span>
+        <label>Last Name*</label>
+        <input type="text" class="form-control" [formControl]="dataForm.controls['lastname']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched && issubmit==1">Last Name field is required.</span>
        </div>
       </div>
       <div class="form-row">
        <div class="form-group col-md-6">
-        <label >Email Address</label>
-        <input type="text" class="form-control" [formControl]="dataForm.controls['email']">
-           <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched">Email field can not be blank & give proper email id</span>
+        <label >Email Address*</label>
+        <input type="text" class="form-control" [formControl]="dataForm.controls['email']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched && issubmit==1">Email field is required.</span>
        </div>
        <div class="form-group col-md-6">
-        <label >Phone Number</label>
-        <input type="text" class="form-control" [formControl]="dataForm.controls['phoneno']">
-           <span class="error" *ngIf="!dataForm.controls['phoneno'].valid && dataForm.controls['phoneno'].touched">Phone field can not be blank</span>
+        <label >Phone Number*</label>
+        <input type="text" class="form-control" [formControl]="dataForm.controls['phoneno']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['phoneno'].valid && dataForm.controls['phoneno'].touched && issubmit==1">Phone field is required.</span>
        </div>
       </div>
     <!--end first section-->
       <div class="form-row User_section">
        <div class="form-group col-md-4">
-        <label> Username</label>
-        <input type="text" class="form-control" [formControl]="dataForm.controls['username']">
-           <span class="error" *ngIf="!dataForm.controls['username'].valid && dataForm.controls['username'].touched">Username field can not be blank</span>
+        <label> Username*</label>
+        <input type="text" class="form-control" [formControl]="dataForm.controls['username']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['username'].valid && dataForm.controls['username'].touched && issubmit==1">Username field is required.</span>
        </div>
        <div class="form-group col-md-4">
-        <label>Password</label>
-        <input type="password" class="form-control" [formControl]="dataForm.controls['password']">
-           <span class="error" *ngIf="!dataForm.controls['password'].valid && dataForm.controls['password'].touched">Password field can not be blank & length has to be in between 8 to 15 letters</span>
+        <label>Password*</label>
+        <input type="password" class="form-control" [formControl]="dataForm.controls['password']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['password'].valid && dataForm.controls['password'].touched && issubmit==1">Password field is required. & length has to be in between 8 to 15 letters</span>
        </div>
        <div class="form-group col-md-4">
-        <label> Confirm Password</label>
-        <input type="password" class="form-control" [formControl]="dataForm.controls['confirmpassword']">
-           <span class="error" *ngIf ="dataForm.controls['confirmpassword'].touched && !dataForm.controls['confirmpassword'].valid">Passwords must match</span>
+        <label> Confirm Password*</label>
+        <input type="password" class="form-control" [formControl]="dataForm.controls['confirmpassword']" (keyup)="issubmit=0">
+           <span class="error" *ngIf ="dataForm.controls['confirmpassword'].touched && !dataForm.controls['confirmpassword'].valid && issubmit==1">Passwords must match</span>
        </div>
       </div>
 <!--END middle section-->
       <div class="form-row last_section">
        <div class="form-group col-md-6">
-        <label>Address1</label>
-        <textarea class="form-control" [formControl]="dataForm.controls['address1']"></textarea>
-           <span class="error" *ngIf="!dataForm.controls['address1'].valid && dataForm.controls['address1'].touched">Address field can not be blank</span>
+        <label>Address1*</label>
+        <textarea class="form-control" [formControl]="dataForm.controls['address1']" (keyup)="issubmit=0"></textarea>
+           <span class="error" *ngIf="!dataForm.controls['address1'].valid && dataForm.controls['address1'].touched && issubmit==1">Address field is required.</span>
        </div>
        <div class="form-group col-md-6">
         <label>Address2</label>
-        <textarea class="form-control" [formControl]="dataForm.controls['address2']"></textarea>
+        <textarea class="form-control" [formControl]="dataForm.controls['address2']" (keyup)="issubmit=0"></textarea>
        </div>
       </div>
 
       <div class="form-row">
        <div class="form-group col-md-4">
-        <label for="inputCity">City</label>
-        <input type="text" class="form-control" id="inputCity" [formControl]="dataForm.controls['city']">
-           <span class="error" *ngIf="!dataForm.controls['city'].valid && dataForm.controls['city'].touched">City field can not be blank</span>
+        <label for="inputCity">City*</label>
+        <input type="text" class="form-control" id="inputCity" [formControl]="dataForm.controls['city']" (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['city'].valid && dataForm.controls['city'].touched && issubmit==1">City field is required.</span>
        </div>
        <div class="form-group col-md-4">
-        <label for="inputState">State</label>
-           <select id="inputState"  class="form-control" [formControl]="dataForm.controls['state']" (change)="addregional_recruiter()">
+        <label for="inputState">State*</label>
+           <select id="inputState"  class="form-control" [formControl]="dataForm.controls['state']"  (keyup)="issubmit=0" (change)="addregional_recruiter()">
                <option value="">Choose State</option>
                <option *ngFor="let item of states" value="{{item.abbreviation}}">{{item.name}}</option>
            </select>
-           <span class="error" *ngIf="!dataForm.controls['state'].valid && dataForm.controls['state'].touched">State field can not be blank</span>
+           <span class="error" *ngIf="!dataForm.controls['state'].valid && dataForm.controls['state'].touched && issubmit==1">State field is required.</span>
        </div>
        <div class="form-group col-md-4">
-        <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip" [formControl]="dataForm.controls['zip']">
-           <span class="error" *ngIf="!dataForm.controls['zip'].valid && dataForm.controls['zip'].touched">State field can not be blank</span>
+        <label for="inputZip">Zip*</label>
+        <input type="text" class="form-control" id="inputZip" [formControl]="dataForm.controls['zip']"  (keyup)="issubmit=0">
+           <span class="error" *ngIf="!dataForm.controls['zip'].valid && dataForm.controls['zip'].touched">Zip field is required.</span>
        </div>
       </div>
 

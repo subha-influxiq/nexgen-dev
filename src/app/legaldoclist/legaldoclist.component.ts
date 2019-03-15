@@ -12,6 +12,9 @@ import {CookieService} from "ngx-cookie-service";
 export class LegaldoclistComponent implements OnInit {
     public legaldocument:any;
     public last: string;
+    public filterval;
+    public filterval1;
+    public filterval2;
 
     constructor(public _commonservices:Commonservices,public _http:HttpClient,public cookeiservice:CookieService)
     {
@@ -39,5 +42,14 @@ export class LegaldoclistComponent implements OnInit {
                 console.log('Oooops!');
             });
     }
-
+    searchbyval() {
+        this.filterval = '';
+        if (this.filterval1 != '' && this.filterval1 != null) {
+            this.filterval = this.filterval1 + '|';
+        }
+        if (this.filterval2 != '' && this.filterval2 != null) {
+            this.filterval = this.filterval2 + '|';
+        }
+        console.log(this.filterval);
+    }
 }

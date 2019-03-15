@@ -7,14 +7,14 @@
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name" [formControl]="dataForm.controls['firstname']">
-                <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched">First Name Field can not be blank</span>
+                <input type="text" class="form-control" placeholder="First Name" [formControl]="dataForm.controls['firstname']" (keyup)="issubmit=0">
+                <span class="error" *ngIf="!dataForm.controls['firstname'].valid && dataForm.controls['firstname'].touched && issubmit==1">First Name is required.</span>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Last Name" [formControl]="dataForm.controls['lastname']">
-                <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched">Last Name Field can not be blank</span>
+                <input type="text" class="form-control" placeholder="Last Name" [formControl]="dataForm.controls['lastname']" (keyup)="issubmit=0">
+                <span class="error" *ngIf="!dataForm.controls['lastname'].valid && dataForm.controls['lastname'].touched && issubmit==1">Last Name is required.</span>
               </div>
             </div>
           </div>
@@ -22,29 +22,29 @@
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email *" [formControl]="dataForm.controls['email']">
-                <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched">Email Field can not be blank</span>
+                <input type="email" class="form-control" placeholder="Email *" [formControl]="dataForm.controls['email']" (keyup)="issubmit=0">
+                <span class="error" *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched && issubmit==1">Email is required.</span>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Phone *" [formControl]="dataForm.controls['phone']">
-                <span class="error" *ngIf="!dataForm.controls['phone'].valid && dataForm.controls['phone'].touched">Phone Field can not be blank</span>
+                <input type="text" class="form-control" placeholder="Phone *" [formControl]="dataForm.controls['phone']" (keyup)="issubmit=0">
+                <span class="error" *ngIf="!dataForm.controls['phone'].valid && dataForm.controls['phone'].touched && issubmit==1">Phone is required.</span>
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <textarea class="form-control" placeholder="Message *" [formControl]="dataForm.controls['message']"></textarea>
-                <span class="error" *ngIf="!dataForm.controls['message'].valid && dataForm.controls['message'].touched">Message Field can not be blank</span>
+                <textarea class="form-control" placeholder="Message *" [formControl]="dataForm.controls['message']" (keyup)="issubmit=0"></textarea>
+                <span class="error" *ngIf="!dataForm.controls['message'].valid && dataForm.controls['message'].touched && issubmit==1">Message is required.</span>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="col">
               <div class="form-group">
-                <select class="form-control" [formControl]="dataForm.controls['states']">
+                <select class="form-control" [formControl]="dataForm.controls['states']" (keyup)="issubmit=0">
                   <option value="">Select State</option>
                   <option *ngFor="let item of stateslist" value="{{item.abbreviation}}">{{item.name}}</option>
                 </select>
-                <span class="error" *ngIf="!dataForm.controls['states'].valid && dataForm.controls['states'].touched">Have to choose any States</span>
+                <span class="error" *ngIf="!dataForm.controls['states'].valid && dataForm.controls['states'].touched && issubmit==1">State is required.</span>
               </div>
             </div>
             <div class="col">
@@ -138,8 +138,9 @@
 
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="ofmodal()">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="ofmodal()">&times;</button>
+        <div class="modal-body submitmodal">
+
           <div class="logoshatterblock">
             <img src="../assets/images/logo-header.png" class="newhomelogo">
           </div>

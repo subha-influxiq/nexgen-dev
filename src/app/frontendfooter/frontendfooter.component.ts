@@ -19,6 +19,7 @@ export class FrontendfooterComponent implements OnInit {
   public serverurl;
   public errormsg:'';
   modalRef1: BsModalRef;
+  public issubmit=0;
 
   constructor(public _http: HttpClient, es: FormBuilder, public _commonservice: Commonservices,public _cookieservice:CookieService,public modal:BsModalService) {
     this.es = es;
@@ -67,6 +68,7 @@ export class FrontendfooterComponent implements OnInit {
   }
 
   dosubmit(formval,template:TemplateRef<any>) {
+    this.issubmit=1;
     for (let x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
     }
@@ -84,15 +86,16 @@ export class FrontendfooterComponent implements OnInit {
           .subscribe(res=>{
             let result;
             result=res;
+            this.issubmit=0;
             if(result.status=='error')
             {
               this.errormsg=result.msg;
             }else{
               this.dataForm.reset();
-              this.modalRef1=this.modal.show(template);
-              setTimeout(() =>{
+              this.modalRef1=this.modal.show(template, {class: 'conmtactusmodal'});
+             /* setTimeout(() =>{
                 this.modalRef1.hide();
-              },2000);
+              },2000);*/
             }
           }, error => {
             console.log('Oooops!');

@@ -5,10 +5,21 @@
   <h2> Training </h2>
   <div class="traing_innerwrapper">
     <div class="training_leftpart" [ngClass]="putclass()">
-    <!--  <button class="btn" (click)="sorteddatalist[0].open = !sorteddatalist[0].open">Toggle first open</button>
+
+
+    <!--  <div *ngIf="this.sorteddatalist[this.sorteddatalist.length-3]">
+      <carousel>
+        <slide *ngFor="let item1 of this.sorteddatalist[this.sorteddatalist.length-3].slides">
+          <img src="{{showimag(item1)}}" alt="first slide" style="display: block; width: 100%;">
+        </slide>
+      </carousel>
+      </div>-->
+
+
+        <!--  <button class="btn" (click)="sorteddatalist[0].open = !sorteddatalist[0].open">Toggle first open</button>
       <button class="btn" (click)="sorteddatalist[1].open = !sorteddatalist[1].open">Toggle second open</button>-->
       <accordion>
-        <accordion-group heading="{{item.title}} Lesson" *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
+        <accordion-group heading="{{item.title}} Lesson"  *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
           <div class="accordian_image">
             <div class="content_background">
               <div class="lucoplast1"> </div>
@@ -17,27 +28,93 @@
           <div *ngIf="item.filetype=='html'" class="content_area">
             <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
           </div>
-          <div *ngIf="item.filetype=='file'">
-            <p>{{item.filelocalname}}</p>
+          <div *ngIf="item.filetype=='file'" class="carousal_cont_wrap">
+            <!--<p>{{item.filelocalname}}</p>-->
+<!--<p>Length: {{item.slides.length}}</p>-->
+            <div class="s_w_main_wrap">
+                <div class="slider_wrapper">
+                  <div class="slider_inner_content">
+                    <img *ngIf="flg==1 && sorteddatalist[i].slides!=null && sorteddatalist[i].slides[cureentcursor]!=null" src="{{_commonservice.fileimgsslurl+sorteddatalist[i].slides[cureentcursor].substr(3,sorteddatalist[i].slides[cureentcursor].length)}}">
+
+                  </div>
+                </div>
+                  <a class="prev_arow" *ngIf="sorteddatalist[i].slides!=null && cureentcursor>0" (click)="prevslide()"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                  <a class="next_arow" *ngIf="sorteddatalist[i].slides!=null && cureentcursor<sorteddatalist[i].slides.length-1" (click)="nextslide()"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+
+             </div>
+
+
+
+
+
+
+           <!-- <carousel *ngIf="item.slides?.length==1">
+              <slide *ngFor="let item1 of item.slides">
+                <img src="{{showimag(item1)}}" alt="first slide" style="display: block; width: 100%;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>First slide label</h3>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+              </slide>
+              <slide>
+                <img src="https://stepupandlive.files.wordpress.com/2014/09/3d-animated-frog-image.jpg" alt="second slide" style="display: block; width: 100%;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Second slide label</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              </slide>
+              <slide>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ13y0p_DLPMjYNHsVi-G6x7feNclZXMsBjll8YG4CO0djuoDbkvQ" alt="third slide" style="display: block; width: 100%;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h3>Third slide label</h3>
+                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
+              </slide>
+            </carousel>-->
+
+
+
+
+
           </div>
               <div *ngIf="item.filetype=='audio'">
-                {{item.audiolocalname}}<br/>
+               <!-- {{item.audiolocalname}}<br/>-->
                 <audio controls (ended)="audiovideoended(item,i)">
                   <source src="{{_commonservice.uploadsslurl}}{{item.audioservername}}" type="audio/mp3">
                   <source src="{{_commonservice.uploadsslurl}}{{item.audioservername}}" type="audio/wav">
                 </audio>
+                <br/>{{item.description}}
               </div>
-              <div *ngIf="item.filetype=='video'">
-                {{item.videolocalname }}<br/>
+              <div *ngIf="item.filetype=='video'" class="video_wrapper">
+                <!--{{item.videolocalname }}<br/>-->
                 <video width="320" height="240" controls id="video_{{item._id}}" (ended)="audiovideoended(item,i)">
                   <source src="{{_commonservice.uploadsslurl}}{{item.videoservername}}" type="video/mp4">
                   <source src="{{_commonservice.uploadsslurl}}{{item.videoservername}}" type="video/*">
                 </video>
+                <br/>{{item.description}}
               </div>
+
+              <div *ngIf="item.filetype=='image'" class="img_wrapper">
+                <!--{{item.imagelocalname }}<br/>-->
+                <img src="{{_commonservice.uploadsslurl}}{{item.imageservername}}">
+                <br/>{{item.description}}
+
+              </div>
+
             </div>
             <!--<div>Done</div>-->
           </div>
-          <a class="mark_done" *ngIf="getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video'" (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+            <!--for file download button-->
+            <a  *ngIf="item.filetype=='file'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.fileservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> </a>
+            <!--for file download button-->
+            <a *ngIf="item.filetype=='image'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.imageservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
+
+          <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id,item.trainingcategory,quizmodal)" class="quizz_button">Take quiz</a>
+          <a class="mark_done" *ngIf="item.yesorno=='no' && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+
+
+         <!-- <button *ngIf="item.yesorno=='yes' && item.quizcomplete==0" (click)="gotoquizmodal(item._id,quizmodal)" class="quizz_button">Take quiz</button>
+          <a class="mark_done" *ngIf="((item.yesorno=='yes' && item.quizcomplete==1) || item.yesorno=='no') && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>-->
         </accordion-group>
         <!-- <accordion-group heading="Powerpoint Slide">
           <carousel class="carousal_content">
@@ -341,3 +418,62 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+
+<ng-template #quizmodal>
+
+  <div class="modal-body">
+    <!--<div class="logo_wrapper">-->
+    <!--<img src="assets/images/logo.png">-->
+    <!--</div>-->
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="quizmodal_content_w">
+      <h2 class="q_header"> NEXGEN TEST </h2>
+
+      <form>
+
+      <!--  <div class="q_wrap" *ngFor="let item of quizlistwithanswer;let i = index"
+      [ngClass]="(item.hascorrectanswer!=null && issubmit==1 && item.hascorrectanswer==true) ? 'successquiz' : 'errorquiz'">
+      -->
+
+          <div class="q_wrap" *ngFor="let item of quizlistwithanswer;let i = index"
+               [ngClass]="(item.hascorrectanswer!=null && issubmit==1 && item.hascorrectanswer==true) ? 'successquiz' : (item.hascorrectanswer==false && issubmit==1) ? 'errorquiz'  :''">
+<!--<span>{{item.hascorrectanswer}}   {{issubmit}}</span>-->
+          <p> <b> {{i+1}}. </b> {{item.question}} </p>
+          <div class="flex_wrap" *ngFor="let item1 of item.answerlistarr;let y = index">
+            <input type="radio" name="{{item1._id}}" value="{{item1._id}}" [(ngModel)]="quizlistwithanswer[i].myanswer" (click)="check_answer_iscorrect(item,i)"> <label>{{item1.answer}} </label>
+          </div>
+         <!-- <a class="submit_button" (click)="submit_answer_iscorrect()"> SUBMIT</a>-->
+        </div>
+
+     <!--   <div class="q_wrap">
+          <p><b> 2. </b>What is Stark Law? </p>
+          <div class="flex_wrap">
+            <input type="radio" > <label>The Stark law is a limitation on certain physician referrals. It prohibits physician referrals of designated health services ("DHS") for Medicare and Medicaid patients if the physician (or an immediate family member) has a financial relationship with that entity. </label>
+          </div>
+
+          <div class="flex_wrap">
+            <input type="radio" > <label>The Stark law is a law that protects physicians from being sued by their patients for potential claims when Medicare/Medicaid  is involved. </label>
+          </div>
+
+          <div class="flex_wrap">
+            <input type="radio" > <label>The Stark Law is limits the amount of reimbursements that can be received from certain types of devices and laboratory services in any given year.
+          </label>
+          </div>
+        </div>-->
+
+
+
+        <a class="submit_button" (click)="submit_answer_iscorrect()"> SUBMIT</a>
+
+      </form>
+
+
+     <span *ngIf="issubmit==1">Total correct answers:{{correctanscount}} , {{(correctanscount/quizlistwithanswer.length)*100}} %</span>
+    </div>
+
+  </div>
+</ng-template>

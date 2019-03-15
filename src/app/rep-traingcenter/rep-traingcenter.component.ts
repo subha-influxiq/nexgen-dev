@@ -6,6 +6,9 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { CookieService } from 'ngx-cookie-service';
 import { AccordionConfig } from 'ngx-bootstrap/accordion';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {CarouselConfig} from "ngx-bootstrap";
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 declare var $:any;
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), { closeOthers: true });
@@ -15,12 +18,17 @@ export function getAccordionConfig(): AccordionConfig {
   selector: 'app-rep-traingcenter',
   templateUrl: './rep-traingcenter.component.html',
   styleUrls: ['./rep-traingcenter.component.css'],
-  providers: [Commonservices , { provide: AccordionConfig, useFactory: getAccordionConfig }]
+  providers: [Commonservices , { provide: AccordionConfig, useFactory: getAccordionConfig },{ provide: CarouselConfig, useValue: { interval: 5000, noPause: true, showIndicators: true } }]
 })
 export class RepTraingcenterComponent implements OnInit {
   public datalist;
+  public lessonid;
+  public trainingcategory1;
+  public correctanscount;
   public markasdonedatalist;
+  public quizlistwithanswer;
   public cid:any=0;
+  public issubmit:any=0;
   public lid:any=0;
   public sorteddatalist=[];
   public traininglessonflag: boolean = false;
@@ -30,7 +38,13 @@ export class RepTraingcenterComponent implements OnInit {
   public donelesson:any=[];
   public donecategory:any=[];
   public notdonecategory:any=[];
+  public iscortansarr:any=[];
+  public correctansarrid:any=[];
   public ngclassflag=0;
+  public curitem:any=null;
+  public cureentcursor:any=0;
+  public flg:any=1;
+    modalRef1: BsModalRef;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute)
   {
@@ -61,8 +75,8 @@ export class RepTraingcenterComponent implements OnInit {
             .subscribe(res => {
                 let result:any;
                 result = res;
-              /*  console.log('training_category');
-                console.log(result);*/
+                console.log('training_category');
+                console.log(result);
                 if(result.status=='error'){
                 }else{
                     this.trainingcategory = result.res;
@@ -173,10 +187,48 @@ export class RepTraingcenterComponent implements OnInit {
 
                     console.log('this.sorteddatalist ... ');
                     console.log(this.sorteddatalist);
+                    for(let i in this.sorteddatalist){
+                        if(this.sorteddatalist[i].slides!=null){
+                            console.log(this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length));
+                            this.sorteddatalist[i].firstslide=this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length);
+                            /*let tempvar=img.substr(3,img.length);
+                            return this._commonservice.fileimgsslurl+tempvar;*/
+                        }
+                    }
                 }
             }, error => {
                 console.log('Oooops!');
             });
+    }
+
+    getslide(val:any){
+      if(this.curitem==null || this.curitem!=val){
+          console.log('this.sorteddatalist[val].firstslide');
+          console.log(this.sorteddatalist[val].firstslide);
+          this.curitem=val;
+          this.cureentcursor=0;
+          return this._commonservice.fileimgsslurl+this.sorteddatalist[val].slides[this.cureentcursor].substr(3,this.sorteddatalist[val].slides[this.cureentcursor].length);
+      }
+      else{
+
+          console.log('in else block of get slide');
+          return this._commonservice.fileimgsslurl+this.sorteddatalist[val].slides[this.cureentcursor].substr(3,this.sorteddatalist[val].slides[this.cureentcursor].length);
+
+      }
+          //return this.sorteddatalist[val].firstslide;
+    }
+    updatecurflag(){
+        this.cureentcursor=0;
+    }
+    nextslide(){
+      this.flg=0;
+      this.cureentcursor++;
+      this.flg=1;
+    }
+    prevslide(){
+      this.flg=0;
+      this.cureentcursor--;
+      this.flg=1;
     }
     markasdonetraninglesson(item,i){
         let link = this._commonservice.nodesslurl + 'addorupdatedata?token='+this.cookeiservice.get('jwttoken');
@@ -250,6 +302,7 @@ export class RepTraingcenterComponent implements OnInit {
     disableaccor(item,i1){
         //  console.log('this.sorteddatalist');
         //console.log(this.sorteddatalist);
+        //this.cureentcursor=0;
 
         if(i1==0) {
             this.sorteddatalist[i1].openaccordian=true;
@@ -293,4 +346,102 @@ export class RepTraingcenterComponent implements OnInit {
         console.log('The audio/video has ended');
         this.markasdonetraninglesson(item,i);
     }
+
+
+/*    getimageoffile(fileservername){
+        /!*POST - st*!/
+        let data={
+            filename:fileservername
+        }
+        const link = this._commonservice.nodesslurl+'getslidevalues';
+        this._http.post(link,data)
+            .subscribe(res=>{
+                let result;
+                result=res;
+                console.log(result);
+                console.log(result.imagePaths);
+            })
+        /!*POST - end*!/
+    }*/
+    showimag(img){
+        console.log(img);
+        let tempvar=img.substr(3,img.length);
+        return this._commonservice.fileimgsslurl+tempvar;
+    }
+    gotoquizmodal(lessonid,trainingcategory,template:TemplateRef<any>){
+        this.lessonid=lessonid;
+        this.trainingcategory1=trainingcategory;
+        const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+        this._http.post(link,{source:'quiz_answer_list_view',condition:{lessonid_object:lessonid}})
+            .subscribe(res=>{
+                let result;
+                result=res;
+                this.quizlistwithanswer = result.res;
+                console.log(result);
+                this.issubmit=0;
+                this.modalRef1=this.modal.show(template, {class: 'quizmodal'});
+            })
+    }
+
+    check_answer_iscorrect(item,i){
+        setTimeout(()=>{
+            this.correctanscount=0;
+            console.log(this.quizlistwithanswer);
+            for(let i in this.quizlistwithanswer){
+                if(this.quizlistwithanswer[i].myanswer!=null){
+                    this.quizlistwithanswer[i].hascorrectanswer=false;
+                    for(let j in this.quizlistwithanswer[i].answerlistarr){
+                        console.log('for  '+i);
+                        if(this.quizlistwithanswer[i].answerlistarr[j]._id==this.quizlistwithanswer[i].myanswer){
+                            if(this.quizlistwithanswer[i].answerlistarr[j].iscorrect==true){
+                            console.log('if  '+j);
+                            this.quizlistwithanswer[i].hascorrectanswer=true;
+                                this.correctanscount++;
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(this.correctanscount);
+            console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
+        },500)
+
+    }
+
+    submit_answer_iscorrect(){
+        this.issubmit=1;
+        console.log(this.correctanscount);
+       console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
+       let item={
+           _id:this.lessonid,
+           trainingcategory:this.trainingcategory1,
+       }
+
+       if((this.correctanscount/this.quizlistwithanswer.length)*100==100){
+            this.modalRef1.hide();
+             this.markasdonetraninglesson(item,0);
+       }
+
+    }
 }
+
+/*
+setTimeout(()=>{
+    //   console.log(this.iscortansarr[i]);
+    //   console.log(item.answerlistarr);
+    /!*for(let y in item.answerlistarr){
+     /!*  console.log(item.answerlistarr[y].iscorrect);
+     console.log(this.iscortansarr[i]);
+     console.log(item.answerlistarr[y]._id);*!/
+     if(item.answerlistarr[y].iscorrect==true && this.iscortansarr[i]==item.answerlistarr[y]._id){
+     console.log('right');
+     let indexval: any = this.correctansarrid.indexOf(item.answerlistarr[y]._id);
+     /!*  this.correctansarrid.splice(indexval, 1);*!/
+     if(indexval==-1){
+     this.correctansarrid.push(item.answerlistarr[y]._id);
+     }
+     }
+     }*!/
+
+    //  console.log( this.correctansarrid);
+},50)*/

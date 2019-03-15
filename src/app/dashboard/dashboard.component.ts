@@ -19,12 +19,12 @@ export class DashboardComponent implements OnInit {
     public totalnewhiretraining: any;
     public traininglist: any;
 
-    constructor(public router:Router,public http:HttpClient,public cookie:CookieService,public commonservices:Commonservices)
+    constructor(public router:Router,public http:HttpClient,public cookie:CookieService,public commonservices:Commonservices, private route: ActivatedRoute)
     {
         this.commonservices=commonservices;
         if(this.cookie.get('userid')!=null){
             this.gettrainingsection();
-            this.getreplist();
+          //  this.getreplist();
             this.gettraininglession();
             this.getlegaldocs();
         }
@@ -32,6 +32,13 @@ export class DashboardComponent implements OnInit {
     ngOnInit()
     {
         this.trainingcenterdetails();
+
+        this.route.data.forEach((data) => {
+            console.log('resolve route data ... ');
+            console.log('json',data['results']);
+            this.repdetails=data['results'].res;
+
+        });
     }
     gettrainingsection()
     {
@@ -47,7 +54,7 @@ export class DashboardComponent implements OnInit {
                     console.log("Can not get");
                 });
     }
-    getreplist()
+  /*  getreplist()
     {
         console.log('userid');
         console.log(this.cookie.get('userid'));
@@ -66,7 +73,7 @@ export class DashboardComponent implements OnInit {
                     console.log(this.repdetails);
                 }
             })
-    }
+    }*/
     getlegaldocs()
     {
         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');

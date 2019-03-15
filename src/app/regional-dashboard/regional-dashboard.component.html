@@ -1,9 +1,11 @@
 <app-adminheader></app-adminheader>
 <div class="admin_dashboard_container r_r_dashboard">
   <div class="content_text">
-    <h2>Lorem Ipsum</h2>
+   <!-- <h2>Lorem Ipsum</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-      quis nostrud exercitation ullamco</p>
+      quis nostrud exercitation ullamco</p>-->
+    <h2>Welcome</h2>
+    <p>We’d like to welcome you to NexGen Testing - a national sales organization that specialize with Molecular PCR Testing which has better results sooner! NexGen takes pride in training you, the representative, to be ready to support any physician and to feel confident in what you do.</p>
   </div>
 </div>
 
@@ -35,7 +37,7 @@
             <td data-title="Additional Training">100%</td>
           </tr>-->
           <tr *ngFor="let item of repdetails_under_this_regional | slice:0:5;">
-            <td data-title="Date Added" scope="row">{{_commonservice.showdate(item.created_at)}}</td>
+            <td data-title="Date Added" scope="row">{{_commonservice.showdateforreplegal(item.created_at)}}</td>
             <td data-title="User ID">{{item.unique_id}}</td>
             <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
             <td data-title="Initial Training">100%</td>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef } from '@angular/core';
 import {Commonservices} from '../app.commonservices' ;
 import {CookieService} from "ngx-cookie-service";
-
+import { Router, ActivatedRoute} from '@angular/router';
+declare var $:any;
 @Component({
   selector: 'app-rep',
   templateUrl: './rep.component.html',
@@ -12,10 +13,11 @@ export class RepComponent implements OnInit {
   public tabledatalis:any=[];
   public formdata:any;
   public datasource:any;
+  static selid:any;
   public sourcecondition:any={};
-  constructor(private _commonservices: Commonservices,private cookeiservice: CookieService) {
+  constructor(private _commonservices: Commonservices,private cookeiservice: CookieService ,public elementRef:ElementRef,public router:Router) {
     this.tabledatalis=[
-      {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
+      //{value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'created_at',name:'Date Joined',role:0,func:'',class:'id',type:'unixdate'},
       {value:'unique_id',name:'User Id',role:0,func:'',class:'id',type:'text'},
       {value:'firstname',name:'First Name',role:0,func:'',class:'firstname',type:'text'},
@@ -25,6 +27,9 @@ export class RepComponent implements OnInit {
       {value:'recruiter',name:'Owner',role:0,func:'',class:'owner',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Phone',role:0,func:'',class:'mobile',type:'text'},
+      {value:'status',name:'Status',role:0,func:'',class:'status',type:'showstatus'},
+      {value:'legaldocdetails',name:'Legal Document',role:0,func:'',class:'legaldoc',type:'showlegaldoc'},
+      {value:'lock',name:'Locked ?',role:0,func:'',class:'lock',type:'locked'},
     ];
     if(this.cookeiservice.get('usertype')=='regional_recruiter'){
       this.sourcecondition={regionalrecruiter_id_object:this.cookeiservice.get('userid')};
@@ -48,8 +53,56 @@ export class RepComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
-/*  gotorepdetails(idis){
-    console.log(idis[0][idis.value]);
-  }*/
+
+  ngAfterViewChecked(){
+
+    //console.log($(this).text());
+    //alert(this.elementRef.nativeElement.querySelectorAll('td').length);
+
+
+
+    setTimeout(()=> {
+
+
+
+
+      //console.log(this.elementRef.nativeElement.querySelectorAll('.tds').length);
+
+      /*this.elementRef.nativeElement.querySelector(".tds")
+          .addEventListener('click', this.myclick.bind(this));*/
+
+
+      const aTags = document.querySelectorAll('td');
+      for (const i in aTags) {
+        const element = aTags[i];
+        if (element instanceof Element && element.getAttribute('listener') !== 'true') {
+          element.addEventListener('click', this.myclick.bind(this));
+          element.setAttribute('listener', 'true');
+        }
+      }
+    },4000);
+
+    /*$('td').click(function () {
+
+      console.log($(this).text());
+      console.log($(this).attr('class'));
+      RepComponent.selid='35345345345';
+
+    });*/
+
+
+  }
+  myclick(e){
+    console.log(e);
+    console.log($(e.target).attr('class'));
+    console.log($(e.target).text());
+    this.router.navigate(['/repdetails',$(e.target).attr('class')]);
+
+    //console.logg(e1);
+  }
+  /*  gotorepdetails(idis){
+   console.log(idis[0][idis.value]);
+   }*/
 }

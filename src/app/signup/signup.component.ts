@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
   modalRef: BsModalRef;
   public sourceconditionval:any;
   public sourceval='users';
+  public issubmit=0;
 
   constructor(kp: FormBuilder, private router: Router, private route: ActivatedRoute, private _commonservices: Commonservices, private _http: HttpClient ,private cookeiservice: CookieService,public modal:BsModalService) {
     this.kp = kp;
@@ -139,6 +140,7 @@ export class SignupComponent implements OnInit {
         });
   }
   dosubmit() {
+    this.issubmit=1;
     this.errormg='';
     let x: any;
     for (x in this.dataForm.controls) {
@@ -163,6 +165,7 @@ export class SignupComponent implements OnInit {
         zip: this.dataForm.value['zip'],
         regionalrecruiter_id: this.dataForm.value['regionalrecruiter_id'],
         signup_step2:1,
+        lock:1,
       };
       this._http.post(link, {data:data,sourceobj:objarr})
           .subscribe(res => {
@@ -170,12 +173,34 @@ export class SignupComponent implements OnInit {
             result = res;
             console.log('result....');
             console.log(result);
+            this.issubmit=0;
             if(result.status=='error'){
               this.errormg=result.msg;
             }
             if(result.status=='success') {
           //  this.dataForm.reset();
-              this.router.navigate(['/contract']);
+              this.router.navigate(['/tempaccess']);
+              //this.router.navigate(['/contract']);
+            }
+          }, error => {
+            console.log('Oooops!');
+          });
+
+      let link2 = this._commonservices.nodesslurl + 'sendsignupemail?email='+this.dataForm.value['email']+'&username='+this.dataForm.value['username']+'&recid='+this.dataForm.value['regionalrecruiter_id']+'&firstname='+this.dataForm.value['firstname']+'&lastname='+this.dataForm.value['lastname']+'&id='+this.dataForm.value['id'];
+      this._http.get(link2)
+          .subscribe(res => {
+            let result:any ={};
+            result = res;
+            console.log('result....');
+            console.log(result);
+            this.issubmit=0;
+            if(result.status=='error'){
+              this.errormg=result.msg;
+            }
+            if(result.status=='success') {
+          //  this.dataForm.reset();
+              this.router.navigate(['/tempaccess']);
+              //this.router.navigate(['/contract']);
             }
           }, error => {
             console.log('Oooops!');

@@ -53,11 +53,20 @@ import { DigitalcontractComponent } from './digitalcontract/digitalcontract.comp
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { TrainingcenterreoprtComponent } from './trainingcenterreoprt/trainingcenterreoprt.component';
 import { EventmanagementComponent } from './eventmanagement/eventmanagement.component';
-
-
+import { RepeventlistComponent } from './repeventlist/repeventlist.component';
+import { TestresolveService } from './testresolve.service';
+import { ApiService } from './api.service';
+import { ResourcecategoryComponent } from './resourcecategory/resourcecategory.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { SlotsComponent } from './slots/slots.component';
+import { MyresourceComponent } from './myresource/myresource.component';
+import { ManagequizComponent } from './managequiz/managequiz.component';
+import { TempaccessComponent } from './tempaccess/tempaccess.component';
+import { UsersearchPipe } from './search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
+    UsersearchPipe,
     LoginComponent,
     FunnelComponent,
     SignupComponent,
@@ -96,6 +105,13 @@ import { EventmanagementComponent } from './eventmanagement/eventmanagement.comp
     UsermanagementComponent,
     TrainingcenterreoprtComponent,
     EventmanagementComponent,
+    RepeventlistComponent,
+    ResourcecategoryComponent,
+    ResourcesComponent,
+    SlotsComponent,
+    MyresourceComponent,
+    ManagequizComponent,
+    TempaccessComponent
 
   ],
   imports: [
@@ -114,7 +130,7 @@ import { EventmanagementComponent } from './eventmanagement/eventmanagement.comp
     CarouselModule.forRoot(),
     CKEditorModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService,TestresolveService,ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

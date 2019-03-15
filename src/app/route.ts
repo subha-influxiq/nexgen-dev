@@ -38,12 +38,20 @@ import {DigitalcontractComponent} from "./digitalcontract/digitalcontract.compon
 import {UsermanagementComponent} from "./usermanagement/usermanagement.component";
 import {TrainingcenterreoprtComponent} from "./trainingcenterreoprt/trainingcenterreoprt.component";
 import {EventmanagementComponent} from "./eventmanagement/eventmanagement.component";
+import {RepeventlistComponent} from "./repeventlist/repeventlist.component";
+import {ResourcecategoryComponent} from "./resourcecategory/resourcecategory.component";
+import {ResourcesComponent} from "./resources/resources.component";
+import {MyresourceComponent} from "./myresource/myresource.component";
+import {ManagequizComponent} from "./managequiz/managequiz.component";
+import { TestresolveService } from './testresolve.service';
+import {TempaccessComponent} from "./tempaccess/tempaccess.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
     { path: 'login', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
-    { path: 'dashboard', component: DashboardComponent},
+    { path: 'dashboard', component: DashboardComponent, resolve: {results: TestresolveService},data: { link: 'datalist',source:'users',condition:{type:'rep'} }},
+ //   { path: 'dashboard', component: DashboardComponent},
     { path: 'admin', component: AdminmanagementComponent},
     { path: 'regional', component: RegionalRecruiterComponent},
     { path: 'rep', component: RepComponent},
@@ -54,7 +62,9 @@ const appRoutes: Routes = [
     { path: 'contract', component: ContractComponent},
     {path: 'regionaldashboard', component: RegionalRecruiterComponent},
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
+    {path: 'addtrainings', component: TranningcategorymanagementComponent},
     { path:'useraccountsetting', component: UseraccountsettingComponent},
+    { path:'useraccountsetting/:id', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent}, // cat id
@@ -77,6 +87,16 @@ const appRoutes: Routes = [
     { path:'usermanagement', component: UsermanagementComponent},
     { path:'trainingreport', component: TrainingcenterreoprtComponent},
     { path:'event', component: EventmanagementComponent},
+    { path:'event/:at/:val/:rt', component: EventmanagementComponent},
+    { path:'calendar', component: EventmanagementComponent},
+    { path:'calendar/:at/:val/:rt', component: EventmanagementComponent},
+    { path:'repevent/:id', component: RepeventlistComponent},
+    { path:'resourcecategory', component: ResourcecategoryComponent},
+    { path:'resources', component: ResourcesComponent},
+    { path:'myresource', component: MyresourceComponent},
+    { path:'myresource/:catid', component: MyresourceComponent},
+    { path:'managequiz/:lessonid', component: ManagequizComponent},
+    {path: 'tempaccess', component: TempaccessComponent}
 
 ];
 

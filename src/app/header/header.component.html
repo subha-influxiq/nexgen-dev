@@ -18,7 +18,7 @@
             </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="router.url!='/contract'">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="router.url!='/contract' && router.url!='/tempaccess' ">
             <ul class="navbar-nav mr-auto justify-content-center">
               <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -48,7 +48,7 @@
             <!--<i class="fa fa-twitter"></i>-->
           <!--</div>-->
           <div class="call_container">
-            <p>Regional Recruiter: &nbsp; <a *ngIf="recphoneno!=null"><!--(<span>+</span>000)--> {{recphoneno}}</a></p>
+            <p>Regional Recruiter: &nbsp; <a *ngIf="recphoneno!=null"><!--(<span>+</span>000)--> {{showphoneno(recphoneno)}}</a></p>
             <!--<p>Customer Service:  <a href="(+000) 000-000-000" *ngIf="recphoneno!=null">(<span>+</span>000) 000-000-000</a></p>-->
 
           </div>
@@ -62,10 +62,6 @@
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" (click)="logout()">Log out</a>
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item" href="#">Separated link</a>
                 </div>
               </li>
             </ul>
