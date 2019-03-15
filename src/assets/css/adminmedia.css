@@ -27,6 +27,10 @@
     }
 }
 
+@media screen  and  (max-width: 1660px){
+
+    .listevent_wrapper { width: 80%; }
+}
 @media screen  and  (max-width: 1640px){
     .traing_innerwrapper { width: 94% }
     .traing_innerwrapper .training_leftpart { width: 100%; }
@@ -43,15 +47,7 @@
     .dashboard_block2 .col-md-4 h3 { font-size: 25px; }
 
 }
-@media screen  and  (max-width: 1480px){
-    .rep_dashboard_wrapper1 {
-        background-position: 25% center!important;
-    }
-    .dashboard_block2 .col-md-4 button {
-        font-size: 26px;
-        padding: 1px 10px;
-    }
-}
+
 @media screen  and  (max-width: 1500px){
     .admin_header .col-md-8 .navbar-brand .nex_header_logo {
         width: 250px;
@@ -68,6 +64,18 @@
         max-width: inherit!important;
         width: 22%;
     }
+}
+
+@media screen  and  (max-width: 1480px){
+    .rep_dashboard_wrapper1 {
+        background-position: 25% center!important;
+    }
+    .dashboard_block2 .col-md-4 button {
+        font-size: 26px;
+        padding: 1px 10px;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group .select_inpu2 { width: 215px; }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 { width: 220px; }
 }
 @media screen  and  (max-width: 1440px){
     .traing_innerwrapper .training_rightpart h1{ font-size: 20px; }
@@ -91,20 +99,32 @@
     }
     .nexgen_header_wrapper .navbar-expand-lg .navbar-nav .nav-link{ font-size: 12px; }
     .new_header_container { width: 100%; }
+    .rep_dashboard_wrapper2 .inner_content h2{ font-size: 50px; }
 }
 @media screen  and  (max-width: 1400px){
-    .admin_dashboard_container .content_text {
-        width: 450px;
-        padding: 34px 0;
-    }
+
     .r_r_dashboard_innerblock {
         width: 95%;
     }
     .new_header .new_header1 .new_h_l_wrapper {
         width: 250px;
     }
+    /*.rep_dashboard_wrapper1 {*/
+    /*background-position: 45% center!important;*/
+    /*background-size: 167%!important;*/
+    /*}*/
 }
-@media screen  and  (max-width: 1340px){
+@media screen  and (max-width: 1366px){
+    .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 49%; }
+    .user_details_wrapper .left_wrapper .doctor_section label { margin-right: 5px; }
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search { font-size: 18px;}
+    .listevent_wrapper .event_content_wrapper .evnt_right_content h3 { font-size: 18px; }
+
+
+}
+@media screen  and (max-width: 1340px){
     .dashboard_block2 .col-md-4 button {
         font-size: 24px;
         line-height: 23px;
@@ -113,7 +133,20 @@
     .rep_dashboard_wrapper1 {
         background-position: 30% center!important;
     }
-}@media screen  and  (max-width: 1240px){
+}
+@media screen  and  (max-width: 1300px){
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search {
+        font-size: 16px;
+        padding: 4px 10px 0px 10px;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content h3 { font-size: 16px; }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 { width: 190px; }
+}
+@media screen  and  (max-width: 1280px){
+    .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 48%; }
+}
+@media screen  and  (max-width: 1240px){
     .rep_dashboard_wrapper1 {
         background-position: 40% center!important;
     }
@@ -123,7 +156,10 @@
     .new_header .new_header1 .new_h_l_wrapper {
         width: 220px;
     }
+    .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 45%; }
+
 }
+
 
 @media screen and (max-width: 1199px) {
     .admin_dashboard_container {
@@ -297,14 +333,24 @@
     .new_header { flex-direction: column; }
     .new_header2{ width: 100%;}
     .new_header .new_header2 .navbar-collapse{ margin-bottom: 15px; }
+
+    .listevent_wrapper .event_content_wrapper .evnt_left_content {
+        flex: 1;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content {
+        flex: 1;
+        justify-content: center;
+    }
 }
 
 
 @media screen and (max-width: 1040px) {
     .dashboard_block2 .col-md-4 {
-        -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
-        max-width: 50%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
         margin-bottom: 15px;
     }
     .dashboard_block2 {
@@ -314,11 +360,11 @@
 }
 
 @media screen and (max-width: 992px) {
-     .new_header .new_header2 .navbar {
+    .new_header .new_header2 .navbar {
         padding: 0 !important;
         text-align: center;
         justify-content: center;
-         margin: 15px 0;
+        margin: 15px 0;
     }
 
     .admin_header .row .col-md-8 {
@@ -369,6 +415,9 @@
 }
 
 
+@media screen and (max-width: 840px) {
+    .listevent_inner_wrapper .main_inner_content>div { width: 49.4%; }
+}
 @media screen and (max-width: 800px) {
     .manageavilability_wrapper .avail_search_sec .search_content .button_responsive { display: block; width: 100%;  margin-top: 10px; }
 }
@@ -401,10 +450,59 @@
         padding-right: 15px;
     }
 }
+@media screen and (max-width: 720px) {
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group {
+        margin-bottom: 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content h3 {
+        display: block;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search, .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search {
+        font-size: 18px;
+        padding: 4px 10px 4px 10px;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form button:nth-last-child(1) {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group .select_inpu2 {
+        width: 303px;
+        margin: 7px 0 14px;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 {
+        width: 200px;
+        display: inline-block;
+    }
+    .listevent_wrapper .event_content_wrapper form .form-group {
+        display: block;
+        margin-bottom: 0;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content {
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        flex: inherit;
+        justify-content: inherit;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content {
+        flex: inherit;
+        justify-content: inherit;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
 @media screen and (max-width: 650px) {
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock{ display: block; text-align: center; }
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3{ display: block; margin-bottom: 10px; }
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ float: none; }
+
+    .listevent_inner_wrapper .main_inner_content>div { width: 100%; }
 }
 @media screen and (max-width: 576px) {
     .training_leftpart .accordian_image {
@@ -533,6 +631,21 @@
         padding: 10px 0;
         width: 100%;
     }
+    .listevent_wrapper {
+        width: 90%;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 {
+        width: 100%;
+        display: block;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search, .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content { width: 100%;  }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group .select_inpu2 { width: 100%; margin-bottom: 0; }
+
 }
 
 @media screen and (max-width:360px) {

@@ -83,6 +83,12 @@ body{ padding:0; margin: 0;}
     margin-right: 30px;
 }
 .nexgen_header_wrapper .hidden_logo{ display: none;}
+
+/*done on 07.03.19*/
+.nexgen_header_wrapper .navbar .nex_header_logo{ width: 300px;}
+.nexgen_header_wrapper .navbar .nex_header_logo img{ max-width:100%; height: auto;}
+/**/
+
 .nexgen_header_wrapper .social_media_container .social_media_icon i {
     overflow: hidden;
     width: 25px;
@@ -300,7 +306,10 @@ body{ padding:0; margin: 0;}
 }
 .sales_agreement_wrapper .sub_contract{ width: 84%; margin: 30px auto;  margin-bottom: 0; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input{ padding: 0 3px; background: transparent; border: none; border-bottom: 1px solid #000; }
-.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:nth-child(1){ width: 100px;}
+
+.sales_agreement_wrapper  .address_bar{ width: 360px; max-width: 100%; text-align: center; }
+.sales_agreement_wrapper .full_name{ width: 200px; text-align: center;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:nth-child(1){ width: 180px; text-align: center;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content input:focus{ outline: none; box-shadow: none; }
 
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .heading{
@@ -311,6 +320,16 @@ body{ padding:0; margin: 0;}
 }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content label{ color: #ff1e00; font-family: 'OpenSansBold'; font-size: 16px; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content {display:inline; width:100%;}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content
+.content .consultant_agreement .cons_agreement_right .consultant_input { background: #fddae1; padding: 5px; }
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content
+.content .consultant_agreement .cons_agreement_right .consultant_input .typed_input{ text-align: left; }
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content
+.content .consultant_agreement .cons_agreement_right .consult_p{ font-family: 'RalewayRegular'; font-size: 17px; margin: 0; }
+
+
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol {  counter-reset: li; list-style: none; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li { font-size: 16px; color: #000; line-height: 30px; font-family: 'OpenSansRegular'; margin: 15px 0; margin-top: 0; counter-increment: li}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .content ol li::before {
@@ -357,8 +376,8 @@ body{ padding:0; margin: 0;}
 
 /*End*/
 
-.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content{ font-size: 18px; font-weight: normal; font-family: 'RalewayRegular';}
-.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement p{ margin-top: 15px; font-weight: normal; font-family: 'RalewayRegular';}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content{ font-size: 18px; font-weight: normal; font-family: 'OpenSansRegular';}
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement p{ margin-top: 15px; font-weight: normal; font-family: 'OpenSansRegular';}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .row .col-md-6 .consultant_input input{
     line-height: 30px;
     width: 100%;
@@ -370,6 +389,10 @@ body{ padding:0; margin: 0;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 input { width: 75%; padding: 0 10px; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 .printname_box { width: 86%;}
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 input:nth-last-of-type(1){ width: 72%;}
+
+/*.sales_agreement_wrapper .sales_inner_wrapper .inner_block  .witness_block .col-md-6 */
+
+.yellow{ background: #ffff00!important; color: #000; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 h3{ font-family: RalewayRegular; font-size: 16px; }
 .sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .consultant_agreement .witness_block .col-md-6 p{ line-height: 30px; font-size: 16px; margin-bottom: 0;}
 
@@ -415,7 +438,7 @@ body{ padding:0; margin: 0;}
 .code_conduct_wrapper .signature_wrapper input{width: 70%;}
 .code_conduct_wrapper .signature_wrapper input:nth-last-of-type(1){width: 60%;}
 .code_conduct_wrapper .signature_wrapper .digital_signature{
-    font-family: 'MayQueen';
+    font-family: 'notera';
     font-size: 44px;
     color: black;
 }
@@ -491,7 +514,7 @@ body{ padding:0; margin: 0;}
 
 .alanding_topblock_con_left{ width:660px; float: left; text-align: center; }
 
-.alanding_topblock_con_left .alandinglogo{ width: 348px; display: block; margin: 50px auto; margin-bottom: 15px;}
+.alanding_topblock_con_left .alandinglogo{ width: 348px; display: block; margin: 20px auto; margin-bottom: 0px;}
 
 .alanding_topblock_con_left h2{ margin: 0; padding: 0px; font-size: 72px; color: #1865a4; font-family: 'RalewayBold'; text-transform: uppercase;}
 .alanding_topblock_con_left h3{ margin: 0 0 20px 0; padding: 0px; font-size: 30px; color: #0b0c0c; font-family: 'RalewayBold'; text-transform: uppercase;}
@@ -524,7 +547,7 @@ body{ padding:0; margin: 0;}
 
 .alanding_topblock_con_right h3{ background: #3e5e7c; margin: 1px 0 0 0; padding: 20px 5px; text-align: center; font-size: 22px; color: #fff;  font-family: 'RalewayBold';  text-transform: uppercase;}
 
-.alanding_topblock_con_right h4{  margin: 45px 0; padding: 0 10px; text-align: center; font-size: 22px; color: #515659;  font-family: 'RalewayBold';  text-transform: uppercase;}
+.alanding_topblock_con_right h4{  margin: 45px 0; padding: 0 10px; text-align: center; font-size: 22px; color: #515659;  font-family: 'RalewayBold';  text-transform: uppercase; line-height: 30px;}
 
 .alanding_topblock_con_right h4 span{ display: block; color: #00c314;}
 
@@ -571,7 +594,7 @@ body{ padding:0; margin: 0;}
 
 .alanding_block2_wrapper{ width: 1625px; margin: 0 auto; overflow:hidden;}
 
-.alanding_block2_wrappertext{ width: 800px; margin:80px 0 0 0;}
+.alanding_block2_wrappertext{ width: 788px; margin:80px 0 0 0;}
 .alanding_block2_wrappertext h2{ margin:0; padding:0px; font-size:72px; color:#15191e;  font-family: 'RalewaySemiBold';}
 
 .alanding_block2_wrappertext h2 span{font-family: 'RalewayBold'; color:#1865a4;}
@@ -587,7 +610,7 @@ body{ padding:0; margin: 0;}
 .alanstartedbtn{ width:250px; height:58px; border:solid 1px #fff; background:#2fabe0;  color:#fff!important; text-decoration: none!important; text-transform:uppercase; font-family: 'RalewayBold'; font-size:30px; text-align:center; line-height:58px; display:block; margin:20px 0 0 660px;}
 
 
-.alanding_block3_wrapper h2{ font-size:72px; color:#1865a4; text-transform:uppercase; font-family: 'RalewayBold';     line-height: 56px; margin:0; padding:0;}
+.alanding_block3_wrapper h2{ font-size:72px; color:#1865a4; text-transform:uppercase; font-family: 'RalewayBold';     line-height: 56px; margin:0; padding:0; margin-top: 60px;}
 
 .alanding_block3_wrappersub{ margin:38px 0 0 38px;}
 

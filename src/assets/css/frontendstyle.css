@@ -526,8 +526,89 @@ a{cursor: pointer; outline: none;}
 
 /*----Modal css---*/
 
-modal-container{z-index: 9999999999;}
-modal-container button.close {
+.modaldefault modal-container{z-index: 9999999999;}
+/*.modaldefault  modal-container button.close {
+    -webkit-appearance: none;
+    padding: 0px;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    position: absolute;
+    right: -15px;
+    top: -14px;
+    background: #fff;
+    opacity: 1 !important;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 20px;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+}*/
+
+
+/*.submitmodal{
+    font-family: "BebasNeueBold";
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    margin: 0px;
+    text-shadow:none !important;
+    background: rgb(20, 26, 31);
+    !*background: -moz-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    background: -webkit-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    background: -o-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    background: -ms-linear-gradient(221deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);
+    background: linear-gradient(311deg, rgb(20, 26, 31) 39%, rgb(58, 79, 95) 100%);*!
+    background: -moz-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(105, 192, 57, 0.9)), color-stop(100%, rgba(0, 148, 187, 0.8)));
+    background: -webkit-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -o-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: -ms-linear-gradient(318deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    background: linear-gradient(132deg, rgba(105, 192, 57, 0.9) 0%, rgba(0, 148, 187, 0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ace4c', endColorstr='#007d9e',GradientType=1 );
+    padding: 21px 15px 25px 15px;
+    border-radius: 0 !important;
+    margin: 0;
+    letter-spacing: 1px;
+    border: 5px solid #fff;
+
+}*/
+
+.conmtactusmodal .modal-body p{
+    font-family: "CenturyGothic";
+    font-size: 19px;
+    line-height: 25px;
+    color: #fff !important;
+    text-align: center;
+    margin: 18px 0px 0px 0px;
+    text-transform: initial;
+}
+
+.conmtactusmodal .logoshatterblock{
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+.conmtactusmodal .logoshatterblock img{
+    max-width: 100%;
+}
+
+.conmtactusmodal {
+    padding: 0 !important;
+}
+
+.conmtactusmodal .modal-dialog{
+    background-color: transparent !important;
+}
+
+.conmtactusmodal .modal-content{
+    background-color: transparent !important;
+    border: none;
+}
+
+.conmtactusmodal .modal-content .close{
     -webkit-appearance: none;
     padding: 0px;
     cursor: pointer;
@@ -545,9 +626,19 @@ modal-container button.close {
     width: 30px;
     border-radius: 20px;
 }
+.conmtactusmodal .modal-content .modal-dialog {
+    margin: 0 auto !important;
+}
 
 
-modal-container .modal-body{
+.conmtactusmodal{
+    width: 500px;
+    margin: 0 auto !important;
+    position: absolute;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
     font-family: "BebasNeueBold";
     text-transform: uppercase;
     color: #fff;
@@ -572,42 +663,6 @@ modal-container .modal-body{
     margin: 0;
     letter-spacing: 1px;
     border: 5px solid #fff;
-
-}
-
-modal-container .modal-body p{
-    font-family: "CenturyGothic";
-    font-size: 19px;
-    line-height: 25px;
-    color: #000 !important;
-    text-align: center;
-    margin: 18px 0px 0px 0px;
-    text-transform: initial;
-}
-
-modal-container .logoshatterblock{
-    width: 300px;
-    margin: 0 auto;
-    display: block;
-}
-
-modal-container .logoshatterblock img{
-    max-width: 100%;
-}
-
-modal-container {
-    padding: 0 !important;
-}
-
-
-modal-container .modal-dialog {
-    width: 500px;
-    margin: 1.75rem auto;
-    position: absolute;
-    z-index: 999999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
 }
 
 modal-container {
