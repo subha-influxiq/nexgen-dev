@@ -5,6 +5,7 @@ import {Commonservices} from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 declare var moment:any;
+declare var $:any;
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -38,7 +39,7 @@ export class ContractComponent implements OnInit {
       firstaddress: [''],
       fullname: ['',Validators.required],
     //  by1: ['',Validators.required],
-      iftoconsultant1: [''],
+      iftoconsultant1: ['',Validators.required],
       iftoconsultant2: [''],
       iftoconsultant3: [''],
       iftoconsultant4: [''],
@@ -91,7 +92,7 @@ export class ContractComponent implements OnInit {
                 firstaddress: [fulladress],
                 fullname: [this.datalist[0].firstname+' '+this.datalist[0].lastname,Validators.required],
              //   by1: ['',Validators.required],
-                iftoconsultant1: [this.datalist[0].iftoconsultant1],
+                iftoconsultant1: [this.datalist[0].iftoconsultant1,Validators.required],
                 iftoconsultant2: [this.datalist[0].iftoconsultant2],
                 iftoconsultant3: [this.datalist[0].iftoconsultant3],
                 iftoconsultant4: [this.datalist[0].iftoconsultant4],
@@ -175,9 +176,12 @@ export class ContractComponent implements OnInit {
       if(this.dataForm.controls[x].valid==false){
         console.log(this.dataForm.controls[x]);
         console.log(this.dataForm.controls[x]);
-       /* $('html, body').animate({
-          scrollTop: $("#alanding_bootmblock_wrapper").offset().top
-        }, 2000);*/
+        setTimeout(()=>{
+          $('html, body').animate({
+            scrollTop: $(".errortext").eq(0).offset().top-200
+          }, 2000);
+        },100);
+
       }
     }
     if (this.dataForm.valid) {

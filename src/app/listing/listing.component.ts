@@ -21,6 +21,7 @@ declare var $:any;
 export class ListingComponent implements OnInit {
     public start_time: any;
     public end_time: any;
+    public submitval: any=1;
     public message: any = '';
     public datalist: any = [];
     public formdataval: any = [];
@@ -363,6 +364,7 @@ export class ListingComponent implements OnInit {
                         this.router.navigate(['/']);
                     } else {
                         this.formdataval[c].sourceval = result.res;
+                        console.log(this.formdataval[c].sourceval);
                     }
                 }, error => {
                     console.log('Oooops!');
@@ -484,6 +486,7 @@ export class ListingComponent implements OnInit {
 
         }
         this.modalRef = this.modal.show(template);
+        console.log(this.dataForm);
     }
 
     equalToPass(fieldname): ValidatorFn {                                 //password match custom function
@@ -528,8 +531,22 @@ export class ListingComponent implements OnInit {
         }
         console.log('this.dataForm.value');
         console.log(this.dataForm.value);
-        console.log($('select[name="roleaccess"]').val());
-        if(this.dataForm.valid){
+
+        if(this.formsourceval.table=='events'){
+            var tzval=this.dataForm.controls['timezone'].value.split('|');
+            tzval=tzval[1];
+            console.log(tzval);
+            console.log(moment(this.dataForm.controls['start_time'].value).tz(tzval).format());
+            console.log(moment(this.dataForm.controls['end_time'].value).tz(tzval).format());
+            this.dataForm.controls['start_date'].patchValue(moment(this.dataForm.controls['start_date'].value).format('YYYY-MM-DD'));
+            this.dataForm.controls['end_date'].patchValue(moment(this.dataForm.controls['end_date'].value).format('YYYY-MM-DD'));
+            this.dataForm.controls['start_time'].patchValue(moment(this.dataForm.controls['start_time'].value).format('HH:mm'));
+            this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
+            console.log('this.dataForm.value');
+            console.log(this.dataForm.value);
+        }
+        //  console.log($('select[name="roleaccess"]').val());
+        if(this.dataForm.valid && this.submitval==1){
             const link = this._commonservice.nodesslurl+'addorupdatedata';
             console.log('link');
             console.log(link);
@@ -569,8 +586,13 @@ export class ListingComponent implements OnInit {
         return st;
     }
     showtime(dateis){
-        let st=moment(dateis).format('hh:mm A');
-        return st;
+     //   var timeString = "09:00:00";
+        var timeString = dateis+":00";
+        var H = +timeString.substr(0, 2);
+        var h = (H % 12) || 12;
+        var ampm = H < 12 ? " AM" : " PM";
+        timeString = h + timeString.substr(2, 3) + ampm;
+        return timeString;
     }
     showdate(dateis){
         let st=dateis[0];
@@ -580,7 +602,7 @@ export class ListingComponent implements OnInit {
         return st+' To ' +endt;
     }
     showrealdate(dateis){
-        ;        if(dateis==null || dateis.length<3) return 'N/A'
+                if(dateis==null || dateis.length<3) return 'N/A';
         //console.log(moment().unix(dateis/1000).format('MMM Do YY'));
         return moment(dateis).format('MM/DD/YYYY');
     }
@@ -653,7 +675,7 @@ export class ListingComponent implements OnInit {
     }
     gotorepdetails(idis){
         console.log(idis);
-        this.router.navigate(['/repdetails',idis]);
+        //this.router.navigate(['/repdetails',idis]);
     }
     /* showname(i){
      console.log(i);
@@ -738,6 +760,7 @@ export class ListingComponent implements OnInit {
         if(this.router.url=='/calendar' || this.router.url=='/event') return 'addeventformclass ' ;
         else return '';
     }*/
+
     addeventform1class(){
         if(this.router.url=='/calendar' || this.router.url=='/event') return 'newaddeventformclass ' ;
         else return '';

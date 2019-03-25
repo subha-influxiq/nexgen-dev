@@ -6,6 +6,7 @@ import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+declare  var $:any;
 
 @Component({
   selector: 'app-useraccountsetting',
@@ -127,6 +128,9 @@ export class UseraccountsettingComponent implements OnInit {
                 console.log('this.ownerlists');
                 console.log(this.ownerlists);
             })
+    }
+    goback(){
+        window.history.back();
     }
 
     formsubmit(template:TemplateRef<any>){

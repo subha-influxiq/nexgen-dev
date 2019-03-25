@@ -11,7 +11,7 @@
       <h3>Part-Time, Full-time, Commission</h3>
       <!-- <h4>Salary</h4>-->
       <h5><!--Salary:--> $100,000 to $250,000 /year </h5>
-      <h6>Capitalize on your strong market value/medical relationships sand take the next step in your sales career!
+      <h6>Capitalize on your strong market value/medical relationships and take the next step in your sales career!
       </h6>
       <label>Are you ready to reach your full earning potential by offering PCR testing to your physicians?
       </label>
@@ -229,7 +229,7 @@
             <div class="clearfix"></div>
           </div>
           <div class="form-group "><label>How many practices/clinics do you currently do business with?</label>
-            <input type="text"  class="alaninput1" [formControl]="dataForm1.controls['noofclinics']" (keyup)="issubmit=0">
+            <input type="number"  class="alaninput1" [formControl]="dataForm1.controls['noofclinics']" (keyup)="issubmit=0">
             <span class="errortext" *ngIf="!dataForm1.controls['noofclinics'].valid && dataForm1.controls['noofclinics'].touched && issubmit==1">This field is required.</span>
             <div class="clearfix"></div></div>
 
@@ -261,9 +261,15 @@
             <span class="errortext" *ngIf="!dataForm1.controls['noofpersonallycall'].valid && dataForm1.controls['noofpersonallycall'].touched && issubmit==1">This field is required.</span>
             <div class="clearfix"></div></div>
 
-          <div class="form-group "><label>How often do you call each office? </label>
-            <input type="text"  class="alaninput1" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0">
-            <span class="errortext" *ngIf="!dataForm1.controls['calleachoffice'].valid && dataForm1.controls['calleachoffice'].touched && issubmit==1">This field is required.</span>
+
+          <div class="form-group "><label class="labellantext">How often do you call each office? </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0"> Daily  </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice1']" (keyup)="issubmit=0"> Weekly  </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice2']" (keyup)="issubmit=0"> Monthly  </label>
+
+
+          <!--  <input type="text"  class="alaninput1" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0">
+            <span class="errortext" *ngIf="!dataForm1.controls['calleachoffice'].valid && dataForm1.controls['calleachoffice'].touched && issubmit==1">This field is required.</span>-->
             <div class="clearfix"></div></div>
 
           <div class="form-group "><label>How many practices do you have direct access to when you walk in their door? </label><input type="text"  class="alaninput1" [formControl]="dataForm1.controls['noofdirectaccess']" (keyup)="issubmit=0">

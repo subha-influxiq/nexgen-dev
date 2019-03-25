@@ -8,14 +8,14 @@
           <div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
               <div class="search_content">
-                <h3><span>Search by UserId: </span> <input type="text" [(ngModel)]="filterval1" (keyup)="searchbyval()"><button>search</button> </h3>
+                <h3><span>Search by UserId: </span> <input type="text" ><button>search</button> </h3>
               </div>
               <div class="search_content">
-                <h3> <span>Search by Name:  </span> <input type="text" [(ngModel)]="filterval2" (keyup)="searchbyval()"><button>search</button> </h3>
+                <h3> <span>Search by Name:  </span> <input type="text" ><button>search</button> </h3>
               </div>
             </div>
             <div class="clearfix"></div>
-            <input type="text" placeholder="Search..."  [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">
+            <input type="text" placeholder="Search..." class="hide">
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
                 <tbody>
 
 
-                <tr *ngFor="let item of singledata| usersearch:listFilter.value">
+                <tr *ngFor="let item of singledata">
                   <td> {{commonservice.showunixtodate1(item.contractsigndate)}} </td>
                   <td>{{item.unique_id}}</td>
                   <td>{{item.username}}</td>
@@ -75,8 +75,8 @@
                     <a class="view" (click)="getexhibit1(item._id,lgModal1)">view</a>
                   </td>
                   <!--<td>-->
-                    <!--<a class="download" (click)="downloadexhibit2contract(item._id)">download</a>-->
-                    <!--<a class="view" (click)="getexhibit2(item._id,lgModal2)">view</a>-->
+                  <!--<a class="download" (click)="downloadexhibit2contract(item._id)">download</a>-->
+                  <!--<a class="view" (click)="getexhibit2(item._id,lgModal2)">view</a>-->
                   <!--</td>-->
 
                 </tr>
@@ -742,7 +742,7 @@
                 <h2>SALES CONSULTANTS AGREEMENT</h2>
                 <div class="form_section">
                   <div class="sales_agreement_Content">
-                    THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input type="text" readonly [formControl]="dataForm.controls['fullname']">, having a business address at<input type="text" readonly [formControl]="dataForm.controls['firstaddress']"><span class="errortext" *ngIf="!dataForm.controls['fullname'].valid && dataForm.controls['fullname'].touched">This field can not be blank</span> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
+                    THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <input type="text" readonly [formControl]="dataForm.controls['firstdate']">, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <input  type="text" readonly [formControl]="dataForm.controls['fullname']">, having a business address at<input class="address_bar_modal" type="text" readonly [formControl]="dataForm.controls['firstaddress']"><span class="errortext" *ngIf="!dataForm.controls['fullname'].valid && dataForm.controls['fullname'].touched">This field can not be blank</span> ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
 
                     <h3 class="heading">The parties hereby agree as follows:</h3>
 
@@ -959,10 +959,14 @@
                                   </div>
                                   <div class="col-md-6">
                                     <div class="consultant_input">
-                                      <input type="text"  [formControl]="dataForm.controls['iftoconsultant1']"><br>
-                                      <input type="text" [formControl]="dataForm.controls['iftoconsultant2']"><br>
-                                      <input type="text" [formControl]="dataForm.controls['iftoconsultant3']"><br>
-                                      <span>Attn: </span><input type="text" [formControl]="dataForm.controls['iftoconsultant4']"><br>
+                                      <input type="text"  [formControl]="dataForm.controls['iftoconsultant1']">
+                                    <!--  <span class="errortext" *ngIf="!dataForm.controls['iftoconsultant1'].valid && dataForm.controls['iftoconsultant1'].touched">This field can not be blank</span>--><br>
+                                      <input type="text" [formControl]="dataForm.controls['iftoconsultant2']">
+                                     <!-- <span class="errortext" *ngIf="!dataForm.controls['iftoconsultant2'].valid && dataForm.controls['iftoconsultant2'].touched">This field can not be blank</span>--><br>
+                                      <input type="text" [formControl]="dataForm.controls['iftoconsultant3']">
+                                      <!--<span class="errortext" *ngIf="!dataForm.controls['iftoconsultant3'].valid && dataForm.controls['iftoconsultant3'].touched">This field can not be blank</span>--><br>
+                                      <span>Attn: </span><input type="text" [formControl]="dataForm.controls['iftoconsultant4']">
+                                     <!-- <span class="errortext" *ngIf="!dataForm.controls['iftoconsultant4'].valid && dataForm.controls['iftoconsultant4'].touched">This field can not be blank</span>--><br>
                                     </div>
                                   </div>
                                 </div>
@@ -978,7 +982,11 @@
                             <div class="row">
                               <div class="col-md-6">
                                 <h3>Thomas Willis d/b/a NexGenTesting</h3>
-                                <p>  <span >By</span><input type="text" readonly class="stylesignature" [formControl]="dataForm.controls['by1']"><br><span class="errortext" *ngIf="!dataForm.controls['by1'].valid && dataForm.controls['by1'].touched">This field can not be blank</span> </p>
+                                <p><span >By</span>
+                                  <input type="hidden" readonly class="stylesignature" [formControl]="dataForm.controls['by1']">
+                                  <img src="../../assets/images/tom's_signature.jpg" style="width: 188px; margin-left1:10px; height: auto">
+                                  <br></p>
+
                                 <p class="printname_box">Print Name<input type="text" readonly [formControl]="dataForm.controls['printname1']"><br> </p>
                                 <p>Title<input type="text" readonly [formControl]="dataForm.controls['title1']"><br> </p>
 
@@ -1015,56 +1023,73 @@
                   </div>
                   <div class="inner_scheduled_list">
                     <div class="li_with_no">
-                      <p><strong>(A)</strong></p><h6><strong> COMMISSION REQUIREMENTS.</strong> CONSULTANT shall be entitled to a “Commission Payment” based on the size and effectiveness of the CONSULTANT’s business, pursuant to the following determiners and definitions:
+                      <p><strong>A.</strong></p><h6><strong> COMMISSION REQUIREMENTS.</strong> CONSULTANT shall be entitled to a “Commission Payment” based on the size and effectiveness of the CONSULTANT’s business, pursuant to the following determiners and definitions:
+
                     </h6>
                     </div>
                     <!--section for sub heading-->
                     <div class="sub_heading">
-                      <p><strong>(1)</strong></p><h6><strong>This section pertains to NGT’s contracted Affiliated Company HealthTraxRx “ Infectious Diesease LAB”</strong></h6>
+                      <p><strong>1.</strong></p><h6><strong> This section pertains to NGT’s contracted Affiliated “Infectious Disease testing LAB” ( LAB 1)</strong></h6>
                     </div>
 
                     <!--inner content-->
-                    <div class="li_with_no">
-                      <p><strong>(a).</strong></p><h6><strong>For each ID Testing Specimen </strong>(orders for respiratory pathology panel testing, UTI, GI, wound and Nail & Paronychia (“ID Testing”) received from Hospitals, Laboratories, Distributors and Physician Practices) submitted to NGT for testing arising from the sales and marketing efforts of CONSULTANT, NGT shall pay a Commission payment of 15% per Specimen for sales and marketing services performed by CONSULTANT.  Specimen for this section (i) only shall be defined as a sample submitted to NGT for ID Testing, which is (1) accompanied with all reasonably necessary information required for NGT to appropriately perform and billed for the services rendered, (2) is reimbursed by a third-party payor (Insurance, Medicare, Medicaid).
+                    <div class="li_with_no new_alignment">
+                      <p><strong>(a).</strong></p><h6><strong>For each ID Testing Specimen </strong> (orders for respiratory pathology panel testing, UTI, GI, wound and Nail & Paronychia (“ID Testing”) received from Hospitals, Laboratories, Distributors and Physician Practices) submitted to NGT for testing arising from the sales and marketing efforts of CONSULTANT, NGT shall pay a Commission payment of 15% per Specimen for sales and marketing services performed by CONSULTANT.  Specimen for this section (i) only shall be defined as a sample submitted to NGT for ID Testing, which is (1) accompanied with all reasonably necessary information required for NGT to appropriately perform and billed for the services rendered, (2) is reimbursed by a third-party payor (Insurance, Medicare, Medicaid).
                     </h6>
                     </div>
 
+                    <div class="li_with_no new_alignment">
+                      <p><strong>This section is for the Toxicology testing with LAB 1</strong></p><h6>
 
-                    <div class="li_with_no">
-                      <p><strong>(b).</strong></p><h6> A commission rate of 12% shall be paid for LC/MS/MS Testing of Specimens, including qualitative presumptive screen and definitive confirmation, arising from Customers through a direct client bill arrangement for Products and Services for Specimens billed at a rate of equal to or greater than $125.00 per Specimen; or
+                    </h6>
+                    </div>
+                    <div class="li_with_no new_alignment">
+                      <p><strong>i.</strong></p><h6> A commission rate of 12% shall be paid for LC/MS/MS Testing of Specimens, including qualitative presumptive screen and definitive confirmation, arising from Customers through a direct client bill arrangement for Products and Services for Specimens billed at a rate of equal to or greater than $125.00 per Specimen; or
 
                     </h6>
                     </div>
 
-                    <div class="li_with_no">
-                      <p><strong>(c).</strong></p><h6> A commission rate of 5% shall be paid for LC/MS/MS Testing of specimens, including qualitative presumptive screen and definitive confirmation, arising from Customers through a direct client bill arrangement for Products and Services for Specimens billed at a rate of less than $125.  </h6>
+                    <div class="li_with_no new_alignment">
+                      <p><strong>ii.</strong></p><h6>  A commission rate of 5% shall be paid for LC/MS/MS Testing of specimens, including qualitative presumptive screen and definitive confirmation, arising from Customers through a direct client bill arrangement for Products and Services for Specimens billed at a rate of less than $125.  </h6>
                     </div>
-                    <br><br>
+
                     <div class="sub_heading">
-                      <p><strong>(2)</strong></p><h6>DEFINITIONS AND EXCEPTIONS.</h6>
+                      <p><strong>2.</strong></p><h6><b>This section pertains to NGT’s contracted Affiliated “Infectious Disease & Women’s Health LAB”  (LAB 2)</b> orders for respiratory pathology panel testing, UTI (“ID Testing”) received from (Hospitals, Laboratories, Distributors and Physician Practices) submitted to Lab 2 for testing arising from the sales and marketing efforts of CONSULTANT, NGT shall pay a Commission payment of 15% per Specimen
+                    </h6>
                     </div>
 
-                    <div class="li_with_no">
+                    <br>
+                    <div class="sub_heading">
+                      <p><strong>3.</strong></p><h6><b>This section pertains to NGT’s contracted Affiliated “Cryo treatment Company”</b> a commission rate of 10% shall be payable on the sell on each treatment unit. </h6>
+                    </div>
+
+                    <div class="sub_heading">
+                      <p><strong>4.</strong></p><h6><b>DEFINITIONS AND EXCEPTIONS. </b></h6>
+                    </div>
+                    <div class="li_with_no new_alignment">
                       <p>(a).</p><h6>Subject to exception as agreed to between the parties in writing, a Specimen shall not include any patient specimen sent by an account using NGT contracted Lab for testing in the six (6) months prior to CONSULTANT’s involvement. </h6>
                     </div>
-                    <div class="li_with_no">
+                    <div class="li_with_no new_alignment">
                       <p>(b).</p><h6>In the event NGT or contracted LAB engages legal counsel to collect any amounts owed by a Customer through a client bill arrangement for Products and Services, the cost of such counsel shall be deducted prorate from the applicable commissions due in connection with such client bill arrangement.
                     </h6>
                     </div>
-                    <div class="li_with_no">
-                      <p>(c).</p><h6> CONSULTANT shall only be entitled to Commission Payments when the client has: i) when required by NGT’s or the contracted LAB policies, a signed the Lab’s Provider Acknowledgment Form (“PAF”) and all other paperwork necessary to “on board” an account; and ii) submitted samples to Contracted LAB.</h6>
+                    <div class="li_with_no new_alignment">
+                      <p>(c).</p><h6>  CONSULTANT shall only be entitled to Commission Payments when the client has: i) when required by NGT’s or the contracted LAB policies, a signed the Lab’s Provider Acknowledgment Form (“PAF”) and all other paper work necessary to “on board” an account; and ii) submitted samples to Contracted LAB.
+                    </h6>
                     </div>
-                    <div class="li_with_no">
-                      <p>(d).</p><h6>  No Commission Payment of any kind shall be paid in the event CONSULTANT has engaged in any conduct which is in violation of this Agreement, including, but not limited to, the Code of Conduct, or any law or regulation.
+                    <div class="li_with_no new_alignment">
+                      <p>(d).</p><h6> No Commission Payment of any kind shall be paid in the event CONSULTANT has engaged in any conduct which is in violation of this Agreement, including, but not limited to, the Code of Conduct, or any law or regulation.
+
                     </h6>
                     </div>
 
                     <div class="li_with_no">
-                      <p><strong>(B)</strong></p><h6><strong>  Commission Requirements For future contracted affiliated companies. </strong> </h6>
+                      <p><strong>B.</strong></p><h6><strong>  Commission Requirements For future contracted affiliated companies. </strong> </h6>
                     </div>
 
-                    <div class="li_with_no">
-                      <p><strong>(C)</strong></p><h6><strong>PAYMENT AND MODIFICATION IN EVENT OF GOVERNMENTAL ACTION. </strong>  Commission payments shall be made in the month after the qualifying Specimen is received.  In the event of any material change in the method of reimbursement by Medicare for clinical laboratory services rendered which affects the financial terms of this Agreement in any adverse material way, to the detriment of either party during the term of this Agreement, CONSULTANT and NGT, upon written notice to the other party (''Material Change Notice''), agree to enter into negotiations for a period of sixty (60) days following receipt of such Material Change Notice (''Negotiation Period'') to amend this Agreement. During the Negotiation Period, CONSULTANT and NGT will mutually assess the financial impact of the change in reimbursement and will negotiate in good faith a mutually agreeable amendment or modification to this Agreement. If an amendment or modification to this Agreement cannot be agreed upon within the Negotiation Period, then upon notice from either party to the other, this Agreement shall terminate sixty (60) days from the date such notice is received.
+                    <div class="li_with_no new_alignment">
+                      <p><strong>A.</strong></p><h6><strong>PAYMENT AND MODIFICATION IN EVENT OF GOVERNMENTAL ACTION.</strong> Commission payments shall be made in the month after the qualifying Specimen is received & payment has been received by NGT.  In the event of any material change in the method of reimbursement by Medicare for clinical laboratory services rendered which affects the financial terms of this Agreement in any adverse material way, to the detriment of either party during the term of this Agreement, CONSULTANT and NGT, upon written notice to the other party (''Material Change Notice''), agree to enter into negotiations for a period of thirty (30) days following receipt of such Material Change Notice (''Negotiation Period'') to amend this Agreement. During the Negotiation Period, CONSULTANT and NGT will mutually assess the financial impact of the change in reimbursement and will negotiate in good faith a mutually agreeable amendment or modification to this Agreement. If an amendment or modification to this Agreement cannot be agreed upon within the Negotiation Period, then upon notice from either party to the other, this Agreement shall terminate thirty (30) days from the date such notice is received.
+
                     </h6>
                     </div>
                   </div>
@@ -1323,12 +1348,14 @@
                       <div class="bottom_form_section">
                         Nex Gen Testing<br>
 
+                        <p><span >By</span>
+                          <input type="hidden" readonly class="stylesignature">
+                          <img src="../../assets/images/tom's_signature.jpg" style="width: 188px; margin-left1:10px; height: auto">
+                          <br></p>
 
-                        <span >By</span><input type="text" readonly class="by stylesignature"><br>
-
-                        Print Name:<input class="print" readonly type="text" ><br>
-                        Title:<input type="text" readonly class="title" ><br>
-                        Date: <input type="text" readonly class="date" ><br>
+                        Print Name:<input class="print" readonly type="text" [formControl]="dataForm.controls['printname6']" ><br>
+                        Title:<input type="text" readonly class="title" [formControl]="dataForm.controls['title5']" ><br>
+                        Date: <input type="text" readonly class="date" [formControl]="dataForm.controls['date5']" ><br>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -1355,91 +1382,91 @@
 </ng-template>
 
 <ng-template #lgModal1>
-        <div class="sales_agreement_wrapper exhibit_section_wrapper" style="background: none!important;" >
-          <form [formGroup]="dataForm2">
-            <div class="exhibit_section">
-              <h4>EXHIBIT A</h4>
-              <h4>SALES AND MARKETING CODE OF CONDUCT OF<br>
-                NEX GEN TESTING, INC.
-              </h4>
-              <p>Nex Gen Testing, Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.
-              </p>
+  <div class="sales_agreement_wrapper exhibit_section_wrapper" style="background: none!important;" >
+    <form [formGroup]="dataForm2">
+      <div class="exhibit_section">
+        <h4>EXHIBIT A</h4>
+        <h4>SALES AND MARKETING CODE OF CONDUCT OF<br>
+          NEX GEN TESTING, INC.
+        </h4>
+        <p>Nex Gen Testing, Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.
+        </p>
 
-              <h5>Written Procedures and Policies:</h5>
-              <p>NGT has adopted written policies that promote our commitment to compliance and that address specific areas of potential fraud, such as billing, marketing and claims processing. These policies have been developed under the supervision and direction of NGT’s Chief Compliance Officer and has been provided to all individuals who are affected by the specific policy at issue.</p>
-
-
-              <h5>Standards of Conduct: </h5>
-              <p>NGT has developed this Sales and Marketing Standard of Conduct for all its employees and affiliates (including independent sales CONSULTANTs and companies providing sales CONSULTANT services to NGT) to clearly delineate the policies of NGT with respect to sales and marketing and to assure adherence to all guidelines and regulations governing federally funded health care programs. This Sales and Marketing Standard of Conduct will be made available to and understandable by all employees and affiliates involved in sales and marketing, and will be regularly updated as the policies and regulations of these programs are modified. Strict adherence to compliance policies and applicable legal requirements is a condition of employment or contractual engagement.</p>
+        <h5>Written Procedures and Policies:</h5>
+        <p>NGT has adopted written policies that promote our commitment to compliance and that address specific areas of potential fraud, such as billing, marketing and claims processing. These policies have been developed under the supervision and direction of NGT’s Chief Compliance Officer and has been provided to all individuals who are affected by the specific policy at issue.</p>
 
 
-              <h2 class="exhibit_heading">NGT WILL TAKE DISCIPLINARY ACTION, UP TO AND INCLUDING TERMINATION, FOR VIOLATION OF THESE POLICIES AND PROCEDURES.</h2>
+        <h5>Standards of Conduct: </h5>
+        <p>NGT has developed this Sales and Marketing Standard of Conduct for all its employees and affiliates (including independent sales CONSULTANTs and companies providing sales CONSULTANT services to NGT) to clearly delineate the policies of NGT with respect to sales and marketing and to assure adherence to all guidelines and regulations governing federally funded health care programs. This Sales and Marketing Standard of Conduct will be made available to and understandable by all employees and affiliates involved in sales and marketing, and will be regularly updated as the policies and regulations of these programs are modified. Strict adherence to compliance policies and applicable legal requirements is a condition of employment or contractual engagement.</p>
 
 
-              <h5>Sales and Marketing:</h5>
-              <p> NGT requires honest, straightforward, fully informative and non-deceptive marketing. NGT believes that it is in the best interest of patients, physicians, Medicare and NGT alike that physicians fully understand the services offered by NGT, the services that will be provided when tests are ordered, and the financial consequences for Medicare, as well as other payers, for the tests ordered. Accordingly, all of NGT’s marketing information will be clear, correct, non-deceptive and fully informative. Officers, directors, employees and affiliates will refrain from gathering competitor intelligence by illegitimate means and refrain from acting on knowledge or information which has been gathered in such a manner. The officers, directors, employees and affiliates of NGT will seek to avoid exaggerating or disparaging comparisons of the services and competence of their competitors. </p>
-
-              <h5> Medical Necessity:</h5>
-              <p> NGT will only submit claims to federally funded health care programs for services that NGT has reason to believe are medically necessary. While NGT does not and cannot treat patients or make medical necessity determinations, NGT is in a unique position to educate our physician clients regarding the requirement of medical necessity for each test ordered. NGT’s requisition forms will emphasize physician choice and encourage physicians to order, to the extent possible, only those tests that they believe are appropriate for each patient. When NGT creates a custom profile for a physician, the requesting physician will be required to sign an acknowledgement that the physician has requested the custom profile; has been provided Medicare reimbursement amount for each test; has been told to order medically necessary tests only; understands that some tests may not be reimbursed; and has the right to not use the custom profile and order tests differently for any patient.
-              </p>
-
-              <h5> Kickbacks and Gifts:  </h5>
-              <p>Officers, directors, employees and affiliates of the company must never permit their personal interests to conflict, or appear to conflict, with the interests of NGT, its clients or affiliates. Officers, directors, employees and affiliates must be particularly careful to avoid representing NGT in any transaction with others with whom there is any outside business affiliation or personal or family relationship. Officers, directors, employees and affiliates shall avoid using their company contacts to advance their private business or personal interests at the expense of NGT, its clients or affiliates. Officers, directors, employees and affiliates will avoid conflicts of interests which could interfere with their ability to deliver quality products or services to the company and its clients. Officers, directors, employees and affiliates involved in sales and marketing activities must annually report any actual or potential conflicts of interest by completing a Conflict of Interest Disclosure form.  In addition, any time a potential conflict arises, a new Conflict of Interest Disclosure must be completed. In addition, when an officer, director, employee or affiliate is faced with a potential conflict of interest, he or she should seek guidance from the Chief Compliance Officer before proceeding. Whenever an officer, director, employee or affiliate has a question about whether a situation presents a conflict, he or she should contact the Chief Compliance Officer.
-              </p>
+        <h2 class="exhibit_heading">NGT WILL TAKE DISCIPLINARY ACTION, UP TO AND INCLUDING TERMINATION, FOR VIOLATION OF THESE POLICIES AND PROCEDURES.</h2>
 
 
-              <h5> Conflicts of Interest:</h5>
-              <p>        Federal and State Anti-Kickback statutes are violated when payment is given or received in exchange for the referral of patients who are covered under federal health care programs, such as Medicare, unless a statutory exception applies.  Harsh criminal, civil and monetary penalties can result.  A kick back is considered any item of value, or compensation of any kind, to improperly obtain or reward favorable treatment. Consistent with Federal and State law, NGT does not permit bribes, kickbacks or other similar remuneration or consideration to be given to any person or organization in order to attract or influence business activity. Officers, directors, employees and affiliates shall avoid gifts, gratuities, fees, bonuses, or excessive entertainment to attract or influence business activity. Excessive entertainment is defined as any amount in excess of guidelines determined annually by Medicare/CMS.  Officers, directors, employees and affiliates shall refrain from using offers of equipment, computer hardware, computer software, support staff and other non-monetary gifts that deviate from accepted business practices authorized by NGT and incorporated into company sponsored sales training. It is NGT’s policy that non-monetary gifts to physicians must meet exceptions defined in the Stark Law:
-              </p>
-              <ul>
-                <li> The compensation is not determined in any manner that takes into account the volume or value of referrals or other business generated by the referring physician. </li>
-                <li> The compensation may not be solicited by the physician or the physician's practice (including employees and staff members). </li>
-                <li> The compensation arrangement does not violate the Anti-Kickback statute or any Federal or State law or regulation governing billing or claims submission. </li>
-                <li> The compensation may not exceed annual limits established by Medicare/CMS in the aggregate per calendar year.  </li>
-              </ul>
-              <p>Officers, directors, employees and affiliates cannot attempt to control or improperly influence a physician’s decision as to which clinical laboratory to use for the testing of patient specimens. The decision as to which clinical laboratory to use is to be made solely by the referring physician.</p>
+        <h5>Sales and Marketing:</h5>
+        <p> NGT requires honest, straightforward, fully informative and non-deceptive marketing. NGT believes that it is in the best interest of patients, physicians, Medicare and NGT alike that physicians fully understand the services offered by NGT, the services that will be provided when tests are ordered, and the financial consequences for Medicare, as well as other payers, for the tests ordered. Accordingly, all of NGT’s marketing information will be clear, correct, non-deceptive and fully informative. Officers, directors, employees and affiliates will refrain from gathering competitor intelligence by illegitimate means and refrain from acting on knowledge or information which has been gathered in such a manner. The officers, directors, employees and affiliates of NGT will seek to avoid exaggerating or disparaging comparisons of the services and competence of their competitors. </p>
 
-              <h2 class="exhibit_heading">ANY ATTEMPT TO CONTROL OR IMPROPERLY INFLUENCE A REFERRAL TO NGT WILL RESULT IN DISCIPLINARY ACTION, UP TO AND INCLUDING TERMINATION.  </h2>
+        <h5> Medical Necessity:</h5>
+        <p> NGT will only submit claims to federally funded health care programs for services that NGT has reason to believe are medically necessary. While NGT does not and cannot treat patients or make medical necessity determinations, NGT is in a unique position to educate our physician clients regarding the requirement of medical necessity for each test ordered. NGT’s requisition forms will emphasize physician choice and encourage physicians to order, to the extent possible, only those tests that they believe are appropriate for each patient. When NGT creates a custom profile for a physician, the requesting physician will be required to sign an acknowledgement that the physician has requested the custom profile; has been provided Medicare reimbursement amount for each test; has been told to order medically necessary tests only; understands that some tests may not be reimbursed; and has the right to not use the custom profile and order tests differently for any patient.
+        </p>
 
-              <p>In order to effectively monitor compliance with all applicable federal and state laws, NGT also prohibits CONSULTANTs, working under an Independent Contractor Group who is subject to a Representation Agreement with NGT, from employing any regular employees or independent contractors for the solicitation and sales of NGT products and services.
-              </p>
+        <h5> Kickbacks and Gifts:  </h5>
+        <p>Officers, directors, employees and affiliates of the company must never permit their personal interests to conflict, or appear to conflict, with the interests of NGT, its clients or affiliates. Officers, directors, employees and affiliates must be particularly careful to avoid representing NGT in any transaction with others with whom there is any outside business affiliation or personal or family relationship. Officers, directors, employees and affiliates shall avoid using their company contacts to advance their private business or personal interests at the expense of NGT, its clients or affiliates. Officers, directors, employees and affiliates will avoid conflicts of interests which could interfere with their ability to deliver quality products or services to the company and its clients. Officers, directors, employees and affiliates involved in sales and marketing activities must annually report any actual or potential conflicts of interest by completing a Conflict of Interest Disclosure form.  In addition, any time a potential conflict arises, a new Conflict of Interest Disclosure must be completed. In addition, when an officer, director, employee or affiliate is faced with a potential conflict of interest, he or she should seek guidance from the Chief Compliance Officer before proceeding. Whenever an officer, director, employee or affiliate has a question about whether a situation presents a conflict, he or she should contact the Chief Compliance Officer.
+        </p>
 
 
-              <h5>Excluded Individuals and Companies:</h5>
-              <p>NGT will not employ or contract with individuals or companies who have been convicted of a criminal offense related to health care or who are listed by a Federal agency as debarred, excluded or otherwise ineligible for participation in federally funded health care programs. In addition, until resolution of such criminal charges or proposed debarment or exclusion, individuals who are charged with criminal offenses related to health care or proposed for exclusion or debarment will be removed from direct responsibility for or involvement in any federally funded health care program. If resolution results in conviction, debarment or exclusion of the individual, NGT will immediately terminate its employment of that individual or company.</p>
+        <h5> Conflicts of Interest:</h5>
+        <p>        Federal and State Anti-Kickback statutes are violated when payment is given or received in exchange for the referral of patients who are covered under federal health care programs, such as Medicare, unless a statutory exception applies.  Harsh criminal, civil and monetary penalties can result.  A kick back is considered any item of value, or compensation of any kind, to improperly obtain or reward favorable treatment. Consistent with Federal and State law, NGT does not permit bribes, kickbacks or other similar remuneration or consideration to be given to any person or organization in order to attract or influence business activity. Officers, directors, employees and affiliates shall avoid gifts, gratuities, fees, bonuses, or excessive entertainment to attract or influence business activity. Excessive entertainment is defined as any amount in excess of guidelines determined annually by Medicare/CMS.  Officers, directors, employees and affiliates shall refrain from using offers of equipment, computer hardware, computer software, support staff and other non-monetary gifts that deviate from accepted business practices authorized by NGT and incorporated into company sponsored sales training. It is NGT’s policy that non-monetary gifts to physicians must meet exceptions defined in the Stark Law:
+        </p>
+        <ul>
+          <li> The compensation is not determined in any manner that takes into account the volume or value of referrals or other business generated by the referring physician. </li>
+          <li> The compensation may not be solicited by the physician or the physician's practice (including employees and staff members). </li>
+          <li> The compensation arrangement does not violate the Anti-Kickback statute or any Federal or State law or regulation governing billing or claims submission. </li>
+          <li> The compensation may not exceed annual limits established by Medicare/CMS in the aggregate per calendar year.  </li>
+        </ul>
+        <p>Officers, directors, employees and affiliates cannot attempt to control or improperly influence a physician’s decision as to which clinical laboratory to use for the testing of patient specimens. The decision as to which clinical laboratory to use is to be made solely by the referring physician.</p>
 
-              <h5>Confidentiality:</h5>
-              <p> Officers, directors, employees and affiliates of NGT will often come into contact with, or have possession of, trade secret, proprietary, confidential or business-sensitive information and must take appropriate steps to ensure that such information is strictly safeguarded. This information – whether it is on behalf of our company or any of our clients, referral sources, suppliers, vendors or affiliates – could include strategic business plans, operating results, marketing strategies, customer lists, personnel records, upcoming acquisitions and divestitures, new investments, and manufacturing costs, processes and methods. Trade secrets, proprietary, confidential and sensitive business information about this company, other companies, individuals and entities should be treated with sensitivity and discretion and only be disseminated on a need-to-know basis. Officers, directors, employees and affiliates will refrain from using or disclosing the trade secrets or confidential, proprietary information of third parties, unless such information is in the public domain or was disclosed by someone who was authorized to disclose such information to NGT. Officers, directors, employees and affiliates will comply with the Health Insurance Portability and Accountability Act of 1996 (referred to as HIPAA) with respect to the use and disclosure of patient health information (PHI).</p>
+        <h2 class="exhibit_heading">ANY ATTEMPT TO CONTROL OR IMPROPERLY INFLUENCE A REFERRAL TO NGT WILL RESULT IN DISCIPLINARY ACTION, UP TO AND INCLUDING TERMINATION.  </h2>
 
-              <h5>Reporting:</h5>
-              <p> Officers, directors, employees and affiliates will seek to report all information accurately and honestly, and as otherwise required by applicable reporting requirements. Officers, directors, employees and affiliates agree to timely disclose or report unethical, dishonest, fraudulent and illegal behavior, or the violation of company policies and procedures, directly to management or the Chief Compliance Officer. In addition, NGT has a hotline telephone number that can be used to anonymously report suspected misconduct.   NGT has an open door, complete anonymity, non-retribution policy available to all officers, directors, employees and affiliates to encourage communication and reporting of suspected misconduct.</p>
+        <p>In order to effectively monitor compliance with all applicable federal and state laws, NGT also prohibits CONSULTANTs, working under an Independent Contractor Group who is subject to a Representation Agreement with NGT, from employing any regular employees or independent contractors for the solicitation and sales of NGT products and services.
+        </p>
 
-              <h5>Disciplinary Action:</h5>
-              <p> Violation of this Code of Conduct can result in discipline, including possible termination or termination of contractual agreements to represent NGT. The degree of discipline may relate in part to whether there was a voluntary disclosure of any ethical violation and whether or not the violator cooperated in any subsequent investigation.</p>
-            </div>
 
-            <!--CODE CONDUCT SECTIOON-->
+        <h5>Excluded Individuals and Companies:</h5>
+        <p>NGT will not employ or contract with individuals or companies who have been convicted of a criminal offense related to health care or who are listed by a Federal agency as debarred, excluded or otherwise ineligible for participation in federally funded health care programs. In addition, until resolution of such criminal charges or proposed debarment or exclusion, individuals who are charged with criminal offenses related to health care or proposed for exclusion or debarment will be removed from direct responsibility for or involvement in any federally funded health care program. If resolution results in conviction, debarment or exclusion of the individual, NGT will immediately terminate its employment of that individual or company.</p>
 
-            <div class="code_conduct_wrapper">
-              <h2>NGT SALES AND MARKETING CODE OF CONDUCT CERTIFICATION </h2>
+        <h5>Confidentiality:</h5>
+        <p> Officers, directors, employees and affiliates of NGT will often come into contact with, or have possession of, trade secret, proprietary, confidential or business-sensitive information and must take appropriate steps to ensure that such information is strictly safeguarded. This information – whether it is on behalf of our company or any of our clients, referral sources, suppliers, vendors or affiliates – could include strategic business plans, operating results, marketing strategies, customer lists, personnel records, upcoming acquisitions and divestitures, new investments, and manufacturing costs, processes and methods. Trade secrets, proprietary, confidential and sensitive business information about this company, other companies, individuals and entities should be treated with sensitivity and discretion and only be disseminated on a need-to-know basis. Officers, directors, employees and affiliates will refrain from using or disclosing the trade secrets or confidential, proprietary information of third parties, unless such information is in the public domain or was disclosed by someone who was authorized to disclose such information to NGT. Officers, directors, employees and affiliates will comply with the Health Insurance Portability and Accountability Act of 1996 (referred to as HIPAA) with respect to the use and disclosure of patient health information (PHI).</p>
 
-              <p> I, <input type="text" [formControl]="dataForm2.controls['printvalue']" readonly>, certify to having read the NGT Sales and Marketing Code of Conduct (Code) and agree to perform my job duties in accordance with the Code and NGT’s Compliance Plan. I understand the principles and requirements set forth in the Code and understand that violation of the Code or the Compliance Plan can result in termination of the Agreement and/or legal action to recover damages.  I understand my responsibilities to disclose fraudulent or unethical business practices to NGT’s management and will honestly and accurately complete surveys performed by NGT to document continuing compliance with the Code and the Compliance Plan.
-              </p>
-              <div class="row signature_wrapper">
-                <div class="col-md-6">
-                  <input class="digital_signature" type="text" readonly [formControl]="dataForm2.controls['consultant1']"><br>
-                  <span >SIGNATURE OF CONSULTANT</span>
-                </div>
-                <div class="col-md-6">
-                  <input type="text" readonly [formControl]="dataForm2.controls['date2']"><br>
-                  DATE
-                </div>
-              </div>
-            </div>
-            <br> <br><br>
-            <div class="clearfix"></div>
-          </form>
-        <hr>
+        <h5>Reporting:</h5>
+        <p> Officers, directors, employees and affiliates will seek to report all information accurately and honestly, and as otherwise required by applicable reporting requirements. Officers, directors, employees and affiliates agree to timely disclose or report unethical, dishonest, fraudulent and illegal behavior, or the violation of company policies and procedures, directly to management or the Chief Compliance Officer. In addition, NGT has a hotline telephone number that can be used to anonymously report suspected misconduct.   NGT has an open door, complete anonymity, non-retribution policy available to all officers, directors, employees and affiliates to encourage communication and reporting of suspected misconduct.</p>
+
+        <h5>Disciplinary Action:</h5>
+        <p> Violation of this Code of Conduct can result in discipline, including possible termination or termination of contractual agreements to represent NGT. The degree of discipline may relate in part to whether there was a voluntary disclosure of any ethical violation and whether or not the violator cooperated in any subsequent investigation.</p>
+      </div>
+
+      <!--CODE CONDUCT SECTIOON-->
+
+      <div class="code_conduct_wrapper">
+        <h2>NGT SALES AND MARKETING CODE OF CONDUCT CERTIFICATION </h2>
+
+        <p> I, <input type="text" [formControl]="dataForm2.controls['printvalue']" readonly>, certify to having read the NGT Sales and Marketing Code of Conduct (Code) and agree to perform my job duties in accordance with the Code and NGT’s Compliance Plan. I understand the principles and requirements set forth in the Code and understand that violation of the Code or the Compliance Plan can result in termination of the Agreement and/or legal action to recover damages.  I understand my responsibilities to disclose fraudulent or unethical business practices to NGT’s management and will honestly and accurately complete surveys performed by NGT to document continuing compliance with the Code and the Compliance Plan.
+        </p>
+        <div class="row signature_wrapper">
+          <div class="col-md-6">
+            <input class="digital_signature" type="text" readonly [formControl]="dataForm2.controls['consultant1']"><br>
+            <span >SIGNATURE OF CONSULTANT</span>
+          </div>
+          <div class="col-md-6">
+            <input type="text" readonly [formControl]="dataForm2.controls['date2']"><br>
+            DATE
+          </div>
+        </div>
+      </div>
+      <br> <br><br>
+      <div class="clearfix"></div>
+    </form>
+    <hr>
 
     <form [formGroup]="dataForm3">
       <div class="scheduledA_section">
@@ -1532,15 +1559,13 @@
 
               <!-- By: <input class="by" type="text" [formControl]="dataForm1.controls['by3']"><br>-->
 
-
-              <span >By</span><input type="text" readonly class="by stylesignature"><br>
-              <!--<span class="errortext" *ngIf="!dataForm.controls['by3'].valid && dataForm.controls['by3'].touched">This field can not be blank</span>-->
-
-
-
-              Print Name:<input class="print" readonly type="text" ><br>
-              Title:<input type="text" readonly class="title" ><br>
-              Date: <input type="text" readonly class="date" ><br>
+              <p><span >By</span>
+                <input type="hidden" readonly class="by stylesignature">
+                <img src="../../assets/images/tom's_signature.jpg" style="width: 188px; margin-left1:10px; height: auto">
+                <br></p>
+              Print Name:<input class="print" readonly type="text" [formControl]="dataForm.controls['printname6']" ><br>
+              Title:<input type="text" readonly class="title" [formControl]="dataForm.controls['title5']" ><br>
+              Date: <input type="text" readonly class="date" [formControl]="dataForm.controls['date5']" ><br>
             </div>
           </div>
           <div class="col-md-6">

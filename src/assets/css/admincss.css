@@ -38,11 +38,11 @@
 .new_header .new_header4 .profile_block{ padding: 0;  }
 .new_header .new_header4 .profile_block ul{ margin-bottom: 0; padding: 0; }
 .new_header .new_header4 .profile_block li{ list-style: none;}
-.new_header .new_header4 .profile_block .user_image{ width: 40px; display: inline-block;
+.new_header .new_header4 .profile_block .user_image{ width: 40px; display: block;
     border: 2px solid #00a8ef;
     border-radius: 50%;
     overflow: hidden;
-    vertical-align: middle;
+    vertical-align: middle; margin: 0 auto;
 }
 .new_header .new_header4 .profile_block .user_image img{ width: 100%; min-height: 100%;}
 
@@ -50,7 +50,7 @@
 .new_header .new_header4 .profile_block ul li
 .dropdown-menu.show {
     display: block;
-    top: 30px!important;
+    top: 0px!important;
     left: -30px!important;
 }
 
@@ -432,7 +432,7 @@
 .modal_test .modal-content .modal-body .inner_c_section .header_agree .content .witness_block input:nth-of-type(3){ width: 58%; }
 .modal_test .modal-content .modal-body .inner_c_section .header_agree .content .witness_block h3{ font-family: 'RalewaySemiBold'; font-size: 16px;  }
 .modal_test .modal-content .modal-body .inner_c_section .header_agree .content .witness_block p span{ vertical-align: bottom; }
-.modal_test .modal-content .modal-body .inner_c_section .header_agree .content ol li .inner_alfa_content2 .li_with_no{ display: inline-flex; }
+.modal_test .modal-content .modal-body .inner_c_section .header_agree .content ol li .inner_alfa_content2 .li_with_no{ display: inline-flex; margin-bottom: 15px;}
 .modal_test .modal-content .modal-body .inner_c_section .header_agree .content ol li .inner_alfa_content2 .li_with_no p{ margin-right: 20px; }
 .modal_test .modal-content .modal-body .inner_c_section .footer_contractform p{ font-family: 'RalewaySemiBold'; margin-top: 15px; }
 .modal_test .modal-content .modal-body .inner_c_section  .code_conduct_wrapper .col-md-6{ text-align: center; }
@@ -466,6 +466,9 @@
     width: 100%!important;
 }
 .modal_test .sales_agreement_wrapper .sales_inner_wrapper .inner_block h2{ font-size: 44px;}
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_scheduled_list .new_alignment,
+.modal_test .inner_c_section .scheduledA_section .inner_scheduled_list .new_alignment{ margin-left: 80px; margin-bottom: 10px;}
 .footer_contractform .bottom_form_section span{ vertical-align: bottom; }
 
 /*REGIONAL RECRUITER*/
@@ -541,8 +544,8 @@
 .rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0; }
 .rep_dashboard_wrapper3 .row .col-md-4:nth-last-child(1) { padding-right: 0; }
 
-.rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; }
-.rep_dashboard_wrapper3 button:focus{ outline: none;}
+.rep_dashboard_wrapper3 .buttoncss{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; display: block; text-align: center; text-decoration: none; }
+.rep_dashboard_wrapper3 .buttoncss:focus{ outline: none;}
 
 
 /*USER ACCOUNT SETTING*/
@@ -785,25 +788,25 @@
 
 .training_leftpart .slider_wrapper .slider_inner_content img{ width: 100%; height: auto; }
 
-.training_leftpart .slider_wrapper .slider_inner_content .prev_arow {
-    width: 5%;
-    background: #ffffff;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    text-align: center;
-    font-size: 30px;
-    padding: 2px;
+ .prev_arow {
+    width: 5%!important;
+    background: #ffffff!important;
+    position: absolute!important;
+    top: 50%!important;
+    left: 0!important;
+    text-align: center!important;
+    font-size: 30px!important;
+    padding: 2px!important;
 }
-.training_leftpart .slider_wrapper .slider_inner_content .next_arow {
-    width: 5%;
-    background: #ffffff;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    text-align: center;
-    font-size: 30px;
-    padding: 2px;
+.next_arow {
+    width: 5%!important;
+    background: #ffffff!important;
+    position: absolute!important;
+    top: 50%!important;
+    right: 0!important;
+    text-align: center!important;
+    font-size: 30px!important;
+    padding: 2px!important;
 }
 .download_pdf{
     position: absolute;
@@ -828,13 +831,13 @@
 .training_leftpart .accordian_image .content_area p .O1 span span span strong{ font-size: 22px!important; font-family: 'RalewayRegular'; margin-top: 0!important;}
 .training_leftpart .accordian_image .content_area p p span span span { font-family: 'RalewayBold'; line-height: 55px; }
 .mark_done{     position: absolute;
-    right: 25px;
+    right: 0px;
     bottom: 25px;
     background: #efefef;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'RalewaySemiBold';
     text-transform: uppercase;
-    padding: 3px 14px;
+    padding: 3px 12px;
     cursor: pointer;
 }
 
@@ -924,6 +927,7 @@
 .generaltablecls table tr td .deletebtn{ background: #000; border: none; font-size: 16px; font-family: 'RalewaySemiBold'; color: #fff; text-transform: uppercase; padding: 5px 10px 4px 10px; cursor: pointer; margin-bottom: 10px; margin-right: 10px;  }
 .generaltablecls table tr td .editbtn{ color: #fff; background: #22bdff; border: none; font-size: 16px; font-family: 'RalewaySemiBold'; text-transform: uppercase; padding: 5px 10px 4px 10px; cursor: pointer; }
 
+.generaltablecls table .w9_font_change{ font-family: 'OpenSansSemiBold'!important;}
 .generaltablecls table tr td .legal_doc_donload_button a{ background: #000; font-family: 'RalewayBold'; font-size: 18px; color: #fff; text-transform: uppercase;
     padding: 5px 15px 4px 15px; text-decoration: none;}
 
@@ -1136,6 +1140,14 @@
 .user_details_wrapper .s_part_wrapper .col-sm-4 .col-md-12{ padding-left: 0px; padding-right: 9px; }
 .user_details_wrapper .s_part_wrapper .col-sm-4 .col-md-12 .btn_position{ display: block; text-align: center; }
 
+.form-groupnew12wrapper{padding-left: 0px; padding-right: 0; }
+.s_part_wrapper .form-groupnew4{ padding-left: 0px; padding-right: 0;  }
+.s_part_wrapper .form-groupnew4 .col-sm-12{ padding-left: 0px;  width: 100%!important;
+    max-width: 100%!important; }
+
+.s_part_wrapper .form-groupnew4 select{background-color: #e9ecef;}
+.s_part_wrapper .form-groupnew12{ padding-left: 0px; padding-right: 0; padding-top:40px; }
+
 .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
     opacity: 1;
@@ -1339,7 +1351,7 @@
     flex-wrap: wrap;
     padding-right: 3px;
 }
-.listevent_inner_wrapper .main_inner_content>div{    width: 32.7%;
+.listevent_inner_wrapper .main_inner_content .one {width: 32.7%;
     padding: 15px;
     margin: 0.3%;
     background: #faf7f7;
@@ -1701,3 +1713,58 @@
 
 }
 /*Quiz end*/
+
+
+.profile_block .dropdown-toggle::after{ display: block; margin-left: auto; margin-right: auto; margin-top: 4px;}
+
+
+.successmodal .modal-dialog{ background: none!important; max-width: inherit!important; margin: 0 auto;}
+
+.successmodal  .modal-content{ display: block; text-align: center;}
+
+.successmodal  .modal-content img{ max-width: 100%;}
+
+.successmodal .close {
+    cursor: pointer;
+    right: 6px;
+    top: -2px;
+    position: absolute; outline: none!important;
+}
+
+/*EDIT APPOINTMENT*/
+
+.editInfo_main_wrap  form .form-group label{ font-family: RalewaySemiBold; font-size: 18px; color: #0b0c0c; text-transform: uppercase;  }
+
+.editInfo_main_wrap  form .form-group p{ font-family: RalewayRegular; font-size: 18px; color: #0b0c0c; }
+.editInfo_main_wrap  form .form-group .font_problm { font-family: RalewayRegular; font-size: 16px; color: #0b0c0c; }
+
+.editInfo_main_wrap  form .form-group .txt_area { resize: none; }
+
+
+.editInfo_main_wrap  form .form-group .btn_sv{ background: #00a8ef; color: #fff; font-family: 'RalewayBold'; font-size: 18px; text-transform: uppercase; border: none; padding: 3px 15px 3px 15px; }
+
+.editInfo_main_wrap  form .form-group .btn_cncl{ background: #0b2e13; color: #fff; font-family: 'RalewayBold'; font-size: 18px; text-transform: uppercase; margin-left: 15px; border: none; padding: 3px 15px 3px 15px; }
+.editInfo_main_wrap  form .form-group button:focus{ outline: none; box-shadow: none; }
+
+
+
+
+
+/*contract page css*/
+
+.sales_agreement_wrapper .sales_inner_wrapper .inner_block .sales_agreement_Content .address_bar{
+    width: 60% !important;}
+.address_bar_modal{ width: 50%!important;}
+
+/*FORGET PASSWORD*/
+.login_container form .for_instruction {
+    margin-bottom: 0;
+    line-height: 24px;
+    font-family: 'RalewayRegular';
+    font-size: 16px;
+    color: black;
+}
+.login_container .frm_data{ border: 1px solid #ede0e0;
+    margin-bottom: 15PX; padding: 5px; }
+
+.login_container .frm_data p{ font-family: RalewayRegular; font-size: 16px; color: #0b0c0c; }

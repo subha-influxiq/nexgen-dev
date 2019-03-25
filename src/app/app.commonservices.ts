@@ -12,6 +12,7 @@ export class Commonservices {
     public filepathurl: string;
     public base64encode: any;
     public nodesslurl: any;
+    public siteurl: any;
     public roletypes: any;
     public uploadsslurl: any;
     public fileimgsslurl: any;
@@ -39,6 +40,7 @@ export class Commonservices {
         this.nodesslurl = 'https://api.nexgentesting.com:6027/';
         this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
+        this.siteurl = 'https://nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
         this.gapisslurl = 'http://api.nexgentesting.com/gapi/t2.php';
 
@@ -146,5 +148,8 @@ export class Commonservices {
     }
     showcontractdate(){
         return moment().format("MM/DD/YYYY");
+    }
+    showtime(tm){
+        return moment(tm).format('hh:mm A');
     }
 }

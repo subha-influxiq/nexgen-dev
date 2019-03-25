@@ -1,0 +1,45 @@
+[
+  {
+    "value": "-10:00|Pacific/Honolulu",
+    "timezone": "Pacific/Honolulu",
+    "timezone_offset": "-10:00",
+    "timezone_city": "Hawaii",
+    "show":"(GMT-10:00)Hawaii"
+  }, {
+    "value": "-08:00|America/Anchorage",
+    "timezone": "America/Anchorage",
+    "timezone_offset": "-08:00",
+    "timezone_city": "Alaska",
+    "show":"(GMT-08:00)Alaska"
+  }, {
+    "value": "-07:00|America/Los_Angeles",
+    "timezone": "America/Los_Angeles",
+    "timezone_offset": "-07:00",
+    "timezone_city": "Pacific Time (US  Canada)",
+    "show":"(GMT-07:00)Pacific Time (US  Canada)"
+  }, {
+    "value": "-06:00|America/Denver",
+    "timezone": "America/Denver",
+    "timezone_offset": "-06:00",
+    "timezone_city": "Mountain Time (US  Canada)",
+    "show":"(GMT-06:00) Mountain Time (US  Canada)"
+  }, {
+    "value": "-10:00|Pacific/Honolulu",
+    "timezone": "Pacific/Honolulu",
+    "timezone_offset": "-10:00",
+    "timezone_city": "Hawaii",
+    "show":"(GMT-10:00) Hawaii"
+  }, {
+    "value": "-05:00|America/Chicago",
+    "timezone": "America/Chicago",
+    "timezone_offset": "-05:00",
+    "timezone_city": "Central Time (US  Canada)",
+    "show":"(GMT-05:00) Central Time (US  Canada)"
+  }, {
+    "value": "-04:00|America/New_York",
+    "timezone": "America/New_York",
+    "timezone_offset": "-04:00",
+    "timezone_city": "Eastern Time (US  Canada)",
+    "show":"(GMT-04:00) Eastern Time (US  Canada)"
+  }
+]

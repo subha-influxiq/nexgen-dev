@@ -1,0 +1,55 @@
+<app-adminheader></app-adminheader>
+<div class="listevent_wrapper">
+  <div class="listevent_inner_wrapper">
+    <div class="inner_head_wrapper">
+      <h2>event list</h2>
+    </div>
+
+    <div class="event_content_wrapper">
+      <div class="evnt_left_content">
+        <form>
+          <div class="form-group">
+            <input class="form-control select_inpu2">
+
+            <button type="submit" class="btn_search"> search </button>
+            <button type="submit" class="btn_search"> showall </button>
+          </div>
+        </form>
+      </div>
+      <div class="evnt_right_content">
+        <form>
+          <div class="form-group">
+            <h3 class="timezone_class">my timezone</h3>
+            <select class="form-control select_inpu2" (change)="settimezone()" [(ngModel)]="timezoneval" [ngModelOptions]="{standalone: true}">
+              <option value="">Select a Timezone</option>
+              <option *ngFor="let item of timezone" value="{{item.value}}">{{item.show}} </option>
+            </select>
+
+            <button type="submit" class="btn_search hide"> search </button>
+            <button type="submit" class="btn_search"> update </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="main_inner_content">
+
+      <div style="width: 100%" *ngFor="let item of allslots;let i=index;"> <!-- | slice:0:2 -->
+        <span *ngIf="item.slots!=null && item.slots.length>0">
+          <div  style="width: 32%;float: left" class="one " *ngFor="let eachslots of item.slots;let j=index;" >
+       <!-- <p class="event_f_name">{{item.meetingwith}}</p>
+        <p class="event_f_date"><b>Date:</b> {{item.startdate}}
+        </p>
+        <p class="event_f_time"><b>Time :</b> {{showtime(item,eachslots)}}</p>
+        <p class="event_f_zone"><b>Timezone :</b> {{_commonservice.showtimezone(item.timezone)}}</p>-->
+
+        <app-slots [itemdata]="item" [itemid]="j"></app-slots>
+      </div>
+        </span>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -93,7 +93,9 @@ export class FunnelComponent implements OnInit {
       other: [''],
       othertext: [''],
       noofpersonallycall: ['',Validators.required],
-      calleachoffice: ['',Validators.required],
+      calleachoffice: [''],
+      calleachoffice1: [''],
+      calleachoffice2: [''],
       noofdirectaccess: ['',Validators.required],
       workinmedicalfield: ['',Validators.required],
       pcrtesting: ['',Validators.required],
@@ -191,7 +193,9 @@ export class FunnelComponent implements OnInit {
                 other: [''],
                 othertext: [''],
                 noofpersonallycall: ['',Validators.required],
-                calleachoffice: ['',Validators.required],
+                calleachoffice: [''],
+                calleachoffice1: [''],
+                calleachoffice2: [''],
                 noofdirectaccess: ['',Validators.required],
                 workinmedicalfield: ['',Validators.required],
                 pcrtesting: ['',Validators.required],
@@ -300,6 +304,8 @@ if (this.dataForm1.valid) {
     othertext:  this.dataForm1.value['othertext'],
     noofpersonallycall:  this.dataForm1.value['noofpersonallycall'],
     calleachoffice: this.dataForm1.value['calleachoffice'],
+    calleachoffice1: this.dataForm1.value['calleachoffice1'],
+    calleachoffice2: this.dataForm1.value['calleachoffice2'],
     noofdirectaccess:  this.dataForm1.value['noofdirectaccess'],
     workinmedicalfield:  this.dataForm1.value['workinmedicalfield'],
     pcrtesting:  this.dataForm1.value['pcrtesting'],
@@ -344,9 +350,14 @@ if (this.dataForm1.valid) {
     // const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
     const link = this._commonservices.nodesslurl+'getregionalrecruiter';
     let con;
-    if(val==0) con={state: this.dataForm.value['state']}
-    if(val==1) con={state: this.dataForm1.value['state']}
-    this._http.post(link,{source:'statewise_regional_rep_view',condition:con})
+    if(val==0) con={state:[this.dataForm.value['state']],source:'statewise_regional_rep_view'}
+    if(val==1) con={state:[this.dataForm1.value['state']],source:'statewise_regional_rep_view'}
+  //  "state": ["TX"]
+
+console.log('con========================');
+console.log(con);
+
+    this._http.post(link,con)
         .subscribe(res => {
           let result;
           result = res;

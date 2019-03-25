@@ -45,6 +45,11 @@ import {MyresourceComponent} from "./myresource/myresource.component";
 import {ManagequizComponent} from "./managequiz/managequiz.component";
 import { TestresolveService } from './testresolve.service';
 import {TempaccessComponent} from "./tempaccess/tempaccess.component";
+import {TestComponent} from "./test/test.component";
+import {ForgetpasswordComponent} from "./forgetpassword/forgetpassword.component";
+import {SlotviewComponent} from "./slotview/slotview.component";
+import {AppointmentlistComponent} from "./appointmentlist/appointmentlist.component";
+import {ResetpasswordComponent} from "./resetpassword/resetpassword.component";
 
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -96,7 +101,13 @@ const appRoutes: Routes = [
     { path:'myresource', component: MyresourceComponent},
     { path:'myresource/:catid', component: MyresourceComponent},
     { path:'managequiz/:lessonid', component: ManagequizComponent},
-    {path: 'tempaccess', component: TempaccessComponent}
+    {path: 'tempaccess', component: TempaccessComponent},
+    {path: 'test', component: TestComponent},
+    {path: 'forgetpassword', component: ForgetpasswordComponent},
+    {path: 'slotview', component: SlotviewComponent},
+    {path: 'slotview/:id', component: SlotviewComponent},
+    {path: 'appointmentlist', component: AppointmentlistComponent},
+    {path: 'resetpassword/:id', component: ResetpasswordComponent},
 
 ];
 

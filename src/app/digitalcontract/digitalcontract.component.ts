@@ -51,9 +51,9 @@ export class DigitalcontractComponent implements OnInit {
             iftoconsultant4: [''],
             by1: [''],
             by2: [''],
-            printname1: [''],
+            printname1: ['Tom Willis'],
             printname2: [''],
-            title1: [''],
+            title1: ['Principle'],
             title2: ['Consultant'],
             printvalue: [''],
             date2: [''],
@@ -62,6 +62,9 @@ export class DigitalcontractComponent implements OnInit {
             by3: [''],
             blank1: [''],
             by4: [''],
+            printname6: ['Tom Willis'],
+            title5: ['Principle'],
+            date5: [''],
             printname5: [''],
             title4: ['Consultant'],
             date4: [''],
@@ -78,6 +81,9 @@ export class DigitalcontractComponent implements OnInit {
             printname5: [''],
             title4: [''],
             date4: [''],
+            printname6: ['Tom Willis'],
+            title5: ['Principle'],
+            date5: [''],
         });
     }
     getlegaldocdata()
@@ -127,9 +133,9 @@ export class DigitalcontractComponent implements OnInit {
                             iftoconsultant4: [this.datalist[0].iftoconsultant4],
                             by1: [''],
                             by2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                            printname1: [''],
+                            printname1: ['Tom Willis'],
                             printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                            title1: [''],
+                            title1: ['Principle'],
                             title2: ['Consultant'],
                             printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             consultant1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
@@ -137,6 +143,9 @@ export class DigitalcontractComponent implements OnInit {
                             printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             by3: [''],
                             blank1: [''],
+                            printname6: ['Tom Willis'],
+                            title5: ['Principle'],
+                            date5: [moment(this.datalist[0].contractsigndate).format("Do, MMM, YYYY")],
                             by4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             title4: ['Consultant'],
@@ -196,8 +205,10 @@ export class DigitalcontractComponent implements OnInit {
                             printname5: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
                             title4: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
                             date4: [moment(this.datalist2[0].contractsigndate).format("Do, MMM, YYYY")],
+                            printname6: ['Tom Willis'],
+                            title5: ['Principle'],
+                            date5: [moment(this.datalist2[0].contractsigndate).format("Do, MMM, YYYY")]
                         });
-
                     }
                 }
             },error=>{

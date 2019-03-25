@@ -16,7 +16,7 @@ export class RepDashboardComponent implements OnInit {
   public reptraininglessondetails;
   public recid:any;
 
-  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService)
+  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService)
   {
     this._commonservice=_commonservice;
     // console.log(this.cookeiservice.get('userid'));
@@ -58,9 +58,8 @@ export class RepDashboardComponent implements OnInit {
   }
   gotorepevents(){
     if(this.recid!=null){
-      var link = 'repevent/'+this.recid;
+      var link = 'slotview/'+this.recid;
       this.router.navigate([link]);
     }
   }
-
 }

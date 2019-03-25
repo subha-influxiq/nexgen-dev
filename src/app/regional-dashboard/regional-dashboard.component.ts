@@ -13,12 +13,14 @@ declare var moment: any;
 })
 export class RegionalDashboardComponent implements OnInit {
   public repdetails_under_this_regional;
+  public googleevents;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService)
   {
     this._commonservice=_commonservice;
     if(this.cookeiservice.get('userid')!=null){
       this.getreplistunderthisregion();
+      this.getgoogleevents();
     }
   }
 
@@ -40,5 +42,25 @@ export class RegionalDashboardComponent implements OnInit {
           console.log('Oooops!');
         });
   }
+
+    getgoogleevents(){
+        const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+        this._http.post(link,{source:'googleevents_view',condition:{
+            startdate:{$gt: moment().subtract(1, 'days').format('YYYY-MM-DD')},
+            eventuser_object:this.cookeiservice.get('userid')
+        }
+    })
+    .subscribe(res => {
+            let result:any;
+            result = res;
+            if(result.status=='error'){
+            }else{
+                  this.googleevents = result.res;
+                console.log(this.googleevents);
+            }
+        }, error => {
+            console.log('Oooops!');
+        });
+    }
 
 }

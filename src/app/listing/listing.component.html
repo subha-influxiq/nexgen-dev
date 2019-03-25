@@ -67,7 +67,7 @@
                     <h3> {{menuval}}</h3>
 
                             <a *ngIf="hideadd!=null && hideadd!='true' " (click)="openform(formtemplate,0)" class="addfrinderbtn s_getmybrand_savebutton"> Add {{sourcetitle}}</a>
-                            <a *ngIf="slotlist=='true' " [routerLink]="['/repevent']" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>
+                            <a *ngIf="slotlist=='true' " [routerLink]="['/slotview']" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>
                             <a *ngIf="slotlist=='true' " href="http://api.nexgentesting.com/gapi/test1.php"  class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar settings</a>
                             <div class="clearfix"></div>
                         </div>
@@ -91,6 +91,16 @@
                                             {{item[item1.value]}}
                                         </span>
                                         <span *ngIf="item1.type=='text'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{item[item1.value]}}</span>
+
+                                        <!--<span *ngIf="item1.type=='text1'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="updaterecruiter(item._id)">{{item[item1.value]}}</span>
+
+                                        <span *ngIf="item1.type=='text1'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="updaterecruiter(item._id)">Update</span>-->
+
+                                      <!--  <span *ngIf="item1.type=='text1'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class">{{item[item1.value]}}</span>
+                                            <span *ngIf="item1.type=='text1'&& router.url=='/rep'" (click)="updaterecruiter(item._id)" class="edit_user lock_unlock"> Update</span>-->
+
+
+
 
                                         <span *ngIf="item1.type=='checkbox'" [ngClass]="item1.class">
                         <span  class="statusactive" *ngIf="item[item1.value]==true"> Active &nbsp;&nbsp; <span *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"  (click)="togglestatus(item)"  class="ticon_active"></span></span>
@@ -240,7 +250,7 @@
 
                         <!--<date-range-picker *ngIf="item.inputtype=='daterange'" [options]="daterangepickerOptions" [class]="'col-md-12 form-control'"  (rangeSelected)="rangeSelected($event,item.name)" ></date-range-picker>-->
                         <input *ngIf="item.inputtype=='daterange' " id="inputdate{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker  [minDate]="minDate" (keyup)="issubmit=0">
-                        <input *ngIf="item.inputtype=='dateis' " id="inputdateis{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate" (keyup)="issubmit=0">
+                        <input *ngIf="item.inputtype=='dateis' " id="inputdateis{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate" (keyup)="issubmit=0"> <!--[minDate]="minDate"-->
 
 
 
@@ -296,8 +306,6 @@
                                 <span style="color: #22bdff; font-family: 'OpenSansRegular'; margin-top: 5px;" *ngIf="percentageis[i]==100 "><label> File Name: {{nameis[i]}}</label></span>
                                 <label style="color: #00c314; font-family: 'OpenSansRegular'; margin-top: 5px; " *ngIf="percentageis[i]!=100 ">Upload Percentage:{{percentageis[i]}}%</label>
                             </div>
-                            <span  class="error" *ngIf="dataForm.controls[item.name]!=null &&  item.validationrule!=null && !dataForm.controls[item.name].valid && dataForm.controls[item.name].touched">{{item.label}} {{item.validationerrormsg}}</span>
-
                         </div>
 
 

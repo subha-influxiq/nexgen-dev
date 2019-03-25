@@ -83,15 +83,16 @@ export class LoginComponent implements OnInit {
               this.cookeiservice.set('userid', result.item[0]._id);
               this.cookeiservice.set('usertype', result.item[0].type);
               this.cookeiservice.set('useremail', result.item[0].email);
-                this.cookeiservice.set('fullname', result.item[0].firstname + ' ' + result.item[0].lastname);
-                if(result.item[0].type=='admin') {
-                  this.router.navigate(['/dashboard']);
-                }
-                if(result.item[0].type=='regional_recruiter')
-                {
-                  this.router.navigate(['/regionaldashboard']);
-                }
-             /* if(result.item[0].type=='rep')
+              this.cookeiservice.set('fullname', result.item[0].firstname + ' ' + result.item[0].lastname);
+              if(result.item[0].type=='admin') {
+                this.router.navigate(['/dashboard']);
+              }
+              if(result.item[0].type=='regional_recruiter')
+              {
+                this.cookeiservice.set('refreshtoken', result.item[0].refreshtoken);
+                this.router.navigate(['/regionaldashboard']);
+              }
+              /* if(result.item[0].type=='rep')
               {
                 this.router.navigate(['/repdashboard']);
               }*/

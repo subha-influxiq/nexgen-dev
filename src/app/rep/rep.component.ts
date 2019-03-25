@@ -24,7 +24,7 @@ export class RepComponent implements OnInit {
       {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
       {value:'email',name:'Email Id',role:0,func:'',class:'email',type:'text'},
       /*{value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},*/
-      {value:'recruiter',name:'Owner',role:0,func:'',class:'owner',type:'text'},
+      {value:'recruiter',name:'Regional Manager',role:0,func:'',class:'owner',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Phone',role:0,func:'',class:'mobile',type:'text'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'showstatus'},
@@ -82,7 +82,7 @@ export class RepComponent implements OnInit {
           element.setAttribute('listener', 'true');
         }
       }
-    },4000);
+    },500);
 
     /*$('td').click(function () {
 
@@ -96,9 +96,19 @@ export class RepComponent implements OnInit {
   }
   myclick(e){
     console.log(e);
+    console.log('class------');
+    console.log($(e.target).prop('tagName'));
+    //console.log($(e.target).tagName());
     console.log($(e.target).attr('class'));
     console.log($(e.target).text());
-    this.router.navigate(['/repdetails',$(e.target).attr('class')]);
+    var cls='';
+    if($(e.target).prop('tagName')=='SPAN'){
+      cls=$(e.target).parent().attr('class');
+    }
+    if($(e.target).prop('tagName')=='TD'){
+      cls=$(e.target).attr('class');
+    }
+    this.router.navigate(['/repdetails',cls]);
 
     //console.logg(e1);
   }

@@ -63,6 +63,11 @@ import { MyresourceComponent } from './myresource/myresource.component';
 import { ManagequizComponent } from './managequiz/managequiz.component';
 import { TempaccessComponent } from './tempaccess/tempaccess.component';
 import { UsersearchPipe } from './search.pipe';
+import { TestComponent } from './test/test.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { SlotviewComponent } from './slotview/slotview.component';
+import { AppointmentlistComponent } from './appointmentlist/appointmentlist.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +116,12 @@ import { UsersearchPipe } from './search.pipe';
     SlotsComponent,
     MyresourceComponent,
     ManagequizComponent,
-    TempaccessComponent
+    TempaccessComponent,
+    TestComponent,
+    ForgetpasswordComponent,
+    SlotviewComponent,
+    AppointmentlistComponent,
+    ResetpasswordComponent
 
   ],
   imports: [

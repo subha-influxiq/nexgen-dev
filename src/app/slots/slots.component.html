@@ -1,0 +1,158 @@
+<p class="event_f_name">{{slotdata.meetingwith}}</p>
+<p class="event_f_date"><b>Date:</b> {{_commonservices.showdateforreplegal(slotdata.startdate)}}
+    <span class="hide">
+{{_commonservices.unixtodate(slotdata.starttime)}}//{{_commonservices.unixtodate(slotdata.endtime)}}//{{(slotdata.endtime-slotdata.starttime)/60}}slots--==--{{slotdata.slots}}
+    </span>
+
+</p>
+<!--<p class="event_f_time"><b>Time :</b> {{_commonservices.unixtotime(slotdata.starttime)}} - {{_commonservices.unixtotime(slotdata.endtime)}}</p>-->
+
+<p class="event_f_time"><b>Time : </b>{{slotvalue}}</p>
+<p class="event_f_zone"><b>Timezone : </b> {{_commonservices.showtimezone(timezoneshow)}}</p>
+<button class="booknow_button" (click)="booknowmodal(bookevent,slotdata,messagemodal)">book now</button>
+
+
+<!--<ng-template #bookevent1>
+    <div class="modal-body brandmanagement_modal slotevent">
+        <div class="logo_wrapper">
+            <img src="../../assets/images/logo.png">
+        </div>
+    </div>
+    <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+        <label>Meeting With</label>
+          <div class="form-group"><input type="text" class="form-control" placeholder="Meeting With*" [formControl]="dataForm.controls['meeting_with']">
+            <span class="errortext" *ngIf="!dataForm.controls['meeting_with'].valid && dataForm.controls['meeting_with'].touched">This field can not be blank</span>
+        </div>
+
+        <input [formControl]="dataForm.controls['startdate']"  class="form-control" placeholder="Start Date" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate">
+
+        <timepicker [(ngModel)]="start_time" [ngModelOptions]="{standalone: true}"></timepicker>
+
+    </form>
+</ng-template>-->
+
+
+<ng-template #bookevent>
+    <div class="modal-body slotevent">
+        <div class="modal_header">
+            <h3>Edit appointment info</h3>
+        </div>
+
+        <div class="content_wrapper">
+           <!-- <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+                <div class="form-group">
+                    <label>Apppointment Tile</label>
+                    &lt;!&ndash;   <input class="form-control" type="text" [formControl]="dataForm.controls['description']">
+                    <span class="errortext" *ngIf="!dataForm.controls['description'].valid && dataForm.controls['description'].touched">This field can not be blank</span>&ndash;&gt;
+                </div>
+                <div class="form-group">
+                    <label>Meeting With</label>
+                    <input class="form-control" type="text" [formControl]="dataForm.controls['meeting_with']">
+                    <span class="errortext" *ngIf="!dataForm.controls['meeting_with'].valid && dataForm.controls['meeting_with'].touched">This field can not be blank</span>
+                </div>
+                <div class="form-group">
+                    <label>Participant</label>
+                    <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly>
+                </div>
+
+                &lt;!&ndash;for time and date slot&ndash;&gt;
+
+                <div class="time_date_slot form-group">
+                    &lt;!&ndash;<div class="left_slot">&ndash;&gt;
+                    <div class="form-group">
+
+
+                        <input [formControl]="dataForm.controls['startdate']"  class="form-control startdt" placeholder="Start Date" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate">
+
+
+                        <timepicker [(ngModel)]="start_time" class="tm1" [ngModelOptions]="{standalone: true}"  ></timepicker>
+                    </div>
+                    <label class="to_divider">To</label>
+                    &lt;!&ndash;<div class="right_slot">&ndash;&gt;
+
+                    <div class="form-group">
+                        <input [formControl]="dataForm.controls['enddate']"  class="form-control enddt" placeholder="End Date" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDatepicker" bsDatepicker  [minDate]="minDate">
+
+                        <timepicker [(ngModel)]="end_time" [ngModelOptions]="{standalone: true}" class=" timepicker tm2"></timepicker>
+                    </div>
+
+
+
+
+
+
+                </div>
+                &lt;!&ndash;end time and date slot&ndash;&gt;
+                <div class="zone_slot">
+                    <select  class="form-control" [formControl]="dataForm.controls['timezone']">
+                        <option value="''">Select one</option>
+                        <option value="{{item.value}}" *ngFor="let item of _commonservices.totaltimezone">{{item.show}}</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Rep's Message To Adviser</label>
+                    <textarea class="form-control" type="text" [formControl]="dataForm.controls['repsmsg']"></textarea>
+                </div>
+                <div class="form-group">
+                    <button> save</button>
+                </div>
+            </form>-->
+
+
+            <div class="editInfo_main_wrap">
+                <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+                    <div class="form-group">
+                        <label>appointment title</label>
+                        <p><span>Meeting with</span> <!--CLay Daral--> <input class="form-control" type="text" [formControl]="dataForm.controls['meeting_with']" readonly> </p>
+                    </div>
+                    <div class="form-group">
+                        <label>participant</label>
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="cookeiservice.get('usertype')!='regional_recruiter'">
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" *ngIf="cookeiservice.get('usertype')=='regional_recruiter'">
+                    </div>
+                    <div class="form-group">
+                       <label>appointment time</label>
+                        <p class="font_problm"> {{showformat(slotdata.startdate)}}<!--monday march 2009--> </p>
+                        <p class="font_problm">{{slotvalue}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rep’s Message To Regional Manager</label>
+                        <textarea class="form-control txt_area" type="text" [formControl]="dataForm.controls['repsmsg']"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn_sv"> save</button>
+                        <button class="btn_cncl" type="button" (click)="modaloff()"> cancel</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</ng-template>
+
+<ng-template #messagemodal>
+    <div class="modal-body brandmanagement_modal">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="message_success">{{message}}</div>
+
+    </div>
+</ng-template>

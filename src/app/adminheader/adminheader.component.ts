@@ -24,6 +24,7 @@ export class AdminheaderComponent implements OnInit {
   public reptraininglessondetails:any;
 
   constructor(public cookie:CookieService,public router:Router,private _commonservices: Commonservices,private _http: HttpClient) {
+      console.log(this.cookie.get('refreshtoken'));
     this.type=this.cookie.get('usertype');
     this.idis=this.cookie.get('userid');
 
@@ -127,7 +128,8 @@ export class AdminheaderComponent implements OnInit {
   }
   gotorepevents(){
     if(this.recid!=null){
-      var link = 'repevent/'+this.recid;
+    //  var link = 'repevent/'+this.recid;
+      var link = 'slotview/'+this.recid;
       this.router.navigate([link]);
     }
   }

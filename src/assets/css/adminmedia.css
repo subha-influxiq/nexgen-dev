@@ -91,7 +91,7 @@
         margin: 0 auto;
     }
 
-    .mark_done { bottom: 4px; }
+    .mark_done { bottom: 10px; }
     .admin_header .col-md-8 { width: 77%; }
     .admin_header .col-md-4 {   width: 23%;  }
     .nexgen_header_wrapper .social_media_container p {

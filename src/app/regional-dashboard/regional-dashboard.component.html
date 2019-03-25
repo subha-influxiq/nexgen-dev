@@ -69,7 +69,7 @@
           </tbody>
         </table>
 
-        <button [routerLink]="['/rep']" *ngIf="repdetails_under_this_regional?.length>5">View all reps</button>
+        <button [routerLink]="['/rep']" >View all reps</button>
       </div>
     </div>
     <div class="col-md-4 ">
@@ -81,56 +81,26 @@
 
 
           <tr>
-            <th data scope="col">Date Added</th>
+          <!--  <th data scope="col">Date Added</th>-->
             <th scope="col">User ID</th>
             <th scope="col">Name</th>
-            <th scope="col">Initial Training</th>
-            <th scope="col"> Additional Training</th>
+            <th scope="col">Date Set</th>
+            <th scope="col"> Time</th>
           </tr>
           </thead>
           <tbody>
 
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
-          </tr>
-
-          <tr>
-            <td data-title="Date Added" scope="row">01/15/2019</td>
-            <td data-title="User ID">001</td>
-            <td data-title="Name">Jane Doe</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
+          <tr *ngFor="let item of googleevents | slice:0:5;">
+          <!--  <td data-title="Date Added" scope="row">{{item.startdate}}</td>-->
+            <td data-title="User ID">{{item.userdata.unique_id}}</td>
+            <td data-title="Name">{{item.userdata.firstname}} {{item.userdata.lastname}}</td>
+            <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
+            <td data-title="Time">{{_commonservice.showtime(item.start_time)}}</td>
           </tr>
           </tbody>
         </table>
 
-        <button>View Calendar</button>
+        <button [routerLink]="['/appointmentlist']">View Calendar</button>
       </div>
     </div>
 

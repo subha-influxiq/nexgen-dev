@@ -135,12 +135,51 @@
                 </div>
                 <!--End rep details-->
 
-                <div class="form-group col-md-12" *ngIf="repdetails">
+
+
+
+              </div>
+              <div class="col-md-12 form-groupnew12wrapper">
+                <div class="row">
+              <div class="col-md-4 form-groupnew4">
+                <label>Regional Manager</label>
+
+                <div class="form-group row" *ngIf="cookeiservice.get('usertype')!='admin' && repdetails!=null">
+                  <div class="col-sm-12">
+                    <span class="form-control" readonly>{{repdetails.recruiter}}</span>
+                  </div>
+                </div>
+
+                <div class="form-group row" *ngIf="cookeiservice.get('usertype')=='admin'">
+                  <div class="col-sm-12">
+                    <select [formControl]="dataForm.controls['regionalid']" class="form-control" (change)="updateregid(successmodal)">
+                      <option *ngFor="let item of ownerlists" value="{{item._id}}">{{item.firstname}} {{item.lastname}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-12">
+                    <label>Signup Link:</label>
+                    <span *ngIf="repdetails!=null">{{_commonservice.siteurl}}signup/{{repdetails._id}}</span>
+                  </div>
+                </div>
+
+
+
+                <!--  <input type="text" class="form-control" readonly [formControl]="dataForm.controls['recruiter']" (keyup)="issubmit=0">
+                  <span class="errortext" *ngIf="!dataForm.controls['recruiter'].valid && dataForm.controls['recruiter'].touched && issubmit==1">recruiter is required.</span>-->
+
+
+              </div>
+                <div class=" col-md-4 form-groupnew12" *ngIf="repdetails">
                   <span class="btn_position" *ngIf="repdetails.lock!=1"> Unlocked &nbsp;&nbsp;<span  (click)="togglelockedstatus()"  class="edit_user lock_unlock"> Lock</span></span>
                   <span class="btn_position" *ngIf="repdetails.lock==1"> Locked <span  (click)="togglelockedstatus()" class="edit_user lock_unlock">Unlock</span></span>
                   <span class="hide">Toggle</span>
                 </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -217,8 +256,11 @@
               <label> How often do you call each office?  </label>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Last name" readonly [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0">
-              <span class="errortext" *ngIf="!dataForm.controls['calleachoffice'].valid && dataForm.controls['calleachoffice'].touched && issubmit==1">This field is required.</span>
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0"> Daily  </label>
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice1']" (keyup)="issubmit=0"> Weekly  </label>
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice2']" (keyup)="issubmit=0"> Monthly  </label>
+              <!--<input type="text" class="form-control" placeholder="Last name" readonly [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0">
+              <span class="errortext" *ngIf="!dataForm.controls['calleachoffice'].valid && dataForm.controls['calleachoffice'].touched && issubmit==1">This field is required.</span>-->
             </div>
           </div>
 

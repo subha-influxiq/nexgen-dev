@@ -31,13 +31,36 @@ export class SignupComponent implements OnInit {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.getstates('states');
+    this.calltoken();
   }
+  calltoken(){
+        let link = this._commonservices.nodesslurl + 'temptoken';
+        let data={};
+        this._http.post(link,data)
+            .subscribe(res => {
+                let result:any ={};
+                result = res;
+                console.log('result....');
+                console.log(result);
+                if(result.status=='success') {
+                    this.cookeiservice.set('jwttoken', result.token);
+                    this.getsignupdetails();
+                }
+            }, error => {
+                console.log('Oooops!');
+            });
+    }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id=params['id'];
       console.log(this.id);
       this.sourceconditionval ={_id:this.id};
-      this.getsignupdetails();
+      if(this.cookeiservice.get('jwttoken')!='' && this.cookeiservice.get('jwttoken')!=null) {
+          this.getsignupdetails();
+      }
+      //else{
+          this.cookeiservice.set('userid',this.id);
+      //}
       this.dataForm =  this.kp.group({
         id: [''],
         firstname: ['',Validators.required],
@@ -207,21 +230,23 @@ export class SignupComponent implements OnInit {
           });
     }
   }
-  addregional_recruiter(){
-    const link = this._commonservices.nodesslurl+'getregionalrecruiter?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'statewise_regional_rep_view',condition:{state: this.dataForm.value['state']}})
-        .subscribe(res => {
-          let result;
-          result = res;
-          if(result.status=='error'){
-          }else{
-            console.log(result.res);
-            if(result.res.length>0){
-              this.dataForm.patchValue({regionalrecruiter_id : result.res[0]._id});
-            }
-          }
-        }, error => {
-          console.log('Oooops!');
-        });
-  }
+    addregional_recruiter(){
+        const link = this._commonservices.nodesslurl+'getregionalrecruiter';
+        let con;
+        con={state:[this.dataForm.value['state']],source:'statewise_regional_rep_view'}
+        this._http.post(link,con)
+            .subscribe(res => {
+                let result;
+                result = res;
+                if(result.status=='error'){
+                }else{
+                    console.log(result.res);
+                    if(result.res.length>0){
+                        this.dataForm.patchValue({regionalrecruiter_id : result.res[0]._id});
+                    }
+                }
+            }, error => {
+                console.log('Oooops!');
+            });
+    }
 }

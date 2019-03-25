@@ -15,25 +15,26 @@ declare var $:any;
   providers: [Commonservices]
 })
 export class RepdetailsComponent implements OnInit {
-public id;
-public repdetails;
-  public dataForm: FormGroup;
-  public kp;
-  public states;
-  public errormg='';
-  public issubmit=0;
-  public addnote=0;
-  public addthisnote: any;
-  public notelist: any;
-  public editnoteid: any=null;
- // public addorupdatenote: any='Add';
+    public id;
+    public repdetails;
+    public dataForm: FormGroup;
+    public kp;
+    public states;
+    public errormg='';
+    public issubmit=0;
+    public addnote=0;
+    public addthisnote: any;
+    public notelist: any;
+    public editnoteid: any=null;
+    // public addorupdatenote: any='Add';
+    public ownerlists;
 
-modalRef: BsModalRef;
-  constructor(kp: FormBuilder, public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
-  {
-    this.kp = kp;
-    this._commonservice=_commonservice;
-    this.getstates('states');
+    modalRef: BsModalRef;
+    constructor(kp: FormBuilder, public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
+    {
+        this.kp = kp;
+        this._commonservice=_commonservice;
+        this.getstates('states');
   }
 
   getstates(source){
@@ -46,6 +47,7 @@ modalRef: BsModalRef;
   }
 
   ngOnInit() {
+    this.ownerlist();
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.geteditdata();
@@ -73,11 +75,14 @@ modalRef: BsModalRef;
       other: [''],
       othertext: [''],
       noofpersonallycall: ['',Validators.required],
-      calleachoffice: ['',Validators.required],
+      calleachoffice: [''],
+      calleachoffice1: [''],
+      calleachoffice2: [''],
       noofdirectaccess: ['',Validators.required],
       workinmedicalfield: ['',Validators.required],
       pcrtesting: ['',Validators.required],
       companyname: [''],
+      regionalid: [''],
     });
 
     $('td').each(function () {
@@ -89,7 +94,18 @@ modalRef: BsModalRef;
   ngAfterViewChecked(){
    // console.log($(this).text());
   }
-
+  ownerlist() {
+    const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+    this._http.post(link, {source: 'users',condition:{type:'regional_recruiter'}})
+        .subscribe(res => {
+          let result:any={};
+          result = res;
+          this.ownerlists=[];
+          this.ownerlists=result.res;
+          console.log('this.ownerlists');
+          console.log(this.ownerlists);
+        })
+  }
   geteditdata() {
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:'user_regional_legaldoc_status_view',condition:{_id:this.id}})
@@ -102,6 +118,8 @@ modalRef: BsModalRef;
           }else{
             let userdet;
             userdet = result.res[0];
+            console.log('userdet.calleachoffice1');
+            console.log(userdet.calleachoffice1);
             this.repdetails = result.res[0];
             this.notes();
             this.dataForm = this.kp.group({
@@ -127,11 +145,14 @@ modalRef: BsModalRef;
               other: [userdet.other],
               othertext: [userdet.othertext],
               noofpersonallycall: [userdet.noofpersonallycall,Validators.required],
-              calleachoffice: [userdet.calleachoffice,Validators.required],
+              calleachoffice: [userdet.calleachoffice],
+              calleachoffice1: [userdet.calleachoffice1],
+              calleachoffice2: [userdet.calleachoffice2],
               noofdirectaccess: [userdet.noofdirectaccess,Validators.required],
               workinmedicalfield: [userdet.workinmedicalfield,Validators.required],
               pcrtesting: [userdet.pcrtesting,Validators.required],
               companyname: [userdet.companyname],
+              regionalid: [userdet.regionalrecruiter_id],
             });
           }
         }, error => {
@@ -190,10 +211,13 @@ modalRef: BsModalRef;
         othertext: this.dataForm.value['othertext'],
         noofpersonallycall: this.dataForm.value['noofpersonallycall'],
         calleachoffice: this.dataForm.value['calleachoffice'],
+        calleachoffice1: this.dataForm.value['calleachoffice1'],
+        calleachoffice2: this.dataForm.value['calleachoffice2'],
         noofdirectaccess: this.dataForm.value['noofdirectaccess'],
         workinmedicalfield: this.dataForm.value['workinmedicalfield'],
         pcrtesting: this.dataForm.value['pcrtesting'],
-        companyname: this.dataForm.value['companyname']
+        companyname: this.dataForm.value['companyname'],
+        regionalid: this.dataForm.value['regionalid']
       };
       this._http.post(link, {data:data})
           .subscribe(res => {
@@ -308,6 +332,26 @@ modalRef: BsModalRef;
           this.notes();
         }, error => {
           console.log('Oooops!');
+        });
+  }
+  updateregid(template:TemplateRef<any>){
+    const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+    let data={
+      id:this.id,
+      regionalrecruiter_id:this.dataForm.value['regionalid'],
+    }
+    this._http.post(link, {source: 'users',data:data,sourceobj:['regionalrecruiter_id']})
+        .subscribe(res => {
+          let result:any={};
+          result = res;
+          console.log('result.....');
+          console.log(result);
+          if(result.status=='success') {
+              this.modalRef = this.modal.show(template, {class: 'successmodal'});
+              setTimeout(()=> {
+                  this.modalRef.hide();
+              },2000);
+          }
         });
   }
 

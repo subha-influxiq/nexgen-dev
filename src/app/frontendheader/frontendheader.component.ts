@@ -34,6 +34,7 @@ export class FrontendheaderComponent implements OnInit {
         });
   }
   logout(){
+      //alert(4);
     this.cookie.deleteAll();
     this.router.navigate(['/login']);
   }
