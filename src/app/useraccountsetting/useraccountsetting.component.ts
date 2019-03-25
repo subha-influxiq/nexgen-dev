@@ -37,6 +37,7 @@ export class UseraccountsettingComponent implements OnInit {
       firstname:['',Validators.required],
       lastname:['',Validators.required],
       username:['',Validators.required],
+      password:[''],
       email:['',Validators.required],
       phonenumber:['',Validators.required],
       address:[''],
@@ -154,6 +155,10 @@ export class UseraccountsettingComponent implements OnInit {
             data.state=this.dataForm.controls['state'].value;
             data.zip=this.dataForm.controls['zip'].value;
             data.regionalrecruiter_id=this.dataForm.controls['owner'].value;
+            console.log(this.dataForm.controls['password'].value);
+            if(this.dataForm.controls['password'].value!=null && this.dataForm.controls['password'].value!=''){
+               data.password=this.dataForm.controls['password'].value;
+            }
             const link = this._commonservices.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
             this._http.post(link, {source: 'users',data:data,sourceobj:['regionalrecruiter_id']})
                 .subscribe(res => {

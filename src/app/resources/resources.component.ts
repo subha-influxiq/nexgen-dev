@@ -20,6 +20,7 @@ export class ResourcesComponent implements OnInit {
       {value:'file',name:'Resource File',role:0,func:'',class:'recourcefile',type:'file',filepath:'filelocalname'},
       {value:'categoryname',name:'Category Name',role:0,func:'',class:'categoryname',type:'text'},
       {value:'description',name:'Description',role:0,func:'',class:'description',type:'text'},
+      {value:'priority',name:'Priority',role:0,func:'',class:'priority',type:'text'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox'},
     ];
     this.formdata=[
@@ -32,7 +33,7 @@ export class ResourcesComponent implements OnInit {
 
       {inputtype:'file',name:'file',label:'File',placeholder:'Select File',buttonname:'Upload Resource File',validationrule:{required:true},validationerrormsg:'is required',imagefolder:'resource'},
       {inputtype:'hidden',name:'filelocalname',label:'filelocalname',placeholder:'filelocalname'},
-
+      {inputtype:'text',name:'priority',label:'Priority',placeholder:'Enter Priority',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'status',label:'Status',value:false}
     ];
     this.datasource={table:'resource',objarr:['category']};

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Commonservices} from "../app.commonservices";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {BsModalRef} from "ngx-bootstrap/modal/bs-modal-ref.service";
 
 @Component({
   selector: 'app-usermanagement',
@@ -14,8 +16,11 @@ export class UsermanagementComponent implements OnInit {
     public filterval;
     public filterval1;
     public filterval2;
+    public selecteditem;
+    public message;
+    modalRef: BsModalRef;
 
-  constructor(public commonservices:Commonservices,public cookieservice:CookieService,public _http:HttpClient)
+  constructor(public commonservices:Commonservices,public cookieservice:CookieService,public _http:HttpClient,public modal:BsModalService)
   {
 
   }
@@ -69,5 +74,30 @@ export class UsermanagementComponent implements OnInit {
             this.filterval = this.filterval2 + '|';
         }
         console.log(this.filterval);
+    }
+    deletdata(val:any,template:TemplateRef<any>){
+        this.modalRef=this.modal.show(template);
+        this.selecteditem=val;
+    }
+    confirmdelete(template:TemplateRef<any>){
+        this.modalRef.hide();
+        this.message="Record deleted successfully!!";
+        const link = this.commonservices.nodesslurl+'deletesingledata?token='+this.cookieservice.get('jwttoken');
+        this._http.post(link,{source:'users',id:this.selecteditem})
+            .subscribe(res => {
+                let result;
+                result = res;
+                this.userdetails();
+                this.modalRef=this.modal.show(template,{class: 'successmodal'});
+                setTimeout(() => {
+                    this.modalRef.hide();
+                }, 4000);
+            }, error => {
+                console.log('Oooops!');
+            });
+
+    }
+    nodelete(){
+        this.modalRef.hide();
     }
 }
