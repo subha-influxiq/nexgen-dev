@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Commonservices} from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import {BsModalService} from "ngx-bootstrap/modal";
+import {BsModalRef} from "ngx-bootstrap/modal/bs-modal-ref.service";
 
 @Component({
   selector: 'app-login',
@@ -18,8 +20,9 @@ export class LoginComponent implements OnInit {
   public nodesslurl;
   public errormg: any = '';
   public issubmit=0;
+  modalRef: BsModalRef;
 
-  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService) {
+  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService,public modal:BsModalService) {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.nodesslurl = _commonservices.nodesslurl;
@@ -53,7 +56,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  dosubmit(formval) {
+  dosubmit(formval,template:TemplateRef<any>) {
     this.issubmit=1;
     this.errormg = '';
     let x: any;
@@ -79,6 +82,7 @@ export class LoginComponent implements OnInit {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
+              if(result.item[0].status==1){
               this.cookeiservice.set('jwttoken', result.token);
               this.cookeiservice.set('userid', result.item[0]._id);
               this.cookeiservice.set('usertype', result.item[0].type);
@@ -112,6 +116,13 @@ export class LoginComponent implements OnInit {
               }
               console.log('jwttoken');
               console.log(this.cookeiservice.get('jwttoken'));
+            }
+            else{
+                this.modalRef=this.modal.show(template);
+                setTimeout(() => {
+                  this.modalRef.hide();
+                }, 4000);
+            }
             }
           }, error => {
             console.log('Oooops!');

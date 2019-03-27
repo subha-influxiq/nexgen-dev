@@ -40,8 +40,16 @@
             <td data-title="Date Added" scope="row">{{_commonservice.showdateforreplegal(item.created_at)}}</td>
             <td data-title="User ID">{{item.unique_id}}</td>
             <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
-            <td data-title="Initial Training">100%</td>
-            <td data-title="Additional Training">100%</td>
+            <td data-title="Initial Training">
+              <span *ngIf="item.newhirecatsum==0">0</span>
+              <span *ngIf="item.newhirecatsum>0">{{((item.newhirecatsum/totalnewhiretraining).toFixed(2)*100).toFixed(2)}}</span>
+              %</td>
+            <td data-title="Additional Training">
+              <span *ngIf="item.reactsum>0">{{((item.reactsum/totalreptraining).toFixed(2)*100).toFixed(2)}}</span>
+              <span *ngIf="item.reactsum==0">0</span>
+              %</td>
+           <!-- <td data-title="Initial Training">100%</td>
+            <td data-title="Additional Training">100%</td>-->
           </tr>
          <!-- <tr>
             <td data-title="Date Added" scope="row">01/15/2019</td>

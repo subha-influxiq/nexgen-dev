@@ -11,10 +11,12 @@ import {HttpClient} from "@angular/common/http";
     providers: [Commonservices]
 })
 export class FrontendheaderComponent implements OnInit {
-
+public repdetails;
+public repdashboard=0;
   constructor(public cookie:CookieService,public router:Router,public _commonservices:Commonservices,public _http:HttpClient) { }
 
   ngOnInit() {
+      this.getrepdetails();
     setInterval(() => {
       this.getslidervalueforimage();
     }, 15000);
@@ -38,4 +40,45 @@ export class FrontendheaderComponent implements OnInit {
     this.cookie.deleteAll();
     this.router.navigate(['/login']);
   }
+    gotodashboard(){
+        if(this.cookie.get('usertype')=='admin') {
+            this.router.navigate(['/dashboard']);
+        }
+        if(this.cookie.get('usertype')=='regional_recruiter')
+        {
+            this.router.navigate(['/regionaldashboard']);
+        }
+
+    }
+    gotorepdashboard(){
+        if(this.repdetails[0].lock==1) {
+            this.router.navigate(['/tempaccess']);
+            return;
+        }
+        if(this.repdetails[0].signup_step2==1 && this.repdetails[0].contractstep==null && this.repdetails[0].reptraininglessonstep==null) this.router.navigate(['/contract']);
+
+        if(this.repdetails[0].signup_step2==1 && this.repdetails[0].contractstep==1 && this.repdetails[0].reptraininglessonstep==null) this.router.navigate(['/reptrainingcenter']);
+
+        if(this.repdetails[0].signup_step2==1 && this.repdetails[0].contractstep==1 && this.repdetails[0].reptraininglessonstep==1) this.router.navigate(['/repdashboard']);
+    }
+    getrepdetails(){
+        const link = this._commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+        this._http.post(link,{source:'users',condition:{_id:this.cookie.get('userid')}})
+            .subscribe(res => {
+                let result;
+                result = res;
+                this.repdetails = [];
+                this.repdetails = result.res;
+                console.log('repdetails:');
+                console.log(this.repdetails);
+                if(this.cookie.get('usertype')=='rep' && this.repdetails[0].signup_step2==1 && this.repdetails[0].contractstep==1 && this.repdetails[0].reptraininglessonstep==1)
+                {
+                    this.repdashboard=1;
+                  this.router.navigate(['/repdashboard']);
+                }
+            }, error => {
+                console.log('Oooops!');
+                this.repdetails = [];
+            });
+    }
 }

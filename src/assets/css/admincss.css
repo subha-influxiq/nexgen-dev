@@ -291,7 +291,14 @@
 .nextGen_admin_mainwrapper  .content_header_block ol li:after{content: '/'; display: inline; padding-left: 5px; padding-right: 5px; }
 .nextGen_admin_mainwrapper  .content_header_block ol li:last-child:after{display: none; }
 
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email{ word-break: break-all; }
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email{   }
+.myregional_recruiterlist .myregional_recruiter .nexgen_admin_table .admin_table_wrapper table tr td:nth-child(7){
+    word-break: break-all;
+}
+
+
+
+
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusinactive{  display: inline-flex;
     align-items: flex-end; width: 100%;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .statusactive{  display: inline-flex;
@@ -1768,3 +1775,13 @@
     margin-bottom: 15PX; padding: 5px; }
 
 .login_container .frm_data p{ font-family: RalewayRegular; font-size: 16px; color: #0b0c0c; }
+.suceess_msg{
+    color: #fdfdfd!important;
+    background: #0bb2e9;
+    padding: 4px;
+    display: block!important;
+    margin: 35px 0 0 0;
+}
+.nav-item:focus{ outline: none;}
+
+

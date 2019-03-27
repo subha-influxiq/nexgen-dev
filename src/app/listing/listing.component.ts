@@ -69,6 +69,8 @@ export class ListingComponent implements OnInit {
     public selectedFile:any;
     public isedit: number=0;
     public usertype: any;
+    public itemis: any;
+    public lockunlock: any;
     public minDate: any = new Date();
 
     files:UploadFile[];
@@ -187,29 +189,33 @@ export class ListingComponent implements OnInit {
                 this.getdatalist();
             });
     }
-    togglelockedstatus(item:any,event) {
-
+    togglelockedstatusmodal(item:any,lockunlock ,template:TemplateRef<any>, event){
+        this.modalRef1=this.modal.show(template);
         event.stopPropagation();
-        console.log('item.status');
-        console.log(item.lock);
+        this.itemis=item;
+        this.lockunlock=lockunlock;
+
+    }
+    togglelockedstatus() {
         let status:any;
-        status=item.lock;
+        status=this.itemis.lock;
         /*      if(item.status!=null) status=1-item.status;
          if(item.status==null) status=1;*/
-        if(item.lock==null && item.lock!=1 && item.lock!=0){
+        if(this.itemis.lock==null && this.itemis.lock!=1 && this.itemis.lock!=0){
             status=1;
         }
         //if(item.status==null) status=1;
 
         //status=(1-(status));
-        console.log('item.status99');
-        console.log(item.lock);
+        console.log('this.itemis.status99');
+        console.log(this.itemis.lock);
         console.log(status);
         const link = this._commonservice.nodesslurl+'togglelockedstatus?token='+this.cookeiservice.get('jwttoken');
         /* console.log('link');
          console.log(link);*/
-        this._http.post(link,{id:item._id,source:this.formsourceval.table,status:status})
+        this._http.post(link,{id:this.itemis._id,source:this.formsourceval.table,status:status})
             .subscribe(res => {
+                this.modalRef1.hide();
                 this.getdatalist();
             }, error => {
                 console.log('Oooops!');
@@ -732,6 +738,8 @@ export class ListingComponent implements OnInit {
         this.formdataval[i].filename=this.files[0].name;
     }
     showstatusofrep(item){
+        if(item.noofclinics<40 || item.noofclinics==null) return 'Not Qualified';
+        if(item.noofclinics>=40 && item.username==null) return 'Pending Sign Up';
         if(item.lock==1){
             return 'Pending Phone Verification';
         }

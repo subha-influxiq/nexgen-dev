@@ -355,4 +355,14 @@ export class RepdetailsComponent implements OnInit {
         });
   }
 
+    callforcopy(repdetailsid){
+        return this._commonservice.siteurl+'signup/'+repdetailsid;
+    }
+
+    showcopied(template){
+        this.modalRef=this.modal.show(template, {class: 'successmodal'});
+        setTimeout(() => {
+            this.modalRef.hide();
+        }, 2000);
+    }
 }

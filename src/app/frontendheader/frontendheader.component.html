@@ -56,8 +56,14 @@
                           <li class="nav-item" *ngIf="cookie.get('userid') == ''">
                             <a class="nav-link" target="_blank" [routerLink]="['/login']">Login</a>
                           </li>
-                          <li class="nav-item" *ngIf="cookie.get('userid') != ''">
+                          <li class="nav-item" *ngIf="cookie.get('userid') != ''"> <!--&& repdetails[0].username!=null-->
                             <a class="nav-link" (click)="logout()">Logout</a>
+                          </li>
+                          <li class="nav-item" *ngIf="cookie.get('userid') != '' && cookie.get('usertype') != 'rep'">
+                            <a class="nav-link" (click)="gotodashboard()">Dashboard</a>
+                          </li>
+                          <li class="nav-item" *ngIf="cookie.get('userid') != '' && cookie.get('usertype') == 'rep' && repdashboard==1">
+                            <a class="nav-link" [routerLink]="['/repdashboard']">Dashboard</a>
                           </li>
                         </ul>
 

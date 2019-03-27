@@ -68,7 +68,7 @@ export class ForgetpasswordComponent implements OnInit {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
-              this.showmessage = 'Success! The Email should be arriving shortly.';
+              this.showmessage = 'We’ve sent an email to this address to reset your password.';
             }
           }, error => {
             console.log('Oooops!');

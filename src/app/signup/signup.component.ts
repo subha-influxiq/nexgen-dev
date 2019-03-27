@@ -155,6 +155,7 @@ export class SignupComponent implements OnInit {
               regionalrecruiter_id: [this.datalist[0].regionalrecruiter_id],
               zip: ['',Validators.required],
             },{validator: this.matchingPasswords('password', 'confirmpassword')});
+                this.lockuser();
             }
           }
         }, error => {
@@ -162,6 +163,23 @@ export class SignupComponent implements OnInit {
           this.datalist = [];
         });
   }
+    lockuser(){
+        let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
+        let data = {
+            id: this.id,
+            lock:1
+        };
+        let objarr=['regionalrecruiter_id'];
+        this._http.post(link, {data:data,sourceobj:objarr})
+            .subscribe(res => {
+                let result:any ={};
+                result = res;
+                console.log('result....');
+                console.log(result);
+            }, error => {
+                console.log('Oooops!');
+            });
+    }
   dosubmit() {
     this.issubmit=1;
     this.errormg='';
@@ -172,7 +190,6 @@ export class SignupComponent implements OnInit {
     }
     if (this.dataForm.valid) {
       let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
-      let objarr=['regionalrecruiter_id'];
       let data = {
         id: this.dataForm.value['id'],
         firstname: this.dataForm.value['firstname'],
@@ -190,7 +207,7 @@ export class SignupComponent implements OnInit {
         signup_step2:1,
         lock:1,
       };
-      this._http.post(link, {data:data,sourceobj:objarr})
+      this._http.post(link, {data:data})
           .subscribe(res => {
             let result:any ={};
             result = res;

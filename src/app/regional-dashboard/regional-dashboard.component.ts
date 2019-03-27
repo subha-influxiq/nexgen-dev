@@ -14,6 +14,8 @@ declare var moment: any;
 export class RegionalDashboardComponent implements OnInit {
   public repdetails_under_this_regional;
   public googleevents;
+    public totalreptraining: any;
+    public totalnewhiretraining: any;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService)
   {
@@ -29,7 +31,7 @@ export class RegionalDashboardComponent implements OnInit {
 
   getreplistunderthisregion(){
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'users',condition:{regionalrecruiter_id_object:this.cookeiservice.get('userid')}})
+    this._http.post(link,{source:'user_training',condition:{regionalrecruiter_id_object:this.cookeiservice.get('userid')}}) //users
         .subscribe(res => {
           let result:any;
           result = res;
@@ -37,6 +39,33 @@ export class RegionalDashboardComponent implements OnInit {
           }else{
             this.repdetails_under_this_regional = result.res;
             console.log(this.repdetails_under_this_regional);
+            //added start
+              const link1 = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+              this._http.post(link1,{source:'training_group'})
+                  .subscribe(res=>{
+                      let result;
+                      result=res;
+                      console.log('training group  details');
+                      console.log(result);
+
+                      if(result['res']!=null && result['res'][0]!=null && result['res'][0]['_id']=='New Hire Trainning' ){
+                          this.totalnewhiretraining=result['res'][0]['count'];
+                      }
+
+                      if(result['res']!=null && result['res'][0]!=null && result['res'][0]['_id']=='Rep Trainning Table' ){
+                          this.totalreptraining=result['res'][0]['count'];
+                      }
+                      if(result['res']!=null && result['res'][1]!=null && result['res'][1]['_id']=='New Hire Trainning' ){
+                          this.totalnewhiretraining=result['res'][1]['count'];
+                      }
+
+                      if(result['res']!=null && result['res'][1]!=null && result['res'][1]['_id']=='Rep Trainning Table' ){
+                          this.totalreptraining=result['res'][1]['count'];
+                      }
+
+
+                  });
+              //added end
           }
         }, error => {
           console.log('Oooops!');

@@ -38,6 +38,7 @@ export class UseraccountsettingComponent implements OnInit {
       lastname:['',Validators.required],
       username:['',Validators.required],
       password:[''],
+      confirmpassword:[''],
       email:['',Validators.required],
       phonenumber:['',Validators.required],
       address:[''],
@@ -135,8 +136,15 @@ export class UseraccountsettingComponent implements OnInit {
     }
 
     formsubmit(template:TemplateRef<any>){
+        this.dataForm.controls['confirmpassword'].clearValidators();
+        this.dataForm.controls["confirmpassword"].updateValueAndValidity();
         console.log('form submit');
         this.issubmitted=1;
+        if((this.id==null ||  this.id!=null && this.cookeiservice.get('usertype')=='admin') && (this.dataForm.controls['password'].value!=null && this.dataForm.controls['password'].value!='')){
+            this.dataForm.controls['confirmpassword'].setValidators(Validators.compose([Validators.required, this.equalToPass('password')]));
+            this.dataForm.controls['confirmpassword'].markAsTouched();
+            this.dataForm.controls["confirmpassword"].updateValueAndValidity();
+        }
         console.log(this.dataForm.valid);
 
         if(this.dataForm.valid){
@@ -175,5 +183,15 @@ export class UseraccountsettingComponent implements OnInit {
                 });
         }
     }
+    equalToPass(fieldname): ValidatorFn {                                 //password match custom function
+        return (control: AbstractControl): { [key: string]: any } => {      ///abstractcontrol function call here with key string any type
 
+            let input = control.value;      //class create here
+            let isValid = control.root.value[fieldname] == input;       //value valid or not
+            if (!isValid)
+                return{
+                    equalTo:true            //this value will be called
+                };
+        };
+    }
 }

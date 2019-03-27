@@ -68,6 +68,9 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { SlotviewComponent } from './slotview/slotview.component';
 import { AppointmentlistComponent } from './appointmentlist/appointmentlist.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { OrderBy } from './orderby';
+import { ClipboardModule } from 'ngx-clipboard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -121,7 +124,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     ForgetpasswordComponent,
     SlotviewComponent,
     AppointmentlistComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    OrderBy
 
   ],
   imports: [
@@ -139,6 +143,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     NgxUploaderModule,
     CarouselModule.forRoot(),
     CKEditorModule,
+    ClipboardModule,
   ],
   providers: [CookieService,TestresolveService,ApiService],
   bootstrap: [AppComponent]

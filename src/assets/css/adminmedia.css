@@ -45,7 +45,9 @@
 @media screen  and  (max-width: 1570px){
     .table thead th { font-weight: 600; vertical-align: middle; }
     .dashboard_block2 .col-md-4 h3 { font-size: 25px; }
-
+    .new_header .new_header1 .new_h_l_wrapper {
+        width: 250px;
+    }
 }
 
 @media screen  and  (max-width: 1500px){

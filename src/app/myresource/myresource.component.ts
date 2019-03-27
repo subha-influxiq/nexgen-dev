@@ -14,6 +14,7 @@ export class MyresourceComponent implements OnInit {
   public sourceconditionval:any;
   public resources:any;
   public catid:any;
+    orderbyquery: any;
 
     constructor(public cookie:CookieService,public router:Router,private _commonservices: Commonservices,private _http: HttpClient, public route:ActivatedRoute) {
   }
@@ -23,6 +24,7 @@ export class MyresourceComponent implements OnInit {
             this.catid=params['catid'];
             this.resourcecat();
         })
+      this.orderbyquery = 'firstname';
   }
     resourcecat() {
         if(this.catid!=null){

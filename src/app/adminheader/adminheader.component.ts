@@ -90,8 +90,10 @@ export class AdminheaderComponent implements OnInit {
       console.log('logout');
       console.log(this.cookie.get('userid'));
     this.cookie.deleteAll();
-      console.log(this.cookie.get('userid'));
-    this.router.navigate(['/login']);
+    setTimeout(()=>{
+        console.log(this.cookie.get('userid'));
+        this.router.navigate(['/']);
+    },500);
   }
 
   getrepdetails(){

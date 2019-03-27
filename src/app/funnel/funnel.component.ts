@@ -128,6 +128,7 @@ export class FunnelComponent implements OnInit {
     }
   }
   dosubmit() {
+
     this.issubmit=1;
    // console.log(this.dataForm.value['state']);
     // console.log(this.dataForm.value['email']);
@@ -147,7 +148,7 @@ export class FunnelComponent implements OnInit {
         state: this.dataForm.value['state'],
         regionalrecruiter_id: this.regionalrecruiter_id,
         lead_step:1,
-        type: this._commonservices.roletypes[2].type2
+        type: this._commonservices.roletypes[2].type2,
       };
     //  this.dataForm.patchValue({regionalrecruiter_id : this.regionalrecruiter_id});
       this._http.post(link, data)
@@ -282,6 +283,11 @@ if(this.dataForm1.value['pcrtesting']!=1){
 }
 
 if (this.dataForm1.valid) {
+  let lockunlockval;
+  lockunlockval=0;
+  if(this.dataForm1.value['noofclinics']<40){
+    lockunlockval=1;
+  }
   let objarr=['regionalrecruiter_id'];
   let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
   let data = {
@@ -312,6 +318,7 @@ if (this.dataForm1.valid) {
     companyname:  this.dataForm1.value['companyname'],
     regionalrecruiter_id: this.regionalrecruiter_id,
     questionnaire_step:1,
+    lock:lockunlockval
   };
   this._http.post(link, {data:data,sourceobj:objarr})
       .subscribe(res => {

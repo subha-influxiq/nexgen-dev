@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import {Commonservices} from "../app.commonservices";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";

@@ -4,7 +4,7 @@
     <div class="logo_inner">
       <img src="assets/images/logo.png">
     </div>
-    <form  novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value)">
+    <form  novalidate [formGroup]="dataForm" (ngSubmit)="dosubmit(dataForm.value,lockmodal)">
       <div class="form-group">
         <input type="text"  class="form-control" placeholder="Email" [formControl]="dataForm.controls['email']" (keyup)="issubmit=0">
         <span *ngIf="!dataForm.controls['email'].valid && dataForm.controls['email'].touched && issubmit==1" class="error">Email is required.</span>
@@ -30,3 +30,13 @@
 
 
 </div>
+
+<ng-template #lockmodal>
+  <div class="modal-body brandmanagement_modal">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="message_success">Your account is currently locked. Please contact tom.willis@nexgentesting.com for further information.</div>
+
+  </div>
+</ng-template>

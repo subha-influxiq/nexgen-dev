@@ -152,4 +152,7 @@ export class Commonservices {
     showtime(tm){
         return moment(tm).format('hh:mm A');
     }
+    showdatetimeforuser(dt){
+        return moment(dt).format("MM/DD/YYYY   hh:mm A");
+    }
 }
