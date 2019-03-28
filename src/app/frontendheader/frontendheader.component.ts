@@ -16,7 +16,12 @@ public repdashboard=0;
   constructor(public cookie:CookieService,public router:Router,public _commonservices:Commonservices,public _http:HttpClient) { }
 
   ngOnInit() {
-      this.getrepdetails();
+
+      if( this.cookie.get('userid')!='') {
+          this.getrepdetails();
+      }
+
+
     setInterval(() => {
       this.getslidervalueforimage();
     }, 15000);

@@ -84,6 +84,7 @@ export class LoginComponent implements OnInit {
             if (result.status == 'success') {
               if(result.item[0].status==1){
               this.cookeiservice.set('jwttoken', result.token);
+              this.cookeiservice.set('lockdornot', result.item[0].lock);
               this.cookeiservice.set('userid', result.item[0]._id);
               this.cookeiservice.set('usertype', result.item[0].type);
               this.cookeiservice.set('useremail', result.item[0].email);

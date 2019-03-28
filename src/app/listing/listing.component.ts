@@ -60,6 +60,7 @@ export class ListingComponent implements OnInit {
     public filterval;
     public filterval1;
     public filterval2;
+    public interv;
     public filterval3;
     imageChangedEvent: any = [];
     // croppedImage: any = '';
@@ -140,8 +141,14 @@ export class ListingComponent implements OnInit {
                 console.log('Oooops!');
                 //this.formdataval[c].sourceval = [];
             });
-
+        this.interv = setInterval(()=>{
+            this.getdatalist();
+        },6000)
     }
+    ngOnDestroy() {
+        clearInterval(this.interv);
+    }
+
     searchbyval() {
         this.filterval = '';
         if (this.filterval1 != '' && this.filterval1 != null) {
@@ -210,12 +217,13 @@ export class ListingComponent implements OnInit {
         console.log('this.itemis.status99');
         console.log(this.itemis.lock);
         console.log(status);
+        this.modalRef1.hide();
         const link = this._commonservice.nodesslurl+'togglelockedstatus?token='+this.cookeiservice.get('jwttoken');
         /* console.log('link');
          console.log(link);*/
         this._http.post(link,{id:this.itemis._id,source:this.formsourceval.table,status:status})
             .subscribe(res => {
-                this.modalRef1.hide();
+
                 this.getdatalist();
             }, error => {
                 console.log('Oooops!');

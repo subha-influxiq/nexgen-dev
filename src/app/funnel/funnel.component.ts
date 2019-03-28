@@ -20,6 +20,7 @@ export class FunnelComponent implements OnInit {
   public dataForm: FormGroup;
   public dataForm1: FormGroup;
   public kp;
+  public firstresult;
   public errormg;
   public serverurl;
   public states;
@@ -162,12 +163,12 @@ export class FunnelComponent implements OnInit {
               this.errormg=result.msg;
             }
             if(result.status=='success') {
-              this.cookeiservice.set('userid', result.item._id);
+          /*    this.cookeiservice.set('userid', result.item._id);
               this.cookeiservice.set('jwttoken', result.token);
               this.cookeiservice.set('useremail', result.item.email);
               this.cookeiservice.set('userfirstname', result.item.firstname);
               this.cookeiservice.set('userlastname', result.item.lastname);
-              this.cookeiservice.set('usertype', result.item.type);
+              this.cookeiservice.set('usertype', result.item.type);*/
               this.dataForm.reset();
               this.dataForm.value['state']='';
               $('html, body').animate({
@@ -231,13 +232,15 @@ export class FunnelComponent implements OnInit {
             result = res;
             console.log('result....');
             console.log(result);
+            this.firstresult=result;
             if(result.status=='success') {
-              this.cookeiservice.set('userid', result.item._id);
+              this.cookeiservice.set('jwttoken', result.token);
+             /* this.cookeiservice.set('userid', result.item._id);
               this.cookeiservice.set('jwttoken', result.token);
               this.cookeiservice.set('useremail', result.item.email);
               this.cookeiservice.set('userfirstname', result.item.firstname);
               this.cookeiservice.set('userlastname', result.item.lastname);
-              this.cookeiservice.set('usertype', result.item.type);
+              this.cookeiservice.set('usertype', result.item.type);*/
               let userdet = result.item;
               this.dataForm1.controls['id'].patchValue(userdet._id);
 
@@ -285,8 +288,8 @@ if(this.dataForm1.value['pcrtesting']!=1){
 if (this.dataForm1.valid) {
   let lockunlockval;
   lockunlockval=0;
-  if(this.dataForm1.value['noofclinics']<40){
-    lockunlockval=1;
+  if(this.dataForm1.value['noofclinics']<40) {
+    lockunlockval = 1;
   }
   let objarr=['regionalrecruiter_id'];
   let link = this._commonservices.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
@@ -333,6 +336,12 @@ if (this.dataForm1.valid) {
         if(result.status=='success') {
           console.log(this.dataForm1.value['noofclinics']);
           if(this.dataForm1.value['noofclinics']>=40){
+            this.cookeiservice.set('userid', this.dataForm1.value['id']);
+            this.cookeiservice.set('jwttoken', this.firstresult.token);
+            this.cookeiservice.set('useremail', this.dataForm1.value['email']);
+            this.cookeiservice.set('userfirstname', this.dataForm1.value['firstname']);
+            this.cookeiservice.set('userlastname', this.dataForm1.value['lastname']);
+            this.cookeiservice.set('usertype', this.firstresult.item.type);
             this.router.navigate(['/signup',this.dataForm1.value['id']]);
           }else{
             // this.message='You have done your business with less than 40 clinics';

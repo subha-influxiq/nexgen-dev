@@ -40,6 +40,9 @@ export class AdminheaderComponent implements OnInit {
       if(this.type=='rep' || this.type=='regional_recruiter'){
       this.resourcecat();
   }
+  if(this.cookie.get('lockdornot')=='1'){
+      this.router.navigate(['/tempaccess']);
+  }
   }
 
   ngOnInit() {

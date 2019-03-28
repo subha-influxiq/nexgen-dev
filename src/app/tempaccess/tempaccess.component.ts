@@ -58,10 +58,11 @@ export class TempaccessComponent implements OnInit {
                   }else{
                     //this.mydetails = result.res;
                     console.log('this.regional details');
-                    console.log(result.res);
+                //    console.log(result.res);
                     console.log(result.res[0]);
-                    console.log(result.res[0].refreshtoken);
+                    console.log(result.res[0].firstname);
                     this.rec=result.res[0].firstname+" "+result.res[0].lastname;
+                    console.log(this.rec);
                     this.recemail=result.res[0].email;
                     //this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
 

@@ -169,8 +169,8 @@ export class SignupComponent implements OnInit {
             id: this.id,
             lock:1
         };
-        let objarr=['regionalrecruiter_id'];
-        this._http.post(link, {data:data,sourceobj:objarr})
+      //  let objarr=['regionalrecruiter_id'];
+        this._http.post(link, {data:data})
             .subscribe(res => {
                 let result:any ={};
                 result = res;
@@ -207,7 +207,9 @@ export class SignupComponent implements OnInit {
         signup_step2:1,
         lock:1,
       };
-      this._http.post(link, {data:data})
+        /*   this._http.post(link, {data:data,sourceobj:objarr})*/
+       let objarr=['regionalrecruiter_id'];
+      this._http.post(link, {data:data,sourceobj:objarr})
           .subscribe(res => {
             let result:any ={};
             result = res;

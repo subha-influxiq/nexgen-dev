@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
     this.type=this.cookeiservice.get('usertype');
     this.idis=this.cookeiservice.get('userid');
     this.sourceconditionval ={_id:this.idis};
-    if(this.type=='rep'){ this.getsignupdetails(); }
+    if(this.type=='rep' && this.cookeiservice.get('userid')!=''){
+        this.getsignupdetails();
+    }
     if(this.cookeiservice.get('jwttoken')=='' || this.cookeiservice.get('userid') == ''){
       this.router.navigate(['/']);
     }
@@ -49,6 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getsignupdetails() {
+      console.log('call.........');
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:this.sourceval,condition:this.sourceconditionval})
         .subscribe(res => {
@@ -75,6 +78,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
   showphoneno(phn){
+      console.log('phone------'+phn);
 /*    let p03=phn.slice(0,3);
     console.log(p03);
     let p36=phn.slice(3,6);
