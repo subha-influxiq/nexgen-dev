@@ -16,10 +16,14 @@
         width: 75.5%;
     }
 }
+@media screen  and  (max-width: 1800px){
+    .new_header .new_header1 .new_h_l_wrapper { width: 265px; }
+}
 @media screen  and  (max-width: 1750px){
     .dashboard_block2 .table td, .table th {
         font-size: 14px;
     }
+    .new_header_container { width: 100%; }
 }
 @media screen  and  (max-width: 1680px){
     .representative_list_wrapper {
@@ -30,6 +34,7 @@
 @media screen  and  (max-width: 1660px){
 
     .listevent_wrapper { width: 80%; }
+    .new_header .new_header1 .new_h_l_wrapper { width: 250px; }
 }
 @media screen  and  (max-width: 1640px){
     .traing_innerwrapper { width: 94% }
@@ -37,6 +42,7 @@
     .traing_innerwrapper .training_rightpart h1{ font-size: 21px; text-align: center; padding: 20px 5px; line-height: 23px!important; }
     .traing_innerwrapper .training_rightpart ul li a { font-size: 18px; }
     .training_leftpart .panel button{ font-size: 22px; }
+    .new_header .new_header2 .navbar-nav .nav-link { font-size: 13px; }
 }
 @media screen  and  (max-width: 1600px){
     .admin_header .col-md-8 {  width: 78%;  }
@@ -46,7 +52,7 @@
     .table thead th { font-weight: 600; vertical-align: middle; }
     .dashboard_block2 .col-md-4 h3 { font-size: 25px; }
     .new_header .new_header1 .new_h_l_wrapper {
-        width: 250px;
+        width: 250px; margin-right: 5px;
     }
 }
 
@@ -345,6 +351,24 @@
         flex: 1;
         justify-content: center;
     }
+
+    .user_details_wrapper {
+        width: 95%;
+        flex-direction: column-reverse;
+    }
+
+    .user_details_wrapper .right_wrapper {
+        width: 390px;
+        margin-left: 0;
+        float: none;
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
+    .user_details_wrapper .left_wrapper {
+        width: 100%;
+    }
+    .new_header .new_header2 { padding-top: 15px; }
+
 }
 
 
@@ -362,6 +386,12 @@
 }
 
 @media screen and (max-width: 992px) {
+    .new_header .new_header2 .navbar-nav .nav-item {
+        margin-right: 0;
+        background: #ffffff;
+        margin: 5px 0;
+        padding: 10px 0;
+    }
     .new_header .new_header2 .navbar {
         padding: 0 !important;
         text-align: center;
@@ -451,6 +481,29 @@
     .dashboard_block2 .col-md-4:nth-last-child(1) {
         padding-right: 15px;
     }
+    .copyurlbtn{ margin-top: 0;}
+    .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list {
+        float: none;
+        width: 100%;
+    }
+    .col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: inherit;
+        -webkit-box-flex: inherit;
+        -ms-flex-positive: 1;
+        flex-grow: inherit;
+        max-width: 100%;
+    }
+    .signup_wrapper .inner_block .form_section .form-row>.col, .form-row>[class*=col-] {
+        padding-right: 0px!important;
+    }
+    .user_details_wrapper .s_part_wrapper .col-md-8 .col-md-6 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .form-groupnewlink { padding-right: 0; }
+    .s_part_wrapper .form-groupnew4 .col-sm-12 {  padding-right: 0; }
+    .user_management_wrapper .user_management_inner h2 { font-size: 30px; }
 }
 @media screen and (max-width: 720px) {
     .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group {
@@ -650,21 +703,37 @@
 
 }
 
+@media screen and (max-width: 411px) {
+    .user_details_wrapper .right_wrapper { width: 100%; }
+    .details_header h2 { font-size: 38px; }
+}
 @media screen and (max-width:360px) {
     .dashboard_block2 .col-md-4 button {
         display: block;
-        width: 100%; font-size: 18px;
+        width: 100%;
+        font-size: 18px;
     }
 
-    .dashboard_block2 .col-md-4 h3{ text-align: center; font-size: 28px; }
-    table tr td { padding-left: 50% !important; }
-    td{
+    .dashboard_block2 .col-md-4 h3 {
+        text-align: center;
+        font-size: 28px;
+    }
+
+    table tr td {
+        padding-left: 50% !important;
+    }
+
+    td {
         font-size: 15px;
     }
-    td:before{
+
+    td:before {
         font-weight: 600;
     }
-    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email{ word-break: break-all; }
+
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td .email {
+        word-break: break-all;
+    }
 
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3 {
         display: block;
@@ -672,23 +741,44 @@
         margin-bottom: 14px;
         text-align: center;
     }
+
     .admin_dashboard_container .content_text {
         padding: 20px;
     }
+
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
         font-size: 18px;
         float: none;
         padding: 8px 15px 8px 15px;
     }
+
     .rep_dashboard_wrapper3 button {
         margin-bottom: 0;
         width: 290px;
     }
-    .rep_dashboard_wrapper2 .inner_content{ padding: 20px; }
 
-    .admin_training_center_manage_popup .col-lg-12{ margin: 0; padding: 0;}
-    .admin_training_center_manage_popup .content_header_block h3 { font-size: 24px; margin-bottom: 20px; }
-    .tc_modal_wraapper .modal-body .terms_logo_wrapper { width: 100%; }
+    .rep_dashboard_wrapper2 .inner_content {
+        padding: 20px;
+    }
+
+    .admin_training_center_manage_popup .col-lg-12 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .admin_training_center_manage_popup .content_header_block h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .tc_modal_wraapper .modal-body .terms_logo_wrapper {
+        width: 100%;
+    }
+
+    .user_details_wrapper .left_wrapper h3 {
+        font-size: 28px;
+    }
+    .details_header h2 { font-size: 31px; }
 
 }
 

@@ -66,7 +66,7 @@
 
           <div class="s_part_wrapper">
             <div class="row">
-              <div class="col-sm-8">
+              <div class="col-md-8">
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="inputCity">City</label>
@@ -97,8 +97,8 @@
                 </div>
 
               </div>
-              <div class="col-sm-4">
-                <div class="form-group col-md-12" *ngIf="repdetails">
+              <div class="col-md-4 legal_doc">
+                <div class="form-group" *ngIf="repdetails">
                   <label>Legal Documents</label><br>
 
 
@@ -141,7 +141,7 @@
               </div>
               <div class="col-md-12 form-groupnew12wrapper">
                 <div class="row">
-              <div class="col-md-4 form-groupnew4">
+                <div class="col-md-4 form-groupnew4">
                 <label>Regional Manager</label>
 
                 <div class="form-group row" *ngIf="cookeiservice.get('usertype')!='admin' && repdetails!=null">
@@ -158,13 +158,7 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <div class="col-sm-12">
-                    <label>Signup Link:</label>
-                    <span *ngIf="repdetails!=null">{{_commonservice.siteurl}}signup/{{repdetails._id}}</span>
-                    <input type="button" value="Copy Url" class="copyurlbtn" ngxClipboard [cbContent]= callforcopy(repdetails._id) (click)="showcopied(copiedmodal)">
-                  </div>
-                </div>
+
 
 
                 <!--  <input type="text" class="form-control" readonly [formControl]="dataForm.controls['recruiter']" (keyup)="issubmit=0">
@@ -172,7 +166,24 @@
 
 
               </div>
-                <div class=" col-md-4 form-groupnew12" *ngIf="repdetails">
+                  <div class="col-md-4 form-groupnewlink">
+                    <div class="form-group">
+
+                        <label>Signup Link:</label>
+                        <span readonly *ngIf="repdetails!=null" class="form-control signup_link">{{_commonservice.siteurl}}signup/{{repdetails._id}}</span>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 form-groupnewlink ">
+                    <div class="form-group">
+
+                        <input type="button" value="Copy to Clipboard" class="copyurlbtn" ngxClipboard [cbContent]= callforcopy(repdetails._id) (click)="showcopied(copiedmodal)">
+
+                    </div>
+                  </div>
+
+                <div class=" col-md-4 " *ngIf="repdetails">
                   <span class="btn_position" *ngIf="repdetails.lock!=1"> Unlocked &nbsp;&nbsp;<span  (click)="togglelockedstatus()"  class="edit_user lock_unlock"> Lock</span></span>
                   <span class="btn_position" *ngIf="repdetails.lock==1"> Locked <span  (click)="togglelockedstatus()" class="edit_user lock_unlock">Unlock</span></span>
                   <span class="hide">Toggle</span>

@@ -64,7 +64,18 @@
                 <div class="nexgen_admin_table">
                     <div class="action_section">
                         <div class="inner_actionblock">
-                    <h3> {{menuval}}</h3>
+                    <h3 *ngIf="router.url!='/rep'"> {{menuval}}</h3>
+                    <div class="legend_status" *ngIf="router.url=='/rep'">
+                       <h2> STATUS LEGEND:</h2>
+                        <ul>
+                            <li>Not Qualified</li>
+                            <li>Pending Sign Up</li>
+                            <li>Pending Phone Verification</li>
+                            <li>Pending Contract</li>
+                            <li>Pending New Hire Training</li>
+                            <li>Dashboard Access</li>
+                        </ul>
+                    </div>
 
                             <a *ngIf="hideadd!=null && hideadd!='true' " (click)="openform(formtemplate,0)" class="addfrinderbtn s_getmybrand_savebutton"> Add {{sourcetitle}}</a>
                             <a *ngIf="slotlist=='true' " [routerLink]="['/slotview']" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>

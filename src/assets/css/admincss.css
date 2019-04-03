@@ -14,16 +14,19 @@
 
 
 .new_header .new_header2{ flex-grow: 7; }
-.new_header .new_header2  .navbar-nav{ margin: 0 auto!important; }
+.new_header .new_header2  .navbar-nav{ margin: 0 auto!important; text-align: center;
+ }
 
 .new_header .new_header2 .navbar-nav .nav-link {
     color: #3d3d3d!important;
     font-family: 'RalewaySemiBold';
-    font-size: 13px;
-    padding: 10px;
+    font-size: 14px;
+    padding: 0px;
     text-transform: uppercase;
 }
-
+.new_header .new_header2 .navbar-nav .nav-item{
+    margin-right: 15px;
+}
 .new_header .new_header3{ flex-grow: 1; }
 .new_header .new_header3 h5   {
     color: black;
@@ -38,7 +41,9 @@
 .new_header .new_header4 .profile_block{ padding: 0;  }
 .new_header .new_header4 .profile_block ul{ margin-bottom: 0; padding: 0; }
 .new_header .new_header4 .profile_block li{ list-style: none;}
-.new_header .new_header4 .profile_block .user_image{ width: 40px; display: block;
+.new_header .new_header4 .profile_block li a{ display: flex; align-items: center; }
+.new_header .new_header4 .profile_block .user_image{ width: 40px;
+    height:40px; display: block;
     border: 2px solid #00a8ef;
     border-radius: 50%;
     overflow: hidden;
@@ -211,6 +216,32 @@
 
 
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock {    margin: 15px 0;  }
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status {    border: 1px solid #00a8ef; }
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status h2{
+    background: #00a8ef; color: #fff; font-family: 'RalewaySemiBold'; font-size: 20px; padding: 10px 5px;
+}
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status ul li{
+    display: inline-block; margin: 10px; font-family: 'RalewayRegular'; list-style: circle;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd {    margin-right: 10px;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section { width: 94.8%;
     margin: 0 auto;
@@ -323,7 +354,7 @@
     font-family: 'RalewaySemiBold';
     color: #fff;
     font-size: 16px;
-    padding: 5px 5px 3px 5px;
+    padding: 5px 5px 4px 5px;
     margin-bottom: 10px;
     margin-left: 10px;
     text-transform: uppercase;
@@ -335,7 +366,7 @@
     font-family: 'RalewaySemiBold';
     color: #fff;
     font-size: 16px;
-    padding: 5px 5px 3px 5px;
+    padding: 5px 5px 4px 5px;
     text-transform: uppercase;
     cursor: pointer;
     margin-bottom: 10px;
@@ -1139,8 +1170,8 @@
 /*for seperated part*/
 .user_details_wrapper textarea{ resize: none; }
 .user_details_wrapper .form-control:focus{ box-shadow: none; }
-.user_details_wrapper .s_part_wrapper .col-sm-8{ padding-right: 0; padding-left: 0px;}
-.user_details_wrapper .s_part_wrapper .col-sm-8 .col-md-6{
+.user_details_wrapper .s_part_wrapper .col-md-8{ padding-right: 0; padding-left: 0px;}
+.user_details_wrapper .s_part_wrapper .col-md-8 .col-md-6{
     padding-left:0;}
 .user_details_wrapper .s_part_wrapper .col-sm-4{ padding-left: 0px; padding-right: 0; }
 .user_details_wrapper .s_part_wrapper .col-sm-4 .notsub{  overflow: hidden!important; height: auto!important; margin-bottom: -20px;}
@@ -1148,6 +1179,8 @@
 .user_details_wrapper .s_part_wrapper .col-sm-4 .col-md-12 .btn_position{ display: block; text-align: center; }
 
 .form-groupnew12wrapper{padding-left: 0px; padding-right: 0; }
+.form-groupnewlink{padding-left: 0px; padding-right: 15px; }
+
 .s_part_wrapper .form-groupnew4{ padding-left: 0px; padding-right: 0;  }
 .s_part_wrapper .form-groupnew4 .col-sm-12{ padding-left: 0px;  width: 100%!important;
     max-width: 100%!important; }
@@ -1182,6 +1215,7 @@
     padding: 8px 15px 7px 15px;
 
 }
+
 .user_details_wrapper .left_wrapper .doctor_section{ padding: 15px; padding-top: 0;  padding-left: 0;
     padding-right: 0;
 }
@@ -1783,5 +1817,17 @@
     margin: 35px 0 0 0;
 }
 .nav-item:focus{ outline: none;}
+.signup_link{ word-break: break-all; position:relative; }
 
-
+.copyurlbtn{
+    background: #00a8ef;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'RalewayBold';
+    color: #fff;
+    border: none;
+    padding: 5px;
+    margin-top: 45px;
+}
+.legal_doc{ margin-left: 0;
+    padding-left:0; padding-right: 0;}

@@ -44,7 +44,10 @@ export class SignupComponent implements OnInit {
                 console.log(result);
                 if(result.status=='success') {
                     this.cookeiservice.set('jwttoken', result.token);
-                    this.getsignupdetails();
+                    setTimeout(()=>{
+                        this.getsignupdetails();
+                    },1000);
+
                 }
             }, error => {
                 console.log('Oooops!');
@@ -56,7 +59,7 @@ export class SignupComponent implements OnInit {
       console.log(this.id);
       this.sourceconditionval ={_id:this.id};
       if(this.cookeiservice.get('jwttoken')!='' && this.cookeiservice.get('jwttoken')!=null) {
-          this.getsignupdetails();
+       //   this.getsignupdetails();
       }
       //else{
           this.cookeiservice.set('userid',this.id);
@@ -68,7 +71,8 @@ export class SignupComponent implements OnInit {
         email: ["", SignupComponent.validateEmail],
         phoneno: ['',Validators.required],
        // username: ['',Validators.required],
-        username: ["", SignupComponent.validateUsername],
+     //   username: ["", SignupComponent.validateUsername],
+        username: [""],
         password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)])],
         confirmpassword: ["", Validators.required],
         address1: ['',Validators.required],
@@ -145,7 +149,7 @@ export class SignupComponent implements OnInit {
               lastname: [this.datalist[0].lastname,Validators.required],
               email: [this.datalist[0].email, SignupComponent.validateEmail],
               phoneno: [this.datalist[0].phoneno,Validators.required],
-              username: ["", SignupComponent.validateUsername],
+              username: [""],
               password: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(15)])],
               confirmpassword: ["", Validators.required],
               address1: ['',Validators.required],

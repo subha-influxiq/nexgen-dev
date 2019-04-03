@@ -35,7 +35,7 @@
       </div>
     <!--end first section-->
       <div class="form-row User_section">
-       <div class="form-group col-md-4">
+       <div class="form-group col-md-4 hide">
         <label> Username*</label>
         <input type="text" class="form-control" [formControl]="dataForm.controls['username']" (keyup)="issubmit=0">
            <span class="error" *ngIf="!dataForm.controls['username'].valid && dataForm.controls['username'].touched && issubmit==1">Username field is required.</span>

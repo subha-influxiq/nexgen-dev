@@ -128,7 +128,7 @@ export class FunnelComponent implements OnInit {
       return { 'invalidemail': true };
     }
   }
-  dosubmit() {
+  dosubmit(template:TemplateRef<any>) {
 
     this.issubmit=1;
    // console.log(this.dataForm.value['state']);
@@ -158,9 +158,11 @@ export class FunnelComponent implements OnInit {
             result = res;
             console.log('result....');
             console.log(result);
+            this.firstresult=result;
             this.issubmit=0;
-            if(result.status=='error'){
-              this.errormg=result.msg;
+            if(result.status=='error') {
+              this.message=result.msg;
+              this.modalRef = this.modal.show(template, {class: 'funnel_modal'});
             }
             if(result.status=='success') {
           /*    this.cookeiservice.set('userid', result.item._id);
@@ -211,6 +213,7 @@ export class FunnelComponent implements OnInit {
     }
   }
   dosubmit1(template:TemplateRef<any>){
+    console.log('1');
     console.log(this.dataForm1.value['id']);
     if(this.dataForm1.value['id']==''){
       let link = this._commonservices.nodesslurl + 'leadsignup';
@@ -225,16 +228,23 @@ export class FunnelComponent implements OnInit {
         lead_step:1,
         type: this._commonservices.roletypes[2].type2
       };
-
+      console.log('2');
       this._http.post(link, data)
           .subscribe(res => {
             let result:any ={};
             result = res;
+            console.log('3');
             console.log('result....');
             console.log(result);
+            console.log('4');
             this.firstresult=result;
-            if(result.status=='success') {
-              this.cookeiservice.set('jwttoken', result.token);
+            console.log('this.firstresult');
+            console.log(this.firstresult);
+            if(result.status=='error') {
+              this.message=result.msg;
+              this.modalRef = this.modal.show(template, {class: 'funnel_modal'});
+            }
+            else{  this.cookeiservice.set('jwttoken', result.token);
              /* this.cookeiservice.set('userid', result.item._id);
               this.cookeiservice.set('jwttoken', result.token);
               this.cookeiservice.set('useremail', result.item.email);
@@ -284,7 +294,7 @@ if(this.dataForm1.value['pcrtesting']==1){
 if(this.dataForm1.value['pcrtesting']!=1){
   this.dataForm1.value['companyname'] = null;
 }
-
+console.log('valid - '+this.dataForm1.valid);
 if (this.dataForm1.valid) {
   let lockunlockval;
   lockunlockval=0;
@@ -336,8 +346,10 @@ if (this.dataForm1.valid) {
         if(result.status=='success') {
           console.log(this.dataForm1.value['noofclinics']);
           if(this.dataForm1.value['noofclinics']>=40){
+            console.log('this.firstresult');
+            console.log(this.firstresult);
             this.cookeiservice.set('userid', this.dataForm1.value['id']);
-            this.cookeiservice.set('jwttoken', this.firstresult.token);
+            this.cookeiservice.set('jwttoken', this.firstresult.item.token);
             this.cookeiservice.set('useremail', this.dataForm1.value['email']);
             this.cookeiservice.set('userfirstname', this.dataForm1.value['firstname']);
             this.cookeiservice.set('userlastname', this.dataForm1.value['lastname']);
