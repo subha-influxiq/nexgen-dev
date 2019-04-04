@@ -160,6 +160,12 @@ export class SignupComponent implements OnInit {
               zip: ['',Validators.required],
             },{validator: this.matchingPasswords('password', 'confirmpassword')});
                 this.lockuser();
+                console.log( 'result.res[0]');
+                console.log( result.res[0]);
+                this.cookeiservice.set('userid', result.res[0]._id);
+                this.cookeiservice.set('usertype', result.res[0].type);
+                console.log( this.cookeiservice.get('userid'));
+                console.log( this.cookeiservice.get('usertype'));
             }
           }
         }, error => {

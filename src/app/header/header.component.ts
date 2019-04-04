@@ -22,14 +22,42 @@ export class HeaderComponent implements OnInit {
     this.type=this.cookeiservice.get('usertype');
     this.idis=this.cookeiservice.get('userid');
     this.sourceconditionval ={_id:this.idis};
+     /* router.url!='/rep'*/
+   /* if(router.url=='/tempaccess'){
+        console.log('i----------');
+        this.calltoken();
+
+    }*/
+   console.log('this.type---------');
+   console.log(this.type);
+   console.log(this.cookeiservice.get('userid'));
     if(this.type=='rep' && this.cookeiservice.get('userid')!=''){
         this.getsignupdetails();
     }
-    if(this.cookeiservice.get('jwttoken')=='' || this.cookeiservice.get('userid') == ''){
+    if((this.cookeiservice.get('jwttoken')=='' || this.cookeiservice.get('userid') == '')){
       this.router.navigate(['/']);
     }
   }
+  /*  calltoken(){
+        let link = this._commonservices.nodesslurl + 'temptoken';
+        let data={};
+        this._http.post(link,data)
+            .subscribe(res => {
+                let result:any ={};
+                result = res;
+                console.log('result....');
+                console.log(result);
+                if(result.status=='success') {
+                    this.cookeiservice.set('jwttoken', result.token);
+                    setTimeout(()=>{
+                        this.getsignupdetails();
+                    },1000);
 
+                }
+            }, error => {
+                console.log('Oooops!');
+            });
+    }*/
   ngOnInit() {
     setInterval(() => {
       this.getslidervalueforimage();

@@ -366,6 +366,9 @@ export class RepdetailsComponent implements OnInit {
         }, 2000);
     }
     showstatusofrep(item){
+        if(item.noofclinics==null && (item.password==null || item.password=='')) return 'Not qualified';
+        //  if((item.noofclinics<40 || item.noofclinics==null) && (item.password!='' && item.password!=null)) return 'Not Qualified';
+        if((item.noofclinics<40 || item.noofclinics==null) && (item.password=='' || item.password==null)) return 'Not Qualified';
         if(item.noofclinics==null && (item.password!=null && item.password!='')) {
             if(item.lock==1){
                 return 'Pending Phone Verification';
@@ -383,8 +386,8 @@ export class RepdetailsComponent implements OnInit {
                 return 'Dashboard Access';
             }
         }
-        if(item.noofclinics==null && (item.password==null || item.password=='')) return 'Not qualified';
-        if((item.noofclinics<40 || item.noofclinics==null) && (item.password!='' && item.password!=null)) return 'Not Qualified';
+
+
 
         if(item.noofclinics>=40 && (item.password==null || item.password=='')) return 'Pending Sign Up';
 
