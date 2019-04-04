@@ -9,10 +9,10 @@
 
   <div>
 
-      <div *ngFor="let item of resources| orderBy:'priority':'reverse';let i=index;">
+      <div *ngFor="let item of resources| orderBy:'priority';let i=index;"> <!--:'reverse'-->
        <div class="inner_resources_block_head"> {{item.categoryname}}</div>
           <div class="inner_resources_block">
-          <div class="main_div" *ngFor="let item1 of item.resource| orderBy:'priority':'reverse'"> <!--| orderBy:'priority':'reverse'-->
+          <div class="main_div" *ngFor="let item1 of item.resource| orderBy:'priority'"> <!--| orderBy:'priority':'reverse'-->
               <div class="for_content">
                   <div class="img_div">
                       <!--  <p>{{_commonservices.gettype(item.file)}}</p>-->

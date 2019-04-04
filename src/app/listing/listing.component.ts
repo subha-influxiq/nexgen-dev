@@ -746,8 +746,29 @@ export class ListingComponent implements OnInit {
         this.formdataval[i].filename=this.files[0].name;
     }
     showstatusofrep(item){
-        if(item.noofclinics<40 || item.noofclinics==null) return 'Not Qualified';
-        if(item.noofclinics>=40 && item.username==null) return 'Pending Sign Up';
+        if(item.noofclinics==null && (item.password==null || item.password=='')) return 'Not qualified';
+        if(item.noofclinics==null && (item.password!=null && item.password!='')) {
+            if(item.lock==1){
+                return 'Pending Phone Verification';
+            }
+            if(item.signup_step2==1  && item.contractstep==null && item.reptraininglessonstep==null) { // && item.lock==0
+                return 'Pending Contract';
+            }/*
+             if(item.signup_step2==1  && item.contractstep==null && item.reptraininglessonstep==null) { // && item.lock==1
+             return 'Pending Phone Verification';
+             }*/
+            if(item.signup_step2==1  && item.contractstep==1 && item.reptraininglessonstep==null) { // && item.lock==0
+                return 'Pending New Hire Training';
+            }
+            if(item.signup_step2==1 && item.contractstep==1 && item.reptraininglessonstep==1){ // && item.lock==0
+                return 'Dashboard Access';
+            }
+        }
+
+        if((item.noofclinics<40 || item.noofclinics==null) && (item.password!='' && item.password!=null)) return 'Not Qualified';
+
+        if(item.noofclinics>=40 && (item.password==null || item.password=='')) return 'Pending Sign Up';
+
         if(item.lock==1){
             return 'Pending Phone Verification';
         }

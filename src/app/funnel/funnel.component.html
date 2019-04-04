@@ -312,10 +312,13 @@
 
 <ng-template #messagemodal>
   <div class="modal-body brandmanagement_modal">
+    <div class="cross">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hide()">X</button>
+    </div>
     <div class="logo_wrapper">
       <img src="../../assets/images/logo.png">
     </div>
-    <div class="message_success">{{message}}</div>
+    <div class="message_success text-center">{{message}}</div>
 
   </div>
 </ng-template>

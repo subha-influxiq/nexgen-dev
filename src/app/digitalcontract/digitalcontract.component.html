@@ -45,7 +45,7 @@
                 <tr>
                   <th scope="col">Date Added</th>
                   <th scope="col">User Id</th>
-                  <th scope="col">Username </th>
+                <!--  <th scope="col">Username </th>-->
                   <th scope="col">First Name</th>
                   <th scope="col">Last Name</th>
                   <th scope="col">Owner</th>
@@ -62,7 +62,7 @@
                 <tr *ngFor="let item of singledata">
                   <td> {{commonservice.showunixtodate1(item.contractsigndate)}} </td>
                   <td>{{item.unique_id}}</td>
-                  <td>{{item.username}}</td>
+                <!--  <td>{{item.username}}</td>-->
                   <td>{{item.firstname}}</td>
                   <td>{{item.lastname}}</td>
                   <td>{{item.recruiter}}</td>

@@ -32,7 +32,7 @@ export class UsermanagementComponent implements OnInit {
   userdetails()
   {
     const link = this.commonservices.nodesslurl+'datalist?token='+this.cookieservice.get('jwttoken');
-    this._http.post(link,{source:'rep_view'})
+    this._http.post(link,{source:'rep_view',condition:{password:{$exists:true}}})
         .subscribe(res=>{
           let result;
           result=res;

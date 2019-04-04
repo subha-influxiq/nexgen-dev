@@ -36,7 +36,7 @@ export class UseraccountsettingComponent implements OnInit {
       userids:['',Validators.required],
       firstname:['',Validators.required],
       lastname:['',Validators.required],
-      username:['',Validators.required],
+      username:[''],
       password:[''],
       confirmpassword:[''],
       email:['',Validators.required],

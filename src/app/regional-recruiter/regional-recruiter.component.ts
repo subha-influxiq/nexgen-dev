@@ -18,7 +18,7 @@ export class RegionalRecruiterComponent implements OnInit {
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'unique_id',name:'User ID',role:0,func:'',class:'id',type:'text'},
-      {value:'username',name:'Username',role:0,func:'',class:'username',type:'text'},
+   /*   {value:'username',name:'Username',role:0,func:'',class:'username',type:'text'},*/
       {value:'firstname',name:'First Name',role:0,func:'',class:'firstname',type:'text'},
       {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
       {value:'email',name:'Email Id',role:0,func:'',class:'email',type:'text'},
@@ -32,7 +32,7 @@ export class RegionalRecruiterComponent implements OnInit {
     this.formdata=[
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'lastname',label:'Last Name',placeholder:'Enter Last Name',validationrule:{required:true},validationerrormsg:'is required'},
-      {inputtype:'email',name:'email',label:'Email Id',placeholder:'Enter Your Email',validationrule:{required:true,email:true},validationerrormsg:'is required and should be valid'},      {inputtype:'text',name:'username',label:'Username',placeholder:'Enter Your Username',validationrule:{required:true},validationerrormsg:'is required'},
+      {inputtype:'email',name:'email',label:'Email Id',placeholder:'Enter Your Email',validationrule:{required:true,email:true},validationerrormsg:'is required and should be valid'},      /*{inputtype:'text',name:'username',label:'Username',placeholder:'Enter Your Username',validationrule:{required:true},validationerrormsg:'is required'},*/
       {inputtype:'hidden',name:'type',label:"type",placeholder:"Enter Password",value:this._commonservices.roletypes[1].type1},
 
       {inputtype:'password',name:'password',label:"Password",placeholder:"Enter Password",validationrule:{required:true},validationerrormsg:'is required',isaddonly:true},

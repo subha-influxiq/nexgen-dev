@@ -224,24 +224,6 @@
     display: inline-block; margin: 10px; font-family: 'RalewayRegular'; list-style: circle;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd {    margin-right: 10px;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section { width: 94.8%;
     margin: 0 auto;
@@ -1097,6 +1079,14 @@
 
 /*Signature DIV*/
 .brandmanagement_modal { border: 3px solid #00c0ff; border-radius: 2px; }
+
+.brandmanagement_modal .cross{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-right: 5px;
+}
+
 .brandmanagement_modal .logo_wrapper{ text-align: center; }
 .brandmanagement_modal .logo_wrapper img{ max-width: 100%; width: auto;}
 .brandmanagement_modal .digital_sign h3{ color: #00c0ff; text-transform: capitalize;font-family: 'RalewayMedium'; margin-top: 25px; }

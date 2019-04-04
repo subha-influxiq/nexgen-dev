@@ -400,4 +400,7 @@ console.log(con);
           console.log('Oooops!');
         });
   }
+  hide(){
+    this.modalRef.hide();
+  }
 }
