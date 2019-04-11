@@ -176,6 +176,7 @@
         padding-top: 25%;
 
     }
+    .user_account_setting_wrapper .account_inner_wrapper .form_wrapper{  width: 100%  }
 
     .rep_dashboard_wrapper1 {
         background: #16343c url(../images/rep_dashboardbgsmall.jpg) no-repeat center top !important;
@@ -551,6 +552,16 @@
         text-align: center;
         margin: 0 auto;
     }
+    .user_account_setting_wrapper .account_inner_wrapper .form_wrapper form .col-sm-2{
+        display: block;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .user_account_setting_wrapper .account_inner_wrapper .form_wrapper form .col-sm-10 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 @media screen and (max-width: 650px) {
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock{ display: block; text-align: center; }
@@ -673,6 +684,9 @@
 
     .training_leftpart .accordian_image .content_area p .O3 span span span {
         font-size: 28px !important;
+    }
+    .user_account_setting_wrapper .account_inner_wrapper {
+        width: 93%;
     }
 }
 

@@ -40,8 +40,8 @@ export class UseraccountsettingComponent implements OnInit {
       password:[''],
       confirmpassword:[''],
       email:['',Validators.required],
-      phonenumber:['',Validators.required],
-      address:[''],
+        phoneno:['',Validators.required],
+      address1:[''],
       address2:[''],
       city:['',Validators.required],
       state:['',Validators.required],
@@ -102,9 +102,9 @@ export class UseraccountsettingComponent implements OnInit {
                 this.dataForm.controls['lastname'].patchValue(onedata[0].lastname);
                 this.dataForm.controls['username'].patchValue(onedata[0].username);
                 this.dataForm.controls['email'].patchValue(onedata[0].email);
-                this.dataForm.controls['phonenumber'].patchValue(onedata[0].phoneno);
-                this.dataForm.controls['address'].patchValue(onedata[0].address);
-                this.dataForm.controls['address2'].patchValue(onedata[0].address1);
+                this.dataForm.controls['phoneno'].patchValue(onedata[0].phoneno);
+                this.dataForm.controls['address1'].patchValue(onedata[0].address1);
+                this.dataForm.controls['address2'].patchValue(onedata[0].address2);
                 this.dataForm.controls['city'].patchValue(onedata[0].city);
                 this.dataForm.controls['state'].patchValue(onedata[0].state);
                 this.dataForm.controls['zip'].patchValue(onedata[0].zip);
@@ -156,8 +156,8 @@ export class UseraccountsettingComponent implements OnInit {
 
             data.firstname=this.dataForm.controls['firstname'].value;
             data.lastname=this.dataForm.controls['lastname'].value;
-            data.phonenumber=this.dataForm.controls['phonenumber'].value;
-            data.address=this.dataForm.controls['address'].value;
+            data.phoneno=this.dataForm.controls['phoneno'].value;
+            data.address1=this.dataForm.controls['address1'].value;
             data.address2=this.dataForm.controls['address2'].value;
             data.city=this.dataForm.controls['city'].value;
             data.state=this.dataForm.controls['state'].value;

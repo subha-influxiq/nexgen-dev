@@ -34,7 +34,6 @@ export class TempaccessComponent implements OnInit {
   ngOnInit() {
   }
 
-
   getrepdetails(){
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:'users',condition:{_id_object:this.cookeiservice.get('userid')}})
@@ -65,14 +64,10 @@ export class TempaccessComponent implements OnInit {
                     console.log(this.rec);
                     this.recemail=result.res[0].email;
                     //this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
-
                   }
                 }, error => {
                   console.log('Oooops!');
                 });
-
-
-
           }
         }, error => {
           console.log('Oooops!');

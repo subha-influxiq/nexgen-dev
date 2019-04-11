@@ -447,6 +447,7 @@
             <input type="radio" name="{{item1._id}}" value="{{item1._id}}" [(ngModel)]="quizlistwithanswer[i].myanswer" (click)="check_answer_iscorrect(item,i)"> <label>{{item1.answer}} </label>
           </div>
          <!-- <a class="submit_button" (click)="submit_answer_iscorrect()"> SUBMIT</a>-->
+              <span *ngIf="item.hascorrectanswer==false && issubmit==1" class="error">*Incorrect Answer</span>
         </div>
 
      <!--   <div class="q_wrap">

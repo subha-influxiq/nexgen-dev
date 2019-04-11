@@ -96,11 +96,11 @@
 
         <nav class="navbar navbar-expand-lg navbar-light ">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrep" aria-controls="navbarSupportedContentrep" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse"  *ngIf="router.url!='/reptrainingcenter'">
+          <div class="collapse navbar-collapse" id="navbarSupportedContentrep"  *ngIf="router.url!='/reptrainingcenter'">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active" [routerLink]="['/repdashboard']">
                 <a class="nav-link" >Dashboard <span class="sr-only"></span></a>
@@ -157,11 +157,11 @@
 
         <nav class="navbar navbar-expand-lg navbar-light ">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrec" aria-controls="navbarSupportedContentrec" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse">
+          <div class="collapse navbar-collapse" id="navbarSupportedContentrec">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active" [routerLink]="['/regionaldashboard']">
                 <a class="nav-link" >Dashboard <span class="sr-only">(current)</span></a>

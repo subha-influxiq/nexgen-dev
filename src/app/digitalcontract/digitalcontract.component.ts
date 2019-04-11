@@ -239,4 +239,5 @@ export class DigitalcontractComponent implements OnInit {
         }
         console.log(this.filterval);
     }
+
 }

@@ -26,7 +26,7 @@ export class RepComponent implements OnInit {
       /*{value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},*/
       {value:'recruiter',name:'Regional Manager',role:0,func:'',class:'owner',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
-      {value:'phoneno',name:'Phone',role:0,func:'',class:'mobile',type:'text'},
+      {value:'phoneno',name:'Phone',role:0,func:'',class:'mobile',type:'phoneno'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'showstatus'},
       {value:'legaldocdetails',name:'Legal Document',role:0,func:'',class:'legaldoc',type:'showlegaldoc'},
       {value:'lock',name:'Locked ?',role:0,func:'',class:'lock',type:'locked'},

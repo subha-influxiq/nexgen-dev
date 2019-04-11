@@ -1821,3 +1821,5 @@
 }
 .legal_doc{ margin-left: 0;
     padding-left:0; padding-right: 0;}
+
+.q_wrap .error{ font-family: 'RalewayRegular'; color: #ff0000; font-size: 16px; }

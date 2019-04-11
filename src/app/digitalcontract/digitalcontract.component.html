@@ -8,14 +8,14 @@
           <div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
               <div class="search_content">
-                <h3><span>Search by UserId: </span> <input type="text" ><button>search</button> </h3>
+                <h3><span>Search by UserId: </span> <input type="text"  [(ngModel)]="filterval1" (keyup)="searchbyval()" ><button>search</button> </h3>
               </div>
               <div class="search_content">
-                <h3> <span>Search by Name:  </span> <input type="text" ><button>search</button> </h3>
+                <h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval2" (keyup)="searchbyval()"><button>search</button> </h3>
               </div>
             </div>
             <div class="clearfix"></div>
-            <input type="text" placeholder="Search..." class="hide">
+            <input type="text" placeholder="Search..." [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
                 <tbody>
 
 
-                <tr *ngFor="let item of singledata">
+                <tr *ngFor="let item of singledata | usersearch:listFilter.value">
                   <td> {{commonservice.showunixtodate1(item.contractsigndate)}} </td>
                   <td>{{item.unique_id}}</td>
                 <!--  <td>{{item.username}}</td>-->
