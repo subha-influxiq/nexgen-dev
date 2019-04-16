@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9a772f34-ad1d-455b-beed-5f7672c2c31b" name="gapi-webdev" url="http://the-webdevelopers.com">
+        <fileTransfer host="the-webdevelopers.com" port="21" rootFolder="/gapi">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

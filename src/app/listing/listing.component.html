@@ -76,11 +76,12 @@
                             <li>Dashboard Access</li>
                         </ul>
                     </div>
-
+                        <div class="abcde">
                             <a *ngIf="hideadd!=null && hideadd!='true' " (click)="openform(formtemplate,0)" class="addfrinderbtn s_getmybrand_savebutton"> Add {{sourcetitle}}</a>
                             <a *ngIf="slotlist=='true' " [routerLink]="['/slotview']" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>
                             <a *ngIf="slotlist=='true' " href="http://api.nexgentesting.com/gapi/test1.php"  class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar settings</a>
                             <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -95,7 +96,7 @@
                                 </thead>
                                 <tbody>
                                 <tr *ngFor="let item of datalist | usersearch:listFilter.value; index as i " >
-                                    <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col" class="{{item._id}}">
+                                    <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col" class="{{item._id}}" >
                                         <span *ngIf="item1.type=='text' && router.url!='/rep'" [ngClass]="item1.class">
                                            <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
                                            <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->

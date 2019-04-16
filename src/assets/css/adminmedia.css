@@ -98,8 +98,9 @@
         transform: inherit;
         margin: 0 auto;
     }
-
-    .mark_done { bottom: 10px; }
+/*change*/
+    /*.mark_done { bottom: 10px; }*/
+    .mark_done { bottom: 4px; }
     .admin_header .col-md-8 { width: 77%; }
     .admin_header .col-md-4 {   width: 23%;  }
     .nexgen_header_wrapper .social_media_container p {
@@ -200,7 +201,7 @@
     }
 
     .user_management_wrapper .user_management_inner .inner_content_wrapper {
-        width: 100%;
+        width: 100% !important;
         display: inline-block;
         text-align: center;
     }
@@ -352,8 +353,11 @@
         flex: 1;
         justify-content: center;
     }
-
-    .user_details_wrapper {
+    /*change*/
+    .single_content .inner_content_wrapper{
+        width: 100%!important;
+    }
+   /* .user_details_wrapper {
         width: 95%;
         flex-direction: column-reverse;
     }
@@ -368,7 +372,7 @@
     .user_details_wrapper .left_wrapper {
         width: 100%;
     }
-    .new_header .new_header2 { padding-top: 15px; }
+    .new_header .new_header2 { padding-top: 15px; }*/
 
 }
 
@@ -387,12 +391,21 @@
 }
 
 @media screen and (max-width: 992px) {
-    .new_header .new_header2 .navbar-nav .nav-item {
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ font-size: 16px;}
+    /*change*/
+    /*.new_header .new_header2 .navbar-nav .nav-item {
         margin-right: 0;
         background: #ffffff;
         margin: 5px 0;
         padding: 10px 0;
-    }
+    }*/
+    .new_header .new_header2 .navbar-nav .nav-item {
+        	        color: #3d3d3d!important;
+        	        background: #fff;
+        	        border-bottom: 1px solid #c1c1c1;
+        	    }
+
+
     .new_header .new_header2 .navbar {
         padding: 0 !important;
         text-align: center;
@@ -450,11 +463,20 @@
 
 @media screen and (max-width: 840px) {
     .listevent_inner_wrapper .main_inner_content>div { width: 49.4%; }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
+        font-size: 14px;
+        padding: 8px 15px 7px;
+    }
 }
 @media screen and (max-width: 800px) {
     .manageavilability_wrapper .avail_search_sec .search_content .button_responsive { display: block; width: 100%;  margin-top: 10px; }
 }
 @media screen and (max-width: 768px) {
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock {
+        align-items: center;
+        flex-direction: column;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3{ margin: 0px 0px 15px 0px; }
     .dashboard_block2 .col-md-4 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
@@ -552,6 +574,7 @@
         text-align: center;
         margin: 0 auto;
     }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td video{ width: 100%; height: auto; }
     .user_account_setting_wrapper .account_inner_wrapper .form_wrapper form .col-sm-2{
         display: block;
         max-width: 100%;
@@ -563,12 +586,32 @@
         max-width: 100%;
     }
 }
+@media screen and (max-width: 680px) {
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
+          width: 60%!important;
+          margin: 5px 0;
+          margin-right: 0!important;
+          padding-right: 0!important;
+        text-align: center; padding: 6px!important;
+      }
+}
 @media screen and (max-width: 650px) {
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock{ display: block; text-align: center; }
-    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3{ display: block; margin-bottom: 10px; }
-    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ float: none; }
 
     .listevent_inner_wrapper .main_inner_content>div { width: 100%; }
+    /*change*/
+    .modal_test .modal-content {
+             padding: 0px!important;
+            }
+.nextGen_admin_mainwrapper .single_content .search_content h3 span{
+              	        display: block!important;
+              	        margin-bottom: 15px!important;
+              	    }
 }
 @media screen and (max-width: 576px) {
     .training_leftpart .accordian_image {
@@ -584,10 +627,13 @@
     }
     .training_leftpart .card-header{ padding: 5px 0; }
     .nexgen_header_wrapper { width: 100%; }
-
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
+        width: 100%;
+    }
 
 }
-@media screen and (max-width:520px) {
+/*@media screen and (max-width:520px) {*/
+@media screen and (max-width:580px) {
     .user_management_wrapper .user_management_inner .inner_content_wrapper input {
         margin-bottom: 10px;
         width: 95%;
@@ -685,10 +731,15 @@
     .training_leftpart .accordian_image .content_area p .O3 span span span {
         font-size: 28px !important;
     }
-    .user_account_setting_wrapper .account_inner_wrapper {
-        width: 93%;
+    /*change*/
+    /*.user_account_setting_wrapper .account_inner_wrapper {*/
+        /*width: 93%;*/
+    /*}*/
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper .download, .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper .view{
+        display: block;
+        text-align: center;
+         }
     }
-}
 
 
 
@@ -788,12 +839,31 @@
     .tc_modal_wraapper .modal-body .terms_logo_wrapper {
         width: 100%;
     }
+    /*change*/
+    .dashboard_block2{ display: flex; width: 100%; flex-direction: column;}
+     .dashboard_block2 .col-md-4 button{padding: 0;display: block;width: 100%;
+	        font-size: 18px;
+	        position: inherit;
+        right: 0;
+	        left: 0;
+	}
+
 
     .user_details_wrapper .left_wrapper h3 {
         font-size: 28px;
     }
     .details_header h2 { font-size: 31px; }
 
+
+}
+
+/*change*/
+@media screen and (max-width:320px) {
+    .dashboard_block2 .col-md-4 .reps_inner_block1,
+    .dashboard_block2 .col-md-4 .reps_inner_block2,
+    .dashboard_block2 .col-md-4 .reps_inner_block3 {
+        padding: 5px;
+    }
 }
 
 

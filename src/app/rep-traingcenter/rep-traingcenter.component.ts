@@ -439,7 +439,9 @@ export class RepTraingcenterComponent implements OnInit {
                 this.modalRef1=this.modal.show(template, {class: 'quizmodal'});
             })
     }
-
+    closemodal(){
+        this.modalRef1.hide();
+    }
     check_answer_iscorrect(item,i){
         setTimeout(()=>{
             this.correctanscount=0;

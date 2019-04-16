@@ -105,15 +105,11 @@ export class HeaderComponent implements OnInit {
     this.cookeiservice.deleteAll();
     this.router.navigate(['/login']);
   }
-  showphoneno(phn){
-      console.log('phone------'+phn);
-/*    let p03=phn.slice(0,3);
-    console.log(p03);
-    let p36=phn.slice(3,6);
-    console.log(p36);
-    let p610=phn.slice(6,10);
-    console.log(p610);*/
-    if(phn !=null) return '('+phn.slice(0,3)+')'+phn.slice(3,6)+'-'+phn.slice(6,10);
-    else return phn;
-  }
+
+    showphoneno(phn){
+        phn = phn.replace(/ /g,"");
+        phn = phn.replace(/-/g,"");
+        if(phn !=null) return phn.slice(0,3)+'-'+phn.slice(3,6)+'-'+phn.slice(6,10);
+        else return phn;
+    }
 }

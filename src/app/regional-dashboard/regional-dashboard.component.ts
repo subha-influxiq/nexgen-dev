@@ -52,14 +52,14 @@ export class RegionalDashboardComponent implements OnInit {
                           this.totalnewhiretraining=result['res'][0]['count'];
                       }
 
-                      if(result['res']!=null && result['res'][0]!=null && result['res'][0]['_id']=='Rep Trainning Table' ){
+                      if(result['res']!=null && result['res'][0]!=null && result['res'][0]['_id']=='Rep Training' ){
                           this.totalreptraining=result['res'][0]['count'];
                       }
                       if(result['res']!=null && result['res'][1]!=null && result['res'][1]['_id']=='New Hire Trainning' ){
                           this.totalnewhiretraining=result['res'][1]['count'];
                       }
 
-                      if(result['res']!=null && result['res'][1]!=null && result['res'][1]['_id']=='Rep Trainning Table' ){
+                      if(result['res']!=null && result['res'][1]!=null && result['res'][1]['_id']=='Rep Training' ){
                           this.totalreptraining=result['res'][1]['count'];
                       }
 

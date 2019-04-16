@@ -53,7 +53,9 @@ export class RepDashboardComponent implements OnInit {
       this.router.navigate([link]);
     }
   showphoneno(phn){
-    if(phn !=null) return '('+phn.slice(0,3)+')'+phn.slice(3,6)+'-'+phn.slice(6,10);
+    phn = phn.replace(/ /g,"");
+    phn = phn.replace(/-/g,"");
+    if(phn !=null) return phn.slice(0,3)+'-'+phn.slice(3,6)+'-'+phn.slice(6,10);
     else return phn;
   }
   gotorepevents(){
