@@ -298,7 +298,7 @@ console.log('valid - '+this.dataForm1.valid);
 if (this.dataForm1.valid) {
   let lockunlockval;
   lockunlockval=0;
-  if(this.dataForm1.value['noofclinics']<40) {
+  if(this.dataForm1.value['noofclinics']<12) {
     lockunlockval = 1;
   }
   let objarr=['regionalrecruiter_id'];
@@ -345,7 +345,7 @@ if (this.dataForm1.valid) {
         }
         if(result.status=='success') {
           console.log(this.dataForm1.value['noofclinics']);
-          if(this.dataForm1.value['noofclinics']>=40){
+          if(this.dataForm1.value['noofclinics']>=12){
             console.log('this.firstresult');
             console.log(this.firstresult);
             this.cookeiservice.set('userid', this.dataForm1.value['id']);

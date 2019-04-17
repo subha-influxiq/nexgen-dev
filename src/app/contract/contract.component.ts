@@ -193,7 +193,13 @@ export class ContractComponent implements OnInit {
         iftoconsultant1:  this.dataForm.controls['iftoconsultant1'].value,
         iftoconsultant2:  this.dataForm.controls['iftoconsultant2'].value,
         iftoconsultant3:  this.dataForm.controls['iftoconsultant3'].value,
-        iftoconsultant4:  this.dataForm.controls['iftoconsultant4'].value
+        iftoconsultant4:  this.dataForm.controls['iftoconsultant4'].value,
+
+
+
+        by2:  this.dataForm.controls['by2'].value,
+        consultant1:  this.dataForm.controls['consultant1'].value,
+        by4:  this.dataForm.controls['by4'].value,
       }
       this._http.post(link, {data:data})
           .subscribe(res => {

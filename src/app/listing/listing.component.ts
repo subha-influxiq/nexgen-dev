@@ -750,7 +750,7 @@ export class ListingComponent implements OnInit {
 
       //  if((item.noofclinics<40 || item.noofclinics==null) && (item.password!='' && item.password!=null)) return 'Not Qualified';
 
-        if((item.noofclinics<40 || item.noofclinics==null) && (item.password=='' || item.password==null)) return 'Not Qualified';
+        if((item.noofclinics<12 || item.noofclinics==null) && (item.password=='' || item.password==null)) return 'Not Qualified';
 
         if(item.noofclinics==null && (item.password!=null && item.password!='')) {
             if(item.lock==1){
@@ -772,7 +772,7 @@ export class ListingComponent implements OnInit {
 
 
 
-        if(item.noofclinics>=40 && (item.password==null || item.password=='')) return 'Pending Sign Up';
+        if(item.noofclinics>=12 && (item.password==null || item.password=='')) return 'Pending Sign Up';
 
         if(item.lock==1){
             return 'Pending Phone Verification';

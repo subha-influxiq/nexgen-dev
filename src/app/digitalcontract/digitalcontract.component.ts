@@ -132,13 +132,15 @@ export class DigitalcontractComponent implements OnInit {
                             iftoconsultant3: [this.datalist[0].iftoconsultant3],
                             iftoconsultant4: [this.datalist[0].iftoconsultant4],
                             by1: [''],
-                            by2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            // by2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            by2: [this.datalist[0].by2],
                             printname1: ['Tom Willis'],
                             printname2: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             title1: ['Principle'],
                             title2: ['Consultant'],
                             printvalue: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
-                            consultant1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            // consultant1: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            consultant1: [this.datalist[0].consultant1],
                             date2: [moment(this.datalist[0].contractsigndate).format("Do, MMM, YYYY")],
                             printname3: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             by3: [''],
@@ -146,7 +148,8 @@ export class DigitalcontractComponent implements OnInit {
                             printname6: ['Tom Willis'],
                             title5: ['Principle'],
                             date5: [moment(this.datalist[0].contractsigndate).format("Do, MMM, YYYY")],
-                            by4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            // by4: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
+                            by4: [this.datalist[0].by4],
                             printname5: [this.datalist[0].firstname+' '+this.datalist[0].lastname],
                             title4: ['Consultant'],
                             date4: [moment(this.datalist[0].contractsigndate).format("Do, MMM, YYYY")],
@@ -173,7 +176,8 @@ export class DigitalcontractComponent implements OnInit {
                     if(this.datalist1.length>0){
                         this.dataForm2=this.kp.group({
                             printvalue: [this.datalist1[0].firstname+' '+this.datalist1[0].lastname],
-                            consultant1: [this.datalist1[0].firstname+' '+this.datalist1[0].lastname],
+                            // consultant1: [this.datalist1[0].firstname+' '+this.datalist1[0].lastname],
+                            consultant1: [this.datalist1[0].consultant1],
                             date2: [moment(this.datalist1[0].contractsigndate).format("Do, MMM, YYYY")],
                         });
                     }
@@ -201,7 +205,8 @@ export class DigitalcontractComponent implements OnInit {
                         this.dataForm3=this.kp.group({
                             printname3: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
                             blank1: [''],
-                            by4: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
+                            // by4: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
+                            by4: [this.datalist2[0].by4],
                             printname5: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
                             title4: [this.datalist2[0].firstname+' '+this.datalist2[0].lastname],
                             date4: [moment(this.datalist2[0].contractsigndate).format("Do, MMM, YYYY")],
