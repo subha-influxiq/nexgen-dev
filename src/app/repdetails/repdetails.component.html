@@ -268,11 +268,15 @@
               <label> How often do you call each office?  </label>
             </div>
             <div class="col">
-              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0"> Daily  </label>
-              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice1']" (keyup)="issubmit=0"> Weekly  </label>
-              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice2']" (keyup)="issubmit=0"> Monthly  </label>
-              <!--<input type="text" class="form-control" placeholder="Last name" readonly [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0">
-              <span class="errortext" *ngIf="!dataForm.controls['calleachoffice'].valid && dataForm.controls['calleachoffice'].touched && issubmit==1">This field is required.</span>-->
+             <!-- <label class="labellantext"> <input type="radio" [formControl]="dataForm.controls['calleachofficeradio']" (keyup)="issubmit=0" value="0"> Daily  </label>
+              <label class="labellantext"> <input type="radio" [formControl]="dataForm.controls['calleachofficeradio']" (keyup)="issubmit=0" value="1"> Weekly  </label>
+              <label class="labellantext"> <input type="radio" [formControl]="dataForm.controls['calleachofficeradio']" (keyup)="issubmit=0" value="2"> Monthly  </label>
+              <span class="errortext" *ngIf="!dataForm.controls['calleachofficeradio'].valid && dataForm.controls['calleachofficeradio'].touched && issubmit==1">This field is required.</span>-->
+
+
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice')" disabled> Daily  </label>
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice1']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice1')" disabled> Weekly  </label>
+              <label class="labellantext"> <input type="checkbox" [formControl]="dataForm.controls['calleachoffice2']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice2')" disabled> Monthly  </label>
             </div>
           </div>
 

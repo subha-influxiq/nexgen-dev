@@ -75,6 +75,7 @@ export class RepdetailsComponent implements OnInit {
       other: [''],
       othertext: [''],
       noofpersonallycall: ['',Validators.required],
+        // calleachofficeradio: ['',Validators.required],
       calleachoffice: [''],
       calleachoffice1: [''],
       calleachoffice2: [''],
@@ -118,8 +119,8 @@ export class RepdetailsComponent implements OnInit {
           }else{
             let userdet;
             userdet = result.res[0];
-            console.log('userdet.calleachoffice1');
-            console.log(userdet.calleachoffice1);
+            console.log('userdet.calleachoffice==========================');
+            console.log(userdet);
             this.repdetails = result.res[0];
             this.notes();
             this.dataForm = this.kp.group({
@@ -148,6 +149,7 @@ export class RepdetailsComponent implements OnInit {
               calleachoffice: [userdet.calleachoffice],
               calleachoffice1: [userdet.calleachoffice1],
               calleachoffice2: [userdet.calleachoffice2],
+              //  calleachofficeradio: [userdet.calleachofficeradio,Validators.required],
               noofdirectaccess: [userdet.noofdirectaccess,Validators.required],
               workinmedicalfield: [userdet.workinmedicalfield,Validators.required],
               pcrtesting: [userdet.pcrtesting,Validators.required],
@@ -210,6 +212,7 @@ export class RepdetailsComponent implements OnInit {
         other: this.dataForm.value['other'],
         othertext: this.dataForm.value['othertext'],
         noofpersonallycall: this.dataForm.value['noofpersonallycall'],
+       //   calleachofficeradio: this.dataForm.value['calleachofficeradio'],
         calleachoffice: this.dataForm.value['calleachoffice'],
         calleachoffice1: this.dataForm.value['calleachoffice1'],
         calleachoffice2: this.dataForm.value['calleachoffice2'],
@@ -406,5 +409,13 @@ export class RepdetailsComponent implements OnInit {
         if(item.signup_step2==1 && item.contractstep==1 && item.reptraininglessonstep==1){ // && item.lock==0
             return 'Dashboard Access';
         }
+    }
+    setvalforcalleach(item){
+        this.dataForm.patchValue({calleachoffice : false});
+        this.dataForm.patchValue({calleachoffice1 : false});
+        this.dataForm.patchValue({calleachoffice2 : false});
+        setTimeout(()=>{
+            this.dataForm.controls[item].patchValue(true);
+        },100);
     }
 }

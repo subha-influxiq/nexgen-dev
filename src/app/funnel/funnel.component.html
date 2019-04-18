@@ -263,9 +263,17 @@
 
 
           <div class="form-group "><label class="labellantext">How often do you call each office? </label>
-            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0"> Daily  </label>
-            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice1']" (keyup)="issubmit=0"> Weekly  </label>
-            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice2']" (keyup)="issubmit=0"> Monthly  </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice')"> Daily  </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice1']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice1')"> Weekly  </label>
+            <label class="labellantext"> <input type="checkbox" [formControl]="dataForm1.controls['calleachoffice2']" (keyup)="issubmit=0" (click)="setvalforcalleach('calleachoffice2')"> Monthly  </label>
+
+
+
+          <!--  <label class="labellantext"> <input type="radio" [formControl]="dataForm1.controls['calleachofficeradio']" (keyup)="issubmit=0" value="0"> Daily  </label>
+            <label class="labellantext"> <input type="radio" [formControl]="dataForm1.controls['calleachofficeradio']" (keyup)="issubmit=0" value="1"> Weekly  </label>
+            <label class="labellantext"> <input type="radio" [formControl]="dataForm1.controls['calleachofficeradio']" (keyup)="issubmit=0" value="2"> Monthly  </label>
+            <span class="errortext" *ngIf="!dataForm1.controls['calleachofficeradio'].valid && dataForm1.controls['calleachofficeradio'].touched && issubmit==1">This field is required.</span>-->
+
 
 
           <!--  <input type="text"  class="alaninput1" [formControl]="dataForm1.controls['calleachoffice']" (keyup)="issubmit=0">

@@ -34,7 +34,14 @@
           <div class="action_section">
             <div class="inner_actionblock">
               <h3> Appointment List</h3>
+             <!-- <h3 (click)="seteventtime(1)"> Future Events</h3>
+              <h3 (click)="seteventtime(0)"> Past Events </h3>-->
+              <div class="abcde">
+              <a (click)="seteventtime(1)" class="addfrinderbtn s_getmybrand_savebutton"> Future Events</a>
+              <a (click)="seteventtime(0)" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Past Events</a>
+
               <div class="clearfix"></div>
+              </div>
             </div>
           </div>
           <div class="table-responsive admin_table_wrapper generaltablecls">
@@ -50,10 +57,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of googleevents| usersearch:listFilter.value; let i=index">
-                  <td data-title="User ID">{{item.userdata.unique_id}}</td>
-                  <td data-title="Name">{{item.userdata.firstname}} {{item.userdata.lastname}}</td>
-                  <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
-                  <td data-title="Time">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
+                  <td data-title="User ID" *ngIf="item.userdata">{{item.userdata.unique_id}}</td>
+                  <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}}</td>
+                  <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
+                  <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
                 </tr>
                 </tbody>
               </table>

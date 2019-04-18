@@ -89,7 +89,8 @@ export class DigitalcontractComponent implements OnInit {
     getlegaldocdata()
     {
         const link = this.commonservice.nodesslurl+'datalist?token='+this.cookieservice.get('jwttoken');
-        this._http.post(link,{source:'rep_view',condition:{contractstep:1}})
+        // this._http.post(link,{source:'rep_view',condition:{contractstep:1}})
+        this._http.post(link,{source:'rep_contract_view',condition:{contractstep:1}})
             .subscribe(res=>{
                 let result;
                 result=res;
@@ -154,6 +155,15 @@ export class DigitalcontractComponent implements OnInit {
                             title4: ['Consultant'],
                             date4: [moment(this.datalist[0].contractsigndate).format("Do, MMM, YYYY")],
                         });
+                        if(this.datalist[0].by2==null){
+                            this.dataForm.controls['by2'].patchValue(this.datalist[0].firstname+' '+this.datalist[0].lastname);
+                        }
+                        if(this.datalist[0].by4==null){
+                            this.dataForm.controls['by4'].patchValue(this.datalist[0].firstname+' '+this.datalist[0].lastname);
+                        }
+                        if(this.datalist[0].consultant1==null){
+                            this.dataForm.controls['consultant1'].patchValue(this.datalist[0].firstname+' '+this.datalist[0].lastname);
+                        }
                     }
                 }
             }, error => {
@@ -180,6 +190,9 @@ export class DigitalcontractComponent implements OnInit {
                             consultant1: [this.datalist1[0].consultant1],
                             date2: [moment(this.datalist1[0].contractsigndate).format("Do, MMM, YYYY")],
                         });
+                        if(this.datalist1[0].consultant1==null){
+                            this.dataForm2.controls['consultant1'].patchValue(this.datalist1[0].firstname+' '+this.datalist1[0].lastname);
+                        }
                     }
                     this.getexhibit2(id,lgModal1);
                 }
@@ -214,6 +227,9 @@ export class DigitalcontractComponent implements OnInit {
                             title5: ['Principle'],
                             date5: [moment(this.datalist2[0].contractsigndate).format("Do, MMM, YYYY")]
                         });
+                        if(this.datalist2[0].by4==null){
+                            this.dataForm3.controls['by4'].patchValue(this.datalist2[0].firstname+' '+this.datalist2[0].lastname);
+                        }
                     }
                 }
             },error=>{

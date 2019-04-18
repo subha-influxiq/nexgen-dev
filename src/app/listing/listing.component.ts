@@ -85,7 +85,7 @@ export class ListingComponent implements OnInit {
     public flag: number=0;
     public nameis: any=[];
     public issubmit=0;
-
+    public loaderdiv=false;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -809,5 +809,37 @@ export class ListingComponent implements OnInit {
     addeventform1class(){
         if(this.router.url=='/calendar' || this.router.url=='/event') return 'newaddeventformclass ' ;
         else return '';
+    }
+    syncgoogle(){
+        const link = this._commonservice.nodesslurl+'modifyusercalender';
+        let data={
+            userid:this.cookeiservice.get('userid'),
+            email:this.cookeiservice.get('useremail')
+        }
+        this.loaderdiv=true;
+        setTimeout(()=>{
+            this.loaderdiv=false;
+        },10000);
+        this._http.post(link,data)
+            .subscribe(res => {
+                let result:any;
+                result = res;
+                this.issubmit=0;
+                //  console.log(result);
+                if(result.status=='success'){
+                    //   this.modalRef.hide();
+                    this.isedit=0;
+                    setTimeout(() => {
+                        this.getdatalist();
+                        this.imageChangedEvent=[];
+                        this.croppedImage=[];
+                        this.modalRef.hide();
+                        this.dataForm.reset();
+                    }, 2000);
+
+                }
+            }, error => {
+                console.log('Oooops!');
+            });
     }
 }

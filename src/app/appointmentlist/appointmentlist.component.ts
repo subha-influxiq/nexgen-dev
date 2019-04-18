@@ -15,6 +15,7 @@ export class AppointmentlistComponent implements OnInit {
   public filterval;
   public filterval1;
   public filterval2;
+  public futureevent=1;
 
   constructor(public _commonservice:Commonservices,public _http:HttpClient,public cookeiservice:CookieService)
   {
@@ -24,11 +25,26 @@ export class AppointmentlistComponent implements OnInit {
     this.getgoogleevents();
   }
   getgoogleevents(){
-    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'googleevents_view',condition:{
-      startdate:{$gt: moment().subtract(1, 'days').format('YYYY-MM-DD')},
-      eventuser_object:this.cookeiservice.get('userid')
+    let sourcecondition;
+    if(this.cookeiservice.get('usertype')=='admin'){
+      if(this.futureevent==1){
+        sourcecondition={ startdate:{$gt: moment().subtract(1, 'days').format('YYYY-MM-DD')}};
+      }
+      else{
+        sourcecondition={ startdate:{$lt: moment().format('YYYY-MM-DD')}};
+      }
+    }else{
+      if(this.futureevent==1){
+        sourcecondition={ startdate:{$gt: moment().subtract(1, 'days').format('YYYY-MM-DD')},
+          eventuser_object:this.cookeiservice.get('userid')};
+      }else{
+        sourcecondition={ startdate:{$lt: moment().format('YYYY-MM-DD')},
+          eventuser_object:this.cookeiservice.get('userid')};
+      }
+
     }
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+    this._http.post(link,{source:'googleevents_view',condition:sourcecondition
     })
         .subscribe(res => {
           let result:any;
@@ -51,5 +67,9 @@ export class AppointmentlistComponent implements OnInit {
       this.filterval = this.filterval2 + '|';
     }
     console.log(this.filterval);
+  }
+  seteventtime(val){
+    this.futureevent=val;
+    this.getgoogleevents();
   }
 }

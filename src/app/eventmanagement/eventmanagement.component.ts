@@ -31,7 +31,12 @@ export class EventmanagementComponent implements OnInit {
      /* {value:'description',name:'Description',role:0,func:'',class:'description',type:'text'},*/
       {value:'timezone',name:'Timezone',role:0,func:'',class:'timezone',type:'timezone',selectvalue:'show'}
     ];
-    this.sourcecondition={'userid_object':this.cookieservice.get('userid')};
+    // if(this.cookieservice.get('usertype')=='admin'){
+    //   this.sourcecondition={};
+    // }else{
+      this.sourcecondition={'userid_object':this.cookieservice.get('userid')};
+    // }
+
     console.log(this.sourcecondition);
     this.formdata=[
       {inputtype:'text',name:'meetingwith',label:'Event Title',placeholder:'Meeting WIth',validationrule:{required:true},validationerrormsg:'is required'},

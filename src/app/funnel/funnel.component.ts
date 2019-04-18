@@ -94,9 +94,10 @@ export class FunnelComponent implements OnInit {
       other: [''],
       othertext: [''],
       noofpersonallycall: ['',Validators.required],
-      calleachoffice: [''],
-      calleachoffice1: [''],
-      calleachoffice2: [''],
+      // calleachofficeradio: ['',Validators.required],
+     calleachoffice: [''],
+     calleachoffice1: [''],
+     calleachoffice2: [''],
       noofdirectaccess: ['',Validators.required],
       workinmedicalfield: ['',Validators.required],
       pcrtesting: ['',Validators.required],
@@ -197,8 +198,9 @@ export class FunnelComponent implements OnInit {
                 other: [''],
                 othertext: [''],
                 noofpersonallycall: ['',Validators.required],
+             //  calleachofficeradio: ['',Validators.required],
                 calleachoffice: [''],
-                calleachoffice1: [''],
+                 calleachoffice1: [''],
                 calleachoffice2: [''],
                 noofdirectaccess: ['',Validators.required],
                 workinmedicalfield: ['',Validators.required],
@@ -213,8 +215,19 @@ export class FunnelComponent implements OnInit {
     }
   }
   dosubmit1(template:TemplateRef<any>){
-    console.log('1');
-    console.log(this.dataForm1.value['id']);
+      console.log('email');
+      console.log(this.dataForm1.value['email']);
+      if(this.dataForm1.value['email']==null || this.dataForm1.value['email']==''){
+          let x:any;
+          for (x in this.dataForm1.controls) {
+              this.dataForm1.controls[x].markAsTouched();
+          }
+          console.log(this.dataForm1.valid);
+          this.issubmit=1;
+      }else{
+          this.issubmit=0;
+   // console.log('1');
+ //   console.log(this.dataForm1.value['id']);
     if(this.dataForm1.value['id']==''){
       let link = this._commonservices.nodesslurl + 'leadsignup';
       let data = {
@@ -263,6 +276,7 @@ export class FunnelComponent implements OnInit {
     else{
       this.calldosubmit1(template);
     }
+      }
   }
   calldosubmit1(template:TemplateRef<any>){
     console.log('calldosubmit1');
@@ -322,9 +336,10 @@ if (this.dataForm1.valid) {
     other:  this.dataForm1.value['other'],
     othertext:  this.dataForm1.value['othertext'],
     noofpersonallycall:  this.dataForm1.value['noofpersonallycall'],
-    calleachoffice: this.dataForm1.value['calleachoffice'],
-    calleachoffice1: this.dataForm1.value['calleachoffice1'],
-    calleachoffice2: this.dataForm1.value['calleachoffice2'],
+  //   calleachofficeradio:  this.dataForm1.value['calleachofficeradio'],
+   calleachoffice: this.dataForm1.value['calleachoffice'],
+   calleachoffice1: this.dataForm1.value['calleachoffice1'],
+   calleachoffice2: this.dataForm1.value['calleachoffice2'],
     noofdirectaccess:  this.dataForm1.value['noofdirectaccess'],
     workinmedicalfield:  this.dataForm1.value['workinmedicalfield'],
     pcrtesting:  this.dataForm1.value['pcrtesting'],
@@ -403,4 +418,12 @@ console.log(con);
   hide(){
     this.modalRef.hide();
   }
+    setvalforcalleach(item){
+        this.dataForm1.patchValue({calleachoffice : false});
+        this.dataForm1.patchValue({calleachoffice1 : false});
+        this.dataForm1.patchValue({calleachoffice2 : false});
+      setTimeout(()=>{
+          this.dataForm1.controls[item].patchValue(true);
+      },100);
+    }
 }

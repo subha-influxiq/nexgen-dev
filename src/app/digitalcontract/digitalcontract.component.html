@@ -59,8 +59,8 @@
                 <tbody>
 
 
-                <tr *ngFor="let item of singledata | usersearch:listFilter.value">
-                  <td> {{commonservice.showunixtodate1(item.contractsigndate)}} </td>
+                <tr *ngFor="let item of singledata | usersearch:listFilter.value | orderBy:'contractsigndate':'reverse' ">
+                  <td> {{commonservice.showunixtodate1(item.contractsigndate)}}</td>
                   <td>{{item.unique_id}}</td>
                 <!--  <td>{{item.username}}</td>-->
                   <td>{{item.firstname}}</td>

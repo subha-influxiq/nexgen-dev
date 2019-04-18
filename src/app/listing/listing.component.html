@@ -1,9 +1,19 @@
-<div style="width:100vw; height:100vh; position: absolute; z-index: 999; background: #fff; " *ngIf="showLoader==1">
-    <div style="width:100vw; height:100vh; display:table-cell; vertical-align:middle; text-align:center; ">
-        <img src="assets/images/s_getmybrand_logo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
-        <div class="loader">
-        </div>
+<!--<div style="width:100vw; height:100vh; position: absolute; z-index: 999; background: #fff; " *ngIf="showLoader==1">-->
+    <!--<div style="width:100vw; height:100vh; display:table-cell; vertical-align:middle; text-align:center; ">-->
+        <!--<img src="assets/images/s_getmybrand_logo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>-->
+        <!--<div class="loader">-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div style="width:100vw; height:100vh; display:table-cell; vertical-align:middle; text-align:center; position: fixed; top: 0; background: #fff; z-index: 999" *ngIf="loaderdiv">
+    <div style="width: 100vw; height: 100vh; display: table-cell; vertical-align: middle; ">
+
+    <img src="assets/images/logo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
+
+    <div class="loader"></div>
+        <p class="sync_data">Synchronizing Data ...</p>
     </div>
+
 </div>
 
 <div class="nextGen_admin_mainwrapper">
@@ -80,6 +90,7 @@
                             <a *ngIf="hideadd!=null && hideadd!='true' " (click)="openform(formtemplate,0)" class="addfrinderbtn s_getmybrand_savebutton"> Add {{sourcetitle}}</a>
                             <a *ngIf="slotlist=='true' " [routerLink]="['/slotview']" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>
                             <a *ngIf="slotlist=='true' " href="http://api.nexgentesting.com/gapi/test1.php"  class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar settings</a>
+                            <a *ngIf="slotlist=='true' " (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Sync with Google Calendar</a>
                             <div class="clearfix"></div>
                             </div>
                         </div>
@@ -388,3 +399,6 @@
 
     </div>
 </ng-template>
+
+
+
