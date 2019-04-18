@@ -105,6 +105,7 @@
             <!--<div>Done</div>-->
           </div>
             <!--for file download button-->
+            <div class="action_wrapper">
             <a  *ngIf="item.filetype=='file'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.fileservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> </a>
             <!--for file download button-->
             <a *ngIf="item.filetype=='image'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.imageservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
@@ -112,7 +113,7 @@
           <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id,item.trainingcategory,quizmodal)" class="quizz_button">Take quiz</a>
           <a class="mark_done" *ngIf="item.yesorno=='no' && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>
 
-
+            </div>
          <!-- <button *ngIf="item.yesorno=='yes' && item.quizcomplete==0" (click)="gotoquizmodal(item._id,quizmodal)" class="quizz_button">Take quiz</button>
           <a class="mark_done" *ngIf="((item.yesorno=='yes' && item.quizcomplete==1) || item.yesorno=='no') && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>-->
         </accordion-group>

@@ -196,8 +196,15 @@
 .user_management_wrapper .user_management_inner .w_9_download_btn span{ font-family: 'OpenSansSemiBold'; }
 .user_management_wrapper .user_management_inner .inner_search_wrapper { background: #000; padding: 10px 0;   width: 100%; }
 
-.user_management_wrapper .user_management_inner  .inner_content_wrapper .search_content{ width:48%;  float: left;}
-.user_management_wrapper .user_management_inner  .inner_content_wrapper{ width:1100px; margin: 0 auto; }
+/*.user_management_wrapper .user_management_inner  .inner_content_wrapper .search_content{ width:48%;  float: left;}*/
+.user_management_wrapper .user_management_inner .inner_content_wrapper .search_content {
+    display: inline-flex;
+    justify-content: center;
+    margin-right: 15px;
+}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .search_content:last-child{margin-right: 0px !important;}
+
+.user_management_wrapper .user_management_inner  .inner_content_wrapper{display: flex; justify-content: center;}
 
 /*change start*/
 .newinnerSearch2 .search_content{
@@ -240,7 +247,7 @@
 
 
 
-.sync_data{color: #000; font-family: 'RalewaySemiBold'; font-size: 20px; margin: 0; margin-top: 15px;}
+
 .nextGen_admin_mainwrapper .nexgen_admin_table h3{  margin-bottom: 15px; font-family: 'RalewayBold'; text-transform: uppercase; }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row{ margin: 0;}
 
@@ -250,13 +257,13 @@
     display: flex;
     justify-content: space-between;
 }
-/*.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status {    border: 1px solid #00a8ef; }
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status { width: 100%; border: 1px solid #00a8ef; }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status h2{
     background: #00a8ef; color: #fff; font-family: 'RalewaySemiBold'; font-size: 20px; padding: 10px 5px;
 }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .legend_status ul li{
     display: inline-block; margin: 10px; font-family: 'RalewayRegular'; list-style: circle;
-}*/
+}
 
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd {    margin-right: 10px;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section { width: 94.8%;
@@ -600,7 +607,7 @@
     text-align: center;
     cursor: pointer;
 }
-.rep_dashboard_wrapper3{ width: 98.2%; margin: 0 auto; }
+.rep_dashboard_wrapper3{ width: 100%; margin: 0 auto; padding: 0 15px;}
 .rep_dashboard_wrapper3 .row{ margin: 0; }
 .rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0; }
 .rep_dashboard_wrapper3 .row .col-md-4:nth-last-child(1) { padding-right: 0; }
@@ -610,6 +617,8 @@
 .rep_dashboard_wrapper3 .buttoncss:focus{ outline: none;}*/
 .rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; }
 .rep_dashboard_wrapper3 button:focus{ outline: none;}
+.rep_dashboard_wrapper3 button a{ color: #fff; text-decoration: none; }
+.rep_dashboard_wrapper3 button a:hover{ color: #fff; }
 
 /*USER ACCOUNT SETTING*/
 .user_account_setting_wrapper .account_inner_wrapper{  background-color: #efefef; width: 90%; margin: 0 auto; padding: 15px; margin-bottom: 65px; }
@@ -801,10 +810,18 @@
 .training_leftpart .panel{ background:#22bdff; }
 .training_leftpart .panel button{ color: #fff; text-decoration: none; font-family: 'OpenSansSemiBold'; font-size: 24px; text-transform: uppercase; }
 .training_leftpart .panel  .card-body{ background: url("../images/trainin_lesson_bg.png") no-repeat; background-size: cover;  position: relative; height: auto;
-   /*change*/ /*padding: 100px 0; */
-    padding: 20px 0;
+   padding: 100px 0;
 }
-
+.training_leftpart .panel .card-body .action_wrapper{
+    bottom: 0;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.training_leftpart .panel .card-body .action_wrapper a{ margin: 0 15px;}
+.training_leftpart .panel .card-body .action_wrapper a:last-child{ margin: 0px;}
 .training_leftpart  .carousel-control-prev-icon {
     background-image: url(../images/prev_icon1.png)!important;
     padding: 15px;
@@ -824,17 +841,10 @@
 .training_leftpart .accordian_image {
     background: #fff;
     width: 80%;
-    /*top: 0;*/
-    top: 50%;
-    /*position: inherit;*/
-    position: absolute;
-    /*left: 0;*/
-    left: 50%;
-    /*transform: inherit;*/
-    transform: translate(-50%, -50%);
     padding: 30px 20px;
-    /*height: auto;*/
-    /*margin: 0 auto;*/
+    height: auto;
+    margin: 0 auto;
+    position: relative;
 }
 .training_leftpart .accordian_image  .lucoplast1{ width: 35px; height: 35px; position: absolute; background: #f0f0f0; border:1px solid #c4c8cd; top:-15px; left: -15px; transform: rotate(-15deg); }
 .training_leftpart .accordian_image  .lucoplast2{ width: 35px; height: 35px;  position: absolute; background: #f0f0f0; border:1px solid #c4c8cd; top:-15px; right: -15px; transform: rotate(-15deg); }
@@ -891,9 +901,6 @@
     padding: 2px!important;
 }
 .download_pdf{
-    position: absolute;
-    right: 90px;  /*change*//*175px;*/
-    bottom: -48px; /*10px*/
     background: #000;
     padding: 7px 8px;
     width: 30px;
@@ -1757,11 +1764,7 @@
     font-family: 'RalewaySemiBold';
     font-size: 20px;
     padding: 3px 15px 4px;
-    /*padding: 7px 15px 5px;*/
     text-transform: uppercase;
-    position: absolute;
-    /*right: 10px;*/
-    /*bottom: 10px;*/
     right: 20px;
     bottom: 20px;
 }
