@@ -257,6 +257,7 @@
                         <span *ngIf="item.inputtype=='radio'">
                             <label>{{item.value}} {{item.valuelabel}}</label>
                        <input type="radio"  [name]="item.name" [value]="item.value" [formControl]="dataForm.controls[item.name]"  class="form-control" (keyup)="issubmit=0" [ngClass]="item.class">
+                            <br/>
                         </span>
 
                         <input *ngIf="item.inputtype=='email' " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">

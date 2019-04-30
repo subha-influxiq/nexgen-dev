@@ -22,6 +22,7 @@ export class AdminheaderComponent implements OnInit {
   public idis:any;
   public repdetails:any;
   public reptraininglessondetails:any;
+    public interval;
 
   constructor(public cookie:CookieService,public router:Router,private _commonservices: Commonservices,private _http: HttpClient) {
       console.log(this.cookie.get('refreshtoken'));
@@ -46,9 +47,9 @@ export class AdminheaderComponent implements OnInit {
   }
 
   ngOnInit() {
-          setInterval(() => {
+      this.interval =  setInterval(() => {
               this.getslidervalueforimage();
-          }, 15000);
+          }, 35000);
   }
    // http://api.nexgentesting.com:7001/modifyemptyslides
     getslidervalueforimage() {
@@ -163,5 +164,8 @@ export class AdminheaderComponent implements OnInit {
         phn = phn.replace(/-/g,"");
         if(phn !=null) return phn.slice(0,3)+'-'+phn.slice(3,6)+'-'+phn.slice(6,10);
         else return phn;
+    }
+    ngOnDestroy() {
+        clearInterval(this.interval);
     }
 }

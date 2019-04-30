@@ -11,16 +11,44 @@ declare var moment: any;
 })
 export class AppointmentlistComponent implements OnInit {
   public googleevents:any;
+  public googleeventsbackup:any;
   public last: string;
   public filterval;
-  public filterval1;
-  public filterval2;
+  // public filterval1;
+  // public filterval2;
+  public userfilterval;
   public futureevent=1;
 
   constructor(public _commonservice:Commonservices,public _http:HttpClient,public cookeiservice:CookieService)
   {
 
   }
+
+  usersearch(){
+    if(this.userfilterval==null || this.userfilterval ==''){
+      this.googleevents=this.googleeventsbackup;
+    }else{
+      this.googleevents=[];
+      for(let i in this.googleeventsbackup){
+        if( this.googleeventsbackup[i].userdata != null && this.googleeventsbackup[i].userdata.unique_id==this.userfilterval){
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+  usernamesearch(){
+    if(this.filterval==null || this.filterval ==''){
+      this.googleevents=this.googleeventsbackup;
+    }else{
+      this.googleevents=[];
+      for(let i in this.googleeventsbackup){
+        if( this.googleeventsbackup[i].userdata != null && this.googleeventsbackup[i].userdata.firstname==this.filterval){
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+
   ngOnInit() {
     this.getgoogleevents();
   }
@@ -43,6 +71,7 @@ export class AppointmentlistComponent implements OnInit {
       }
 
     }
+    // sourcecondition={unique_id:35920};
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:'googleevents_view',condition:sourcecondition
     })
@@ -52,22 +81,23 @@ export class AppointmentlistComponent implements OnInit {
           if(result.status=='error'){
           }else{
             this.googleevents = result.res;
+            this.googleeventsbackup = result.res;
             console.log(this.googleevents);
           }
         }, error => {
           console.log('Oooops!');
         });
   }
-  searchbyval() {
-    this.filterval = '';
-    if (this.filterval1 != '' && this.filterval1 != null) {
-      this.filterval = this.filterval1 + '|';
-    }
-    if (this.filterval2 != '' && this.filterval2 != null) {
-      this.filterval = this.filterval2 + '|';
-    }
-    console.log(this.filterval);
-  }
+  // searchbyval() {
+  //   this.filterval = '';
+  //   if (this.filterval1 != '' && this.filterval1 != null) {
+  //     this.filterval = this.filterval1 + '|';
+  //   }
+  //   if (this.filterval2 != '' && this.filterval2 != null) {
+  //     this.filterval = this.filterval2 + '|';
+  //   }
+  //   console.log(this.filterval);
+  // }
   seteventtime(val){
     this.futureevent=val;
     this.getgoogleevents();

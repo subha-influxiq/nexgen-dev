@@ -169,6 +169,7 @@
 }
 @media screen  and  (max-width: 1280px){
     .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 48%; }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ font-size: 16px!important; margin-bottom: 10px;}
 }
 @media screen  and  (max-width: 1240px){
     .rep_dashboard_wrapper1 {
@@ -185,6 +186,11 @@
 
 
 @media screen and (max-width: 1199px) {
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3{ margin-bottom: 13px;}
     .admin_dashboard_container {
         background: #16343c url("../images/dashboardbg_small.jpg") no-repeat center top;
         background-size: 100%;
@@ -390,6 +396,12 @@
         margin-bottom: 3px;
         font-size: 15px;
     }
+    .booknowmodal {
+        width: 90%!important;
+        max-width: 100%!important;
+        margin: 50px auto;
+    }
+    .listevent_wrapper { width: 90%; }
 }
 
 
@@ -403,10 +415,16 @@
     .dashboard_block2 {
         padding-right: 0;
     }
-
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde a:first-child{margin-right: 10px;}
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde a{ margin-bottom: 0;}
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde{
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
 
 @media screen and (max-width: 992px) {
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content{margin-right: 5px!important;}
     .new_header .new_header2 .navbar-nav .nav-link {
         padding: 10px 0;
         font-size: 14px;
@@ -625,12 +643,19 @@
         align-items: center;
     }
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a {
-        width: 60%!important;
+        width: 100%!important;
         margin: 5px 0;
-        margin-right: 0!important;
-        padding-right: 0!important;
-        text-align: center; padding: 6px!important;
+
+        text-align: center; padding: 6px!important; padding-right: 0!important;
     }
+    .listevent_wrapper {
+        width: 90%;
+    }
+    .one{
+        width: 48%!important;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd{ margin-right: 0!important;}
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a:first-child{ margin-right: 0!important;}
 }
 @media screen and (max-width: 650px) {
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock{ display: block; text-align: center; }
@@ -644,6 +669,7 @@
         display: block!important;
         margin-bottom: 15px!important;
     }
+    .booknowmodal .slotevent h3{ font-size: 34px; line-height: 30px; }
 }
 @media screen and (max-width: 576px) {
     .resources_content_wrapper .inner_resources_block .main_div {
@@ -689,6 +715,11 @@
     }
 }
 @media screen and (max-width:480px) {
+    .resources_content_wrapper .inner_resources_block .main_div .for_content p{ word-break: break-all;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content{ margin-right: 0!important;}
+    .one{ width: 100%!important; }
+    .booknowmodal .slotevent h3{ font-size: 30px; }
+
     .admin_dashboard_container .content_text h2 {
         font-size: 36px;
     }
@@ -780,8 +811,9 @@
 
 @media screen and (max-width: 450px) {
     .resources_content_wrapper .inner_resources_block .main_div {
-        width: 65%;
+        width: 80%;
     }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a { width: 91% !important; }
 }
 @media screen and (max-width: 430px) {
 
@@ -806,7 +838,9 @@
     }
     .listevent_wrapper .event_content_wrapper .evnt_right_content { width: 100%;  }
     .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group .select_inpu2 { width: 100%; margin-bottom: 0; }
-
+    .newaddeventformclass .form-group:nth-child(13) {
+        width: auto;
+    }
 }
 
 @media screen and (max-width: 411px) {
@@ -902,6 +936,20 @@
 }
 
 /*change*/
+@media screen and (max-width:360px) {
+    .booknowmodal .slotevent h3 {
+        font-size: 26px;
+    }
+    .resources_wrapper .resources_header1 {
+        font-size: 30px;
+    }
+    .resources_wrapper h3 { font-size: 18px!important; }
+    .resources_content_wrapper .inner_resources_block_head {
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+}
 @media screen and (max-width:320px) {
     .dashboard_block2 .col-md-4 .reps_inner_block1,
     .dashboard_block2 .col-md-4 .reps_inner_block2,

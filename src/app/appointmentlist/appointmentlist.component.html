@@ -8,14 +8,16 @@
           <div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
               <div class="search_content">
-                <h3><span>Search by UserId: </span> <input type="text"  [(ngModel)]="filterval1" (keyup)="searchbyval()" ><button>search</button> </h3>
+                <!--<h3><span>Search by UserId: </span> <input type="text"  [(ngModel)]="filterval1" (keyup)="searchbyval()" ><button>search</button> </h3>-->
+                <h3><span>Search by UserId: </span> <input type="text"  [(ngModel)]="userfilterval" ><button (click)="usersearch()">search</button> </h3>
               </div>
               <div class="search_content">
-                <h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval2" (keyup)="searchbyval()"><button>search</button> </h3>
+                <!--<h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval" #listFilter (keyup)="0" ><button>search</button> </h3>-->
+                <h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval"  ><button (click)="usernamesearch()">search</button> </h3>
               </div>
             </div>
             <div class="clearfix"></div>
-            <input type="text" placeholder="Search..."  [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">
+            <!--<input type="text" placeholder="Search..."  [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">-->
           </div>
         </div>
       </div>
@@ -56,7 +58,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let item of googleevents| usersearch:listFilter.value; let i=index">
+                <!--<tr *ngFor="let item of googleevents | orderBy:'startdate':'reverse' | usersearch:listFilter.value; let i=index">-->
+                <tr *ngFor="let item of googleevents | orderBy:'startdate':'reverse'; let i=index">
                   <td data-title="User ID" *ngIf="item.userdata">{{item.userdata.unique_id}}</td>
                   <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}}</td>
                   <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>

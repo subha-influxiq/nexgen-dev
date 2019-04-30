@@ -22,6 +22,7 @@ export class UseraccountsettingComponent implements OnInit {
   public ownerlists;
   public istypeadmin: boolean ;
   public id;
+  public olddataemail;
   public onedatarecruiter;
   public states:any=[];
   public issubmitted:any=0;
@@ -94,6 +95,7 @@ export class UseraccountsettingComponent implements OnInit {
                 if(result.res[0].recruiter!=null)this.onedatarecruiter=result.res[0].recruiter;
                 console.log('onedata');
                 console.log(onedata);
+                this.olddataemail=onedata[0].email;
                 console.log(this.onedatarecruiter);
                 if(onedata[0].created_at!=null)this.dataForm.controls['datejoin'].patchValue(this._commonservices.showunixtodate1(onedata[0].created_at));
                 else this.dataForm.controls['datejoin'].patchValue(onedata[0].created_at);
@@ -163,6 +165,9 @@ export class UseraccountsettingComponent implements OnInit {
             data.state=this.dataForm.controls['state'].value;
             data.zip=this.dataForm.controls['zip'].value;
             data.regionalrecruiter_id=this.dataForm.controls['owner'].value;
+            data.emailchange=1;
+            data.email=this.dataForm.controls['email'].value;
+            data.olddataemail=this.olddataemail;
             console.log(this.dataForm.controls['password'].value);
             if(this.dataForm.controls['password'].value!=null && this.dataForm.controls['password'].value!=''){
                data.password=this.dataForm.controls['password'].value;
@@ -175,6 +180,21 @@ export class UseraccountsettingComponent implements OnInit {
                     console.log('result.....');
                     console.log(result);
                     if(result.status=='success') {
+                     /*   let data1={email:this.dataForm.controls['email'].value};
+                        const link = this._commonservices.nodesslurl + 'googleeents?token=' + this.cookeiservice.get('jwttoken');
+                        this._http.post(link, {source: 'users',data:data1})
+                            .subscribe(res => {
+                                let result:any={};
+                                result = res;
+                                console.log('result..1...');
+                                console.log(result);
+                                if(result.status=='success') {
+
+                                }
+                            });*/
+
+
+
                         this.modalRef = this.modal.show(template, {class: 'successmodal'});
                         setTimeout(()=>{
                             this.modalRef.hide();

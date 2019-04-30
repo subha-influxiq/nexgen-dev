@@ -19,6 +19,7 @@ export class SlotviewComponent implements OnInit {
   public recid:any;
   public refreshtoken:any;
   public timezone:any=[];
+    public filterval5:any;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
   {
@@ -65,20 +66,39 @@ export class SlotviewComponent implements OnInit {
                 this.cookeiservice.set('refreshtoken', this.refreshtoken);
             })
     }
-
+    setdatetonull(){
+        this.filterval5 = null;
+        this.geteventarr();
+    }
     geteventarr(){
+        console.log('geteventarr');
         var cond;
-        if(this.recid==null){
-            cond={allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
-                $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
-            }}; //,startdate:new Date(),
-        }else{
-            cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
-                $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
-            }};
+        if(this.filterval5!=null && this.filterval5!=''){
+            let spl=this.filterval5.split('/');
+            console.log(spl);
+            let spl_modified= spl[2]+'-'+spl[0]+'-'+spl[1];
+            if(this.recid==null){
+                cond={allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'},   startdate:spl_modified};
+            }else{
+            cond={
+                allslotsuserid_object:this.recid,slots:{$type:'array'},   startdate:spl_modified
+            };
         }
+        }
+        else{
+            if(this.recid==null){
+                cond={allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
+                    $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
+                    $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                }}; //,startdate:new Date(),
+            }else{
+                cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
+                    $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
+                    $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                }};
+            }
+        }
+
         const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
         this._http.post(link,{source:'eventdayarr_events',condition:cond})
             .subscribe(res => {
@@ -133,4 +153,5 @@ export class SlotviewComponent implements OnInit {
       var endtime = moment(a).add(30, 'minutes').format('hh.mm A');
       return starttime +' - '+endtime;
   }
+
 }

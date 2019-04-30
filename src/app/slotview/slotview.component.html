@@ -9,10 +9,10 @@
       <div class="evnt_left_content">
         <form>
           <div class="form-group">
-            <input class="form-control select_inpu2">
+            <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}">
 
-            <button type="submit" class="btn_search"> search </button>
-            <button type="submit" class="btn_search"> showall </button>
+            <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
+            <button type="submit" class="btn_search" (click)="setdatetonull()"> show all </button>
           </div>
         </form>
       </div>

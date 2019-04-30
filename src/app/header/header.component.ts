@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
+import { Component, OnInit,TemplateRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import {Commonservices} from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./header.component.css'],
   providers: [Commonservices],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnDestroy{
+  public interval:any;
   public type:any;
   public idis:any;
   public recphoneno:any;
@@ -59,9 +60,9 @@ export class HeaderComponent implements OnInit {
             });
     }*/
   ngOnInit() {
-    setInterval(() => {
+      this.interval =  setInterval(() => {
       this.getslidervalueforimage();
-    }, 15000);
+    }, 35000);
   }
   // http://api.nexgentesting.com:7001/modifyemptyslides
   getslidervalueforimage() {
@@ -111,5 +112,8 @@ export class HeaderComponent implements OnInit {
         phn = phn.replace(/-/g,"");
         if(phn !=null) return phn.slice(0,3)+'-'+phn.slice(3,6)+'-'+phn.slice(6,10);
         else return phn;
+    }
+    ngOnDestroy() {
+        clearInterval(this.interval);
     }
 }

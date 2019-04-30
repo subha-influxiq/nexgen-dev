@@ -21,7 +21,15 @@
     "timezone_offset": "-06:00",
     "timezone_city": "Mountain Time (US  Canada)",
     "show1":"(GMT-06:00) Mountain Time (US  Canada)",
-    "show":"Mountain Standard Time"
+    "show":"Mountain Standard Time(GMT-06:00)"
+  },
+  {
+    "value": "-07:00|America/Denver",
+    "timezone": "America/Denver",
+    "timezone_offset": "-07:00",
+    "timezone_city": "Mountain Time (US  Canada)",
+    "show1":"(GMT-07:00) Mountain Time (US  Canada)",
+    "show":"Mountain Standard Time(GMT-07:00)"
   },
   {
     "value": "-05:00|America/Chicago",

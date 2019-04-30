@@ -322,11 +322,31 @@ export class ListingComponent implements OnInit {
                               //  this.dataForm.controls[c].patchValue(datearr);
                             }
                             if(this.formdataval[j].name==c && this.formdataval[j].inputtype=='timeis'){
-                                console.log('time picker !!!');
+                                console.log('time picker------------');
                                 console.log(this.formdataval[j].name);
                                 console.log((result.res[0][c]));
-                                if(this.formdataval[j].name=='start_time')this.start_time=result.res[0][c];
-                                if(this.formdataval[j].name=='end_time')this.end_time=result.res[0][c];
+
+                                if(this.formdataval[j].name=='start_time'){
+                                    let sttime = new Date();
+                                    var spl=result.res[0][c].split(':');
+                                    sttime.setHours(spl[0]);
+                                    sttime.setMinutes(spl[1]);
+                                    this.start_time = sttime;
+                                    // this.start_time=result.res[0][c];
+                                }
+                                if(this.formdataval[j].name=='end_time'){
+                                    let sttime = new Date();
+                                    var spl=result.res[0][c].split(':');
+                                    sttime.setHours(spl[0]);
+                                    sttime.setMinutes(spl[1]);
+                                    this.end_time = sttime;
+                                    // this.end_time=result.res[0][c];
+                                }
+                                // if(this.formdataval[j].name=='start_time')this.start_time=result.res[0][c];
+                                // if(this.formdataval[j].name=='end_time')this.end_time=result.res[0][c];
+                                // console.log('start_time  '+this.start_time);
+                                // console.log('end_time  '+this.end_time);
+                                // console.log(this.start_time);
                             }
                             if(this.formdataval[j].name==c && this.formdataval[j].inputtype=='checkbox'){
                                 let checkval=result.res[0][c];

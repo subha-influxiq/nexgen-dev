@@ -11,6 +11,7 @@ import {HttpClient} from "@angular/common/http";
     providers: [Commonservices]
 })
 export class FrontendheaderComponent implements OnInit {
+public interval;
 public repdetails;
 public repdashboard=0;
   constructor(public cookie:CookieService,public router:Router,public _commonservices:Commonservices,public _http:HttpClient) { }
@@ -22,9 +23,9 @@ public repdashboard=0;
       }
 
 
-    setInterval(() => {
+      this.interval =  setInterval(() => {
       this.getslidervalueforimage();
-    }, 15000);
+    }, 35000);
   }
   // http://api.nexgentesting.com:7001/modifyemptyslides
   getslidervalueforimage() {
@@ -85,5 +86,8 @@ public repdashboard=0;
                 console.log('Oooops!');
                 this.repdetails = [];
             });
+    }
+    ngOnDestroy() {
+        clearInterval(this.interval);
     }
 }
