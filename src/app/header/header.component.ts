@@ -103,8 +103,11 @@ export class HeaderComponent implements OnInit,OnDestroy{
         });
   }
   logout(){
-    this.cookeiservice.deleteAll();
-    this.router.navigate(['/login']);
+    this.cookeiservice.deleteAll('/');
+      setTimeout(()=>{
+          console.log(this.cookeiservice.get('userid'));
+          this.router.navigate(['/login']);
+      },500);
   }
 
     showphoneno(phn){

@@ -43,8 +43,11 @@ public repdashboard=0;
   }
   logout(){
       //alert(4);
-    this.cookie.deleteAll();
-    this.router.navigate(['/login']);
+    this.cookie.deleteAll('/');
+      setTimeout(()=>{
+          console.log(this.cookie.get('userid'));
+          this.router.navigate(['/login']);
+      },500);
   }
     gotodashboard(){
         if(this.cookie.get('usertype')=='admin') {

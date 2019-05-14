@@ -214,7 +214,7 @@ export class SignupComponent implements OnInit {
         state: this.dataForm.value['state'],
         zip: this.dataForm.value['zip'],
         regionalrecruiter_id: this.dataForm.value['regionalrecruiter_id'],
-        signup_step2:1,
+         signup_step2:1,
         lock:1,
       };
         /*   this._http.post(link, {data:data,sourceobj:objarr})*/

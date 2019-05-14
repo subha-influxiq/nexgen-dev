@@ -37,6 +37,7 @@
     color: black;
     font-family: RalewayMedium;
     font-size: 15px;
+    text-align: right;
 }
 .new_header .new_header3 h5 strong{ font-family: 'OpenSansSemiBold';}
 
@@ -49,7 +50,11 @@
 
 /*change*/
 /*.new_header .new_header4 .profile_block li a{ display: flex; align-items: center; }*/
-
+.new_header .new_header4 .profile_block li a {
+    width: 50px;
+    padding: 0;
+    padding-left: 10px;
+}
 .new_header .new_header4 .profile_block .user_image{ width: 40px;
     height:40px;
     /*display: block;*/
@@ -1773,7 +1778,7 @@
 }
 .newaddeventformclass .form-group:nth-child(13) .col-form-label{ display: block!important; width: 100%!important;     font-family: 'RalewaySemiBold'!important; flex: auto!important; float: none!important;}
 
-.modal-dialog{ margin: auto;}
+
 /*QUIZZ section*/
 
 .traing_innerwrapper .quizz_button:hover{ color: #fff!important;}
@@ -1845,7 +1850,7 @@
 /*Quiz end*/
 
 
-.profile_block .dropdown-toggle::after{ display: block; margin-left: auto; margin-right: auto; margin-top: 4px;}
+.profile_block .dropdown-toggle::after{ display: inline-block; text-align: start; margin-left: auto; margin-right: auto; margin-top: 4px; margin-left: 15px;}
 
 
 .successmodal .modal-dialog{ background: none!important; max-width: inherit!important; margin: 0 auto;}

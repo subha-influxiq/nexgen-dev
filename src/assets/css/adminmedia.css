@@ -51,7 +51,7 @@
     .new_header .new_header2 .navbar-nav .nav-link {
         padding: 0 7px;
     }
-    .new_header .new_header4 .profile_block li a{ padding: 0px; }
+    /*.new_header .new_header4 .profile_block li a{ padding: 0px; }*/
     .new_header .new_header1 .new_h_l_wrapper {
         width: 200px!important;
     }
@@ -402,6 +402,9 @@
         margin: 50px auto;
     }
     .listevent_wrapper { width: 90%; }
+    .new_header .new_header4 .profile_block li a {
+        width: 68px;
+    }
 }
 
 
