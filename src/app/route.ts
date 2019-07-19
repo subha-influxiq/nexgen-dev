@@ -51,6 +51,9 @@ import {SlotviewComponent} from "./slotview/slotview.component";
 import {AppointmentlistComponent} from "./appointmentlist/appointmentlist.component";
 import {ResetpasswordComponent} from "./resetpassword/resetpassword.component";
 
+/* 11th July 2019 */
+import { AddEditComponent } from "./tranningcategorymanagement/add-edit/add-edit.component";
+
 const appRoutes: Routes = [
  //{ path: '', redirectTo:'/login', pathMatch: 'full' },
     { path: 'login', component:  LoginComponent},
@@ -109,6 +112,9 @@ const appRoutes: Routes = [
     {path: 'appointmentlist', component: AppointmentlistComponent},
     {path: 'resetpassword/:id', component: ResetpasswordComponent},
 
+    /* changes 11th July 2019 */
+    { path: 'category-management/add-new', component: AddEditComponent },
+    { path: 'category-management/edit/:id', component: AddEditComponent },
 ];
 
 export const appRoutingProviders: any[] = [

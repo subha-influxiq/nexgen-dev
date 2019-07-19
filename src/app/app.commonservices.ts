@@ -37,7 +37,8 @@ export class Commonservices {
 
      //   this.nodesslurl = 'http://api.nexgentesting.com:7001/';
       //  this.nodesslurl = 'https://api.nexgentesting.com:6027/test1';
-        this.nodesslurl = 'https://api.nexgentesting.com:6027/';
+        // this.nodesslurl = 'https://api.nexgentesting.com:6027/';
+        this.nodesslurl = 'http://api.nexgentesting.com:7002/';
         this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
         this.siteurl = 'https://nexgentesting.com/';

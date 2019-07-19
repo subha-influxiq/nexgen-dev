@@ -70,6 +70,7 @@ import { AppointmentlistComponent } from './appointmentlist/appointmentlist.comp
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { OrderBy } from './orderby';
 import { ClipboardModule } from 'ngx-clipboard';
+import { AddEditComponent } from './tranningcategorymanagement/add-edit/add-edit.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     SlotviewComponent,
     AppointmentlistComponent,
     ResetpasswordComponent,
-    OrderBy
+    OrderBy,
+    AddEditComponent
 
   ],
   imports: [
