@@ -17,15 +17,13 @@
 
         <table class="table table-responsive" >
           <thead>
-
-
-          <tr>
-            <th data scope="col">Date Added</th>
-            <th scope="col">User ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Initial Training</th>
-            <th scope="col"> Additional Training</th>
-          </tr>
+            <tr>
+              <th data scope="col">Date Added</th>
+              <th scope="col">User ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Initial Training</th>
+              <th scope="col"> Additional Training</th>
+            </tr>
           </thead>
           <tbody>
 
@@ -48,7 +46,8 @@
         <button [routerLink]="['/rep']" *ngIf="getonedetails?.length>5">View all reps</button>
       </div>
     </div>
-    <div class="col-md-4 ">
+
+    <!-- <div class="col-md-4 ">
       <div class="reps_inner_block2" >
         <h3>LEGAL DOCUMENT</h3>
 
@@ -88,18 +87,19 @@
           </tr>
           </tbody>
 
-          <!-- <tr>
+          <tr>
             <td data-title="Date Added" scope="row">01/15/2019</td>
             <td data-title="User ID">001</td>
             <td data-title="Name">Jane Doe</td>
             <td data-title="Initial Training">100%</td>
             <td data-title="Additional Training">100%</td>
-          </tr>  -->
+          </tr> 
         </table>
 
         <button [routerLink]="['/legaldoclist']" *ngIf="legaldocs?.length>4">Go To Legal Documents</button>
       </div>
-    </div>
+    </div> -->
+    
     <div class="col-md-4">
       <div class="reps_inner_block3" >
         <h3>TRAINING CENTER</h3>
