@@ -427,8 +427,10 @@
         margin-bottom: 15px;
     }
     .dashboard_block2 {
-        padding-right: 0;
+        padding: 0 15px; margin-top: 15px;
     }
+
+    .dashboard_block2 .col-md-4{ padding: 0px;}
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde a:first-child{margin-right: 10px;}
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde a{ margin-bottom: 0;}
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .abcde{
@@ -590,7 +592,7 @@
     }
     .rep_dashboard_wrapper3 .row .col-md-4:nth-child(3){ margin-bottom: 15px; }
     .dashboard_block2 .col-md-4:nth-last-child(1) {
-        padding-right: 15px;
+        padding-right: 0px;
     }
     .copyurlbtn{ margin-top: 0;}
     .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list {
