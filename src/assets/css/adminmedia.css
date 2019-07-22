@@ -55,6 +55,8 @@
     .new_header .new_header1 .new_h_l_wrapper {
         width: 200px!important;
     }
+
+    .admin_dashboard_container .content_text h2{ font-size: 40px;}
 }
 @media screen  and  (max-width: 1570px){
     .table thead th { font-weight: 600; vertical-align: middle; }
@@ -62,6 +64,8 @@
     .new_header .new_header1 .new_h_l_wrapper {
         width: 250px; margin-right: 5px;
     }
+
+
 }
 
 @media screen  and  (max-width: 1500px){
@@ -170,6 +174,10 @@
 @media screen  and  (max-width: 1280px){
     .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 48%; }
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ font-size: 16px!important; margin-bottom: 10px;}
+
+    .admin_dashboard_container .content_text h2 {
+        font-size: 34px;
+    }
 }
 @media screen  and  (max-width: 1240px){
     .rep_dashboard_wrapper1 {
@@ -194,7 +202,7 @@
     .admin_dashboard_container {
         background: #16343c url("../images/dashboardbg_small.jpg") no-repeat center top;
         background-size: 100%;
-        padding-top: 25%;
+        padding-top: 64%;
 
     }
     .user_account_setting_wrapper .account_inner_wrapper .form_wrapper{  width: 100%  }
@@ -202,14 +210,17 @@
     .rep_dashboard_wrapper1 {
         background: #16343c url(../images/rep_dashboardbgsmall.jpg) no-repeat center top !important;
         background-size: 100% !important;
-        padding-top: 30%;
+        padding-top: 30%; height: auto;
     }
+
+    .admin_dashboard_container{ height: auto;   padding-left: 0;  padding-right: 0; padding-bottom: 5px;}
 
     .admin_dashboard_container .content_text {
         width: 100%;
-        margin-left: 0;
-        padding: 30px;
-        padding-top: 25px;
+        height: auto;
+        display: block;
+        vertical-align: middle;
+        text-align: center; padding: 25px;
     }
 
     .admin_dashboard_container .content_text h2 {
@@ -302,7 +313,7 @@
         /* Now like a table header */
         position: absolute;
         /* Top/left values mimic padding */
-        top: 6px;
+        top: 12px;
         left: 6px;
         width: 45%;
         padding-right: 10px;
@@ -427,6 +438,35 @@
 }
 
 @media screen and (max-width: 992px) {
+
+    .new_header .new_header4 .profile_block ul li .dropdown-menu.show {
+        left: -53px!important;
+        padding: 0px!important;
+        background: #fff!important; border-radius: 5px!important; border: solid 1px #ccc!important;
+    }
+
+    .dropdown-menu { margin: 0; padding: 0px;}
+
+
+    .dropdown-menu.show {
+        display: block;
+        border: none;
+        border-radius: 0px; background: #c1c3c3;
+    }
+
+    .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px 5px;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        text-align: center; border-top: solid 1px #fff; border-bottom: solid 1px #fff;
+    }
     .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content{margin-right: 5px!important;}
     .new_header .new_header2 .navbar-nav .nav-link {
         padding: 10px 0;
