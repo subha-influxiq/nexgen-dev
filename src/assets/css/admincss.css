@@ -563,7 +563,7 @@
 .footer_contractform .bottom_form_section span{ vertical-align: bottom; }
 
 /*REGIONAL RECRUITER*/
-.r_r_dashboard_innerblock{ width: 85%; margin: 0 auto; }
+.r_r_dashboard_innerblock{ /*width: 85%;*/ margin: 0 auto; }
 .r_r_dashboard_innerblock .col-md-4 {
     -ms-flex: 0 0 33.333333%;
     flex: 0 0 50%;
@@ -630,15 +630,16 @@
     text-align: center;
     cursor: pointer;
 }
-.rep_dashboard_wrapper3{ width: 100%; margin: 0 auto; padding: 0 15px;}
+.rep_dashboard_wrapper3{ width: 1040px; margin: 0 auto; padding: 0 15px;}
 .rep_dashboard_wrapper3 .row{ margin: 0; }
-.rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0; }
+.rep_dashboard_wrapper3 .row .col-md-4{ padding-left: 0;     flex: 50%;
+    max-width:50%;  }
 .rep_dashboard_wrapper3 .row .col-md-4:nth-last-child(1) { padding-right: 0; }
 
 /*change*/
 /*.rep_dashboard_wrapper3 .buttoncss{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; display: block; text-align: center; text-decoration: none; }
 .rep_dashboard_wrapper3 .buttoncss:focus{ outline: none;}*/
-.rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0; margin-bottom: 45px; text-transform: uppercase; }
+.rep_dashboard_wrapper3 button{cursor:pointer; padding: 10px 0 7px 0; width: 100%; background: #000; font-family: "RalewaySemiBold"; color: #fff; font-size: 24px;  border: none; margin: 15px 0;   text-transform: uppercase; }
 .rep_dashboard_wrapper3 button:focus{ outline: none;}
 .rep_dashboard_wrapper3 button a{ color: #fff; text-decoration: none; }
 .rep_dashboard_wrapper3 button a:hover{ color: #fff; }

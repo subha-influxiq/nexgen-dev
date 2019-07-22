@@ -134,9 +134,9 @@
     .admin_dashboard_container .content_text p { font-size: 18px;}
 
     .new_header .new_header2 .navbar-nav{ padding: 0 15px;}
-    .r_r_dashboard_innerblock {
+/*    .r_r_dashboard_innerblock {
         width: 95%;
-    }
+    }*/
     .new_header .new_header1 .new_h_l_wrapper {
         width: 250px!important;
     }
@@ -423,6 +423,8 @@
 
 
 @media screen and (max-width: 1040px) {
+
+    .rep_dashboard_wrapper3{ width: 100%;}
     .dashboard_block2 .col-md-4 {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
@@ -523,7 +525,7 @@
         transform: inherit;
         background: #ae3bde;
         padding: 30px;
-        padding-top: 20px;
+        padding-top: 20px;     text-align: center;
     }
     .rep_dashboard_wrapper2 .inner_content h4{ margin-bottom: 8px;}
     .rep_dashboard_wrapper2 .inner_content h2 {
@@ -588,7 +590,15 @@
         width: 100%;
         text-align: center;
     }
-    .rep_dashboard_wrapper3 button{ margin-bottom: 0; width:320px;}
+    .rep_dashboard_wrapper3 button{   width:320px;}
+
+    .rep_dashboard_wrapper3 .row .col-md-4 {
+        padding-left: 0;
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    .rep_dashboard_wrapper3 :nth-of-type(2) button{ margin-top: 0px;}
     .rep_dashboard_wrapper3 .row .col-md-4 {
         padding-left: 0;
         padding-right: 0;
@@ -944,7 +954,7 @@
     }
 
     .rep_dashboard_wrapper3 button {
-        margin-bottom: 0;
+
         width: 290px;
     }
 
