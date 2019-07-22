@@ -50,10 +50,10 @@
     .home_wrapper .carousel  .carousel-control-next, .carousel-control-prev{width: 5%!important; }
 }
 @media screen and (max-width: 1400px) {
-    .login_container {
+ /*   .login_container {
         width: 700px;
         padding: 60px 70px;
-    }
+    }*/
     .home_wrapper .carousel-item .carousel-caption{ width: 460px; bottom: 25%; }
     .home_wrapper .carousel-item .carousel-caption h2{ font-size: 54px; }
 }
@@ -79,7 +79,7 @@
 
     .login_container {
         width: 650px;
-        padding: 50px 60px;
+      /*  padding: 50px 60px;*/
     }
     .login_container form .form-group p:nth-child(2) { width: 38%; }
 }
@@ -229,7 +229,7 @@
 @media screen and (max-width: 776px){
     .login_container {
         width: 85%;
-        padding: 40px 45px;
+       /* padding: 40px 45px;*/
     }
     .login_container form .form-group p{ font-size: 16px;}
     .home_wrapper .carousel  .carousel-control-next, .carousel-control-prev{height: 60%!important; }
@@ -270,7 +270,7 @@
 @media screen and (max-width: 480px){
     .login_container {
         width: 90%;
-        padding: 40px 45px;
+      /*  padding: 40px 45px;*/
     }
     .home_wrapper .carousel .carousel-control-next, .carousel-control-prev {
         width: 15%!important;

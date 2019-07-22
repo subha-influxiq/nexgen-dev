@@ -153,22 +153,23 @@ body{ padding:0; margin: 0;}
     position: relative;
 }
 .login_container{
-    width: 750px; margin: 0 auto;
+    width: 650px; margin: 0 auto;
     transform: translate(-50%, -50%);
     position: absolute;
     top:50%;
     left:50%;
     background: rgba(255,255,255, 0.8);
-    padding:60px 90px;
+    padding:30px 30px 15px 30px;
     box-shadow: 1px -1px 7px -4px #000;
 }
 .login_container .logo_inner{ text-align: center; width: auto;}
-.login_container .logo_inner img{ width: 100%; height:auto;}
+.login_container .logo_inner img{ width: 400px; max-width: 100%; height:auto;}
 
 .login_container form{
-    margin-top: 40px;
+    margin-top: 30px;
 }
 .login_container form .form-group{margin-bottom: 24px;}
+.login_container form .form-group:last-of-type{margin-bottom: 0px;}
 .login_container form .form-group .form-control::-webkit-input-placeholder{ color: #0d0d0d; font-family: 'RalewaySemiBold'; font-size: 18px; }
 .login_container form .form-group .form-control{height: 50px; border: 1px solid #757a7a; border-radius: 2px; padding: 0 20px; box-shadow: none;}
 
@@ -193,14 +194,14 @@ body{ padding:0; margin: 0;}
     text-transform: uppercase;
     padding: 5px 0;
     cursor: pointer;
-    margin-top: 36px;
+    margin-top: 10px;
 }
 .login_container form .form-group .signin_button:focus{ outline: none;}
-.login_container form .form-group  p{ font-family: 'RalewayRegular'; font-size: 18px; color:#444444; display: inline-block; }
+.login_container form .form-group  p{ font-family: 'RalewayRegular'; font-size: 18px; color:#000; display: inline-block; }
 .login_container form .form-group  p:nth-child(1){width: auto;}
 .login_container form .form-group  p:nth-child(2){width: 35%; text-align: right; float: right;}
 .login_container form .form-group  p span a{ color: #ff2a00; text-transform: capitalize;}
-.login_container form .form-group  .forgot_pass a{text-align: right; color:#444444; }
+.login_container form .form-group  .forgot_pass a{text-align: right; color:#000; }
 
 
 /*Forgot contaner*/
@@ -1132,7 +1133,7 @@ body{ padding:0; margin: 0;}
     font-family: 'Notera';
     font-size: 40px;
 }
-.loader{border:16px solid #383e48;border-top:16px solid #00a8ef;border-radius:50%;width:120px;height:120px;animation:spin 2s linear infinite;margin:0 auto;}
+.loader{border:16px solid #262626;border-top:16px solid #0071bc;border-radius:50%;width:120px;height:120px;animation:spin 2s linear infinite;margin:0 auto;}
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 /*----------------------------------------AMITAV DA END--------------------------------------------*/
 
