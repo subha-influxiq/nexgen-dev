@@ -88,7 +88,7 @@
 
 @media screen  and  (max-width: 1480px){
     .rep_dashboard_wrapper1 {
-        background-position: 25% center!important;
+        background-position: 75% center!important;
     }
     .dashboard_block2 .col-md-4 button {
         font-size: 26px;
@@ -130,6 +130,9 @@
     }
 }
 @media screen  and  (max-width: 1400px){
+
+    .admin_dashboard_container .content_text p { font-size: 18px;}
+
     .new_header .new_header2 .navbar-nav{ padding: 0 15px;}
     .r_r_dashboard_innerblock {
         width: 95%;
@@ -158,9 +161,9 @@
         line-height: 23px;
         padding: 10px;
     }
-    .rep_dashboard_wrapper1 {
+  /*  .rep_dashboard_wrapper1 {
         background-position: 30% center!important;
-    }
+    }*/
 }
 @media screen  and  (max-width: 1300px){
     .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
@@ -181,7 +184,7 @@
 }
 @media screen  and  (max-width: 1240px){
     .rep_dashboard_wrapper1 {
-        background-position: 40% center!important;
+        background-position: 90% center!important;
     }
     .training_leftpart .carousal_content .carousel-caption{ width: 80%; padding: 30px; }
     .training_leftpart .carousel .carousel-control-next, .carousel-control-prev{ width: 8%!important; }
@@ -210,7 +213,7 @@
     .rep_dashboard_wrapper1 {
         background: #16343c url(../images/rep_dashboardbgsmall.jpg) no-repeat center top !important;
         background-size: 100% !important;
-        padding-top: 30%; height: auto;
+        padding-top: 64%; height: auto;
     }
 
     .admin_dashboard_container{ height: auto;   padding-left: 0;  padding-right: 0; padding-bottom: 5px;}
