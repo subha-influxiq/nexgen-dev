@@ -55,7 +55,7 @@ import {ResetpasswordComponent} from "./resetpassword/resetpassword.component";
 import { AddEditComponent } from "./tranningcategorymanagement/add-edit/add-edit.component";
 
 const appRoutes: Routes = [
- //{ path: '', redirectTo:'/login', pathMatch: 'full' },
+    { path: '', redirectTo:'/login', pathMatch: 'full' },
     { path: 'login', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
     { path: 'dashboard', component: DashboardComponent, resolve: {results: TestresolveService},data: { link: 'datalist',source:'users',condition:{type:'rep'} }},
