@@ -41,7 +41,7 @@ export class Commonservices {
         // this.nodesslurl = 'http://api.nexgentesting.com:7002/';
 
         this.nodesslurl = 'http://166.62.39.137:5005/';
-        this.uploadsslurl = 'http://api.nexgentesting.com/assets/uploads/';
+        this.uploadsslurl = 'http://backoffice.betoparedes.com/assets/images/';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
         this.siteurl = 'https://nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';

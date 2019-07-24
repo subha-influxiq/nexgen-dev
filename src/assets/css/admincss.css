@@ -1282,7 +1282,7 @@
 .s_part_wrapper .form-groupnew12{ padding-left: 0px; padding-right: 0; padding-top:40px; }
 
 .form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #fff;
     opacity: 1;
     overflow: hidden;
     height: auto;
@@ -1944,3 +1944,11 @@
 .abc{
   justify-content: flex-end!important;
 }
+
+
+.training_leftpart .accordian_image img{ width: 100%;}
+
+.training_leftpart .accordian_image p{ margin-bottom: 0px!important;}
+
+.modal_viewmore2 img{ width: 100%;}
+
