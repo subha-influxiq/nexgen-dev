@@ -113,7 +113,7 @@ public editorval: any=null;
     showhtmlval(editorval,showhtmlmodal:TemplateRef<any>){
         this.editorval=null;
         this.editorval=editorval;
-        this.modalref = this.modalservices.show(showhtmlmodal);
+        this.modalref = this.modalservices.show(showhtmlmodal, { class: 'modal-new-popup' });
     }
     callslider(item,showfilemodal){
         console.log(item);
