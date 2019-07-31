@@ -1140,6 +1140,8 @@ body{ padding:0; margin: 0;}
 
 
 /*-----------------------------agreement-----------------------*/
+
+.agreement_contain_logo{ width: 400px; max-width: 90%; display: block; margin: 0 auto; margin-top: 25px;}
 .agreement_contain_wrapper {
     width: 1200px;
     margin: 0px auto;
