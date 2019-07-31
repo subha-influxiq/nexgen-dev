@@ -1137,3 +1137,422 @@ body{ padding:0; margin: 0;}
 @keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 /*----------------------------------------AMITAV DA END--------------------------------------------*/
 
+
+
+/*-----------------------------agreement-----------------------*/
+
+.agreement_contain_logo{ width: 400px; max-width: 90%; display: block; margin: 0 auto; margin-top: 25px;}
+.agreement_contain_wrapper {
+    width: 1200px;
+    margin: 0px auto;
+    padding-bottom: 25px;
+    font-family: 'OpenSansRegular';
+    margin-top: 24px;
+    color: #616262;
+}
+
+.agreement_contain_wrapper h2 {
+    display: block;
+    text-align: center;
+    font-family: 'OpenSansSemiBold';
+    font-size: 40px;
+
+    text-transform: uppercase;
+    color: #010101;
+    margin: 0 0 25px 0;
+}
+
+.agreement_contain_wrapper h2 span {
+    display: block;
+    text-transform: capitalize;
+    font-size: 24px;
+    padding-top: 5px;
+}
+
+.agreement_contain_wrapper label {
+    margin: 0;
+    padding: 10px 0px;
+    font-family: 'OpenSansBold';
+    color: #282828;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.agreement_contain_wrapper p {
+    margin: 0;
+    padding: 10px 0px;
+    line-height: 24px;
+    font-size: 17px;
+}
+
+.agreement_contain_forncontain strong {
+    font-weight: normal;
+    font-size: 18px;
+    color: #010101;
+    padding-top: 15px;
+    font-family: 'OpenSansSemiBold';
+    display: block;
+}
+
+.agreement_contain_wrapper input[type="text"] {
+    border: none;
+    background: none;
+    padding: 0 5px;
+    border-bottom: solid 1px #616262;
+    outline: none !important;
+}
+
+.agreement_contain_wrapper .agr_input1 {
+    width: 212px;
+}
+
+.agreement_contain_wrapper .agr_input2 {
+    width: 270px;
+}
+
+.agreement_contain_wrapper .agr_input3 {
+    width: 520px;
+}
+
+.agreement_contain_wrapper .agr_input4 {
+    width: 1090px;
+}
+
+.agreement_contain_wrapper .agr_input5 {
+    width: 890px;
+    margin-right: 8px;
+    margin-left: 4px;
+}
+
+.agreement_contain_wrapper .agr_input6 {
+    width: 170px;
+    margin-top: 36px;
+    margin-left: 5px;
+}
+
+.agreement_contain_wrapper .agr_input7 {
+    width: 973px;
+}
+
+.agreement_contain_forncontain {
+    width: 100%;
+}
+
+.agreement_contain_forncontain strong {
+    font-weight: normal;
+    font-size: 18px;
+    color: #010101;
+    padding-top: 15px;
+    font-family: 'OpenSansSemiBold';
+    display: block;
+}
+
+.signinput {
+    font-family: 'Notera';
+    font-size: 40px;
+    height: 40px;
+    margin-top: 17px;
+}
+
+.agreementformbtn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+    outline: none;
+    background: #02a0db;
+    color: #fff;
+    font-family: 'OpenSansBold';
+    font-size: 28px;
+    line-height: 59px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 170px;
+    display: block;
+}
+
+.arformgroup span {
+    display: inline-block;
+    float: left;
+    margin: 0;
+    padding: 36px 0 0 0px;
+    line-height: 24px;
+    font-size: 17px;
+}
+
+.arformgroup input[type="text"] {
+    display: inline-block;
+    float: left;
+    padding: 0 5px;
+}
+
+.agreement_contain_forncontain_inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.agreement_contain_forncontain_inner .inneritem {
+    width: 48%;
+    margin-right: 2%;
+}
+
+.agreement_contain_forncontain_inner .inneritem:last-child(1) {
+    margin-right: 0% !important;
+}
+
+.agreement_contain_wrapper .agreement_contain_forncontain_inner .agr_input4 {
+    width: 100% !important;
+}
+
+.agreement_contain_wrapper .agreement_contain_forncontain_inner .agr_input5 {
+    width: 100%;
+    margin-right: 8px;
+    margin-left: 4px;
+}
+
+.agreement_contain_wrapper .agreement_contain_forncontain_inner .agr_input7 {
+    width: 100%;
+}
+
+.signaturediv .new_signupdiv input[type="button"] {
+    font-size: 16px;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'OpenSansRegular';
+    background: url(../images/sgninarrownew.png) no-repeat center right !important;
+    border: none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    padding: 6px 32px 6px 10px !important;
+    text-shadow: 0 0 14px #1a77bc;
+    text-align: left !important;
+    cursor: pointer;
+    margin: 0px 5px !important;
+}
+
+.signaturediv .new_signupdiv {
+    background: #1a77bc;
+    border: solid 1px #1a77bc;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.signaturediv .new_signupdiv {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(10%, 70%);
+}
+
+.signaturediv {
+    position: relative;
+}
+
+.signmodal{ width: 700px; max-width: 90%;}
+
+
+.signmodal .modal-content {
+    border: solid 4px #1a77bc !important;
+}
+
+.signmodal .modal-content .popup_logo {
+    width: 240px;
+    display: block;
+    margin: 0px auto;
+    margin-top: 15px;
+}
+
+.signmodal .modal-content h4 {
+    font-family: 'OpenSansRegular';
+    font-size: 24px;
+    color: #1a77bc;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 24px 0 28px 0;
+}
+
+.signmodal .modal-content label {
+    font-weight: normal;
+    font-family: 'OpenSansRegular';
+    font-size: 16px;
+    color: #000;
+    width: 100%;
+}
+
+.signmodal .modal-content input[type="text"] {
+    width: 100%;
+    height: 40px;
+    border: solid 1px #ddd!important;
+    border-radius: 0px;
+    padding: 0 5px;
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    color: #000; box-shadow: none!important;
+}
+
+
+.signmodal h5 {
+    margin: 0;
+    padding: 0;
+    font-family: 'OpenSansRegular';
+    font-size: 14px;
+    line-height: 22px;
+    color: #000;
+}
+
+.popsigndiv h2 {
+    margin: 0;
+    padding: 0 0 10px 40px;
+    background: url(../images/pop_text_top.png) no-repeat left 8px;
+    font-family: 'OpenSansRegular';
+    font-size: 16px !important;
+    color: #1a77bc;
+}
+
+.popsigndiv h3 {
+    margin: 0;
+    padding: 5px 0 5px 20px;
+    font-size: 45px;
+    color: #000;
+    border-left: solid 1px #1a77bc;
+    font-family: 'Notera';
+}
+
+
+.popsigndiv h4 {
+    margin: 0;
+    padding: 10px 0 0 40px !important;
+    background: url(../images/pop_text_bottom.png) no-repeat left top;
+    font-family: 'OpenSansRegular';
+    font-size: 16px !important;
+    color: #1a77bc;
+}
+
+.popsigndiv {
+    padding: 28px 0 24px 0;
+}
+
+.pop_btn_drapper .popbtn1 {
+    background: #02a0db;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'OpenSansRegular';
+    box-shadow: none;
+    text-transform: uppercase; margin-right: 2px;
+}
+
+.pop_btn_drapper .popbtn1:hover {
+    box-shadow: none;
+    background: #02a0db;
+    color: #fff;
+}
+
+.pop_btn_drapper .popbtn2 {
+    background: #333;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'OpenSansRegular';
+    box-shadow: none;
+    text-transform: uppercase;
+}
+
+.pop_btn_drapper .popbtn2:hover {
+    box-shadow: none;
+    background: #333;
+    color: #fff;
+}
+
+.pop_btn_drapper {
+    padding-top: 25px;
+    padding-bottom: 15px;
+}
+
+@media screen and (max-width:1280px) {
+    .agreement_contain_wrapper {
+        width: 1024px;
+    }
+
+    .agreement_contain_wrapper .agr_input4 {
+        width: 895px;
+    }
+
+    .agreement_contain_wrapper .agr_input5 {
+        width: 650px;
+    }
+
+    .agreement_contain_wrapper .agr_input6 {
+        width: 218px;
+    }
+
+    .agreement_contain_wrapper .agr_input7 {
+        width: 776px;
+    }
+}
+
+
+@media screen and (max-width:1050px) {
+
+    .agreement_logo_block {
+        width: 90%;
+    }
+
+    .agreement_contain_wrapper {
+        width: 90%;
+    }
+
+    .agreement_contain_wrapper .agr_input4 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input5 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input6 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input7 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input1 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input2 {
+        width: auto;
+    }
+
+    .agreement_contain_wrapper .agr_input3 {
+        width: auto;
+    }
+
+
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+
+    .agreement_contain_forncontain_inner {
+        flex-wrap: wrap;
+    }
+
+    .agreement_contain_forncontain_inner .inneritem {
+        width: 100%;
+        margin-right: auto;
+    }
+
+}
+/*-----------------------------end agreement-----------------------*/
+

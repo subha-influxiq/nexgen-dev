@@ -1,6 +1,6 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import {Commonservices} from '../app.commonservices' ;
+import { Commonservices } from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -14,17 +14,19 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
   styleUrls: ['./trainingsectionlist.component.css'],
   providers: [Commonservices]
 })
+
 export class TrainingsectionlistComponent implements OnInit {
-public serverurl;
-public traininglist:any=[];
-public message:any;
-modalref:BsModalRef;
-public selectedid:any;
-public imagePaths:any;
-public tarainingcategorylist:any=[];
-public sourceval:any="traininglesson";
-public sourceval2:any="tranningcategory";
-public editorval: any=null;
+
+    public serverurl;
+    public traininglist:any=[];
+    public message:any;
+    modalref:BsModalRef;
+    public selectedid:any;
+    public imagePaths:any;
+    public tarainingcategorylist:any=[];
+    public sourceval:any="traininglesson";
+    public sourceval2:any="tranningcategory";
+    public editorval: any=null;
 
   constructor(public _Commonservices:Commonservices,public router:Router,public http:HttpClient,public modalservices:BsModalService,public cookie:CookieService,public sanitizer: DomSanitizer)
   {
