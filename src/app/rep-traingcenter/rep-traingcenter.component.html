@@ -110,7 +110,7 @@
             <!--for file download button-->
             <a *ngIf="item.filetype=='image'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.imageservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
 
-          <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id,item.trainingcategory,quizmodal)" class="quizz_button">Take quiz</a>
+          <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id, item.trainingcategory, lastLessionName, quizmodal)" class="quizz_button">Take quiz</a>
           <a class="mark_done" *ngIf="item.yesorno=='no' && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>
 
             </div>
@@ -399,7 +399,7 @@
       <div class="inner_training_list" *ngIf="trainingcategory?.length>0">
         <h1>Incomplete Trainings</h1>
         <ul>
-          <li *ngFor="let item of notdonecategory"><a (click)="cid=item._id;getdatalist()" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+          <li *ngFor="let item of notdonecategory"><a (click)="cid=item._id;getdatalist(item.categoryname)" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
          <!-- <li> <span><img src="assets/images/filemanager_icon.png"></span> <a href="javascript:void(0)">training 5</a></li>
 -->
         </ul>
@@ -432,7 +432,7 @@
     </button>
 
     <div class="quizmodal_content_w">
-      <h2 class="q_header"> NEXGEN TEST </h2>
+      <h2 class="q_header"> {{ lastLessionName }} Test </h2>
 
       <form>
 

@@ -47,19 +47,20 @@ export class RepTraingcenterComponent implements OnInit {
   public nextcat:any;
     modalRef1: BsModalRef;
 
-  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute)
-  {
-    this._commonservice=_commonservice;
-  //  this.getmarkasdonelist();
 
-   // console.log(this.cookeiservice.get('userid'));
+    /* incpmolete lession */
+    public lastLessionName: any;
+
+  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
+    this._commonservice=_commonservice;
   }
+
   ngOnInit() {
       this.route.params.subscribe(params => {
           this.cid = params['cid'];
           this.lid = params['lid'];
       });
-      if(this.cid==null){            //initial training
+      if(this.cid == null){            //initial training
           this.getmarkasdonelist();
           this.ngclassflag = 0;
       }else{                        // other
@@ -68,29 +69,21 @@ export class RepTraingcenterComponent implements OnInit {
       }
       this.getmarkasdonelist();         //delete after done
   }
+
     gettraininglist(){
-        this.donecategory=[];
-        this.notdonecategory=[];
-        const link = this._commonservice.nodesslurl+'training_category?token='+this.cookeiservice.get('jwttoken');
+        this.donecategory = [];
+        this.notdonecategory = [];
+        const link = this._commonservice.nodesslurl+'training_category?token=' + this.cookeiservice.get('jwttoken');
         // this._http.post(link,{source:'training_category_lesson_view',condition:{type1:'Rep Trainning Table'}})
         let data={userid: this.cookeiservice.get('userid')};
         this._http.post(link,data)
             .subscribe(res => {
-                let result:any;
-                result = res;
-                console.log('training_category');
-                console.log(result);
-                if(result.status=='error'){
-                }else{
+                let result:any = res;
+                if(result.status == 'error') {
+                } else {
                     this.trainingcategory = result.res;
                     this.done_Training_lesson = result.res2;
                     this.last_lesson = result.res3;
-                    console.log('this.trainingcategory');
-                    console.log(this.trainingcategory);
-                    console.log('this.done_Training_lesson');
-                    console.log(this.done_Training_lesson);
-                    console.log('this.last_lesson');
-                    console.log(this.last_lesson);
                     for(let i in this.last_lesson){
 
                         for(let y in this.done_Training_lesson){
@@ -100,12 +93,15 @@ export class RepTraingcenterComponent implements OnInit {
                             }
                         }
                     }
-                    console.log('donelesson ... ');
-                    console.log(this.donelesson);
+
                     for(let c in this.trainingcategory){
                         if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1){
                             this.donecategory.push(this.trainingcategory[c]);
                         }else this.notdonecategory.push(this.trainingcategory[c]);
+
+                        if(this.trainingcategory[c]._id == this.cid) {
+                            this.lastLessionName = this.trainingcategory[c].categoryname;
+                        }
                     }
                 }
             }, error => {
@@ -115,15 +111,14 @@ export class RepTraingcenterComponent implements OnInit {
 
   getmarkasdonelist(){
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'donetraininglesson',condition:{userid_object:this.cookeiservice.get('userid')}})
+    this._http.post(link, { source: 'donetraininglesson', condition: { userid_object: this.cookeiservice.get('userid') }})
         .subscribe(res => {
-          let result:any;
-          result = res;
-          if(result.status=='error'){
-          }else{
+          let result: any = res;
+          if(result.status=='error') {
+          } else {
             this.markasdonedatalist = [];
             this.markasdonedatalist = result.res;
-            this.getdatalist();
+            this.getdatalist(result.res);
           }
         }, error => {
           console.log('Oooops!');
@@ -141,59 +136,48 @@ export class RepTraingcenterComponent implements OnInit {
         }
     }
 
-    getdatalist() {
+    getdatalist(itemName) {
+        if(typeof(itemName) == 'string') {
+            this.lastLessionName = itemName;
+        }
+
         if(this.cid==0) this.cid='5c664284065aaf332831948c';
-        //alert(this.cid);
-        console.log('in getdatalist');
-        console.log('this.cid');
-        console.log(this.cid);
-      //  alert(this.cid);
-        const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+
+        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,{source:'traininglesson',condition:{trainingcategory_object:this.cid}})
             .subscribe(res => {
-                let result:any;
-                result = res;
-                if(result.status=='error'){
-                }else{
+                let result:any = res;
+                if(result.status=='error') {
+                } else {
                     this.datalist = [];
                     this.sorteddatalist = [];
                     this.traininglessonflag=false;
                     this.datalist = result.res;
-                    console.log('details for lessons ');
-                    console.log(this.datalist);
                     this.datalist.sort(this.dynamicSort("_id"));
 
                     for(let i in this.datalist) {
-                        console.log("========================+=========================");
-                        //1st time
                         if ((this.datalist[i].prerequisite_lesson == null || this.datalist[i].prerequisite_lesson=='' ) && this.traininglessonflag == false) {
-                            console.log('for first lesson ');
                             this.sorteddatalist.push(this.datalist[i]);
                             this.traininglessonflag = true;
                         }
                     }
-                        //2nd time
 
                     for(let i in this.datalist) {
                         if(this.datalist[i].prerequisite_lesson!=null && this.traininglessonflag==true){
                             for(let h in this.datalist){
                                 if(this.sorteddatalist[this.sorteddatalist.length-1]._id==this.datalist[h].prerequisite_lesson){
-                                    //console.log(this.datalist[k]);
+                                    if(this.datalist[h].yesorno == 'yes') {
+                                    }
                                     this.sorteddatalist.push(this.datalist[h]);
                                 }
                             }
                         }
                     }
 
-
-                    console.log('this.sorteddatalist ... ');
-                    console.log(this.sorteddatalist);
                     for(let i in this.sorteddatalist){
                         if(this.sorteddatalist[i].slides!=null){
                             console.log(this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length));
                             this.sorteddatalist[i].firstslide=this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length);
-                            /*let tempvar=img.substr(3,img.length);
-                            return this._commonservice.fileimgsslurl+tempvar;*/
                         }
                     }
                 }
@@ -204,8 +188,6 @@ export class RepTraingcenterComponent implements OnInit {
 
     getslide(val:any){
       if(this.curitem==null || this.curitem!=val){
-          console.log('this.sorteddatalist[val].firstslide');
-          console.log(this.sorteddatalist[val].firstslide);
           this.curitem=val;
           this.cureentcursor=0;
           return this._commonservice.fileimgsslurl+this.sorteddatalist[val].slides[this.cureentcursor].substr(3,this.sorteddatalist[val].slides[this.cureentcursor].length);
@@ -257,7 +239,7 @@ export class RepTraingcenterComponent implements OnInit {
             trainingcategory: item.trainingcategory
         }
         this._http.post(link, {source:'donetraininglesson',data:data,sourceobj:objarr})
-            .subscribe(res => {
+            .subscribe((res) => {
                 if((this.sorteddatalist.length-i)==1){
                     let notdonecatlen=this.notdonecategory.length;
 
@@ -272,7 +254,8 @@ export class RepTraingcenterComponent implements OnInit {
                        // alert(6);
                         //alert(this.nextcat);
                         this.cid=this.nextcat;
-                        this.getdatalist();
+                        let result: any = res;
+                        this.getdatalist(result.categoryname);
                         let ccat:any=null;
                         /*for(let b1:any in this.notdonecategory){
                             //alert(this.notdonecategory[b1]._id);
@@ -317,10 +300,10 @@ export class RepTraingcenterComponent implements OnInit {
                                     let result: any = {};
                                     result = res;
                                     this.router.navigate(['/repdashboard'])
-                                    this.getdatalist();
+                                    this.getdatalist(result.categoryname);
                                 });
                         }else{
-                            this.getdatalist();
+                            this.getdatalist(result.categoryname);
                         }/*else{      // other
                     let link = this._commonservice.nodesslurl + 'addorupdatedata?token='+this.cookeiservice.get('jwttoken');
                     let objarr=['completedtraining'];
@@ -425,7 +408,7 @@ export class RepTraingcenterComponent implements OnInit {
         let tempvar=img.substr(3,img.length);
         return this._commonservice.fileimgsslurl+tempvar;
     }
-    gotoquizmodal(lessonid,trainingcategory,template:TemplateRef<any>){
+    gotoquizmodal(lessonid, trainingcategory, lastLessionName, template:TemplateRef<any>){
         this.lessonid=lessonid;
         this.trainingcategory1=trainingcategory;
         const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
@@ -436,7 +419,7 @@ export class RepTraingcenterComponent implements OnInit {
                 this.quizlistwithanswer = result.res;
                 console.log(result);
                 this.issubmit=0;
-                this.modalRef1=this.modal.show(template, {class: 'quizmodal'});
+                this.modalRef1 = this.modal.show(template, {class: 'quizmodal'});
             })
     }
     closemodal(){
