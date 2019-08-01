@@ -469,7 +469,7 @@
 
 
 
-        <a class="submit_button" (click)="submit_answer_iscorrect()"> SUBMIT</a>
+        <a class="submit_button" (click)="submit_answer_iscorrect(successModalHtml)"> SUBMIT</a>
 
       </form>
 
@@ -477,5 +477,12 @@
      <span *ngIf="issubmit==1">Total correct answers:{{correctanscount}} , {{(correctanscount/quizlistwithanswer.length)*100}} %</span>
     </div>
 
+  </div>
+</ng-template>
+
+
+<ng-template #successModalHtml>
+  <div class="modal-body">
+    <p>Successfully completed.</p>
   </div>
 </ng-template>

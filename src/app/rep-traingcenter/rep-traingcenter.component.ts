@@ -450,19 +450,20 @@ export class RepTraingcenterComponent implements OnInit {
 
     }
 
-    submit_answer_iscorrect(){
+    submit_answer_iscorrect(template:TemplateRef<any>){
         this.issubmit=1;
         console.log(this.correctanscount);
-       console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
-       let item={
-           _id:this.lessonid,
-           trainingcategory:this.trainingcategory1,
-       }
+        console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
+        let item={
+            _id:this.lessonid,
+            trainingcategory:this.trainingcategory1,
+        }
 
-       if((this.correctanscount/this.quizlistwithanswer.length)*100==100){
+        if((this.correctanscount/this.quizlistwithanswer.length)*100==100){
             this.modalRef1.hide();
-             this.markasdonetraninglesson(item,0);
-       }
+            this.modalRef1 = this.modal.show(template, {class: 'quizmodal'});
+            this.markasdonetraninglesson(item,0);
+        }
 
     }
 }
