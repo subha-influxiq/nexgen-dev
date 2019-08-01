@@ -1651,16 +1651,18 @@
 /*SUCCESS MODAL*/
 
 .successmodal .modal-content .modal-body, .successmodal_listing{
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(122,206,76,0.9)), color-stop(100%, rgba(0,125,158,0.9)));
-    background: -webkit-linear-gradient(318deg, rgba(122,206,76,0.9) 0%, rgba(0,125,158,0.9) 100%);
-    background: -o-linear-gradient(318deg, rgba(122,206,76,0.9) 0%, rgba(0,125,158,0.9) 100%);
-    background: -ms-linear-gradient(318deg, rgba(122,206,76,0.9) 0%, rgba(0,125,158,0.9) 100%);
-    background: linear-gradient(132deg, rgba(122,206,76,0.9) 0%, rgba(0,125,158,0.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7ace4c', endColorstr='#007d9e',GradientType=1 );
+    background: rgba(255,255,255,1);
+    background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+    background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 ); text-align: center!important;
 }
 .successmodal_listing h3{
     font-size: 18px;
-    font-family:RalewaySemiBold;
+    font-family:RalewaySemiBold; padding: 10px 0 6px 0;
 }
 .successmodal_listing .message_allow{ margin-right: 15px; }
 .successmodal_listing .btn_cnt{

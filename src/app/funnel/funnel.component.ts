@@ -372,7 +372,7 @@ if (this.dataForm1.valid) {
             this.router.navigate(['/signup',this.dataForm1.value['id']]);
           }else{
             // this.message='You have done your business with less than 40 clinics';
-            this.message='We appreciate your interest in becoming a NexGen Testing Sales Rep. While you were not selected for this position, we encourage you to apply again in the future for openings that match your qualifications.';
+            this.message='We appreciate your interest in becoming a Beto Paredes LLC Sales Rep. While you were not selected for this position, we encourage you to apply again in the future for openings that match your qualifications.';
             this.modalRef = this.modal.show(template, {class: 'funnel_modal'});
 
             setTimeout(() => {
