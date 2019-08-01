@@ -832,7 +832,7 @@
 /*box-shadow: 0px 6px 9px -1px #616161;*/
 /*}*/
 .training_leftpart .panel{ background:#22bdff; }
-.training_leftpart .panel button{ color: #fff; text-decoration: none; font-family: 'OpenSansSemiBold'; font-size: 24px; text-transform: uppercase; }
+.training_leftpart .panel button{ color: #fff!important; text-decoration: none; font-family: 'OpenSansSemiBold'; font-size: 24px; text-transform: uppercase; }
 .training_leftpart .panel  .card-body{ background: url("../images/trainin_lesson_bg.png") no-repeat; background-size: cover;  position: relative; height: auto;
     padding: 100px 0;
 }
@@ -2221,3 +2221,5 @@
     text-shadow: 0px 1px #6b6b6b; padding: 0 0 15px 0!important;
 }
 
+
+.quizmodal_content_w input[type="radio"]{ margin-top: 6px!important; }
