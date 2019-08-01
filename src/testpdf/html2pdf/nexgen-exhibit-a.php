@@ -137,11 +137,11 @@ $html = '
 
     <!--EXHIBIT A START-->
     <p style="text-align:center; margin-bottom:0px; font-size:12px; display:block;"> EXHIBIT A <br><br><b>SALES AND MARKETING CODE OF CONDUCT OF<br>
-    NEX GEN TESTING, INC.</p>
+    Beto Paredes LLC, INC.</p>
     </p>
     <table>
         <tr>
-            <td style="  font-size:12px; font-weight:normal;" > <b>Nex Gen Testing,</b> Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.</td>
+            <td style="  font-size:12px; font-weight:normal;" > <b>Beto Paredes LLC,</b> Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.</td>
         </tr>
         <br>
         <tr>

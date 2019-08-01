@@ -141,7 +141,7 @@ $html = '
 <div>
 	<h2 style="text-align:center;"> SALES CONSULTANTS AGREEMENT </h2>
 
-<p style="font-size:14px; line-height:22px;">THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <u> '.$result->created_at.'</u> <span style="width:350px; display:block; border-bottom: solid 3px #000;">'.$result->firstname.' '.$result->lastname.'</span>, 2018, by and between Nex Gen Testing, with its principal place of business at 5006 Largo, Granbury, TX  76049 ("NGT”) and <span style="width:200px; border-bottom:3px solid #000;">2</span>, having a business address at <span style="width:220px; border-bottom:6px solid #000;">3</span>, ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
+<p style="font-size:14px; line-height:22px;">THIS SALES CONSULTANTS AGREEMENT (the "Agreement") is made and entered into as of <u> '.$result->created_at.'</u> <span style="width:350px; display:block; border-bottom: solid 3px #000;">'.$result->firstname.' '.$result->lastname.'</span>, 2018, by and between Beto Paredes LLC, with its principal place of business at 5006 Largo, Granbury, TX  76049 and <span style="width:200px; border-bottom:3px solid #000;">2</span>, having a business address at <span style="width:220px; border-bottom:6px solid #000;">3</span>, ("CONSULTANT"). This Agreement supersedes any previous letters, contract(s) or other agreements between the parties hereto.
 </p>
 <p>The parties hereby agree as follows:</p>
 
@@ -685,7 +685,7 @@ $html = '
     <table>
         <tr>
          <td style="width:100px; font-size:14px;"> If to NGT:</td>
-         <td style="width:200px; font-size:14px;" >Nex Gen Testing</td>
+         <td style="width:200px; font-size:14px;" >Beto Paredes LLC</td>
          <td style="width:150px; font-size:14px;">If to CONSULTANT:</td>
          <td style="width:220px; font-size:14px;"><p  style="width:300px;"><u>_________________________</u> </p></td>
         </tr>
@@ -921,7 +921,7 @@ $html = '
 
     <tr>
         <td style="width:30px;"> </td>
-        <td style="width:auto; font-weight:normal; font-size:12px;">&nbsp;&nbsp; &nbsp; &nbsp; <b>(b)</b>&nbsp;&nbsp;&nbsp; &nbsp; At all times during the Term of this Agreement and afterwards, NGT retains all rights to the names “NGT,” “Nex Gen Testing,” or any other trade names, trademarks, or service marks theretofore used by NGT, or its affiliate companys for their business, products or services (collectively the “Marks”), or any trade names, trademarks or service marks confusingly similar to the Marks.  
+        <td style="width:auto; font-weight:normal; font-size:12px;">&nbsp;&nbsp; &nbsp; &nbsp; <b>(b)</b>&nbsp;&nbsp;&nbsp; &nbsp; At all times during the Term of this Agreement and afterwards, NGT retains all rights to the names “NGT,” “Beto Paredes LLC,” or any other trade names, trademarks, or service marks theretofore used by NGT, or its affiliate companys for their business, products or services (collectively the “Marks”), or any trade names, trademarks or service marks confusingly similar to the Marks.  
         </td>
     </tr>
     <tr><td></td></tr>
@@ -933,7 +933,7 @@ $html = '
     <tr><td></td></tr>
     <tr>
         <td style="width:30px;"> </td>
-        <td style="width:auto; font-weight:normal; font-size:12px;">&nbsp;&nbsp; &nbsp; &nbsp; <b>(d)</b>&nbsp;&nbsp;&nbsp; &nbsp; Upon Termination of the Agreement the CONSULTANT may not conduct business under, or use in any manner, NGT,” “Nex Gen Testing,” or any other trade names, trademarks, or service marks theretofore used by NGT, or its contracted affiliates for their business, products or services (collectively the “Marks”), or any trade names, trademarks or service marks confusingly similar to the Marks.  
+        <td style="width:auto; font-weight:normal; font-size:12px;">&nbsp;&nbsp; &nbsp; &nbsp; <b>(d)</b>&nbsp;&nbsp;&nbsp; &nbsp; Upon Termination of the Agreement the CONSULTANT may not conduct business under, or use in any manner, NGT,” “Beto Paredes LLC,” or any other trade names, trademarks, or service marks theretofore used by NGT, or its contracted affiliates for their business, products or services (collectively the “Marks”), or any trade names, trademarks or service marks confusingly similar to the Marks.  
         </td>
     </tr>
     <tr><td></td></tr>
@@ -971,11 +971,11 @@ $html = '
 
     <!--EXHIBIT A START-->
     <span style="text-align:center; margin-bottom:0px; font-size:12px; display:block;"> EXHIBIT A <br><br><b>SALES AND MARKETING CODE OF CONDUCT OF<br>
-    NEX GEN TESTING, INC.</span>
+    Beto Paredes LLC, INC.</span>
     </p>
     <table>
         <tr>
-            <td style="  font-size:12px; font-weight:normal;" > <b>Nex Gen Testing,</b> Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.</td>
+            <td style="  font-size:12px; font-weight:normal;" > <b>Beto Paredes LLC,</b> Inc. (NGT) will conduct its business honestly and ethically wherever we operate in the world. We will constantly improve the quality of our services, products and operations and will create a reputation for honesty, fairness, respect, responsibility, integrity, trust and sound business judgment.  No illegal or unethical conduct on the part of officers, directors, employees or affiliates will be tolerated.   NGT will not compromise its principles for short-term advantage. The ethical performance of this company is the sum of the ethics of the men and women who work for NGT. Thus, we are all expected to adhere to high standards of personal integrity.</td>
         </tr>
         <br>
         <tr>
@@ -1162,8 +1162,8 @@ $html = '
         <br>
         
         <tr>
-            <td style="text-align:center;"> I, <u>'.$result->firstname.' '.$result->lastname.'</u>  (print name)(“Consultant) acknowledge that, as an independent consultant for Nex Gen Testing( “NGT”), and in consideration for my right to commission payments by Nex Gen Testing (“NGT”).
-            I agree to the following restrictive covenants, which shall be for the benefit of Nex Gen Testing :           
+            <td style="text-align:center;"> I, <u>'.$result->firstname.' '.$result->lastname.'</u>  (print name)(“Consultant) acknowledge that, as an independent consultant for Beto Paredes LLC( “NGT”), and in consideration for my right to commission payments by Beto Paredes LLC (“NGT”).
+            I agree to the following restrictive covenants, which shall be for the benefit of Beto Paredes LLC :           
             </td>
         </tr>
         <br>
@@ -1193,7 +1193,7 @@ $html = '
     <br>
     <tr>
         <td style="width:30px;"><b> </b></td>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant acknowledges that the services he/she is to render give Consultant unique access to Customers, suppliers, referral sources, and Confidential Information with a unique value to NGT.  Therefore, based on the consideration provided by Nex Gen Testing “NGT”, including compensation and training, as a material inducement to enter into this Agreement, Consultant covenants and agrees as follows: 
+        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant acknowledges that the services he/she is to render give Consultant unique access to Customers, suppliers, referral sources, and Confidential Information with a unique value to NGT.  Therefore, based on the consideration provided by Beto Paredes LLC “NGT”, including compensation and training, as a material inducement to enter into this Agreement, Consultant covenants and agrees as follows: 
             </td>
     </tr>
     <br>
@@ -1201,14 +1201,14 @@ $html = '
     <tr>
         <td style="width:30px;"><b> </b></td>
         <td style="width:30px;">(i)</td>
-        <td style="width:auto; font-weight:normal; font-size:12px;">At all times during Consultant’s affiliation with Nex Gen Testing “NGT”,, while engaged in sales for the Nex Gen Testing or NGT, Consultant shall act as a Consultant of Nex Gen Testing “NGT”,. </td>
+        <td style="width:auto; font-weight:normal; font-size:12px;">At all times during Consultant’s affiliation with Beto Paredes LLC “NGT”,, while engaged in sales for the Beto Paredes LLC or NGT, Consultant shall act as a Consultant of Beto Paredes LLC “NGT”,. </td>
     </tr>
     <br>
 
     <tr>
         <td style="width:30px;"><b> </b></td>
         <td style="width:30px;">(ii)</td>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant may use title of “Independent Consultant” Representing Nex Gen Testing on Company approved and/or provided marketing material. Consultant may also use title on company approved Business Cards. </td>
+        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant may use title of “Independent Consultant” Representing Beto Paredes LLC on Company approved and/or provided marketing material. Consultant may also use title on company approved Business Cards. </td>
     </tr>
     <br>
 
@@ -1242,7 +1242,7 @@ $html = '
     <tr>
         <td style="width:30px;"><b> </b></td>
         <td style="width:30px;">(iv)</td>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> Conduct a business under, or use in any manner, the names “NGT,” “Nex Gen Testing” or any other trade names, trademarks, or service marks heretofore used by<b> Nex Gen Testing “NGT”,</b> or its subsidiaries or affiliates for their business, products or services (collectively the <span style="font-style:italic;">“Marks”</span>), or any trade names, trademarks or service marks confusingly similar to the Marks, except as provided by this Agreement and in furtherance of the business concerns of <b>Nex Gen Testing “NGT”;</b> or
+        <td style="width:auto; font-weight:normal; font-size:12px;"> Conduct a business under, or use in any manner, the names “NGT,” “Beto Paredes LLC” or any other trade names, trademarks, or service marks heretofore used by<b> Beto Paredes LLC “NGT”,</b> or its subsidiaries or affiliates for their business, products or services (collectively the <span style="font-style:italic;">“Marks”</span>), or any trade names, trademarks or service marks confusingly similar to the Marks, except as provided by this Agreement and in furtherance of the business concerns of <b>Beto Paredes LLC “NGT”;</b> or
 
         </td>
     </tr>
@@ -1251,7 +1251,7 @@ $html = '
     <tr>
         <td style="width:30px;"><b> </b></td>
         <td style="width:30px;">(v)</td>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> Make disparaging, derogatory or damaging remarks about <b>Nex Gen Testing “NGT”,</b>, its subsidiaries and affiliates, or their respective owners, shareholders, members, directors, managers, officers, joint venturers, trustees, salespersons, independent contractors, agents, employees, advisors, or consultants, including but not limited to comments about the Business or any of their products, services, businesses, business condition, or employment practices, in any way or to anyone who could make these statements public, based on information Consultant learned as a consultant of Nex Gen Testing “NGT”,. Not foregoing any additional rights or claims NGT may have, Consultant doing this will forfeit vesting and surviving right of any and all commissions.
+        <td style="width:auto; font-weight:normal; font-size:12px;"> Make disparaging, derogatory or damaging remarks about <b>Beto Paredes LLC “NGT”,</b>, its subsidiaries and affiliates, or their respective owners, shareholders, members, directors, managers, officers, joint venturers, trustees, salespersons, independent contractors, agents, employees, advisors, or consultants, including but not limited to comments about the Business or any of their products, services, businesses, business condition, or employment practices, in any way or to anyone who could make these statements public, based on information Consultant learned as a consultant of Beto Paredes LLC “NGT”,. Not foregoing any additional rights or claims NGT may have, Consultant doing this will forfeit vesting and surviving right of any and all commissions.
 
 
         </td>
@@ -1260,7 +1260,7 @@ $html = '
     <tr>
         <td style="width:30px;"><b> </b></td>
         <td style="width:30px;">(vi)</td>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant has carefully read and considered the provisions of this Agreement, and having done so, agrees that the restrictions set forth in this Agreement, including, but not limited to, the time period of restriction and geographical areas of restriction, are fair and reasonable and are reasonably required for the protection of the interest of Nex Gen Testing “NGT”, and will not prevent Consultant from obtaining gainful occupation.
+        <td style="width:auto; font-weight:normal; font-size:12px;"> Consultant has carefully read and considered the provisions of this Agreement, and having done so, agrees that the restrictions set forth in this Agreement, including, but not limited to, the time period of restriction and geographical areas of restriction, are fair and reasonable and are reasonably required for the protection of the interest of Beto Paredes LLC “NGT”, and will not prevent Consultant from obtaining gainful occupation.
 
 
         </td>
@@ -1274,7 +1274,7 @@ $html = '
     <br>
 
     <tr>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> &nbsp; &nbsp; &nbsp; (b) &nbsp;&nbsp;&nbsp;<b> Nex Gen Testing “NGT”,</b> and Consultant agree that the invalidity or unenforceability of any part of this Agreement shall not affect the validity or enforceability of any other Section or provision of this Agreement.
+        <td style="width:auto; font-weight:normal; font-size:12px;"> &nbsp; &nbsp; &nbsp; (b) &nbsp;&nbsp;&nbsp;<b> Beto Paredes LLC “NGT”,</b> and Consultant agree that the invalidity or unenforceability of any part of this Agreement shall not affect the validity or enforceability of any other Section or provision of this Agreement.
         </td>
     </tr>
     <br>
@@ -1286,7 +1286,7 @@ $html = '
     <br>
 
     <tr>
-        <td style="width:auto; font-weight:normal; font-size:12px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Consultant agrees that the remedy at law for any breach of any provision of this Agreement will be inadequate and that, in addition to any other remedies Nex Gen Testing “NGT”, may have, Nex Gen Testing “NGT”, shall be entitled to temporary and permanent injunctive relief to prevent Consultant’s violation hereof, without the necessity of proving actual damage or posting a bond.  Consultant shall irrevocably submit and consent to the jurisdiction of the Courts of Texas located in Hood County for resolution of the remedies in this Agreement.  Notwithstanding the duration of such covenants in this Agreement, in the event that Company shall be entitled to an injunction, Consultant agrees that Nex Gen Testing “NGT”,, in connection with such legal proceedings, additionally shall be entitled to obtain an order enforcing the prohibition contained herein against Consultant for a period equal to the period of time during which Consultant violated this Agreement or such other period of time as determined by the legal authority conducting said legal proceeding.  The covenants in this Agreement are independent, and the existence of any claim or cause of action of Consultant against Nex Gen Testing or “NGT”,, whether predicated on this Agreement or otherwise, shall not constitute a defense to the enforcement of these covenants by Nex Gen Testing “NGT”. The prevailing party in any action related to or arising out of this Agreement shall be entitled to recover its reasonable attorneys’ fees at all levels including on appeal. </td>
+        <td style="width:auto; font-weight:normal; font-size:12px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Consultant agrees that the remedy at law for any breach of any provision of this Agreement will be inadequate and that, in addition to any other remedies Beto Paredes LLC “NGT”, may have, Beto Paredes LLC “NGT”, shall be entitled to temporary and permanent injunctive relief to prevent Consultant’s violation hereof, without the necessity of proving actual damage or posting a bond.  Consultant shall irrevocably submit and consent to the jurisdiction of the Courts of Texas located in Hood County for resolution of the remedies in this Agreement.  Notwithstanding the duration of such covenants in this Agreement, in the event that Company shall be entitled to an injunction, Consultant agrees that Beto Paredes LLC “NGT”,, in connection with such legal proceedings, additionally shall be entitled to obtain an order enforcing the prohibition contained herein against Consultant for a period equal to the period of time during which Consultant violated this Agreement or such other period of time as determined by the legal authority conducting said legal proceeding.  The covenants in this Agreement are independent, and the existence of any claim or cause of action of Consultant against Beto Paredes LLC or “NGT”,, whether predicated on this Agreement or otherwise, shall not constitute a defense to the enforcement of these covenants by Beto Paredes LLC “NGT”. The prevailing party in any action related to or arising out of this Agreement shall be entitled to recover its reasonable attorneys’ fees at all levels including on appeal. </td>
     </tr>
     <br>
 
@@ -1303,7 +1303,7 @@ $html = '
     <!--last Part-->
     <table>
     <tr>
-        <td style="font-size:12px; font-weight:normal; width:50%;"> Nex Gen Testing  </td>
+        <td style="font-size:12px; font-weight:normal; width:50%;"> Beto Paredes LLC  </td>
         <td style="font-size:12px; font-weight:normal; width:50%;"><u>_________________</u> </td>
     </tr>
     <br>
