@@ -143,8 +143,8 @@ body{ padding:0; margin: 0;}
 /*Start Footer Section*/
     .nex_text_footer{background: #efefef; padding: 11px 0;}
     .nex_text_footer ul{text-align: center; margin-bottom: 0; padding-left: 0; }
-    .nex_text_footer ul li {display: inline-block; padding: 10px; list-style: none; }
-    .nex_text_footer ul li a{ font-family: 'RalewayMedium'; font-size: 13px; color: #616161; }
+    .nex_text_footer ul li {display: inline-block; padding: 10px; list-style: none;  font-size: 14px;}
+    .nex_text_footer ul li a{ font-family: 'RalewayMedium'; font-size: 14px; color: #616161; }
 /*Start Footer Section end*/
 .nextgen_login_wrapper {background: url("../images/login_bg.jpg") no-repeat;
     width:100vw;

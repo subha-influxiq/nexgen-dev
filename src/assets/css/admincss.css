@@ -1425,7 +1425,7 @@
 
 
 /*TERMS CONDITIONS*/
-.tc_modal_wraapper .modal-body .terms_logo_wrapper { text-align: center; width: 350px; margin: 0 auto;  border-bottom: 5px solid #14aaed; margin-bottom: 15px;
+.tc_modal_wraapper .modal-body .terms_logo_wrapper { text-align: center; width: 350px; margin: 0 auto;   margin-bottom: 15px;
     padding-bottom: 5px;}
 .tc_modal_wraapper .modal-body .terms_logo_wrapper img{ width: 100%; }
 .tc_modal_wraapper .modal-content {
