@@ -1817,7 +1817,7 @@
     font-family: 'RalewayBold';
     padding: 15px 0;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     color: #000;
     text-transform: uppercase;
     padding-top: 12px;
@@ -2287,3 +2287,41 @@ padding-top: 25px;
     width: 100%;
     height: 100%;
 }
+
+.account_inner_wrapper1{background: rgba(226,226,226,1);
+    background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(100%, rgba(254,254,254,1)));
+    background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(254,254,254,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );  border:  solid 1px #ddd;}
+.account_inner_wrapperbg1{ background: url("../images/useraccountsetting_bgnew.png") no-repeat 890px bottom; padding: 15px;}
+
+
+@media screen and (max-width:1650px) {
+    .account_inner_wrapperbg1{ background-position: 780px bottom;}
+}
+
+
+@media screen and (max-width:1530px) {
+    .account_inner_wrapperbg1{ background-position: 710px bottom;}
+}
+
+
+@media screen and (max-width:1450px) {
+    .account_inner_wrapperbg1{ background-position: right bottom; background-size: 40%;}
+}
+
+@media screen and (max-width:1320px) {
+    .account_inner_wrapperbg1{ background-position: right bottom; background-size: 38%;}
+}
+
+@media screen and (max-width:1290px) {
+    .account_inner_wrapperbg1{ background-image: none;}
+
+    .user_account_setting_wrapper .account_inner_wrapperbg1  .form_wrapper {
+        width: 100%!important;
+    }
+}
+
