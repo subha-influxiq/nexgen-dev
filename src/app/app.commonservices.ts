@@ -131,6 +131,8 @@ export class Commonservices {
         return moment.unix(dt).format(" HH:mm A");
     }
     gettype(filename){
+        console.log(filename);
+        //if(filename=='') return "DOC";
        var last;
         last = filename.substring(filename.lastIndexOf(".") + 1, filename.length);
         if(last=='doc') return 'DOC';
