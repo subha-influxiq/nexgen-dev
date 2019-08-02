@@ -120,6 +120,13 @@
               <li class="nav-item" (click)="gotorepevents()">
                 <a class="nav-link" >Discovery Calendar</a>
               </li>
+
+
+              <li class="nav-item" >
+                <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
+              </li>
+
+
               <li class="nav-item"  [routerLink]="['/myresource']">
                 <a class="nav-link">Resources</a>
               </li>
@@ -206,6 +213,20 @@
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<!--PRIVACY Modal-->
+<div bsModal #commissionsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg commissionsModal_modal_wraapper" >
+    <div class="modal-content">
+      <img src="assets/images/betologo.png" alt="#" class="betologo">
+      <p>As soon as your first commission is added to the back-office you will gain access to this report.</p>
     </div>
   </div>
 </div>
