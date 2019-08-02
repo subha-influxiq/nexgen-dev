@@ -1035,18 +1035,17 @@
 }
 
 
-@media screen and (max-width:1640px) {
 
-
-
-    .rep_dashboard_newblock3_sub h6{ font-size: 20px;}
-
-
-}
 
 @media screen and (max-width:1600px) {
     .rep_dashboard_newblock5 { padding: 0 50px 0 600px;  }
-}
+
+
+    .rep_dashboard_newblock2_subblock_wrapper{   padding: 50px }
+
+    .rep_dashboard_newblock2_subblock_wrapper ul {
+        margin: 20px 0 10px 460px!important;}
+    }
 
 @media screen and (max-width:1540px) {
 
@@ -1112,6 +1111,17 @@
 }
 
 @media screen and (max-width:1199px) {
+
+    .rep_dashboard_newblock2_subblock{ background-image: none; background-color: #f4eade;}
+
+    .rep_dashboard_newblock2_subblock_wrapper{ background-position: center bottom; padding: 30px 15px 700px 15px; text-align: center;}
+
+    .rep_dashboard_newblock2_subblock_wrapper ul{ margin: 20px 0 10px 0px!important; padding: 0 0 0 0!important; border: none; }
+
+    .rep_dashboard_newblock2_subblock_wrapper ul li{ background-position: center top; margin: 10px 0;     padding: 24px 0 16px 0;}
+
+
+
     .rep_dashboard_newblock2{ background-position: left top;     padding: 51% 15px 25px 15px; background-size: 270%; background-color: #1883bf;}
 
     .rep_dashboard_newblock2_wrapper {
@@ -1217,10 +1227,25 @@
 
     .rep_dashboard_newblock2{   padding: 52% 15px 25px 15px;  }
 
-    .rep_dashboard_newblock4_wrapper h2 { font-size: 46px;}
-    .rep_dashboard_newblock2_wrapper h2 { font-size: 46px;}
-    .rep_dashboard_newblock3_wrapper h2 { font-size: 46px;}
-    .rep_dashboard_newblock5_wrapper h2 { font-size: 46px;}
-    .rep_dashboard_newblock6_wrapper h2{ font-size: 46px;}
+    .rep_dashboard_newblock4_wrapper h2 { font-size: 40px;}
+    .rep_dashboard_newblock2_wrapper h2 { font-size: 40px;}
+    .rep_dashboard_newblock3_wrapper h2 { font-size: 40px;}
+    .rep_dashboard_newblock5_wrapper h2 { font-size: 40px;}
+    .rep_dashboard_newblock6_wrapper h2{ font-size: 40px;}
+    .rep_dashboard_newblock2_wrapper h2 {
+        font-size: 30px;
+        line-height: 32px;}
+
+    .rep_dashboard_newblock3 h2{ font-size: 30px;}
+
+    .rep_dashboard_newblock2_subblock_wrapper h2{ font-size: 40px; }
+}
+
+@media screen and (max-width:480px) {
+    .rep_dashboard_newblock2_subblock_wrapper {
+        background-size: 100%;
+        padding: 30px 15px 152% 15px;
+        text-align: center;
+    }
 
 }
