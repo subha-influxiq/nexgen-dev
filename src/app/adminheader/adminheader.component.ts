@@ -168,4 +168,9 @@ export class AdminheaderComponent implements OnInit {
     ngOnDestroy() {
         clearInterval(this.interval);
     }
+
+    openModal() {
+        alert('OKK');
+    }
+
 }
