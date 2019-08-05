@@ -48,6 +48,13 @@
               <li class="nav-item active" [routerLink]="['/rep']">
                 <a class="nav-link" >My Reps</a>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
+                  <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
+                </div>
+              </li>
               <li class="nav-item" [routerLink]="['/appointmentlist']">
                 <a class="nav-link ">Calendar Manager</a>
               </li>
@@ -108,14 +115,21 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContentrep"  *ngIf="router.url!='/reptrainingcenter'">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" [routerLink]="['/repdashboard']">
+              <li class="nav-item active" [routerLink]="['/repdashboard']">    
                 <a class="nav-link" >Dashboard <span class="sr-only"></span></a>
               </li>
               <li class="nav-item active" (click)="gototrainingsectionwithcat()">
                 <a class="nav-link" >Training Center</a>
               </li>
-              <li class="nav-item" [routerLink]="['/replegaldocuments']">
+              <!-- <li class="nav-item" [routerLink]="['/replegaldocuments']">
                 <a class="nav-link" >Legal Documents</a>
+              </li> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
+                  <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
+                </div>
               </li>
               <li class="nav-item" (click)="gotorepevents()">
                 <a class="nav-link" >Discovery Calendar</a>
@@ -183,6 +197,7 @@
               <li class="nav-item active" [routerLink]="['/rep']">
                 <a class="nav-link" >My Reps</a>
               </li>
+              
               <li class="nav-item active"  [routerLink]="['/calendar']">
                 <a class="nav-link">Calendar Settings</a>
               </li>
