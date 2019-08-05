@@ -55,7 +55,9 @@ import {ResetpasswordComponent} from "./resetpassword/resetpassword.component";
 import { AddEditComponent } from "./tranningcategorymanagement/add-edit/add-edit.component";
 
 import { AgreementComponent } from "./agreement/agreement.component";
+/* added by Chandrani */
 import { ManageleadsComponent } from "./manageleads/manageleads.component";
+import { ProductsComponent } from "./products/products.component";
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -124,7 +126,9 @@ const appRoutes: Routes = [
     { path: 'category-management/add-new', component: AddEditComponent },
     { path: 'category-management/edit/:id', component: AddEditComponent },
     { path: 'agreement', component: AgreementComponent},
+
     { path: 'manage-leads', component: ManageleadsComponent},
+    { path: 'products', component: ProductsComponent},
     
 ];
 

@@ -73,6 +73,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { AddEditComponent } from './tranningcategorymanagement/add-edit/add-edit.component';
 import { AgreementComponent } from './agreement/agreement.component';
 import { ManageleadsComponent } from './manageleads/manageleads.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,8 @@ import { ManageleadsComponent } from './manageleads/manageleads.component';
     OrderBy,
     AddEditComponent,
     AgreementComponent,
-    ManageleadsComponent
+    ManageleadsComponent,
+    ProductsComponent
 
   ],
   imports: [
