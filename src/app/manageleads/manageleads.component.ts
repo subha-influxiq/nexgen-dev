@@ -19,7 +19,8 @@ export class ManageleadsComponent implements OnInit {
       { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
       { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
       { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
-      { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' }
+      { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
+      { value: 'fullname', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
     ];
     this.formdata = [
       { inputtype: 'text', name: 'firstname', label: 'First Name', placeholder: 'Enter First Name', validationrule: { required: true }, validationerrormsg: 'is required' },
@@ -27,15 +28,32 @@ export class ManageleadsComponent implements OnInit {
       { inputtype: 'email', name: 'email', label: 'Email Id', placeholder: 'Enter Your Email', validationrule: { required: true, email: true }, validationerrormsg: 'is required and should be valid' },
       { inputtype: 'textarea', name: 'address', label: 'Address', placeholder: 'Enter Address' },
       { inputtype: 'text', name: 'phoneno', label: 'Phone No.', placeholder: 'Enter Mobile Number' },
-      { inputtype: 'hidden', name: 'created_by', label: "created_by", placeholder: "Created By", value: this.cookieservice.get('fullname') }
+      { inputtype: 'hidden', name: 'created_by', label: "created_by", placeholder: "Created By", value: this.cookieservice.get('userid') }
     ];
-    this.datasource = { table: 'leads', objarr: [] };
+    this.datasource = { table: 'leads', objarr: ["created_by"] };
     if (this.cookieservice.get('usertype') == 'admin') {
       this.sourcecondition = {};
       this.hideaddval = true;
+      this.tabledatalist = [
+        { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
+        { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
+        { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+        { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
+        { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+        { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
+        { value: 'fullname', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
+      ];
     } else {
-      this.sourcecondition = { 'created_by': this.cookieservice.get('fullname') };
+      this.sourcecondition = { 'created_by_object': this.cookieservice.get('userid') };
       this.hideaddval = false;
+      this.tabledatalist = [
+        { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
+        { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
+        { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+        { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
+        { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+        { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' }
+      ];
     }
   }
 

@@ -22,7 +22,7 @@
                 <a class="nav-link" >Dashboard<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active"  [routerLink]="['/usermanagement']">
-                <a class="nav-link">User Management</a>
+                <a class="nav-link">Users</a>
               </li>
 
               <li class="nav-item dropdown">
@@ -45,13 +45,20 @@
                 <a class="nav-link" >Legal Documents</a>
               </li> -->
 
-              <li class="nav-item active" [routerLink]="['/rep']">
+              <!-- <li class="nav-item active" [routerLink]="['/rep']">
                 <a class="nav-link" >My Reps</a>
-              </li>
+              </li> -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
+                  <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Products</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/']">Product List</a>
                   <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
                 </div>
               </li>
