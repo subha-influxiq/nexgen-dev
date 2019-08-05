@@ -20,12 +20,10 @@ export class SlotviewComponent implements OnInit {
   public refreshtoken:any;
   public timezone:any=[];
   public filterval5:any;
+  public blockHeaderFooterBlock: boolean = true;
 
-  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
-  {
-   //   console.log(moment().format('ddd'));
-
-    this._commonservice=_commonservice;
+  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute) {
+    this._commonservice =_commonservice;
 
       this._http.get("assets/data/timezone.json")
           .subscribe(res => {
@@ -46,14 +44,24 @@ export class SlotviewComponent implements OnInit {
         // if called as a rep
         this.route.params.subscribe(params => {
             this.recid = params['id'];
-            if( this.recid!=null) {
-                this.get_refreshtoken_of_this_rec();
-            }
-            //  events for regional/rep
-            console.log('===================================');
-            console.log(params['id']);
 
-            this.geteventarr();
+            if(this.cookeiservice.get('userid')) {
+                if( this.recid != null) {
+                    this.get_refreshtoken_of_this_rec();
+                }
+                this.geteventarr();
+            } else {
+                this.blockHeaderFooterBlock = false;
+                const link = this._commonservice.nodesslurl + 'temptoken';
+                this._http.post(link, { }).subscribe(res => {
+                    let result:any = res;
+                    console.log(result.token);
+                    this.cookeiservice.set('jwttoken', result.token);
+
+                    this.getUserDetails(this.recid);
+                    this.geteventarr();
+                })
+            }
         });
     }
 
@@ -64,8 +72,7 @@ export class SlotviewComponent implements OnInit {
                 let result:any={};
                 result = res;
                 this.refreshtoken=result.res[0].refreshtoken;
-                //  console.log('===========================================');
-                console.log('this.refreshtoken ' + this.refreshtoken);
+                
                 this.cookeiservice.set('refreshtoken', this.refreshtoken);
             })
     }
@@ -156,6 +163,16 @@ export class SlotviewComponent implements OnInit {
     var starttime= a.format('hh.mm A');
       var endtime = moment(a).add(30, 'minutes').format('hh.mm A');
       return starttime +' - '+endtime;
+  }
+
+  /* Get user details */
+  getUserDetails(id) {
+    const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+    this._http.post(link, { source:'users', condition: { _id_object: id }})
+        .subscribe(res => {
+            let result: any = res;
+            this.cookeiservice.set('useremail', result.res[0].email);
+        })
   }
 
 }

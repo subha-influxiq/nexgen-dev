@@ -108,6 +108,7 @@ const appRoutes: Routes = [
     { path:'myresource/:catid', component: MyresourceComponent},
     { path:'managequiz/:lessonid', component: ManagequizComponent},
     { path: 'tempaccess', component: TempaccessComponent},
+    { path: 'on-boarding-call-booked/:id', component: TempaccessComponent},
     { path: 'test', component: TestComponent},
     { path: 'forgetpassword', component: ForgetpasswordComponent},
     { path: 'slotview', component: SlotviewComponent},

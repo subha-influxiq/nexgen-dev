@@ -1,4 +1,6 @@
-<app-adminheader></app-adminheader>
+
+<app-adminheader *ngIf="blockHeaderFooterBlock"></app-adminheader>
+
 <div class="listevent_wrapper">
   <div class="listevent_inner_wrapper">
     <div class="inner_head_wrapper">
@@ -52,4 +54,4 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+<app-footer *ngIf="blockHeaderFooterBlock"></app-footer>

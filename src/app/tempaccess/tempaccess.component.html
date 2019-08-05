@@ -1,17 +1,12 @@
-<app-header></app-header>
-  <div class="ng_success_auth_wrapper">
-      <h2>Beto Paredes LLC</h2>
+<!-- <app-header></app-header> -->
+<div *ngIf="msgBlock == 'onBoardingCall'" class="ng_success_auth_wrapper">
+    <h2>Beto Paredes LLC</h2>
     <div class="content_wrap">
-      <h5>Thank you for signing up with Beto Paredes LLC.</h5>
-
-      <p>Your regional manager is: <span>{{rec}}</span>.
-
-     <span> {{rec}}</span> will contact you within 1 business day to verify your information.
-
-    If you do not hear from us within this Time Frame, please email us at:<a href="mailto:{{recemail}}">{{recemail}}</a>
-
-    </p>
+        Congratulations!
+        You have sucessfully booked your appoinment with [name] on [time][date] for [title].
+        We will get back to you soon!
     </div>
+
   </div>
 
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

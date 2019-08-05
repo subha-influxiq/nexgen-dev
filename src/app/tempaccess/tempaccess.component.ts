@@ -26,15 +26,27 @@ export class TempaccessComponent implements OnInit {
   public mydetails;
   public rec;
   public recemail;
+  public msgBlock: any;
 
   constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
-    this.getrepdetails();
+    // this.getrepdetails();
+    console.log(this.route.snapshot.url[0].path);
   }
 
   ngOnInit() {
+    switch(this.route.snapshot.url[0].path) {
+      case 'on-boarding-call-booked':
+        this.msgBlock = 'onBoardingCall';
+        break;
+      case 'is_discovery':
+        this.msgBlock = 'isDiscovery';
+        break;
+      default:
+        break;
+    }
   }
 
-  getrepdetails(){
+  getrepdetails() {
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:'users',condition:{_id_object:this.cookeiservice.get('userid')}})
         .subscribe(res => {

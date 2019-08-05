@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, TemplateRef} from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Commonservices} from "../app.commonservices";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -58,7 +59,7 @@ export class SlotsComponent implements OnInit {
   }
 
 
-  constructor(public _commonservices:Commonservices,public modal:BsModalService,kp: FormBuilder, private cookeiservice: CookieService,public _http:HttpClient) {
+  constructor(public _commonservices:Commonservices,public modal:BsModalService,kp: FormBuilder, private cookeiservice: CookieService,public _http:HttpClient, private route: ActivatedRoute, private router: Router) {
     this.kp = kp;
 
     this.timezoneval=this.cookeiservice.get('timezone');
@@ -169,11 +170,13 @@ export class SlotsComponent implements OnInit {
         });
   }*/
   booknowmodal(template:TemplateRef<any>,slotdata,template1:TemplateRef<any>) {
-    //  this.modalRef=this.modal.show(template);
+    this.getUserDetails(slotdata.allslotsuserid);
+
+    console.log('/**/*/*/*/**/*/*/*/*/*/*/*/*/*');
+    console.log(slotdata);
+
     this.mymodal = template1;
     this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-  //  console.log('slotdata');
-   //  console.log(slotdata);
 
 
      this.dataForm = this.kp.group({
@@ -200,7 +203,7 @@ showformat(stdt){
     }
     /*if (this.dataForm.valid) {*/
    // console.log('valid');
-    let link = this._commonservices.nodesslurl+'addtocalendar';
+    let  link = this._commonservices.nodesslurl+'addtocalendar';
 
 
     /*   {"refresh_token": "1/fkzUmqGX5zQ7Z_fn-EXa-ZM7u-DWTeiXhPJ7UiNQ3m8","start_time":"2019-05-08T10:00:00" ,"end_time":"2019-05-08T12:00:00","timezone":"America/Los_Angeles","summery":"Debasis test event !!","attendees":["debasis218@gmail.com","abc@yopmail.com"]}
@@ -222,6 +225,10 @@ showformat(stdt){
  /*   console.log(this.slotdata.starttime);
     console.log(this.slotdata.endtime);*/
     let ival=this.itemidval;
+    let description: any = this.slotdata.description;
+    if(this.dataForm.controls['repsmsg'].value.length > 0) {
+      description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
+    }
     let data = {
       refresh_token:this.cookeiservice.get('refreshtoken'),
      /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
@@ -232,7 +239,7 @@ showformat(stdt){
       timezone:tz[1],
       summery:this.dataForm.controls['meeting_with'].value,
       attendees:attendeesarr,
-      repsmsg:this.dataForm.controls['repsmsg'].value,
+      repsmsg: description,
       id:this.slotdata.eventid,
       eid:this.slotdata._id,
       slots:this.slotdata.slots,
@@ -253,9 +260,19 @@ showformat(stdt){
           this.modalRef.hide();
           this.message="Your Booking done successfully !!";
           this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
-          setTimeout(() => {
-            window.location.reload();
-          },5000);
+
+          switch(this.route.snapshot.url[0].path) {
+            case 'on-boarding-call':
+                this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path])
+              break;
+            case 'is_discovery':
+              break;
+            default:
+              break;
+          }
+          // setTimeout(() => {
+          //   window.location.reload();
+          // },5000);
           //this.router.navigate(['/reptrainingcenter'])
         });
   }
@@ -269,4 +286,17 @@ showformat(stdt){
   modaloff(){
     this.modalRef.hide();
   }
+
+  /* Get user details */
+  getUserDetails(id) {
+    const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+    this._http.post(link, { source:'users', condition: { _id_object: id }})
+        .subscribe(res => {
+            let result: any = res;
+            console.log('===== Refresh Token =====');
+            console.log(result.res[0].refreshtoken);
+            this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
+        })
+  }
+
 }
