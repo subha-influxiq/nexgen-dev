@@ -22,7 +22,8 @@ export class Commonservices {
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
-    public lessonarray: any = [];*/
+    public lessonarray: any = [];
+    https://nodessl.influxiq.com:6005/test1*/
 
     constructor(private http: HttpClient, public sanitizer: DomSanitizer) {
         this.url = 'https://nexgen.influxiq.com/php/index.php?q=';
@@ -32,7 +33,7 @@ export class Commonservices {
         this.fileurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.filepathurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.base64encode = 'https://nexgen.influxiq.com/php/index.php?encode=encodefile';
-
+  
 
 
      //   this.nodesslurl = 'http://api.nexgentesting.com:7001/';
@@ -40,7 +41,7 @@ export class Commonservices {
         // this.nodesslurl = 'https://api.nexgentesting.com:6027/';
         // this.nodesslurl = 'http://api.nexgentesting.com:7002/';
 
-        this.nodesslurl = 'http://166.62.39.137:5005/';
+        this.nodesslurl = 'https://nodessl.influxiq.com:6005/';
         this.uploadsslurl = 'http://166.62.39.137:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
         this.siteurl = 'https://nexgentesting.com/';
