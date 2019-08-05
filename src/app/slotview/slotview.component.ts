@@ -19,7 +19,7 @@ export class SlotviewComponent implements OnInit {
   public recid:any;
   public refreshtoken:any;
   public timezone:any=[];
-    public filterval5:any;
+  public filterval5:any;
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute)
   {
@@ -46,10 +46,13 @@ export class SlotviewComponent implements OnInit {
         // if called as a rep
         this.route.params.subscribe(params => {
             this.recid = params['id'];
-            if( this.recid!=null){
-            this.get_refreshtoken_of_this_rec();
+            if( this.recid!=null) {
+                this.get_refreshtoken_of_this_rec();
             }
             //  events for regional/rep
+            console.log('===================================');
+            console.log(params['id']);
+
             this.geteventarr();
         });
     }
@@ -71,45 +74,46 @@ export class SlotviewComponent implements OnInit {
         this.geteventarr();
     }
     geteventarr(){
-        console.log('geteventarr');
-        var cond;
-        if(this.filterval5!=null && this.filterval5!=''){
-            let spl=this.filterval5.split('/');
-            console.log(spl);
-            let spl_modified= spl[2]+'-'+spl[0]+'-'+spl[1];
-            if(this.recid==null){
-                cond={allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'},   startdate:spl_modified};
-            }else{
-            cond={
-                allslotsuserid_object:this.recid,slots:{$type:'array'},   startdate:spl_modified
-            };
+        let cond: any;
+        switch(this.route.snapshot.url[0].path) {
+            case 'on-boarding-call':
+                cond = { "is_onboarding": true };
+                break;
+            case 'is_discovery':
+                cond = { "is_discovery": true };
+                break;
+            default:
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    let spl = this.filterval5.split('/');
+                    let spl_modified = spl[2]+'-'+spl[0]+'-'+spl[1];
+                    if(this.recid == null) {
+                        cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'},   startdate:spl_modified};
+                    } else {
+                        cond = {
+                            allslotsuserid_object:this.recid,slots:{$type:'array'},   startdate:spl_modified
+                        };
+                    }
+                } else {
+                    if(this.recid == null) {
+                        cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
+                            $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        }};
+                    } else {
+                        cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
+                            $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        }};
+                    }
+                }
         }
-        }
-        else{
-            if(this.recid==null){
-                cond={allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
-                    $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                    $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
-                }}; //,startdate:new Date(),
-            }else{
-                cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
-                    $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                    $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
-                }};
-            }
-        }
+        
 
-        const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-        this._http.post(link,{source:'eventdayarr_events',condition:cond})
-            .subscribe(res => {
-                let result:any={};
-                result = res;
-                this.allslots=result.res;
-                console.log('===========================================');
-                console.log('this.allslots');
-                console.log(this.allslots);
-                console.log(result);
-            })
+        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link,{source:'eventdayarr_events',condition:cond}).subscribe(res => {
+            let result:any = res;
+            this.allslots = result.res;
+        });
     }
  /* ngOnInit() {
 
