@@ -13,7 +13,8 @@ export class RegionalRecruiterComponent implements OnInit {
   public tabledatalis:any=[];
   public formdata:any;
   public datasource:any;
-  public sourcecondition:any={type:this._commonservices.roletypes[1].type1};
+  // public sourcecondition:any={type:this._commonservices.roletypes[1].type1}; //old condition
+  public sourcecondition:any={};
   constructor(public _commonservices:Commonservices) {
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
@@ -25,6 +26,7 @@ export class RegionalRecruiterComponent implements OnInit {
 
     /*  {value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},*/
       {value:'state',name:'State/Region',role:0,func:'',class:'state',type:'text'},
+      {value:'productname',name:'Product(s)',role:0,func:'',class:'product',type:'text'},
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'phoneno'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
@@ -40,6 +42,7 @@ export class RegionalRecruiterComponent implements OnInit {
 
       /*{inputtype:'text',name:'address',label:'Address',placeholder:'Enter Your Address',validationrule:{required:true},validationerrormsg:'is required'},*/
       {inputtype:'select',name:'state',label:'State/Region',defaultchoice:'Select a State/region',sourceview:'states',multiple:true,sourcetype:'static',selectvalue:'name',selectid:'abbreviation',validationrule:{required:true},validationerrormsg:'is required'},
+      {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
       //{inputtype:'text',name:'telephone',label:'Telephone No',placeholder:'Enter Telephone No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'phoneno',label:'Mobile No',placeholder:'Enter Mobile No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'status',label:'Status',value:false},

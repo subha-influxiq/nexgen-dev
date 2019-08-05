@@ -13,15 +13,6 @@ export class ManageleadsComponent implements OnInit {
   public sourcecondition: any = {};
   public hideaddval: any = false;
   constructor(public cookieservice: CookieService) {
-    this.tabledatalist = [
-      { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
-      { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
-      { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
-      { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
-      { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
-      { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
-      { value: 'fullname', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
-    ];
     this.formdata = [
       { inputtype: 'text', name: 'firstname', label: 'First Name', placeholder: 'Enter First Name', validationrule: { required: true }, validationerrormsg: 'is required' },
       { inputtype: 'text', name: 'lastname', label: 'Last Name', placeholder: 'Enter Last Name', validationrule: { required: true }, validationerrormsg: 'is required' },
@@ -58,9 +49,6 @@ export class ManageleadsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.cookieservice.get('usertype'));
-    // console.log(this.sourcecondition);
-    console.log(this.hideaddval);
   }
 
 }
