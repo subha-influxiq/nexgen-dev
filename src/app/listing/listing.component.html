@@ -193,7 +193,7 @@
                                         <span *ngIf="item1.type=='#'&& router.url!='/rep'" [ngClass]="item1.class">{{i+1}}</span>
                                         <span *ngIf="item1.type=='#'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="gotorepdetails(item._id)">{{i+1}}</span>
                                         <span *ngIf="item1.type=='image'" [ngClass]="item1.class"><img src="{{_commonservice.filepathurl }}{{item1.foldername}}/crop/{{item[item1.value]}}" /></span>
-                                        <span *ngIf="item1.type=='file'" [ngClass]="item1.class"><a href="{{_commonservice.uploadsslurl }}{{item[item1.value]}}" target="_blank">Download</a><br/>File Name: {{item[item1.filepath]}}</span>
+                                        <span *ngIf="item1.type=='file'" [ngClass]="item1.class"><a href="{{_commonservice.uploadsslurl }}?file={{item[item1.value]}}" target="_blank">Download</a><br/>File Name: {{item[item1.filepath]}}</span>
                                         <!-- <span *ngIf="item1.type=='image'" [ngClass]="item1.class"><img src="{{_commonservice.filepathurl}}{{item1.foldername}}/{{item1.filename}}" /></span>-->
                                         <span *ngIf="item1.type=='url'" [ngClass]="item1.class">{{item[item1.value]}}</span>
                                         <span *ngIf="item1.type=='daterange'" [ngClass]="item1.class">{{showdate(item[item1.value])}}</span>

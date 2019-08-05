@@ -53,6 +53,7 @@ export class EventmanagementComponent implements OnInit {
       {inputtype:'timeis',name:'end_time',label:"End Time",placeholder:"Enter Time",validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'radio',name:'timespan',value:'30',valuelabel:'Minute',label:"Time Span",placeholder:"",validationrule:{required:true},validationerrormsg:'is required', class:'radioclass'},
       {inputtype:'radio',name:'timespan',value:'60',valuelabel:'Minute',label:"",placeholder:"",validationrule:{required:true},validationerrormsg:'', class:'radioclass'},
+      {inputtype:'radio',name:'timespan',value:'15',valuelabel:'Minute',label:"",placeholder:"",validationrule:{required:true},validationerrormsg:'', class:'radioclass'},
       {inputtype:'select',name:'timezone',label:'Timezone',defaultchoice:'Select a Timezone',sourceview:'timezone',sourcetype:'static',selectvalue:'show',selectid:'value',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'textarea',name:'description',label:'Event Details',placeholder:'Event Details',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'hidden',name:'userid',label:"userid",placeholder:"Enter userid",value:this.cookieservice.get('userid')}

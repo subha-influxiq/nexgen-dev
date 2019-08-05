@@ -103,10 +103,16 @@ export class LoginComponent implements OnInit {
               }*/
               if(result.item[0].type=='rep')
               {
-                if(result.item[0].lock==1) {
+                if(result.item[0].status==0) {
                   this.router.navigate(['/tempaccess']);
                   return;
                 }
+
+                if(result.item[0].status==1) {
+                  this.router.navigate(['/repdashboard']);
+                  return;
+                }
+
 
                 if(result.item[0].signup_step2==1 && result.item[0].contractstep==null && result.item[0].reptraininglessonstep==null) this.router.navigate(['/contract']);
 

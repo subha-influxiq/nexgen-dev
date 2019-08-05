@@ -41,7 +41,7 @@ export class Commonservices {
         // this.nodesslurl = 'http://api.nexgentesting.com:7002/';
 
         this.nodesslurl = 'http://166.62.39.137:5005/';
-        this.uploadsslurl = 'http://backoffice.betoparedes.com/assets/images/';
+        this.uploadsslurl = 'http://166.62.39.137:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
         this.siteurl = 'https://nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
@@ -131,6 +131,7 @@ export class Commonservices {
         return moment.unix(dt).format(" HH:mm A");
     }
     gettype(filename){
+        console.log('filename');
         console.log(filename);
         //if(filename=='') return "DOC";
        var last;

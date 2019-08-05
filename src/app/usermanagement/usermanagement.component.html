@@ -50,12 +50,12 @@
                 <thead>
                 <tr>
                   <th scope="col">Date Joined</th>
-                  <th scope="col">User Id</th>
+                  <!--<th scope="col">User Id</th>-->
             <!--      <th scope="col">Username </th>-->
                   <th scope="col">First Name</th>
                   <th scope="col">Last Name</th>
                   <th scope="col">Account Type</th>
-                  <th scope="col">Regional Manager</th>
+                  <!--<th scope="col">Regional Manager</th>-->
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
 
@@ -67,12 +67,12 @@
 
                 <tr *ngFor="let item of singleuserdata | usersearch:listFilter.value">
                   <td [routerLink]="['/useraccountsetting',item._id]">{{commonservices.showunixtodate1(item.created_at)}} </td>
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>
+                  <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->
                 <!--  <td [routerLink]="['/useraccountsetting',item._id]">{{item.username}}</td>-->
                   <td [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
                   <td [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
                   <td [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{item.recruiter}}</td>
+                  <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.recruiter}}</td>-->
                   <td>
                     <span  class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
                     <span class="ticon_active" (click)="togglestatus(item)"></span>
