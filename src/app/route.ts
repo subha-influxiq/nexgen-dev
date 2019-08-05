@@ -106,13 +106,17 @@ const appRoutes: Routes = [
     { path:'myresource', component: MyresourceComponent},
     { path:'myresource/:catid', component: MyresourceComponent},
     { path:'managequiz/:lessonid', component: ManagequizComponent},
-    {path: 'tempaccess', component: TempaccessComponent},
-    {path: 'test', component: TestComponent},
-    {path: 'forgetpassword', component: ForgetpasswordComponent},
-    {path: 'slotview', component: SlotviewComponent},
-    {path: 'slotview/:id', component: SlotviewComponent},
-    {path: 'appointmentlist', component: AppointmentlistComponent},
-    {path: 'resetpassword/:id', component: ResetpasswordComponent},
+    { path: 'tempaccess', component: TempaccessComponent},
+    { path: 'test', component: TestComponent},
+    { path: 'forgetpassword', component: ForgetpasswordComponent},
+    { path: 'slotview', component: SlotviewComponent},
+
+    { path: 'on-boarding-call/:id', component: SlotviewComponent},
+    { path: 'discovery-call/', component: SlotviewComponent},
+
+    { path: 'slotview/:id', component: SlotviewComponent},
+    { path: 'appointmentlist', component: AppointmentlistComponent},
+    { path: 'resetpassword/:id', component: ResetpasswordComponent},
 
     /* changes 11th July 2019 */
     { path: 'category-management/add-new', component: AddEditComponent },
