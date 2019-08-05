@@ -72,6 +72,7 @@ import { OrderBy } from './orderby';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AddEditComponent } from './tranningcategorymanagement/add-edit/add-edit.component';
 import { AgreementComponent } from './agreement/agreement.component';
+import { ManageleadsComponent } from './manageleads/manageleads.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { AgreementComponent } from './agreement/agreement.component';
     ResetpasswordComponent,
     OrderBy,
     AddEditComponent,
-    AgreementComponent
+    AgreementComponent,
+    ManageleadsComponent
 
   ],
   imports: [
