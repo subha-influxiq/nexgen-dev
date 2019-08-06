@@ -74,6 +74,7 @@ import { AddEditComponent } from './tranningcategorymanagement/add-edit/add-edit
 import { AgreementComponent } from './agreement/agreement.component';
 import { ManageleadsComponent } from './manageleads/manageleads.component';
 import { ProductsComponent } from './products/products.component';
+import { TrainingreportsComponent } from './trainingreports/trainingreports.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +134,8 @@ import { ProductsComponent } from './products/products.component';
     AddEditComponent,
     AgreementComponent,
     ManageleadsComponent,
-    ProductsComponent
+    ProductsComponent,
+    TrainingreportsComponent
 
   ],
   imports: [

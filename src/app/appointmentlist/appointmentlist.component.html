@@ -51,7 +51,8 @@
               <table class="table">
                 <thead>
                 <tr>
-                  <th scope="col">User ID</th>
+                  <!-- <th scope="col">User ID</th> -->
+                  <th scope="col">Type</th>
                   <th scope="col">Name</th>
                   <th scope="col">Date Set</th>
                   <th scope="col"> Time</th>
@@ -60,8 +61,9 @@
                 <tbody>
                 <!--<tr *ngFor="let item of googleevents | orderBy:'startdate':'reverse' | usersearch:listFilter.value; let i=index">-->
                 <tr *ngFor="let item of googleevents | orderBy:'startdate':'reverse'; let i=index">
-                  <td data-title="User ID" *ngIf="item.userdata">{{item.userdata.unique_id}}</td>
-                  <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}}</td>
+                  <!-- <td data-title="User ID" *ngIf="item.userdata">{{item.userdata.unique_id}}</td> -->
+                  <td data-title="Type" style="text-transform: capitalize;" *ngIf="item.userdata">{{item.type}}</td>
+                  <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}} ({{item.userdata.email}})</td>
                   <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
                   <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
                 </tr>
