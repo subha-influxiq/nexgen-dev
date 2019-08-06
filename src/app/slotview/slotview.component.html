@@ -14,7 +14,7 @@
           <div class="form-group">
             <!-- <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"> -->
 
-            <input type="text" placeholder="Select date" class="form-control" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker  [minDate]="minDate" (keyup)="issubmit=0">
+            <input type="text" placeholder="Select Date Range" class="form-control" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker>
 
             <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
             <button type="submit" class="btn_search" (click)="setdatetonull()"> show all </button>
