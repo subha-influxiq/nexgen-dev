@@ -1219,7 +1219,7 @@
 
     .rep_dashboard_newblock6 {
         background-position: right top;
-        background-size: 200%;   padding: 88% 15px 30px 15px; background-color: #becfe3;
+        background-size: 200%;   padding: 88% 15px 40px 15px; background-color: #becfe3;
     }
 
     .rep_dashboard_newblock6_wrapper {
@@ -1285,6 +1285,8 @@
     .rep_dashboard_newblock3 h2{ font-size: 30px;}
 
     .rep_dashboard_newblock2_subblock_wrapper h2{ font-size: 40px; }
+
+    .rep_dashboard_newblock3_sub h6{ height: auto; display: block; width: 100%; padding: 10px;}
 }
 
 @media screen and (max-width:480px) {

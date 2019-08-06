@@ -2084,9 +2084,9 @@
 
 .rep_dashboard_newblock3_sub h6 {
     font-family: 'OpenSansBold';
-    font-size: 18px;
+    font-size: 18px; width: 100vw; height: 60px; display: table-cell; text-align: center; vertical-align: middle;;
     color: #fff;
-    text-transform: uppercase; background: #000; padding: 10px;
+    text-transform: uppercase; background: #000; padding: 5px;
 
 }
 
