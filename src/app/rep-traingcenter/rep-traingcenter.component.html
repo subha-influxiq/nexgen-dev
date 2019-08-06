@@ -26,7 +26,10 @@
               <div class="lucoplast2"> </div>
 
           <div *ngIf="item.filetype=='html'" class="content_area">
-            <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p>
+            <!-- <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></p> -->
+            <p [innerHTML]="item.sanitizedHtmlEditor"></p>
+
+            
           </div>
           <div *ngIf="item.filetype=='file'" class="carousal_cont_wrap">
             <!--<p>{{item.filelocalname}}</p>-->

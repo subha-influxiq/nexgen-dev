@@ -38,6 +38,20 @@ export class TrainingreportsComponent implements OnInit {
    }
 
   ngOnInit() {
+    
+    let link = this.commonservices.nodesslurl+'tranningreportlist';
+        this.http.post(link,{})
+            .subscribe(res=>{
+                let result;
+                result=res;
+                if(result.status=='error'){
+                    console.log('Oopss');
+                }else {
+                    
+                    console.log('Get tranningreportlist data');
+                    console.log(result);
+                }
+            })
   }
   
 

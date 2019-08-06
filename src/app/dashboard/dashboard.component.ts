@@ -144,7 +144,7 @@ export class DashboardComponent implements OnInit {
                         this.totalreptraining=result['res'][1]['count'];
                     }
 
-
+                    console.log('this.totalreptraining-'+this.totalreptraining);
                 });
 
 

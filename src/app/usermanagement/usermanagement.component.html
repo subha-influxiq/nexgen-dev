@@ -57,6 +57,7 @@
                   <th scope="col">Account Type</th>
                   <!--<th scope="col">Regional Manager</th>-->
                   <th scope="col">Status</th>
+                  <th scope="col">Calender Access</th>
                   <th scope="col">Action</th>
 
 
@@ -79,6 +80,14 @@
                     </span>
                     <span class="statusinactive" *ngIf="item.status==null || item.status==0 ">Inactive
                     <span class="ticon_inactive" (click)="togglestatus(item)"></span>
+                    </span>
+                  </td>
+                  <td>
+                    <span  class="statusactive" *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
+                    <span class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
+                    </span>
+                    <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
+                    <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
                     </span>
                   </td>
                   <td>

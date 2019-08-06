@@ -36,6 +36,7 @@ export class ListingComponent implements OnInit {
     @Input() menuval = 0;
     @Input() hideaction: any = false;
     @Input() hideadd: any = false;
+    @Input() hidenotes: any = false;
     @Input() slotlist: any = false;
     public tabledatalisval: any;
     public formgroup: FormBuilder;

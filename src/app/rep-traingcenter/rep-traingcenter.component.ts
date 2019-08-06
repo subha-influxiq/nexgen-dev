@@ -160,6 +160,8 @@ export class RepTraingcenterComponent implements OnInit {
                             this.sorteddatalist.push(this.datalist[i]);
                             this.traininglessonflag = true;
                         }
+                        
+
                     }
 
                     for(let i in this.datalist) {
@@ -179,6 +181,9 @@ export class RepTraingcenterComponent implements OnInit {
                             console.log(this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length));
                             this.sorteddatalist[i].firstslide=this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length);
                         }
+                        console.log('this.sorteddatalist[i].htmleditorvalue--'+i);
+                        console.log(this.sorteddatalist[i].htmleditorvalue);
+                        this.sorteddatalist[i].sanitizedHtmlEditor = this.sanitizer.bypassSecurityTrustHtml(this.sorteddatalist[i].htmleditorvalue);
                     }
                 }
             }, error => {
