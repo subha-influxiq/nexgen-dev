@@ -6,13 +6,16 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { CookieService } from 'ngx-cookie-service';
+
 declare var moment:any;
+
 @Component({
   selector: 'app-slotview',
   templateUrl: './slotview.component.html',
   styleUrls: ['./slotview.component.css'],
   providers: [Commonservices]
 })
+
 export class SlotviewComponent implements OnInit {
   public allslots;
   public timezoneval:any;
@@ -21,6 +24,13 @@ export class SlotviewComponent implements OnInit {
   public timezone:any=[];
   public filterval5:any;
   public blockHeaderFooterBlock: boolean = true;
+  public daterangepickerOptions = {
+    startDate: '15/08/2019',
+    endDate: '31/12/2019',
+    format: 'MM/DD/YYYY',
+    minDate: moment().format("MM/DD/YYYY"),
+    noDefaultRangeSelected: true,
+   }
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute) {
     this._commonservice =_commonservice;
@@ -84,7 +94,17 @@ export class SlotviewComponent implements OnInit {
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
             case 'on-boarding-call':
-                cond = { "is_onboarding": true };
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
                 break;
             case 'is_discovery':
                 cond = { "is_discovery": true };

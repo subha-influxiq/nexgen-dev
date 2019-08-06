@@ -259,7 +259,7 @@ showformat(stdt){
           console.log(result);
           this.modalRef.hide();
           this.message="Your Booking done successfully !!";
-          this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
+          //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
 
           switch(this.route.snapshot.url[0].path) {
             case 'on-boarding-call':

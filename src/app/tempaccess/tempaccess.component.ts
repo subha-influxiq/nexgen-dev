@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Commonservices} from "../app.commonservices";
-import {HttpClient} from "@angular/common/http";
-import {CookieService} from "ngx-cookie-service";
+import { Commonservices } from "../app.commonservices";
+import { HttpClient } from "@angular/common/http";
+import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
 
 @Component({
   selector: 'app-tempaccess',
@@ -29,8 +28,9 @@ export class TempaccessComponent implements OnInit {
   public msgBlock: any;
 
   constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
-    // this.getrepdetails();
+    this.getrepdetails();
     console.log(this.route.snapshot.url[0].path);
+    console.log(this.route.snapshot.url[1].path);
   }
 
   ngOnInit() {
@@ -50,19 +50,18 @@ export class TempaccessComponent implements OnInit {
     const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link,{source:'users',condition:{_id_object:this.cookeiservice.get('userid')}})
         .subscribe(res => {
-          let result:any;
-          result = res;
-          if(result.status=='error'){
-          }else{
+          let result:any = res;
+          if(result.status == 'error') {
+          } else {
             this.mydetails = result.res;
-            console.log('this.mydetails');
+            console.log('====== this.mydetails =========');
             console.log(this.mydetails);
             //this.cookeiservice.set('refreshtoken', this.mydetails[0].regionalrecruiter_id);
 
 
             const link = this._commonservices.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-            this._http.post(link,{source:'users',condition:{_id_object:this.mydetails[0].regionalrecruiter_id}})
-                .subscribe(res => {
+            let data: any = { source: 'users', condition: { _id_object: this.mydetails[0].regionalrecruiter_id } };
+            this._http.post(link, data).subscribe(res => {
                   let result:any;
                   result = res;
                   if(result.status=='error'){
