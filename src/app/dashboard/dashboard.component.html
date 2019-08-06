@@ -20,9 +20,9 @@
           <thead>
             <tr>
               <th data scope="col">Date Added</th>
-              <th scope="col">User ID</th>
+              <!-- <th scope="col">User ID</th> -->
               <th scope="col">Name</th>
-              <th scope="col">Initial Training</th>
+              <!-- <th scope="col">Initial Training</th> -->
               <th scope="col"> Additional Training</th>
             </tr>
           </thead>
@@ -31,13 +31,13 @@
           <!--   <tr *ngFor="let item of repdetails | slice:0:5; let i=index">-->
           <tr *ngFor="let item of getonedetails | slice:0:5; let i=index">
             <td data-title="Date Added" scope="row">{{commonservices.showdateforreplegal(item.created_at)}}</td>
-            <td data-title="User ID">{{item.unique_id}}</td>
+            <!-- <td data-title="User ID">{{item.unique_id}}</td> -->
             <td data-title="Name">{{item.firstname}} {{item.lastname}}</td>
-            <td data-title="Initial Training">
+            <!-- <td data-title="Initial Training">
               <span *ngIf="item.newhirecatsum==0">0</span>
               <span *ngIf="item.newhirecatsum>0">{{((item.newhirecatsum/totalnewhiretraining).toFixed(2)*100).toFixed(2)}}</span>
-              %</td>
-            <td data-title="Additional Training">
+              %</td> -->
+            <td data-title="Training Completed">
               <span *ngIf="item.reactsum>0">{{((item.reactsum/totalreptraining).toFixed(2)*100).toFixed(2)}}</span>
               <span *ngIf="item.reactsum==0">0</span>
               %</td>
