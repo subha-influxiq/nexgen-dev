@@ -3,6 +3,7 @@ import { Commonservices } from "../app.commonservices";
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, Params } from '@angular/router';
+declare var moment;
 
 @Component({
   selector: 'app-tempaccess',
@@ -25,18 +26,22 @@ export class TempaccessComponent implements OnInit {
   public mydetails;
   public rec;
   public recemail;
-  public msgBlock: any;
+  public msgBlock: any = { flug: 'general' };
+  public googleEventId: any;
 
   constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
-    this.getrepdetails();
-    console.log(this.route.snapshot.url[0].path);
-    console.log(this.route.snapshot.url[1].path);
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.recid = params['userId'];
+      this.googleEventId = params['googleEventId'];
+    });
+
     switch(this.route.snapshot.url[0].path) {
       case 'on-boarding-call-booked':
-        this.msgBlock = 'onBoardingCall';
+        this.msgBlock.flug = 'onBoardingCall';
+        this.callApiService();
         break;
       case 'is_discovery':
         this.msgBlock = 'isDiscovery';
@@ -44,6 +49,23 @@ export class TempaccessComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  callApiService() {
+    const link = this._commonservices.nodesslurl + 'datalist?token='+this.cookeiservice.get('jwttoken');
+    let data: any = { source: 'googleevents_view', condition: { _id_object: this.googleEventId } };
+    this._http.post(link, data).subscribe(res => {
+      let result:any = res;
+      
+      /* Set data */
+      this.msgBlock.name        = result.res[0].userdata.firstname + ' ' + result.res[0].userdata.lastname;
+      this.msgBlock.date        = result.res[0].userdata.lastname;
+      this.msgBlock.startDate   = moment(result.res[0].startdate).format('DD:MM:YYYY');
+      this.msgBlock.startTime   = moment(result.res[0].start_time).format('hh:mm A');
+      this.msgBlock.eventTitle  = result.res[0].summery;
+    }, error => {
+      console.log('Oooops!');
+    });
   }
 
   getrepdetails() {
@@ -84,4 +106,5 @@ export class TempaccessComponent implements OnInit {
           console.log('Oooops!');
         });
   }
+
 }

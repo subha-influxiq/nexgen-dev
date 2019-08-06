@@ -1458,18 +1458,22 @@
 .listevent_wrapper  .inner_head_wrapper h2{ font-family: 'RalewayExtraBold'; text-transform: uppercase; font-size: 40px; text-align: center; margin: 0px;
     background: url("../images/event_list_b_border.png")no-repeat center bottom; padding-bottom: 10px; }
 
-.listevent_wrapper .event_content_wrapper .evnt_left_content{ width: auto; display: flex; justify-content: flex-start;}
-.listevent_wrapper .event_content_wrapper .evnt_right_content{
-    width: auto;
-    display: flex;
-    justify-content: flex-end;
-    margin-left: auto;
+.listevent_wrapper .form-control {
+    border-radius: 0px!important;
+    width: 320px;
+    float: left;
+}
+
+.listevent_wrapper .event_content_wrapper .evnt_left_content{ width: 570px; float: left; /*display: flex; justify-content: flex-start;*/}
+.listevent_wrapper .event_content_wrapper .evnt_right_content {
+    width: 548px;
+    float: right;
 }
 .listevent_wrapper .event_content_wrapper form{ margin-bottom: 0;}
 .listevent_wrapper .event_content_wrapper .evnt_right_content h3{ display:inline; font-size: 20px; font-family: 'RalewayBold'; color:#000; text-transform: uppercase;   padding: 10px; padding-bottom: 0;}
-.listevent_wrapper .event_content_wrapper{ background:#cbcbcb; display: flex; padding: 15px 10px; flex-wrap: wrap; }
+.listevent_wrapper .event_content_wrapper{ background:#cbcbcb; display: block; padding: 15px 10px; clear: both; overflow: hidden; }
 
-.listevent_wrapper .event_content_wrapper  form .form-group{display: flex;margin-bottom: 0; }
+.listevent_wrapper .event_content_wrapper  form .form-group{display: block;margin-bottom: 0; }
 /*.listevent_wrapper .event_content_wrapper  form .form-group .form-control:focus{outline: none; box-shadow: none; }*/
 .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu1{ width: 235px; border-radius: 0; }
 .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group{ margin-bottom: 0; display: inline-flex; }
@@ -1478,7 +1482,7 @@
 .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search, .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search{ background: #00c0ff; color: #fff; font-family: 'RalewayBold';     font-size: 20px;
     border: none;
     text-transform: uppercase;
-    margin-left: 10px; padding: 4px 10px 3px 10px;}
+    margin-left: 10px; padding: 4px 10px 3px 10px; width: auto;}
 
 .listevent_inner_wrapper .main_inner_content{     display: flex;
     padding: .5%;
@@ -2080,9 +2084,9 @@
 
 .rep_dashboard_newblock3_sub h6 {
     font-family: 'OpenSansBold';
-    font-size: 18px;
+    font-size: 18px; width: 100vw; height: 60px; display: table-cell; text-align: center; vertical-align: middle;;
     color: #fff;
-    text-transform: uppercase; background: #000; padding: 10px;
+    text-transform: uppercase; background: #000; padding: 5px;
 
 }
 
