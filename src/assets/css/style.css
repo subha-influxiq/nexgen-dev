@@ -1302,8 +1302,10 @@ body{ padding:0; margin: 0;}
     margin-right: 2%;
 }
 
-.agreement_contain_forncontain_inner .inneritem:last-child(1) {
+.agreement_contain_forncontain_inner .inneritem2{
     margin-right: 0% !important;
+
+    width: 40%; float: right;
 }
 
 .agreement_contain_wrapper .agreement_contain_forncontain_inner .agr_input4 {
@@ -1556,3 +1558,38 @@ body{ padding:0; margin: 0;}
 }
 /*-----------------------------end agreement-----------------------*/
 
+     
+.agreementsubdiv1{ padding-left: 30px;}
+
+.agreementsubdiv1 strong{ display: block; padding-bottom: 10px; color: #111;}
+.agreementsubdiv1 strong span{ padding-right: 10px;}
+
+.agreementsubdiv2{ padding-left: 60px;}
+
+.signinput2 {
+    border-bottom: solid 1px #616262;
+    margin: 0 !important;
+    font-size: 40px !important;
+    padding: 18px 0 0 90px;
+    font-family: 'Notera';
+}
+
+
+@media screen and (max-width: 767px) {
+.agreement_contain_forncontain_inner .inneritem2{ margin-top: 20px;}
+
+    .agreementsubdiv1{ padding-left: 10px;}
+
+    .agreementsubdiv2{ padding-left: 20px;}
+}
+
+
+/*----------------*/
+
+.inner_head_wrapper h4{ text-align: center;    font-family: 'OpenSansBold'; color:#1865a4; font-size: 30px; padding: 0 0 10px 0;}
+.inner_head_wrapper span{ display: block; text-align: center;
+    color: #333;
+    font-size: 18px;
+    font-family: 'OpenSansRegular';}
+
+.message_success{ color: #000!important; padding: 10px 0 0 0;}

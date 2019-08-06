@@ -87,6 +87,11 @@
 }
 
 @media screen  and  (max-width: 1480px){
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content {
+        width: 480px;
+        float: right;
+    }
     .rep_dashboard_wrapper1 {
         background-position: 75% center!important;
     }
@@ -155,6 +160,22 @@
 
 
 }
+
+@media screen  and (max-width: 1348px){
+
+    .listevent_wrapper .form-control {
+        border-radius: 0px!important;
+        width: 250px;
+        float: left;
+    }
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search, .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search{  padding: 5px 10px 5px 10px;  }
+
+    .listevent_wrapper .event_content_wrapper .evnt_left_content {
+        width: 480px;
+        float: left;
+    }
+}
 @media screen  and (max-width: 1340px){
     .dashboard_block2 .col-md-4 button {
         font-size: 24px;
@@ -166,13 +187,18 @@
     }*/
 }
 @media screen  and  (max-width: 1300px){
-    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
+  /*  .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
     .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search {
         font-size: 16px;
         padding: 4px 10px 0px 10px;
-    }
+    }*/
     .listevent_wrapper .event_content_wrapper .evnt_right_content h3 { font-size: 16px; }
     .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 { width: 190px; }
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content {
+        width: 460px;
+        float: right;
+    }
 }
 @media screen  and  (max-width: 1280px){
     .user_details_wrapper .left_wrapper .doctor_section .doctor_other_list{ float: right; width: 48%; }
@@ -180,6 +206,9 @@
 
     .admin_dashboard_container .content_text h2 {
         font-size: 34px;
+    }
+    .listevent_wrapper {
+        width: 90%;
     }
 }
 @media screen  and  (max-width: 1240px){
@@ -197,6 +226,18 @@
 
 
 @media screen and (max-width: 1199px) {
+
+    .listevent_wrapper .event_content_wrapper .evnt_left_content {
+        width: 480px;
+        float: none;
+        margin: 0 auto;
+    }
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content {
+        width: 448px;
+        float: none;
+        margin: 0 auto;
+    }
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock {
         flex-direction: column;
         align-items: center;
@@ -639,6 +680,10 @@
     }
 }
 @media screen and (max-width: 720px) {
+
+    .listevent_wrapper .form-control{ width: 100%; float: none;}
+
+    .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search, .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search{ display: block; margin: 5px auto;}
     .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group {
         margin-bottom: 0;
         display: block;
@@ -657,8 +702,9 @@
         text-align: center;
         margin: 10px auto;
     }
+    .listevent_wrapper .event_content_wrapper .evnt_right_content{ width: 100%;}
     .listevent_wrapper .event_content_wrapper .evnt_right_content form .form-group .select_inpu2 {
-        width: 303px;
+        width: 100%;
         margin: 7px 0 14px;
     }
     .listevent_wrapper .event_content_wrapper .evnt_left_content form .form-group .select_inpu2 {
