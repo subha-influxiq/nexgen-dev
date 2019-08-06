@@ -8,6 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 declare var moment;
 declare var $:any;
+
 @Component({
   selector: 'app-slots',
   templateUrl: './slots.component.html',
@@ -231,6 +232,7 @@ showformat(stdt){
     }
     let data = {
       refresh_token:this.cookeiservice.get('refreshtoken'),
+      organizerid:this.cookeiservice.get('organizerid'),
      /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
       end_time:moment($('.enddt').val()).format('YYYY-MM-DD')+'T'+moment(this.end_time).format('HH:mm:ss'),*/
       startdate:this.slotdata.startdate,
@@ -252,18 +254,16 @@ showformat(stdt){
     console.log(data);
     this._http.post(link, data)
         .subscribe(res => {
-          let result: any = {};
-          result = res;
+          let result: any = res;
           console.log('result.... for google calendar');
           console.log(result);
-          console.log(result);
           this.modalRef.hide();
-          this.message="Your Booking done successfully !!";
+          this.message = "Your Booking done successfully !!";
           //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
 
           switch(this.route.snapshot.url[0].path) {
             case 'on-boarding-call':
-                this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path])
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
               break;
             case 'is_discovery':
               break;
@@ -296,6 +296,7 @@ showformat(stdt){
             console.log('===== Refresh Token =====');
             console.log(result.res[0].refreshtoken);
             this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
+            this.cookeiservice.set('organizerid', result.res[0].email);
         })
   }
 

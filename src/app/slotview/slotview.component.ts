@@ -55,6 +55,7 @@ export class SlotviewComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.recid = params['id'];
 
+
             if(this.cookeiservice.get('userid')) {
                 if( this.recid != null) {
                     this.get_refreshtoken_of_this_rec();
