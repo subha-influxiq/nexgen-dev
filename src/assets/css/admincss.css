@@ -16,7 +16,7 @@
 .new_header .new_header1{ flex-grow: 1; }
 
 .new_header .new_header1 .new_h_l_wrapper{ width: 320px;}
-.new_header .new_header1 .new_h_l_wrapper img{ width: 100%;}
+.new_header .new_header1 .new_h_l_wrapper img{ width: 100%; border: none; outline: none;}
 
 
 

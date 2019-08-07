@@ -26,6 +26,7 @@ export class AdminheaderComponent implements OnInit {
 
   constructor(public cookie:CookieService,public router:Router,private _commonservices: Commonservices,private _http: HttpClient) {
       console.log(this.cookie.get('refreshtoken'));
+      window.scrollTo(1000,0);
     this.type=this.cookie.get('usertype');
     this.idis=this.cookie.get('userid');
 

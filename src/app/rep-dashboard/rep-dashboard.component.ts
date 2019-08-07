@@ -18,7 +18,7 @@ export class RepDashboardComponent implements OnInit {
 
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService)
   {
-    window.scrollTo(0,0);
+    window.scrollTo(1000,0);
     this._commonservice=_commonservice;
     // console.log(this.cookeiservice.get('userid'));
     if(this.cookeiservice.get('userid')!=null){
