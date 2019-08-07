@@ -89,6 +89,7 @@ export class LoginComponent implements OnInit {
                 this.cookeiservice.set('lockdornot', result.item[0].lock);
                 this.cookeiservice.set('usertype', result.item[0].type);
                 this.cookeiservice.set('useremail', result.item[0].email);
+                this.cookeiservice.set('calenderaccess', result.item[0].calenderaccess);
                 this.cookeiservice.set('fullname', result.item[0].firstname + ' ' + result.item[0].lastname);
                 if(result.item[0].type=='admin') {
                   this.router.navigate(['/dashboard']);
