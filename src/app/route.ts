@@ -127,6 +127,7 @@ const appRoutes: Routes = [
     { path: 'category-management/add-new', component: AddEditComponent },
     { path: 'category-management/edit/:id', component: AddEditComponent },
     { path: 'agreement', component: AgreementComponent },
+    { path: 'agreement/:userId', component: AgreementComponent },
 
     /* added by Chandrani */
     { path: 'manage-leads', component: ManageleadsComponent },

@@ -1,0 +1,8 @@
+.agreement_contain_forncontain_inner .has-error{     display: block;
+    margin: 0px;
+    color: #ff0000;
+    float: none;
+    padding: 0px;
+    font-size: 14px;
+}
+.signaturediv .new_signupdiv{ position: inherit; top:0; left: 0;}

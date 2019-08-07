@@ -1,7 +1,7 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
-import {Commonservices} from '../app.commonservices' ;
+import { Commonservices } from '../app.commonservices' ;
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -32,7 +32,7 @@ export class SlotviewComponent implements OnInit {
     noDefaultRangeSelected: true,
    }
 
-  constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,public cookeiservice: CookieService,private route: ActivatedRoute) {
+  constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute) {
     this._commonservice =_commonservice;
 
       this._http.get("assets/data/timezone.json")

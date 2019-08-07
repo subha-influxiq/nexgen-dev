@@ -1,272 +1,237 @@
 <img src="../../assets/images/logo.png" class="agreement_contain_logo">
 
 <div class="agreement_contain_wrapper">
-<h2>BETO PAREDES LLC
-  <span>Associate Director Program (Beto Paredes Family of Companies Rep)</span>
-</h2>
+    <h2>BETO PAREDES LLC
+        <span>Associate Director Program (Beto Paredes Family of Companies Rep)</span>
+    </h2>
 
-  <form>
+    <form [formGroup]="agreementForm" (ngSubmit)="agreementFormSubmit()" autocomplete="off">
+        <p>This agreement (hereinafter referred to as “Agreement”) dated on [date], by and between Beto Paredes LLC (hereinafter referred to as “Company” and/or Company and participating partner companies), an Idaho LLC, and <input _ngcontent-c1="" class="agr_input2" name="agreement_person_company" readonly="readonly" type="text" formControlName="companyName" /> (hereinafter referred to as “Associate”), an individual or business with their primary location at <input _ngcontent-c1="" class="agr_input3" name="agreement_person_address" readonly="readonly" type="text" formControlName="address">.  Both Company and Associate may collectively be referred to as (“Parties”).
+        </p>
 
 
-    <p>This agreement (hereinafter referred to as “Agreement”) dated on [date], by and between Beto Paredes LLC (hereinafter referred to as “Company” and/or Company and participating partner companies), an Idaho LLC, and <input _ngcontent-c1="" class="agr_input2" name="agreement_person_company" readonly="readonly" type="text" value="Test Company"> (hereinafter referred to as “Associate”), an individual or business with their primary location at <input _ngcontent-c1="" class="agr_input3" name="agreement_person_address" readonly="readonly" type="text" value="Test Address">.  Both Company and Associate may collectively be referred to as (“Parties”).
-    </p>
+        <label>1. AGREEMENT</label>
+        <p>1.1. Accordingly, in consideration of the mutual covenants contained herein, the Parties agree as follows:</p>
+        <label> 2. RECITALS</label><br/>
+        <p> 2.1. Whereas, Company is engaged in the business of providing internally offered software, branding, web design, custom engineering, consulting and marketing related services. And in as much the company is contracted directly with additional companies that are engaged in their sales platform through the Beto Paredes Family of Companies rep portal.</p>
+        <p>2.2. Whereas, Associate is an independent entity who seeks to receive a Commission (“Commission”) from Company on occasion in exchange for making a personal introduction between potential customers and Company (“Referral”).</p>
+        <p>2.3. Whereas, all monies referred to are in USD (“$”).</p>
+        <label>3. INDEPENDENT ASSOCIATE RELATIONSHIP</label><br/>
+        <p> 3.1. The Parties acknowledge that Associate will perform their obligations hereunder as an independent contractor or Associate and shall not be an employee of Company.  It is also expressly understood that Associate's employees and agents, if any, are not Company's employees or agents, and have no authority to bind Company by contract or otherwise.</p>
+        <p>3.2. Associate agrees they are solely responsible for understanding their rights and obligations as an Associate in their geographic area.</p>
+        <p>3.3. Company shall not be liable for taxes, worker's compensation, unemployment insurance, employers' liability, employer's FICA, social security, withholding tax, or other taxes or withholding for or on behalf of Associate or any other person consulted or employed by the Associate in performing Services under this Agreement. All such costs shall be Associate's responsibility.
+        </p>
 
 
-    <label>1. AGREEMENT</label>
-    <p>1.1. Accordingly, in consideration of the mutual covenants contained herein, the Parties agree as follows:</p>
-    <label> 2. RECITALS</label><br/>
-    <p> 2.1. Whereas, Company is engaged in the business of providing internally offered software, branding, web design, custom engineering, consulting and marketing related services. And in as much the company is contracted directly with additional companies that are engaged in their sales platform through the Beto Paredes Family of Companies rep portal.</p>
-    <p>2.2. Whereas, Associate is an independent entity who seeks to receive a Commission (“Commission”) from Company on occasion in exchange for making a personal introduction between potential customers and Company (“Referral”).</p>
-    <p>2.3. Whereas, all monies referred to are in USD (“$”).</p>
-    <label>3. INDEPENDENT ASSOCIATE RELATIONSHIP</label><br/>
-    <p> 3.1. The Parties acknowledge that Associate will perform their obligations hereunder as an independent contractor or Associate and shall not be an employee of Company.  It is also expressly understood that Associate's employees and agents, if any, are not Company's employees or agents, and have no authority to bind Company by contract or otherwise.</p>
-    <p>3.2. Associate agrees they are solely responsible for understanding their rights and obligations as an Associate in their geographic area.</p>
-    <p>3.3. Company shall not be liable for taxes, worker's compensation, unemployment insurance, employers' liability, employer's FICA, social security, withholding tax, or other taxes or withholding for or on behalf of Associate or any other person consulted or employed by the Associate in performing Services under this Agreement. All such costs shall be Associate's responsibility.
-    </p>
+        <label>4. REFERRALS AND COMMISSIONS</label><br/>
+        <p> 4.1. Referral contacts (“Referral Contact”, “Referral Contacts”) are only eligible for Commissions if the Associate introduces the Referral Contact to Company either in person or on the phone with all 3 parties present (Company, Associate, and Referral Contact).  Or if entered as an official lead in the appropriate back office provided by Company.</p>
+        <p>4.2. Commissions will be paid only after the Company has received payment for the sale which commission is to be paid for either directly or through partner companies in the sales programs. Company will not be held liable to pay Commissions on any funds that are uncollected or refunded.</p>
+        <p>4.3. Commissions will be paid Monthly Net 7 for all payments collected directly and collected from partner companies in the sales platform.  All received commissions within the full month period will be calculated, with a full report of each earnings, and mailed with a check within 7 days in the beginning of the following month.  Earnings will also be reflected in the commission report in the rep portal.</p>
+        <p> 4.4. Commission amounts and percentages will be set specifically for each product or service based on the exact commission rates found in this agreement under section 5 “Commission Schedule”.</p>
 
+        <label>SALES COMMISSIONS OFFERED PER CURRENT PRODUCT OPPORTUNITIES:</label><br/>
 
-    <label>4. REFERRALS AND COMMISSIONS</label><br/>
-    <p> 4.1. Referral contacts (“Referral Contact”, “Referral Contacts”) are only eligible for Commissions if the Associate introduces the Referral Contact to Company either in person or on the phone with all 3 parties present (Company, Associate, and Referral Contact).  Or if entered as an official lead in the appropriate back office provided by Company.</p>
-    <p>4.2. Commissions will be paid only after the Company has received payment for the sale which commission is to be paid for either directly or through partner companies in the sales programs. Company will not be held liable to pay Commissions on any funds that are uncollected or refunded.</p>
-    <p>4.3. Commissions will be paid Monthly Net 7 for all payments collected directly and collected from partner companies in the sales platform.  All received commissions within the full month period will be calculated, with a full report of each earnings, and mailed with a check within 7 days in the beginning of the following month.  Earnings will also be reflected in the commission report in the rep portal.</p>
-    <p> 4.4. Commission amounts and percentages will be set specifically for each product or service based on the exact commission rates found in this agreement under section 5 “Commission Schedule”.</p>
+        <div class="agreementsubdiv1">
 
-    <label>SALES COMMISSIONS OFFERED PER CURRENT PRODUCT OPPORTUNITIES:</label><br/>
+            <p><strong><span>a)</span>InfluxIQ Marketing Platform Sales:</strong>
+                $750 a close<br/>
+                5% of all Monthly Residual for Presence Management
+            </p>
 
-    <div class="agreementsubdiv1">
+            <p><strong><span>b)</span>Auto Search AutoStrada Platform</strong>
+                $750 a close<br/>
+                5% of all Monthly Residual for Presence Management
 
-      <p><strong><span>a)</span>InfluxIQ Marketing Platform Sales:</strong>
-      $750 a close<br/>
-      5% of all Monthly Residual for Presence Management
-      </p>
+            </p>
 
+            <p><strong><span>c)</span>ApogeeInvent TitanMLM</strong>
+                $4,500 a close<br/>
+                5% of all Monthly Residual based on number of active users
 
+            </p>
 
-      <p><strong><span>b)</span>Auto Search AutoStrada Platform</strong>
-        $750 a close<br/>
-        5% of all Monthly Residual for Presence Management
+            <p><strong><span>d)</span> SalesVert Master System Sales</strong>
+                $4,500 a close<br/>
+                5% of all Monthly Residual based on number of active users
 
-      </p>
+            </p>
 
+            <p><strong><span>e)</span> Beto Paredes Joint Venture Contract Agreements</strong>
+                $50,000 a close (10% of initial engagement up to 500k)<br/>
+                5% of all negotiated percentage of equity and revenue generated
 
+            </p>
 
+            <p><strong><span>f)</span>Nex Medical NMS 100 Sales</strong>
+                $750 a close<br/>
+                $200 a month for all open accounts (90-day grace)
+            </p>
 
-      <p><strong><span>c)</span>ApogeeInvent TitanMLM</strong>
-        $4,500 a close<br/>
-        5% of all Monthly Residual based on number of active users
+            <p><strong><span>g)</span>Harvest a Seed Shelf Corporation Sales</strong>
+                10% of the total cost of the corporation
 
-      </p>
+            </p>
 
+            <p><strong><span>h)</span>GEOFenceDSP Platform</strong>
+                10% for a direct advertiser of DSP side revenue (to GEO direct or White label such as LocalCarOwer.com)<br/>
+                2.5% of all Agency DSP side revenue
 
 
-      <p><strong><span>d)</span> SalesVert Master System Sales</strong>
-        $4,500 a close<br/>
-        5% of all Monthly Residual based on number of active users
+            </p>
 
-      </p>
+            <p><strong><span>i)</span>LocalCarOwner.com</strong>
+                (See GEOFEnceDSP for Platform commissions)<br/>
+                15% of all emailing services costs<br/>
+                15% of all data purchasing costs<br/>
+                15% of all net revenue in any traditional marketing
 
-      <p><strong><span>e)</span> Beto Paredes Joint Venture Contract Agreements</strong>
-        $50,000 a close (10% of initial engagement up to 500k)<br/>
-        5% of all negotiated percentage of equity and revenue generated
+            </p>
 
-      </p>
+            <p><strong><span>j)</span>Apogee Results</strong>
+                15% of all contract costs for the first 9 months of engagement
 
-      <p><strong><span>f)</span>Nex Medical NMS 100 Sales</strong>
-        $750 a close<br/>
-        $200 a month for all open accounts (90-day grace)
+            </p>
 
+            <p><strong><span>k)</span>Priority Commercial Payments</strong>
+                For all Standard Transactions for End Users, Aspire shall pay AGENT a Revenue Share of .10% (10 BPS) for each such transaction where client is paid no more than 1.5% (150 BPS). This amount would be reduced in the event that a client is to be paid more than 1.5% (150 BPS).
 
-      </p>
+            </p>
 
-      <p><strong><span>g)</span>Harvest a Seed Shelf Corporation Sales</strong>
-        10% of the total cost of the corporation
+            <p><strong><span>l)</span>Universal Tech Associates</strong>
+                10% of engagement period contracts (Avg. 5k to 10k)<br/>
+                5% of all negotiated percentage of equity and revenue generated
+            </p>
+             
+            <p><strong><span>m)</span>DNAMasterCourse.com</strong>
+              10% of all lifetimes sales through customers brought by your affiliates.
+          </p>
 
-      </p>
+        </div>
 
+        <label>SELLING RIGHTS</label><br/>
 
-      <p><strong><span>h)</span>GEOFenceDSP Platform</strong>
-        10% for a direct advertiser of DSP side revenue (to GEO direct or White label such as LocalCarOwer.com)<br/>
-        2.5% of all Agency DSP side revenue
+        <p>i. The associate shall clearly identify himself as a duly authorized sales agent in the course of his efforts to sell the products on behalf of the Beto Paredes Family of Companies and partner sales program companies and may not sell the products in his/her own name.
+        </p>
 
+        <p>ii.    Commissions are paid on the initial proposal amount and amount invoiced for that proposal.</p>
 
-      </p>
+        <p>iii. If the client cancels commissions are no longer paid.
+        </p>
 
+        <p>iv. Associate shall hold the Confidential Information in strict confidence, and shall not copy, reproduce, sell, assign, license, market, transfer or otherwise disclose any Confidential Information to any other company that provides competing Services of their own or would share with such, without the prior written consent of Beto Paredes Family of Companies and participating partner companies.
+        </p>
+        <div class="agreementsubdiv2">
 
-      <p><strong><span>i)</span>LocalCarOwner.com</strong>
-        (See GEOFEnceDSP for Platform commissions)<br/>
-        15% of all emailing services costs<br/>
-        15% of all data purchasing costs<br/>
-        15% of all net revenue in any traditional marketing
+            <p>i. Associate acknowledges that the Confidential Information is unique property of value to Beto Paredes Family of Companies and their participating partner companies and is highly confidential and proprietary, and that the unauthorized use or disclosure thereof may cause irreparable harm that could not be compensated by monetary damages.</p>
+            <p>   ii. Compensation is subject to change, with notice, due to market conditions or other reasons beyond Beto Paredes Family of Companies and their participating companies control.
+            </p>
 
-      </p>
+        </div>
 
 
-      <p><strong><span>j)</span>Apogee Results</strong>
-        15% of all contract costs for the first 9 months of engagement
+        <p>  4.5. Commissions will not be due or paid for any period in which Associate does not have an accurate and up-to-date federal w­9 form on file with Company.</p>
 
-      </p>
+        <p>  4.6. The Associate shall be paid Commissions for all Referrals made during the Term of this Agreement. Any referral sent to Company during the term of this agreement will be considered a permanent referral of Associate whether this agreement remains in place or not. Each referral is tied to paying the Associate based on section 5 “Commission Schedule” for the life of the relationship of the Referral to the Company.
+        </p>
 
 
+        <p>4.7. Associate understands and agrees that the Company may have other Associates who are referring Referral Contracts to Company and a Referral is only eligible for Commission if Associates is the first entity to introduce the Referral Contact to Company. Associates also agrees that the Company may have established prior relationship with a Referral Contact previous to the Referral of the Referral Contact and in that case no Commission are required to be paid by Company for the Referral. In such cases proof will be provided. </p>
+        <p> 4.8. Referral Contract. A (“Referral Contract(s)”) is a successfully executed agreement between Client and a Referral Contact who is referred to Company by Associate. The term Referral Contact includes both the Initial Contract and Successive Contracts which are defined below. </p>
+        <p> 4.9. Initial Contract. The (“Initial Contract”) is defined as the first Referral Contract agreement established with a client who is referred to Company by Associate. A new contract with a client will only considered Initial Contract if it is the first contract in which Company has established with client. “Successive Contracts” are the Referral Contract’s following the Initial Contract with a Referral Contact and do not include the Initial Contract. </p>
 
-      <p><strong><span>i)</span>Priority Commercial Payments</strong>
-        For all Standard Transactions for End Users, Aspire shall pay AGENT a Revenue Share of .10% (10 BPS) for each such transaction where client is paid no more than 1.5% (150 BPS). This amount would be reduced in the event that a client is to be paid more than 1.5% (150 BPS).
 
-      </p>
+        <label>5. COMMISSION SCHEDULE</label><br/>
 
 
-      <p><strong><span>i)</span>Universal Tech Associates</strong>
-        10% of engagement period contracts (Avg. 5k to 10k)<br/>
-        5% of all negotiated percentage of equity and revenue generated
-      </p>
+        <p> 5.1 All commission schedule may be altered by Company at any time, with or without notice,
+            please contact Company for an updated commission schedule if one is required. All Contracts closed will follow this schedule Commission will be paid out based upon Company’s current commission schedule during the establishment of each Referral Contact’s contract.</p>
 
+        <p>5.2 Any commission that closed during the time that this schedule remains in place will be paid at this schedule and the permanent lifetime residuals listed unaltered by any change to this schedule. Changes will only affect new Referral contracts closed after the change date.</p>
 
+        <p>5.3 Commissions may be based on divisions of work to be done for Referral Contract. Associates will be given full disclosure of payment schedule paid by Referral Contract.</p>
 
 
 
-    </div>
+        <label>6. TERM OF AGREEMENT</label><br/>
+        <p> 6.1. The term of this Agreement (referred to as “Term”) shall commence as of the effective date hereof and-shall continue thereafter until Terminated (referred to as “Terminate”, “Terminated”, “Termination”) in writing by either party hereto.</p>
+        <p>6.2. Company has the exclusive right to modify this agreement at any time, provided Company serves a 30-day Notice to Associate.</p>
+        <p>6.3. The Parties have the right to terminate this agreement by providing a 30-day Notice of termination to the other party.</p>
 
-    <label>SELLING RIGHTS</label><br/>
 
-    <p>i. The associate shall clearly identify himself as a duly authorized sales agent in the course of his efforts to sell the products on behalf of the Beto Paredes Family of Companies and partner sales program companies and may not sell the products in his/her own name.
-    </p>
+        <label> 7. NON­DISCLOSURE</label><br/>
+        <p> 7.1. The Associate agrees to not disclose any of the details in this agreement either implicitly, explicitly, or indirectly to any competing entity, employee of Company or subsidiary, contractor of Company or subsidiary, and client of Company or subsidiary without permission explicitly given by Company. The Associate agrees not to disclose details of compensation with any entity without the explicit permission of Company.</p>
+        <p> 7.2. Associate agrees not to disclose or otherwise reveal to any third party the identities, addresses, telephone numbers, facsimile numbers, email address, telex numbers, bank codes, account number, financial reference, or any other entities introduced by Company to the Associate without the specific written permission of Company.</p>
+        <p> 7.3. Confidential Information.  The Associate agrees that they shall not, directly or indirectly, disclose, disseminate, use for personal benefit, lecture or write articles with respect to, or otherwise publish “confidential information”.  For purposes of this Agreement, the term “confidential information” means information and know­how disclosed to or known by the Associate which relates to the Company or any business idea under development or research by the Company or that constitutes a corporate opportunity of the Company and which information is not generally known in the relevant trade or industry, including without limitation, any document, information, website or other data requiring passcode or password access, trade secrets, proprietary data, customer lists, contractual arrangements, and product and service development.  “Confidential information” shall also include any other document or information (whether of the Company or of any supplier or customer of the Company or of any other person with which the Company has an agreement with respect to the confidentiality of information) labeled “confidential”, “proprietary”, or words of similar import.  Upon Termination of the Term hereof, the Associate shall return to or leave with the Company, without making or retaining copies thereof, all documents, records, notebooks and similar repositories containing “confidential information”.</p>
 
-    <p>ii.    Commissions are paid on the initial proposal amount and amount invoiced for that proposal.</p>
-
-    <p>iii. If the client cancels commissions are no longer paid.
-    </p>
-
-    <p>iv. Associate shall hold the Confidential Information in strict confidence, and shall not copy, reproduce, sell, assign, license, market, transfer or otherwise disclose any Confidential Information to any other company that provides competing Services of their own or would share with such, without the prior written consent of Beto Paredes Family of Companies and participating partner companies..
-    </p>
-    <div class="agreementsubdiv2">
-
-    <p>i. Associate acknowledges that the Confidential Information is unique property of value to Beto Paredes Family of Companies and their participating partner companies and is highly confidential and proprietary, and that the unauthorized use or disclosure thereof may cause irreparable harm that could not be compensated by monetary damages.</p>
-    <p>   ii. Compensation is subject to change, with notice, due to market conditions or other reasons beyond Beto Paredes Family of Companies and their participating companies control.
-    </p>
-
-    </div>
-
-
-    <p>  4.5. Commissions will not be due or paid for any period in which Associate does not have an accurate and up-to-date federal w­9 form on file with Company.</p>
-
-    <p>  4.6. The Associate shall be paid Commissions for all Referrals made during the Term of this Agreement. Any referral sent to Company during the term of this agreement will be considered a permanent referral of Associate whether this agreement remains in place or not. Each referral is tied to paying the Associate based on section 5 “Commission Schedule” for the life of the relationship of the Referral to the Company.
-    </p>
-
-
-    <p>4.7. Associate understands and agrees that the Company may have other Associates who are referring Referral Contracts to Company and a Referral is only eligible for Commission if Associates is the first entity to introduce the Referral Contact to Company. Associates also agrees that the Company may have established prior relationship with a Referral Contact previous to the Referral of the Referral Contact and in that case no Commission are required to be paid by Company for the Referral. In such cases proof will be provided. </p>
-    <p> 4.8. Referral Contract. A (“Referral Contract(s)”) is a successfully executed agreement between Client and a Referral Contact who is referred to Company by Associate. The term Referral Contact includes both the Initial Contract and Successive Contracts which are defined below. </p>
-    <p> 4.9. Initial Contract. The (“Initial Contract”) is defined as the first Referral Contract agreement established with a client who is referred to Company by Associate. A new contract with a client will only considered Initial Contract if it is the first contract in which Company has established with client. “Successive Contracts” are the Referral Contract’s following the Initial Contract with a Referral Contact and do not include the Initial Contract. </p>
-
-
-    <label>5. COMMISSION SCHEDULE</label><br/>
-
-
-    <p> 5.1 All commission schedule may be altered by Company at any time, with or without notice,
-    please contact Company for an updated commission schedule if one is required. All Contracts closed will follow this schedule Commission will be paid out based upon Company’s current commission schedule during the establishment of each Referral Contact’s contract.</p>
-
-    <p>5.2 Any commission that closed during the time that this schedule remains in place will be paid at this schedule and the permanent lifetime residuals listed unaltered by any change to this schedule. Changes will only affect new Referral contracts closed after the change date.</p>
-
-    <p>5.3 Commissions may be based on divisions of work to be done for Referral Contract. Associates will be given full disclosure of payment schedule paid by Referral Contract.</p>
-
-
-
-    <label>6. TERM OF AGREEMENT</label><br/>
-    <p> 6.1. The term of this Agreement (referred to as “Term”) shall commence as of the effective date hereof and-shall continue thereafter until Terminated (referred to as “Terminate”, “Terminated”, “Termination”) in writing by either party hereto.</p>
-    <p>6.2. Company has the exclusive right to modify this agreement at any time, provided Company serves a 30-day Notice to Associate.</p>
-    <p>6.3. The Parties have the right to terminate this agreement by providing a 30-day Notice of termination to the other party.</p>
-
-
-    <label> 7. NON­DISCLOSURE</label><br/>
-    <p> 7.1. The Associate agrees to not disclose any of the details in this agreement either implicitly, explicitly, or indirectly to any competing entity, employee of Company or subsidiary, contractor of Company or subsidiary, and client of Company or subsidiary without permission explicitly given by Company. The Associate agrees not to disclose details of compensation with any entity without the explicit permission of Company.</p>
-    <p> 7.2. Associate agrees not to disclose or otherwise reveal to any third party the identities, addresses, telephone numbers, facsimile numbers, email address, telex numbers, bank codes, account number, financial reference, or any other entities introduced by Company to the Associate without the specific written permission of Company.</p>
-    <p> 7.3. Confidential Information.  The Associate agrees that they shall not, directly or indirectly, disclose, disseminate, use for personal benefit, lecture or write articles with respect to, or otherwise publish “confidential information”.  For purposes of this Agreement, the term “confidential information” means information and know­how disclosed to or known by the Associate which relates to the Company or any business idea under development or research by the Company or that constitutes a corporate opportunity of the Company and which information is not generally known in the relevant trade or industry, including without limitation, any document, information, website or other data requiring passcode or password access, trade secrets, proprietary data, customer lists, contractual arrangements, and product and service development.  “Confidential information” shall also include any other document or information (whether of the Company or of any supplier or customer of the Company or of any other person with which the Company has an agreement with respect to the confidentiality of information) labeled “confidential”, “proprietary”, or words of similar import.  Upon Termination of the Term hereof, the Associate shall return to or leave with the Company, without making or retaining copies thereof, all documents, records, notebooks and similar repositories containing “confidential information”.</p>
-
-    <label> 8. NON­CIRCUMVENTION</label><br/>
-    <p> 8.1. Company agrees not to intentionally circumvent Associate and seek Associate's Referral Contacts with intention to avoid paying the Commissions as established in this Agreement.</p>
-    <p>8.3. The Associate agrees that once a client is introduced to the Company and the first Referral Commission is paid, that the new referral is now a Client if said Company. Associate agrees not to try and sell, promote, enlist or in any way refer other companies to said Client besides Company for the listed services that are available in the Media of the Company. If at first pass Client does not have any intention of using Company, Company may grant Associate from time to time the right to refer other solutions and opportunities to referred client. This is at the discretion of the Company to do so.</p>
-    <p>8.4. This non circumvention agreement may stand separately or combined with this contract and is agreed upon to be in force during the Term of this Agreement and for a period no less than 3 years after the Term of this Agreement regardless of the status of any other section in this Agreement.  The only remedy to the violation of this non-circumvention agreement as outlined above is a complete forfeiture of all forms of compensation obtained, past and future, by Associate from any corporation, partnership, proprietorships, trust, individuals, or other entities directly or indirectly introduced to Associate by Company, subsidiary, or client thereof, or any individual associated with Company, subsidiary, or client thereof, without specific written permission of the Company.</p>
-      <label>9. INDEMNIFICATION</label><br/>
-    <p>9.1. Associate shall not be liable for any claim or demand made against Company by any third party.  Company shall indemnify Associate against all claims, liabilities and costs, including reasonable attorney fees, of defending any third-party claim or suit arising out of the use of the software provided under this agreement. However, the Associate hereby agrees to indemnify and hold Company harmless from any and all liability, damage, loss, cost, expense or other charge resulting directly or indirectly from any act or omission of the Associate.</p>
+        <label> 8. NON­CIRCUMVENTION</label><br/>
+        <p> 8.1. Company agrees not to intentionally circumvent Associate and seek Associate's Referral Contacts with intention to avoid paying the Commissions as established in this Agreement.</p>
+        <p>8.2. The Associate agrees that once a client is introduced to the Company and the first Referral Commission is paid, that the new referral is now a Client if said Company. Associate agrees not to try and sell, promote, enlist or in any way refer other companies to said Client besides Company for the listed services that are available in the Media of the Company. If at first pass Client does not have any intention of using Company, Company may grant Associate from time to time the right to refer other solutions and opportunities to referred client. This is at the discretion of the Company to do so.</p>
+        <p>8.3. This non circumvention agreement may stand separately or combined with this contract and is agreed upon to be in force during the Term of this Agreement and for a period no less than 3 years after the Term of this Agreement regardless of the status of any other section in this Agreement.  The only remedy to the violation of this non-circumvention agreement as outlined above is a complete forfeiture of all forms of compensation obtained, past and future, by Associate from any corporation, partnership, proprietorships, trust, individuals, or other entities directly or indirectly introduced to Associate by Company, subsidiary, or client thereof, or any individual associated with Company, subsidiary, or client thereof, without specific written permission of the Company.</p>
+        <label>9. INDEMNIFICATION</label><br/>
+        <p>9.1. Associate shall not be liable for any claim or demand made against Company by any third party.  Company shall indemnify Associate against all claims, liabilities and costs, including reasonable attorney fees, of defending any third-party claim or suit arising out of the use of the software provided under this agreement. However, the Associate hereby agrees to indemnify and hold Company harmless from any and all liability, damage, loss, cost, expense or other charge resulting directly or indirectly from any act or omission of the Associate.</p>
         <label> 10. STANDARDS AND ETHICS</label><br/>
-    <p>  10.1. Associate agrees that all advertising and marketing materials must receive prior written approval by Company before usage.</p>
-    <p>10.2. Associate will adhere to simple truth and integrity and will not engage in any deceptive or misleading sales practices.</p>
-    <p>10.3. Associate will not in any way demean or speak negatively of Company, Company's Clients, Company's Potential Clients, Any member of Company, Company's Competition, or Associate's Competition.</p>
-    <p>10.4. Associate will maintain the confidentiality of information provided by any prospect or client of Company and will not reveal any such information without the proper consent or exemption of Company.</p>
-          <label> 11. GOVERNING LAW AND FORUM</label><br/>
-    <p> 11.1. This Agreement shall be governed, construed and enforced exclusively in accordance with the laws of the State of Idaho and the laws of the United States of America, without regard to choice of laws or conflict of law provisions thereof that would result in the application of the laws of a different jurisdiction. Any arbitration or litigation between the Parties shall be conducted exclusively in Idaho, and the Parties hereby submit to such exclusive jurisdiction and venue and agree that venue shall be proper in Idaho. Each Party hereby irrevocably waives, to the fullest extent permitted by law, any objection that it may have, whether now or in the future, to the laying of venue in, or to the jurisdiction of, any and each of such courts for the purpose of any such suit, action, proceeding or judgment and further waives any claim that any such suit, action proceeding or judgment has been brought in an inconvenient forum, and each Party hereby submits to such jurisdiction.</p>
-            <label>12. ENTIRE AGREEMENT</label><br/>
-    <p>   12.1. This agreement contains the entire understanding of the Parties and supersedes any and all previous verbal and written agreement or understandings. There are no other agreements, representations or warranties not set forth in this agreement. This agreement will bind, and inure to the benefit of, the Parties and their respective successors and assigns. Any modification, amendment, or waiver of any provision of this agreement may be made only in writing and signed by both Parties. The failure by any party to exercise any rights granted herein upon the occurrence of any event set forth in this agreement shall not constitute a waiver of any such rights upon the occurrence of any such event. In the event any provision of this agreement is held to be in violation of any law, statue, regulation, ordinance, or court order, this agreement shall be deemed modified accordingly and to the extent necessary to comply therewith and shall otherwise continue in full force and effect.</p>
+        <p>  10.1. Associate agrees that all advertising and marketing materials must receive prior written approval by Company before usage.</p>
+        <p>10.2. Associate will adhere to simple truth and integrity and will not engage in any deceptive or misleading sales practices.</p>
+        <p>10.3. Associate will not in any way demean or speak negatively of Company, Company's Clients, Company's Potential Clients, Any member of Company, Company's Competition, or Associate's Competition.</p>
+        <p>10.4. Associate will maintain the confidentiality of information provided by any prospect or client of Company and will not reveal any such information without the proper consent or exemption of Company.</p>
+        <label> 11. GOVERNING LAW AND FORUM</label><br/>
+        <p> 11.1. This Agreement shall be governed, construed and enforced exclusively in accordance with the laws of the State of Idaho and the laws of the United States of America, without regard to choice of laws or conflict of law provisions thereof that would result in the application of the laws of a different jurisdiction. Any arbitration or litigation between the Parties shall be conducted exclusively in Idaho, and the Parties hereby submit to such exclusive jurisdiction and venue and agree that venue shall be proper in Idaho. Each Party hereby irrevocably waives, to the fullest extent permitted by law, any objection that it may have, whether now or in the future, to the laying of venue in, or to the jurisdiction of, any and each of such courts for the purpose of any such suit, action, proceeding or judgment and further waives any claim that any such suit, action proceeding or judgment has been brought in an inconvenient forum, and each Party hereby submits to such jurisdiction.</p>
+        <label>12. ENTIRE AGREEMENT</label><br/>
+        <p>   12.1. This agreement contains the entire understanding of the Parties and supersedes any and all previous verbal and written agreement or understandings. There are no other agreements, representations or warranties not set forth in this agreement. This agreement will bind, and inure to the benefit of, the Parties and their respective successors and assigns. Any modification, amendment, or waiver of any provision of this agreement may be made only in writing and signed by both Parties. The failure by any party to exercise any rights granted herein upon the occurrence of any event set forth in this agreement shall not constitute a waiver of any such rights upon the occurrence of any such event. In the event any provision of this agreement is held to be in violation of any law, statue, regulation, ordinance, or court order, this agreement shall be deemed modified accordingly and to the extent necessary to comply therewith and shall otherwise continue in full force and effect.</p>
 
-              <label> 13. AGREEMENT EXECUTION</label><br/>
-    <p>13.1. The Parties hereto agree to all aspects of this Agreement and that facsimile/email signatures shall be as effective as if originals.  This agreement may be executed in several counterparts, each of which shall constitute one and the same instrument.  Section or paragraph headings in the agreement are for convenience of reference only.</p>
+        <label> 13. AGREEMENT EXECUTION</label><br/>
+        <p>13.1. The Parties hereto agree to all aspects of this Agreement and that facsimile/email signatures shall be as effective as if originals.  This agreement may be executed in several counterparts, each of which shall constitute one and the same instrument.  Section or paragraph headings in the agreement are for convenience of reference only.</p>
 
+        <div class="agreement_contain_forncontain">
+            <p>In witness whereof, the Parties hereto have caused this Agreement to be duly executed and entered into as of the date first above written.</p>
 
-
-
-
-    <div class="agreement_contain_forncontain">
-      <p>In witness whereof, the Parties hereto have caused this Agreement to be duly executed and entered into as of the date first above written.</p>
-
-    <div class="agreement_contain_forncontain_inner">
-      <div class="inneritem">
+            <div class="agreement_contain_forncontain_inner">
+                <div class="inneritem">
 
 
-        <strong>Associate:</strong>
-        <p>(Please Print):<input type="text" class="agr_input4" name="agreement_person_name" value="Second Test"></p>
-        <div class="arformgroup">
-          <div class="signaturediv"><span>Signature:</span>
-          <input  name="agreement_person_signature" id="agreement_person_signature" readonly="readonly" type="text" class="agr_input5 signinput">
+                    <strong>Associate:</strong>
+                    <p>
+                      (Please Print):<input type="text" class="agr_input4" name="agreement_person_name" formControlName="fullName" readonly />
+                      <span class="has-error" *ngIf="agreementFormSubmitFlug && agreementForm.controls.fullName.errors">Name is required.</span>
+                    </p>
+                    <div class="arformgroup">
+                        <div class="signaturediv"><span>Signature:</span>
+                            <input  name="agreement_person_signature" id="agreement_person_signature" readonly="readonly" type="text" class="agr_input5 signinput" formControlName="signature">
+                            
+                            <div class="new_signupdiv">
+                              <input type="button" value="Sign Here" (click)="openModal(contentmodal)">
+                            </div>
 
-          <div class="new_signupdiv">
-            <input type="button" value="Sign Here" (click)="openModal(contentmodal)"  ></div>
+                            <span class="has-error" *ngIf="agreementFormSubmitFlug && agreementForm.controls.signature.errors">Signature is required.</span>
+
+                        </div>
+                        <span>Date:</span>
+                        <input readonly="readonly" name="agreement_person_agreement_date" value="{{ today | date: 'longDate' }}" type="text" class="agr_input6" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="inneritem inneritem2">
+                    <strong>By: Beto Paredes</strong>
+
+                    <p>CEO | Managing Partner Heriberto (Beto) Paredes</p>
+
+                    <div class="arformgroup">
+                        <div class="signaturediv"><span>Signature:</span>
+                            <div class="signinput2">Beto Paredes</div>
+                        </div>
+                        <span>Date:</span>
+                        <input readonly="readonly" name="agreement_person_agreement_date" value="{{ today | date: 'longDate' }}" type="text" class="agr_input6" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-          <span>Date:</span>
-          <input readonly="readonly" name="agreement_person_agreement_date" value="07/31/2019" type="text" class="agr_input6">
-        </div>
+
         <div class="clearfix"></div>
-      </div>
-      <div class="inneritem inneritem2">
-        <strong>By: Beto Paredes</strong>
 
-
-        <p>CEO | Managing Partner Heriberto (Beto) Paredes</p>
-
-
-        <div class="arformgroup">
-          <div class="signaturediv"><span>Signature:</span>
-            <div class="signinput2">Beto Paredes</div>
-
-
-          </div>
-          <span>Date:</span>
-          <input readonly="readonly" name="agreement_person_agreement_date" value="07/31/2019" type="text" class="agr_input6">
-        </div>
-        <div class="clearfix"></div>
-
-
-
-
-
-        </div>
-
-
-
-
-
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="clearfix"></div>
-
-
-
-
-
-  <input name="submit" type="submit" value="submit" class="agreementformbtn">
-
-
-  </form>
-
+        <input name="submit" type="submit" value="submit" class="agreementformbtn">
+    </form>
 </div>
 
 
@@ -276,33 +241,30 @@
 
 
 <ng-template #contentmodal class="test-modal">
-  <div class="modal-body">
-    <img src="../../assets/images/betologo.png" class="popup_logo">
+    <div class="modal-body">
+        <img src="../../assets/images/betologo.png" class="popup_logo">
 
-    <h4>Digital Signature</h4>
+        <h4>Digital Signature</h4>
 
+        <form [formGroup]="degitalSignForm" (ngSubmit)="degitalSignFormSubmit()" autocomplete="off">
+            <label>Full name</label>
+            <input type="text" id="fullname" formControlName="fullName" />
+            <span class="has-error" *ngIf="degitalSignFormSubmitFlug && degitalSignForm.controls.fullName.errors">Name is required.</span>
 
-    <span class="has-error"></span>
-    <label>Full name</label> <input type="text" id="fullname">
+            <div class="popsigndiv">
+                <h2>Digitally Signed By:</h2>
+                <h3 id="fullnamesignature">{{ degitalSignForm.value.fullName }}</h3>
+                <h4>{{ today | date: 'longDate' }} {{ today | date : 'shortTime'}}</h4>
+            </div>
 
+            <h5>By selecting “agree”, the parties agree that this agreement may be electronically signed. The parties agree that the electronic signatures appearing on this agreement are the same as handwritten signatures for the purposes of validity, enforceability, and admissibility.</h5>
 
-    <div class="popsigndiv">
-
-      <h2>Digitally Signed By:</h2>
-      <h3 id="fullnamesignature">Signature</h3>
-      <h4>Aug 16, 2018 06:34am</h4>
-
+            <div class="pop_btn_drapper">
+                <button type="submit" class="btn btn-default popbtn1" data-dismiss="modal" id="agreebtn">Agree</button>
+                <button type="button" class="btn btn-default popbtn2" data-dismiss="modal" (click)="hideDigitalSignModal()">Cancel</button>
+                <div class="clearfix"></div>
+            </div>
+        </form>
     </div>
-
-    <h5>By selecting “agree”, the parties agree that this agreement may be electronically signed. The parties agree that the electronic signatures appearing on this agreement are the same as handwritten signatures for the purposes of validity, enforceability, and admissibility.
-    </h5>
-
-    <div class="pop_btn_drapper">
-
-      <button type="button" class="btn btn-default popbtn1" data-dismiss="modal" id="agreebtn">Agree</button>
-      <button type="button" class="btn btn-default popbtn2" data-dismiss="modal">Cancel</button>
-      <div class="clearfix"></div>
-    </div>
-  </div>
 </ng-template>
 
