@@ -129,19 +129,19 @@
               <!-- <li class="nav-item" [routerLink]="['/replegaldocuments']">
                 <a class="nav-link" >Legal Documents</a>
               </li> -->
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" *ngIf="cookie.get('calenderaccess')==1">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
                   <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
                 </div>
               </li>
-              <li class="nav-item" (click)="gotorepevents()" >
+              <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1" (click)="gotorepevents()" >
                 <a class="nav-link" >Discovery Calendar</a>
               </li>
 
 
-              <li class="nav-item" >
+              <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
                 <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
               </li>
 
