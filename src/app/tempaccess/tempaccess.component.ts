@@ -52,7 +52,7 @@ export class TempaccessComponent implements OnInit {
   }
 
   callApiService() {
-    const link = this._commonservices.nodesslurl + 'datalist?token='+this.cookeiservice.get('jwttoken');
+    const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
     let data: any = { source: 'googleevents_view', condition: { _id_object: this.googleEventId } };
     this._http.post(link, data).subscribe(res => {
       let result:any = res;

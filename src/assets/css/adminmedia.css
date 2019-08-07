@@ -1297,3 +1297,87 @@
     }
 
 }
+
+
+
+
+/*----------------------------------------------------*/
+
+
+@media screen and (max-width: 1750px) {
+
+    .reptrainingcenter_banner{ padding-right: 30px; }
+    .reptrainingcenter_banner .reptrainingcenter_banner_wrapper{ padding: 0 450px 0 60px;}
+
+}
+
+@media screen and (max-width: 1730px) {
+    .new_subblockcon .new_subblockcon_text{ width: 64%; }
+}
+
+@media screen and (max-width: 1700px) {
+    .reptrainingcenter_banner_wrapper_text h2 {
+        font-size: 56px;
+    }
+}
+
+@media screen and (max-width: 1580px) {
+    .reptrainingcenter_banner_wrapper_text h2 {
+        font-size: 46px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .new_subblockcon .new_subblockcon_text{ width: 70%; }
+
+    .reptrainingcenter_banner_wrapper_text p { font-size: 20px;}
+
+    .reptrainingcenter_banner_wrapper_text h3 { font-size: 20px;}
+
+
+}
+
+@media screen and (max-width: 1199px) {
+    .rep_dashboard_newblock6_topnew_wrapper_text{  display: block;}
+
+    .rep_dashboard_newblock6_topnew_left{ width: 100%;   border-right: none; }
+    .rep_dashboard_newblock6_topnew_right{ width: 100%;  }
+
+
+    .rep_dashboard_newblock6_topnew_left .new_subblockcon:last-of-type{ border-bottom: solid 1px #d2d8da;}
+
+    .reptrainingcenter_banner{background: rgba(12,162,155,1);
+        background: -moz-linear-gradient(-45deg, rgba(12,162,155,1) 0%, rgba(42,177,218,1) 100%);
+        background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(12,162,155,1)), color-stop(100%, rgba(42,177,218,1)));
+        background: -webkit-linear-gradient(-45deg, rgba(12,162,155,1) 0%, rgba(42,177,218,1) 100%);
+        background: -o-linear-gradient(-45deg, rgba(12,162,155,1) 0%, rgba(42,177,218,1) 100%);
+        background: -ms-linear-gradient(-45deg, rgba(12,162,155,1) 0%, rgba(42,177,218,1) 100%);
+        background: linear-gradient(135deg, rgba(12,162,155,1) 0%, rgba(42,177,218,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0ca29b', endColorstr='#2ab1da', GradientType=1 ); padding: 0px!important;}
+
+    .reptrainingcenter_banner .reptrainingcenter_banner_wrapper{ background-position: center bottom; padding: 40px 15px 660px 15px; }
+
+    .reptrainingcenter_banner_wrapper_text{ display: block; width: 100%; text-align: center; height: auto;}
+
+}
+
+
+@media screen and (max-width: 991px) {
+
+    .new_subblockcon .new_subblockcon_text{ width: 100%; float: none; text-align: center;}
+    .new_subblockcon .new_subblockcon_img{width: 100%; float: none; text-align: center; text-align: center; padding-bottom: 25px;}
+}
+
+@media screen and (max-width: 640px) {
+    .rep_dashboard_newblock6_topnew_wrapper{ margin: 0 25px 40px 25px; padding: 25px;}
+}
+
+@media screen and (max-width: 480px) {
+    .rep_dashboard_newblock6_topnew h2{ font-size: 38px;}
+
+}
+
+@media screen and (max-width: 440px) {
+    .reptrainingcenter_banner .reptrainingcenter_banner_wrapper{ background-size: 100%; padding-bottom: 150%;}
+
+}
