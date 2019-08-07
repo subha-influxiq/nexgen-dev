@@ -27,7 +27,17 @@ export class LoginComponent implements OnInit {
     this.serverurl = _commonservices.url;
     this.nodesslurl = _commonservices.nodesslurl;
     if(this.cookeiservice.get('userid')!=''){
-      this.router.navigate(['/useraccountsetting']);
+      switch(this.cookeiservice.get('usertype')) {
+        case 'rep':
+          this.router.navigate(['/repdashboard']);
+          break;
+        case 'regional_recruiter':
+          this.router.navigate(['/regionaldashboard']);
+          break;
+        case 'admin':
+          this.router.navigate(['/dashboard']);
+          break;
+      }
     }
   }
 
