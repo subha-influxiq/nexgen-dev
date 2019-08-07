@@ -27,6 +27,7 @@ export class ListingComponent implements OnInit {
     public formdataval: any = [];
     modalRef: BsModalRef;
     modalRef1: BsModalRef;
+    modalRef2: BsModalRef;
     private selectedid: any;
     public showLoader: any;
     public sourceval: any;
@@ -36,7 +37,7 @@ export class ListingComponent implements OnInit {
     @Input() menuval = 0;
     @Input() hideaction: any = false;
     @Input() hideadd: any = false;
-    @Input() hidenotes: any = false;
+    @Input() notes: any = true;
     @Input() slotlist: any = false;
     public tabledatalisval: any;
     public formgroup: FormBuilder;
@@ -87,6 +88,7 @@ export class ListingComponent implements OnInit {
     public nameis: any = [];
     public issubmit = 0;
     public loaderdiv = false;
+    public selectedlead:any={};
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -423,6 +425,7 @@ export class ListingComponent implements OnInit {
         this.modalRef1 = this.modal.show(template);
         this.selecteditem = val;
     }
+
     confirmdelete(template: TemplateRef<any>) {
         this.modalRef1.hide();
         this.isedit = 0;
@@ -863,5 +866,16 @@ export class ListingComponent implements OnInit {
             }, error => {
                 console.log('Oooops!');
             });
+    }
+
+    // added by Chandrani
+    notesdata(val: any, template: TemplateRef<any>) {
+        this.selectedlead = val;
+        console.log(this.selectedlead);
+        setTimeout(()=>{
+            this.modalRef2 = this.modal.show(template);
+        },2000);
+        
+        
     }
 }
