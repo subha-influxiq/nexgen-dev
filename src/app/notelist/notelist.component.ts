@@ -46,8 +46,13 @@ export class NotelistComponent implements OnInit {
       note: ["", Validators.required]
     });
     console.log(this.cookeiservice.get('usertype'));
-    // console.log(this.leaddata);
-    this.sourcecondition = {'created_under_object':this.leaddata._id};
+    console.log(this.router.url);
+    if(this.router.url=='/manage-leads'){
+      this.sourcecondition = {'created_under_object':this.leaddata.created_by};
+    }
+    if(this.router.url=='/appointmentlist'){
+    this.sourcecondition = {'created_under_object':this.leaddata.userdata._id};
+  }
     if(this.cookeiservice.get('usertype')== 'admin'){
       
     }
@@ -79,8 +84,13 @@ export class NotelistComponent implements OnInit {
       let link = this._commonservice.nodesslurl+'addorupdatedata';
       let data2 = this.noteForm.value;
       data2.created_by = this.cookeiservice.get('userid');
-      data2.created_under = this.leaddata._id;
-      
+      // data2.created_under = this.leaddata._id;
+      if(this.router.url=='/manage-leads'){
+        data2.created_under = this.leaddata.created_by;
+      }
+      if(this.router.url=='/appointmentlist'){
+        data2.created_under = this.leaddata.userdata._id;
+    }
       let postdata:any;
       
       
@@ -89,7 +99,12 @@ export class NotelistComponent implements OnInit {
         postdata = { source: 'notes', data: data2, sourceobj: ["created_by","created_under"] };
       }else{
         console.log('null');
-        postdata = { source: 'notes', data: {note:this.noteForm.controls['note'].value,created_by:this.cookeiservice.get('userid'),created_under:this.leaddata._id}, sourceobj: ["created_by","created_under"] };
+        if(this.router.url=='/manage-leads'){
+          postdata = { source: 'notes', data: {note:this.noteForm.controls['note'].value,created_by:this.cookeiservice.get('userid'),created_under:this.leaddata.created_by}, sourceobj: ["created_by","created_under"] };
+        }
+        if(this.router.url=='/appointmentlist'){
+          postdata = { source: 'notes', data: {note:this.noteForm.controls['note'].value,created_by:this.cookeiservice.get('userid'),created_under:this.leaddata.userdata._id}, sourceobj: ["created_by","created_under"] };
+        }
       }
       console.log(postdata);
       this._http.post(link,postdata)
