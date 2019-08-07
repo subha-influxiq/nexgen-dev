@@ -1,0 +1,160 @@
+<div class="nextGen_admin_mainwrapper">
+  <div class="page-wrapper s_getmybrand_adminlist">
+    <div class="nexgen_adminlist">
+      <div class="user_management_wrapper">
+        <div class="user_management_inner">
+          <h2>manage notes</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 admin_inner_wrapper">
+
+
+        <div class="clearfix"></div>
+        <div class="content_header_block">
+          <div class="clearfix"></div>
+          <div class="newblock1 ">
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="nexgen_admin_table">
+          <div class="action_section">
+            <div class="inner_actionblock">
+
+              <div class="abcde">
+                <a (click)="openform(0,formtemplate)"
+                  class="addfrinderbtn s_getmybrand_savebutton"> Add Notes</a>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive admin_table_wrapper">
+            <div *ngIf="noteslist.length>0">
+              <table class="table" >
+                <thead>
+                  <tr>
+                    <th class="date" scope="col" data-title="date">Date Added</th>
+                    <th class="note" scope="col" data-title="note">Notes</th>
+                    <th class="createdby" scope="col" data-title="createdby">Created By</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of noteslist;">
+                    <td scope="col" class="date">
+                      <span class="date">
+                        {{item.created_at}}
+                      </span>
+                      
+                    </td>
+                    <td scope="col" class="note">
+                        <span class="note">
+                          {{item.note}}
+                        </span>
+                        
+                      </td>
+                      <td scope="col" class="createdby">
+                          <span class="createdby">
+                            {{item.fullname}}
+                          </span>
+                          
+                        </td>
+                    <td *ngIf="cookeiservice.get('usertype')=='rep'">
+                      <span class=" delete_user" *ngIf="cookeiservice.get('userid')==item.created_by" (click)="deletdata(item,commonconfirmmodal)">delete</span>
+                      <span class="edit_user" *ngIf="cookeiservice.get('userid')==item.created_by" (click)="editform(item,formtemplate)">edit</span>
+                    </td>
+                    <td *ngIf="cookeiservice.get('usertype')=='admin'">
+                        <span class=" delete_user"(click)="deletdata(item,commonconfirmmodal)">delete</span>
+                        <span class="edit_user" (click)="editform(item,formtemplate)">edit</span>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <!--Pagination-->
+
+        <div class="admin_table_pagination hide">
+          <ul class="pagination">
+            <span>Page 1 of 3</span>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">Next</a></li>
+            <li><a href="#">Last</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #formtemplate>
+  <div class="modal-body brandmanagement_modal newNexgen_modal ">
+      <h1>Add/Edit Note</h1>
+      <form novalidate (ngSubmit)="notesubmit()">
+          <!--[ngClass]="addeventformclass()"-->
+          <div class="form-group row" [formGroup]="noteForm">
+              <div class="form_floating_div">
+                  
+                  <div class="col-sm-8">
+                      <input hidden name="note"
+                      [formControl]="noteForm.controls['id']" class="form-control"
+                      placeholder="Add your note here" >
+                    <textarea name="note"
+                          [formControl]="noteForm.controls['note']" class="form-control"
+                          placeholder="Add your note here" (keyup)="issubmit=0"></textarea>
+
+                      <span class="error"
+                          *ngIf="!noteForm.controls['note'].valid && noteForm.controls['note'].touched && issubmit==1">Note is required!</span>
+
+                  </div>
+              </div>
+
+
+          </div>
+          <div class="form-group btn_submit">
+              <button type="submit"> Submit</button>
+          </div>
+      </form>
+  </div>
+</ng-template>
+
+<!--Common confirmation modal-->
+<ng-template #commonconfirmmodal>
+  <div class="modal-body brandmanagement_modal successmodal_listing">
+      <div class="logo_wrapper">
+          <img src="assets/images/logo.png">
+      </div>
+      <div class="brand_messagebox">
+          <h3>Are you sure that you want to delete this record ?</h3>
+          <div class="btn_cnt">
+              <button class="message_allow" (click)="confirmdelete(messagemodal)">Yes</button>
+              <button class="message_deny" (click)="nodelete()">No</button>
+          </div>
+      </div>
+  </div>
+  <div>
+  </div>
+</ng-template>
+
+
+
+
+<!--Common message modal-->
+<ng-template #messagemodal>
+  <div class="modal-body brandmanagement_modal">
+      <div class="logo_wrapper">
+          <img src="assets/images/logo.png">
+      </div>
+      <div class="message_success">{{message}}</div>
+
+  </div>
+</ng-template>

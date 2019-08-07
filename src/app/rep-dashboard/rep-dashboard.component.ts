@@ -40,9 +40,7 @@ export class RepDashboardComponent implements OnInit {
           }else{
             this.repdetails = result.res;
             this.reptraininglessondetails = result.res2;
-            console.log(this.repdetails);
-            this.recid=this.repdetails[0].recdetails[0]._id;
-            console.log(this.reptraininglessondetails);
+            if(this.repdetails[0].recdetails.length>0)this.recid=this.repdetails[0].recdetails[0]._id;
             }
         }, error => {
           console.log('Oooops!');

@@ -76,8 +76,6 @@ export class LoginComponent implements OnInit {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
-              console.log('----------------------');
-              console.log(result);
               if(result.item[0].status == 1) {
                 this.cookeiservice.set('jwttoken', result.token);
                 this.cookeiservice.set('userid', result.item[0]._id);

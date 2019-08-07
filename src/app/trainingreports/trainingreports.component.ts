@@ -18,6 +18,7 @@ export class TrainingreportsComponent implements OnInit {
   public sourcecondition: any = {};
   public hideaddval: any = true;
   public hideactionval: any = true;
+  public rep_count:any;
 
   constructor(public router:Router,public http:HttpClient,public cookieservice:CookieService,public commonservices:Commonservices, private route: ActivatedRoute) {
     this.tabledatalist = [
@@ -49,7 +50,9 @@ export class TrainingreportsComponent implements OnInit {
                 }else {
                     
                     console.log('Get tranningreportlist data');
-                    console.log(result);
+                    console.log(result.data.training_group[0].count);
+                    // this.training_status = 
+                    this.rep_count = result.data.training_group[0].count;
                 }
             })
   }

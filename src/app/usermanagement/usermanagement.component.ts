@@ -43,14 +43,15 @@ export class UsermanagementComponent implements OnInit {
     console.log('item.status');
     console.log(item.status);
     let status: any;
-    /*      if(item.status!=null) status=1-item.status;
-     if(item.status==null) status=1;*/
-    if (item.status != null && item.status != 1 && item.status != 0) {
-      status = 0;
-    }
-    if (item.status == null) status = 1;
+         if(item.status!=null) status=1-item.status;
+     if(item.status==null) status=1;
+    // if (item.status != null && item.status != 1 && item.status != 0) {
+    //   status = 0;
+    // }
+    // if (item.status == null) status = 1;
     console.log('item.status99');
     console.log(item.status);
+    console.log('status----------'+status);
     const link = this.commonservices.nodesslurl + 'togglestatus?token=' + this.cookieservice.get('jwttoken');
     /* console.log('link');
      console.log(link);*/

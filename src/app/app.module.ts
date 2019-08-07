@@ -75,6 +75,7 @@ import { AgreementComponent } from './agreement/agreement.component';
 import { ManageleadsComponent } from './manageleads/manageleads.component';
 import { ProductsComponent } from './products/products.component';
 import { TrainingreportsComponent } from './trainingreports/trainingreports.component';
+import { NotelistComponent } from './notelist/notelist.component';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { TrainingreportsComponent } from './trainingreports/trainingreports.comp
     AgreementComponent,
     ManageleadsComponent,
     ProductsComponent,
-    TrainingreportsComponent
+    TrainingreportsComponent,
+    NotelistComponent
 
   ],
   imports: [

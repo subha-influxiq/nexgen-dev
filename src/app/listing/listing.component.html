@@ -119,7 +119,7 @@
                                         <th [ngClass]="item.class" *ngFor="let item of tabledatalisval; index as i;"
                                             scope="col" data-title="{{item.value}}">{{item.name}}</th>
                                         <th *ngIf="hideaction!=null && hideaction!='true' ">Actions</th>
-                                        <!-- <th *ngIf="hidenotes!=null && hidenotes!='true' ">Manage Notes</th> -->
+                                        <th *ngIf="notes!=null && notes=='true' ">Manage Notes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -256,11 +256,11 @@
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
                                             <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span>
                                         </td>
-                                        <!-- <td *ngIf="hidenotes!=null && hidenotes!='true' ">
-                                            <span class=" delete_user"
-                                                (click)="deletdata(item,commonconfirmmodal)">Notes</span>
+                                        <td *ngIf="notes!=null && notes=='true' ">
+                                            <span class="delete_user"
+                                                (click)="notesdata(item,notesmodal)">Notes</span>
                                             
-                                        </td> -->
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -289,7 +289,22 @@
 </div>
 
 
-
+<ng-template #lockunlockconfirmmodal>
+    <div class="modal-body brandmanagement_modal successmodal_listing">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <h3>Are you sure you want to {{lockunlock}} this account?</h3>
+            <div class="btn_cnt">
+                <button class="message_allow" (click)="togglelockedstatus()">Yes</button>
+                <button class="message_deny" (click)="nodelete()">No</button>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
 <ng-template #formtemplate>
     <div class="modal-body brandmanagement_modal newNexgen_modal " [ngClass]="addeventform1class()">
         <h1>Add/Edit {{menuval}}</h1>
@@ -462,22 +477,7 @@
 </ng-template>
 
 
-<ng-template #lockunlockconfirmmodal>
-    <div class="modal-body brandmanagement_modal successmodal_listing">
-        <div class="logo_wrapper">
-            <img src="assets/images/logo.png">
-        </div>
-        <div class="brand_messagebox">
-            <h3>Are you sure you want to {{lockunlock}} this account?</h3>
-            <div class="btn_cnt">
-                <button class="message_allow" (click)="togglelockedstatus()">Yes</button>
-                <button class="message_deny" (click)="nodelete()">No</button>
-            </div>
-        </div>
-    </div>
-    <div>
-    </div>
-</ng-template>
+
 
 <!--Common message modal-->
 <ng-template #messagemodal>
@@ -487,5 +487,19 @@
         </div>
         <div class="message_success">{{message}}</div>
 
+    </div>
+</ng-template>
+
+<!--Notes modal-->
+<ng-template #notesmodal>
+    <div class="modal-body brandmanagement_modal notes_list">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <app-notelist [lead_data]="selectedlead"></app-notelist>
+        </div>
+    </div>
+    <div>
     </div>
 </ng-template>

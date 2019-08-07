@@ -56,6 +56,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">Date Set</th>
                   <th scope="col"> Time</th>
+                  <th scope="col"> Manage Notes</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,8 @@
                   <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}} ({{item.userdata.email}})</td>
                   <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
                   <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
+                  <td data-title="Time" *ngIf="item.userdata"><span class="delete_user"
+                    (click)="notesdata(item,notesmodal)">Notes</span></td>
                 </tr>
                 </tbody>
               </table>
@@ -77,3 +80,16 @@
   </div>
 </div>
 <app-footer></app-footer>
+<!--Notes modal-->
+<ng-template #notesmodal>
+    <div class="modal-body brandmanagement_modal notes_list">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <app-notelist [lead_data]="selectedlead"></app-notelist>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
