@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
 import {Commonservices} from "../app.commonservices";
 import {HttpClient} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
+//added by Chandrani
+import { BsModalService } from "ngx-bootstrap/modal";
+import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 declare var moment: any;
 @Component({
   selector: 'app-appointmentlist',
@@ -18,8 +21,11 @@ export class AppointmentlistComponent implements OnInit {
   // public filterval2;
   public userfilterval;
   public futureevent=1;
+  //added by Chandrani
+  public selectedlead:any={};
+  public modalRef2:BsModalRef;
 
-  constructor(public _commonservice:Commonservices,public _http:HttpClient,public cookeiservice:CookieService)
+  constructor(public _commonservice:Commonservices,public modal: BsModalService,public _http:HttpClient,public cookeiservice:CookieService)
   {
 
   }
@@ -102,4 +108,14 @@ export class AppointmentlistComponent implements OnInit {
     this.futureevent=val;
     this.getgoogleevents();
   }
+   // added by Chandrani
+   notesdata(val: any, template: TemplateRef<any>) {
+    this.selectedlead = val;
+    console.log(this.selectedlead);
+    setTimeout(()=>{
+        this.modalRef2 = this.modal.show(template);
+    },2000);
+    
+    
+}
 }
