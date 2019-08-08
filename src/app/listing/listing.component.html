@@ -318,7 +318,7 @@
         <h1>Add/Edit {{menuval}}</h1>
         <form novalidate (ngSubmit)="formsubmit()">
             <!--[ngClass]="addeventformclass()"-->
-            <div class="form-group row" [formGroup]="dataForm" *ngFor="let item of formdataval; let i=index;">
+            <div class="form-group row rownew1" [formGroup]="dataForm" *ngFor="let item of formdataval; let i=index;">
                 <div *ngIf="(isedit==0 || (item.isaddonly==null && item.isaddonly!=true))" class="form_floating_div">
                     <!--[ngClass]="addeventclass()"-->
                     <label *ngIf="item.inputtype!='hidden'  && item.name!='multiple_emails'"

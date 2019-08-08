@@ -33,19 +33,19 @@ export class UseraccountsettingComponent implements OnInit {
     this.es=es;
     this.serverurl=_commonservices.nodesslurl;
     this.dataForm=this.es.group({
-      datejoin:['',Validators.required],
-      userids:['',Validators.required],
+      datejoin:[''],
+      userids:[''],
       firstname:['',Validators.required],
       lastname:['',Validators.required],
       username:[''],
       password:[''],
       confirmpassword:[''],
       email:['',Validators.required],
-        phoneno:['',Validators.required],
+        phoneno:[''],
       address1:[''],
       address2:[''],
       city:['',Validators.required],
-      state:['',Validators.required],
+      state:[''],
       zip:['',Validators.required],
       accounttype:['',Validators.required],
       owner:[''],
@@ -104,7 +104,8 @@ export class UseraccountsettingComponent implements OnInit {
                 this.dataForm.controls['lastname'].patchValue(onedata[0].lastname);
                 this.dataForm.controls['username'].patchValue(onedata[0].username);
                 this.dataForm.controls['email'].patchValue(onedata[0].email);
-                this.dataForm.controls['phoneno'].patchValue(onedata[0].phoneno);
+                if(onedata[0].phoneno!=null && onedata[0].phoneno.length>1)this.dataForm.controls['phoneno'].patchValue(onedata[0].telephone);
+                if(onedata[0].telephone!=null && onedata[0].telephone.length>1)this.dataForm.controls['phoneno'].patchValue(onedata[0].telephone);
                 this.dataForm.controls['address1'].patchValue(onedata[0].address1);
                 this.dataForm.controls['address2'].patchValue(onedata[0].address2);
                 this.dataForm.controls['city'].patchValue(onedata[0].city);
@@ -112,6 +113,9 @@ export class UseraccountsettingComponent implements OnInit {
                 this.dataForm.controls['zip'].patchValue(onedata[0].zip);
                 this.dataForm.controls['accounttype'].patchValue(onedata[0].type);
                 this.dataForm.controls['owner'].patchValue(onedata[0].regionalrecruiter_id);
+
+                if(onedata[0].address!=null && onedata[0].address.length>1)this.dataForm.controls['address1'].patchValue(onedata[0].address);
+
               // this.dataForm.controls['owner'].patchValue(onedata[0].recruiter);
                 //this.dataForm.controls['status'].patchValue(onedata[0].status);
 

@@ -431,7 +431,7 @@
     /*margin-bottom: 10px;*/
 }
 .newNexgen_modal form .row{ display: inherit; }
-.newNexgen_modal form .row .form_floating_div label{ font-family: 'RalewaySemiBold'; padding-left: 0; padding-right: 0; }
+.newNexgen_modal form .row .form_floating_div label{font-family: 'OpenSansSemiBold'; padding-left: 0; padding-right: 0; font-size: 14px;}
 .newNexgen_modal form .row .form_floating_div .col-sm-8 input:focus{ box-shadow: none;}
 .newNexgen_modal form .row .form_floating_div .col-sm-8 select:focus{ box-shadow: none;}
 .newNexgen_modal form .row .form_floating_div .col-sm-8 input[type=checkbox]{ width: 20px; height: 20px; }
@@ -440,7 +440,7 @@
     color: #ffffff !important;
 }
 
-.newNexgen_modal form .row .form_floating_div .col-sm-8 .error{ font-family: 'RalewayRegular'; color: #ff0000; font-size: 16px; clear: both;}
+.newNexgen_modal form .row .form_floating_div .col-sm-8 .error{ font-family: 'OpenSansRegular'; color: #ff0000; font-size: 16px; clear: both;}
 .newNexgen_modal form .btn_submit button:focus{ outline: none; }
 .newNexgen_modal form .btn_submit button{ background: #000;
     border: none;
@@ -452,7 +452,13 @@
     font-size: 24px;
 }
 
-.newNexgen_modal form .row .form_floating_div .col-sm-8 input{ font-family: 'RalewayRegular'; color: #000;}
+.bs-timepicker-field{ width: 60px!important;}
+
+.newNexgen_modal form .row .form_floating_div .col-sm-8 input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+.newNexgen_modal form .row .form_floating_div .col-sm-8 input{  font-family: 'OpenSansRegular'; color: #000;  }
 .newNexgen_modal form .row .form_floating_div .col-sm-8 {
     -ms-flex: 0 0 66.666667%;
     flex: 0 0 100%;
@@ -461,13 +467,11 @@
     padding-right: 0;
 
 }
-.newNexgen_modal form .row .form_floating_div .col-sm-8 textarea{ box-shadow: none;
-    /*change    resize: none;*/
-}
+.newNexgen_modal form .row .form_floating_div .col-sm-8 textarea{ box-shadow: none; resize: none;  }
 .newNexgen_modal form .row .form_floating_div .col-sm-8 textarea:focus{ box-shadow: none;}
 
 /*DIGITAL CONTRACT*/
-.nexgen_digital_contract table tbody tr td a{ font-size: 16px; text-transform: uppercase; padding: 5px 15px 4px 15px; font-family: 'RalewayMedium'; margin: 5px; cursor: pointer; text-decoration: none; }
+.nexgen_digital_contract table tbody tr td a{ font-size: 16px; text-transform: uppercase; padding: 5px 15px 4px 15px; font-family: 'OpenSansRegular'; margin: 5px; cursor: pointer; text-decoration: none; }
 .nexgen_digital_contract table tbody tr td a:hover{ color: #fff!important; }
 .nexgen_digital_contract table tbody tr td .download{
     background: #000;
@@ -1775,13 +1779,21 @@
 .newaddeventformclass  .form-group:nth-child(10) { display: inline-block;  margin-right: 10px!important;}
 
 
-.newaddeventformclass  .form-group:nth-child(13) { display: inline-block;   margin-right: 10px!important;  overflow: hidden; width: 50%;}
-.newaddeventformclass  .form-group:nth-child(14) { display: inline-block; margin-right: 10px!important; overflow: hidden; width: 45%;}
-.newaddeventformclass  .form-group:nth-child(15) { display: block!important; float: none!important; clear: both; }
+.newaddeventformclass  .form-group:nth-child(13) { display: inline-block;   margin-right: 10px!important;  /*overflow: hidden; width: 50%;*/}
+.newaddeventformclass  .form-group:nth-child(14) { display: inline-block; margin-right: 10px!important; /*overflow: hidden; width: 45%;*/}
+.newaddeventformclass  .form-group:nth-child(15) { display: inline-block!important;  margin-right: 10px!important; /* float: none!important; clear: both;*/ }
+.newaddeventformclass  .form-group:nth-child(16) { display: inline-block!important;  margin-right: 10px!important; /* float: none!important; clear: both;*/ }
 
-.newaddeventformclass  .col-form-label{ display: block!important; width: 100%!important;     font-family: 'RalewaySemiBold'!important;}
+/*.newaddeventformclass  .form-group:nth-child(19) { display: inline-block;   margin-right: 10px!important;}
+.newaddeventformclass  .form-group:nth-child(20) { display: inline-block;  margin-right: 10px!important;}*/
 
-.newaddeventformclass  .form-group:nth-child(13) label{ font-family: 'OpenSansBold'!important; font-size: 14px!important; display: inline-block!important; float: left!important;}
+.newaddeventformclass  .col-form-label{ display: block!important; width: 100%!important;      }
+
+.newaddeventformclass  .form-group:nth-child(14) .col-form-label-sm{ display: none!important;}
+
+.newaddeventformclass  .form-group:nth-child(13):before{ content: 'Time Span'; display: block; width: 100%;     font-family: 'OpenSansSemiBold';  font-size: 14px;}
+
+/*.newaddeventformclass  .form-group:nth-child(13) label{ font-family: 'OpenSansBold'!important; font-size: 14px!important; display: inline-block!important; float: left!important;}
 .newaddeventformclass  .form-group:nth-child(14) label{ font-family: 'OpenSansBold'!important; font-size: 14px!important; display: inline-block!important; float: left!important; }
 
 .newaddeventformclass  .form-group:nth-child(13) .form-control{ display: inline-block!important; float:left!important; width: 20px!important;     height: 20px;
@@ -1794,9 +1806,9 @@
 
 .newaddeventformclass .form-group:nth-child(13){
     display: block!important;
-    float: left!important;
+
 }
-.newaddeventformclass .form-group:nth-child(13) .col-form-label{ display: block!important; width: 100%!important;     font-family: 'RalewaySemiBold'!important; flex: auto!important; float: none!important;}
+.newaddeventformclass .form-group:nth-child(13) .col-form-label{ display: block!important; width: 100%!important;     font-family: 'RalewaySemiBold'!important; flex: auto!important; float: none!important;}*/
 
 
 /*QUIZZ section*/
@@ -2342,3 +2354,26 @@ font-family: 'RalewayBold';
 font-size: 24px; line-height: 28px;
 margin: 0px; padding: 0 15px 30px 15px;
 text-align: center;}
+
+
+.newNexgen_modal form .row .form_floating_div .col-sm-8 label{ display: inline-block; float: left; margin: 0px; padding: 0 5px 0 0; font-family: 'OpenSansRegular';}
+.newNexgen_modal form .row .form_floating_div .col-sm-8 input[type="radio"]{ display: inline-block; float: left; margin: 2px 0 0 0;}
+
+.newaddeventformclass  .form-group:nth-child(19){ display: block; width: 100%;
+    clear: both; overflow: hidden;}
+
+.newaddeventformclass  .form-group:nth-child(20){ display: block; width: 100%;
+    clear: both; overflow: hidden;}
+
+
+
+.newaddeventformclass  .form-group:nth-child(19)   input[type=checkbox]{display: inline-block!important; float: left!important;
+    margin: 6px 0 0 10px;}
+
+.newaddeventformclass  .form-group:nth-child(20)   input[type=checkbox]{display: inline-block!important; float: left!important;
+    margin: 6px 0 0 10px;}
+
+
+
+.newaddeventformclass  .form-group:nth-child(19) .col-form-label-sm { display: inline-block!important; float: left!important; width: auto!important; flex: auto!important; min-width: inherit!important;  }
+.newaddeventformclass  .form-group:nth-child(20) .col-form-label-sm{display: inline-block!important; float: left!important; width: auto!important; flex: auto!important; min-width: inherit!important;  }

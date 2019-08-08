@@ -227,6 +227,8 @@
 
 @media screen and (max-width: 1199px) {
 
+
+
     .listevent_wrapper .event_content_wrapper .evnt_left_content {
         width: 480px;
         float: none;
@@ -366,6 +368,13 @@
         font-weight: bold;
         content: attr(data-title);
     }
+
+    .newaddeventformclass  tbody{ display: table; width: auto!important;}
+
+    .newaddeventformclass  table{ display: table;}
+    .newaddeventformclass  table tr{ display: table-row; width: auto!important;}
+
+    .newaddeventformclass  table tr td {    padding-left: 0 !important; display: table-cell; width: auto!important; text-align: inherit;}
 
     .nextGen_admin_mainwrapper .nexgen_admin_table {
         padding-right: 0;
