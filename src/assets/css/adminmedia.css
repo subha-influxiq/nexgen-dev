@@ -349,11 +349,26 @@
         border: none;
         /*border-bottom: 1px solid #eee;*/
         position: relative;
-        padding-left: 50% !important;
+        padding-left: 52% !important;
         white-space: normal;
         text-align: left;
 
     }
+
+    td:after {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 12px;
+        left: 6px;
+        width: 50%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        content: attr(data-title);
+    }
+
 
     td:before {
         /* Now like a table header */
@@ -361,12 +376,12 @@
         /* Top/left values mimic padding */
         top: 12px;
         left: 6px;
-        width: 45%;
+        width: 50%;
         padding-right: 10px;
         white-space: nowrap;
         text-align: left;
-        font-weight: bold;
-        content: attr(data-title);
+        font-weight: normal;
+        content: attr(datalabel);     color: #00a8ef; text-transform: capitalize;
     }
 
     .newaddeventformclass  tbody{ display: table; width: auto!important;}
