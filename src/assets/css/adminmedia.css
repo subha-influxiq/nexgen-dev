@@ -130,7 +130,7 @@
 }
 @media screen  and  (max-width: 1440px){
     .new_header .new_header2 .navbar-nav .nav-link {
-        padding: 0 3px;
+        padding: 0 4px;
         text-align: center;
     }
 }
@@ -185,8 +185,14 @@
   /*  .rep_dashboard_wrapper1 {
         background-position: 30% center!important;
     }*/
+
+    .new_header .new_header2 .navbar-nav .nav-link {
+        font-size: 12px;
+    }
 }
 @media screen  and  (max-width: 1300px){
+
+
   /*  .listevent_wrapper .event_content_wrapper .evnt_right_content form .btn_search,
     .listevent_wrapper .event_content_wrapper .evnt_left_content form .btn_search {
         font-size: 16px;
@@ -1178,6 +1184,8 @@
     .rep_dashboard_newblock6 {
         background-position: -580px top;
     }
+
+
 }
 
 @media screen and (max-width:1199px) {
