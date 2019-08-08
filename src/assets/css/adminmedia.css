@@ -548,10 +548,10 @@
         text-align: center; border-top: solid 1px #fff; border-bottom: solid 1px #fff;
     }
     .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content{margin-right: 5px!important;}
-    .new_header .new_header2 .navbar-nav .nav-link {
+ /*   .new_header .new_header2 .navbar-nav .nav-link {
         padding: 10px 0;
         font-size: 14px;
-    }
+    }*/
     .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ font-size: 16px;}
     /*change*/
     /*.new_header .new_header2 .navbar-nav .nav-item {
@@ -560,17 +560,17 @@
         margin: 5px 0;
         padding: 10px 0;
     }*/
-    .new_header .new_header2 .navbar-nav .nav-item {
+  /*  .new_header .new_header2 .navbar-nav .nav-item {
         color: #3d3d3d!important;
         background: #fff;
         border-bottom: 1px solid #c1c1c1;
-    }
+    }*/
 
 
     .new_header .new_header2 .navbar {
         padding: 0 !important;
-        text-align: center;
-        justify-content: center;
+        text-align: left;
+        justify-content: space-between;
         margin: 15px 0;
     }
 
@@ -1278,9 +1278,13 @@
 }
 
 
-@media screen and (max-width:991px) {
+@media screen and (max-width:992px) {
 
     .rep_dashboard_wrapper2_btn_wrapper a{   font-size: 30px;}
+
+    .new_header_bg{ position: relative; padding-bottom: 0px;}
+
+    .new_header4{ position: absolute!important; right: 0px!important; top: 85px!important;}
 }
 
 
