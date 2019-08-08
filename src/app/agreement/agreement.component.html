@@ -6,7 +6,7 @@
     </h2>
 
     <form [formGroup]="agreementForm" (ngSubmit)="agreementFormSubmit()" autocomplete="off">
-        <p>This agreement (hereinafter referred to as “Agreement”) dated on [date], by and between Beto Paredes LLC (hereinafter referred to as “Company” and/or Company and participating partner companies), an Idaho LLC, and <input _ngcontent-c1="" class="agr_input2" name="agreement_person_company" readonly="readonly" type="text" formControlName="companyName" /> (hereinafter referred to as “Associate”), an individual or business with their primary location at <input _ngcontent-c1="" class="agr_input3" name="agreement_person_address" readonly="readonly" type="text" formControlName="address">.  Both Company and Associate may collectively be referred to as (“Parties”).
+        <p>This agreement (hereinafter referred to as “Agreement”) dated on [date], by and between Beto Paredes LLC (hereinafter referred to as “Company” and/or Company and participating partner companies), an Idaho LLC, and <input _ngcontent-c1="" class="agr_input2" name="agreement_person_company" readonly="readonly" type="text" formControlName="companyName" /> (hereinafter referred to as “Associate”), an individual or business with their primary location at <input _ngcontent-c1="" class="agr_input3" name="agreement_person_address" readonly="readonly" type="text" formControlName="address">, {{ this.userDetails.city }}, {{ this.userDetails.state }}, {{ this.userDetails.zip }}.  Both Company and Associate may collectively be referred to as (“Parties”).
         </p>
 
 
