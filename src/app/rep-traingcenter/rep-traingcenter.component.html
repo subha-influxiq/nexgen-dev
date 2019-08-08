@@ -44,7 +44,7 @@
         <!--  <button class="btn" (click)="sorteddatalist[0].open = !sorteddatalist[0].open">Toggle first open</button>
       <button class="btn" (click)="sorteddatalist[1].open = !sorteddatalist[1].open">Toggle second open</button>-->
       <accordion>
-        <accordion-group heading="{{item.title}} --{{i}}"  *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
+        <accordion-group heading="{{item.title}} "  *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
           <div class="accordian_image">
             <div class="content_background">
               <div class="lucoplast1"> </div>
@@ -139,7 +139,7 @@
             <a *ngIf="item.filetype=='image'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.imageservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
 
           <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id, item.trainingcategory, lastLessionName, quizmodal)" class="quizz_button">Take quiz</a>
-                {{item.filetype}} -- {{getdoneclass(item._id)}}
+
           <a class="mark_done" *ngIf="item.yesorno=='no' && getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video' " (click)="markasdonetraninglesson(item,i)">Mark as done</a>
 
             </div>
