@@ -89,6 +89,7 @@ export class ListingComponent implements OnInit {
     public issubmit = 0;
     public loaderdiv = false;
     public selectedlead:any={};
+    public inputflag:any=0;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -876,6 +877,12 @@ export class ListingComponent implements OnInit {
             this.modalRef2 = this.modal.show(template);
         },2000);
         
+        
+    }
+    showInputText(event:any){
+        if(event.target.checked == true){
+            this.inputflag = 1;
+        }else this.inputflag = 0;
         
     }
 }

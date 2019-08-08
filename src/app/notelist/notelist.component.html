@@ -44,19 +44,19 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of noteslist;">
-                    <td scope="col" class="date">
+                    <td scope="col" class="date" datalabel="date">
                       <span class="date">
                         {{item.created_at}}
                       </span>
                       
                     </td>
-                    <td scope="col" class="note">
+                    <td scope="col" class="note" datalabel="note">
                         <span class="note">
                           {{item.note}}
                         </span>
                         
                       </td>
-                      <td scope="col" class="createdby">
+                      <td scope="col" class="createdby" datalabel="createdby">
                           <span class="createdby">
                             {{item.fullname}}
                           </span>

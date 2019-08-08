@@ -32,7 +32,7 @@
                         *ngIf="router.url!=['/tranningcategory'] && router.url!=['/addtrainings']">
                         <div class="inner_content_wrapper">
                             <div class="search_content">
-                                <h3><span>Search by UserId: </span> <input type="text" [(ngModel)]="filterval2"
+                                <h3><span>Search by Email: </span> <input type="text" [(ngModel)]="filterval2"
                                         (keyup)="searchbyval()"><button>search</button> </h3>
                             </div>
                             <div class="search_content">
@@ -53,6 +53,8 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
+
+                    
                     <input type="text" placeholder="Search..." [(ngModel)]="filterval" #listFilter (keyup)="0"
                         class="hide">
                 </div>
@@ -117,7 +119,7 @@
                                 <thead>
                                     <tr>
                                         <th [ngClass]="item.class" *ngFor="let item of tabledatalisval; index as i;"
-                                            scope="col" data-title="{{item.value}}">{{item.name}}</th>
+                                            scope="col" >{{item.name}}</th>
                                         <th *ngIf="hideaction!=null && hideaction!='true' ">Actions</th>
                                         <th *ngIf="notes!=null && notes=='true' ">Manage Notes</th>
                                     </tr>
@@ -125,7 +127,7 @@
                                 <tbody>
                                     <tr *ngFor="let item of datalist | usersearch:listFilter.value; index as i ">
                                         <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col"
-                                            class="{{item._id}}">
+                                            class="{{item._id}}"  [attr.datalabel]="item1.class">
                                             <span *ngIf="item1.type=='text' && router.url!='/rep'"
                                                 [ngClass]="item1.class">
                                                 <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
@@ -150,9 +152,15 @@
                                             <span *ngIf="item1.type=='text1'&& router.url=='/rep'" (click)="updaterecruiter(item._id)" class="edit_user lock_unlock"> Update</span>-->
 
 
+<!------------------------------------------------------------------------------------------------>
+<span *ngIf="item1.value=='verification_need' && item1.type=='checkbox' " [ngClass]="item1.class">
+    <span class="statusactive" *ngIf="item[item1.value]==true"> Required</span>
+    <span class="statusinactive" *ngIf="item[item1.value]!=true"> Not Required</span>
 
+</span>
+<!------------------------------------------------------------------------------------------------>
 
-                                            <span *ngIf="item1.type=='checkbox'" [ngClass]="item1.class">
+                                            <span *ngIf="item1.type=='checkbox' && item1.value!='verification_need'" [ngClass]="item1.class">
                                                 <span class="statusactive" *ngIf="item[item1.value]==true"> Active
                                                     &nbsp;&nbsp; <span
                                                         *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"
@@ -313,22 +321,33 @@
             <div class="form-group row" [formGroup]="dataForm" *ngFor="let item of formdataval; let i=index;">
                 <div *ngIf="(isedit==0 || (item.isaddonly==null && item.isaddonly!=true))" class="form_floating_div">
                     <!--[ngClass]="addeventclass()"-->
-                    <label *ngIf="item.inputtype!='hidden'"
+                    <label *ngIf="item.inputtype!='hidden'  && item.name!='multiple_emails'"
                         class="  col-form-label col-form-label-sm">{{item.label}}</label>
+                        <label *ngIf="item.inputtype!='hidden' && item.name=='multiple_emails' && inputflag==1"
+                        class="col-form-label col-form-label-sm">{{item.label}}</label>
                     <div class="col-sm-8">
 
 
                         <input
-                            *ngIf="item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden' "
+                            *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && item.name!='multiple_emails'"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
                         <input *ngIf="item.inputtype=='number'" [name]="item.name"
                             [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control"
                             [placeholder]="item.placeholder" (keyup)="issubmit=0">
+
+                            <input
+                            *ngIf=" inputflag==1 && item.inputtype=='text' && item.name=='multiple_emails'"
+                            [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
+                            class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
                         <div class="checkboxclass" *ngIf="item.inputtype=='checkbox'">
 
-                            <input type="checkbox" *ngIf="item.inputtype=='checkbox'" [name]="item.name"
+                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name!='verification_need'" [name]="item.name"
                                 [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0"
+                                [ngClass]="item.class">
+
+                                <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='verification_need'" [name]="item.name"
+                                [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0" (change)="showInputText($event)"
                                 [ngClass]="item.class">
                         </div>
 
