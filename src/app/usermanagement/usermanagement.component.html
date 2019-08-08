@@ -58,6 +58,7 @@
                   <!--<th scope="col">Regional Manager</th>-->
                   <th scope="col">Status</th>
                   <th scope="col">Calender Access</th>
+                  <th scope="col">Contract Signed</th>
                   <th scope="col">Action</th>
 
 
@@ -89,6 +90,11 @@
                     <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
                     <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
                     </span>
+                  </td>
+                  <td>
+                    <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
+                      <a target="_blank" href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i class="fa fa-download" aria-hidden="true"></i></a></span>
+                    <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 " [routerLink]="['/useraccountsetting',item._id]">No</span>
                   </td>
                   <td>
                     <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
