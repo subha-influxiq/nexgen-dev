@@ -58,6 +58,7 @@
                   <!--<th scope="col">Regional Manager</th>-->
                   <th scope="col">Status</th>
                   <th scope="col">Calender Access</th>
+                  <th scope="col">Contract Signed</th>
                   <th scope="col">Action</th>
 
 
@@ -67,14 +68,14 @@
 
 
                 <tr *ngFor="let item of singleuserdata | usersearch:listFilter.value">
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{commonservices.showunixtodate1(item.created_at)}} </td>
+                  <td datalabel="Date Joined" [routerLink]="['/useraccountsetting',item._id]">{{commonservices.showunixtodate1(item.created_at)}} </td>
                   <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->
                 <!--  <td [routerLink]="['/useraccountsetting',item._id]">{{item.username}}</td>-->
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
-                  <td [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
+                  <td datalabel="First Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
+                  <td datalabel="Last Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
+                  <td datalabel="Account Type" [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
                   <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.recruiter}}</td>-->
-                  <td>
+                  <td datalabel="Status">
                     <span  class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
                     <span class="ticon_active" (click)="togglestatus(item)"></span>
                     </span>
@@ -82,7 +83,7 @@
                     <span class="ticon_inactive" (click)="togglestatus(item)"></span>
                     </span>
                   </td>
-                  <td>
+                  <td datalabel="Calender Access">
                     <span  class="statusactive" *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
                     <span class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
                     </span>
@@ -90,7 +91,12 @@
                     <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
                     </span>
                   </td>
-                  <td>
+                  <td datalabel="Contract Signed">
+                    <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
+                      <a target="_blank" href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i class="fa fa-download" aria-hidden="true"></i></a></span>
+                    <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 " [routerLink]="['/useraccountsetting',item._id]">No</span>
+                  </td>
+                  <td datalabel="Action">
                     <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
                   </td>
 

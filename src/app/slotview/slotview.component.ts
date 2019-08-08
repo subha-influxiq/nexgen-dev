@@ -33,6 +33,7 @@ export class SlotviewComponent implements OnInit {
    }
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute) {
+    window.scrollTo(1000,0);
     this._commonservice =_commonservice;
 
       this._http.get("assets/data/timezone.json")
