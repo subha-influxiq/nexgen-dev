@@ -30,6 +30,7 @@ export class TempaccessComponent implements OnInit {
   public googleEventId: any;
 
   constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
+    window.scrollTo(1000,0);
   }
 
   ngOnInit() {
