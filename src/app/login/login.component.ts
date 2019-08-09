@@ -26,6 +26,10 @@ export class LoginComponent implements OnInit {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.nodesslurl = _commonservices.nodesslurl;
+    if(this.cookeiservice.get('jwttoken') == '') {
+        this.setTempToken();
+      }
+    
     if(this.cookeiservice.get('userid')!=''){
       switch(this.cookeiservice.get('usertype')) {
         case 'rep':
@@ -62,7 +66,73 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getUserDetails(template:TemplateRef<any>){
+    let link = this.nodesslurl+'datalist?token=' + this.cookeiservice.get('jwttoken');
+    let data = { source: 'users', condition: {email:this.dataForm.controls['email'].value} };
+    this._http.post(link,data)
+    .subscribe(res=>{
+      let result:any;
+      result = res;
+      console.log(result);
+      if (result.resc == 1) {
+        if(result.res[0].status == 1) {
+          this.cookeiservice.set('jwttoken', this.cookeiservice.get('jwttoken'));
+          this.cookeiservice.set('userid', result.res[0]._id);
+
+          if(result.res[0].is_contract_signed == null && result.item[0].type == 'rep') {
+            this.router.navigate(['/agreement']);
+            return ;
+          }
+
+          
+          this.cookeiservice.set('lockdornot', result.res[0].lock);
+          this.cookeiservice.set('usertype', result.res[0].type);
+          this.cookeiservice.set('useremail', result.res[0].email);
+          this.cookeiservice.set('calenderaccess', result.res[0].calenderaccess);
+          this.cookeiservice.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
+          if(result.res[0].type=='admin') {
+            this.router.navigate(['/dashboard']);
+          }
+          if(result.res[0].type=='regional_recruiter') {
+            this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
+            this.router.navigate(['/regionaldashboard']);
+          }
+        /* if(result.item[0].type=='rep')
+        {
+          this.router.navigate(['/repdashboard']);
+        }*/
+        if(result.res[0].type=='rep')
+        {
+          if(result.res[0].status==0) {
+            this.router.navigate(['/tempaccess']);
+            return;
+          }
+
+          if(result.res[0].status==1) {
+            this.router.navigate(['/repdashboard']);
+            return;
+          }
+
+
+          if(result.res[0].signup_step2==1 && result.res[0].contractstep==null && result.res[0].reptraininglessonstep==null) this.router.navigate(['/contract']);
+          if(result.res[0].signup_step2==1 && result.res[0].contractstep==1 && result.res[0].reptraininglessonstep==null) this.router.navigate(['/reptrainingcenter']);
+          if(result.res[0].signup_step2==1 && result.res[0].contractstep==1 && result.res[0].reptraininglessonstep==1) this.router.navigate(['/repdashboard']);
+        }
+        console.log('jwttoken');
+        console.log(this.cookeiservice.get('jwttoken'));
+      }
+      else{
+          this.modalRef=this.modal.show(template);
+          setTimeout(() => {
+            this.modalRef.hide();
+          }, 4000);
+      }
+      }
+    })
+  }
+
   dosubmit(formval,template:TemplateRef<any>) {
+   
     this.issubmit=1;
     this.errormg = '';
     let x: any;
@@ -143,5 +213,12 @@ export class LoginComponent implements OnInit {
             console.log('Oooops!');
           });
     }
+  }
+  setTempToken() {
+    const link = this._commonservices.nodesslurl + 'temptoken';
+    this._http.post(link, { }).subscribe(res => {
+        let result:any = res;
+        this.cookeiservice.set('jwttoken', result.token);
+    });
   }
 }
