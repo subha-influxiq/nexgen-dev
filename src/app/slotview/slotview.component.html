@@ -66,7 +66,7 @@
          <form novalidate [formGroup]="closerLeadForm" (ngSubmit)="closerLeadFormSubmit();">
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">first name:</label>
+                <label class="col-sm-3 col-form-label">Leads:</label>
                 <div class="col-sm-9">
                     <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']">
                     <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
@@ -74,11 +74,11 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">state</label>
+                <label class="col-sm-3 col-form-label">Product</label>
                 <div class="col-sm-9">
 
                     <select [formControl]="closerLeadForm.controls['product']" class="form-control" >
-                        <option value="">Select A State </option>
+                        <option value="">Select a Product</option>
                     </select>
 
                     <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.product.errors">Product Required</span>
