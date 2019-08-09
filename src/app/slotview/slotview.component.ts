@@ -36,6 +36,9 @@ export class SlotviewComponent implements OnInit {
 
    public closerLeadForm: FormGroup;
    public closerLeadFormSubmitFlug: boolean = false;
+   public allLeads: any;
+   public leadsSuggestion: any = [];
+   public leadsSuggestionFlug: boolean = false;
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
@@ -53,10 +56,11 @@ export class SlotviewComponent implements OnInit {
 
     /* Agreement Form Control */
     this.closerLeadForm = this.formBuilder.group({
-        leads:      [ null, [ Validators.required, Validators.maxLength(150) ] ],
-        product:    [ null, [ Validators.required, Validators.maxLength(1000) ] ]
+        leads:      [ null, [ Validators.required, Validators.maxLength(200) ] ],
+        product:    [ null, [ Validators.required, Validators.maxLength(200) ] ]
       });
   }
+
   settimezone(){
       this.cookeiservice.set('timezone',this.timezoneval);
       window.location.reload();
@@ -135,6 +139,7 @@ export class SlotviewComponent implements OnInit {
                 }
                 break;
             case 'book-a-closer':
+                this.getLeads();
                 this.slotView = false;
                 this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
@@ -233,12 +238,46 @@ export class SlotviewComponent implements OnInit {
         .subscribe(res => {
             let result: any = res;
             this.cookeiservice.set('useremail', result.res[0].email);
-        })
+        });
   }
 
-  /* closerLeadForm */
-  closerLeadFormSubmit() {
-      alert('okk');
-  }
+    /* Get Leads */
+    getLeads() {
+        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source:'leads_view', condition: {  }}).subscribe(res => {
+            let result: any = res;
+            this.allLeads = result.res;
+            console.log('Leads: ', result);
+        });
+    }
+
+    /* Leads auto complete */
+    leadsSuggest(event:any) {
+        this.leadsSuggestion = [];
+        let keyword: any = this.closerLeadForm.value.leads;
+        if(keyword.length > 0) {
+            this.leadsSuggestionFlug = true;
+            for(let c in this.allLeads) {
+                if(this.allLeads[c].firstname != null && this.allLeads[c].firstname.toLowerCase().indexOf(keyword.toLowerCase())>-1) {
+                    this.leadsSuggestion.push(this.allLeads[c]);
+                } else if(this.allLeads[c].lastname != null && this.allLeads[c].lastname.toLowerCase().indexOf(keyword.toLowerCase())>-1){
+                    this.leadsSuggestion.push(this.allLeads[c]);
+                } 
+            }
+        } else {
+            this.leadsSuggestionFlug = false;
+        }
+      }
+
+    /* closerLeadForm */
+    closerLeadFormSubmit() {
+        this.closerLeadFormSubmitFlug = true;
+        if(this.closerLeadForm.valid) {
+        this.slotView = true;
+            alert('OKK');
+        } else {
+            alert('Sorry');
+        }
+    }
 
 }

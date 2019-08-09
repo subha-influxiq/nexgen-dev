@@ -68,8 +68,11 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Leads:</label>
                 <div class="col-sm-9">
-                    <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']">
-                    <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
+                    <input type="text" class="form-control" [formControl]="closerLeadForm.controls['leads']" (keyup)="leadsSuggest($event);">
+                    <ng-container *ngIf="leadsSuggestionFlug">
+                      <span *ngFor="let l of leadsSuggestion;"></span>
+                    </ng-container>
+                    <span class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
                 </div>
             </div>
 
