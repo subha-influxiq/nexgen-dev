@@ -31,6 +31,7 @@ export class SlotviewComponent implements OnInit {
     minDate: moment().format("MM/DD/YYYY"),
     noDefaultRangeSelected: true,
    }
+   public headerText: any = {};
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute) {
     window.scrollTo(1000,0);
@@ -79,14 +80,14 @@ export class SlotviewComponent implements OnInit {
 
     get_refreshtoken_of_this_rec(){
         const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-        this._http.post(link,{source:'users',condition:{_id_object:this.recid}})
-            .subscribe(res => {
-                let result:any={};
-                result = res;
-                this.refreshtoken=result.res[0].refreshtoken;
-                
-                this.cookeiservice.set('refreshtoken', this.refreshtoken);
-            })
+        this._http.post(link,{source:'users',condition:{_id_object:this.recid}}).subscribe(res => {
+            let result: any = res;
+            if(result.res.length > 0) {
+                this.refreshtoken = result.res[0].refreshtoken;
+            }
+            
+            this.cookeiservice.set('refreshtoken', this.refreshtoken);
+        });
     }
     setdatetonull(){
         this.filterval5 = null;
@@ -96,6 +97,8 @@ export class SlotviewComponent implements OnInit {
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
             case 'on-boarding-call':
+                this.headerText.hedaerH4 = 'Select your On-Boarding Call Appointment as per your convenience.';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
@@ -108,8 +111,20 @@ export class SlotviewComponent implements OnInit {
                     }};
                 }
                 break;
-            case 'is_discovery':
-                cond = { "is_discovery": true };
+            case 'discovery-call':
+                this.headerText.hedaerH4 = 'Select your Discovery Call Appointment as per your convenience.';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
                 break;
             default:
                 if(this.filterval5!=null && this.filterval5 != '') {

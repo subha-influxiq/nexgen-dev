@@ -117,7 +117,7 @@ const appRoutes: Routes = [
     { path: 'slotview', component: SlotviewComponent},
 
     { path: 'on-boarding-call/:id', component: SlotviewComponent },
-    { path: 'discovery-call/', component: SlotviewComponent },
+    { path: 'discovery-call/:id', component: SlotviewComponent },
 
     { path: 'slotview/:id', component: SlotviewComponent },
     { path: 'appointmentlist', component: AppointmentlistComponent },
