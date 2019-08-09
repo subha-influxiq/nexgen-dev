@@ -484,3 +484,21 @@
 
 
 <app-footer></app-footer>
+<!--Training Completion modal-->
+<ng-template #trainingCompletedModal>
+    <div class="modal-body brandmanagement_modal successmodal_listing">
+      <div class="logo_wrapper">
+        <img src="assets/images/logo.png">
+      </div>
+      <div class="btn_cnt">
+          <h3>Your Training Has Been Completed!</h3>
+          <h3>You can set discovery call appointment by <a style="display: inline-block; color:#0071bc;" target="_blank" [routerLink]="['/discovery-call',cookeiservice.get('userid')]">clicking here</a>!</h3>
+        
+      </div>
+    </div>
+    <div>
+    </div>
+  </ng-template>
+
+
+  <button style="display: none;" #modalopenlink class="openmodal" (click)="openModal(trainingCompletedModal)">Open Modal</button>>
