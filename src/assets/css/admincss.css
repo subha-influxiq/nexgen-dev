@@ -1504,12 +1504,12 @@
 }
 
 /*change*/
-.listevent_inner_wrapper .main_inner_content>div{    width:32.7%;
+/*.listevent_inner_wrapper .main_inner_content>div{    width:32.7%;
     padding: 15px;
     margin: 0.3%;
     background: #faf7f7;
     border: 1px solid #cccaca;
-}
+}*/
 .listevent_inner_wrapper .main_inner_content>div p{margin-bottom: 10px; }
 .listevent_inner_wrapper .main_inner_content>div .event_f_name{ font-size: 16px; font-family: 'Open Sans', sans-serif; font-weight:900;}
 .listevent_inner_wrapper .main_inner_content>div .event_f_date{ font-size: 16px; font-family: 'OpenSansRegular';  color: #0a7fa5; }
