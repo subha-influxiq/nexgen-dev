@@ -32,8 +32,12 @@ export class SlotviewComponent implements OnInit {
     noDefaultRangeSelected: true,
    }
    public headerText: any = {};
+   public slotView: boolean = true;
 
-  constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute) {
+   public closerLeadForm: FormGroup;
+   public closerLeadFormSubmitFlug: boolean = false;
+
+  constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
     this._commonservice =_commonservice;
 
@@ -41,12 +45,17 @@ export class SlotviewComponent implements OnInit {
           .subscribe(res => {
               let result;
               this.timezone=result = res;
-              console.log(result);
               this.timezoneval=this.cookeiservice.get('timezone');
           }, error => {
               console.log('Oooops!');
               //this.formdataval[c].sourceval = [];
           });
+
+    /* Agreement Form Control */
+    this.closerLeadForm = this.formBuilder.group({
+        leads:      [ null, [ Validators.required, Validators.maxLength(150) ] ],
+        product:    [ null, [ Validators.required, Validators.maxLength(1000) ] ]
+      });
   }
   settimezone(){
       this.cookeiservice.set('timezone',this.timezoneval);
@@ -68,7 +77,6 @@ export class SlotviewComponent implements OnInit {
                 const link = this._commonservice.nodesslurl + 'temptoken';
                 this._http.post(link, { }).subscribe(res => {
                     let result:any = res;
-                    console.log(result.token);
                     this.cookeiservice.set('jwttoken', result.token);
 
                     this.getUserDetails(this.recid);
@@ -121,6 +129,22 @@ export class SlotviewComponent implements OnInit {
                     }};
                 } else {
                     cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
+                break;
+            case 'book-a-closer':
+                this.slotView = false;
+                this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = { "is_discovery": false, "is_onboarding": false, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = { "is_discovery": false, "is_onboarding": false, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
                         $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
@@ -210,6 +234,11 @@ export class SlotviewComponent implements OnInit {
             let result: any = res;
             this.cookeiservice.set('useremail', result.res[0].email);
         })
+  }
+
+  /* closerLeadForm */
+  closerLeadFormSubmit() {
+      alert('okk');
   }
 
 }
