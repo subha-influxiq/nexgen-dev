@@ -71,12 +71,21 @@
                   <td datalabel="Date Joined" [routerLink]="['/useraccountsetting',item._id]">{{commonservices.showunixtodate1(item.created_at)}} </td>
                   <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->
                 <!--  <td [routerLink]="['/useraccountsetting',item._id]">{{item.username}}</td>-->
-                  <td datalabel="First Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
-                  <td datalabel="Last Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
+                  <td datalabel="First Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}<t Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>/td>
+                  <td datalabel="Las
                   <td datalabel="Account Type" [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
                   <td datalabel="Training Completed">
                     <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
-                    <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span>
+                    <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span><br>
+                    <span >Onboarding Call : 
+                      <span *ngIf="item.is_onboarding != null && item.is_onboarding == true">Yes</span>
+                      <span *ngIf="item.is_onboarding == null || item.is_onboarding == false">No</span>
+                    </span><br>
+                    <span >Discovery Call : 
+                        <span *ngIf="item.is_discovery != null && item.is_discovery == true">Yes</span>
+                        <span *ngIf="item.is_discovery == null || item.is_discovery == false">No</span>
+                      </span>
+
                   </td>
                   <td datalabel="Status">
                     <span  class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;

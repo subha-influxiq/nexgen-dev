@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
     { inputtype: 'textarea', name: 'description', label: 'description', placeholder: 'Enter Description' },
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
     {inputtype:'checkbox',name:'verification_need',label:'Verification Needed',value:false},
-    { inputtype: 'text', name: 'multiple_emails', label: 'Emails', placeholder: 'Enter Emails', validationrule: { required: true }, validationerrormsg: 'is required' },
+    { inputtype: 'text', name: 'multiple_emails', label: 'Emails', placeholder: 'Enter Emails' },
   ];
   this.datasource = { table: 'products', objarr: [] }; }
 

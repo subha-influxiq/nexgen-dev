@@ -140,6 +140,9 @@
                 <a class="nav-link" >Discovery Calendar</a>
               </li>
 
+              <li class="nav-item" *ngIf="repDetailsNew.length>0  && repDetailsNew[0].trainingpercentage == 100 && repDetailsNew[0].is_discovery == false" >
+                  <a class="nav-link" [routerLink]="['/discovery-call',idis]" >Discovery Call</a>
+                </li>
 
               <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
                 <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
