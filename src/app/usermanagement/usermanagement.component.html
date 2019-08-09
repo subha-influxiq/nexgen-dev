@@ -55,7 +55,7 @@
                   <th scope="col">First Name</th>
                   <th scope="col">Last Name</th>
                   <th scope="col">Account Type</th>
-                  <!--<th scope="col">Regional Manager</th>-->
+                  <th scope="col">Training Completed</th>
                   <th scope="col">Status</th>
                   <th scope="col">Calender Access</th>
                   <th scope="col">Contract Signed</th>
@@ -74,7 +74,10 @@
                   <td datalabel="First Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
                   <td datalabel="Last Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
                   <td datalabel="Account Type" [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
-                  <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.recruiter}}</td>-->
+                  <td datalabel="Training Completed">
+                    <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
+                    <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span>
+                  </td>
                   <td datalabel="Status">
                     <span  class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
                     <span class="ticon_active" (click)="togglestatus(item)"></span>

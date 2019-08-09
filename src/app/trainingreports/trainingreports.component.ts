@@ -25,7 +25,7 @@ export class TrainingreportsComponent implements OnInit {
       { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
       { value: 'fullname', name: 'Name', role: 0, func: '', class: 'fullname', type: 'text' },
       { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
-      { value: 'reactsum', name: 'Training Completed (%)', role: 0, func: '', class: 'reactsum', type: 'text' },  
+      // { value: 'reactsum', name: 'Training Completed (%)', role: 0, func: '', class: 'reactsum', type: 'text' },  
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
     ];
     this.formdata = [
@@ -40,21 +40,7 @@ export class TrainingreportsComponent implements OnInit {
 
   ngOnInit() {
     
-    let link = this.commonservices.nodesslurl+'tranningreportlist';
-        this.http.post(link,{})
-            .subscribe(res=>{
-                let result;
-                result=res;
-                if(result.status=='error'){
-                    console.log('Oopss');
-                }else {
-                    
-                    console.log('Get tranningreportlist data');
-                    console.log(result.data.training_group[0].count);
-                    // this.training_status = 
-                    this.rep_count = result.data.training_group[0].count;
-                }
-            })
+    
   }
   
 

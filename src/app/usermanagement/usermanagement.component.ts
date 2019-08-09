@@ -12,7 +12,7 @@ import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
   providers: [Commonservices]
 })
 export class UsermanagementComponent implements OnInit {
-  public singleuserdata: any;
+  public singleuserdata: any=[];
   public filterval;
   public filterval1;
   public filterval2;
@@ -21,11 +21,31 @@ export class UsermanagementComponent implements OnInit {
   modalRef: BsModalRef;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
-
+    let link = this.commonservices.nodesslurl+'trainingreport';
+    this._http.post(link,{})
+        .subscribe(res=>{
+            let result;
+            result=res;
+            if(result.status=='error'){
+                console.log('Oopss');
+            }else {
+                
+                console.log('Get tranningreportlist data');
+                console.log(result);
+                // this.singleuserdata = result.data;
+                console.log('singledata.......');
+                console.log(this.singleuserdata);
+                for(let i in result.data){
+                  if(result.data[i].type=='rep'){
+                    this.singleuserdata.push(result.data[i]);
+                  }
+                }
+                }
+        })
   }
 
   ngOnInit() {
-    this.userdetails();
+    // this.userdetails();
   }
   userdetails() {
     const link = this.commonservices.nodesslurl + 'datalist?token=' + this.cookieservice.get('jwttoken');

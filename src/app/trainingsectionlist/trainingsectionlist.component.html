@@ -57,10 +57,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let item of traininglist; let i=index">
-                  <td>{{i+1}}</td>
-                  <td>{{item.title}}</td>
-                  <td>{{item.description}}</td>
-                  <td class="filedetails">
+                  <td datalabel="ID">{{i+1}}</td>
+                  <td datalabel="Lesson Title">{{item.title}}</td>
+                  <td datalabel="Description">{{item.description}}</td>
+                  <td class="filedetails" datalabel="File">
                     <div *ngIf="item.filetype=='file'">
                       {{item.filelocalname}}<br/>
                       <a href="{{_Commonservices.uploadsslurl}}{{item.fileservername}}" target="_blank">Download</a>
@@ -98,12 +98,12 @@
                       <!--  <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.htmleditorvalue)"></div>-->
                     </div>
                   </td>
-                  <td>{{item.yesorno}}</td>
-                  <td>{{gettrainingcategoryname(item.trainingcategory)}}</td>
-                  <td><span *ngIf="item.status==true">Active</span>
+                  <td datalabel="Test">{{item.yesorno}}</td>
+                  <td datalabel="Training">{{gettrainingcategoryname(item.trainingcategory)}}</td>
+                  <td datalabel="Status"><span *ngIf="item.status==true">Active</span>
                     <span *ngIf="item.status==false">Inactive</span></td>
 
-                  <td ><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
+                  <td datalabel="Action"><span class="deletebtn" (click)="deletetrainingsection(item._id,template)">Delete</span>
                     <span class="editbtn" [routerLink]="['/trainingsection' ,item._id]">Edit</span><br/>
                     <span *ngIf="item.yesorno=='yes'" class="editbtn manageanswer" [routerLink]="['/managequiz' ,item._id]">Manage Quiz</span>
                   </td>
