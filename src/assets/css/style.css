@@ -1709,3 +1709,41 @@ body{ padding:0; margin: 0;}
     padding: 2px 0 5px 0;
 }
 
+
+.user_account_setting_wrappernew{ margin-top: 35px!important;}
+
+.user_account_setting_wrappernew .inner_head_wrapper{ padding: 30px 15px 25px 15px;}
+
+.main_inner_contentnew{  display: block!important;  margin: 0 auto; clear: both; overflow: hidden;}
+
+.main_inner_contentnew form{ text-align: center;}
+
+.main_inner_contentnew .form-group{ display: inline-block; text-align: left;  width: 300px; }
+
+.form-groupbtndiv{ width: 100%!important; display: block; overflow: hidden; float: none;  text-align: center!important; margin-bottom: 0px!important; padding-bottom: 0px!important;}
+
+.form-groupbtndiv button{     cursor: pointer;
+    padding: 5px 13px 4px 13px;
+    border: none;
+    color: #fff;
+    font-family: 'RalewayBold';
+    font-size: 22px;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 10px; display: inline-block; margin-bottom: 10px;}
+
+.form-groupbtndiv button:focus{ box-shadow: none; }
+.form-groupbtndiv button:nth-child(1){ background: #00c0ff; }
+.form-groupbtndiv button:nth-child(2){ background: #000; margin-left: 10px; }
+
+.main_inner_contentnew .form-group label {
+    font-family: 'RalewaySemiBold';
+
+    padding-right: 0;
+}
+
+
+
+@media screen and (max-width: 380px) {
+    .main_inner_contentnew .form-group{ display: block;  width: auto; }
+}
