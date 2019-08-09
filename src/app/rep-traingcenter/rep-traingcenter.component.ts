@@ -178,11 +178,11 @@ export class RepTraingcenterComponent implements OnInit {
 
                     for(let i in this.sorteddatalist){
                         if(this.sorteddatalist[i].slides!=null){
-                            console.log(this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length));
+                           // console.log(this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length));
                             this.sorteddatalist[i].firstslide=this._commonservice.fileimgsslurl+this.sorteddatalist[i].slides[0].substr(3,this.sorteddatalist[i].slides[0].length);
                         }
-                        console.log('this.sorteddatalist[i].htmleditorvalue--'+i);
-                        console.log(this.sorteddatalist[i].htmleditorvalue);
+                       // console.log('this.sorteddatalist[i].htmleditorvalue--'+i);
+                        //console.log(this.sorteddatalist[i].htmleditorvalue);
                         this.sorteddatalist[i].sanitizedHtmlEditor = this.sanitizer.bypassSecurityTrustHtml(this.sorteddatalist[i].htmleditorvalue);
                     }
                 }
@@ -336,9 +336,10 @@ export class RepTraingcenterComponent implements OnInit {
 
     getdoneclass(id){
         //return 'show';
+        console.log('donelist',this.markasdonedatalist.length,this.markasdonedatalist)
         for(let i in this.markasdonedatalist){
             if(this.markasdonedatalist[i].traininglesson==id){
-                // console.log('??');
+                 console.log('??');
                 return true;
             }
         }
@@ -409,7 +410,7 @@ export class RepTraingcenterComponent implements OnInit {
         /!*POST - end*!/
     }*/
     showimag(img){
-        console.log(img);
+        //console.log(img);
         let tempvar=img.substr(3,img.length);
         return this._commonservice.fileimgsslurl+tempvar;
     }
@@ -422,7 +423,7 @@ export class RepTraingcenterComponent implements OnInit {
                 let result;
                 result=res;
                 this.quizlistwithanswer = result.res;
-                console.log(result);
+                //console.log(result);
                 this.issubmit=0;
                 this.modalRef1 = this.modal.show(template, {class: 'quizmodal'});
             })
@@ -433,15 +434,15 @@ export class RepTraingcenterComponent implements OnInit {
     check_answer_iscorrect(item,i){
         setTimeout(()=>{
             this.correctanscount=0;
-            console.log(this.quizlistwithanswer);
+            //console.log(this.quizlistwithanswer);
             for(let i in this.quizlistwithanswer){
                 if(this.quizlistwithanswer[i].myanswer!=null){
                     this.quizlistwithanswer[i].hascorrectanswer=false;
                     for(let j in this.quizlistwithanswer[i].answerlistarr){
-                        console.log('for  '+i);
+                        //console.log('for  '+i);
                         if(this.quizlistwithanswer[i].answerlistarr[j]._id==this.quizlistwithanswer[i].myanswer){
                             if(this.quizlistwithanswer[i].answerlistarr[j].iscorrect==true){
-                            console.log('if  '+j);
+                            //console.log('if  '+j);
                             this.quizlistwithanswer[i].hascorrectanswer=true;
                                 this.correctanscount++;
                             }
@@ -449,16 +450,16 @@ export class RepTraingcenterComponent implements OnInit {
                     }
                 }
             }
-            console.log(this.correctanscount);
-            console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
+            //console.log(this.correctanscount);
+            //console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
         },500)
 
     }
 
     submit_answer_iscorrect(template:TemplateRef<any>){
         this.issubmit=1;
-        console.log(this.correctanscount);
-        console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
+        //console.log(this.correctanscount);
+        //console.log((this.correctanscount/this.quizlistwithanswer.length)*100);
         let item={
             _id:this.lessonid,
             trainingcategory:this.trainingcategory1,

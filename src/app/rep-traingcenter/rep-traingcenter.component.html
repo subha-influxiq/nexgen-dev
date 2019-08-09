@@ -44,7 +44,7 @@
         <!--  <button class="btn" (click)="sorteddatalist[0].open = !sorteddatalist[0].open">Toggle first open</button>
       <button class="btn" (click)="sorteddatalist[1].open = !sorteddatalist[1].open">Toggle second open</button>-->
       <accordion>
-        <accordion-group heading="{{item.title}}"  *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
+        <accordion-group heading="{{item.title}} "  *ngFor="let item of sorteddatalist; let i=index" [isDisabled]="disableaccor(item,i)" [isOpen]="!disableaccor(item,i)">  <!--[isOpen]="true"-->
           <div class="accordian_image">
             <div class="content_background">
               <div class="lucoplast1"> </div>
@@ -139,7 +139,8 @@
             <a *ngIf="item.filetype=='image'" class="download_pdf" href="{{_commonservice.uploadsslurl}}{{item.imageservername}}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a>
 
           <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id, item.trainingcategory, lastLessionName, quizmodal)" class="quizz_button">Take quiz</a>
-          <a class="mark_done" *ngIf="item.yesorno=='no' && (getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video')" (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+
+          <a class="mark_done" *ngIf="item.yesorno=='no' && getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video' " (click)="markasdonetraninglesson(item,i)">Mark as done</a>
 
             </div>
          <!-- <button *ngIf="item.yesorno=='yes' && item.quizcomplete==0" (click)="gotoquizmodal(item._id,quizmodal)" class="quizz_button">Take quiz</button>
@@ -510,7 +511,10 @@
 
 
 <ng-template #successModalHtml>
-  <div class="modal-body">
-    <p>Successfully completed.</p>
+  <div class="modal-body successmodal_listing">
+      <div class="logo_wrapper">
+          <img src="assets/images/logo.png">
+      </div>
+    <h6>Successfully completed.</h6>
   </div>
 </ng-template>

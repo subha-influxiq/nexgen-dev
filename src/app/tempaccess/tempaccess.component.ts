@@ -31,6 +31,10 @@ export class TempaccessComponent implements OnInit {
 
   constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
     window.scrollTo(1000,0);
+
+    // if(this.cookeiservice.get('jwttoken') == '') {
+    //   this.setTempToken();
+    // }
   }
 
   ngOnInit() {
@@ -53,20 +57,29 @@ export class TempaccessComponent implements OnInit {
   }
 
   callApiService() {
-    const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-    let data: any = { source: 'googleevents_view', condition: { _id_object: this.googleEventId } };
-    this._http.post(link, data).subscribe(res => {
-      let result:any = res;
-      
-      /* Set data */
-      this.msgBlock.name        = result.res[0].userdata.firstname + ' ' + result.res[0].userdata.lastname;
-      this.msgBlock.date        = result.res[0].userdata.lastname;
-      this.msgBlock.startDate   = moment(result.res[0].startdate).format('DD:MM:YYYY');
-      this.msgBlock.startTime   = moment(result.res[0].start_time).format('hh:mm A');
-      this.msgBlock.eventTitle  = result.res[0].summery;
-    }, error => {
-      console.log('Oooops!');
-    });
+    if(this.cookeiservice.get('jwttoken') == '') {
+      const link = this._commonservices.nodesslurl + 'temptoken';
+      this._http.post(link, { }).subscribe(res => {
+          let result:any = res;
+          this.cookeiservice.set('jwttoken', result.token);
+          this.callApiService();
+      });
+    } else {
+      const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+      let data: any = { source: 'googleevents_view', condition: { _id_object: this.googleEventId } };
+      this._http.post(link, data).subscribe(res => {
+        let result:any = res;
+        
+        /* Set data */
+        this.msgBlock.name        = result.res[0].userdata.firstname + ' ' + result.res[0].userdata.lastname;
+        this.msgBlock.date        = result.res[0].userdata.lastname;
+        this.msgBlock.startDate   = moment(result.res[0].startdate).format('DD:MM:YYYY');
+        this.msgBlock.startTime   = moment(result.res[0].start_time).format('hh:mm A');
+        this.msgBlock.eventTitle  = result.res[0].summery;
+      }, error => {
+        console.log('Oooops!');
+      });
+    }
   }
 
   getrepdetails() {
@@ -106,6 +119,14 @@ export class TempaccessComponent implements OnInit {
         }, error => {
           console.log('Oooops!');
         });
+  }
+
+  setTempToken() {
+    const link = this._commonservices.nodesslurl + 'temptoken';
+    this._http.post(link, { }).subscribe(res => {
+        let result:any = res;
+        this.cookeiservice.set('jwttoken', result.token);
+    });
   }
 
 }

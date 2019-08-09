@@ -208,6 +208,7 @@
 <ng-template #template>
   <div class="modal-body successmodal_listing">
     <div class="btn_cnt">
+      <img src="assets/images/betologo.png" alt="" style="display: block; width: 280px; margin: 15px auto;">
     <h1>Do you want to delete?</h1>
     <button type="button" class="message_allow" (click)="delete(templatecommon)" >Yes</button>
     <button type="button" class="message_deny" (click)="nodelete()">No</button>
@@ -222,13 +223,13 @@
 </ng-template>
 
 <ng-template #showhtmlmodal>
-  <div class="modal-body modal_viewmore modal_viewmore2">
+  <div class="modal-body modal_viewmore modal_viewmore2 successmodal_listing">
       <h1>Hello World</h1>
     <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(editorval)"></div>
   </div>
 </ng-template>
 
-<ng-template #showfilemodal class="test-modal">
+<ng-template #showfilemodal class="test-modal successmodal_listing">
   <div class="modal-body">
     <div *ngFor="let item of imagePaths" class="docx_image_wrap">
       <img src="{{ showimag(item) }}">
