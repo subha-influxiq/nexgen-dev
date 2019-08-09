@@ -1,6 +1,8 @@
 <app-adminheader *ngIf="blockHeaderFooterBlock"></app-adminheader>
 
-<div class="listevent_wrapper">
+<div class="user_account_setting_wrapper user_account_setting_wrappernew">
+<div class="account_inner_wrapper">
+<div class=" account_inner_wrapper1 ">
     <div class="listevent_inner_wrapper" *ngIf="slotView">
         <div class="inner_head_wrapper">
             <h4>{{ headerText.hedaerH4 }}</h4>
@@ -36,7 +38,7 @@
                 </form>
             </div>
         </div>
-        <div class="main_inner_content">
+        <div class="main_inner_content ">
 
             <div style="width: 100%" *ngFor="let item of allslots;let i=index;"> <!-- | slice:0:2 -->
                  <span *ngIf="item.slots!=null && item.slots.length>0">
@@ -62,20 +64,20 @@
             <span>{{ headerText.span }}</span>
         </div>
 
-        <div class="main_inner_content">
+        <div class="main_inner_content main_inner_contentnew">
          <form novalidate [formGroup]="closerLeadForm" (ngSubmit)="closerLeadFormSubmit();">
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Leads:</label>
-                <div class="col-sm-9">
+                <label class="col-sm-12 col-form-label">Leads:</label>
+                <div class="col-sm-12">
                     <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']">
                     <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Product</label>
-                <div class="col-sm-9">
+                <label class="col-sm-12 col-form-label">Product</label>
+                <div class="col-sm-12">
 
                     <select [formControl]="closerLeadForm.controls['product']" class="form-control" >
                         <option value="">Select a Product</option>
@@ -85,17 +87,20 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <div class="button_wrapper form-group">
+            <div class="form-group row form-groupbtndiv">
+
                     <button> save</button>
                     <button type="button" (click)="goback()"> cancel</button>
                     <div class="clearfix"></div>
-                </div>
+
             </div>
 
         </form>
       </div>
     </div>
+</div>
+</div>
+
 </div>
 
 <app-footer *ngIf="blockHeaderFooterBlock"></app-footer>
