@@ -19,8 +19,10 @@ export class UsermanagementComponent implements OnInit {
   public selecteditem;
   public message;
   modalRef: BsModalRef;
+  public loader : any = 0;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
+    this.loader = 1;
     let link = this.commonservices.nodesslurl+'trainingreport';
     this._http.post(link,{})
         .subscribe(res=>{
@@ -29,15 +31,10 @@ export class UsermanagementComponent implements OnInit {
             if(result.status=='error'){
                 console.log('Oopss');
             }else {
-                
-                console.log('Get tranningreportlist data');
-                console.log(result);
-                // this.singleuserdata = result.data;
-                console.log('singledata.......');
-                console.log(this.singleuserdata);
                 for(let i in result.data){
                   if(result.data[i].type=='rep'){
                     this.singleuserdata.push(result.data[i]);
+                    this.loader = 0;
                   }
                 }
                 }
@@ -60,8 +57,7 @@ export class UsermanagementComponent implements OnInit {
   }
 
   togglestatus(item: any) {
-    console.log('item.status');
-    console.log(item.status);
+    this.loader = 1;
     let status: any;
          if(item.status!=null) status=1-item.status;
      if(item.status==null) status=1;
@@ -78,15 +74,16 @@ export class UsermanagementComponent implements OnInit {
     this._http.post(link, { id: item._id, source: 'users', status: status })
       .subscribe(res => {
         this.userdetails();
+        this.loader = 0;
       }, error => {
         console.log('Oooops!');
         this.userdetails();
+        this.loader = 0;
       });
   }
 
   toggleCalenderAccess(item: any) {
-    console.log('item.calenderaccess');
-    console.log(item.calenderaccess);
+    this.loader = 1;
     let calenderaccess: any;
     if(item.calenderaccess!=null) calenderaccess=1-item.calenderaccess;
     if (item.calenderaccess == null) calenderaccess = 1;
@@ -98,8 +95,10 @@ export class UsermanagementComponent implements OnInit {
     this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
         this.userdetails();
+        this.loader = 0;
       }, error => {
         console.log('Oooops!');
+        this.loader = 0;
         this.userdetails();
       });
   }
