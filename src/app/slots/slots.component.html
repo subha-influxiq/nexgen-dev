@@ -109,13 +109,32 @@
                     </div>
                     <div class="form-group">
                         <label>participant</label>
-                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="cookeiservice.get('usertype')!='regional_recruiter'">
-                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" *ngIf="cookeiservice.get('usertype')=='regional_recruiter'">
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="cookeiservice.get('usertype').length>2 ">
+                        <input class="form-control" type="text" placeholder="Please Input Your Email Here" [formControl]="dataForm.controls['participant']" *ngIf="cookeiservice.get('useremail').length<2">
+
+                        <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participant'].valid && dataForm.controls['participant'].touched">Email can not be blank</span>
                     </div>
+
                     <div class="form-group">
                        <label>appointment time</label>
                         <p class="font_problm"> {{showformat(slotdata.startdate)}}<!--monday march 2009--> </p>
-                        <p class="font_problm">{{slotvalue}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
+                        <p *ngIf="route.snapshot.url[0].path!='customevent' " class="font_problm">{{slotvalue}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
+                        <p  *ngIf="route.snapshot.url[0].path=='customevent' " class="font_problm">{{slotvalue2}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
+                    </div>
+
+                    <div class="form-group" *ngIf="route.snapshot.url[0].path=='customevent' ">
+                       <label>appointment Slot</label>
+                        <p class="font_problm">
+
+                        <select [(ngModel)]="slotdata.timespan" [ngModelOptions]="{standalone: true}">
+
+                            <option value="15">15 Minutes</option>
+                            <option value="30">30 Minutes</option>
+                            <option value="60">1 Hour</option>
+                        </select>
+
+                        </p>
+
                     </div>
 
                     <div class="form-group">

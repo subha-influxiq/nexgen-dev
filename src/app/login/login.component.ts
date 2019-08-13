@@ -17,12 +17,13 @@ export class LoginComponent implements OnInit {
   public dataForm: FormGroup;
   public kp;
   public serverurl;
+  public type;
   public nodesslurl;
   public errormg: any = '';
   public issubmit=0;
   modalRef: BsModalRef;
 
-  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService,public modal:BsModalService) {
+  constructor(kp: FormBuilder, private router: Router, private _commonservices: Commonservices, private _http: HttpClient, private cookeiservice: CookieService,public modal:BsModalService ,private route: ActivatedRoute) {
     this.kp = kp;
     this.serverurl = _commonservices.url;
     this.nodesslurl = _commonservices.nodesslurl;
@@ -50,6 +51,11 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.compose([Validators.required, LoginComponent.customValidator])],
       password: ['', Validators.compose([Validators.required])],
     });
+
+    this.route.params.subscribe(params => {
+      //this.recid = params['id'];
+      this.type = params['type'];
+    });
   }
 
   static customValidator(inputemail): any {
@@ -74,12 +80,12 @@ export class LoginComponent implements OnInit {
       let result:any;
       result = res;
       console.log(result);
-      if (result.resc == 1) {
+      if (result.resc == 1 && result.res!=null && result.res[0]!=null  ) {
         if(result.res[0].status == 1) {
           this.cookeiservice.set('jwttoken', this.cookeiservice.get('jwttoken'));
           this.cookeiservice.set('userid', result.res[0]._id);
 
-          if(result.res[0].is_contract_signed == null && result.item[0].type == 'rep') {
+          if(result.res[0].is_contract_signed == null && result.res[0].type == 'rep') {
             this.router.navigate(['/agreement']);
             return ;
           }
