@@ -24,6 +24,7 @@ export class SlotsComponent implements OnInit {
   public end_time;
   public mydetails;
   public slotvalue:any='';
+  public slotvalue2:any='';
   public timezoneshow:any='';
   public itemidval:any;
   public mymodal:any;
@@ -99,6 +100,7 @@ export class SlotsComponent implements OnInit {
       let starttime= moment(a).add(diffInMinutes, 'minutes').format('hh:mm A');
       let endtime = moment(a).add(diffInMinutes, 'minutes').add(this.slotdata.timespan, 'minutes').format('hh:mm A');
       this.slotvalue= starttime +' - '+endtime;
+      this.slotvalue2= starttime ;
       this.timezoneshow=this.timezoneval;
 
     }else {
@@ -108,6 +110,7 @@ export class SlotsComponent implements OnInit {
       let starttime = a.format('hh:mm A');
       let endtime = moment(a).add(this.slotdata.timespan, 'minutes').format('hh:mm A');
       this.slotvalue = starttime + ' - ' + endtime;
+        this.slotvalue2= starttime ;
       this.timezoneshow=this.slotdata.timezone;
     }
     //return this.slotvalue;
@@ -173,7 +176,7 @@ export class SlotsComponent implements OnInit {
   booknowmodal(template:TemplateRef<any>,slotdata,template1:TemplateRef<any>) {
     this.getUserDetails(slotdata.allslotsuserid);
 
-    console.log('/**/*/*/*/**/*/*/*/*/*/*/*/*/*');
+    console.log('/**/*/*/*/**/*/*/*/*/*/*/*/*/*',this.cookeiservice.get('useremail'));
     console.log(slotdata);
 
     this.mymodal = template1;
@@ -183,7 +186,7 @@ export class SlotsComponent implements OnInit {
      this.dataForm = this.kp.group({
      /*  description: [slotdata.description,Validators.required],*/
      meeting_with: [slotdata.meetingwith],
-     participant: [ this.cookeiservice.get('useremail')],
+     participant: [ this.cookeiservice.get('useremail'),Validators.required],
     /* startdate: [slotdata.startdate,Validators.required],
      starttime: ['',Validators.required],
      enddate: [slotdata.startdate,Validators.required],
@@ -203,7 +206,10 @@ showformat(stdt){
       this.dataForm.controls[x].markAsTouched();
     }
     /*if (this.dataForm.valid) {*/
-   // console.log('valid');
+   console.log('valid',this.dataForm.valid);
+   console.log('valid',this.dataForm.value,this.slotdata.timespan);
+   //console.log('valid');
+    //return;
     let  link = this._commonservices.nodesslurl+'addtocalendar';
 
 
@@ -266,8 +272,10 @@ showformat(stdt){
               this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
               break;
             case 'is_discovery':
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
               break;
             default:
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
               break;
           }
           // setTimeout(() => {

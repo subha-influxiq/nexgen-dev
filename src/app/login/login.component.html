@@ -27,7 +27,8 @@
       </div>
 
     </form>
-    <!-- <button class="signin_button" (click)="getUserDetails(lockmodal)">sign in demo</button> -->
+     <button *ngIf="type=='demo'" class="signin_button" (click)="getUserDetails(lockmodal)">Sign in demo</button>
+
   </div>
 
 

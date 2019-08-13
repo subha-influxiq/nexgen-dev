@@ -24,6 +24,7 @@ export class EventmanagementComponent implements OnInit {
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'meetingwith',name:'Event Title',role:0,func:'',class:'meetingwith',type:'text'},
+      {value:'timespan',name:'Event Span',role:0,func:'',class:'timespan',type:'text'},
       {value:'start_date',name:'Start Date',role:0,func:'',class:'start_date',type:'dateis'},
       {value:'end_date',name:'End Date',role:0,func:'',class:'end_date',type:'dateis'},
       {value:'start_time',name:'Start Time',role:0,func:'',class:'start_time',type:'timeis'},
@@ -59,6 +60,7 @@ export class EventmanagementComponent implements OnInit {
       {inputtype:'textarea',name:'description',label:'Event Details',placeholder:'Event Details',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'is_onboarding',label:'On Boarding Call',value:false},
       {inputtype:'checkbox',name:'is_discovery',label:'Discovery Call',value:false},
+      {inputtype:'checkbox',name:'is_custom',label:'General Call(for Beto only)',value:false},
       {inputtype:'hidden',name:'userid',label:"userid",placeholder:"Enter userid",value:this.cookieservice.get('userid')}
     ];
     this.datasource={table:'events',objarr:['userid']};

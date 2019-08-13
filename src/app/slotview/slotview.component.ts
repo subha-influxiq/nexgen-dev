@@ -32,6 +32,7 @@ export class SlotviewComponent implements OnInit {
     noDefaultRangeSelected: true,
    }
    public headerText: any = {};
+   public slotval: any ;
    public slotView: boolean = true;
 
    public closerLeadForm: FormGroup;
@@ -69,6 +70,7 @@ export class SlotviewComponent implements OnInit {
         // if called as a rep
         this.route.params.subscribe(params => {
             this.recid = params['id'];
+            this.slotval = params['slotval'];
 
 
             if(this.cookeiservice.get('userid')) {
@@ -108,6 +110,7 @@ export class SlotviewComponent implements OnInit {
     geteventarr(){
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
+
             case 'on-boarding-call':
                 this.headerText.hedaerH4 = 'Select your On-Boarding Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
@@ -123,6 +126,44 @@ export class SlotviewComponent implements OnInit {
                     }};
                 }
                 break;
+                case 'customevents':
+                    this.cookeiservice.delete('useremail')
+                    //this.cookeiservice.set('useremail', null);
+                this.headerText.hedaerH4 = 'SCHEDULE A CALL WITH BETO PAREDES. <br/>' +
+                    'Please feel free to schedule a '+this.slotval+'-minute call with me here on my calendar. You will be provided with a conference dial in number and webcast if needed for the call. <br/>' +
+                    '<b style="color:red">BE SURE TO ADD YOUR EMAIL ADDRESS SO THE INVITATION IS SENT TO YOU</b> <br>';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = {"timespan":this.slotval.toString(), "is_custom": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = {"timespan":this.slotval, "is_custom": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
+                break;
+                case 'customevent':
+                    this.cookeiservice.delete('useremail')
+                    //this.cookeiservice.set('useremail', null);
+                this.headerText.hedaerH4 = 'Please feel free to schedule up to an hour conference call with me here on my calendar. You will be provided with a conference dial in number and webcast if needed for the call. <br/>' +
+                    '<b style="color:red">BE SURE TO ADD YOUR EMAIL ADDRESS SO THE INVITATION IS SENT TO YOU</b> <br>';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = {"is_custom": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = {"is_custom": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
+                break;
+
             case 'discovery-call':
                 this.headerText.hedaerH4 = 'Select your Discovery Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
@@ -233,12 +274,15 @@ export class SlotviewComponent implements OnInit {
 
   /* Get user details */
   getUserDetails(id) {
-    const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-    this._http.post(link, { source:'users', condition: { _id_object: id }})
-        .subscribe(res => {
-            let result: any = res;
-            this.cookeiservice.set('useremail', result.res[0].email);
-        });
+      if(id!=null) {
+          const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+          this._http.post(link, {source: 'users', condition: {_id_object: id}})
+              .subscribe(res => {
+                  let result: any = res;
+                  console.log('in getuserdetails', id, result);
+                  this.cookeiservice.set('useremail', result.res[0].email);
+              });
+      }
   }
 
     /* Get Leads */
