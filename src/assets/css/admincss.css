@@ -2377,3 +2377,49 @@ text-align: center;}
 
 .newaddeventformclass  .form-group:nth-child(19) .col-form-label-sm { display: inline-block!important; float: left!important; width: auto!important; flex: auto!important; min-width: inherit!important;  }
 .newaddeventformclass  .form-group:nth-child(20) .col-form-label-sm{display: inline-block!important; float: left!important; width: auto!important; flex: auto!important; min-width: inherit!important;  }
+
+.contentnewcon1wrapper{ width: 1050px; margin-left: auto; margin-right: auto;}
+
+.contentnewcon1{ width: 490px; float: left!important; clear: inherit!important; margin: 0 5px;}
+
+.contentnewcon1 .form-group {
+    width: 245px!important; float: left;
+}
+
+.contentnewcon1 .form-groupbtndiv{ width: 230px!important;  float: right;}
+
+.contentnewcon1  .form-groupbtndiv button  { display: block!important; float: left!important; font-size: 18px!important;      margin-top: 0px!important; margin: 0 5px!important; }
+.contentnewcon1  .form-groupbtndiv button:nth-child(2) { display: block!important; float: right!important; margin-top: 0px!important; margin: 0px!important; }
+
+
+.contentnewcon1 .form-groupbtndiv .hide {
+    display: none!important;
+}
+
+.contentnewcon1:nth-of-type(2){ float: right!important;}
+
+.contentnewcon1 .timezone_class{ text-align: left!important;}
+
+
+
+.contentnewcon1:nth-of-type(2) .form-group {
+    width: 375px!important;
+}
+
+.contentnewcon1:nth-of-type(2) .form-groupbtndiv{ width: 100px!important;   }
+
+.ngcontainerdiv{ position: absolute; padding: 0px!important; width: 90%;
+    font-size: 1rem;
+
+    color: #495057;
+
+    background-clip: padding-box;
+
+    z-index: 9;
+    margin-top: 1px;}
+
+.ngcontainerdiv p{ margin: 0px; padding: 5px;   border: 1px solid #ced4da; border-bottom: none; background-color: #fff;}
+
+.ngcontainerdiv p:last-of-type{ border-bottom: 1px solid #ced4da;}
+
+.ngcontainerdivwrapper{ overflow: inherit!important; width: 615px; margin-left: auto; margin-right: auto;}
