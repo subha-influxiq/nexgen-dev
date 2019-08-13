@@ -280,6 +280,8 @@ export class SlotviewComponent implements OnInit {
               .subscribe(res => {
                   let result: any = res;
                   this.cookeiservice.set('useremail', result.res[0].email);
+                  this.cookeiservice.set('phone', result.res[0].telephone);
+                  this.cookeiservice.set('fname', result.res[0].firstname+" "+result.res[0].lastname);
                   console.log("Checking:   ", this.cookeiservice.get('useremail'));
               });
       }

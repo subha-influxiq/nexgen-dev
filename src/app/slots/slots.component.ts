@@ -84,6 +84,8 @@ export class SlotsComponent implements OnInit {
 
   getslot(){
     this.participantEmail = this.cookeiservice.get('useremail');
+    this.participantName = this.cookeiservice.get('fname');
+    this.participantPhNumber = this.cookeiservice.get('phone');
     if(this.timezoneval!='' && this.timezoneval.length>2 && this.slotdata.timezone!=this.timezoneval){
       let now = moment();
       let tz=this.slotdata.timezone.split('|');
@@ -214,86 +216,90 @@ showformat(stdt){
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
     }
-    /*if (this.dataForm.valid) {*/
-   console.log('valid',this.dataForm.valid);
-   console.log('valid',this.dataForm.value,this.slotdata.timespan);
-   //console.log('valid');
-    //return;
-    let  link = this._commonservices.nodesslurl+'addtocalendar';
-
-
-    /*   {"refresh_token": "1/fkzUmqGX5zQ7Z_fn-EXa-ZM7u-DWTeiXhPJ7UiNQ3m8","start_time":"2019-05-08T10:00:00" ,"end_time":"2019-05-08T12:00:00","timezone":"America/Los_Angeles","summery":"Debasis test event !!","attendees":["debasis218@gmail.com","abc@yopmail.com"]}
-     */
-   // let attendeesarr=[this.cookeiservice.get('useremail')];
-    let attendeesarr=[this.dataForm.controls['participant'].value];
-  //  console.log('start---');
-    //  console.log(slotdata.startdate);
-   /* console.log($('.startdt').val());
-    console.log($('.enddt').val());
-    console.log($('.tm1').val());
-    console.log($('.tm2').val());
-    console.log('this.start_time');
-    console.log(this.start_time);
-    console.log(moment(this.start_time).format('HH:mm'));
-    console.log(moment(this.end_time).format('HH:mm'));
-    console.log(this.end_time);*/
-    let tz=this.slotdata.timezone.split('|');
- /*   console.log(this.slotdata.starttime);
-    console.log(this.slotdata.endtime);*/
-    let ival=this.itemidval;
-    let description: any = this.slotdata.description;
-    if(this.dataForm.controls['repsmsg'].value.length > 0) {
-      description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
+    if (!this.dataForm.valid) {
+        return;
     }
-    let data = {
-      refresh_token:this.cookeiservice.get('refreshtoken'),
-      organizerid:this.cookeiservice.get('organizerid'),
-     /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
-      end_time:moment($('.enddt').val()).format('YYYY-MM-DD')+'T'+moment(this.end_time).format('HH:mm:ss'),*/
-      startdate:this.slotdata.startdate,
-      start_time:moment(this.slotdata.startdate+'T'+this.slotdata.slots[this.itemidval].trim()+':00').format('YYYY-MM-DDTHH:mm:ss'),
-      end_time:moment(this.slotdata.startdate+'T'+this.slotdata.slots[this.itemidval].trim()+':00').add(this.slotdata.timespan, 'minutes').format('YYYY-MM-DDTHH:mm:ss'),
-      timezone:tz[1],
-      summery:this.dataForm.controls['meeting_with'].value,
-      attendees:attendeesarr,
-      repsmsg: description,
-      id:this.slotdata.eventid,
-      eid:this.slotdata._id,
-      name:this.dataForm.controls['participantName'].value,
-      phoneNumber:this.dataForm.controls['participantPhNumber'].value,
-      slots:this.slotdata.slots,
-      //nslots:this.slotdata.slots.splice(ival,1),
-      slot:this.slotdata.slots[this.itemidval],
-      ival:this.itemidval,
-      timespan:this.slotdata.timespan
-    }
-    console.log('data--------');
-    console.log(data);
-    this._http.post(link, data)
-        .subscribe(res => {
-          let result: any = res;
-          console.log('result.... for google calendar');
-          console.log(result);
-          this.modalRef.hide();
-          this.message = "Your Booking done successfully !!";
-          //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
+    else {
+        console.log('valid', this.dataForm.valid);
+        console.log('valid', this.dataForm.value, this.slotdata.timespan);
+        //console.log('valid');
+        //return;
+        let link = this._commonservices.nodesslurl + 'addtocalendar';
 
-          switch(this.route.snapshot.url[0].path) {
-            case 'on-boarding-call':
-              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-              break;
-            case 'is_discovery':
-              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-              break;
-            default:
-              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-              break;
-          }
-          // setTimeout(() => {
-          //   window.location.reload();
-          // },5000);
-          //this.router.navigate(['/reptrainingcenter'])
-        });
+
+        /*   {"refresh_token": "1/fkzUmqGX5zQ7Z_fn-EXa-ZM7u-DWTeiXhPJ7UiNQ3m8","start_time":"2019-05-08T10:00:00" ,"end_time":"2019-05-08T12:00:00","timezone":"America/Los_Angeles","summery":"Debasis test event !!","attendees":["debasis218@gmail.com","abc@yopmail.com"]}
+         */
+        // let attendeesarr=[this.cookeiservice.get('useremail')];
+        let attendeesarr = [this.dataForm.controls['participant'].value];
+        //  console.log('start---');
+        //  console.log(slotdata.startdate);
+        /* console.log($('.startdt').val());
+         console.log($('.enddt').val());
+         console.log($('.tm1').val());
+         console.log($('.tm2').val());
+         console.log('this.start_time');
+         console.log(this.start_time);
+         console.log(moment(this.start_time).format('HH:mm'));
+         console.log(moment(this.end_time).format('HH:mm'));
+         console.log(this.end_time);*/
+        let tz = this.slotdata.timezone.split('|');
+        /*   console.log(this.slotdata.starttime);
+         console.log(this.slotdata.endtime);*/
+        let ival = this.itemidval;
+        let description: any = this.slotdata.description;
+        if (this.dataForm.controls['repsmsg'].value.length > 0) {
+            description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
+        }
+        let data = {
+            refresh_token: this.cookeiservice.get('refreshtoken'),
+            organizerid: this.cookeiservice.get('organizerid'),
+            /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
+             end_time:moment($('.enddt').val()).format('YYYY-MM-DD')+'T'+moment(this.end_time).format('HH:mm:ss'),*/
+            startdate: this.slotdata.startdate,
+            start_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').format('YYYY-MM-DDTHH:mm:ss'),
+            end_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').add(this.slotdata.timespan, 'minutes').format('YYYY-MM-DDTHH:mm:ss'),
+            timezone: tz[1],
+            summery: this.dataForm.controls['meeting_with'].value,
+            attendees: attendeesarr,
+            repsmsg: description,
+            id: this.slotdata.eventid,
+            eid: this.slotdata._id,
+            name: this.dataForm.controls['participantName'].value,
+            phoneNumber: this.dataForm.controls['participantPhNumber'].value,
+            slots: this.slotdata.slots,
+            //nslots:this.slotdata.slots.splice(ival,1),
+            slot: this.slotdata.slots[this.itemidval],
+            ival: this.itemidval,
+            timespan: this.slotdata.timespan
+        }
+        console.log('data--------');
+        console.log(data);
+        this._http.post(link, data)
+            .subscribe(res => {
+                let result: any = res;
+                console.log('result.... for google calendar');
+                console.log(result);
+                this.modalRef.hide();
+                this.message = "Your Booking done successfully !!";
+                //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
+
+                switch (this.route.snapshot.url[0].path) {
+                    case 'on-boarding-call':
+                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+                        break;
+                    case 'is_discovery':
+                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+                        break;
+                    default:
+                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+                        break;
+                }
+                // setTimeout(() => {
+                //   window.location.reload();
+                // },5000);
+                //this.router.navigate(['/reptrainingcenter'])
+            });
+    }
   }
   // }
   showtime(item,eachslots){
