@@ -67,6 +67,7 @@
         </div>
     </div>
 
+    <!-- This block for book-a-closer start -->
     <div class="listevent_inner_wrapper" *ngIf="slotView == false">
         <div class="inner_head_wrapper">
             <h4>{{ headerText.hedaerH4 }}</h4>
@@ -79,11 +80,12 @@
             <div class="form-group row">
                 <label class="col-sm-12 col-form-label">Leads:</label>
                 <div class="col-sm-12">
-                    <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']" (keyup)="leadsSuggest($event);" />
-                   <div class="col-sm-12 ngcontainerdiv"> <ng-container *ngIf="leadsSuggestionFlug">
-                      <p *ngFor="let l of leadsSuggestion;let i = index;" (click)="selectLeads(l);">{{ l.firstname }} {{ l.lastname }}</p>
-                    </ng-container>
-                   </div>
+                    <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']" (keyup)="leadsSuggest($event);" placeholder="Type leads name..." />
+                    <div class="col-sm-12 ngcontainerdiv">
+                        <ng-container *ngIf="leadsSuggestionFlug">
+                            <p *ngFor="let l of leadsSuggestion;let i = index;" (click)="selectLeads(l);" class="leads-option">{{ l.firstname }} {{ l.lastname }}</p>
+                        </ng-container>
+                    </div>
                     <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
                 </div>
             </div>
@@ -113,6 +115,7 @@
 
         <div class="clearfix"></div>
     </div>
+    <!-- This block for book-a-closer end -->
 </div>
 </div>
 

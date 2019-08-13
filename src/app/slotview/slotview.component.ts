@@ -279,7 +279,6 @@ export class SlotviewComponent implements OnInit {
           this._http.post(link, {source: 'users', condition: {_id_object: id}})
               .subscribe(res => {
                   let result: any = res;
-                  console.log('in getuserdetails', id, result);
                   this.cookeiservice.set('useremail', result.res[0].email);
               });
       }
@@ -291,7 +290,6 @@ export class SlotviewComponent implements OnInit {
         this._http.post(link, { source:'leads_view', condition: {  }}).subscribe(res => {
             let result: any = res;
             this.allLeads = result.res;
-            console.log('Leads: ', result);
         });
     }
 
@@ -311,9 +309,7 @@ export class SlotviewComponent implements OnInit {
         } else {
             this.leadsSuggestionFlug = false;
         }
-
-        console.log('Data====', this.leadsSuggestion);
-      }
+    }
 
     /* closerLeadForm */
     closerLeadFormSubmit() {
@@ -321,14 +317,14 @@ export class SlotviewComponent implements OnInit {
         if(this.closerLeadForm.valid) {
         this.slotView = true;
             alert('OKK');
-        } else {
-            alert('Sorry');
         }
     }
 
     selectLeads(leadsData) {
-        console.log(leadsData);
-        this.closerLeadForm.value.leads = leadsData.firstname + ' ' + leadsData.lastname;
+        this.closerLeadForm.patchValue({    
+            leads: leadsData.firstname + ' ' + leadsData.lastname
+        });
+
         this.leadsSuggestionFlug = false;
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source:'leads_view', condition: {  }}).subscribe(res => {
