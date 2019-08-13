@@ -126,7 +126,7 @@ export class SlotviewComponent implements OnInit {
                     }};
                 }
                 break;
-                case 'customevents':
+            case 'customevents':
                     this.cookeiservice.delete('useremail')
                     //this.cookeiservice.set('useremail', null);
                 this.headerText.hedaerH4 = 'SCHEDULE A CALL WITH BETO PAREDES. <br/>' +
@@ -145,7 +145,7 @@ export class SlotviewComponent implements OnInit {
                     }};
                 }
                 break;
-                case 'customevent':
+            case 'customevent':
                     this.cookeiservice.delete('useremail')
                     //this.cookeiservice.set('useremail', null);
                 this.headerText.hedaerH4 = 'Please feel free to schedule up to an hour conference call with me here on my calendar. You will be provided with a conference dial in number and webcast if needed for the call. <br/>' +
@@ -280,6 +280,7 @@ export class SlotviewComponent implements OnInit {
               .subscribe(res => {
                   let result: any = res;
                   this.cookeiservice.set('useremail', result.res[0].email);
+                  console.log("Checking:   ", this.cookeiservice.get('useremail'));
               });
       }
   }

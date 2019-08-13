@@ -108,12 +108,28 @@
                         <p><span>Meeting with</span> <!--CLay Daral--> <input class="form-control" type="text" [formControl]="dataForm.controls['meeting_with']" readonly> </p>
                     </div>
                     <div class="form-group">
-                        <label>participant</label>
-                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="cookeiservice.get('usertype').length>2 ">
-                        <input class="form-control" type="text" placeholder="Please Input Your Email Here" [formControl]="dataForm.controls['participant']" *ngIf="cookeiservice.get('useremail').length<2">
+                        <label>participant Email</label>
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="participantEmail.length>2 ">
+                        <input class="form-control" type="text" placeholder="Please Input Your Email Here" [formControl]="dataForm.controls['participant']" *ngIf="participantEmail.length<2">
 
                         <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participant'].valid && dataForm.controls['participant'].touched">Email can not be blank</span>
                     </div>
+
+                    <div class="form-group">
+                            <label>participant Name</label>
+                            <input class="form-control" type="text" [formControl]="dataForm.controls['participantName']" readonly *ngIf="participantEmail.length>2 ">
+                            <input class="form-control" type="text" placeholder="Please Input Your Name Here" [formControl]="dataForm.controls['participantName']" *ngIf="participantEmail.length<2">
+    
+                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participantName'].valid && dataForm.controls['participantName'].touched">Name can not be blank</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>participant Phone Number</label>
+                            <input class="form-control" type="text" [formControl]="dataForm.controls['participantPhNumber']" readonly *ngIf="participantEmail.length>2 ">
+                            <input class="form-control" type="text" placeholder="Please Input Your Phone Number Here" [formControl]="dataForm.controls['participantPhNumber']" *ngIf="participantEmail.length<2">
+    
+                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participantPhNumber'].valid && dataForm.controls['participantPhNumber'].touched">Phone Number can not be blank</span>
+                        </div>
 
                     <div class="form-group">
                        <label>appointment time</label>

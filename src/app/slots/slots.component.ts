@@ -30,6 +30,10 @@ export class SlotsComponent implements OnInit {
   public mymodal:any;
   public message:any;
   public timezoneval:any='';
+  public participantPhNumber: any;
+  public participantName: any;
+  public participantEmail: any;
+
   bsDatepicker = {
     format: 'DD/MM/YYYY',
     minDate: moment().format("DD/MM/YYYY"),
@@ -79,7 +83,7 @@ export class SlotsComponent implements OnInit {
   }
 
   getslot(){
-
+    this.participantEmail = this.cookeiservice.get('useremail');
     if(this.timezoneval!='' && this.timezoneval.length>2 && this.slotdata.timezone!=this.timezoneval){
       let now = moment();
       let tz=this.slotdata.timezone.split('|');
@@ -180,13 +184,18 @@ export class SlotsComponent implements OnInit {
     console.log(slotdata);
 
     this.mymodal = template1;
-    this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+    setTimeout(() => {
+      this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+      console.log('==================', this.cookeiservice.get('useremail'));
+    }, 3000);
 
-
+    // this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
      this.dataForm = this.kp.group({
      /*  description: [slotdata.description,Validators.required],*/
      meeting_with: [slotdata.meetingwith],
      participant: [ this.cookeiservice.get('useremail'),Validators.required],
+     participantName: [this.participantName, Validators.required],
+     participantPhNumber: [this.participantPhNumber, Validators.required],
     /* startdate: [slotdata.startdate,Validators.required],
      starttime: ['',Validators.required],
      enddate: [slotdata.startdate,Validators.required],
@@ -250,6 +259,8 @@ showformat(stdt){
       repsmsg: description,
       id:this.slotdata.eventid,
       eid:this.slotdata._id,
+      name:this.dataForm.controls['participantName'].value,
+      phoneNumber:this.dataForm.controls['participantPhNumber'].value,
       slots:this.slotdata.slots,
       //nslots:this.slotdata.slots.splice(ival,1),
       slot:this.slotdata.slots[this.itemidval],
