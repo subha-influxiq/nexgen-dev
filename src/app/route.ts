@@ -63,6 +63,7 @@ import { TrainingreportsComponent } from "./trainingreports/trainingreports.comp
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     { path: 'login', component:  LoginComponent},
+    { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
     { path: 'dashboard', component: DashboardComponent, resolve: {results: TestresolveService},data: { link: 'datalist',source:'users',condition:{type:'rep'} }},
  //   { path: 'dashboard', component: DashboardComponent},
@@ -117,6 +118,8 @@ const appRoutes: Routes = [
     { path: 'slotview', component: SlotviewComponent},
 
     { path: 'on-boarding-call/:id', component: SlotviewComponent },
+    { path: 'customevents/:slotval', component: SlotviewComponent },
+    { path: 'customevent', component: SlotviewComponent }, 
     { path: 'discovery-call/:id', component: SlotviewComponent },
     { path: 'book-a-closer', component: SlotviewComponent },
 
