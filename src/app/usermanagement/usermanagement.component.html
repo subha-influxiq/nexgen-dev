@@ -1,11 +1,17 @@
-<div *ngIf="loader==1" style="width:100vw; height:100vh; display:table-cell; vertical-align:middle; text-align:center;">
+<!-- <div  style="width:100vw; height:100vh; display:table-cell; vertical-align:middle; text-align:center; background-color: #fff;">
 
     <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
 
     <div class="loader"></div>
 
 
-  </div>
+  </div> -->
+  <div class="loder_body" *ngIf="loader==1">
+      <div class="loder_wrapper">
+          <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
+        <div class="loader"></div>
+      </div>
+    </div>
 
 <app-adminheader></app-adminheader>
 
@@ -95,11 +101,11 @@
                     <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
                     <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span><br>
                     <span >Onboarding Call : 
-                      <span *ngIf="item.is_onboarding != null && item.is_onboarding == true">Yes</span>
+                      <span *ngIf="item.is_onboarding != null && item.is_onboarding == true"><a (click)="openModal(item,discoverCallModal,'Onboarding')">Yes</a></span>
                       <span *ngIf="item.is_onboarding == null || item.is_onboarding == false">No</span>
                     </span><br>
                     <span >Discovery Call : 
-                        <span *ngIf="item.is_discovery != null && item.is_discovery == true">Yes</span>
+                        <span *ngIf="item.is_discovery != null && item.is_discovery == true"><a (click)="openModal(item,discoverCallModal,'Discovery')">Yes</a></span>
                         <span *ngIf="item.is_discovery == null || item.is_discovery == false">No</span>
                       </span>
 
@@ -284,13 +290,33 @@
   </div>
 </ng-template>
 <!--Common message modal-->
-<ng-template #messagemodal2>
+<ng-template #discoverCallModal>
     <div class="modal-body brandmanagement_modal">
-      <div class="logo_wrapper">
-        <img src="assets/images/logo.png">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+          </div>
+          <div class="listevent_inner_wrapper">
+              <div class="inner_head_wrapper">
+                  <h4>{{eventtype}}</h4>
+              </div>
+                  <div class="main_inner_content main_inner_contentnew">
+
+          <div style="width: 100%" *ngIf="eventList.length>0"> <!-- | slice:0:2 -->
+               <span>
+                  <div  style="width: 32%;float: left" class="one " *ngFor="let item of eventList;let j=index;" >
+               <p class="event_f_name">{{item.eventdata.meetingwith}}</p>
+                <p class="event_f_date"><b>Date:</b> {{item.startdate}}
+                </p>
+                <p class="event_f_time"><b>Time :</b> {{item.eventdata.starttime}} - {{item.eventdata.endtime}}</p>
+                <p class="event_f_zone"><b>Time Span :</b> {{item.timespan}} Minutes</p>
+                  </div>
+              </span>
+
+          </div>
+
       </div>
-      <div class="message_success">{{message}}</div>
-  
+    </div>
+
     </div>
   </ng-template>
 <app-footer></app-footer>

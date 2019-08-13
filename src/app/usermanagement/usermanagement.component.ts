@@ -20,6 +20,8 @@ export class UsermanagementComponent implements OnInit {
   public message;
   modalRef: BsModalRef;
   public loader : any = 0;
+  public eventList:any = [];
+  public eventtype:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
     this.loader = 1;
@@ -136,5 +138,39 @@ export class UsermanagementComponent implements OnInit {
   }
   nodelete() {
     this.modalRef.hide();
+  }
+  openModal(item:any,template:TemplateRef<any>,type:any){
+    console.log(item);
+    
+    this.eventtype = type;
+    this.getEventDetails(item.email,type);
+    this.modalRef = this.modal.show(template,{class: 'modal-md'});
+
+  }
+  getEventDetails(email:any,type:any){
+    this.eventList = [];
+    const link = this.commonservices.nodesslurl + 'datalist?token=' + this.cookieservice.get('jwttoken');
+    let data :any = {};
+    if(type == 'Onboarding'){
+      data = { source: 'googleevents_view', condition: {"emailid":email,"is_onboarding":true} };
+    }
+    if(type == 'Discovery'){
+      data = { source: 'googleevents_view', condition: {"emailid":email,"is_discovery":true} };
+    }
+    this._http.post(link,data )
+      .subscribe(res => {
+        let result;
+        result = res;
+       console.log('result in events...');
+       console.log(result);
+       for (let i in result.res){
+         if (result.res[i].eventdata!=null){
+           this.eventList.push(result.res[i]);
+         }
+       }
+       console.log(this.eventList);
+      //  this.eventList = result.res;
+
+      })
   }
 }
