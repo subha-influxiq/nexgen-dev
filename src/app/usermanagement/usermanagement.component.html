@@ -100,11 +100,11 @@
                   <td datalabel="Training Completed">
                     <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
                     <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span><br>
-                    <span >Onboarding Call : 
+                    <span class="newpanclass">Onboarding Call :
                       <span *ngIf="item.is_onboarding != null && item.is_onboarding == true"><a (click)="openModal(item,discoverCallModal,'Onboarding')">Yes</a></span>
                       <span *ngIf="item.is_onboarding == null || item.is_onboarding == false">No</span>
                     </span><br>
-                    <span >Discovery Call : 
+                    <span class="newpanclass">Discovery Call :
                         <span *ngIf="item.is_discovery != null && item.is_discovery == true"><a (click)="openModal(item,discoverCallModal,'Discovery')">Yes</a></span>
                         <span *ngIf="item.is_discovery == null || item.is_discovery == false">No</span>
                       </span>
