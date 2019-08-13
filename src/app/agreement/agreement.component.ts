@@ -49,7 +49,7 @@ export class AgreementComponent implements OnInit {
 
     /* Agreement Form Control */
     this.agreementForm = this.formBuilder.group({
-      companyName:  [ null, [ Validators.required, Validators.maxLength(150) ] ],
+      companyName:  [ null, [ Validators.maxLength(150) ] ],
       address:      [ null, [ Validators.required, Validators.maxLength(1000) ] ],
       fullName:     [ null, [ Validators.required, Validators.maxLength(1000) ] ],
       signature:    [ null, [ Validators.required, Validators.maxLength(150) ] ]
