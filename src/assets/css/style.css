@@ -1133,11 +1133,33 @@ body{ padding:0; margin: 0;}
     font-family: 'Notera';
     font-size: 40px;
 }
-.loader{border:16px solid #262626;border-top:16px solid #0071bc;border-radius:50%;width:120px;height:120px;animation:spin 2s linear infinite;margin:0 auto;}
-@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+/* .loader{border:16px solid #262626;border-top:16px solid #0071bc;border-radius:50%;width:120px;height:120px;animation:spin 2s linear infinite;margin:0 auto;}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}} */
 /*----------------------------------------AMITAV DA END--------------------------------------------*/
 
 
+
+/*--------------------------loader------------------------------*/
+
+.loder_body{ width: 100%; height: 100vh;  position: fixed; left: 0; top: 0; background-color: #fff; z-index: 99;}
+
+
+.loder_wrapper{width: 300vh; height: 100vh; display: table-cell; text-align: center; vertical-align: middle;}
+
+.loader {
+    border: 16px solid #262626;
+    border-top: 16px solid #0071bc;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 /*-----------------------------agreement-----------------------*/
 

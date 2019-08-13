@@ -19,8 +19,12 @@ export class UsermanagementComponent implements OnInit {
   public selecteditem;
   public message;
   modalRef: BsModalRef;
+  public loader : any = 0;
+  public eventList:any = [];
+  public eventtype:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
+    this.loader = 1;
     let link = this.commonservices.nodesslurl+'trainingreport';
     this._http.post(link,{})
         .subscribe(res=>{
@@ -29,15 +33,10 @@ export class UsermanagementComponent implements OnInit {
             if(result.status=='error'){
                 console.log('Oopss');
             }else {
-                
-                console.log('Get tranningreportlist data');
-                console.log(result);
-                // this.singleuserdata = result.data;
-                console.log('singledata.......');
-                console.log(this.singleuserdata);
                 for(let i in result.data){
                   if(result.data[i].type=='rep'){
                     this.singleuserdata.push(result.data[i]);
+                    this.loader = 0;
                   }
                 }
                 }
@@ -60,8 +59,7 @@ export class UsermanagementComponent implements OnInit {
   }
 
   togglestatus(item: any) {
-    console.log('item.status');
-    console.log(item.status);
+    this.loader = 1;
     let status: any;
          if(item.status!=null) status=1-item.status;
      if(item.status==null) status=1;
@@ -78,15 +76,16 @@ export class UsermanagementComponent implements OnInit {
     this._http.post(link, { id: item._id, source: 'users', status: status })
       .subscribe(res => {
         this.userdetails();
+        this.loader = 0;
       }, error => {
         console.log('Oooops!');
         this.userdetails();
+        this.loader = 0;
       });
   }
 
   toggleCalenderAccess(item: any) {
-    console.log('item.calenderaccess');
-    console.log(item.calenderaccess);
+    this.loader = 1;
     let calenderaccess: any;
     if(item.calenderaccess!=null) calenderaccess=1-item.calenderaccess;
     if (item.calenderaccess == null) calenderaccess = 1;
@@ -98,8 +97,10 @@ export class UsermanagementComponent implements OnInit {
     this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
         this.userdetails();
+        this.loader = 0;
       }, error => {
         console.log('Oooops!');
+        this.loader = 0;
         this.userdetails();
       });
   }
@@ -137,5 +138,39 @@ export class UsermanagementComponent implements OnInit {
   }
   nodelete() {
     this.modalRef.hide();
+  }
+  openModal(item:any,template:TemplateRef<any>,type:any){
+    console.log(item);
+    
+    this.eventtype = type;
+    this.getEventDetails(item.email,type);
+    this.modalRef = this.modal.show(template,{class: 'modal-md'});
+
+  }
+  getEventDetails(email:any,type:any){
+    this.eventList = [];
+    const link = this.commonservices.nodesslurl + 'datalist?token=' + this.cookieservice.get('jwttoken');
+    let data :any = {};
+    if(type == 'Onboarding'){
+      data = { source: 'googleevents_view', condition: {"emailid":email,"is_onboarding":true} };
+    }
+    if(type == 'Discovery'){
+      data = { source: 'googleevents_view', condition: {"emailid":email,"is_discovery":true} };
+    }
+    this._http.post(link,data )
+      .subscribe(res => {
+        let result;
+        result = res;
+       console.log('result in events...');
+       console.log(result);
+       for (let i in result.res){
+         if (result.res[i].eventdata!=null){
+           this.eventList.push(result.res[i]);
+         }
+       }
+       console.log(this.eventList);
+      //  this.eventList = result.res;
+
+      })
   }
 }

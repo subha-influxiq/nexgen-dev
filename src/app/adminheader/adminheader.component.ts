@@ -34,11 +34,13 @@ export class AdminheaderComponent implements OnInit {
     if (this.cookie.get('jwttoken') == '' || this.cookie.get('userid') == '') {
       this.router.navigate(['/']);
     } else {
-      this.getrepdetails();
       this.getRepDetails();
+      this.getrepdetails();
+      
       this.sourceconditionval = { _id: this.idis };
       if (this.type == 'rep') {
-        this.getsignupdetails();
+       
+        
 
       }
     }
@@ -52,6 +54,7 @@ export class AdminheaderComponent implements OnInit {
 
   ngOnInit() {
     this.interval = setInterval(() => {
+      this.getRepDetails();
       this.getslidervalueforimage();
     }, 35000);
   }
@@ -66,6 +69,7 @@ export class AdminheaderComponent implements OnInit {
           console.log('Oopss');
         } else {
           this.repDetailsNew = result.data;
+          this.cookie.set('calenderaccess',this.repDetailsNew[0].calenderaccess);
           console.log(this.repDetailsNew);
         }
       })
