@@ -154,6 +154,14 @@ export class Commonservices {
             }
         }
     }
+
+    showtimezoneByzonename(timezn){
+        for(let i in this.totaltimezone){
+            if(this.totaltimezone[i].timezone==timezn){
+                return this.totaltimezone[i].show;
+            }
+        }
+    }
     
     showcontractdate(){
         return moment().format("MM/DD/YYYY");
@@ -164,4 +172,15 @@ export class Commonservices {
     showdatetimeforuser(dt){
         return moment(dt).format("MM/DD/YYYY   hh:mm A");
     }
+
+    tConv24(time24) {
+        let ts = time24;
+        let H = +ts.substr(0, 2);
+        let h :any;
+        h = (H % 12) || 12;
+        h = (h < 10)?("0"+h):h;  // leading 0 at the left for 1 digit hours
+        var ampm = H < 12 ? " AM" : " PM";
+        ts = h + ts.substr(2, 3) + ampm;
+        return ts;
+      }
 }

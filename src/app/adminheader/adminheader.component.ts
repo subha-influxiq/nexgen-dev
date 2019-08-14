@@ -151,7 +151,7 @@ export class AdminheaderComponent implements OnInit {
       this.router.navigate([link]);
     } else {
       console.log('regional');
-      var link = 'reptrainingcenter/5c86b8e9d9705867cdd792e1';
+      var link = 'reptrainingcenter/5d36d7256778e75a3d6c37ce';
       //   var link = 'reptrainingcenter/5c6d54656fac495dd5c209e9';
       this.router.navigate([link]);
     }

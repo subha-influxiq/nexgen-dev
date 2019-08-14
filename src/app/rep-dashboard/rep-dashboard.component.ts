@@ -124,8 +124,18 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       });
   }
   gototrainingsectionwithcat() {
-    var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
-    this.router.navigate([link]);
+    // var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
+    // this.router.navigate([link]);
+    if (this.reptraininglessondetails != null) {
+      console.log('rep');
+      var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
+      this.router.navigate([link]);
+    } else {
+      console.log('regional');
+      var link = 'reptrainingcenter/5d36d7256778e75a3d6c37ce';
+      //   var link = 'reptrainingcenter/5c6d54656fac495dd5c209e9';
+      this.router.navigate([link]);
+    }
   }
   showphoneno(phn) {
     phn = phn.replace(/ /g, "");

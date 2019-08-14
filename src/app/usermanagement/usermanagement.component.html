@@ -307,8 +307,9 @@
                <p class="event_f_name">{{item.eventdata.meetingwith}}</p>
                 <p class="event_f_date"><b>Date:</b> {{item.startdate}}
                 </p>
-                <p class="event_f_time"><b>Time :</b> {{item.eventdata.starttime}} - {{item.eventdata.endtime}}</p>
+                <p class="event_f_time"><b>Time :</b> {{commonservices.tConv24(item.eventdata.starttime)}} - {{commonservices.tConv24(item.eventdata.endtime)}}</p>
                 <p class="event_f_zone"><b>Time Span :</b> {{item.timespan}} Minutes</p>
+                <p class="event_f_zone"><b>Time Zone :</b> {{commonservices.showtimezoneByzonename(item.timezone)}}</p>
                   </div>
               </span>
 
