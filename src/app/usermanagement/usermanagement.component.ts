@@ -24,6 +24,11 @@ export class UsermanagementComponent implements OnInit {
   public eventtype:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
+   this.getUserLists();
+  }
+
+  getUserLists(){
+    this.singleuserdata = [];
     this.loader = 1;
     let link = this.commonservices.nodesslurl+'trainingreport';
     this._http.post(link,{})
@@ -36,8 +41,12 @@ export class UsermanagementComponent implements OnInit {
                 for(let i in result.data){
                   if(result.data[i].type=='rep'){
                     this.singleuserdata.push(result.data[i]);
-                    this.loader = 0;
+                    setTimeout(()=>{
+                      this.loader = 0;
+                    },1000);
+                    
                   }
+                  
                 }
                 }
         })
@@ -75,11 +84,11 @@ export class UsermanagementComponent implements OnInit {
      console.log(link);*/
     this._http.post(link, { id: item._id, source: 'users', status: status })
       .subscribe(res => {
-        this.userdetails();
+        this.getUserLists();
         this.loader = 0;
       }, error => {
         console.log('Oooops!');
-        this.userdetails();
+        this.getUserLists();
         this.loader = 0;
       });
   }
@@ -96,12 +105,12 @@ export class UsermanagementComponent implements OnInit {
      console.log(link);*/
     this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
-        this.userdetails();
+        this.getUserLists();
         this.loader = 0;
       }, error => {
         console.log('Oooops!');
         this.loader = 0;
-        this.userdetails();
+        this.getUserLists();
       });
   }
   searchbyval() {
@@ -126,7 +135,7 @@ export class UsermanagementComponent implements OnInit {
       .subscribe(res => {
         let result;
         result = res;
-        this.userdetails();
+        this.getUserLists();
         this.modalRef = this.modal.show(template, { class: 'successmodal' });
         setTimeout(() => {
           this.modalRef.hide();
