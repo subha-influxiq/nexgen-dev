@@ -59,7 +59,7 @@ export class EventmanagementComponent implements OnInit {
       {inputtype:'select',name:'timezone',label:'Timezone',defaultchoice:'Select a Timezone',sourceview:'timezone',sourcetype:'static',selectvalue:'show',selectid:'value',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'textarea',name:'description',label:'Event Details',placeholder:'Event Details',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'is_onboarding',label:'On Boarding Call',value:false},
-      {inputtype:'checkbox',name:'is_discovery',label:'Discovery Call',value:false},
+      {inputtype:'checkbox',name:'is_discovery',label:'90 min game plan',value:false},
       {inputtype:'checkbox',name:'is_custom',label:'General Call(for Beto only)',value:false},
       {inputtype:'checkbox',name:'is_qna',label: 'Q&A', value:false},
       {inputtype:'hidden',name:'userid',label:"userid",placeholder:"Enter userid",value:this.cookieservice.get('userid')}

@@ -216,11 +216,16 @@ export class SlotsComponent implements OnInit {
           meeting_with:         [ slotdata.meetingwith ],
           participant:          [ this.cookeiservice.get('useremail'),Validators.required],
           participantName:      [ this.participantName, Validators.required],
-          participantPhNumber:  [ this.participantPhNumber, Validators.required],
+          participantPhNumber:  [ '', Validators.required],
           repsmsg: [''],
           });
 
-          this.dataForm.patchValue({ participantPhNumber: this.participantPhNumber });
+          // this.dataForm.patchValue({ participantPhNumber: this.participantPhNumber });
+          setTimeout(()=>{
+            this.dataForm.controls['participantPhNumber'].setValue( this.participantPhNumber );
+            console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
+          },2000);
+          
         break;
     }
 
