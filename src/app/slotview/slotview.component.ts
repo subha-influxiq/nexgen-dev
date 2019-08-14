@@ -41,6 +41,8 @@ export class SlotviewComponent implements OnInit {
    public leadsSuggestion: any = [];
    public leadsSuggestionFlug: boolean = false;
    public products: any = [];
+   public timeSpanView: boolean = false;
+   public timeSpanVal: any = "15";
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
@@ -147,18 +149,19 @@ export class SlotviewComponent implements OnInit {
                 }
                 break;
             case 'customevent':
-                    this.cookeiservice.delete('useremail')
-                    //this.cookeiservice.set('useremail', null);
+                this.cookeiservice.delete('useremail');
+                this.timeSpanView = true;
+                // this.cookeiservice.set('useremail', null);
                 this.headerText.hedaerH4 = 'Please feel free to schedule up to an hour conference call with me here on my calendar. You will be provided with a conference dial in number and webcast if needed for the call. <br/>' +
                     '<b style="color:red">BE SURE TO ADD YOUR EMAIL ADDRESS SO THE INVITATION IS SENT TO YOU</b> <br>';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
                 if(this.filterval5!=null && this.filterval5 != '') {
-                    cond = {"is_custom": true, slots:{$type:'array'}, startdate:{
+                    cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
                         $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
-                    cond = {"is_custom": true, slots:{$type:'array'}, startdate:{
+                    cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
                         $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
