@@ -283,7 +283,7 @@
     display: inline-block; margin: 10px; font-family: 'RalewayRegular'; list-style: circle;
 }
 
-.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd {    margin-right: 10px;  }
+/*.nextGen_admin_mainwrapper .nexgen_admin_table .action_section .inner_actionblock .slotadd {    margin-right: 10px;  }*/
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section { width: 94.8%;
     margin: 0 auto;
     display: block;
@@ -296,7 +296,7 @@
     text-align: center;
     cursor: pointer;
     color: #fff;
-    text-transform: uppercase; }
+    text-transform: uppercase;  margin-left: 2px; margin-right: 2px; }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper{  padding: 0; }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper  { width: 95%; margin: 0 auto;  }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr th {
@@ -2406,6 +2406,14 @@ text-align: center;}
     width: 375px!important;
 }
 
+
+.contentnewcon1:nth-of-type(3){
+    width: 265px!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    float: none!important;
+}
+
 .contentnewcon1:nth-of-type(2) .form-groupbtndiv{ width: 100px!important;   }
 
 .ngcontainerdiv{ position: absolute; padding: 0px!important; width: 90%;
@@ -2430,3 +2438,6 @@ text-align: center;}
 .admin_table_wrapper .fa-check{color: #00a8ef;}
 
 .brandmanagement_modal .one { width: auto!important; background: #fff; margin: 5px auto; border: 1px solid #dadada; padding: 15px; }
+
+
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section a.active{ background:  #00a8ef!important;}
