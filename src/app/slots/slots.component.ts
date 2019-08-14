@@ -203,13 +203,13 @@ export class SlotsComponent implements OnInit {
           
           setTimeout(() => {
             this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-          }, 100);
+          }, 1000);
         });
         break;
       default:
         setTimeout(() => {
           this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-        }, 100);
+        }, 3000);
 
         this.dataForm = this.kp.group({
           /*  description: [slotdata.description,Validators.required],*/
@@ -224,7 +224,7 @@ export class SlotsComponent implements OnInit {
           setTimeout(()=>{
             this.dataForm.controls['participantPhNumber'].setValue( this.participantPhNumber );
             console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
-          },2000);
+          }, 100);
           
         break;
     }
@@ -361,8 +361,8 @@ showformat(stdt){
             console.log(result.res[0].refreshtoken);
             this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
             this.cookeiservice.set('organizerid', result.res[0].email);
-            this.participantName = result.res[0].firstname + ' ' + result.res[0].lastname;
-            this.participantPhNumber = result.res[0].phoneno;
+            // this.participantName = result.res[0].firstname + ' ' + result.res[0].lastname;
+            // this.participantPhNumber = result.res[0].phoneno;
             console.log(this.participantPhNumber);
         })
   }
