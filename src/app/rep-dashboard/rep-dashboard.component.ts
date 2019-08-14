@@ -20,17 +20,19 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public recid: any;
   public modalRef: BsModalRef;
   public userId: any;
+  public calenderaccess:any;
 
   constructor(public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
     window.scrollTo(1000, 0);
     this._commonservice = _commonservice;
     //this.userReport();
-    // console.log(this.cookeiservice.get('userid'));
+    console.log(this.cookeiservice.get('calenderaccess'));
     if (this.cookeiservice.get('userid') != null) {
       // this.getrepdetails();
       this.userReport();
       this.userId = this.cookeiservice.get('userid');
+      this.calenderaccess = this.cookeiservice.get('calenderaccess');
     }
     
     
