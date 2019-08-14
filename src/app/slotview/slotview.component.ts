@@ -40,6 +40,7 @@ export class SlotviewComponent implements OnInit {
    public allLeads: any;
    public leadsSuggestion: any = [];
    public leadsSuggestionFlug: boolean = false;
+   public products: any = [];
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
@@ -58,7 +59,7 @@ export class SlotviewComponent implements OnInit {
     /* Agreement Form Control */
     this.closerLeadForm = this.formBuilder.group({
         leads:      [ null, [ Validators.required, Validators.maxLength(200) ] ],
-        product:    [ null, [ Validators.required, Validators.maxLength(200) ] ]
+        product:    [ "", [ Validators.required, Validators.maxLength(200) ] ]
       });
   }
 
@@ -181,16 +182,33 @@ export class SlotviewComponent implements OnInit {
                 break;
             case 'book-a-closer':
                 this.getLeads();
-                this.slotView = false;
+                if(!this.closerLeadForm.valid) {
+                    this.slotView = false;
+                }
                 this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
                 if(this.filterval5!=null && this.filterval5 != '') {
-                    cond = { "is_discovery": false, "is_onboarding": false, slots:{$type:'array'}, startdate:{
+                    cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
                         $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
-                    cond = { "is_discovery": false, "is_onboarding": false, slots:{$type:'array'}, startdate:{
+                    cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
+                        $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                    }};
+                }
+                break;
+            case 'question-and-answer-call':
+                this.headerText.hedaerH4 = 'Select your Question and Answar Appointment as per your convenience.';
+                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                if(this.filterval5!=null && this.filterval5 != '') {
+                    cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
+                        $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                    }};
+                } else {
+                    cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
                         $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
@@ -289,8 +307,9 @@ export class SlotviewComponent implements OnInit {
 
     /* Get Leads */
     getLeads() {
+        let userId: any = this.cookeiservice.get('userid');
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source:'leads_view', condition: {  }}).subscribe(res => {
+        this._http.post(link, { source:'leads_view', condition: { "created_by_object": userId }}).subscribe(res => {
             let result: any = res;
             this.allLeads = result.res;
         });
@@ -318,8 +337,10 @@ export class SlotviewComponent implements OnInit {
     closerLeadFormSubmit() {
         this.closerLeadFormSubmitFlug = true;
         if(this.closerLeadForm.valid) {
-        this.slotView = true;
-            alert('OKK');
+            this.slotView = true;
+            console.log('OKKKKKK', this.slotView);
+            console.log(this.closerLeadForm.value);
+            this.geteventarr();
         }
     }
 
@@ -327,14 +348,13 @@ export class SlotviewComponent implements OnInit {
         this.closerLeadForm.patchValue({    
             leads: leadsData.firstname + ' ' + leadsData.lastname
         });
+        this.cookeiservice.set('leadsId', leadsData._id);
+
+        this.products = leadsData.productname;
+        console.log('Product:=======', this.products);
 
         this.leadsSuggestionFlug = false;
-        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source:'leads_view', condition: {  }}).subscribe(res => {
-            let result: any = res;
-            this.allLeads = result.res;
-            console.log('Leads: ', result);
-        });
+        this.leadsSuggestion = [];
     }
 
 }

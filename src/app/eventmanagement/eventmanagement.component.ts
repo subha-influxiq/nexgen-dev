@@ -61,6 +61,7 @@ export class EventmanagementComponent implements OnInit {
       {inputtype:'checkbox',name:'is_onboarding',label:'On Boarding Call',value:false},
       {inputtype:'checkbox',name:'is_discovery',label:'Discovery Call',value:false},
       {inputtype:'checkbox',name:'is_custom',label:'General Call(for Beto only)',value:false},
+      {inputtype:'checkbox',name:'is_qna',label: 'Q&A', value:false},
       {inputtype:'hidden',name:'userid',label:"userid",placeholder:"Enter userid",value:this.cookieservice.get('userid')}
     ];
     this.datasource={table:'events',objarr:['userid']};
