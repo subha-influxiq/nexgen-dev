@@ -45,6 +45,22 @@
                     </div>
                 </form>
             </div>
+
+            <div *ngIf="timeSpanView" class="main_inner_content main_inner_contentnew contentnewcon1">
+                <form>
+                    <h3 class="timezone_class">Select time span</h3>
+                    <div class="form-group">
+
+                        <select class="form-control select_inpu2" (change)="geteventarr()" [(ngModel)]="timeSpanVal" [ngModelOptions]="{standalone: true}">
+                            <option value="">Select one</option>
+                            <option value="15">15 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="60">60 minutes</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            
             <div class="clearfix"></div>
         </div>
         <div class="main_inner_content main_inner_contentnew">
