@@ -39,8 +39,9 @@
              <!-- <h3 (click)="seteventtime(1)"> Future Events</h3>
               <h3 (click)="seteventtime(0)"> Past Events </h3>-->
               <div class="abcde">
-              <a (click)="seteventtime(1)" class="addfrinderbtn s_getmybrand_savebutton"> Future Events</a>
-              <a (click)="seteventtime(0)" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Past Events</a>
+                  <a (click)="getCanceledAppoint()" [ngClass]="activeFlag === 2 ? 'addfrinderbtn s_getmybrand_savebutton slotadd active' : 'addfrinderbtn s_getmybrand_savebutton slotadd'" > Cancelled Events</a>
+              <a (click)="seteventtime(1)"  [ngClass]="activeFlag === 1 ? 'addfrinderbtn s_getmybrand_savebutton active' : 'addfrinderbtn s_getmybrand_savebutton'"> Future Events</a>
+              <a (click)="seteventtime(0)"  [ngClass]="activeFlag === 0 ? 'addfrinderbtn s_getmybrand_savebutton slotadd active' : 'addfrinderbtn s_getmybrand_savebutton slotadd'"> Past Events</a>
 
               <div class="clearfix"></div>
               </div>
@@ -53,9 +54,11 @@
                 <tr>
                   <!-- <th scope="col">User ID</th> -->
                   <th scope="col">Type</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Organizer's Name</th>
                   <th scope="col">Date Set</th>
                   <th scope="col"> Time</th>
+                  <th scope="col"> Participant's Name</th>
+                  <th scope="col"> Participant's Phone No.</th>
                   <th scope="col"> Manage Notes</th>
                 </tr>
                 </thead>
@@ -67,8 +70,16 @@
                   <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}} ({{item.userdata.email}})</td>
                   <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
                   <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
-                  <td data-title="Time" *ngIf="item.userdata"><span class="delete_user"
-                    (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span></td>
+                  <td data-title="Participate's Name" *ngIf="item.userdata">{{item.name}} {{item.googleevent}}</td>
+                  <td data-title="Participate's Phone No." *ngIf="item.userdata">{{item.phoneNumber}}</td>
+                  
+                  <td data-title="Manage Notes" *ngIf="item.userdata"><span class="delete_user"
+                    (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span>
+                    <span class="edit_user"
+                    (click)="cancelAppointment(item.googleevent,item.refresh_token,item._id)">Cancel</span>
+                    <span class="edit_user"
+                    (click)="notesdata(item,notesmodal)">Reschedule</span>
+                  </td>
                 </tr>
                 </tbody>
               </table>
