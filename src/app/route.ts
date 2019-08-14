@@ -121,7 +121,9 @@ const appRoutes: Routes = [
     { path: 'customevents/:slotval', component: SlotviewComponent },
     { path: 'customevent', component: SlotviewComponent }, 
     { path: 'discovery-call/:id', component: SlotviewComponent },
+    { path: 'book-a-closer/:id', component: SlotviewComponent },
     { path: 'book-a-closer', component: SlotviewComponent },
+    { path: 'question-and-answer-call/:id', component: SlotviewComponent },
 
     { path: 'slotview/:id', component: SlotviewComponent },
     { path: 'appointmentlist', component: AppointmentlistComponent },

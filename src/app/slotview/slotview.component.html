@@ -90,12 +90,13 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row" *ngIf="products.length > 0">
                 <label class="col-sm-12 col-form-label">Product</label>
                 <div class="col-sm-12">
 
                     <select [formControl]="closerLeadForm.controls['product']" class="form-control" >
                         <option value="">Select a Product</option>
+                        <option *ngFor="let i of products;" value="{{ i.product_id }}">{{ i.product_name }}</option>
                     </select>
 
                     <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.product.errors">Product Required</span>

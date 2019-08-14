@@ -186,25 +186,49 @@ export class SlotsComponent implements OnInit {
     console.log(slotdata);
 
     this.mymodal = template1;
-    setTimeout(() => {
-      this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-      console.log('==================', this.cookeiservice.get('useremail'));
-    }, 3000);
+    let leadsId: any = this.cookeiservice.get('leadsId');
+    switch(this.route.snapshot.url[0].path) {
+      case 'book-a-closer':
+        console.log('BOOK A CLOSER');
+        const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source:'leads_view', condition: { "_id": leadsId }}).subscribe(res => {
+          let result: any = res;
+          this.dataForm = this.kp.group({
+            meeting_with: [ slotdata.meetingwith ],
+            participant: [ result.res[0].email, Validators.required ],
+            participantName: [ result.res[0].fullname, Validators.required ],
+            participantPhNumber: [ result.res[0].phoneno, Validators.required ],
+            repsmsg: [''],
+          });
+          
+          setTimeout(() => {
+            this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+          }, 100);
+        });
+        break;
+      default:
+        setTimeout(() => {
+          this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+        }, 100);
+
+        this.dataForm = this.kp.group({
+          /*  description: [slotdata.description,Validators.required],*/
+          meeting_with: [slotdata.meetingwith],
+          participant: [ this.cookeiservice.get('useremail'),Validators.required],
+          participantName: [this.participantName, Validators.required],
+          participantPhNumber: [this.participantPhNumber, Validators.required],
+         /* startdate: [slotdata.startdate,Validators.required],
+          starttime: ['',Validators.required],
+          enddate: [slotdata.startdate,Validators.required],
+          endtime: ['',Validators.required],
+          timezone: [slotdata.timezone,Validators.required],*/
+          repsmsg: [''],
+          });
+        break;
+    }
 
     // this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-     this.dataForm = this.kp.group({
-     /*  description: [slotdata.description,Validators.required],*/
-     meeting_with: [slotdata.meetingwith],
-     participant: [ this.cookeiservice.get('useremail'),Validators.required],
-     participantName: [this.participantName, Validators.required],
-     participantPhNumber: [this.participantPhNumber, Validators.required],
-    /* startdate: [slotdata.startdate,Validators.required],
-     starttime: ['',Validators.required],
-     enddate: [slotdata.startdate,Validators.required],
-     endtime: ['',Validators.required],
-     timezone: [slotdata.timezone,Validators.required],*/
-     repsmsg: [''],
-     });
+     
     /* this.dataForm.controls['starttime'].patchValue(this.start_time);
      this.dataForm.controls['endtime'].patchValue(this.end_time);*/
   }
@@ -270,7 +294,8 @@ showformat(stdt){
             //nslots:this.slotdata.slots.splice(ival,1),
             slot: this.slotdata.slots[this.itemidval],
             ival: this.itemidval,
-            timespan: this.slotdata.timespan
+            timespan: this.slotdata.timespan,
+            booked_by: this.cookeiservice.get('userid'),
         }
         console.log('data--------');
         console.log(data);
@@ -283,6 +308,7 @@ showformat(stdt){
                 this.message = "Your Booking done successfully !!";
                 //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
 
+                this.cookeiservice.delete('leadsId');
                 switch (this.route.snapshot.url[0].path) {
                     case 'on-boarding-call':
                         this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
@@ -290,6 +316,17 @@ showformat(stdt){
                     case 'is_discovery':
                         this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
                         break;
+                    case 'book-a-closer':
+                        this.modalRef = this.modal.show(this.mymodal, {class: 'successmodal'});
+                        this.route.paramMap.subscribe(params => {
+                          if(!params.get("id")) {
+                            let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+                            this.router.navigate(['/book-a-closer/' + random]);
+                          } else {
+                            this.router.navigate(['/book-a-closer']);
+                          }
+                        });
+                      break;
                     default:
                         this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
                         break;

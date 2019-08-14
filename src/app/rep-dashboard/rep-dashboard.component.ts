@@ -19,6 +19,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public reptraininglessondetails;
   public recid: any;
   public modalRef: BsModalRef;
+  public userId: any;
 
   constructor(public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
@@ -29,7 +30,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     if (this.cookeiservice.get('userid') != null) {
       // this.getrepdetails();
       this.userReport();
-      
+      this.userId = this.cookeiservice.get('userid');
     }
     
     
