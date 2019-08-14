@@ -79,6 +79,7 @@ export class SlotviewComponent implements OnInit {
             if(this.cookeiservice.get('userid')) {
                 if( this.recid != null) {
                     this.get_refreshtoken_of_this_rec();
+                    this.getUserDetails(this.recid);
                 }
                 this.geteventarr();
             } else {
@@ -295,6 +296,7 @@ export class SlotviewComponent implements OnInit {
 
   /* Get user details */
   getUserDetails(id) {
+      //alert(id);
       if(id!=null) {
           const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
           this._http.post(link, {source: 'users', condition: {_id_object: id}})

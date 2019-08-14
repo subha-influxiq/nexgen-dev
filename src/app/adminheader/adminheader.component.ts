@@ -116,6 +116,8 @@ export class AdminheaderComponent implements OnInit {
   logout() {
     console.log('logout');
     console.log(this.cookie.get('userid'));
+    this.cookie.deleteAll();
+    this.cookie.deleteAll();
     this.cookie.deleteAll('/');
     this.cookie.deleteAll();
     setTimeout(() => {
