@@ -213,17 +213,14 @@ export class SlotsComponent implements OnInit {
 
         this.dataForm = this.kp.group({
           /*  description: [slotdata.description,Validators.required],*/
-          meeting_with: [slotdata.meetingwith],
-          participant: [ this.cookeiservice.get('useremail'),Validators.required],
-          participantName: [this.participantName, Validators.required],
-          participantPhNumber: [this.participantPhNumber, Validators.required],
-         /* startdate: [slotdata.startdate,Validators.required],
-          starttime: ['',Validators.required],
-          enddate: [slotdata.startdate,Validators.required],
-          endtime: ['',Validators.required],
-          timezone: [slotdata.timezone,Validators.required],*/
+          meeting_with:         [ slotdata.meetingwith ],
+          participant:          [ this.cookeiservice.get('useremail'),Validators.required],
+          participantName:      [ this.participantName, Validators.required],
+          participantPhNumber:  [ this.participantPhNumber, Validators.required],
           repsmsg: [''],
           });
+
+          this.dataForm.patchValue({ participantPhNumber: this.participantPhNumber });
         break;
     }
 
@@ -359,6 +356,9 @@ showformat(stdt){
             console.log(result.res[0].refreshtoken);
             this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
             this.cookeiservice.set('organizerid', result.res[0].email);
+            this.participantName = result.res[0].firstname + ' ' + result.res[0].lastname;
+            this.participantPhNumber = result.res[0].phoneno;
+            console.log(this.participantPhNumber);
         })
   }
 
