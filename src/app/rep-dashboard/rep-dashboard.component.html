@@ -21,10 +21,10 @@
 
   <a (click)="gototrainingsectionwithcat()">Training Portal</a>
   <a [routerLink]="['/myresource']">Document Library</a>
-  <a *ngIf="cookeiservice.get('calenderaccess')==1" [routerLink]="['/question-and-answer-call/', userId]">Set a 15 Rep minute Q&A Call</a>
-  <a class="disable" *ngIf="cookeiservice.get('calenderaccess')==0" href="javascript:void(0)">Set a 15 Rep minute Q&A Call</a>
-  <a *ngIf="cookeiservice.get('calenderaccess')==1"  [routerLink]="['/book-a-closer']">Launch the Discovery Call Calendar</a>
-  <a class="disable" *ngIf="cookeiservice.get('calenderaccess')==0" href="javascript:void(0)">Launch the Discovery Call Calendar</a>
+  <a *ngIf="calenderaccess==1" [routerLink]="['/question-and-answer-call/', userId]">Set a 15 Rep minute Q&A Call</a>
+  <a class="disable" *ngIf="calenderaccess==0" href="javascript:void(0)">Set a 15 Rep minute Q&A Call</a>
+  <a *ngIf="calenderaccess==1"  [routerLink]="['/book-a-closer']">Launch the Discovery Call Calendar</a>
+  <a class="disable" *ngIf="calenderaccess==0" href="javascript:void(0)">Launch the Discovery Call Calendar</a>
 
   </div>
 

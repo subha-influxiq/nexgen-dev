@@ -172,7 +172,7 @@ export class Commonservices {
     showdatetimeforuser(dt){
         return moment(dt).format("MM/DD/YYYY   hh:mm A");
     }
-
+    //to convert 24-hour time to 12-hour time format
     tConv24(time24) {
         let ts = time24;
         let H = +ts.substr(0, 2);
