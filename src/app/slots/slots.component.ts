@@ -203,13 +203,13 @@ export class SlotsComponent implements OnInit {
           
           setTimeout(() => {
             this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-          }, 1000);
+          }, 100);
         });
         break;
       default:
         setTimeout(() => {
           this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-        }, 3000);
+        }, 10);
 
         this.dataForm = this.kp.group({
           /*  description: [slotdata.description,Validators.required],*/

@@ -128,7 +128,7 @@
                             <input class="form-control" type="text" [formControl]="dataForm.controls['participantPhNumber']" readonly *ngIf="participantEmail.length>2 ">
                             <input class="form-control" type="text" placeholder="Please Input Your Phone Number Here" [formControl]="dataForm.controls['participantPhNumber']" *ngIf="participantEmail.length<2">
     
-                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participantPhNumber'].valid && dataForm.controls['participantPhNumber'].touched">Phone Number can not be blank</span>
+                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participamntPhNumber'].valid && dataForm.controls['participantPhNumber'].touched">Phone Number can not be blank</span>
                         </div>
 
                     <div class="form-group">
@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Rep’s Message To Regional Manager</label>
+                        <label>Rep’s Message To Calendar Owner/Discovery Closer</label>
                         <textarea class="form-control txt_area" type="text" [formControl]="dataForm.controls['repsmsg']"></textarea>
                     </div>
 
