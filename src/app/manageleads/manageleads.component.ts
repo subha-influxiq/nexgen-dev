@@ -16,9 +16,12 @@ export class ManageleadsComponent implements OnInit {
     this.formdata = [
       { inputtype: 'text', name: 'firstname', label: 'First Name', placeholder: 'Enter First Name', validationrule: { required: true }, validationerrormsg: 'is required' },
       { inputtype: 'text', name: 'lastname', label: 'Last Name', placeholder: 'Enter Last Name', validationrule: { required: true }, validationerrormsg: 'is required' },
-      { inputtype: 'email', name: 'email', label: 'Email Id', placeholder: 'Enter Your Email', validationrule: { required: true, email: true }, validationerrormsg: 'is required and should be valid' },
+      { inputtype: 'text', name: 'company', label: 'Company ', placeholder: 'Enter Company Name', validationrule: { required: true }, validationerrormsg: 'is required' },
+      { inputtype: 'email', name: 'email', label: 'Email Id(s)', placeholder: 'Enter Your Email (Put multiple values in , separated)', validationrule: { required: true, email: true }, validationerrormsg: 'is required and should be valid' },
       { inputtype: 'textarea', name: 'address', label: 'Address', placeholder: 'Enter Address' },
       { inputtype: 'text', name: 'phoneno', label: 'Phone No.', placeholder: 'Enter Mobile Number' },
+      { inputtype: 'text', name: 'website', label: 'Website Url.', placeholder: 'Enter Website Url ' },
+      { inputtype: 'text', name: 'mobile', label: 'Mobile No.', placeholder: 'Enter Mobile No ' },
       {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
       { inputtype: 'hidden', name: 'created_by', label: "created_by", placeholder: "Created By", value: this.cookieservice.get('userid') }
     ];
@@ -30,8 +33,11 @@ export class ManageleadsComponent implements OnInit {
         { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
         { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
         { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+        { value: 'company', name: 'Company ', role: 0, func: '', class: 'company', type: 'text' },
+        { value: 'website', name: 'Website ', role: 0, func: '', class: 'website', type: 'text' },
         { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
-        { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+        { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'phone', type: 'phoneno' },
+        { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
         { value: 'fullname', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
       ];
@@ -42,8 +48,11 @@ export class ManageleadsComponent implements OnInit {
         { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
         { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
         { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+        { value: 'company', name: 'Company ', role: 0, func: '', class: 'company', type: 'text' },
+        { value: 'website', name: 'Website ', role: 0, func: '', class: 'website', type: 'text' },
         { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
         { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+        { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' }
       ];
     }
