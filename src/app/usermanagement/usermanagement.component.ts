@@ -25,6 +25,7 @@ export class UsermanagementComponent implements OnInit {
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
    this.getUserLists();
+   this.commonservices.timeConv24to12("18:00:00");
   }
 
   getUserLists(){
