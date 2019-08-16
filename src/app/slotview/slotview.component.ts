@@ -122,12 +122,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -141,12 +141,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = {"timespan":this.slotval.toString(), "is_custom": true, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = {"timespan":this.slotval, "is_custom": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -160,12 +160,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -176,12 +176,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -195,12 +195,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -210,12 +210,12 @@ export class SlotviewComponent implements OnInit {
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
-                        $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        $gte: moment(this.filterval5[0]).format('YYYY-MM-DD')
                     }};
                 } else {
                     cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -234,12 +234,12 @@ export class SlotviewComponent implements OnInit {
                     if(this.recid == null) {
                         cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     } else {
                         cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     }
                 }

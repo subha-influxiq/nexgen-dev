@@ -239,7 +239,6 @@ showformat(stdt){
     return moment(stdt).format('dddd MMMM DD, YYYY');
 }
   dosubmit(){
-    this.loader = true;
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
@@ -248,6 +247,9 @@ showformat(stdt){
         return;
     }
     else {
+      this.loader = true;
+      this.modaloff();
+      console.log('=============================================================');
         console.log('valid', this.dataForm.valid);
         console.log('valid', this.dataForm.value, this.slotdata.timespan);
         //console.log('valid');
