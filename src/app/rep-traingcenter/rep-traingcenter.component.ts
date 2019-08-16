@@ -336,10 +336,10 @@ export class RepTraingcenterComponent implements OnInit {
 
     getdoneclass(id){
         //return 'show';
-        console.log('donelist',this.markasdonedatalist.length,this.markasdonedatalist)
+        //console.log('donelist',this.markasdonedatalist.length,this.markasdonedatalist)
         for(let i in this.markasdonedatalist){
-            if(this.markasdonedatalist[i].traininglesson==id){
-                 console.log('??');
+            if(this.markasdonedatalist[i].traininglesson.toString()==id.toString()){
+                 //console.log('??');
                 return true;
             }
         }
@@ -355,6 +355,7 @@ export class RepTraingcenterComponent implements OnInit {
             if(this.markasdonedatalist.length>0){
             if(this.markasdonedatalist[0].traininglesson==item._id){
                 if(this.sorteddatalist[i1+1]!=null )this.sorteddatalist[i1+1].openaccordian=true;
+                this.sorteddatalist[i1].markasdone=true;
             }
             }
             return false;
@@ -366,14 +367,17 @@ export class RepTraingcenterComponent implements OnInit {
                     if(this.sorteddatalist.length-1!=i1){
                         this.sorteddatalist[i1+1].openaccordian=true;
                         this.sorteddatalist[i1].markasdone=true;
+                        //console.log('-----',i1,'true');
+                        //return false;
                     }
                     //console.log('this.sorteddatalist');
                     //console.log(this.sorteddatalist);
+                    console.log('-----',i1,'false');
                     return false;
                 }
                 if(this.markasdonedatalist[i].traininglesson!=item._id && item.openaccordian!=null && item.openaccordian==true){
                     //this.sorteddatalist[i+1].openaccordian=false;
-                    // console.log('-----');
+                     console.log('-----',i1,'false');
                     return false;
                 }
             }

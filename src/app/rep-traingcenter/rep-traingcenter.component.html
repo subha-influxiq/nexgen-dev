@@ -140,7 +140,10 @@
 
           <a *ngIf="item.yesorno=='yes'" (click)="gotoquizmodal(item._id, item.trainingcategory, lastLessionName, quizmodal)" class="quizz_button">Take quiz</a>
 
-          <a class="mark_done" *ngIf="item.yesorno=='no' && getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video' " (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+
+               <!-- =={{getdoneclass(item._id)}}== {{item.yesorno}}=={{item._id}}==-->
+          <a class="mark_done" *ngIf="item.yesorno=='no'  && item.filetype!='audio' && item.filetype!='video' " (click)="markasdonetraninglesson(item,i)">Mark as done</a>
+          <!--<a class="mark_done" *ngIf="item.yesorno=='no' && getdoneclass(item._id)==false && item.filetype!='audio' && item.filetype!='video' " (click)="markasdonetraninglesson(item,i)">Mark as done</a>-->
 
             </div>
          <!-- <button *ngIf="item.yesorno=='yes' && item.quizcomplete==0" (click)="gotoquizmodal(item._id,quizmodal)" class="quizz_button">Take quiz</button>
