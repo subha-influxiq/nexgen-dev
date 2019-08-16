@@ -1,3 +1,13 @@
+<!-- Loader start -->
+<div class="loder_body" *ngIf="loader">
+    <div class="loder_wrapper">
+        <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
+      <div class="loader"></div>
+    </div>
+  </div>
+  <!-- Loader end -->
+
+
 <p class="event_f_name">{{slotdata.meetingwith}}</p>
 <p class="event_f_date"><b>Date:</b> {{_commonservices.showdateforreplegal(slotdata.startdate)}}
     <span class="hide">

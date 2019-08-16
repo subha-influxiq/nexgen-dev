@@ -43,6 +43,7 @@ export class SlotviewComponent implements OnInit {
    public products: any = [];
    public timeSpanView: boolean = false;
    public timeSpanVal: any = "15";
+   public loader: boolean = false;
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);

@@ -33,6 +33,7 @@ export class SlotsComponent implements OnInit {
   public participantPhNumber: any;
   public participantName: any;
   public participantEmail: any;
+  public loader: boolean = false;
 
   bsDatepicker = {
     format: 'DD/MM/YYYY',
@@ -238,6 +239,7 @@ showformat(stdt){
     return moment(stdt).format('dddd MMMM DD, YYYY');
 }
   dosubmit(){
+    this.loader = true;
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
