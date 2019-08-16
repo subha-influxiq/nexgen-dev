@@ -30,8 +30,15 @@ export class LoginComponent implements OnInit {
     if(this.cookeiservice.get('jwttoken') == '') {
         this.setTempToken();
       }
-    
-    if(this.cookeiservice.get('userid')!=''){
+
+  }
+
+  ngOnInit() {
+
+
+
+    if(this.cookeiservice.check('userid')){
+      console.log('in login','got cookie');
       switch(this.cookeiservice.get('usertype')) {
         case 'rep':
           this.router.navigate(['/repdashboard']);
@@ -43,10 +50,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/dashboard']);
           break;
       }
+    }else{
+      console.log('in login','noo cookie');
     }
-  }
 
-  ngOnInit() {
+
     this.dataForm = this.kp.group({
       email: ['', Validators.compose([Validators.required, LoginComponent.customValidator])],
       password: ['', Validators.compose([Validators.required])],
