@@ -31,7 +31,7 @@ export class AdminheaderComponent implements OnInit {
     this.type = this.cookie.get('usertype');
     this.idis = this.cookie.get('userid');
 
-    if (this.cookie.get('jwttoken') == '' || this.cookie.get('userid') == '') {
+    if (this.cookie.check('jwttoken') ==false || this.cookie.check('userid') == false) {
       this.router.navigate(['/']);
     } else {
       this.getRepDetails();

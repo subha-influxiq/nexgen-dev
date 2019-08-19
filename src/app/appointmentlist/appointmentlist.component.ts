@@ -81,6 +81,17 @@ export class AppointmentlistComponent implements OnInit {
       }
 
     }
+
+
+
+    if (this.cookeiservice.get('usertype') == 'rep') {
+      if (this.futureevent == 1) {
+        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:{$ne:1},booked_by:this.cookeiservice.get('userid') };
+      }
+      else {
+        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1},booked_by:this.cookeiservice.get('userid')};
+      }
+    }
     // sourcecondition={unique_id:35920};
     const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
     this._http.post(link, {

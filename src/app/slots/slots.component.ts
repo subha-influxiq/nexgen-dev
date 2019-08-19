@@ -20,6 +20,7 @@ export class SlotsComponent implements OnInit {
   modalRef: BsModalRef;
   public dataForm: FormGroup;
   public kp;
+  public leaddata:any='';
   public start_time;
   public end_time;
   public mydetails;
@@ -201,7 +202,8 @@ export class SlotsComponent implements OnInit {
             participantPhNumber: [ result.res[0].phoneno, Validators.required ],
             repsmsg: [''],
           });
-          
+
+          if(result.res!=null && result.res[0]!=null)this.leaddata=result.res[0];
           setTimeout(() => {
             this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
           }, 2000);
@@ -240,6 +242,8 @@ showformat(stdt){
 }
   dosubmit(){
     let x: any;
+      let closername:any='';
+      let closeremail:any='';
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
     }
@@ -276,10 +280,19 @@ showformat(stdt){
         /*   console.log(this.slotdata.starttime);
          console.log(this.slotdata.endtime);*/
         let ival = this.itemidval;
+        let repmsg = '';
         let description: any = this.slotdata.description;
-        if (this.dataForm.controls['repsmsg'].value.length > 0) {
+
+        if (this.dataForm.controls['repsmsg'].value.length > 0 && this.route.snapshot.url[0].path!='book-a-closer') {
             description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
+        }else{
+            repmsg=this.dataForm.controls['repsmsg'].value;
+            closeremail=this.cookeiservice.get('useremail');
+            closername=this.cookeiservice.get('fullname');
+
         }
+
+
         let data = {
             refresh_token: this.cookeiservice.get('refreshtoken'),
             organizerid: this.cookeiservice.get('organizerid'),
@@ -299,9 +312,16 @@ showformat(stdt){
             slots: this.slotdata.slots,
             //nslots:this.slotdata.slots.splice(ival,1),
             slot: this.slotdata.slots[this.itemidval],
+            //slotdata: this.slotdata,
             ival: this.itemidval,
             timespan: this.slotdata.timespan,
             booked_by: this.cookeiservice.get('userid'),
+            custommsg: repmsg,
+            leaddata: this.leaddata,
+            closername: closername,
+            closeremail: closeremail,
+            slotdata: this.slotdata,
+            type: this.route.snapshot.url[0].path
         }
         console.log('data--------');
         console.log(data);
