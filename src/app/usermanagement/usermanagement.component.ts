@@ -22,33 +22,61 @@ export class UsermanagementComponent implements OnInit {
   public loader : any = 0;
   public eventList:any = [];
   public eventtype:any;
+  public consultantrole:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
+    console.log("this.cookieservice.get('is_consultant')");
+   console.log(this.cookieservice.get('is_consultant'));
+   console.log(this.cookieservice.get('userid'));
+   this.consultantrole = this.cookieservice.get('is_consultant');
    this.getUserLists();
    this.commonservices.timeConv24to12("18:00:00");
+   
   }
 
   getUserLists(){
     this.singleuserdata = [];
     this.loader = 1;
-    let link = this.commonservices.nodesslurl+'trainingreport';
-    this._http.post(link,{})
+    let link:any;
+    let data:any = {};
+    if(this.consultantrole==null || this.consultantrole ==0){
+      link = this.commonservices.nodesslurl+'trainingreport';
+      data = {};
+    }else{
+      // link = this.commonservices.nodesslurl+ 'datalist?token=' + this.cookieservice.get('jwttoken');
+      // data =  { source: 'user_training', condition: { affid_object: this.cookieservice.get('userid') } ,"sourceobj":["affid"]};
+    }
+    link = this.commonservices.nodesslurl+'trainingreport';
+    data = {};
+    this._http.post(link,data)
         .subscribe(res=>{
             let result;
             result=res;
             if(result.status=='error'){
                 console.log('Oopss');
             }else {
+              if(result.data!=null){
                 for(let i in result.data){
                   if(result.data[i].type=='rep'){
                     this.singleuserdata.push(result.data[i]);
+                    
                     setTimeout(()=>{
                       this.loader = 0;
                     },1000);
-                    
                   }
                   
-                }
+                }}
+                if(result.res!=null){
+                  for(let i in result.res){
+                    if(result.res[i].type=='rep'){
+                      this.singleuserdata.push(result.res[i]);
+                      
+                      setTimeout(()=>{
+                        this.loader = 0;
+                      },1000);
+                    }
+                    
+                  }}
                 }
         })
   }

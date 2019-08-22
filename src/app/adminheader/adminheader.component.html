@@ -123,6 +123,9 @@
               <li class="nav-item active" [routerLink]="['/repdashboard']">    
                 <a class="nav-link" >Dashboard <span class="sr-only"></span></a>
               </li>
+              <li *ngIf="consultantrole!=null && consultantrole==1" class="nav-item active"  [routerLink]="['/rep-management']">
+                <a class="nav-link">My Reps</a>
+              </li>
               <li class="nav-item active" (click)="gototrainingsectionwithcat()">
                 <a class="nav-link" >Training Center</a>
               </li>

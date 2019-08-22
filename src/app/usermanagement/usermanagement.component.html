@@ -22,7 +22,8 @@
     <div class="nexgen_adminlist">
       <div class="user_management_wrapper">
         <div class="user_management_inner">
-          <h2>User Management</h2>
+          <h2 *ngIf="consultantrole==null || consultantrole==0">User Management</h2>
+          <h2 *ngIf="consultantrole!=null && consultantrole==1">Rep Management</h2>
 
           <div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
@@ -80,7 +81,7 @@
                     <th scope="col">Calender Access</th>
                     <th scope="col">Senior Consulting Director</th>
                     <!-- <th scope="col">Contract Signed</th> -->
-                    <th scope="col">Action</th>
+                    <th scope="col" *ngIf="consultantrole==null || consultantrole==0">Action</th>
 
 
                   </tr>
@@ -126,28 +127,28 @@
                     </td>
                     <td datalabel="Status">
                       <span class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
-                        <span class="ticon_active" (click)="togglestatus(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_active" (click)="togglestatus(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.status==null || item.status==0 ">Inactive
-                        <span class="ticon_inactive" (click)="togglestatus(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_inactive" (click)="togglestatus(item)"></span>
                       </span>
                     </td>
                     <td datalabel="Calender Access">
                       <span class="statusactive"
                         *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
-                        <span class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
-                        <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
                       </span>
                     </td>
                     <td datalabel="Senior Consulting Director">
                       <span class="statusactive"
                         *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active &nbsp;
-                        <span class="ticon_active" (click)="toggleConsultantRole(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_active" (click)="toggleConsultantRole(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.is_consultant==null || item.is_consultant==0 ">Inactive
-                        <span class="ticon_inactive" (click)="toggleConsultantRole(item)"></span>
+                        <span *ngIf="consultantrole==null || consultantrole==0" class="ticon_inactive" (click)="toggleConsultantRole(item)"></span>
                       </span>
                     </td>
                     <!-- <td datalabel="Contract Signed">
@@ -158,7 +159,7 @@
                       <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
                         [routerLink]="['/useraccountsetting',item._id]">No</span>
                     </td> -->
-                    <td datalabel="Action">
+                    <td *ngIf="consultantrole==null || consultantrole==0" datalabel="Action">
                       <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
                     </td>
 

@@ -100,6 +100,7 @@ const appRoutes: Routes = [
     { path:'legaldoclist', component: LegaldoclistComponent},
     { path:'digitalcontract', component: DigitalcontractComponent},
     { path:'usermanagement', component: UsermanagementComponent},
+    { path:'rep-management', component: UsermanagementComponent},
     { path:'trainingreport', component: TrainingcenterreoprtComponent},
     { path:'event', component: EventmanagementComponent},
     { path:'event/:at/:val/:rt', component: EventmanagementComponent},

@@ -22,6 +22,7 @@ export class AdminheaderComponent implements OnInit {
   public idis: any;
   public repdetails: any;
   public reptraininglessondetails: any;
+  public consultantrole: any;
   public interval;
   public repDetailsNew: any = [];
 
@@ -30,6 +31,7 @@ export class AdminheaderComponent implements OnInit {
     window.scrollTo(1000, 0);
     this.type = this.cookie.get('usertype');
     this.idis = this.cookie.get('userid');
+    this.consultantrole = this.cookie.get('is_consultant');
 
     if (this.cookie.check('jwttoken') ==false || this.cookie.check('userid') == false) {
       this.router.navigate(['/']);
