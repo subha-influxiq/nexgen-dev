@@ -6,12 +6,13 @@
 
 
   </div> -->
-  <div class="loder_body" *ngIf="loader==1">
-      <div class="loder_wrapper">
-          <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
-        <div class="loader"></div>
-      </div>
-    </div>
+<div class="loder_body" *ngIf="loader==1">
+  <div class="loder_wrapper">
+    <img src="assets/images/betologo.png" alt="#"
+      style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+    <div class="loader"></div>
+  </div>
+</div>
 
 <app-adminheader></app-adminheader>
 
@@ -19,21 +20,23 @@
 <div class="nextGen_admin_mainwrapper nexgen_digital_contract">
   <div class="page-wrapper s_getmybrand_adminlist">
     <div class="nexgen_adminlist">
-      <div class="user_management_wrapper"  >
+      <div class="user_management_wrapper">
         <div class="user_management_inner">
           <h2>User Management</h2>
 
           <div class="inner_search_wrapper">
             <div class="inner_content_wrapper">
               <div class="search_content">
-                <h3><span>Search by Email: </span> <input type="text" [(ngModel)]="filterval1" (keyup)="searchbyval()"><button>search</button> </h3>
+                <h3><span>Search by Email: </span> <input type="text" [(ngModel)]="filterval1"
+                    (keyup)="searchbyval()"><button>search</button> </h3>
               </div>
               <div class="search_content">
-                <h3> <span>Search by Name:  </span> <input type="text" [(ngModel)]="filterval2" (keyup)="searchbyval()"><button>search</button> </h3>
+                <h3> <span>Search by Name: </span> <input type="text" [(ngModel)]="filterval2"
+                    (keyup)="searchbyval()"><button>search</button> </h3>
               </div>
             </div>
             <div class="clearfix"></div>
-            <input type="text" placeholder="Search..."  [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">
+            <input type="text" placeholder="Search..." [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">
           </div>
 
         </div>
@@ -60,82 +63,105 @@
           </div>
 
           <div class="table-responsive admin_table_wrapper">
-            <div >
+            <div>
               <table class="table">
                 <thead>
-                <tr>
-                  <th scope="col">Date Joined</th>
-                  <!--<th scope="col">User Id</th>-->
-            <!--      <th scope="col">Username </th>-->
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Account Type</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone No.</th>
-                  <th scope="col">Training Completed</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Calender Access</th>
-                  <th scope="col">Contract Signed</th>
-                  <th scope="col">Action</th>
+                  <tr>
+                    <th scope="col">Date Joined</th>
+                    <!--<th scope="col">User Id</th>-->
+                    <!--      <th scope="col">Username </th>-->
+                    <th scope="col">Full Name</th>
+                    <!-- <th scope="col">Last Name</th> -->
+                    <th scope="col">Account Type</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone No.</th>
+                    <th scope="col">Activities</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Calender Access</th>
+                    <th scope="col">Senior Consulting Director</th>
+                    <th scope="col">Action</th>
 
 
-                </tr>
+                  </tr>
                 </thead>
                 <tbody>
+                  <tr *ngFor="let item of singleuserdata | usersearch:listFilter.value">
+                    <td datalabel="Date Joined" [routerLink]="['/useraccountsetting',item._id]">
+                      {{commonservices.showunixtodate1(item.created_at)}} </td>
+                    <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->
+                    <!--  <td [routerLink]="['/useraccountsetting',item._id]">{{item.username}}</td>-->
+                    <td datalabel="Full Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}
+                      {{item.lastname}}</td>
+                    <!-- <td datalabel="Last Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td> -->
+                    <td datalabel="Account Type" [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
+                    <td datalabel="Email">{{item.email}}</td>
+                    <td datalabel="Phone No.">
 
-
-                <tr *ngFor="let item of singleuserdata | usersearch:listFilter.value">
-                  <td datalabel="Date Joined" [routerLink]="['/useraccountsetting',item._id]">{{commonservices.showunixtodate1(item.created_at)}} </td>
-                  <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->
-                <!--  <td [routerLink]="['/useraccountsetting',item._id]">{{item.username}}</td>-->
-                  <td datalabel="First Name" [routerLink]="['/useraccountsetting',item._id]">{{item.firstname}}</td>
-                  <td datalabel="Last Name" [routerLink]="['/useraccountsetting',item._id]">{{item.lastname}}</td>
-                  <td datalabel="Account Type" [routerLink]="['/useraccountsetting',item._id]">{{item.type}}</td>
-                  <td datalabel="Email">{{item.email}}</td>
-                  <td datalabel="Phone No.">
-                    
-                    <span *ngIf="item.phoneno != null">{{item.phoneno}}</span>
+                      <span *ngIf="item.phoneno != null">{{item.phoneno}}</span>
                       <span *ngIf="item.phoneno == null">N/A</span>
-                  </td>
-                  <td datalabel="Training Completed">
-                    <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
-                    <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check" aria-hidden="true"></i></span><br>
-                    <span class="newpanclass">Onboarding Call :
-                      <span *ngIf="item.is_onboarding != null && item.is_onboarding == true"><a (click)="openModal(item,discoverCallModal,'Onboarding')">Yes</a></span>
-                      <span *ngIf="item.is_onboarding == null || item.is_onboarding == false">No</span>
-                    </span><br>
-                    <span class="newpanclass">Discovery Call :
-                        <span *ngIf="item.is_discovery != null && item.is_discovery == true"><a (click)="openModal(item,discoverCallModal,'Discovery')">Yes</a></span>
+                    </td>
+                    <td datalabel="Training Completed">
+                      <span *ngIf="item.trainingpercentage<100">{{item.trainingpercentage.toFixed(2)}}%</span>
+                      <span *ngIf="item.trainingpercentage==100"><i class="fa fa-check"
+                          aria-hidden="true"></i></span><br>
+                      <span class="newpanclass">Onboarding Call :
+                        <span *ngIf="item.is_onboarding != null && item.is_onboarding == true"><a
+                            (click)="openModal(item,discoverCallModal,'Onboarding')">Yes</a></span>
+                        <span *ngIf="item.is_onboarding == null || item.is_onboarding == false">No</span>
+                      </span><br>
+                      <span class="newpanclass">Discovery Call :
+                        <span *ngIf="item.is_discovery != null && item.is_discovery == true"><a
+                            (click)="openModal(item,discoverCallModal,'Discovery')">Yes</a></span>
                         <span *ngIf="item.is_discovery == null || item.is_discovery == false">No</span>
+                      </span><br>
+                      <span class="newpanclass">Contract signed:
+                      <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
+                        <a target="_blank"
+                          href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
+                            class="fa fa-download" aria-hidden="true"></i></a></span>
+                      <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
+                        [routerLink]="['/useraccountsetting',item._id]">No</span></span>
+
+                    </td>
+                    <td datalabel="Status">
+                      <span class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
+                        <span class="ticon_active" (click)="togglestatus(item)"></span>
                       </span>
+                      <span class="statusinactive" *ngIf="item.status==null || item.status==0 ">Inactive
+                        <span class="ticon_inactive" (click)="togglestatus(item)"></span>
+                      </span>
+                    </td>
+                    <td datalabel="Calender Access">
+                      <span class="statusactive"
+                        *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
+                        <span class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
+                      </span>
+                      <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
+                        <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
+                      </span>
+                    </td>
+                    <td datalabel="Senior Consulting Director">
+                      <span class="statusactive"
+                        *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active &nbsp;
+                        <span class="ticon_active" (click)="toggleConsultantRole(item)"></span>
+                      </span>
+                      <span class="statusinactive" *ngIf="item.is_consultant==null || item.is_consultant==0 ">Inactive
+                        <span class="ticon_inactive" (click)="toggleConsultantRole(item)"></span>
+                      </span>
+                    </td>
+                    <!-- <td datalabel="Contract Signed">
+                      <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
+                        <a target="_blank"
+                          href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
+                            class="fa fa-download" aria-hidden="true"></i></a></span>
+                      <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
+                        [routerLink]="['/useraccountsetting',item._id]">No</span>
+                    </td> -->
+                    <td datalabel="Action">
+                      <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
+                    </td>
 
-                  </td>
-                  <td datalabel="Status">
-                    <span  class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
-                    <span class="ticon_active" (click)="togglestatus(item)"></span>
-                    </span>
-                    <span class="statusinactive" *ngIf="item.status==null || item.status==0 ">Inactive
-                    <span class="ticon_inactive" (click)="togglestatus(item)"></span>
-                    </span>
-                  </td>
-                  <td datalabel="Calender Access">
-                    <span  class="statusactive" *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
-                    <span class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
-                    </span>
-                    <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
-                    <span class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
-                    </span>
-                  </td>
-                  <td datalabel="Contract Signed">
-                    <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
-                      <a target="_blank" href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i class="fa fa-download" aria-hidden="true"></i></a></span>
-                    <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 " [routerLink]="['/useraccountsetting',item._id]">No</span>
-                  </td>
-                  <td datalabel="Action">
-                    <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
-                  </td>
-
-                </tr>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -165,39 +191,58 @@
 
 
 <ng-template #formtemplate>
-  <div class="modal-body brandmanagement_modal newNexgen_modal" >
+  <div class="modal-body brandmanagement_modal newNexgen_modal">
     <h1>Add/Edit {{menuval}}</h1>
-    <form novalidate  (ngSubmit)="formsubmit()">
+    <form novalidate (ngSubmit)="formsubmit()">
       <div class="form-group row" [formGroup]="dataForm" *ngFor="let item of formdataval; let i=index;">
         <div *ngIf="(isedit==0 || (item.isaddonly==null && item.isaddonly!=true))" class="form_floating_div">
-          <label *ngIf="item.inputtype!='hidden'"  class="col-sm-4 col-form-label col-form-label-sm">{{item.label}}</label>
+          <label *ngIf="item.inputtype!='hidden'"
+            class="col-sm-4 col-form-label col-form-label-sm">{{item.label}}</label>
           <div class="col-sm-8">
 
 
-            <input *ngIf="item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden' " [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder">
-            <input type="checkbox" *ngIf="item.inputtype=='checkbox'" [name]="item.name" [formControl]="dataForm.controls[item.name]"  class="form-control" >
+            <input *ngIf="item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden' "
+              [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
+              class="form-control" [placeholder]="item.placeholder">
+            <input type="checkbox" *ngIf="item.inputtype=='checkbox'" [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" class="form-control">
 
-            <input *ngIf="item.inputtype=='email' " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder">
+            <input *ngIf="item.inputtype=='email' " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control"
+              [placeholder]="item.placeholder">
 
 
-            <select *ngIf="item.inputtype=='select' && item.multiple==true" [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control" multiple="multiple">
+            <select *ngIf="item.inputtype=='select' && item.multiple==true" [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" class="form-control" multiple="multiple">
               <option value="">{{item.defaultchoice}}</option>
-              <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">{{selectval[item.selectvalue]}}</option>
+              <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">
+                {{selectval[item.selectvalue]}}</option>
             </select>
-            <select *ngIf="item.inputtype=='select' && item.multiple==null" [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control" >
+            <select *ngIf="item.inputtype=='select' && item.multiple==null" [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" class="form-control">
               <option value="">{{item.defaultchoice}}</option>
-              <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">{{selectval[item.selectvalue]}}</option>
+              <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">
+                {{selectval[item.selectvalue]}}</option>
             </select>
 
-            <textarea *ngIf="item.inputtype=='textarea' || item.inputtype=='editor' " [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control" [placeholder]="item.placeholder" ></textarea>
+            <textarea *ngIf="item.inputtype=='textarea' || item.inputtype=='editor' " [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" class="form-control"
+              [placeholder]="item.placeholder"></textarea>
 
             <!--<date-range-picker *ngIf="item.inputtype=='daterange'" [options]="daterangepickerOptions" [class]="'col-md-12 form-control'"  (rangeSelected)="rangeSelected($event,item.name)" ></date-range-picker>-->
-            <input *ngIf="item.inputtype=='daterange' " id="inputdate{{item.name}}" [name]="item.name" [formControl]="dataForm.controls[item.name]" type="text" class="form-control" [placeholder]="item.placeholder" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker  [minDate]="minDate">
+            <input *ngIf="item.inputtype=='daterange' " id="inputdate{{item.name}}" [name]="item.name"
+              [formControl]="dataForm.controls[item.name]" type="text" class="form-control"
+              [placeholder]="item.placeholder"
+              [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker"
+              bsDaterangepicker [minDate]="minDate">
 
 
             <!-- <input *ngIf="item.inputtype=='daterange' " [name]="item.name" [formControl]="dataForm.controls[item.name]" type="hidden" class="form-control" [placeholder]="item.placeholder">-->
 
-            <input *ngIf="item.inputtype=='url'"  pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$" [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control" [placeholder]="item.placeholder">
+            <input *ngIf="item.inputtype=='url'"
+              pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+              [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
+              class="form-control" [placeholder]="item.placeholder">
 
 
             <div *ngIf="item.inputtype=='image'" class="btn_submit">
@@ -207,24 +252,18 @@
               <!--  <input style="display: none" type="file" (change)="onFileChanged($event,item,i)" #fileInput>-->
               <input style="display: none" type="file" (change)="fileChangeEvent($event,i)" #fileInput>
 
-              <div  class="imgwrapperImage">
+              <div class="imgwrapperImage">
                 <!--{{i}}-->
-                <image-cropper class="image_cropper"
-                               [imageChangedEvent]="imageChangedEvent[i]"
-                               [imageBase64]="unsafebase64imgdata[i]"
-                               [maintainAspectRatio]="true"
-                               [imageQuality]="99"
-                               [aspectRatio]="(item.aspectRatio)"
-                               [resizeToWidth]="(item.resizeToWidth)"
-                               [outputType]="file"
-                               format="png"
-                               (imageCropped)="imageCropped($event,item,i)"
-                               (imageLoaded)="imageLoaded()"
-                               (loadImageFailed)="loadImageFailed()"
-                ></image-cropper>
+                <image-cropper class="image_cropper" [imageChangedEvent]="imageChangedEvent[i]"
+                  [imageBase64]="unsafebase64imgdata[i]" [maintainAspectRatio]="true" [imageQuality]="99"
+                  [aspectRatio]="(item.aspectRatio)" [resizeToWidth]="(item.resizeToWidth)" [outputType]="file"
+                  format="png" (imageCropped)="imageCropped($event,item,i)" (imageLoaded)="imageLoaded()"
+                  (loadImageFailed)="loadImageFailed()"></image-cropper>
 
-                <img *ngIf="croppedImage[i]!=null || isedit==1" style="height: auto; width: 100%;"  [src]="croppedImage[i]" /><br>
-                <input *ngIf="croppedImage[i]!=null || isedit==1 " type="button" value="Save" class="button_save" (click)="saveimg(item,i,messagemodal)">
+                <img *ngIf="croppedImage[i]!=null || isedit==1" style="height: auto; width: 100%;"
+                  [src]="croppedImage[i]" /><br>
+                <input *ngIf="croppedImage[i]!=null || isedit==1 " type="button" value="Save" class="button_save"
+                  (click)="saveimg(item,i,messagemodal)">
                 <!--<img style="height: 314px;width: 231px"  [src]="base64imgdata" />-->
               </div>
               <!--<div class="col-md-4 imguploadsuccess" *ngIf="item.filename!=null">
@@ -234,14 +273,16 @@
 
 
 
-            <span  class="error" *ngIf="dataForm.controls[item.name]!=null &&  item.validationrule!=null && !dataForm.controls[item.name].valid && dataForm.controls[item.name].touched">{{item.label}} {{item.validationerrormsg}}</span>
+            <span class="error"
+              *ngIf="dataForm.controls[item.name]!=null &&  item.validationrule!=null && !dataForm.controls[item.name].valid && dataForm.controls[item.name].touched">{{item.label}}
+              {{item.validationerrormsg}}</span>
 
           </div>
         </div>
 
       </div>
       <div class="form-group btn_submit">
-        <button type="submit" > Submit</button>
+        <button type="submit"> Submit</button>
       </div>
     </form>
   </div>
@@ -291,33 +332,35 @@
 </ng-template>
 <!--Common message modal-->
 <ng-template #discoverCallModal>
-    <div class="modal-body brandmanagement_modal">
-        <div class="logo_wrapper">
-            <img src="assets/images/logo.png">
-          </div>
-          <div class="listevent_inner_wrapper">
-              <div class="inner_head_wrapper">
-                  <h4>{{eventtype}} Call Appointments</h4>
-              </div>
-                  <div class="main_inner_content main_inner_contentnew">
+  <div class="modal-body brandmanagement_modal">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="listevent_inner_wrapper">
+      <div class="inner_head_wrapper">
+        <h4>{{eventtype}} Call Appointments</h4>
+      </div>
+      <div class="main_inner_content main_inner_contentnew">
 
-          <div style="width: 100%" *ngIf="eventList.length>0"> <!-- | slice:0:2 -->
-               <span>
-                  <div  style="width: 32%;float: left" class="one " *ngFor="let item of eventList;let j=index;" >
-               <p class="event_f_name">{{item.eventdata.meetingwith}}</p>
-                <p class="event_f_date"><b>Date:</b> {{item.startdate}}
-                </p>
-                <p class="event_f_time"><b>Time :</b> {{commonservices.timeConv24to12(item.starttime_only[1])}} - {{commonservices.timeConv24to12(item.endtime_only[1])}}</p>
-                <p class="event_f_zone"><b>Time Span :</b> {{item.timespan}} Minutes</p>
-                <p class="event_f_zone"><b>Time Zone :</b> {{commonservices.showtimezoneByzonename(item.timezone)}}</p>
-                  </div>
-              </span>
+        <div style="width: 100%" *ngIf="eventList.length>0">
+          <!-- | slice:0:2 -->
+          <span>
+            <div style="width: 32%;float: left" class="one " *ngFor="let item of eventList;let j=index;">
+              <p class="event_f_name">{{item.eventdata.meetingwith}}</p>
+              <p class="event_f_date"><b>Date:</b> {{item.startdate}}
+              </p>
+              <p class="event_f_time"><b>Time :</b> {{commonservices.timeConv24to12(item.starttime_only[1])}} -
+                {{commonservices.timeConv24to12(item.endtime_only[1])}}</p>
+              <p class="event_f_zone"><b>Time Span :</b> {{item.timespan}} Minutes</p>
+              <p class="event_f_zone"><b>Time Zone :</b> {{commonservices.showtimezoneByzonename(item.timezone)}}</p>
+            </div>
+          </span>
 
-          </div>
+        </div>
 
       </div>
     </div>
 
-    </div>
-  </ng-template>
+  </div>
+</ng-template>
 <app-footer></app-footer>

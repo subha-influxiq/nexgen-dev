@@ -114,6 +114,27 @@ export class UsermanagementComponent implements OnInit {
         this.getUserLists();
       });
   }
+
+  toggleConsultantRole(item: any) {
+    this.loader = 1;
+    let consultantrole: any;
+    if(item.is_consultant!=null) consultantrole=1-item.consultantrole;
+    if (item.is_consultant == null) consultantrole = 1;
+    console.log('item.is_consultant');
+    console.log(item.is_consultant);
+    const link = this.commonservices.nodesslurl + 'addorupdatedata';
+    /* console.log('link');
+     console.log(link);*/
+    this._http.post(link, { source: 'users', data: { id: item._id, is_consultant: consultantrole } })
+      .subscribe(res => {
+        this.getUserLists();
+        this.loader = 0;
+      }, error => {
+        console.log('Oooops!');
+        this.loader = 0;
+        this.getUserLists();
+      });
+  }
   searchbyval() {
     this.filterval = '';
     if (this.filterval1 != '' && this.filterval1 != null) {
