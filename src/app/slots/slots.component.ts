@@ -6,6 +6,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
+import {ModalOptions} from "ngx-bootstrap";
 declare var moment;
 declare var $:any;
 
@@ -182,6 +183,17 @@ export class SlotsComponent implements OnInit {
         });
   }*/
   booknowmodal(template:TemplateRef<any>,slotdata,template1:TemplateRef<any>) {
+      const config: ModalOptions = {
+          backdrop: 'static',
+          class: 'booknowmodal',
+          keyboard: false,
+          animated: true,
+          ignoreBackdropClick: true,
+          initialState: {
+              data1: 'new-user',
+              username: 'test'
+          }
+      };
     this.getUserDetails(slotdata.allslotsuserid);
 
     console.log('/**/*/*/*/**/*/*/*/*/*/*/*/*/*',this.cookeiservice.get('useremail'));
@@ -203,15 +215,27 @@ export class SlotsComponent implements OnInit {
             repsmsg: [''],
           });
 
+            const config: ModalOptions = {
+                backdrop: 'static',
+                class: 'booknowmodal',
+                keyboard: false,
+                animated: true,
+                ignoreBackdropClick: true,
+                initialState: {
+                    data1: 'new-user',
+                    username: 'test'
+                }
+            };
+
           if(result.res!=null && result.res[0]!=null)this.leaddata=result.res[0];
           setTimeout(() => {
-            this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+            this.modalRef = this.modal.show(template, config);
           }, 2000);
         });
         break;
       default:
         setTimeout(() => {
-          this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
+          this.modalRef = this.modal.show(template, config);
         }, 1000);
 
         this.dataForm = this.kp.group({

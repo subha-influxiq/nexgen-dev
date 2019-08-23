@@ -9,6 +9,7 @@ import { ImageCroppedEvent } from "ngx-image-cropper";
 import { CookieService } from "ngx-cookie-service";
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from "ngx-uploader";
 import { routerNgProbeToken } from "@angular/router/src/router_module";
+import {ModalOptions} from "ngx-bootstrap";
 
 declare var moment: any;
 declare var $: any;
@@ -523,7 +524,18 @@ export class ListingComponent implements OnInit {
             this.geteditdata();
 
         }
-        this.modalRef = this.modal.show(template);
+
+        const config: ModalOptions = {
+            backdrop: 'static',
+            keyboard: false,
+            animated: true,
+            ignoreBackdropClick: true,
+            initialState: {
+                data1: 'new-user',
+                username: 'test'
+            }
+        };
+        this.modalRef = this.modal.show(template,config);
         console.log(this.dataForm);
     }
 
