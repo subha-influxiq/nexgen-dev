@@ -750,6 +750,7 @@ body{ padding:0; margin: 0;}
 }
 .rep_dashboard_wrapper2_btn_wrapper_sub{width: 100%;}
 .sherelinkwrapper {display: flex; align-items: center; justify-content: space-between;width:100%;}
+
 .sherelinkwrapper .ascol{    
     width: 33.2%;
     background: #0f9e9c;
@@ -758,8 +759,11 @@ body{ padding:0; margin: 0;}
     display: flex;
     justify-content: center;
 }
-.urllink{overflow: hidden;}
-.rep_dashboard_wrapper2_btn_wrapper.asnewclass{margin: 0 auto; width: 70%; margin-bottom: 20px;}
+.sherelinkwrapper .ascol1{width: 27%;}
+.sherelinkwrapper .ascol2{width: 39%;}
+.sherelinkwrapper .ascol2 .urllink a{white-space: nowrap;}
+.urllink{overflow: hidden; width: 86%;}
+.rep_dashboard_wrapper2_btn_wrapper.asnewclass{margin: 0 auto; width: 98%; margin-bottom: 20px;}
 .sherelinkwrapper .ascol1{justify-content: flex-start;}
 .sherelinkwrapper .ascol2{justify-content: space-between;}
     .urlcopybtn {
@@ -797,7 +801,9 @@ body{ padding:0; margin: 0;}
     .sherelinkwrapper .ascol3 a.facebook{background-color: #3B5998!important;}
     .sherelinkwrapper .ascol3 a.google-plus{background-color: #db5a3c!important;}
     .sherelinkwrapper .ascol3 a.youtube{background-color: #bb0000!important;;}
-    .sherelinkwrapper .ascol3 a.pinterest{background-color: #bb0000!important;}
+    .sherelinkwrapper .ascol3 a.pinterest{background-color: #d6c7c7!important;}
+    .sherelinkwrapper .ascol3 a.linkedin{background-color: #0077B5!important;}
+    .sherelinkwrapper .ascol3 a.tumblr{background-color: #34526f!important;}
 @media screen and (max-width: 1840px){
 
     .a_new_landing_img1 {left: -130px;}
@@ -990,6 +996,7 @@ body{ padding:0; margin: 0;}
 }
 
 @media screen and (max-width: 1360px) {
+    .sherelinkwrapper .ascol1 p {font-size: 19px;}
 
     .landing_form_right {
         width: 62%;
@@ -1140,7 +1147,7 @@ body{ padding:0; margin: 0;}
 }
 
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1199px) {
     .sherelinkwrapper{flex-wrap: wrap;}
     .sherelinkwrapper .ascol {width: 100%;}
     .sherelinkwrapper .ascol2 {border: 1px solid #dddddd;}
