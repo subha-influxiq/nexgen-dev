@@ -23,10 +23,12 @@ export class UsermanagementComponent implements OnInit {
   public eventList:any = [];
   public eventtype:any;
   public consultantrole:any;
+  public usertype:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
   
    this.consultantrole = this.cookieservice.get('is_consultant'); //to know whether it is admin or senior consultant
+   this.usertype = this.cookieservice.get('usertype');
    this.getUserLists();
   }
 
@@ -38,10 +40,12 @@ export class UsermanagementComponent implements OnInit {
     link = this.commonservices.nodesslurl+'trainingreport';
     if(this.consultantrole==null || this.consultantrole ==0){ //when admin accesses all reps' details
       data = {};
-    }else{ //when senior consultant accesses his reps' details
+    }
+    if(this.consultantrole!=null && this.consultantrole ==1){ //when senior consultant accesses his reps' details
       data =  {  affid: this.cookieservice.get('userid')};
     }
-    
+    console.log(data);
+    console.log('consultantrole'+this.consultantrole);
     this._http.post(link,data)
         .subscribe(res=>{
             let result;

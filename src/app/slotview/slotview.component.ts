@@ -44,6 +44,8 @@ export class SlotviewComponent implements OnInit {
    public timeSpanView: boolean = false;
    public timeSpanVal: any = "15";
    public loader: boolean = false;
+   public modalReference : BsModalRef;
+   public selectedlead:any;
 
   constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
@@ -318,6 +320,7 @@ export class SlotviewComponent implements OnInit {
         this._http.post(link, { source:'leads_view', condition: { "created_by_object": userId }}).subscribe(res => {
             let result: any = res;
             this.allLeads = result.res;
+            console.log(this.allLeads);
         });
     }
 
@@ -332,6 +335,7 @@ export class SlotviewComponent implements OnInit {
                     this.leadsSuggestion.push(this.allLeads[c]);
                 } else if(this.allLeads[c].lastname != null && this.allLeads[c].lastname.toLowerCase().indexOf(keyword.toLowerCase())>-1){
                     this.leadsSuggestion.push(this.allLeads[c]);
+                    
                 } 
             }
         } else {
@@ -361,6 +365,12 @@ export class SlotviewComponent implements OnInit {
 
         this.leadsSuggestionFlug = false;
         this.leadsSuggestion = [];
+        this.selectedlead = leadsData;
+    }
+
+    // added by chandrani 
+    openLeadDetailsModal(item:any,template:TemplateRef<any>){
+        this.modalReference = this.modal.show(template);
     }
 
 }

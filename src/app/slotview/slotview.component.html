@@ -3,149 +3,185 @@
 <!-- Loader start -->
 <div class="loder_body" *ngIf="loader">
     <div class="loder_wrapper">
-        <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
-      <div class="loader"></div>
+        <img src="assets/images/betologo.png" alt="#"
+            style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+        <div class="loader"></div>
     </div>
-  </div>
-  <!-- Loader end -->
+</div>
+<!-- Loader end -->
 
 
 <div class="user_account_setting_wrapper user_account_setting_wrappernew">
-<div class="account_inner_wrapper">
-<div class=" account_inner_wrapper1 ">
-    <div class="listevent_inner_wrapper" *ngIf="slotView">
-        <div class="inner_head_wrapper">
-            <h4 [innerHtml]="headerText.hedaerH4"></h4>
-            <span>{{ headerText.span }}</span>
-        </div>
+    <div class="account_inner_wrapper">
+        <div class=" account_inner_wrapper1 ">
+            <div class="listevent_inner_wrapper" *ngIf="slotView">
+                <div class="inner_head_wrapper">
+                    <h4 [innerHtml]="headerText.hedaerH4"></h4>
+                    <span>{{ headerText.span }}</span>
+                </div>
 
-        <div class="event_content_wrapper contentnewcon1wrapper">
-            <div class="main_inner_content main_inner_contentnew contentnewcon1">
-                <form>
-                    <h3 class="timezone_class">search by date</h3>
-                    <div class="form-group">
+                <div class="event_content_wrapper contentnewcon1wrapper">
+                    <div class="main_inner_content main_inner_contentnew contentnewcon1">
+                        <form>
+                            <h3 class="timezone_class">search by date</h3>
+                            <div class="form-group">
 
-                      <!-- <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"> -->
+                                <!-- <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"> -->
 
-                        <input type="text" placeholder="Select Date Range" class="form-control" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}" [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }" #drp="bsDaterangepicker" bsDaterangepicker>
+                                <input type="text" placeholder="Select Date Range" class="form-control"
+                                    [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
+                                    [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
+                                    #drp="bsDaterangepicker" bsDaterangepicker>
 
+                            </div>
+                            <div class="form-group row form-groupbtndiv">
+
+                                <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
+                                <button type="submit" class="btn_search" (click)="setdatetonull()"> show all </button>
+                            </div>
+
+                        </form>
                     </div>
-                        <div class="form-group row form-groupbtndiv">
+                    <div class="main_inner_content main_inner_contentnew contentnewcon1">
+                        <form>
+                            <h3 class="timezone_class">my timezone</h3>
+                            <div class="form-group">
 
-                               <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
-                        <button type="submit" class="btn_search" (click)="setdatetonull()"> show all </button>
+                                <select class="form-control select_inpu2" (change)="settimezone()"
+                                    [(ngModel)]="timezoneval" [ngModelOptions]="{standalone: true}">
+                                    <option value="">Select a Timezone</option>
+                                    <option *ngFor="let item of timezone" value="{{item.value}}">{{item.show}} </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group row form-groupbtndiv">
+                                <button type="submit" class="btn_search hide"> search </button>
+                                <button type="submit" class="btn_search"> update </button>
+                            </div>
+                        </form>
                     </div>
 
-                </form>
-            </div>
-            <div class="main_inner_content main_inner_contentnew contentnewcon1">
-                <form>
-                    <h3 class="timezone_class">my timezone</h3>
-                    <div class="form-group">
+                    <div *ngIf="timeSpanView" class="main_inner_content main_inner_contentnew contentnewcon1">
+                        <form>
+                            <h3 class="timezone_class">Select time span</h3>
+                            <div class="form-group">
 
-                        <select class="form-control select_inpu2" (change)="settimezone()" [(ngModel)]="timezoneval" [ngModelOptions]="{standalone: true}">
-                                <option value="">Select a Timezone</option>
-                            <option *ngFor="let item of timezone" value="{{item.value}}">{{item.show}} </option>
-                        </select>
+                                <select class="form-control select_inpu2" (change)="geteventarr()"
+                                    [(ngModel)]="timeSpanVal" [ngModelOptions]="{standalone: true}">
+                                    <option value="">Select one</option>
+                                    <option value="15">15 minutes</option>
+                                    <option value="30">30 minutes</option>
+                                    <option value="60">60 minutes</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
 
-                        <div class="form-group row form-groupbtndiv">
-                        <button type="submit" class="btn_search hide"> search </button>
-                        <button type="submit" class="btn_search"> update </button>
-                    </div>
-                </form>
-            </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="main_inner_content main_inner_contentnew">
 
-            <div *ngIf="timeSpanView" class="main_inner_content main_inner_contentnew contentnewcon1">
-                <form>
-                    <h3 class="timezone_class">Select time span</h3>
-                    <div class="form-group">
-
-                        <select class="form-control select_inpu2" (change)="geteventarr()" [(ngModel)]="timeSpanVal" [ngModelOptions]="{standalone: true}">
-                            <option value="">Select one</option>
-                            <option value="15">15 minutes</option>
-                            <option value="30">30 minutes</option>
-                            <option value="60">60 minutes</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            
-            <div class="clearfix"></div>
-        </div>
-        <div class="main_inner_content main_inner_contentnew">
-
-            <div style="width: 100%" *ngFor="let item of allslots;let i=index;"> <!-- | slice:0:2 -->
-                 <span *ngIf="item.slots!=null && item.slots.length>0">
-                    <div  style="width: 32%;float: left" class="one " *ngFor="let eachslots of item.slots;let j=index;" >
-                 <!-- <p class="event_f_name">{{item.meetingwith}}</p>
+                    <div style="width: 100%" *ngFor="let item of allslots;let i=index;">
+                        <!-- | slice:0:2 -->
+                        <span *ngIf="item.slots!=null && item.slots.length>0">
+                            <div style="width: 32%;float: left" class="one "
+                                *ngFor="let eachslots of item.slots;let j=index;">
+                                <!-- <p class="event_f_name">{{item.meetingwith}}</p>
                   <p class="event_f_date"><b>Date:</b> {{item.startdate}}
                   </p>
                   <p class="event_f_time"><b>Time :</b> {{showtime(item,eachslots)}}</p>
                   <p class="event_f_zone"><b>Timezone :</b> {{_commonservice.showtimezone(item.timezone)}}</p>-->
 
-                          <app-slots [itemdata]="item" [itemid]="j"></app-slots>
+                                <app-slots [itemdata]="item" [itemid]="j"></app-slots>
+                            </div>
+                        </span>
+
                     </div>
-                </span>
 
-            </div>
-
-        </div>
-    </div>
-
-    <!-- This block for book-a-closer start -->
-    <div class="listevent_inner_wrapper" *ngIf="slotView == false">
-        <div class="inner_head_wrapper">
-            <h4>{{ headerText.hedaerH4 }}</h4>
-            <span>{{ headerText.span }}</span>
-        </div>
-
-        <div class="main_inner_content main_inner_contentnew ngcontainerdivwrapper">
-         <form novalidate [formGroup]="closerLeadForm" (ngSubmit)="closerLeadFormSubmit();">
-
-            <div class="form-group row">
-                <label class="col-sm-12 col-form-label">Leads:</label>
-                <div class="col-sm-12">
-                    <input type="text"  class="form-control" [formControl]="closerLeadForm.controls['leads']" (keyup)="leadsSuggest($event);" placeholder="Type leads name..." />
-                    <div class="col-sm-12 ngcontainerdiv">
-                        <ng-container *ngIf="leadsSuggestionFlug">
-                            <p *ngFor="let l of leadsSuggestion;let i = index;" (click)="selectLeads(l);" class="leads-option">{{ l.firstname }} {{ l.lastname }}</p>
-                        </ng-container>
-                    </div>
-                    <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads Required</span>
                 </div>
             </div>
 
-            <div class="form-group row" *ngIf="products.length > 0">
-                <label class="col-sm-12 col-form-label">Product</label>
-                <div class="col-sm-12">
-
-                    <select [formControl]="closerLeadForm.controls['product']" class="form-control" >
-                        <option value="">Select a Product</option>
-                        <option *ngFor="let i of products;" value="{{ i.product_id }}">{{ i.product_name }}</option>
-                    </select>
-
-                    <span  class="error" *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.product.errors">Product Required</span>
+            <!-- This block for book-a-closer start -->
+            <div class="listevent_inner_wrapper" *ngIf="slotView == false">
+                <div class="inner_head_wrapper">
+                    <h4>{{ headerText.hedaerH4 }}</h4>
+                    <span>{{ headerText.span }}</span>
                 </div>
+
+                <div class="main_inner_content main_inner_contentnew ngcontainerdivwrapper">
+                    <form novalidate [formGroup]="closerLeadForm" (ngSubmit)="closerLeadFormSubmit();">
+
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-form-label">Leads:</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" [formControl]="closerLeadForm.controls['leads']"
+                                    (keyup)="leadsSuggest($event);" placeholder="Type leads name..." />
+                                    <a *ngIf="selectedlead!=null" (click)="openLeadDetailsModal(selectedlead,leaddetails)"><i
+                                        class="fa fa-info-circle" aria-hidden="true"></i></a>
+
+                                <div class="col-sm-12 ngcontainerdiv">
+                                    <ng-container *ngIf="leadsSuggestionFlug">
+                                        <p *ngFor="let l of leadsSuggestion;let i = index;" (click)="selectLeads(l);"
+                                            class="leads-option">{{ l.firstname }} {{ l.lastname }}
+                                            ({{l.email}},{{l.mobile}})</p>
+                                    </ng-container>
+                                </div>
+                                <span class="error"
+                                    *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.leads.errors">Leads
+                                    Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" *ngIf="products.length > 0">
+                            <label class="col-sm-12 col-form-label">Product</label>
+                            <div class="col-sm-12">
+
+                                <select [formControl]="closerLeadForm.controls['product']" class="form-control">
+                                    <option value="">Select a Product</option>
+                                    <option *ngFor="let i of products;" value="{{ i.product_id }}">{{ i.product_name }}
+                                    </option>
+                                </select>
+
+                                <span class="error"
+                                    *ngIf="closerLeadFormSubmitFlug && closerLeadForm.controls.product.errors">Product
+                                    Required</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row form-groupbtndiv">
+
+                            <button> save</button>
+                            <button type="button" (click)="goback()"> cancel</button>
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+
+                <div class="clearfix"></div>
             </div>
-
-            <div class="form-group row form-groupbtndiv">
-
-                    <button> save</button>
-                    <button type="button" (click)="goback()"> cancel</button>
-                    <div class="clearfix"></div>
-
-            </div>
-             <div class="clearfix"></div>
-        </form>
-      </div>
-
-        <div class="clearfix"></div>
+            <!-- This block for book-a-closer end -->
+        </div>
     </div>
-    <!-- This block for book-a-closer end -->
-</div>
-</div>
 
 </div>
 
 <app-footer *ngIf="blockHeaderFooterBlock"></app-footer>
+
+<!--Common confirmation modal-->
+<ng-template #leaddetails>
+    <div class="modal-body brandmanagement_modal">
+      <div class="logo_wrapper">
+        <img src="assets/images/logo.png">
+      </div>
+      <div class="message_success">
+          <p><span>Name : </span><span>{{selectedlead.firstname}} {{selectedlead.lastname}}</span></p>
+          <p><span>Email Address : </span>{{selectedlead.email}}</p>
+          <p><span>Phone No. : </span>{{selectedlead.mobile}}</p>
+          <!-- <p>{{selectedlead.firstname}}</p> -->
+      </div>
+    </div>
+    <div>
+    </div>
+  </ng-template>
