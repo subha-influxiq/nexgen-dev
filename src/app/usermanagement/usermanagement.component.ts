@@ -39,15 +39,16 @@ export class UsermanagementComponent implements OnInit {
     this.loader = 1;
     let link:any;
     let data:any = {};
+    link = this.commonservices.nodesslurl+'trainingreport';
     if(this.consultantrole==null || this.consultantrole ==0){
-      link = this.commonservices.nodesslurl+'trainingreport';
+     // link = this.commonservices.nodesslurl+'trainingreport';
       data = {};
     }else{
       // link = this.commonservices.nodesslurl+ 'datalist?token=' + this.cookieservice.get('jwttoken');
-      // data =  { source: 'user_training', condition: { affid_object: this.cookieservice.get('userid') } ,"sourceobj":["affid"]};
+      data =  {  affid: this.cookieservice.get('userid')};
     }
-    link = this.commonservices.nodesslurl+'trainingreport';
-    data = {};
+    
+    // data = {};
     this._http.post(link,data)
         .subscribe(res=>{
             let result;
