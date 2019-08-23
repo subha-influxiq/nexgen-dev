@@ -25,13 +25,9 @@ export class UsermanagementComponent implements OnInit {
   public consultantrole:any;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
-    console.log("this.cookieservice.get('is_consultant')");
-   console.log(this.cookieservice.get('is_consultant'));
-   console.log(this.cookieservice.get('userid'));
-   this.consultantrole = this.cookieservice.get('is_consultant');
+  
+   this.consultantrole = this.cookieservice.get('is_consultant'); //to know whether it is admin or senior consultant
    this.getUserLists();
-   this.commonservices.timeConv24to12("18:00:00");
-   
   }
 
   getUserLists(){
@@ -40,15 +36,12 @@ export class UsermanagementComponent implements OnInit {
     let link:any;
     let data:any = {};
     link = this.commonservices.nodesslurl+'trainingreport';
-    if(this.consultantrole==null || this.consultantrole ==0){
-     // link = this.commonservices.nodesslurl+'trainingreport';
+    if(this.consultantrole==null || this.consultantrole ==0){ //when admin accesses all reps' details
       data = {};
-    }else{
-      // link = this.commonservices.nodesslurl+ 'datalist?token=' + this.cookieservice.get('jwttoken');
+    }else{ //when senior consultant accesses his reps' details
       data =  {  affid: this.cookieservice.get('userid')};
     }
     
-    // data = {};
     this._http.post(link,data)
         .subscribe(res=>{
             let result;
@@ -56,28 +49,17 @@ export class UsermanagementComponent implements OnInit {
             if(result.status=='error'){
                 console.log('Oopss');
             }else {
-              if(result.data!=null){
+              if(result.data!=null){  
                 for(let i in result.data){
                   if(result.data[i].type=='rep'){
                     this.singleuserdata.push(result.data[i]);
-                    
                     setTimeout(()=>{
                       this.loader = 0;
                     },1000);
                   }
                   
                 }}
-                if(result.res!=null){
-                  for(let i in result.res){
-                    if(result.res[i].type=='rep'){
-                      this.singleuserdata.push(result.res[i]);
-                      
-                      setTimeout(()=>{
-                        this.loader = 0;
-                      },1000);
-                    }
-                    
-                  }}
+                
                 }
         })
   }
