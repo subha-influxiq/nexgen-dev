@@ -116,7 +116,7 @@
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" [formControl]="closerLeadForm.controls['leads']"
                                     (keyup)="leadsSuggest($event);" placeholder="Type leads name..." />
-                                    <a *ngIf="selectedlead!=null" (click)="openLeadDetailsModal(selectedlead,leaddetails)"><i
+                                    <a class="helpwrapper" *ngIf="selectedlead!=null" (click)="openLeadDetailsModal(selectedlead,leaddetails)"><i
                                         class="fa fa-info-circle" aria-hidden="true"></i></a>
 
                                 <div class="col-sm-12 ngcontainerdiv">
