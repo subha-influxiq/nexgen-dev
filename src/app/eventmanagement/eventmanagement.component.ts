@@ -16,7 +16,7 @@ export class EventmanagementComponent implements OnInit {
   public tabledatalis:any=[];
   public formdata:any;
   public datasource:any;
-  public sourcecondition:any
+  public sourcecondition:any;
   private val: any;
   public accesstoken: any;
   private rt: any;

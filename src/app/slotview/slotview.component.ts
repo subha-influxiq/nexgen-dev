@@ -348,8 +348,6 @@ export class SlotviewComponent implements OnInit {
         this.closerLeadFormSubmitFlug = true;
         if(this.closerLeadForm.valid) {
             this.slotView = true;
-            console.log('OKKKKKK', this.slotView);
-            console.log(this.closerLeadForm.value);
             this.geteventarr();
         }
     }
@@ -359,13 +357,12 @@ export class SlotviewComponent implements OnInit {
             leads: leadsData.firstname + ' ' + leadsData.lastname
         });
         this.cookeiservice.set('leadsId', leadsData._id);
-
         this.products = leadsData.productname;
-        console.log('Product:=======', this.products);
-
         this.leadsSuggestionFlug = false;
         this.leadsSuggestion = [];
         this.selectedlead = leadsData;
+        console.log('this.selectedlead');
+        console.log(this.selectedlead);
     }
 
     // added by chandrani 
