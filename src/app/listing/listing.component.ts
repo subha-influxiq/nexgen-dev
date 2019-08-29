@@ -895,7 +895,8 @@ export class ListingComponent implements OnInit {
         
         
     }
-    openDiscoverCallModal(val: any, template: TemplateRef<any>) {
+    openDiscoverCallModal(leadval:any,val: any, template: TemplateRef<any>) {
+        this.selectedlead = leadval;
         this.productlist = val;
         console.log(this.productlist);
         setTimeout(()=>{
@@ -904,11 +905,16 @@ export class ListingComponent implements OnInit {
         
         
     }
-    productsubmit(){
+    productsubmit(leadid:any){
         if(this.selectedproductid==''){
             this.productErrorFlag = 1; 
         }else{
             this.productErrorFlag = 0; 
+            this.modalRef2.hide();
+            setTimeout(()=>{
+                this.router.navigateByUrl('/book-a-closer/'+leadid+'/'+this.selectedproductid);
+            },50);
+            
         }
         
     }

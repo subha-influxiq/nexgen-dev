@@ -265,7 +265,7 @@
                                             <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
                                             <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
-                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item.productname,discoverycallmodal)">Discovery Call</span>
+                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span>
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
@@ -552,8 +552,8 @@
                         Required</span>
                         <div class="form-group row form-groupbtndiv">
 
-                            <button (click)="productsubmit()"> save</button>
-                            <button type="button"> cancel</button>
+                            <button (click)="productsubmit(selectedlead._id)">Book</button>
+                            <button (click)="modalRef2.hide();selectedproductid=''"> cancel</button>
                             <div class="clearfix"></div>
 
                         </div>
