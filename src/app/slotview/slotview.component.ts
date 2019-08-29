@@ -96,6 +96,14 @@ export class SlotviewComponent implements OnInit {
                     this.geteventarr();
                 })
             }
+
+            if(params['leadid']!=null && params['pid']!=null){
+
+                this.closerLeadForm.controls['product'].patchValue(params['pid']);
+                this.closerLeadForm.controls['leads'].patchValue(params['leadid']);
+                this.closerLeadFormSubmit();
+                console.log('form logs',this.closerLeadForm.value);
+            }
         });
     }
 
@@ -204,6 +212,7 @@ export class SlotviewComponent implements OnInit {
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
                         $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
+                    console.log('cond',cond);
                 }
                 break;
             case 'question-and-answer-call':
