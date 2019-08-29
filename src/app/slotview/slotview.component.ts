@@ -138,7 +138,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -157,7 +157,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = {"timespan":this.slotval, "is_custom": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -176,7 +176,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -192,7 +192,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -216,7 +216,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                     console.log('cond',cond);
                 }
@@ -232,7 +232,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -251,12 +251,12 @@ export class SlotviewComponent implements OnInit {
                     if(this.recid == null) {
                         cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     } else {
                         cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     }
                 }
