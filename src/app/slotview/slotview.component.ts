@@ -101,6 +101,7 @@ export class SlotviewComponent implements OnInit {
 
                 this.closerLeadForm.controls['product'].patchValue(params['pid']);
                 this.closerLeadForm.controls['leads'].patchValue(params['leadid']);
+                this.cookeiservice.set('leadsId',params['leadid']);
                 this.closerLeadFormSubmit();
                 console.log('form logs',this.closerLeadForm.value);
             }
@@ -196,10 +197,15 @@ export class SlotviewComponent implements OnInit {
                 }
                 break;
             case 'book-a-closer':
-                this.getLeads();
+
                 if(!this.closerLeadForm.valid) {
+                    this.getLeads();
                     this.slotView = false;
+                    return ;
+                }else{
+                    this.slotView=true;
                 }
+                console.log('slotview',this.slotView);
                 this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
                 if(this.filterval5!=null && this.filterval5 != '') {
@@ -261,6 +267,7 @@ export class SlotviewComponent implements OnInit {
         this._http.post(link,{source:'eventdayarr_events',condition:cond}).subscribe(res => {
             let result:any = res;
             this.allslots = result.res;
+            console.log('allslots',this.allslots,this.allslots.length);
         });
     }
  /* ngOnInit() {

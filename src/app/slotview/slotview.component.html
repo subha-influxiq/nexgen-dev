@@ -80,7 +80,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="main_inner_content main_inner_contentnew">
-
+<h1 *ngIf="allslots!=null">--{{allslots.length}}--</h1>
                     <div style="width: 100%" *ngFor="let item of allslots;let i=index;">
                         <!-- | slice:0:2 -->
                         <span *ngIf="item.slots!=null && item.slots.length>0">
