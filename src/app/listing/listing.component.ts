@@ -91,6 +91,10 @@ export class ListingComponent implements OnInit {
     public loaderdiv = false;
     public selectedlead:any={};
     public inputflag:any=0;
+    public productlist:any = [];
+    public selectedproductid:any="";
+    public productSubmitFlag:any =0; 
+    public productErrorFlag:any = 0;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -145,9 +149,9 @@ export class ListingComponent implements OnInit {
                 console.log('Oooops!');
                 //this.formdataval[c].sourceval = [];
             });
-        this.interv = setInterval(() => {
+      //  this.interv = setInterval(() => {
             this.getdatalist();
-        }, 6000)
+       // }, 6000)
     }
     ngOnDestroy() {
         clearInterval(this.interv);
@@ -889,6 +893,23 @@ export class ListingComponent implements OnInit {
             this.modalRef2 = this.modal.show(template);
         },2000);
         
+        
+    }
+    openDiscoverCallModal(val: any, template: TemplateRef<any>) {
+        this.productlist = val;
+        console.log(this.productlist);
+        setTimeout(()=>{
+            this.modalRef2 = this.modal.show(template);
+        },2000);
+        
+        
+    }
+    productsubmit(){
+        if(this.selectedproductid==''){
+            this.productErrorFlag = 1; 
+        }else{
+            this.productErrorFlag = 0; 
+        }
         
     }
     showInputText(event:any){

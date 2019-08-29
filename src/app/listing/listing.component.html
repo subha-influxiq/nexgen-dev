@@ -264,7 +264,8 @@
                                         <td *ngIf="hideaction!=null && hideaction!='true' ">
                                             <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-                                            <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span>
+                                            <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
+                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item.productname,discoverycallmodal)">Discovery Call</span>
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
@@ -525,6 +526,39 @@
         </div>
         <div class="brand_messagebox">
             <app-notelist [lead_data]="selectedlead"></app-notelist>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
+<!--Discovery Call modal-->
+<ng-template #discoverycallmodal>
+    <div class="modal-body brandmanagement_modal discoverycall">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <div class="form-group row" *ngIf="productlist.length > 0">
+                <label class="col-sm-12 col-form-label">Choose A Product</label>
+                <div class="col-sm-12">
+
+                    <select class="form-control" [(ngModel)]="selectedproductid">
+                        <option value="" #select>Select a Product</option>
+                        <option *ngFor="let i of productlist;" value="{{ i.product_id }}">{{ i.product_name }}
+                        </option>
+                    </select>
+                    <span class="error"
+                        *ngIf="productErrorFlag==1 && selectedproductid==''">Product Is
+                        Required</span>
+                        <div class="form-group row form-groupbtndiv">
+
+                            <button (click)="productsubmit()"> save</button>
+                            <button type="button"> cancel</button>
+                            <div class="clearfix"></div>
+
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
     <div>

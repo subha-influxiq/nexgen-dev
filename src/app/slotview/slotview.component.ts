@@ -361,8 +361,6 @@ export class SlotviewComponent implements OnInit {
         this.leadsSuggestionFlug = false;
         this.leadsSuggestion = [];
         this.selectedlead = leadsData;
-        console.log('this.selectedlead');
-        console.log(this.selectedlead);
     }
 
     // added by chandrani 

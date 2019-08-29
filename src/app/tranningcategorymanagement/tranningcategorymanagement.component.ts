@@ -27,6 +27,7 @@ public sourcecondition:any={};
     {inputtype:'textarea',name:'description',label:'Description',placeholder:'Enter Description',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'text',name:'priority',label:'Priority',placeholder:'Enter Priority',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'select',name:'type1',label:'Training Type',defaultchoice:'Select Training',sourceview:'tranning',sourcetype:'static',selectvalue:'name',selectid:'name',validationrule:{required:true},validationerrormsg:'is required'},
+    {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select Category',sourceview:'tranningcategory_view',sourcetype:'',selectvalue:'categoryname',selectid:'_id'},
 
     // {inputtype:'select',name:'roleaccess',label:'Roles can Access',defaultchoice:'Select Roles',sourceview:'roles',sourcetype:'static',selectvalue:'name',selectid:'id',validationrule:{required:true},validationerrormsg:'is required',multiple:true},
     // {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
