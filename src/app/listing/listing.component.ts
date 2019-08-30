@@ -10,6 +10,7 @@ import { CookieService } from "ngx-cookie-service";
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from "ngx-uploader";
 import { routerNgProbeToken } from "@angular/router/src/router_module";
 import {ModalOptions} from "ngx-bootstrap";
+import { DomSanitizer} from '@angular/platform-browser';
 
 declare var moment: any;
 declare var $: any;
@@ -95,6 +96,7 @@ export class ListingComponent implements OnInit {
     public selectedproductid:any="";
     public productSubmitFlag:any =0; 
     public productErrorFlag:any = 0;
+    public autoplayVideo:any = [];
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -127,7 +129,8 @@ export class ListingComponent implements OnInit {
     
 
 
-    constructor(public _commonservice: Commonservices, public router: Router, public _http: HttpClient, public modal: BsModalService, formgroup: FormBuilder, private cookeiservice: CookieService) {
+    constructor(public _commonservice: Commonservices, public router: Router, public _http: HttpClient, public modal: BsModalService, formgroup: FormBuilder, private cookeiservice: CookieService,public sanitizer: DomSanitizer) {
+        
         this.formgroup = formgroup;
         this._commonservice = _commonservice;
         // this.minDate.setDate(this.minDate.getDate() - 1);
@@ -258,6 +261,19 @@ export class ListingComponent implements OnInit {
                     this.datalist = result.res;
                     console.log('datalist:');
                     console.log(this.datalist);
+                    for(let i in this.datalist){
+                        if(this.datalist[i].youtube_url!=null){
+                            let videourl = this.datalist[i].youtube_url.split('v=');
+                            let videoid = videourl[videourl.length - 1];
+                            let vurl = videoid;
+                            let url = this.datalist[i].youtube_url.replace('watch?v=', 'embed/');
+                            this.datalist[i].youtube_url = this.sanitizer.bypassSecurityTrustResourceUrl(url+"?autoplay=1");
+                            url = url.split('/');
+                            let urlid = url[url.length - 1];
+                            this.datalist[i].thumbnail_youtube = this.sanitizer.bypassSecurityTrustResourceUrl("https://i1.ytimg.com/vi/" + urlid + "/0.jpg");
+                            this.autoplayVideo[this.datalist[i]._id]=0;
+                        }
+                    }
                 }
             }, error => {
                 console.log('Oooops!');
@@ -583,7 +599,8 @@ export class ListingComponent implements OnInit {
         }
         console.log('this.dataForm.value');
         console.log(this.dataForm.value);
-
+        console.log(this.dataForm.controls['youtube_url'].value);
+        
         if (this.formsourceval.table == 'events') {
             var tzval = this.dataForm.controls['timezone'].value.split('|');
             tzval = tzval[1];
@@ -594,7 +611,7 @@ export class ListingComponent implements OnInit {
             this.dataForm.controls['end_date'].patchValue(moment(this.dataForm.controls['end_date'].value).format('YYYY-MM-DD'));
             this.dataForm.controls['start_time'].patchValue(moment(this.dataForm.controls['start_time'].value).format('HH:mm'));
             this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
-            console.log('this.dataForm.value');
+            console.log('this.dataForm.value ---- ');
             console.log(this.dataForm.value);
         }
         //  console.log($('select[name="roleaccess"]').val());
@@ -923,5 +940,27 @@ export class ListingComponent implements OnInit {
             this.inputflag = 1;
         }else this.inputflag = 0;
         
+    }
+
+    iframeAutoplay(id:any){
+        $( ".playerspan" ).each(function( index ) {
+            $( this ).removeClass( "show" );
+            $( this ).addClass( "hide" );
+            // $( this ).html("");                  //if there is any need to reload the span
+          });
+          $( ".iframgeimg" ).each(function( index ) {
+            $( this ).removeClass( "hide" );
+            $( this ).addClass( "show" );
+            
+          });
+        
+            setTimeout(()=>{
+                $("#iframe_span_"+id).removeClass('hide');
+                $("#iframe_span_"+id).addClass('show');
+                $("#thumb"+id).addClass('hide');
+            },500);
+            
+        
+       
     }
 }

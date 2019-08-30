@@ -160,6 +160,21 @@
     <span class="statusinactive" *ngIf="item[item1.value]!=true"> Not Required</span>
 
 </span>
+
+
+
+<span *ngIf="item1.type=='img' " [ngClass]="item1.class">
+    
+    <span class="playerspan hide" id="iframe_span_{{item._id}}">
+        <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item.youtube_url"></iframe> 
+    </span>
+    <img class="iframgeimg" id="thumb{{item._id}}" style="height: 150px;width: 250px;" (click)="iframeAutoplay(item._id)" [attr.src]="item[item1.value]"> 
+</span>
+<span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
+    
+    <iframe  id="ytplayer{{item._id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item[item1.value]"></iframe> 
+    <img (click)="iframeAutoplay(item._id)" style="height: 150px;width: 250px;" [attr.src]="item[thumbnail_youtube]"> 
+</span>
 <!------------------------------------------------------------------------------------------------>
 
                                             <span *ngIf="item1.type=='checkbox' && item1.value!='verification_need'" [ngClass]="item1.class">

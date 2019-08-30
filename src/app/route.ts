@@ -59,6 +59,8 @@ import { AgreementComponent } from "./agreement/agreement.component";
 import { ManageleadsComponent } from "./manageleads/manageleads.component";
 import { ProductsComponent } from "./products/products.component";
 import { TrainingreportsComponent } from "./trainingreports/trainingreports.component";
+import {ManageVideoCategoryComponent} from "./manage-video-category/manage-video-category.component";
+import {ManageVideosComponent} from "./manage-videos/manage-videos.component";
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -140,7 +142,10 @@ const appRoutes: Routes = [
     /* added by Chandrani */
     { path: 'manage-leads', component: ManageleadsComponent },
     { path: 'products', component: ProductsComponent },
-    { path: 'training-reports', component: TrainingreportsComponent }
+    { path: 'training-reports', component: TrainingreportsComponent },
+    { path: 'manage-video-category', component: ManageVideoCategoryComponent },
+    { path: 'manage-video', component: ManageVideosComponent }
+
 
 ];
 
