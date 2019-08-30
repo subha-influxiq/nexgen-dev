@@ -599,7 +599,6 @@ export class ListingComponent implements OnInit {
         }
         console.log('this.dataForm.value');
         console.log(this.dataForm.value);
-        console.log(this.dataForm.controls['youtube_url'].value);
         
         if (this.formsourceval.table == 'events') {
             var tzval = this.dataForm.controls['timezone'].value.split('|');
