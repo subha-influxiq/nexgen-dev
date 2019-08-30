@@ -96,6 +96,15 @@ export class SlotviewComponent implements OnInit {
                     this.geteventarr();
                 })
             }
+
+            if(params['leadid']!=null && params['pid']!=null){
+
+                this.closerLeadForm.controls['product'].patchValue(params['pid']);
+                this.closerLeadForm.controls['leads'].patchValue(params['leadid']);
+                this.cookeiservice.set('leadsId',params['leadid']);
+                this.closerLeadFormSubmit();
+                console.log('form logs',this.closerLeadForm.value);
+            }
         });
     }
 
@@ -129,7 +138,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_onboarding": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -148,7 +157,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = {"timespan":this.slotval, "is_custom": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -167,7 +176,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = {"is_custom": true, "timespan": this.timeSpanVal, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -183,15 +192,20 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_discovery": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
             case 'book-a-closer':
-                this.getLeads();
+
                 if(!this.closerLeadForm.valid) {
+                    this.getLeads();
                     this.slotView = false;
+                    return ;
+                }else{
+                    this.slotView=true;
                 }
+                console.log('slotview',this.slotView);
                 this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
                 if(this.filterval5!=null && this.filterval5 != '') {
@@ -202,8 +216,9 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
+                    console.log('cond',cond);
                 }
                 break;
             case 'question-and-answer-call':
@@ -217,7 +232,7 @@ export class SlotviewComponent implements OnInit {
                 } else {
                     cond = { "is_qna": true, slots:{$type:'array'}, startdate:{
                         $lte: moment().add(2, 'weeks').format('YYYY-MM-DD'),
-                        $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                        $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                     }};
                 }
                 break;
@@ -236,12 +251,12 @@ export class SlotviewComponent implements OnInit {
                     if(this.recid == null) {
                         cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'}, startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     } else {
                         cond={allslotsuserid_object:this.recid,slots:{$type:'array'},startdate:{
                             $lte: moment().add(1, 'months').format('YYYY-MM-DD'),
-                            $gte: moment().subtract(1, 'days').format('YYYY-MM-DD')
+                            $gt: moment().subtract(1, 'days').format('YYYY-MM-DD')
                         }};
                     }
                 }
@@ -252,6 +267,7 @@ export class SlotviewComponent implements OnInit {
         this._http.post(link,{source:'eventdayarr_events',condition:cond}).subscribe(res => {
             let result:any = res;
             this.allslots = result.res;
+            console.log('allslots',this.allslots,this.allslots.length);
         });
     }
  /* ngOnInit() {
@@ -361,8 +377,6 @@ export class SlotviewComponent implements OnInit {
         this.leadsSuggestionFlug = false;
         this.leadsSuggestion = [];
         this.selectedlead = leadsData;
-        console.log('this.selectedlead');
-        console.log(this.selectedlead);
     }
 
     // added by chandrani 

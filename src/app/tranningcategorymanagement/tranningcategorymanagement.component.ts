@@ -16,6 +16,7 @@ public sourcecondition:any={};
   this.tabledatalis=[
     {value:'id',name:'Id',role:0,func:'',class:'id',type:'#'},
     {value:'categoryname',name:'Training Title',role:0,func:'',class:'categoryname',type:'text'},
+    {value:'parentcat',name:'Parent Category',role:0,func:'',class:'parentcat',type:'text'},
     {value:'description',name:'Description',role:0,func:'',class:'description',type:'text'},
     {value:'priority',name:'Priority',role:0,func:'',class:'priority',type:'text'},
     {value:'type1',name:'Type',role:0,func:'',class:'type',type:'text'},
@@ -27,12 +28,13 @@ public sourcecondition:any={};
     {inputtype:'textarea',name:'description',label:'Description',placeholder:'Enter Description',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'text',name:'priority',label:'Priority',placeholder:'Enter Priority',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'select',name:'type1',label:'Training Type',defaultchoice:'Select Training',sourceview:'tranning',sourcetype:'static',selectvalue:'name',selectid:'name',validationrule:{required:true},validationerrormsg:'is required'},
+    {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select Category',sourceview:'tranningcategory_view_new',sourcetype:'',selectvalue:'categoryname',selectid:'_id'},
 
     // {inputtype:'select',name:'roleaccess',label:'Roles can Access',defaultchoice:'Select Roles',sourceview:'roles',sourcetype:'static',selectvalue:'name',selectid:'id',validationrule:{required:true},validationerrormsg:'is required',multiple:true},
     // {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
   ];
-    this.datasource={table:'tranningcategory',objarr:[]};
+    this.datasource={table:'tranningcategory',objarr:['parentcategory']};
   }
 
   ngOnInit() {

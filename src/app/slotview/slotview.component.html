@@ -80,7 +80,6 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="main_inner_content main_inner_contentnew">
-
                     <div style="width: 100%" *ngFor="let item of allslots;let i=index;">
                         <!-- | slice:0:2 -->
                         <span *ngIf="item.slots!=null && item.slots.length>0">
@@ -150,7 +149,7 @@
 
                         <div class="form-group row form-groupbtndiv">
 
-                            <button> save</button>
+                            <button> Book</button>
                             <button type="button" (click)="goback()"> cancel</button>
                             <div class="clearfix"></div>
 

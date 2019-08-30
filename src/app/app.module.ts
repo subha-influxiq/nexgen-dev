@@ -76,6 +76,9 @@ import { ManageleadsComponent } from './manageleads/manageleads.component';
 import { ProductsComponent } from './products/products.component';
 import { TrainingreportsComponent } from './trainingreports/trainingreports.component';
 import { NotelistComponent } from './notelist/notelist.component';
+import { ManageVideoCategoryComponent } from './manage-video-category/manage-video-category.component';
+import { ManageVideosComponent } from './manage-videos/manage-videos.component';
+import { AdditionalVideoComponent } from './additional-video/additional-video.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +140,10 @@ import { NotelistComponent } from './notelist/notelist.component';
     ManageleadsComponent,
     ProductsComponent,
     TrainingreportsComponent,
-    NotelistComponent
+    NotelistComponent,
+    ManageVideoCategoryComponent,
+    ManageVideosComponent,
+    AdditionalVideoComponent
 
   ],
   imports: [

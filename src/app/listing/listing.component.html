@@ -160,6 +160,21 @@
     <span class="statusinactive" *ngIf="item[item1.value]!=true"> Not Required</span>
 
 </span>
+
+
+
+<span *ngIf="item1.type=='img' " [ngClass]="item1.class">
+    
+    <span class="playerspan hide" id="iframe_span_{{item._id}}">
+        <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item.youtube_url"></iframe> 
+    </span>
+    <img class="iframgeimg" id="thumb{{item._id}}" style="height: 150px;width: 250px;" (click)="iframeAutoplay(item._id)" [attr.src]="item[item1.value]"> 
+</span>
+<span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
+    
+    <iframe  id="ytplayer{{item._id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item[item1.value]"></iframe> 
+    <img (click)="iframeAutoplay(item._id)" style="height: 150px;width: 250px;" [attr.src]="item[thumbnail_youtube]"> 
+</span>
 <!------------------------------------------------------------------------------------------------>
 
                                             <span *ngIf="item1.type=='checkbox' && item1.value!='verification_need'" [ngClass]="item1.class">
@@ -264,7 +279,8 @@
                                         <td *ngIf="hideaction!=null && hideaction!='true' ">
                                             <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-                                            <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span>
+                                            <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
+                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span>
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
@@ -525,6 +541,39 @@
         </div>
         <div class="brand_messagebox">
             <app-notelist [lead_data]="selectedlead"></app-notelist>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
+<!--Discovery Call modal-->
+<ng-template #discoverycallmodal>
+    <div class="modal-body brandmanagement_modal discoverycall">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <div class="form-group row" *ngIf="productlist.length > 0">
+                <label class="col-sm-12 col-form-label">Choose A Product</label>
+                <div class="col-sm-12">
+
+                    <select class="form-control" [(ngModel)]="selectedproductid">
+                        <option value="" #select>Select a Product</option>
+                        <option *ngFor="let i of productlist;" value="{{ i.product_id }}">{{ i.product_name }}
+                        </option>
+                    </select>
+                    <span class="error"
+                        *ngIf="productErrorFlag==1 && selectedproductid==''">Product Is
+                        Required</span>
+                        <div class="form-group row form-groupbtndiv">
+
+                            <button (click)="productsubmit(selectedlead._id)">Book</button>
+                            <button (click)="modalRef2.hide();selectedproductid=''"> cancel</button>
+                            <div class="clearfix"></div>
+
+                        </div>
+                </div>
+            </div>
         </div>
     </div>
     <div>
