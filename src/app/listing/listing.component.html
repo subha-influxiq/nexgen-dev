@@ -396,7 +396,7 @@
                         </select>-->
                         <select *ngIf="item.inputtype=='select' && item.multiple==null" [name]="item.name"
                             [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0">
-                            <option value="" disabled="disabled">{{item.defaultchoice}}</option>
+                            <option value="" selected>{{item.defaultchoice}}</option>
                             <option *ngFor="let selectval of item.sourceval" value="{{selectval[item.selectid]}}">
                                 {{selectval[item.selectvalue]}}</option>
                         </select>
