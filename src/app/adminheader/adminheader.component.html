@@ -34,6 +34,7 @@
                   <a class="dropdown-item" [routerLink]="['/training-reports']">Training Reports</a>
                   <a class="dropdown-item" [routerLink]="['/manage-video-category']">Manage Video Category</a>
                   <a class="dropdown-item" [routerLink]="['/manage-video']">Manage Videos</a>
+                  
                 </div>
               </li>
               <li class="nav-item" [routerLink]="['/digitalcontract']">
@@ -128,9 +129,24 @@
               <li *ngIf="consultantrole!=null && consultantrole==1" class="nav-item active"  [routerLink]="['/rep-management']">
                 <a class="nav-link">My Reps</a>
               </li>
-              <li class="nav-item active" (click)="gototrainingsectionwithcat()">
-                <a class="nav-link" >Training Center</a>
+
+              <!-- ----------------------------------------------- -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" (click)="gototrainingsectionwithcat()">Training Center</a>
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Training</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let item of videoCategoryarry">
+                    <a class="dropdown-item" [routerLink]="['/additional-video',item._id]" >{{item.categoryname}}</a>                   
+                  </li>
+                  </div>                  
+                </div>
               </li>
+              <!-- ----------------------------------------------- -->
+
+
+
               <!-- <li class="nav-item" [routerLink]="['/replegaldocuments']">
                 <a class="nav-link" >Legal Documents</a>
               </li> -->
