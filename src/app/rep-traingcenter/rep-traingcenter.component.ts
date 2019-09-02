@@ -55,7 +55,6 @@ export class RepTraingcenterComponent implements OnInit {
     public trainingcategoryMod:any =[];
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
     this._commonservice=_commonservice;
-    this.getTrainingListModified();
   }
 
   ngOnInit() {
@@ -135,65 +134,6 @@ export class RepTraingcenterComponent implements OnInit {
     }
 
 
-    getTrainingListModified(){
-        this.donecategory = [];
-        this.notdonecategory = [];
-        let childcategory:any = [];
-        const link = this._commonservice.nodesslurl+'training_category_foruser?token=' + this.cookeiservice.get('jwttoken');
-        // this._http.post(link,{source:'training_category_foruser'})
-        let data={userid: this.cookeiservice.get('userid')};
-        this._http.post(link,data)
-            .subscribe(res => {
-                let result:any = res;
-                if(result.status == 'error') {
-                } else {
-                    console.log(result);
-                  //  this.trainingcategory = result.res;
-                    for(let i in result.res){
-                        if(result.res[i].parentcat==null){
-                            this.trainingcategoryMod.push(result.res[i]);
-                        }
-                       
-                        }
-                        for(let i in result.res){
-                        for(let j in this.trainingcategoryMod){
-                            if(this.trainingcategoryMod[j]._id == result.res[i].parentcategory){
-                                childcategory.push(result.res[i]);
-                            }
-                        }
-                    }
-
-                    console.log('childcategory');
-                    console.log(childcategory);
-                    console.log('this.trainingcategoryMod');
-                    console.log(this.trainingcategoryMod);
-                    
-                    // this.done_Training_lesson = result.res2;
-                    // this.last_lesson = result.res3;
-                    // for(let i in this.last_lesson){
-
-                    //     for(let y in this.done_Training_lesson){
-
-                    //         if(this.done_Training_lesson[y].traininglesson==this.last_lesson[i]._id){
-                    //             this.donelesson.push(this.last_lesson[i].trainingcategoryMod);
-                    //         }
-                    //     }
-                    // }
-
-                    // for(let c in this.trainingcategoryMod){
-                    //     if($.inArray(this.trainingcategoryMod[c]._id,this.donelesson)!=-1){
-                    //         this.donecategory.push(this.trainingcategoryMod[c]);
-                    //     }else this.notdonecategory.push(this.trainingcategoryMod[c]);
-
-                    //     if(this.trainingcategoryMod[c]._id == this.cid) {
-                    //         this.lastLessionName = this.trainingcategoryMod[c].categoryname;
-                    //     }
-                    // }
-                }
-            }, error => {
-                console.log('Oooops!');
-            });
-    }
   getmarkasdonelist(){
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
     this._http.post(link, { source: 'donetraininglesson', condition: { userid_object: this.cookeiservice.get('userid') }})
