@@ -597,8 +597,6 @@ export class ListingComponent implements OnInit {
         for (y in this.dataForm.controls) {
             this.dataForm.controls[y].markAsTouched();
         }
-        console.log('this.dataForm.value');
-        console.log(this.dataForm.value);
         
         if (this.formsourceval.table == 'events') {
             var tzval = this.dataForm.controls['timezone'].value.split('|');
@@ -610,8 +608,7 @@ export class ListingComponent implements OnInit {
             this.dataForm.controls['end_date'].patchValue(moment(this.dataForm.controls['end_date'].value).format('YYYY-MM-DD'));
             this.dataForm.controls['start_time'].patchValue(moment(this.dataForm.controls['start_time'].value).format('HH:mm'));
             this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
-            console.log('this.dataForm.value ---- ');
-            console.log(this.dataForm.value);
+            
         }
         //  console.log($('select[name="roleaccess"]').val());
         if (this.dataForm.valid && this.submitval == 1) {
