@@ -804,6 +804,9 @@ body{ padding:0; margin: 0;}
     .sherelinkwrapper .ascol3 a.pinterest{background-color: #d6c7c7!important;}
     .sherelinkwrapper .ascol3 a.linkedin{background-color: #0077B5!important;}
     .sherelinkwrapper .ascol3 a.tumblr{background-color: #34526f!important;}
+
+.notdonepcat ul li{background: #a5c0c7 !important;padding-left: 31px;}
+
 @media screen and (max-width: 1840px){
 
     .a_new_landing_img1 {left: -130px;}

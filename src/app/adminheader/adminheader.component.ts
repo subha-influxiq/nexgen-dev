@@ -84,7 +84,7 @@ export class AdminheaderComponent implements OnInit {
   ngOnInit() {
     this.interval = setInterval(() => {
       this.getRepDetails();
-      this.getslidervalueforimage();
+      //this.getslidervalueforimage();
     }, 35000);
   }
 

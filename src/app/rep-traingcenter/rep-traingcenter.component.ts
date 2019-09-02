@@ -40,6 +40,8 @@ export class RepTraingcenterComponent implements OnInit {
   public notdonecategory:any=[];
   public iscortansarr:any=[];
   public correctansarrid:any=[];
+  public doneparentcat:any=[];
+  public notdoneparentcat:any=[];
   public ngclassflag=0;
   public curitem:any=null;
   public cureentcursor:any=0;
@@ -50,7 +52,7 @@ export class RepTraingcenterComponent implements OnInit {
 
     /* incpmolete lession */
     public lastLessionName: any;
-
+    public trainingcategoryMod:any =[];
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
     this._commonservice=_commonservice;
   }
@@ -71,9 +73,11 @@ export class RepTraingcenterComponent implements OnInit {
   }
 
     gettraininglist(){
+        let dpcat:any=[];
+        let ndpcat:any=[];
         this.donecategory = [];
         this.notdonecategory = [];
-        const link = this._commonservice.nodesslurl+'training_category?token=' + this.cookeiservice.get('jwttoken');
+        const link = this._commonservice.nodesslurl+'training_category_foruser?token=' + this.cookeiservice.get('jwttoken');
         // this._http.post(link,{source:'training_category_lesson_view',condition:{type1:'Rep Trainning Table'}})
         let data={userid: this.cookeiservice.get('userid')};
         this._http.post(link,data)
@@ -92,22 +96,43 @@ export class RepTraingcenterComponent implements OnInit {
                                 this.donelesson.push(this.last_lesson[i].trainingcategory);
                             }
                         }
-                    }
+                    } 
 
                     for(let c in this.trainingcategory){
-                        if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1){
+                        if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1 && this.trainingcategory[c].parentcategory.length>0){  
+                            //dpcat.push(this.trainingcategory[c].parentcategory);
+                            console.log('dpcat...',dpcat.includes(this.trainingcategory[c].parentcategory));
                             this.donecategory.push(this.trainingcategory[c]);
-                        }else this.notdonecategory.push(this.trainingcategory[c]);
+                            if(dpcat.includes(this.trainingcategory[c].parentcategory)==false){
+                                this.doneparentcat.push({catname:this.trainingcategory[c].parentcat,catid:this.trainingcategory[c].parentcategory});
+                            }
+                            dpcat.push(this.trainingcategory[c].parentcategory);
+                        }else 
+                        {
+                            if(this.trainingcategory[c].parentcategory.length>0)
+                            {
+                                this.notdonecategory.push(this.trainingcategory[c]);
+                                console.log('pcat in loop',this.trainingcategory[c],this.trainingcategory[c].parentcat);
+                                console.log('ndcat...',ndpcat.includes(this.trainingcategory[c].parentcategory));
+                                if(ndpcat.includes(this.trainingcategory[c].parentcategory)==false)
+                                {
+                                this.notdoneparentcat.push({catname:this.trainingcategory[c].parentcat,catid:this.trainingcategory[c].parentcategory});
+                                }
+                                ndpcat.push(this.trainingcategory[c].parentcategory);
+                            }
+                        }
 
                         if(this.trainingcategory[c]._id == this.cid) {
                             this.lastLessionName = this.trainingcategory[c].categoryname;
                         }
                     }
+                    console.log('',this.doneparentcat,this.notdoneparentcat);
                 }
             }, error => {
                 console.log('Oooops!');
             });
     }
+
 
   getmarkasdonelist(){
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
@@ -199,7 +224,7 @@ export class RepTraingcenterComponent implements OnInit {
       }
       else{
 
-          console.log('in else block of get slide');
+          
           return this._commonservice.fileimgsslurl+this.sorteddatalist[val].slides[this.cureentcursor].substr(3,this.sorteddatalist[val].slides[this.cureentcursor].length);
 
       }
@@ -372,12 +397,12 @@ export class RepTraingcenterComponent implements OnInit {
                     }
                     //console.log('this.sorteddatalist');
                     //console.log(this.sorteddatalist);
-                    console.log('-----',i1,'false');
+                    
                     return false;
                 }
                 if(this.markasdonedatalist[i].traininglesson!=item._id && item.openaccordian!=null && item.openaccordian==true){
                     //this.sorteddatalist[i+1].openaccordian=false;
-                     console.log('-----',i1,'false');
+                     
                     return false;
                 }
             }
@@ -393,7 +418,7 @@ export class RepTraingcenterComponent implements OnInit {
     }
 
     audiovideoended(item,i){
-        console.log('The audio/video has ended');
+       
         this.markasdonetraninglesson(item,i);
     }
 
