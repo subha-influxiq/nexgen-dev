@@ -146,7 +146,7 @@ const appRoutes: Routes = [
     { path: 'training-reports', component: TrainingreportsComponent },
     { path: 'manage-video-category', component: ManageVideoCategoryComponent },
     { path: 'manage-video', component: ManageVideosComponent },
-    { path: 'additional-video', component: AdditionalVideoComponent }
+    { path: 'additional-video/:categoryid', component: AdditionalVideoComponent },
 
 
 ];
