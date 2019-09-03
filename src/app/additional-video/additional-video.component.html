@@ -1,0 +1,34 @@
+
+    <div class="loder_body" *ngIf="loader==1">
+        <div class="loder_wrapper">
+            <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
+          <div class="loader"></div>
+        </div>
+      </div>
+<app-adminheader></app-adminheader>
+<div class="as_newcontainer">
+  <div class="additionalvideomainwrapper">
+    <div class="asnewtextwrapper">
+      <h2>Here are some of my favorite sales videos that I have found on YouTube. Well worth a listen when you have some extra time.</h2>
+      <!-- <p></p> -->
+    </div>
+
+    <div class="as_videomainwrapper" *ngIf="datalist!=null">
+
+        <div *ngFor="let video of datalist" class="as_videosubwrapper">
+          <div class="as_videowrapper">
+              <span class="playerspan hide" id="iframe_span_{{video._id}}">
+                  <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="video.youtube_url"></iframe> 
+              </span>
+              <img class="iframgeimg" id="thumb{{video._id}}" (click)="iframeAutoplay(video._id)" [attr.src]="video.thumbnail_youtube">
+          </div>
+          <div class="videotextwrapper">
+            <h2>{{video.video_title}}</h2>
+            <p>{{video.description}}</p>
+          </div>
+        </div>
+
+    </div>
+
+  </div>
+</div>

@@ -431,20 +431,43 @@
       <div class="inner_training_list" *ngIf="trainingcategory?.length>0">
         <h1>Incomplete Trainings</h1>
         <ul>
-          <li *ngFor="let item of notdonecategory"><a (click)="cid=item._id;getdatalist(item.categoryname)" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
-         <!-- <li> <span><img src="assets/images/filemanager_icon.png"></span> <a href="javascript:void(0)">training 5</a></li>
--->
+          <li class="notdonepcat" *ngFor="let itemp of notdoneparentcat" (click)="selpcat=itemp.catid"><a  href="javascript:void(0)"> <span  ><img  src="assets/images/filemanager_icon.png"></span> {{itemp.catname}}</a>
+          <ul> <!--  *ngIf="selpcat==itemp.catid"-->
+            <ng-container *ngFor="let item of notdonecategory">
+
+                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname)" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+            </ng-container>
+
+          
+          </ul>
+          </li>
+
+      
         </ul>
       </div>
 
       <!--bottom part-->
       <div class="inner_training_list">
         <h1>Completed Trainings</h1>
+       
         <ul>
-          <li *ngFor="let item of donecategory" ><a (click)="cid=item._id;getdatalist()" href="javascript:void(0)"> <span (click)="cid=item._id;getdatalist()" ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+            <li class="donepcat" *ngFor="let itemp of doneparentcat" (click)="selpcat=itemp.catid"><a  href="javascript:void(0)"> <span  ><img  src="assets/images/filemanager_icon.png"></span> {{itemp.catname}}</a>
+            <ul > <!--  *ngIf="selpcat==itemp.catid"-->
+              <ng-container *ngFor="let item of donecategory">
+  
+                  <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname)" href="javascript:void(0)"> <span  ><img (click)="cid=item._id;getdatalist()" src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+              </ng-container>
+  
+            
+            </ul>
+            </li>
+  
+        
+          </ul>
 
 
-        </ul>
+
+        
       </div>
     </div>
     <div class="clearfix"></div>

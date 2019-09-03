@@ -508,7 +508,22 @@ body{ padding:0; margin: 0;}
 
 
 /*----------------------------------------------------------------------------------------------------------*/
-
+.blackbtn{
+    background: #000;
+    font-size: 20px;
+    font-family: 'RalewaySemiBold';
+    text-decoration: none;
+    padding: 5px 15px 4px 15px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin: 5px 0;
+    border: 0;
+}
+.modalbtnwrapper{display: inline-block; text-align: center; width: 100%;}
 .alanding_topblock{ width: 100%; position: relative; padding: 0px;}
 
 .alanding_topblock_con{ width: 1120px; position: relative; margin-right: 136px; float: right;}
@@ -804,6 +819,9 @@ body{ padding:0; margin: 0;}
     .sherelinkwrapper .ascol3 a.pinterest{background-color: #d6c7c7!important;}
     .sherelinkwrapper .ascol3 a.linkedin{background-color: #0077B5!important;}
     .sherelinkwrapper .ascol3 a.tumblr{background-color: #34526f!important;}
+
+.notdonepcat ul li{background: #a5c0c7 !important;padding-left: 31px;}
+
 @media screen and (max-width: 1840px){
 
     .a_new_landing_img1 {left: -130px;}
@@ -1835,6 +1853,62 @@ body{ padding:0; margin: 0;}
 
 .timezone_class{ font-family: 'RalewaySemiBold'; font-size: 20px; color: #1865a4; margin: 0; padding: 0 0 15px 0; text-transform: capitalize;}
 
+
 @media screen and (max-width: 380px) {
     .main_inner_contentnew .form-group{ display: block;  width: auto; }
 }
+
+
+
+/* ------------------- avijit css start ------------------- */
+.as_newcontainer{width: 1400px; margin: 0 auto;}
+.asnewtextwrapper h2{
+    margin: 0 auto;
+    padding: 27px 0;
+    text-align: center;
+    font-size: 34px;
+    color: #010b20;
+    font-family: "RalewayExtraBold";
+    text-transform: uppercase;
+    width: 90%;
+}
+.as_videomainwrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.as_videosubwrapper{
+    width: 30%;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px #ddd;
+    margin: 0.8%;
+}
+.as_videowrapper iframe{
+    height: 275px;
+    width: 100%;
+}
+.as_videowrapper img{max-width: 100%;}
+.as_videowrapper{
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+.videotextwrapper h2{
+    font-size: 21px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 1460px) {
+    .as_newcontainer {width: 96%;}
+}
+@media screen and (max-width: 1199px) {
+    .as_videosubwrapper {width: 45%;}
+}
+@media screen and (max-width: 767px) {
+    .as_videosubwrapper {width: 100%;}
+}
+/* ------------------- avijit css end ------------------- */

@@ -1,0 +1,13 @@
+
+<app-adminheader></app-adminheader> 
+<div class="s_getmyoffer_adminpanel">
+  <div class="s_getmyoffer_adminpanel_inner">
+    <div class="s_getmyoffer_adminpanel_inner_content_left">
+    </div>
+    <div class="s_getmyoffer_adminpanel_inner_content_right manageleadslist">
+      <app-listing class="managevideos" templatetype="table" sourcetitle="Video" source="videos_view_with_categoryname" [sourcecondition]="sourcecondition" [tabledatalis]="tabledatalist" menuval="Video List " [formdata]="formdata" [formsource]="datasource" hideadd="{{hideaddval}}">
+      </app-listing>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

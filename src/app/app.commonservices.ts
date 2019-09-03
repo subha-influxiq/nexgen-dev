@@ -19,6 +19,7 @@ export class Commonservices {
     public gapisslurl: any;
     public pdfsslurl: any;
     public totaltimezone: any;
+    public serverfileurl:any;
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
@@ -45,6 +46,7 @@ export class Commonservices {
         //this.uploadsslurl = 'http://166.62.39.137:5005/download';
         this.uploadsslurl = 'http://192.169.196.208:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
+        this.serverfileurl = 'https://www.betoparedes.com/betoparedesbackend/uploads/'
         this.siteurl = 'https://nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
         this.gapisslurl = 'http://api.nexgentesting.com/gapi/t2.php';

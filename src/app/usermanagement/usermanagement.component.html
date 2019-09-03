@@ -122,7 +122,17 @@
                           href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
                             class="fa fa-download" aria-hidden="true"></i></a></span>
                       <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
-                        [routerLink]="['/useraccountsetting',item._id]">No</span></span>
+                        [routerLink]="['/useraccountsetting',item._id]">No</span>
+                      
+                      </span><br>
+                      <span class="newpanclass">1099:
+                        <span *ngIf="item.legaldoc_fileservername!=null && item.legaldoc_fileservername!='' ">Yes
+                          <a target="_blank"
+                            href="{{fileurl}}{{item.legaldoc_fileservername}}"><i
+                              class="fa fa-download" aria-hidden="true"></i></a></span>
+                        <span *ngIf="item.legaldoc_fileservername==null || item.legaldoc_fileservername=='' ">No</span>
+                        
+                        </span>
 
                     </td>
                     <td datalabel="Status">

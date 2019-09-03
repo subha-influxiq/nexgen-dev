@@ -25,6 +25,7 @@ export class AdminheaderComponent implements OnInit {
   public consultantrole: any;
   public interval;
   public repDetailsNew: any = [];
+  public videoCategoryarry: any = [];
 
   constructor(public cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
     console.log(this.cookie.get('refreshtoken'));
@@ -38,6 +39,7 @@ export class AdminheaderComponent implements OnInit {
     } else {
       this.getRepDetails();
       this.getrepdetails();
+      this.getvideocatagory();
       
       this.sourceconditionval = { _id: this.idis };
       if (this.type == 'rep') {
@@ -52,12 +54,37 @@ export class AdminheaderComponent implements OnInit {
     if (this.cookie.get('lockdornot') == '1') {
       this.router.navigate(['/tempaccess']);
     }
+
+  
+  }
+
+
+  getvideocatagory() {
+    let link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
+    console.log(link);
+    this._http.post(link, { source: "videocategory_view_with_parent", condition: {status: 1} })
+      .subscribe(res => {
+        let result;
+        result = res;
+        if (result.status == 'error') {
+          
+        } else {
+          this.videoCategoryarry = [];
+          this.videoCategoryarry = result.res;
+          console.log('videoCategoryarry:');
+              console.log(this.videoCategoryarry);
+          
+        }
+      }, error => {
+        console.log('Oooops!');
+        this.videoCategoryarry = [];
+      });
   }
 
   ngOnInit() {
     this.interval = setInterval(() => {
       this.getRepDetails();
-      this.getslidervalueforimage();
+      //this.getslidervalueforimage();
     }, 35000);
   }
 
