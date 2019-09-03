@@ -85,6 +85,7 @@ export class RegionalDashboardComponent implements OnInit {
             if(result.status=='error'){
             }else{
                   this.googleevents = result.res;
+                console.log('this.googleevents');
                 console.log(this.googleevents);
             }
         }, error => {
