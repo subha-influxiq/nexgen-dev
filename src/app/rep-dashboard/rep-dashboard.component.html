@@ -531,9 +531,10 @@
     </div>
     <div class="btn_cnt">
         <h3>If you are planning to sell from the other opportunities it is highly suggested that you finish all the training now, so that you can discuss all of it in the 90 minute game plan meeting with Beto.</h3>
-        <div class="asbuttonwrapper">
-        <button [routerLink]="['/discovery-call',userId]">Book A 90 Minute Game Call</button>
-        <button (click)="gototrainingsectionwithcat()">Continue With Training</button>
+
+        <div class="modalbtnwrapper">
+        <button class="blackbtn" [routerLink]="['/discovery-call',userId]">Book A 90 Minute Game Call</button>
+        <button class="blackbtn" (click)="gototrainingsectionwithcat()">Continue With Training</button>
       </div>
     </div>
   </div>
