@@ -131,16 +131,17 @@
               </li>
 
               <!-- ----------------------------------------------- -->
+              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" (click)="gototrainingsectionwithcat()">Training Center</a>
-                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Training</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li *ngFor="let item of videoCategoryarry">
-                    <a class="dropdown-item" [routerLink]="['/additional-video',item._id]" >{{item.categoryname}}</a>                   
-                  </li>
-                  </div>                  
+                  <a class="dropdown-item dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Training</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li *ngFor="let item of videoCategoryarry">
+                        <a class="dropdown-item " [routerLink]="['/additional-video',item._id]" >{{item.categoryname}}</a>                   
+                      </li>
+                    </div>                  
                 </div>
               </li>
               <!-- ----------------------------------------------- -->
