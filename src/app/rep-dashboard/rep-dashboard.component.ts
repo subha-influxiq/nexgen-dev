@@ -21,7 +21,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public modalRef: BsModalRef;
   public userId: any;
   public calenderaccess:any;
-
+  public is_consultant:any;
   constructor(public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
     window.scrollTo(1000, 0);
@@ -33,6 +33,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       this.userReport();
       this.userId = this.cookeiservice.get('userid');
       this.calenderaccess = this.cookeiservice.get('calenderaccess');
+      this.is_consultant = this.cookeiservice.get('is_consultant');
     }
     
     

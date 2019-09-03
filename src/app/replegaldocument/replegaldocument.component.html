@@ -5,7 +5,7 @@
       <div class="user_management_wrapper">
         <div class="user_management_inner">
           <h2>Legal Documents</h2>
-          <a class="w_9_download_btn" href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank">Click Here To Download W-<span>9</span></a>
+          <a class="w_9_download_btn" href="https://www.irs.gov/pub/irs-pdf/f1099msc.pdf" target="_blank">Click Here To Download 1099</a>
           <div class="clearfix"></div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                       <span *ngIf="getw9values==null">-</span>
                       <span *ngIf="getw9values!=null">{{commonservices.showdateforreplegal(getw9values.created_at)}}</span>
                     </td>
-                    <td>W-9</td>
+                    <td>1099</td>
                     <td>
                       <span *ngIf="getw9values!=null">Submitted</span>
                       <span *ngIf="getw9values==null">Not Submitted</span></td>
@@ -68,7 +68,7 @@
                      </td>
                   </tr>
 
-                  <tr>
+                  <!-- <tr>
                     <td>
                       <span *ngIf="getidvalues==null">-</span>
                       <span *ngIf="getidvalues!=null">{{commonservices.showdateforreplegal(getidvalues.created_at)}}</span>
@@ -81,22 +81,12 @@
                       <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'ID')" [uploadInput]="uploadInput" #fileInput2 >
                       <button (click)="fileInput2.click()" type="button" class="deletebtn" *ngIf="getidvalues!=null">Upload New</button>         <button (click)="fileInput2.click()" type="button" class="deletebtn" *ngIf="getidvalues==null">Upload</button>
                       <button type="button" (click)="deletdata(getidvalues,commonconfirmmodal)" *ngIf="getidvalues" class="deletebtn">Delete</button>
-                      <!--<label *ngIf="filesid==null && getidvalues!=null">Uploaded File Name: {{getidvalues.filelocalname}}</label>-->
                       <div *ngIf="filesid?.length>0">
-                       <!-- <span *ngIf="percentageisid==100 && errormg==''">
-                          <img *ngIf="last=='pdf'" src="../../assets/images/pdfimage.png"/>
-                          <img *ngIf="last=='doc'" src="../../assets/images/docimage.png"/>
-                          <img *ngIf="last=='docx'" src="../../assets/images/docximage.png"/>
-                          <img *ngIf="last=='ppt'" src="../../assets/images/pptimage.png"/>
-                          <img *ngIf="last=='txt'" src="../../assets/images/txtimage.png"/>
-                          <img *ngIf="last=='xls'" src="../../assets/images/xlsimage.png"/>
-                          <label> File Name: {{filesid[0].name}}</label>
-                        </span>-->
                         <label *ngIf="percentageisid!=100 && errormg==''">Upload Percentage:{{percentageisid}}%</label>
                       </div>
 
                     </td>
-                  </tr>
+                  </tr> -->
                   </tbody>
                 </table>
               </div>
@@ -113,9 +103,8 @@
 
 
 <!--ConTRACT DOC DOWNLOAD SEC-->
-<div class="contract_doc_wrapper">
+<!-- <div class="contract_doc_wrapper">
   <div class="header_p">
-    <!--<h2> contract</h2>-->
   </div>
   <div class="contract_doc_content_w bg-light_rep_w">
     <p class="ins_w">Instructions For Uploading W-9:</p>
@@ -131,7 +120,7 @@
   </div>
     <div class="clearfix"></div>
   </div>
-</div>
+</div> -->
 <!--END DOC DOWNLOAD SEC-->
 
 

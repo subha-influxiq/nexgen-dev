@@ -31,7 +31,7 @@
   <div class="clearfix"></div>
 
 </div>
-<div class="rep_dashboard_wrapper2_btn_wrapper asnewclass">
+<div class="rep_dashboard_wrapper2_btn_wrapper asnewclass" *ngIf="is_consultant!=null && is_consultant==1">
   <div class="rep_dashboard_wrapper2_btn_wrapper_sub">
     <div class="sherelinkwrapper">
       <div class="ascol ascol1">
@@ -39,12 +39,12 @@
       </div>
       <div class="ascol ascol2">
         <div class="urllink">
-          <a href="https://www.betoparedes.com/sales-associate.php?affid={{userId}}">https://www.betoparedes.com/sales-associate.php?affid={{userId}}</a>
+          <a style="pointer-events: none;cursor: default;" href="https://www.betoparedes.com/sales-associate.php?affid={{userId}}">https://www.betoparedes.com/sales-associate.php?affid={{userId}}</a>
         </div>
           <button class="urlcopybtn" (click)="copyText('https://www.betoparedes.com/sales-associate.php?affid='+userId)"><i class="fa fa-link" aria-hidden="true"></i></button>
       </div>
       <div class="ascol ascol3">
-          <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.betoparedes.com%2Fsales-associate.php%3Faffid%3D{{userId}}" class="icon-button facebook"><i class="fa fa-facebook"></i></a>
+          <a target="_blank" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.betoparedes.com%2Fsales-associate.php%3Faffid%3D{{userId}}" class="icon-button facebook"><i class="fa fa-facebook"></i></a>
           <!-- <a href="#" class="icon-button google-plus"><i class="fa fa-twitter"></i></a>         -->
           <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.betoparedes.com%2Fsales-associate.php%3Faffid%3D{{userId}}" target="_blank" class="icon-button linkedin"><i class="fa fa-linkedin"></i></a>
           <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.betoparedes.com%2Fsales-associate.php%3Faffid%3D{{userId}}"  target="_blank" class="icon-button twitter"><i class="fa fa-twitter"></i></a>
