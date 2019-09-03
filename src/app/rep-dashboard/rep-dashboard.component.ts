@@ -14,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class RepDashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('modalopenlink') link: ElementRef;
+  @ViewChild('modalopenlink2') modallink: ElementRef;
   public repdetails: any = [];
   public repDetailsNew: any = [];
   public reptraininglessondetails;
@@ -29,7 +30,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     //this.userReport();
     console.log(this.cookeiservice.get('calenderaccess'));
     if (this.cookeiservice.get('userid') != null) {
-      // this.getrepdetails();
+      this.getrepdetails();
       this.userReport();
       this.userId = this.cookeiservice.get('userid');
       this.calenderaccess = this.cookeiservice.get('calenderaccess');
@@ -77,6 +78,29 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
               console.log('clicked');
             }, 50);
           }
+          else{
+            let link2 = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+            this._http.post(link2, {"condition": {"user_id_object": this.cookeiservice.get('userid')},"source": "user_parent_category_percent"})
+      .subscribe(res => {
+        let result: any;
+        result = res;
+        console.log('result in new call');
+        console.log(result);  
+        // if (result.resc >0) {
+          for(let i in result.res){
+            if(result.res[i].trainingpercent==100){
+              setTimeout(() => {
+                this.modallink.nativeElement.click();
+                console.log(this.modallink);
+                console.log('clicked');
+              }, 50);
+            }
+          }
+        // }
+      }, error => {
+        console.log('Oooops!');
+      });
+          }
         }
       }, error => {
         console.log('Oooops!');
@@ -86,11 +110,12 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modal.show(template);
     setTimeout(() => {
-    this.modalRef.hide();
+    this.modalRef.hide();       //to hide the modal in 10 sec
   }, 10000);
   }
   ngOnInit() {
-    this.getrepdetails();
+    // this.getrepdetails();
+    // this.getRepDetails();
   }
   getRepDetails() {
     let link = this._commonservice.nodesslurl + 'trainingreport';
@@ -118,6 +143,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
               console.log('clicked');
             }, 50);
           }
+          
         }
       })
   }
