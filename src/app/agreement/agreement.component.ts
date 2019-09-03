@@ -73,6 +73,11 @@ export class AgreementComponent implements OnInit {
         address:      this.userDetails.address,
         fullName:     this.userDetails.firstname + ' ' + this.userDetails.lastname
       });
+      if(this.userDetails.companyname==null || this.userDetails.companyname==''){
+        this.agreementForm.patchValue({
+          companyName:  this.userDetails.firstname + ' ' + this.userDetails.lastname
+        });
+      }
     });
   }
 
