@@ -24,9 +24,11 @@ export class UsermanagementComponent implements OnInit {
   public eventtype:any;
   public consultantrole:any;
   public usertype:any;
+  public fileurl:any ;
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public _http: HttpClient, public modal: BsModalService) {
   
+    this.fileurl = this.commonservices.serverfileurl;
    this.consultantrole = this.cookieservice.get('is_consultant'); //to know whether it is admin or senior consultant
    this.usertype = this.cookieservice.get('usertype');
    this.getUserLists();

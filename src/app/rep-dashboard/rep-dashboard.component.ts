@@ -28,7 +28,6 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     window.scrollTo(1000, 0);
     this._commonservice = _commonservice;
     //this.userReport();
-    console.log(this.cookeiservice.get('calenderaccess'));
     if (this.cookeiservice.get('userid') != null) {
       this.getrepdetails();
       this.userReport();
@@ -41,7 +40,6 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     
   }
   copyText(val: string){
-    console.log(val);
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -66,10 +64,8 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       .subscribe(res => {
         let result: any;
         result = res;
-        console.log(result);
         if (result.status == 'error') {
         } else {
-          console.log(result);
           this.repDetailsNew = result.data;
           if(this.repDetailsNew.length>0 && this.repDetailsNew[0].trainingpercentage == 100 && this.repDetailsNew[0].is_discovery == false){
             setTimeout(() => {
@@ -83,16 +79,12 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
             this._http.post(link2, {"condition": {"user_id_object": this.cookeiservice.get('userid')},"source": "user_parent_category_percent"})
       .subscribe(res => {
         let result: any;
-        result = res;
-        console.log('result in new call');
-        console.log(result);  
+        result = res;  
         // if (result.resc >0) {
           for(let i in result.res){
             if(result.res[i].trainingpercent==100){
               setTimeout(() => {
                 this.modallink.nativeElement.click();
-                console.log(this.modallink);
-                console.log('clicked');
               }, 50);
             }
           }
@@ -111,7 +103,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modal.show(template);
     setTimeout(() => {
     this.modalRef.hide();       //to hide the modal in 10 sec
-  }, 10000);
+  }, 15000);
   }
   ngOnInit() {
     // this.getrepdetails();
@@ -128,19 +120,15 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
         } else {
 
           // this.singleuserdata = result.data;
-          console.log('singledata.......');
           // console.log(this.singleuserdata);
           for (let i in result.data) {
             if (result.data[i].type == 'rep' && result.data[i]._id == this.cookeiservice.get('userid')) {
               this.repDetailsNew.push(result.data[i]);
             }
           }
-          console.log(this.repDetailsNew);
           if(this.repDetailsNew.length>0 && this.repDetailsNew[0].trainingpercentage == 100){
             setTimeout(() => {
               this.link.nativeElement.click();
-              console.log(this.link);
-              console.log('clicked');
             }, 50);
           }
           
@@ -170,11 +158,9 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     // var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
     // this.router.navigate([link]);
     if (this.reptraininglessondetails != null) {
-      console.log('rep');
       var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
       this.router.navigate([link]);
     } else {
-      console.log('regional');
       var link = 'reptrainingcenter/5d36d7256778e75a3d6c37ce';
       //   var link = 'reptrainingcenter/5c6d54656fac495dd5c209e9';
       this.router.navigate([link]);

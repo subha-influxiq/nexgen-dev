@@ -51,7 +51,7 @@ export class ReplegaldocumentComponent implements OnInit {
           result=res;
           this.legallist=result.res;
           for(let i in this.legallist){
-            if(this.legallist[i].doctype=='W9'){
+            if(this.legallist[i].doctype=='W9' || this.legallist[i].doctype=='1099'){
               this.getw9values=this.legallist[i];
             }  if(this.legallist[i].doctype=='ID'){
               this.getidvalues=this.legallist[i];
@@ -75,14 +75,14 @@ export class ReplegaldocumentComponent implements OnInit {
       if (output.file.response != "") {
         this.files = [];
         this.files.push(output.file);
-        if(ival=='W9')this.percentageisw9 = this.files[0].progress.data.percentage;
+        if(ival=='W9' || ival=='1099')this.percentageisw9 = this.files[0].progress.data.percentage;
         if(ival=='ID')this.percentageisid = this.files[0].progress.data.percentage;
 
       }
     } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
       const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
       this.files[index] = output.file;
-      if(ival=='W9')this.percentageisw9 = this.files[0].progress.data.percentage;
+      if(ival=='W9'|| ival=='1099')this.percentageisw9 = this.files[0].progress.data.percentage;
       if(ival=='ID')this.percentageisid = this.files[0].progress.data.percentage;
       //  console.log('this.files==');
       //console.log(this.files);
@@ -97,13 +97,13 @@ export class ReplegaldocumentComponent implements OnInit {
     }
     // console.log('files-');
     // console.log(this.files);
-    if(ival=='W9')this.filesw9 = this.files;
+    if(ival=='W9' || ival=='1099')this.filesw9 = this.files;
     if(ival=='ID')this.filesid = this.files;
     this.last = this.files[0].name.substring(this.files[0].name.lastIndexOf(".") + 1, this.files[0].name.length);
     if (this.last != 'doc' && this.last != 'docx' && this.last != 'pdf' && this.last != 'ppt' && this.last != 'txt' && this.last != 'xls') {
       this.errormg = 'in error , wrong file uploader ..';
     }
-    if( ival=='W9' && this.files[0].response!=null){
+    if( (ival=='W9' || ival=='1099') && this.files[0].response!=null){
       let data;
       let objarr=['userid','_id'];
       if(this.getw9values!=null){
@@ -171,13 +171,13 @@ export class ReplegaldocumentComponent implements OnInit {
     this.message="Record deleted successfully!!";
     const link = this.commonservices.nodesslurl+'deletesingledata?token='+this._cookieservice.get('jwttoken');
     let idis;
-    if(this.selecteditemtype=='W9') idis=this.getw9values._id;
+    if(this.selecteditemtype=='W9' || this.selecteditemtype=='1099') idis=this.getw9values._id;
     if(this.selecteditemtype=='ID') idis=this.getidvalues._id;
     this._http.post(link,{source:'legaldocuments',id:idis})
         .subscribe(res => {
           let result;
           result = res;
-          if(this.selecteditemtype=='W9'){
+          if(this.selecteditemtype=='W9' || this.selecteditemtype=='1099'){
             this.getw9values=null;
             this.filesw9=[];
             this.percentageisw9=null;

@@ -150,11 +150,8 @@ export class RepTraingcenterComponent implements OnInit {
             this._http.post(link2, { user_id: this.cookeiservice.get('userid') })
                 .subscribe(res => {  
                   let result2: any = res;
-                  console.log('result in success');
-                  console.log(result2);
                   if(result2.status=='error') {
                   } else {
-                      console.log(result2);
                   }
                 }, error => {
                   console.log('Oooops!');
@@ -324,10 +321,7 @@ export class RepTraingcenterComponent implements OnInit {
 
                 let result:any ={};
                 result = res;
-                // console.log('result....');
-                // console.log(result);
                 if(result.status=='error'){
-                    //  console.log(result.msg);
                 }
                 else {
                     this.getmarkasdonelist();
