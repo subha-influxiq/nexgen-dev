@@ -1740,7 +1740,12 @@ body{ padding:0; margin: 0;}
 
 .reptrainingcenter_banner{ background: url("../images/reptrainingcenter_newbanner_img2.png") no-repeat right top; background-size: 1920px;  padding-right: 80px; }
 
-.reptrainingcenter_banner .reptrainingcenter_banner_wrapper{background: url("../images/reptrainingcenter_newbanner_img1.png") no-repeat right bottom; padding: 0 500px 0 60px;}
+.reptrainingcenter_banner .reptrainingcenter_banner_wrapper{ padding: 0 646px 0 60px;}
+
+.reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text h3{color: #191919;width: 569px;}
+.reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p span{color:#ff4200;}
+.reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p strong{display: block; }
+.reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p{padding-right: 184px;}
 
 .reptrainingcenter_banner_wrapper_text{ display: table-cell;  vertical-align: middle; width: 100vw; height: 700px;}
 
