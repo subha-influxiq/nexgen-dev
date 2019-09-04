@@ -67,32 +67,38 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
         if (result.status == 'error') {
         } else {
           this.repDetailsNew = result.data;
-          if(this.repDetailsNew.length>0 && this.repDetailsNew[0].trainingpercentage == 100 && this.repDetailsNew[0].is_discovery == false){
+          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage == 100 && this.repDetailsNew[0].is_discovery == false) {
             setTimeout(() => {
               this.link.nativeElement.click();
               console.log(this.link);
               console.log('clicked');
             }, 50);
           }
-          else{
-            let link2 = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-            this._http.post(link2, {"condition": {"user_id_object": this.cookeiservice.get('userid')},"source": "user_parent_category_percent"})
-      .subscribe(res => {
-        let result: any;
-        result = res;  
-        // if (result.resc >0) {
-          for(let i in result.res){
-            if(result.res[i].trainingpercent==100){
-              setTimeout(() => {
-                this.modallink.nativeElement.click();
-              }, 50);
-            }
+          else {
+
+            if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
+              let link2 = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+            this._http.post(link2, {
+              "condition": {"user_id_object": this.cookeiservice.get('userid')},
+              "source": "user_parent_category_percent"
+            })
+                .subscribe(res => {
+                  let result: any;
+                  result = res;
+                  // if (result.resc >0) {
+                  for (let i in result.res) {
+                    if (result.res[i].trainingpercent == 100) {
+                      setTimeout(() => {
+                        this.modallink.nativeElement.click();
+                      }, 50);
+                    }
+                  }
+                  // }
+                }, error => {
+                  console.log('Oooops!');
+                });
           }
-        // }
-      }, error => {
-        console.log('Oooops!');
-      });
-          }
+        }
         }
       }, error => {
         console.log('Oooops!');
@@ -155,6 +161,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       });
   }
   gototrainingsectionwithcat() {
+    if(this.modalRef!=null) this.modalRef.hide();
     // var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
     // this.router.navigate([link]);
     if (this.reptraininglessondetails != null) {
