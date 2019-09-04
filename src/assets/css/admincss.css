@@ -151,8 +151,10 @@
 .dashboard_block2 .col-md-4 .reps_inner_block1 table { color: #fff; }
 .dashboard_block2 .col-md-4 .reps_inner_block2  table{ color: #fff; }
 .dashboard_block2 .col-md-4 .reps_inner_block3 table{ color: #000!important; }
+.as_dashbord .col-md-4{min-width: 100%;}
+.dashboard_block2 .col-md-4 .reps_inner_block2 table .Products{text-transform: capitalize;}
 
-.dashboard_block2 .col-md-4 .reps_inner_block2{
+.dashboard_block2 .reps_inner_block2{
     width: 100%;
     background: url("../images/reps_inner_block2bg.png")no-repeat; background-position: center bottom;
     background-color:  #9400d3 ;

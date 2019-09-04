@@ -256,10 +256,6 @@ export class RepTraingcenterComponent implements OnInit {
       this.flg=1;
     }
     markasdonetraninglesson(item,i){
-       /* alert(i);
-        alert(this.sorteddatalist);
-        alert(this.sorteddatalist.length);
-        alert(this.notdonecategory.length);*/
         this.nextcat=null;
         let b1:any;
         for( b1 in this.notdonecategory){
@@ -287,9 +283,6 @@ export class RepTraingcenterComponent implements OnInit {
 
                     this.gettraininglist();
                     //let nextcat:any;
-
-
-
                     //alert(5);
                     //alert(notdonecatlen);
                     if(notdonecatlen>1 && this.cid!=0){

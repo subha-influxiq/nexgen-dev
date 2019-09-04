@@ -71,8 +71,8 @@
                   <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}} ({{item.userdata.email}})</td>
                   <td data-title="Date Set" *ngIf="item.userdata">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
                   <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for {{item.timespan}} minutes)</td>
-                  <td data-title="Participate's Name" *ngIf="item.userdata">{{item.leaddata.firstname}} {{item.leaddata.lastname}}</td>
-                  <td data-title="Participate's Phone No." *ngIf="item.userdata">{{item.phoneNumber}}</td>
+                  <td data-title="Participate's Name" *ngIf="item.leaddata">{{item.leaddata.firstname}} {{item.leaddata.lastname}}</td>
+                  <td data-title="Participate's Phone No." *ngIf="item.leaddata">{{item.leaddata.phoneno}}</td>
                   <td data-title="Products" *ngIf="item.leaddata"><span *ngFor="let product of item.leaddata.productname">{{product.product_name}}<br></span></td>
                   
                   <td data-title="Manage Notes" *ngIf="item.userdata"><span class="delete_user"
