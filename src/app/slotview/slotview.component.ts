@@ -333,7 +333,7 @@ export class SlotviewComponent implements OnInit {
     getLeads() {
         let userId: any = this.cookeiservice.get('userid');
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source:'leads_view', condition: { "created_by_object": userId }}).subscribe(res => {
+        this._http.post(link, { source:'leads_view_for_users', condition: { "created_by_object": userId }}).subscribe(res => {
             let result: any = res;
             this.allLeads = result.res;
             console.log(this.allLeads);
@@ -349,8 +349,10 @@ export class SlotviewComponent implements OnInit {
             for(let c in this.allLeads) {
                 if(this.allLeads[c].firstname != null && this.allLeads[c].firstname.toLowerCase().indexOf(keyword.toLowerCase())>-1) {
                     this.leadsSuggestion.push(this.allLeads[c]);
+                    console.log('call firstname');
                 } else if(this.allLeads[c].lastname != null && this.allLeads[c].lastname.toLowerCase().indexOf(keyword.toLowerCase())>-1){
                     this.leadsSuggestion.push(this.allLeads[c]);
+                    console.log('call lastname');
                     
                 } 
             }
