@@ -17,15 +17,11 @@ export class AdditionalVideoComponent implements OnInit {
   public categoryid:any;
   public condition:any = {};
   public datalist: any;
-  public recphoneno: any;
-  public recid: any;
   public loader:any = 0;
 
   constructor(public activatedRoute:ActivatedRoute, public _commonservices: Commonservices, public _http: HttpClient, public cookie: CookieService, public router: Router, public sanitizer: DomSanitizer) {
     this.categoryid  = this.activatedRoute.snapshot.params.categoryid;
-    console.log(this.categoryid);
     this.condition = {source:'videos_view_with_categoryname',condition:{category_object:this.categoryid}};
-    console.log(this.condition);
     this.additionalvideos();
    }
 
