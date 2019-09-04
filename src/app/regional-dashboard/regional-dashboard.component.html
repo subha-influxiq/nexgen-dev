@@ -76,7 +76,7 @@
             <td data-title="Phone Number">{{item.leaddata.phoneno}}</td>
             <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
             <td data-title="Time">{{_commonservice.showtime(item.start_time)}}</td>
-            <td data-title="Products" class="Products"  *ngIf="item.leaddata"><span *ngFor="let product of item.leaddata.productname">{{product.product_name}}<br></span></td>
+            <td data-title="Products" class="Products"><span *ngIf="item.productname">{{item.productname}}</span><span *ngIf="item.productname==null">N/A</span></td>
           </tr>
           </tbody>
         </table>
