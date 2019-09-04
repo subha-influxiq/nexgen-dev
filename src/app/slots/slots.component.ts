@@ -345,8 +345,9 @@ showformat(stdt){
             closername: closername,
             closeremail: closeremail,
             slotdata: this.slotdata,
+            productid: this.cookeiservice.get('lead-product'),
             type: this.route.snapshot.url[0].path
-        }
+        };
         console.log('data--------');
         console.log(data);
         this._http.post(link, data)
@@ -367,6 +368,7 @@ showformat(stdt){
                         this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
                         break;
                     case 'book-a-closer':
+                      this.cookeiservice.delete('lead-product');
                         this.modalRef = this.modal.show(this.mymodal, {class: 'successmodal'});
                         this.route.paramMap.subscribe(params => {
                           if(!params.get("id")) {

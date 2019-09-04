@@ -208,6 +208,7 @@ export class SlotviewComponent implements OnInit {
                 console.log('slotview',this.slotView);
                 this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                this.cookeiservice.set('lead-product',this.closerLeadForm.value.product);
                 if(this.filterval5!=null && this.filterval5 != '') {
                     cond = { "is_discovery": false, "is_onboarding": false, "is_qna": false, "is_custom": false, "userproducts": { "$in": [ this.closerLeadForm.value.product ] }, slots:{$type:'array'}, startdate:{
                         $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
