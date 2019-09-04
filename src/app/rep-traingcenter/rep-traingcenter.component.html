@@ -451,7 +451,7 @@
         <h1>Completed Trainings</h1>
        
         <ul>
-            <li class="donepcat" *ngFor="let itemp of doneparentcat" (click)="selpcat=itemp.catid"><a  href="javascript:void(0)"> <span  ><img  src="assets/images/filemanager_icon.png"></span> {{itemp.catname}}</a>
+            <li class="notdonepcat" *ngFor="let itemp of doneparentcat" (click)="selpcat=itemp.catid"><a  href="javascript:void(0)"> <span  ><img  src="assets/images/filemanager_icon.png"></span> {{itemp.catname}}</a>
             <ul > <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of donecategory">
   
