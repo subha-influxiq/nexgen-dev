@@ -91,7 +91,7 @@
           <tr>
           <!--  <th data scope="col">Date Added</th>-->
             <!-- <th scope="col">User ID</th> -->
-            <th scope="col">Type</th>
+            <!-- <th scope="col">Type</th> -->
             <th scope="col">Name</th>
             <th scope="col">Date Set</th>
             <th scope="col"> Time</th>
@@ -102,8 +102,8 @@
           <tr *ngFor="let item of googleevents | slice:0:5;">
           <!--  <td data-title="Date Added" scope="row">{{item.startdate}}</td>-->
             <!-- <td data-title="User ID">{{item.userdata.unique_id}}</td> -->
-            <td data-title="Type" style="text-transform: capitalize;">{{item.type}}</td>
-            <td data-title="Name">{{item.userdata.firstname}} {{item.userdata.lastname}} ({{item.userdata.email}})</td>
+            <!-- <td data-title="Type" style="text-transform: capitalize;">{{item.type}}</td> -->
+            <td data-title="Name">{{item.leaddata.firstname}} {{item.leaddata.lastname}} ({{item.leaddata.email}})</td>
             <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
             <td data-title="Time">{{_commonservice.showtime(item.start_time)}}</td>
           </tr>

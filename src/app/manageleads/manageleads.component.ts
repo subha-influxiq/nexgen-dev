@@ -31,15 +31,15 @@ export class ManageleadsComponent implements OnInit {
       this.hideaddval = true;
       this.tabledatalist = [
         { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
-        { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
-        { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+        { value: 'fullname', name: 'Full Name', role: 0, func: '', class: 'firstname', type: 'text' },
         { value: 'company', name: 'Company ', role: 0, func: '', class: 'company', type: 'text' },
         { value: 'website', name: 'Website ', role: 0, func: '', class: 'website', type: 'text' },
+        { value: 'only_productname', name: 'Products ', role: 0, func: '', class: 'productname', type: 'text' },
         { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
         { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'phone', type: 'phoneno' },
         { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
-        { value: 'fullname', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
+        { value: 'rep_name', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
       ];
     } else {
       this.sourcecondition = { 'created_by_object': this.cookieservice.get('userid') };

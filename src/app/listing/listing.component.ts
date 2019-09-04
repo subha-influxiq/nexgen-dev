@@ -152,9 +152,9 @@ export class ListingComponent implements OnInit {
                 console.log('Oooops!');
                 //this.formdataval[c].sourceval = [];
             });
-      this.interv = setInterval(() => {
+      //this.interv = setInterval(() => {
             this.getdatalist();
-       }, 6000)
+     //  }, 6000)
     }
     ngOnDestroy() {
         clearInterval(this.interv);

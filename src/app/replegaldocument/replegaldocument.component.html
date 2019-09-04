@@ -47,7 +47,7 @@
                       <span *ngIf="getw9values==null">Not Submitted</span></td>
                     <td>
 
-                      <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'W9')" [uploadInput]="uploadInput" #fileInput1 >
+                      <input style="display: none" type="file" accept=".doc,.docx,.ppt,.pdf,.txt" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event,'1099')" [uploadInput]="uploadInput" #fileInput1 >
 
                       <button (click)="fileInput1.click()" type="button" class="deletebtn"  *ngIf="getw9values!=null">Upload New</button>
                       <button (click)="fileInput1.click()" type="button" class="deletebtn"  *ngIf="getw9values==null">Upload</button> <button type="button" (click)="deletdata(getw9values,commonconfirmmodal)" *ngIf="getw9values" class="deletebtn">Delete</button>

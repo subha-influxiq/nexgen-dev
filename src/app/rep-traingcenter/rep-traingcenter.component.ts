@@ -141,9 +141,21 @@ export class RepTraingcenterComponent implements OnInit {
           let result: any = res;
           if(result.status=='error') {
           } else {
+
             this.markasdonedatalist = [];
             this.markasdonedatalist = result.res;
             this.getdatalist(result.res);
+
+            let link2 = this._commonservice.nodesslurl+'update_category_qualification';
+            this._http.post(link2, { user_id: this.cookeiservice.get('userid') })
+                .subscribe(res => {  
+                  let result2: any = res;
+                  if(result2.status=='error') {
+                  } else {
+                  }
+                }, error => {
+                  console.log('Oooops!');
+                });
           }
         }, error => {
           console.log('Oooops!');
@@ -309,10 +321,7 @@ export class RepTraingcenterComponent implements OnInit {
 
                 let result:any ={};
                 result = res;
-                // console.log('result....');
-                // console.log(result);
                 if(result.status=='error'){
-                    //  console.log(result.msg);
                 }
                 else {
                     this.getmarkasdonelist();
