@@ -598,8 +598,33 @@
 .admin_header .col-md-8 .navbar-brand .nex_header_logo{ width: 300px; }
 .admin_header .col-md-8 .navbar-brand .nex_header_logo img{ width: 100%; }
 /*REP DASHBOARD*/
-.rep_dashboard_wrapper1{ background: url("../images/rep_dashboardbg.jpg") no-repeat right top!important;}
+.rep_dashboard_wrapper1{ background: url("../images/rep_dashboardbg.jpg") no-repeat right top!important; position: relative;}
 .rep_dashboard_wrapper1 .admin_dashboard_container{ background: none; }
+.avivideowrapper {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.avivideowrapper h2{
+    text-align: center;
+    margin: 0;
+    padding-bottom: 16px;
+    font-family: 'RalewayBold';
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0px 1px #6b6b6b;
+}
+.aviiframewrapper {
+    display: block;
+    width: 521px;
+    height: 293px;
+    background: #fff;
+    padding: 11px;
+    box-shadow: 0 0 10px #0000008f;
+    margin: 0 auto;
+}
 
 .rep_dashboard_wrapper2{ background: url("../images/rep_dashboardbg2.jpg") no-repeat center center;
     min-height:316px;

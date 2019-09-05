@@ -260,9 +260,21 @@
     .user_account_setting_wrapper .account_inner_wrapper .form_wrapper{  width: 100%  }
 
     .rep_dashboard_wrapper1 {
-        background: #16343c url(../images/rep_dashboardbgsmall.jpg) no-repeat center top !important;
+        background: #16343c !important;
         background-size: 100% !important;
-        padding-top: 64%; height: auto;
+        padding-top: 0;
+        height: auto;
+    }
+    .avivideowrapper {
+        position: relative;
+        right: inherit;
+        top: inherit;
+        transform: inherit;
+        padding: 20px 0;
+        margin: 0 auto;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
     }
 
     .admin_dashboard_container{ height: auto;   padding-left: 0;  padding-right: 0; padding-bottom: 5px;}
@@ -830,6 +842,9 @@
 
 }
 /*@media screen and (max-width:520px) {*/
+@media screen and (max-width:580px) {
+    .aviiframewrapper {width: 93%;}
+}
 @media screen and (max-width:580px) {
     .user_management_wrapper .user_management_inner .inner_content_wrapper input {
         margin-bottom: 10px;
