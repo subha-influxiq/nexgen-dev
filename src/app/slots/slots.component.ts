@@ -313,6 +313,7 @@ showformat(stdt){
             repmsg=this.dataForm.controls['repsmsg'].value;
             closeremail=this.cookeiservice.get('useremail');
             closername=this.cookeiservice.get('fullname');
+            attendeesarr.push(this.cookeiservice.get('useremail'));
 
         }
 

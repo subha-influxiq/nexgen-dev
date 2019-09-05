@@ -36,7 +36,7 @@
   <!--  <h2> Training </h2>-->
   <div class="traing_innerwrapper">
     <div class="training_leftpart" [ngClass]="putclass()">
-      <h2>Enterprise Large Ticket Sales - <br><span>Priority Commercial Payments</span></h2>
+      <h2>{{currentcategoryname}} </h2>
 
       <!--  <div *ngIf="this.sorteddatalist[this.sorteddatalist.length-3]">
       <carousel>
@@ -458,7 +458,7 @@
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of notdonecategory">
 
-                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname)"
+                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname);gettraininglist()"
                     href="javascript:void(0)"> <span><img (click)="cid=item._id;getdatalist()"
                         src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
               </ng-container>
@@ -484,7 +484,7 @@
               <ng-container *ngFor="let item of donecategory">
 
                 <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname)"
-                    href="javascript:void(0)"> <span><img (click)="cid=item._id;getdatalist()"
+                    href="javascript:void(0)"> <span><img (click)="cid=item._id;getdatalist();gettraininglist();"
                         src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
               </ng-container>
 

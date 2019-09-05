@@ -73,13 +73,13 @@
                     <!--      <th scope="col">Username </th>-->
                     <th scope="col">Full Name</th>
                     <!-- <th scope="col">Last Name</th> -->
-                    <th scope="col">Account Type</th>
+                    <th scope="col">A/C Type</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone No.</th>
                     <th scope="col">Activities</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Calender Access</th>
-                    <th scope="col">Senior Consulting Director</th>
+                    <!-- <th scope="col">Calender Access</th>
+                    <th scope="col">Senior Consulting Director</th> -->
                     <!-- <th scope="col">Contract Signed</th> -->
                     <th scope="col"
                       *ngIf="(usertype=='admin') || (this.consultantrole!=null && this.consultantrole==1)">Action</th>
@@ -136,26 +136,22 @@
 
                     </td>
                     <td datalabel="Status">
-                      <span class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
+                        Login Access:<span class="statusactive" *ngIf="item.status!=null && item.status==1 ">&nbsp;Active &nbsp;
                         <span *ngIf="usertype=='admin'" class="ticon_active" (click)="togglestatus(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.status==null || item.status==0 ">Inactive
                         <span *ngIf="usertype=='admin'" class="ticon_inactive" (click)="togglestatus(item)"></span>
-                      </span>
-                    </td>
-                    <td datalabel="Calender Access">
-                      <span class="statusactive"
-                        *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
-                        <span *ngIf="usertype=='admin'" class="ticon_active"
-                          (click)="toggleCalenderAccess(item)"></span>
-                      </span>
-                      <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
-                        <span *ngIf="usertype=='admin'" class="ticon_inactive"
-                          (click)="toggleCalenderAccess(item)"></span>
-                      </span>
-                    </td>
-                    <td datalabel="Senior Consulting Director">
-                      <span class="statusactive" *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active
+                      </span><br>
+                      Calender Access:<span class="statusactive"
+                      *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
+                      <span *ngIf="usertype=='admin'" class="ticon_active"
+                        (click)="toggleCalenderAccess(item)"></span>
+                    </span>
+                    <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
+                      <span *ngIf="usertype=='admin'" class="ticon_inactive"
+                        (click)="toggleCalenderAccess(item)"></span>
+                    </span><br>
+                    Senior Consulting Director:<span class="statusactive" *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active
                         &nbsp;
                         <span *ngIf="usertype=='admin'" class="ticon_active"
                           (click)="toggleConsultantRole(item)"></span>

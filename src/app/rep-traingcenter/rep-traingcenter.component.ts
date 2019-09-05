@@ -43,6 +43,7 @@ export class RepTraingcenterComponent implements OnInit {
   public doneparentcat:any=[];
   public notdoneparentcat:any=[];
   public ngclassflag=0;
+  public currentcategoryname=0;
   public curitem:any=null;
   public cureentcursor:any=0;
   public flg:any=1;
@@ -55,7 +56,7 @@ export class RepTraingcenterComponent implements OnInit {
     public trainingcategoryMod:any =[];
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
     this._commonservice=_commonservice;
-    // console.log(this.selpcat)
+    console.log(this.notdoneparentcat);
   }
 
   ngOnInit() {
@@ -75,7 +76,7 @@ export class RepTraingcenterComponent implements OnInit {
 
     gettraininglist(){
         let dpcat:any=[];
-        let ndpcat:any=[];
+        let ndpcat:any=[]; 
         this.donecategory = [];
         this.notdonecategory = [];
         const link = this._commonservice.nodesslurl+'training_category_foruser?token=' + this.cookeiservice.get('jwttoken');
@@ -99,7 +100,13 @@ export class RepTraingcenterComponent implements OnInit {
                         }
                     } 
 
+                    console.log('huio before loop',this.cid);
+
                     for(let c in this.trainingcategory){
+                        if(this.trainingcategory[c]._id==this.cid){
+                            console.log('huio',this.cid,this.trainingcategory[c]);
+                        this.currentcategoryname=this.trainingcategory[c].categoryname;
+                        } 
                         if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1 && this.trainingcategory[c].parentcategory.length>0){  
                             //dpcat.push(this.trainingcategory[c].parentcategory);
                             console.log('dpcat...',dpcat.includes(this.trainingcategory[c].parentcategory));
@@ -127,7 +134,9 @@ export class RepTraingcenterComponent implements OnInit {
                             this.lastLessionName = this.trainingcategory[c].categoryname;
                         }
                     }
-                    console.log('',this.doneparentcat,this.notdoneparentcat);
+                    console.log(',this.doneparentcat,this.notdoneparentcat');
+                    console.log(this.notdoneparentcat);
+                    console.log(this.doneparentcat);
                 }
             }, error => {
                 console.log('Oooops!');
@@ -223,6 +232,8 @@ export class RepTraingcenterComponent implements OnInit {
                         //console.log(this.sorteddatalist[i].htmleditorvalue);
                         this.sorteddatalist[i].sanitizedHtmlEditor = this.sanitizer.bypassSecurityTrustHtml(this.sorteddatalist[i].htmleditorvalue);
                     }
+
+                   
                 }
             }, error => {
                 console.log('Oooops!');
