@@ -26,25 +26,28 @@ export class AdminheaderComponent implements OnInit {
   public interval;
   public repDetailsNew: any = [];
   public videoCategoryarry: any = [];
+  public checkOldCookie: any;
+  public oldcookiedata: any;
 
-  constructor(public cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
-    console.log(this.cookie.get('refreshtoken'));
+  constructor(public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
+    this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
+    if (this.cookie.check('oldcookie') == true) {
+      this.oldcookiedata = JSON.parse(this.cookie.get('oldcookie'));
+    }
+
     window.scrollTo(1000, 0);
     this.type = this.cookie.get('usertype');
     this.idis = this.cookie.get('userid');
     this.consultantrole = this.cookie.get('is_consultant');
-
-    if (this.cookie.check('jwttoken') ==false || this.cookie.check('userid') == false) {
+    if (this.cookie.check('jwttoken') == false || this.cookie.check('userid') == false) {
       this.router.navigate(['/']);
     } else {
       this.getRepDetails();
       this.getrepdetails();
       this.getvideocatagory();
-      
+
       this.sourceconditionval = { _id: this.idis };
       if (this.type == 'rep') {
-       
-        
 
       }
     }
@@ -55,25 +58,25 @@ export class AdminheaderComponent implements OnInit {
       this.router.navigate(['/tempaccess']);
     }
 
-  
+
   }
 
 
   getvideocatagory() {
     let link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
     console.log(link);
-    this._http.post(link, { source: "videocategory_view_with_parent", condition: {status: 1} })
+    this._http.post(link, { source: "videocategory_view_with_parent", condition: { status: 1 } })
       .subscribe(res => {
         let result;
         result = res;
         if (result.status == 'error') {
-          
+
         } else {
           this.videoCategoryarry = [];
           this.videoCategoryarry = result.res;
           console.log('videoCategoryarry:');
-              console.log(this.videoCategoryarry);
-          
+          console.log(this.videoCategoryarry);
+
         }
       }, error => {
         console.log('Oooops!');
@@ -98,7 +101,7 @@ export class AdminheaderComponent implements OnInit {
           console.log('Oopss');
         } else {
           this.repDetailsNew = result.data;
-          this.cookie.set('calenderaccess',this.repDetailsNew[0].calenderaccess);
+          this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
           console.log(this.repDetailsNew);
         }
       })
@@ -226,6 +229,61 @@ export class AdminheaderComponent implements OnInit {
 
   openModal() {
     alert('OKK');
+  }
+  logBackToOldProfile() {
+    this.cookie.deleteAll();  ///deleting new cookie here to fetch old data
+    //setting old cookie
+    let link = this._commonservices.nodesslurl + 'datalist?token=' + this.oldcookiedata.jwttoken;
+    let data = { source: 'users', condition: { email: this.oldcookiedata.useremail } };
+    this._http.post(link, data)
+      .subscribe(res => {
+        let result: any;
+        result = res;
+        console.log(result);
+        if (result.resc == 1 && result.res != null && result.res[0] != null) {
+          if (result.res[0].status == 1) {
+            this.cookie.set('jwttoken', this.oldcookiedata.jwttoken);
+            this.cookie.set('userid', result.res[0]._id);
+
+            if (result.res[0].is_contract_signed == null && result.res[0].type == 'rep') {
+              this.router.navigate(['/agreement']);
+              return;
+            }
+
+
+            this.cookie.set('lockdornot', result.res[0].lock);
+            this.cookie.set('usertype', result.res[0].type);
+            this.cookie.set('useremail', result.res[0].email);
+            this.cookie.set('calenderaccess', result.res[0].calenderaccess);
+            this.cookie.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
+            if (result.res[0].type == 'admin') {
+              this.router.navigate(['/dashboard']);
+            }
+            if (result.res[0].type == 'regional_recruiter') {
+              this.cookie.set('refreshtoken', result.res[0].refreshtoken);
+              this.router.navigate(['/regionaldashboard']);
+            }
+            if (result.res[0].type == 'rep') {
+              if (result.res[0].status == 0) {
+                this.router.navigate(['/tempaccess']);
+                return;
+              }
+
+              if (result.res[0].status == 1) {
+                this.router.navigate(['/repdashboard']);
+                return;
+              }
+
+
+              if (result.res[0].signup_step2 == 1 && result.res[0].contractstep == null && result.res[0].reptraininglessonstep == null) this.router.navigate(['/contract']);
+              if (result.res[0].signup_step2 == 1 && result.res[0].contractstep == 1 && result.res[0].reptraininglessonstep == null) this.router.navigate(['/reptrainingcenter']);
+              if (result.res[0].signup_step2 == 1 && result.res[0].contractstep == 1 && result.res[0].reptraininglessonstep == 1) this.router.navigate(['/repdashboard']);
+            }
+
+          }
+        }
+      })
+
   }
 
 }

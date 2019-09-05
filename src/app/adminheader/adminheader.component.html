@@ -5,28 +5,30 @@
     <div class="new_header">
       <div class="new_header1">
         <div class="new_h_l_wrapper" style="cursor: pointer">
-          <img src="assets/images/betologo.png" align="nexgen"  [routerLink]="['/dashboard']">
+          <img src="assets/images/betologo.png" align="nexgen" [routerLink]="['/dashboard']">
         </div>
       </div>
       <div class="new_header2">
 
         <nav class="navbar navbar-expand-lg navbar-light ">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active" [routerLink]="['/dashboard']">
-                <a class="nav-link" >Dashboard<span class="sr-only">(current)</span></a>
+                <a class="nav-link">Dashboard<span class="sr-only">(current)</span></a>
               </li>
-              <li class="nav-item active"  [routerLink]="['/usermanagement']">
+              <li class="nav-item active" [routerLink]="['/usermanagement']">
                 <a class="nav-link">Users</a>
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Training Center</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/addtrainings']">Manage Trainings</a>
                   <a class="dropdown-item" [routerLink]="['/trainingsectionlist']">Manage Lessons</a>
@@ -34,14 +36,14 @@
                   <a class="dropdown-item" [routerLink]="['/training-reports']">Training Reports</a>
                   <a class="dropdown-item" [routerLink]="['/manage-video-category']">Manage Video Category</a>
                   <a class="dropdown-item" [routerLink]="['/manage-video']">Manage Videos</a>
-                  
+
                 </div>
               </li>
               <!-- <li class="nav-item" [routerLink]="['/digitalcontract']">
                 <a class="nav-link" >Contract Manager</a>
               </li> -->
 
-            <!--  <li class="nav-item" [routerLink]="['/legaldoclist']">
+              <!--  <li class="nav-item" [routerLink]="['/legaldoclist']">
                 <a class="nav-link" >Legal Documents</a>
               </li>-->
 
@@ -53,7 +55,8 @@
                 <a class="nav-link" >My Reps</a>
               </li> -->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
                   <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
@@ -65,12 +68,13 @@
               <li class="nav-item" [routerLink]="['/appointmentlist']">
                 <a class="nav-link ">Calendar Manager</a>
               </li>
-              <li class="nav-item"  [routerLink]="['/regional']">
+              <li class="nav-item" [routerLink]="['/regional']">
                 <!-- <a class="nav-link">Regional Manager</a> -->
                 <a class="nav-link">Closers</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resource Center</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Resource Center</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/resourcecategory']">Add Categories</a>
                   <a class="dropdown-item" [routerLink]="['/resources']">Add Resources</a>
@@ -81,21 +85,25 @@
           </div>
         </nav>
       </div>
-    <!--  <div class="new_header3">
+      <!--  <div class="new_header3">
         <h5>Regional Recruiter: <strong>787975474 </strong> </h5>
       </div>-->
       <div class="new_header4">
         <div class="profile_block">
           <ul>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
                 <div class="user_image">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
                 </div>
               </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
                 <a class="dropdown-item" (click)="logout()">Log Out</a>
+                <a *ngIf="checkOldCookie!=null && checkOldCookie==true" class="dropdown-item"
+                  (click)="logBackToOldProfile()">Log Back Your Account</a>
               </div>
             </li>
           </ul>
@@ -110,97 +118,107 @@
     <div class="new_header">
       <div class="new_header1">
         <div class="new_h_l_wrapper" style="cursor: pointer">
-          <img src="assets/images/betologo.png" align="nexgen"  [routerLink]="['/repdashboard']">
+          <img src="assets/images/betologo.png" align="nexgen" [routerLink]="['/repdashboard']">
         </div>
       </div>
       <div class="new_header2">
 
         <nav class="navbar navbar-expand-lg navbar-light ">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrep" aria-controls="navbarSupportedContentrep" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrep"
+            aria-controls="navbarSupportedContentrep" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContentrep"  *ngIf="router.url!='/reptrainingcenter'">
+          <div class="collapse navbar-collapse" id="navbarSupportedContentrep" *ngIf="router.url!='/reptrainingcenter'">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active" [routerLink]="['/repdashboard']">    
-                <a class="nav-link" >Dashboard <span class="sr-only"></span></a>
+              <li class="nav-item active" [routerLink]="['/repdashboard']">
+                <a class="nav-link">Dashboard <span class="sr-only"></span></a>
               </li>
-              <li *ngIf="consultantrole!=null && consultantrole==1" class="nav-item active"  [routerLink]="['/rep-management']">
+              <li *ngIf="consultantrole!=null && consultantrole==1" class="nav-item active"
+                [routerLink]="['/rep-management']">
                 <a class="nav-link">My Reps</a>
               </li>
 
               <!-- ----------------------------------------------- -->
-              
+
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Training Center</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Training Center</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" (click)="gototrainingsectionwithcat()">Training Center</a>
-                  <a class="dropdown-item dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Additional Training</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li *ngFor="let item of videoCategoryarry">
-                        <a class="dropdown-item " [routerLink]="['/additional-video',item._id]" >{{item.categoryname}}</a>                   
-                      </li>
-                    </div>                  
-                </div>
+                  <a class="dropdown-item dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Additional Training</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let item of videoCategoryarry">
+                <a class="dropdown-item " [routerLink]="['/additional-video',item._id]">{{item.categoryname}}</a>
               </li>
-              <!-- ----------------------------------------------- -->
-
-
-
-              <li class="nav-item" [routerLink]="['/replegaldocuments']">
-                <a class="nav-link" >Legal Documents</a>
-              </li>
-              <li class="nav-item dropdown" *ngIf="cookie.get('calenderaccess')==1">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
-                  <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment Set By Me</a>
-                </div>
-              </li>
-              <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1" >
-                <a [routerLink]="['/book-a-closer']" class="nav-link" >Discovery Calendar</a>
-              </li>
-
-              <li class="nav-item" *ngIf="repDetailsNew.length>0  && repDetailsNew[0].trainingpercentage == 100 && repDetailsNew[0].is_discovery == false" >
-                  <a class="nav-link" [routerLink]="['/discovery-call',idis]" >Discovery Call</a>
-                </li>
-
-              <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
-                <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
-              </li>
-
-
-              <li class="nav-item"  [routerLink]="['/myresource']">
-                <a class="nav-link">Resources</a>
-              </li>
-            </ul>
           </div>
-        </nav>
       </div>
-        <!-- <div class="new_header3">
+      </li>
+      <!-- ----------------------------------------------- -->
+
+
+
+      <li class="nav-item" [routerLink]="['/replegaldocuments']">
+        <a class="nav-link">Legal Documents</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="cookie.get('calenderaccess')==1">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Manage Leads</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
+          <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment Set By Me</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
+        <a [routerLink]="['/book-a-closer']" class="nav-link">Discovery Calendar</a>
+      </li>
+
+      <li class="nav-item"
+        *ngIf="repDetailsNew.length>0  && repDetailsNew[0].trainingpercentage == 100 && repDetailsNew[0].is_discovery == false">
+        <a class="nav-link" [routerLink]="['/discovery-call',idis]">Discovery Call</a>
+      </li>
+
+      <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
+        <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
+      </li>
+
+
+      <li class="nav-item" [routerLink]="['/myresource']">
+        <a class="nav-link">Resources</a>
+      </li>
+      </ul>
+    </div>
+    </nav>
+  </div>
+  <!-- <div class="new_header3">
          
           <h5>Regional Recruiter: &nbsp; <strong>+1 (208) 380-4589</strong></h5>
         </div> -->
-      <div class="new_header4">
-        <div class="profile_block">
-          <ul>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="user_image">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
-                </div>
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
-                <a class="dropdown-item" (click)="logout()">Log out</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <div class="new_header4">
+    <div class="profile_block">
+      <ul>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <div class="user_image">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
+            </div>
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
+            <a class="dropdown-item" (click)="logout()">Log out</a>
+            <a *ngIf="checkOldCookie!=null && checkOldCookie==true" class="dropdown-item"
+              (click)="logBackToOldProfile()">Log Back Your Account</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
+</div>
+</div>
 </div>
 
 <div class="new_header_bg" *ngIf="type=='regional_recruiter'">
@@ -215,54 +233,60 @@
 
         <nav class="navbar navbar-expand-lg navbar-light ">
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrec" aria-controls="navbarSupportedContentrec" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrec"
+            aria-controls="navbarSupportedContentrec" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContentrec">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active" [routerLink]="['/regionaldashboard']">
-                <a class="nav-link" >Dashboard <span class="sr-only">(current)</span></a>
+                <a class="nav-link">Dashboard <span class="sr-only">(current)</span></a>
               </li>
               <!-- <li class="nav-item active" [routerLink]="['/rep']">
                 <a class="nav-link" >My Reps</a>
               </li> -->
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Leads</a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
                   <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment List</a>
                 </div>
               </li>
-              <li class="nav-item active"  [routerLink]="['/calendar']">
+              <li class="nav-item active" [routerLink]="['/calendar']">
                 <a class="nav-link">Calendar Settings</a>
               </li>
               <li class="nav-item active" (click)="gototrainingsectionwithcat()">
-                <a class="nav-link" >Training Center</a>
+                <a class="nav-link">Training Center</a>
               </li>
               <li class="nav-item active" [routerLink]="['/myresource']">
-                <a class="nav-link" >Resources</a>
+                <a class="nav-link">Resources</a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
-       <!-- <div class="new_header3">
+      <!-- <div class="new_header3">
           <h5>Regional Recruiter: &nbsp; <strong>+1 (208) 380-4589</strong></h5>
         </div> -->
       <div class="new_header4">
         <div class="profile_block">
           <ul>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
                 <div class="user_image">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
                 </div>
               </a>
 
               <div class="dropdown-menu">
                 <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
                 <a class="dropdown-item" (click)="logout()">Log out</a>
+                <a *ngIf="checkOldCookie!=null && checkOldCookie==true" class="dropdown-item"
+                  (click)="logBackToOldProfile()">Log Back Your Account</a>
               </div>
             </li>
           </ul>
@@ -277,12 +301,12 @@
 
 <!-- Modal -->
 <!--PRIVACY Modal-->
-<div bsModal #commissionsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-sizes-name1">
-  <div class="modal-dialog modal-lg commissionsModal_modal_wraapper" >
+<div bsModal #commissionsModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg commissionsModal_modal_wraapper">
     <div class="modal-content">
       <img src="assets/images/betologo.png" alt="#" class="betologo">
       <p>As soon as your first commission is added to the back-office you will gain access to this report.</p>
     </div>
   </div>
 </div>
-

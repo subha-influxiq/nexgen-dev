@@ -64,7 +64,7 @@
           </div>
 
           <div class="table-responsive admin_table_wrapper">
-            <div>
+            <div *ngIf="singleuserdata.length>0">
               <table class="table">
                 <thead>
                   <tr>
@@ -171,11 +171,15 @@
                     </td> -->
                     <td *ngIf="usertype=='admin'" datalabel="Action">
                       <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
+                      <span class="edit_user" (click)="getUserDetails(item.email)">Login</span>
                     </td>
 
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div *ngIf="singleuserdata.length==0 || singleuserdata==null">
+              <h3 style="text-align: center;color:#00a8ef;">There is no user!</h3>
             </div>
           </div>
         </div>
