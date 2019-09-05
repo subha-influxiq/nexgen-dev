@@ -81,7 +81,7 @@
                     <th scope="col">Calender Access</th>
                     <th scope="col">Senior Consulting Director</th>
                     <!-- <th scope="col">Contract Signed</th> -->
-                    <th scope="col" *ngIf="usertype=='admin'">Action</th>
+                    <th scope="col" *ngIf="(usertype=='admin') || (this.consultantrole!=null && this.consultantrole==1)">Action</th>
 
 
                   </tr>
@@ -173,7 +173,7 @@
                       <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
                       <span class="edit_user" (click)="getUserDetails(item.email)">Login</span>
                     </td>
-
+<td datalabel="Action" *ngIf="this.consultantrole!=null && this.consultantrole==1 "> <span class="edit_user" (click)="getUserDetails(item.email)">Login</span></td>
                   </tr>
                 </tbody>
               </table>

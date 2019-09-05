@@ -55,6 +55,7 @@ export class RepTraingcenterComponent implements OnInit {
     public trainingcategoryMod:any =[];
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
     this._commonservice=_commonservice;
+    // console.log(this.selpcat)
   }
 
   ngOnInit() {

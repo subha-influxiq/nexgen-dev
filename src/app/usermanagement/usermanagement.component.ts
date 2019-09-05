@@ -71,8 +71,7 @@ export class UsermanagementComponent implements OnInit {
             this.loader = 0;
             this.singleuserdata = [];
           }
-          this.loader = 0;
-            this.singleuserdata = [];
+          
 
         }
       })
