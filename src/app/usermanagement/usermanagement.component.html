@@ -81,7 +81,8 @@
                     <th scope="col">Calender Access</th>
                     <th scope="col">Senior Consulting Director</th>
                     <!-- <th scope="col">Contract Signed</th> -->
-                    <th scope="col" *ngIf="(usertype=='admin') || (this.consultantrole!=null && this.consultantrole==1)">Action</th>
+                    <th scope="col"
+                      *ngIf="(usertype=='admin') || (this.consultantrole!=null && this.consultantrole==1)">Action</th>
 
 
                   </tr>
@@ -117,22 +118,21 @@
                         <span *ngIf="item.is_discovery == null || item.is_discovery == false">No</span>
                       </span><br>
                       <span class="newpanclass">Contract signed:
-                      <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
-                        <a target="_blank"
-                          href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
-                            class="fa fa-download" aria-hidden="true"></i></a></span>
-                      <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
-                        [routerLink]="['/useraccountsetting',item._id]">No</span>
-                      
+                        <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
+                          <a target="_blank"
+                            href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
+                              class="fa fa-download" aria-hidden="true"></i></a></span>
+                        <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
+                          [routerLink]="['/useraccountsetting',item._id]">No</span>
+
                       </span><br>
                       <span class="newpanclass">1099:
                         <span *ngIf="item.legaldoc_fileservername!=null && item.legaldoc_fileservername!='' ">Yes
-                          <a target="_blank"
-                            href="{{fileurl}}{{item.legaldoc_fileservername}}"><i
+                          <a target="_blank" href="{{fileurl}}{{item.legaldoc_fileservername}}"><i
                               class="fa fa-download" aria-hidden="true"></i></a></span>
                         <span *ngIf="item.legaldoc_fileservername==null || item.legaldoc_fileservername=='' ">No</span>
-                        
-                        </span>
+
+                      </span>
 
                     </td>
                     <td datalabel="Status">
@@ -146,19 +146,23 @@
                     <td datalabel="Calender Access">
                       <span class="statusactive"
                         *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
-                        <span *ngIf="usertype=='admin'" class="ticon_active" (click)="toggleCalenderAccess(item)"></span>
+                        <span *ngIf="usertype=='admin'" class="ticon_active"
+                          (click)="toggleCalenderAccess(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
-                        <span *ngIf="usertype=='admin'" class="ticon_inactive" (click)="toggleCalenderAccess(item)"></span>
+                        <span *ngIf="usertype=='admin'" class="ticon_inactive"
+                          (click)="toggleCalenderAccess(item)"></span>
                       </span>
                     </td>
                     <td datalabel="Senior Consulting Director">
-                      <span class="statusactive"
-                        *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active &nbsp;
-                        <span *ngIf="usertype=='admin'" class="ticon_active" (click)="toggleConsultantRole(item)"></span>
+                      <span class="statusactive" *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active
+                        &nbsp;
+                        <span *ngIf="usertype=='admin'" class="ticon_active"
+                          (click)="toggleConsultantRole(item)"></span>
                       </span>
                       <span class="statusinactive" *ngIf="item.is_consultant==null || item.is_consultant==0 ">Inactive
-                        <span *ngIf="usertype=='admin'" class="ticon_inactive" (click)="toggleConsultantRole(item)"></span>
+                        <span *ngIf="usertype=='admin'" class="ticon_inactive"
+                          (click)="toggleConsultantRole(item)"></span>
                       </span>
                     </td>
                     <!-- <td datalabel="Contract Signed">
@@ -170,10 +174,14 @@
                         [routerLink]="['/useraccountsetting',item._id]">No</span>
                     </td> -->
                     <td *ngIf="usertype=='admin'" datalabel="Action">
-                      <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
-                      <span class="edit_user" (click)="getUserDetails(item.email)">Login</span>
+                      <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span><br>
+                      <!-- <span class="edit_user" (click)="getUserDetails(item.email)">Login As {{item.firstname}}
+                        {{item.lastname}}</span> -->
+                        <span class="loginclass" (click)="getUserDetails(item.email)">Login As {{item.firstname}}
+                            {{item.lastname}}</span>
                     </td>
-<td datalabel="Action" *ngIf="this.consultantrole!=null && this.consultantrole==1 "> <span class="edit_user" (click)="getUserDetails(item.email)">Login</span></td>
+                    <td datalabel="Action" *ngIf="this.consultantrole!=null && this.consultantrole==1 "> <span class="loginclass" (click)="getUserDetails(item.email)">Login As {{item.firstname}}
+                        {{item.lastname}}</span></td>
                   </tr>
                 </tbody>
               </table>

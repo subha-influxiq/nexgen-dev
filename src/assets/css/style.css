@@ -821,6 +821,16 @@ body{ padding:0; margin: 0;}
     .sherelinkwrapper .ascol3 a.tumblr{background-color: #34526f!important;}
 
 .notdonepcat ul li{background: #a5c0c7 !important;padding-left: 31px;}
+span.loginclass {
+    display: block;
+    width: 100%;
+    margin: auto;
+    background-color: #00a8ef;
+    color: #fff;
+    margin-top: 10px;
+    height: auto;
+    padding: 6px;
+}
 
 @media screen and (max-width: 1840px){
 
