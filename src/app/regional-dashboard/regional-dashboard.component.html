@@ -64,6 +64,7 @@
             <th scope="col">Date Set</th>
             <th scope="col"> Time</th>
             <th scope="col"> Products</th>
+            <th scope="col"> Rep Name</th>
           </tr>
           </thead>
           <tbody>
@@ -77,6 +78,7 @@
             <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
             <td data-title="Time">{{_commonservice.showtime(item.start_time)}}</td>
             <td data-title="Products" class="Products"><span *ngIf="item.productname">{{item.productname}}</span><span *ngIf="item.productname==null">N/A</span></td>
+            <td data-title="Products" class="Products"><span *ngIf="item.leaddata">{{item.leaddata.fullname}}</span><span *ngIf="item.leaddata==null">N/A</span></td>
           </tr>
           </tbody>
         </table>

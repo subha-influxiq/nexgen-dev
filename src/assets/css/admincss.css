@@ -153,7 +153,9 @@
 .dashboard_block2 .col-md-4 .reps_inner_block3 table{ color: #000!important; }
 .as_dashbord .col-md-4{min-width: 100%;}
 .dashboard_block2 .col-md-4 .reps_inner_block2 table .Products{text-transform: capitalize;}
-
+.as_dashbord table th, .as_dashbord table td {
+    width: auto !important;
+}
 .dashboard_block2 .reps_inner_block2{
     width: 100%;
     background: url("../images/reps_inner_block2bg.png")no-repeat; background-position: center bottom;
