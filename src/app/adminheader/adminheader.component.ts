@@ -287,4 +287,8 @@ export class AdminheaderComponent implements OnInit {
 
   }
 
+  gotolink(link:any){
+    window.open(link);
+  }
+
 }

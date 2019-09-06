@@ -97,6 +97,9 @@ export class ListingComponent implements OnInit {
     public productSubmitFlag:any =0; 
     public productErrorFlag:any = 0;
     public autoplayVideo:any = [];
+    public selectedstatus:any;
+    public pricepoint:any='';
+    public issubmitprice:any = 0;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -136,6 +139,7 @@ export class ListingComponent implements OnInit {
         // this.minDate.setDate(this.minDate.getDate() - 1);
         this.uploadInput = new EventEmitter<UploadInput>();
         this.humanizeBytes = humanizeBytes;
+        // this.usertype = this.cookeiservice.get('usertype');
     }
 
     ngOnInit() {
@@ -967,7 +971,9 @@ export class ListingComponent implements OnInit {
         console.log(item);
         console.log(item.status);
         if(item.status == null)item.status = 'Pending';
+        $('.statusspan').removeClass('hide');
         $('.statusspan').addClass('show');
+        $('.selectintable').removeClass('show');
         $('.selectintable').addClass('hide');
         $('#span'+item._id).removeClass('show');
         $('#span'+item._id).addClass('hide');
@@ -988,6 +994,7 @@ export class ListingComponent implements OnInit {
         console.log(item.status);
         let status: any;
         status=event;
+        this.selectedstatus = status;
         console.log(status);
         const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         /* console.log('link');
@@ -1007,5 +1014,46 @@ export class ListingComponent implements OnInit {
                 console.log('Oooops!');
                 this.getdatalist();
             });
+    }
+
+    openPricepointModal(item:any,template:TemplateRef<any>){
+        console.log(item);
+        this.selectedlead = item;
+        this.modalRef2 = this.modal.show(template);
+    }
+    addPrice(){
+        // if(this.pricepoint==''){
+        //     this.issubmitprice = 1;
+        // }else{
+        //     this.issubmitprice = 0;
+        // }
+        
+        if(this.pricepoint == '' || this.pricepoint == null ){
+            console.log('error');
+            this.issubmitprice = 1;
+        }else{
+            const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+            /* console.log('link');
+             console.log(link);*/
+             let data  = { 
+                source:this.formsourceval.table,
+                data: { id: this.selectedlead._id, pricepoint:this.pricepoint}
+              };
+              console.log(data);
+            this._http.post(link, { 
+                source:this.formsourceval.table,
+                data: { id: this.selectedlead._id, pricepoint:this.pricepoint}}
+              )
+                .subscribe(res => {
+                    this.pricepoint ='';
+                    this.getdatalist();
+                    this.modalRef2.hide();
+                }, error => {
+                    console.log('Oooops!');
+                    this.pricepoint ='';
+                    this.getdatalist();
+                });
+        }
+        
     }
 }
