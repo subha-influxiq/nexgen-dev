@@ -1462,6 +1462,11 @@
         padding: 0 560px 0 60px;
     }
 }
+@media screen and (max-width: 1760px) {
+    .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
+        padding-right: 252px;
+    }
+}
 @media screen and (max-width: 1750px) {
 
     .reptrainingcenter_banner{ padding-right: 30px; background-size: cover;}
@@ -1480,12 +1485,20 @@
 }
 
 @media screen and (max-width: 1680px) {
+    
     .reptrainingcenter_banner .reptrainingcenter_banner_wrapper {
         padding: 50px 396px 50px 60px;
     }
     .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
-        padding-right: 421px;
+        padding-right: 544px;
     }
+}
+@media screen and (max-width: 1600px) {
+    .reptrainingcenter_banner {
+        background-position:  right -115px top;
+}
+.reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
+    padding-right: 425px;
 }
 @media screen and (max-width: 1580px) {
     .reptrainingcenter_banner_wrapper_text h2 {
@@ -1497,6 +1510,12 @@
     .reptrainingcenter_banner {background-position: right -132px top;}
 }
 @media screen and (max-width: 1400px) {
+    .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
+        padding-right: 300px;
+    }
+    .reptrainingcenter_banner {
+        background-position: right -289px top;
+    }
     .new_subblockcon .new_subblockcon_text{ width: 70%; }
 
     .reptrainingcenter_banner_wrapper_text p { font-size: 20px;}
