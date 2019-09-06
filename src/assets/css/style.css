@@ -1890,7 +1890,7 @@ span.loginclass {
 .as_videomainwrapper{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 .as_videosubwrapper{
@@ -1905,7 +1905,7 @@ span.loginclass {
     height: 275px;
     width: 100%;
 }
-.as_videowrapper img{max-width: 100%;}
+.as_videowrapper img{max-width: 100%; width: 100%;}
 .as_videowrapper{
     background: #fff;
     padding: 10px;
@@ -1921,6 +1921,7 @@ span.loginclass {
     font-weight: bolder;
     cursor: pointer;
 }
+.new_header .new_header2 .navbar-nav li .blackbtn{margin: 0;font-size: 14px;margin-top: 5px;}
 @media screen and (max-width: 1460px) {
     .as_newcontainer {width: 96%;}
 }
