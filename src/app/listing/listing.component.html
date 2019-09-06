@@ -134,7 +134,9 @@
                                                 [ngClass]="item1.class">
                                                 <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
                                                 <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->
-                                                {{item[item1.value]}}
+                                                {{item[item1.value]}}<br>
+                                                <span *ngIf="router.url==['/manage-leads'] && item1.value == 'status' && item[item1.value]==null">Pending</span>
+                                                <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
                                             </span>
                                             <span *ngIf="item1.type=='number' && router.url!='/rep'"
                                                 [ngClass]="item1.class">

@@ -59,7 +59,7 @@ export class ManageleadsComponent implements OnInit {
         { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
-        {value: 'status', name: 'Status',defaultchoice:'Pending',optionlist:[{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}], role: 0, func: '', class: 'status', type: 'select'}
+        // {value: 'status', name: 'Status',defaultchoice:'Pending',optionlist:[{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}], role: 0, func: '', class: 'status', type: 'select'}
       ];
      }else{
        this.tabledatalist = [
@@ -72,7 +72,7 @@ export class ManageleadsComponent implements OnInit {
       { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
       { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
       { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
-      { value: 'status', name: 'Status', role: 0, func: '', class: 'address', type: 'text' }
+      // { value: 'status', name: 'Status', role: 0, func: '', class: 'address', type: 'text' }
     ];}
     
     }

@@ -6,6 +6,7 @@ import { CookieService } from "ngx-cookie-service";
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 declare var moment: any;
+declare var $: any;
 @Component({
   selector: 'app-appointmentlist',
   templateUrl: './appointmentlist.component.html',
@@ -25,8 +26,14 @@ export class AppointmentlistComponent implements OnInit {
   public selectedlead: any = {};
   public modalRef2: BsModalRef;
   public activeFlag:any = 0;
+  public selectedstatus:any;
+  public pricepoint:any;
+  public issubmitprice: any=0;
+  public optionlist:any = [{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}];
+  public usertype:any;
 
   constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService) {
+    this.usertype = this.cookeiservice.get('usertype');
 
   }
 
@@ -210,4 +217,90 @@ export class AppointmentlistComponent implements OnInit {
         console.log('Oooops!');
       });
   }
+  toggleStatusInArray(item){
+    console.log('item in toggleStatusInArray');
+    console.log(item);
+    console.log(item.status);
+    if(item.status == null)item.status = 'Pending';
+    $('.statusspan').removeClass('hide');
+    $('.statusspan').addClass('show');
+    $('.selectintable').removeClass('show');
+    $('.selectintable').addClass('hide');
+    $('#span'+item._id).removeClass('show');
+    $('#span'+item._id).addClass('hide');
+    $('#select'+item._id).removeClass('hide');
+    $('#select'+item._id).addClass('show');
+   
+    
+    
+    // $('#select'+item._id).removeClass('hide');
+    // $('#select'+item._id).addClass('show');
+}
+
+toggleFromSelect(event:any,item:any){
+    console.log('event');
+    console.log(event);
+    console.log('item');
+    console.log(item);
+    console.log(item.status);
+    let status: any;
+    status=event;
+    this.selectedstatus = status;
+    console.log(status);
+    const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+    /* console.log('link');
+     console.log(link);*/
+     let data  = { 
+        source:'googleevents',
+        data: { id: item._id, status: status}
+      };
+      console.log(data);
+    this._http.post(link, { 
+        source:'googleevents',
+        data: { id: item._id, status: status}}
+      )
+        .subscribe(res => {
+            this.getgoogleevents();
+        }, error => {
+            console.log('Oooops!');
+            this.getgoogleevents();
+        });
+}
+
+openPricepointModal(item:any,template:TemplateRef<any>){
+    console.log(item);
+    this.selectedlead = item;
+    this.modalRef2 = this.modal.show(template);
+}
+addPrice(){
+    // if(this.pricepoint==''){
+    //     this.issubmitprice = 1;
+    // }else{
+    //     this.issubmitprice = 0;
+    // }
+    
+    if(this.pricepoint == '' || this.pricepoint == null ){
+        console.log('error');
+        this.issubmitprice = 1;
+    }else{
+        const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+        /* console.log('link');
+         console.log(link);*/
+        this._http.post(link, { 
+            source:'googleevents',
+            data: { id: this.selectedlead._id, pricepoint:this.pricepoint}}
+          )
+            .subscribe(res => {
+                this.pricepoint ='';
+                this.getgoogleevents();
+                this.modalRef2.hide();
+            }, error => {
+                console.log('Oooops!');
+                this.pricepoint ='';
+                this.getgoogleevents();
+            });
+    }
+    
+}
+  
 }

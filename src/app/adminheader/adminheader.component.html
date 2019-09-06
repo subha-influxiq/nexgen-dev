@@ -59,7 +59,7 @@
                   aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
-                  <a class="dropdown-item" [routerLink]="['/']">Appointment</a>
+                  <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment</a>
                 </div>
               </li>
               <li class="nav-item" [routerLink]="['/products']">
@@ -165,6 +165,7 @@
       <li class="nav-item" [routerLink]="['/replegaldocuments']">
         <a class="nav-link">Legal Documents</a>
       </li>
+      
       <li class="nav-item dropdown" *ngIf="cookie.get('calenderaccess')==1">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Leads</a>
@@ -247,17 +248,17 @@
               <li class="nav-item active" [routerLink]="['/regionaldashboard']">
                 <a class="nav-link">Dashboard <span class="sr-only">(current)</span></a>
               </li>
-              <!-- <li class="nav-item active" [routerLink]="['/rep']">
-                <a class="nav-link" >My Reps</a>
-              </li> -->
-              <li class="nav-item dropdown">
+              <li class="nav-item active" [routerLink]="['/appointmentlist']">
+                <a class="nav-link" >Manage Appointment</a>
+              </li>
+              <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Manage Leads</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/manage-leads']">Lead List</a>
                   <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment List</a>
                 </div>
-              </li>
+              </li> -->
               <li class="nav-item active" [routerLink]="['/calendar']">
                 <a class="nav-link">Calendar Settings</a>
               </li>
