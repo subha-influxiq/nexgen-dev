@@ -153,9 +153,11 @@
               <li *ngFor="let item of videoCategoryarry">
                 <a class="dropdown-item " [routerLink]="['/additional-video',item._id]">{{item.categoryname}}</a>
               </li>
+              
           </div>
       </div>
       </li>
+
       <!-- ----------------------------------------------- -->
 
 
@@ -188,6 +190,8 @@
       <li class="nav-item" [routerLink]="['/myresource']">
         <a class="nav-link">Resources</a>
       </li>
+
+      <li><button class="blackbtn" [routerLink]="['/discovery-call',userId]">Order Print Material</button></li>
       </ul>
     </div>
     </nav>

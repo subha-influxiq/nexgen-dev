@@ -1916,7 +1916,11 @@ span.loginclass {
     margin: 0;
     padding: 10px 0;
 }
-
+.statusspan{
+    text-decoration: underline;
+    font-weight: bolder;
+    cursor: pointer;
+}
 @media screen and (max-width: 1460px) {
     .as_newcontainer {width: 96%;}
 }

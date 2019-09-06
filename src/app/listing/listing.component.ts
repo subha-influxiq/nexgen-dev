@@ -961,4 +961,51 @@ export class ListingComponent implements OnInit {
         
        
     }
+
+    toggleStatusInArray(item){
+        console.log('item in toggleStatusInArray');
+        console.log(item);
+        console.log(item.status);
+        if(item.status == null)item.status = 'Pending';
+        $('.statusspan').addClass('show');
+        $('.selectintable').addClass('hide');
+        $('#span'+item._id).removeClass('show');
+        $('#span'+item._id).addClass('hide');
+        $('#select'+item._id).removeClass('hide');
+        $('#select'+item._id).addClass('show');
+       
+        
+        
+        // $('#select'+item._id).removeClass('hide');
+        // $('#select'+item._id).addClass('show');
+    }
+
+    toggleFromSelect(event:any,item:any){
+        console.log('event');
+        console.log(event);
+        console.log('item');
+        console.log(item);
+        console.log(item.status);
+        let status: any;
+        status=event;
+        console.log(status);
+        const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+        /* console.log('link');
+         console.log(link);*/
+         let data  = { 
+            source:this.formsourceval.table,
+            data: { id: item._id, status: status}
+          };
+          console.log(data);
+        this._http.post(link, { 
+            source:this.formsourceval.table,
+            data: { id: item._id, status: status}}
+          )
+            .subscribe(res => {
+                this.getdatalist();
+            }, error => {
+                console.log('Oooops!');
+                this.getdatalist();
+            });
+    }
 }

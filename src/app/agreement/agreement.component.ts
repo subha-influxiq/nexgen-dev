@@ -116,8 +116,15 @@ export class AgreementComponent implements OnInit {
           this.cookeiservice.set('usertype', this.userDetails.type);
           this.cookeiservice.set('useremail', this.userDetails.email);
           this.cookeiservice.set('fullname', this.userDetails.firstname + ' ' + this.userDetails.lastname);
+          let link2 = this._commonservice.nodesslurl+'contractsigncomplete';
+          let data2 = {'userid':this.userDetails._id};
+          this._http.post(link2,data2)
+          .subscribe(res=>{
+            let result2:any;
+            result2 = res;
+          });
 
-          this.router.navigate(['/repdashboard']);
+         this.router.navigate(['/repdashboard']);
         }
       });
     } else {

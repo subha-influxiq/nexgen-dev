@@ -194,6 +194,15 @@
 
                                             </span>
 
+                                            <span *ngIf="item1.type=='select' " [ngClass]="item1.class" >
+                                                    <span class="statusspan show" id="span{{item._id}}"  (click)="toggleStatusInArray(item)" *ngIf="item[item1.value] == null || item[item1.value] == ''" >{{item1.defaultchoice}}</span>
+                                                    <span class="statusspan show" (click)="toggleStatusInArray(item)" id="span{{item._id}}" *ngIf="item[item1.value] != null">{{item[item1.value]}}</span>
+                        <select [(ngModel)]="item[item1.value]" (change)="toggleFromSelect($event.target.value,item)" id="select{{item._id}}" class="selectintable hide" #select>
+                            <option disabled="disabled" value="">Choose An Option</option>
+                            <option *ngFor="let option of item1.optionlist" value="{{option.value}}">{{option.name}}</option>
+                        </select>
+
+                                            </span>
                                             <span *ngIf="item1.type=='showstatus'" [ngClass]="item1.class">
                                                 {{showstatusofrep(item)}}
 

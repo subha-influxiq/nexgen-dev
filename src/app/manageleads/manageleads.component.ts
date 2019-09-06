@@ -23,10 +23,11 @@ export class ManageleadsComponent implements OnInit {
       { inputtype: 'text', name: 'website', label: 'Website Url.', placeholder: 'Enter Website Url ' },
       { inputtype: 'text', name: 'mobile', label: 'Mobile No.', placeholder: 'Enter Mobile No ' },
       {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
+      { inputtype: 'hidden', name: 'status', label: "status", placeholder: "status", value: 'Pending' },
       { inputtype: 'hidden', name: 'created_by', label: "created_by", placeholder: "Created By", value: this.cookieservice.get('userid') }
     ];
     this.datasource = { table: 'leads', objarr: ["created_by"] };
-    if (this.cookieservice.get('usertype') == 'admin') {
+    if (this.cookieservice.get('usertype') == 'admin' ) {
       this.sourcecondition = {};
       this.hideaddval = true;
       this.tabledatalist = [
@@ -39,11 +40,15 @@ export class ManageleadsComponent implements OnInit {
         { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'phone', type: 'phoneno' },
         { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
-        { value: 'rep_name', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' }
+        { value: 'rep_name', name: 'Rep Details', role: 0, func: '', class: 'fullname', type: 'text' },
+        {value: 'status', name: 'Status',defaultchoice:'Pending',optionlist:[{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}], role: 0, func: '', class: 'status', type: 'select'},
+        
       ];
     } else {
       this.sourcecondition = { 'created_by_object': this.cookieservice.get('userid') };
       this.hideaddval = false;
+
+     if(this.cookieservice.get('usertype') ==  'regional_recruiter'){
       this.tabledatalist = [
         { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
         { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
@@ -53,8 +58,23 @@ export class ManageleadsComponent implements OnInit {
         { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
         { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
         { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
-        { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' }
+        { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
+        {value: 'status', name: 'Status',defaultchoice:'Pending',optionlist:[{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}], role: 0, func: '', class: 'status', type: 'select'}
       ];
+     }else{
+       this.tabledatalist = [
+      { value: 'id', name: 'Id', role: 0, func: '', class: 'id', type: '#' },
+      { value: 'firstname', name: 'First Name', role: 0, func: '', class: 'firstname', type: 'text' },
+      { value: 'lastname', name: 'Last Name', role: 0, func: '', class: 'lastname', type: 'text' },
+      { value: 'company', name: 'Company ', role: 0, func: '', class: 'company', type: 'text' },
+      { value: 'website', name: 'Website ', role: 0, func: '', class: 'website', type: 'text' },
+      { value: 'email', name: 'Email Id', role: 0, func: '', class: 'email', type: 'text' },
+      { value: 'phoneno', name: 'Mobile No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+      { value: 'mobile', name: 'Phone No', role: 0, func: '', class: 'mobile', type: 'phoneno' },
+      { value: 'address', name: 'Address', role: 0, func: '', class: 'address', type: 'text' },
+      { value: 'status', name: 'Status', role: 0, func: '', class: 'address', type: 'text' }
+    ];}
+    
     }
   }
 
