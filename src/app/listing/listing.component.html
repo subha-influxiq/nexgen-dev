@@ -200,7 +200,9 @@
                         <select [(ngModel)]="item[item1.value]" (change)="toggleFromSelect($event.target.value,item)" id="select{{item._id}}" class="selectintable hide" #select>
                             <option disabled="disabled" value="">Choose An Option</option>
                             <option *ngFor="let option of item1.optionlist" value="{{option.value}}">{{option.name}}</option>
-                        </select>
+                        </select><br><br>
+                        <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
+                        <span class="delete_user" *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && usertype == 'admin'" (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
 
                                             </span>
                                             <span *ngIf="item1.type=='showstatus'" [ngClass]="item1.class">
@@ -588,3 +590,29 @@
     <div>
     </div>
 </ng-template>
+
+<!--Put Price Point modal-->
+<ng-template #pricepointmodal>
+        <div class="modal-body brandmanagement_modal discoverycall">
+            <div class="logo_wrapper">
+                <img src="assets/images/logo.png">
+            </div>
+            <div class="brand_messagebox">
+                <div class="form-group row">
+                    <label class="col-sm-12 col-form-label">Put A Closing Price</label>
+                    <div class="col-sm-12">
+    <input type="text" [(ngModel)]="pricepoint">
+                        <span *ngIf="pricepoint=='' && issubmitprice==1" class="error">*Closing Price Is Required</span>
+                            <div class="form-group row form-groupbtndiv">
+                                <button (click)="addPrice()">Save price</button>
+                                <button (click)="modalRef2.hide()">cancel</button>
+                                <div class="clearfix"></div>
+    
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </ng-template>
