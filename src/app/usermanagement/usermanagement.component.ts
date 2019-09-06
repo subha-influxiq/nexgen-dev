@@ -128,7 +128,7 @@ export class UsermanagementComponent implements OnInit {
     const link = this.commonservices.nodesslurl + 'addorupdatedata';
     /* console.log('link');
      console.log(link);*/
-    this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
+    this._http.post(link, { sourceusertyp: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
         this.getUserLists();
         this.loader = 0;
@@ -262,6 +262,7 @@ export class UsermanagementComponent implements OnInit {
             this.cookieservice.set('lockdornot', result.res[0].lock);
             this.cookieservice.set('usertype', result.res[0].type);
             this.cookieservice.set('useremail', result.res[0].email);
+            this.cookieservice.set('is_consultant', result.res[0].is_consultant);
             this.cookieservice.set('calenderaccess', result.res[0].calenderaccess);
             this.cookieservice.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
             console.log(this.cookieservice.getAll());

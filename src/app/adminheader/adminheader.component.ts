@@ -255,6 +255,7 @@ export class AdminheaderComponent implements OnInit {
             this.cookie.set('usertype', result.res[0].type);
             this.cookie.set('useremail', result.res[0].email);
             this.cookie.set('calenderaccess', result.res[0].calenderaccess);
+            this.cookie.set('is_consultant', result.res[0].is_consultant);
             this.cookie.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
             if (result.res[0].type == 'admin') {
               this.router.navigate(['/dashboard']);
