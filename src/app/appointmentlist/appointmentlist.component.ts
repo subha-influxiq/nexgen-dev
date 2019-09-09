@@ -5,6 +5,7 @@ import { CookieService } from "ngx-cookie-service";
 //added by Chandrani
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
+import {ActivatedRoute, Router} from "@angular/router";
 declare var moment: any;
 declare var $: any;
 @Component({
@@ -32,9 +33,9 @@ export class AppointmentlistComponent implements OnInit {
   public optionlist:any = [{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}];
   public usertype:any;
 
-  constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService) {
+  constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService, public activatedroute:ActivatedRoute, public router:Router) {
     this.usertype = this.cookeiservice.get('usertype');
-
+    console.log(this.router.url.indexOf('appointmentlist'));
   }
 
   usersearch() {
@@ -74,6 +75,15 @@ export class AppointmentlistComponent implements OnInit {
       else {
         sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1}};
       }
+      if(this.router.url.indexOf('appointmentlist')> -1 && this.activatedroute.snapshot.params.leadid!=null){
+        if (this.futureevent == 1) {
+          sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid };
+        }
+        else {
+          sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid};
+        }
+       
+      }
     } else {
       if (this.futureevent == 1) {
         sourcecondition = {
@@ -85,6 +95,17 @@ export class AppointmentlistComponent implements OnInit {
           startdate: { $lt: moment().format('YYYY-MM-DD') },
           eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}
         };
+      }
+      if(this.router.url.indexOf('appointmentlist')> -1 && this.activatedroute.snapshot.params.leadid!=null){
+        if (this.futureevent == 1) {
+          sourcecondition = {startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },
+          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid };
+        }
+        else {
+          sourcecondition = {  startdate: { $lt: moment().format('YYYY-MM-DD') },
+          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid};
+        }
+       
       }
 
     }
@@ -99,6 +120,10 @@ export class AppointmentlistComponent implements OnInit {
         sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1},booked_by:this.cookeiservice.get('userid')};
       }
     }
+    if(this.router.url.indexOf('appointments') >-1 && this.activatedroute.snapshot.params.leadid!=null){
+      sourcecondition = { lead_id:this.activatedroute.snapshot.params.leadid};
+    }
+    
     // sourcecondition={unique_id:35920};
     const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
     this._http.post(link, {

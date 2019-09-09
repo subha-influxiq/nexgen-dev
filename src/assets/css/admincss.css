@@ -413,6 +413,7 @@
     cursor: pointer;
 
 }
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .edit_user:hover{color: #fff !important; text-decoration: none;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .delete_user{
     background: #000;
     font-family: 'RalewaySemiBold';

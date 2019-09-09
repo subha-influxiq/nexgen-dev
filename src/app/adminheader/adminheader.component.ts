@@ -48,9 +48,7 @@ export class AdminheaderComponent implements OnInit {
       this.getvideocatagory();
 
       this.sourceconditionval = { _id: this.idis };
-      if (this.type == 'rep') {
-
-      }
+      
     }
     if (this.type == 'rep' || this.type == 'regional_recruiter') {
       this.resourcecat();
@@ -75,8 +73,6 @@ export class AdminheaderComponent implements OnInit {
         } else {
           this.videoCategoryarry = [];
           this.videoCategoryarry = result.res;
-          console.log('videoCategoryarry:');
-          console.log(this.videoCategoryarry);
 
         }
       }, error => {
@@ -103,8 +99,6 @@ export class AdminheaderComponent implements OnInit {
         } else {
           this.repDetailsNew = result.data;
           this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
-          console.log('userreport');
-          console.log(this.repDetailsNew);
           if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
             let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
           this._http.post(link2, {
@@ -169,14 +163,11 @@ export class AdminheaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('logout');
-    console.log(this.cookie.get('userid'));
     this.cookie.deleteAll();
     this.cookie.deleteAll();
     //this.cookie.deleteAll('/');
     this.cookie.deleteAll();
     setTimeout(() => {
-      console.log(this.cookie.get('userid'));
       this.router.navigate(['/']);
     }, 500);
   }
@@ -203,11 +194,9 @@ export class AdminheaderComponent implements OnInit {
   }
   gototrainingsectionwithcat() {
     if (this.reptraininglessondetails != null) {
-      console.log('rep');
       var link = 'reptrainingcenter/' + this.reptraininglessondetails.trainingcategory;
       this.router.navigate([link]);
     } else {
-      console.log('regional');
       var link = 'reptrainingcenter/5d36d7256778e75a3d6c37ce';
       //   var link = 'reptrainingcenter/5c6d54656fac495dd5c209e9';
       this.router.navigate([link]);
@@ -262,7 +251,6 @@ export class AdminheaderComponent implements OnInit {
       .subscribe(res => {
         let result: any;
         result = res;
-        console.log(result);
         if (result.resc == 1 && result.res != null && result.res[0] != null) {
           if (result.res[0].status == 1) {
             this.cookie.set('jwttoken', this.oldcookiedata.jwttoken);

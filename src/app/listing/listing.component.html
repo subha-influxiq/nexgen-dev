@@ -293,7 +293,10 @@
                                             <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
                                             <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
-                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span>
+                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span><br><br>
+                                            <span  *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0" class="edit_user"><a target="_blank" [routerLink]="['/appointments',item._id]">View Appointments({{item.appointment_count}})</a></span>
+                                            <span *ngIf="router.url==['/manage-leads'] && (usertype=='admin') && item.appointment_count>0"><a class="edit_user" target="_blank" [routerLink]="['/appointmentlist',item._id]">Appointments({{item.appointment_count}})</a>
+                                            </span>
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"

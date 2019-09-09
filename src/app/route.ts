@@ -132,6 +132,8 @@ const appRoutes: Routes = [
 
     { path: 'slotview/:id', component: SlotviewComponent },
     { path: 'appointmentlist', component: AppointmentlistComponent },
+    { path: 'appointmentlist/:leadid', component: AppointmentlistComponent },
+    { path: 'appointments/:leadid', component: AppointmentlistComponent },
     { path: 'resetpassword/:id', component: ResetpasswordComponent },
 
     /* changes 11th July 2019 */
