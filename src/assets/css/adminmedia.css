@@ -15,6 +15,7 @@
     .user_details_wrapper .left_wrapper {
         width: 75.5%;
     }
+    .reptrainingcenter_banner_wrapper_text h2 {font-size: 54px;}
 }
 @media screen  and  (max-width: 1800px){
     .new_header .new_header1 .new_h_l_wrapper { width: 265px; }
@@ -1479,9 +1480,9 @@
 }
 
 @media screen and (max-width: 1700px) {
-    .reptrainingcenter_banner_wrapper_text h2 {
+    /* .reptrainingcenter_banner_wrapper_text h2 {
         font-size: 56px;
-    }
+    } */
 }
 
 @media screen and (max-width: 1680px) {
@@ -1490,7 +1491,7 @@
         padding: 50px 396px 50px 60px;
     }
     .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
-        padding-right: 544px;
+        padding-right: 373px;
     }
 }
 @media screen and (max-width: 1600px) {
@@ -1500,6 +1501,8 @@
 .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
     padding-right: 425px;
 }
+}
+
 @media screen and (max-width: 1580px) {
     .reptrainingcenter_banner_wrapper_text h2 {
         font-size: 46px;
@@ -1508,14 +1511,17 @@
 
 @media screen and (max-width: 1460px) {
     .reptrainingcenter_banner {background-position: right -132px top;}
+    .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
+        padding-right: 298px;
+    }
 }
 @media screen and (max-width: 1400px) {
     .reptrainingcenter_banner_wrapper .reptrainingcenter_banner_wrapper_text p {
         padding-right: 300px;
     }
-    .reptrainingcenter_banner {
+    /* .reptrainingcenter_banner {
         background-position: right -289px top;
-    }
+    } */
     .new_subblockcon .new_subblockcon_text{ width: 70%; }
 
     .reptrainingcenter_banner_wrapper_text p { font-size: 20px;}
