@@ -650,6 +650,11 @@
     .manageavilability_wrapper .avail_search_sec .search_content .button_responsive { display: block; width: 100%;  margin-top: 10px; }
 }
 @media screen and (max-width: 768px) {
+    .quizmodal {
+        max-width: 100%!important;
+        width: 90%!important;
+        margin: 25px auto;
+    }
     .resources_content_wrapper .m_wrapper {
         width: 95%!important;
     }
