@@ -28,6 +28,7 @@ export class AdminheaderComponent implements OnInit {
   public videoCategoryarry: any = [];
   public checkOldCookie: any;
   public oldcookiedata: any;
+  public gameplanButton:any = 0;
 
   constructor(public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
     this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
@@ -65,7 +66,7 @@ export class AdminheaderComponent implements OnInit {
   getvideocatagory() {
     let link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
     console.log(link);
-    this._http.post(link, { source: "videocategory_view_with_parent", condition: { status: 1 } })
+    this._http.post(link, { source: "videocategory_view_with_parent", condition: { status: true } })
       .subscribe(res => {
         let result;
         result = res;
@@ -102,7 +103,29 @@ export class AdminheaderComponent implements OnInit {
         } else {
           this.repDetailsNew = result.data;
           this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
+          console.log('userreport');
           console.log(this.repDetailsNew);
+          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
+            let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
+          this._http.post(link2, {
+            "condition": {"user_id_object": this.cookie.get('userid')},
+            "source": "user_parent_category_percent"
+          })
+              .subscribe(res => {
+                let result: any;
+                result = res;
+                // if (result.resc >0) {
+                for (let i in result.res) {
+                  if (result.res[i].trainingpercent == 100) {
+                  
+                   this.gameplanButton = 1;
+                  }
+                }
+                // }
+              }, error => {
+                console.log('Oooops!');
+              });
+        }
         }
       })
   }

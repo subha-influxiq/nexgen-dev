@@ -192,12 +192,12 @@ export class ListingComponent implements OnInit {
         console.log('item.status');
         console.log(item.status);
         let status: any;
-             if(item.status!=null) status=1-item.status;
-         if(item.status==null) status=1;
-        // if (item.status != null && item.status != true && item.status != false) {
-        //     status = false;
-        // }
-        // if (item.status == null) status = true;
+        //      if(item.status!=null) status=1-item.status;
+        //  if(item.status==null) status=1;
+        if (item.status != null && item.status == true) {
+            status = false;
+        }
+        if (item.status == null || item.status == false) status = true;
         console.log('item.status99');
         console.log(item.status);
         const link = this._commonservice.nodesslurl + 'togglestatus?token=' + this.cookeiservice.get('jwttoken');

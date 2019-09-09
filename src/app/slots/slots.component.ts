@@ -374,9 +374,11 @@ showformat(stdt){
                         this.route.paramMap.subscribe(params => {
                           if(!params.get("id")) {
                             let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-                            this.router.navigate(['/book-a-closer/' + random]);
+                            // this.router.navigate(['/book-a-closer/' + random]);
+                            this.router.navigate(['/repdashboard']);
                           } else {
                             this.router.navigate(['/book-a-closer']);
+                           
                           }
                         });
                       break;

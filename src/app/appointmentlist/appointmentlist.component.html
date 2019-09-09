@@ -91,12 +91,18 @@
                     <td data-title="Rep Name"><span *ngIf="item.leaddata">{{item.leaddata.fullname}}</span><span
                         *ngIf="item.leaddata==null">N/A</span></td>
                       <td data-title="Lead Status">
+                        <span  *ngIf="usertype=='rep'">
+                            <span class="status"  *ngIf="item.status">{{item.status}}</span>
+                            <span class="status" *ngIf="item.status==null">Pending</span><br><br>
+                            
+                        </span>
+                        <span *ngIf="usertype!='rep'">
                         <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}" *ngIf="item.status">{{item.status}}</span>
                         <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}" *ngIf="item.status==null">Pending</span>
                         <select [(ngModel)]="item.status" (change)="toggleFromSelect($event.target.value,item)" id="select{{item._id}}" class="selectintable hide" #select>
                             <option disabled="disabled" value="">Choose An Option</option>
                             <option *ngFor="let option of optionlist" value="{{option.value}}">{{option.name}}</option>
-                        </select><br><br>
+                        </select><br><br></span>
                         <span *ngIf=" item.status == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
                         <span class="delete_user" *ngIf="usertype == 'admin' && item.status == 'Closed'" (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
                       </td>
