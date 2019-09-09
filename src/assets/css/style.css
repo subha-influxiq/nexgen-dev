@@ -1921,7 +1921,15 @@ span.loginclass {
     font-weight: bolder;
     cursor: pointer;
 }
-.new_header .new_header2 .navbar-nav li .blackbtn{margin: 0;font-size: 14px;margin-top: 5px;}
+.new_header .new_header2 .navbar-nav li .blackbtn{
+    margin: 0 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    background: none;
+    border: 1px solid #000;
+    color: #000;
+}
+.new_header .new_header2 .navbar-nav li .blackbtn:hover{background: #000; color: #fff;}
 @media screen and (max-width: 1460px) {
     .as_newcontainer {width: 96%;}
 }
