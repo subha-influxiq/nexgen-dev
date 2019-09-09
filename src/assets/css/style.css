@@ -1930,6 +1930,19 @@ span.loginclass {
     color: #000;
 }
 .new_header .new_header2 .navbar-nav li .blackbtn:hover{background: #000; color: #fff;}
+.notdonepcat ul li a {
+    padding: 18px 10px !important;
+    font-size: 18px !important;
+    display: flex !important;
+}
+.notdonepcat ul li a span {
+    height: 25px;
+    width: 26px;
+    display: inline-block;
+    padding: 0 !important;
+    margin-right: 9px;
+}
+.notdonepcat ul li a span img{max-width: 100%;}
 @media screen and (max-width: 1460px) {
     .as_newcontainer {width: 96%;}
 }

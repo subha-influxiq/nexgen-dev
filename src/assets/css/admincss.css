@@ -801,7 +801,7 @@
 .traing_innerwrapper .training_rightpart ul li{ list-style: none; background: #e6e8e9; border-bottom: 1px solid #fff; cursor: pointer; }
 .traing_innerwrapper .training_rightpart ul li:hover{ background: #bcc4c7; }
 .traing_innerwrapper .training_rightpart ul li span{ padding-right: 20px; }
-.traing_innerwrapper .training_rightpart ul li a{ text-decoration: none; color: #3f4040;  font-family: 'RalewayMedium'; font-size: 20px; text-transform: capitalize;padding: 18px; display: inline-block; width: 100%; }
+.traing_innerwrapper .training_rightpart ul li a{ text-decoration: none; color: #3f4040;  font-family: 'RalewayMedium'; font-size: 20px; text-transform: capitalize;padding: 18px; display: flex; width: 100%; }
 .traing_innerwrapper .training_rightpart ul li a:hover{ color: #3f4040; }
 
 .training_leftpart .carousal_content .carousel-caption .carousal_inner p{ font-family: 'RalewayMedium'; font-size: 26px; color: #000; margin-bottom: 5px; }
