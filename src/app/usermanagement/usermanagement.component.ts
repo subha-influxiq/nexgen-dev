@@ -128,7 +128,7 @@ export class UsermanagementComponent implements OnInit {
     const link = this.commonservices.nodesslurl + 'addorupdatedata';
     /* console.log('link');
      console.log(link);*/
-    this._http.post(link, { sourceusertyp: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
+    this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
         this.getUserLists();
         this.loader = 0;
