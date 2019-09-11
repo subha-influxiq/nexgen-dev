@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, TemplateRef} from '@angular/core';
+import {Component, OnInit, Input, TemplateRef, Inject} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Commonservices} from "../app.commonservices";
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import {ModalOptions} from "ngx-bootstrap";
+import { WINDOW } from '@ng-toolkit/universal';
 declare var moment;
 declare var $:any;
 
@@ -68,7 +69,7 @@ export class SlotsComponent implements OnInit {
   }
 
 
-  constructor(public _commonservices:Commonservices,public modal:BsModalService,kp: FormBuilder, private cookeiservice: CookieService,public _http:HttpClient, private route: ActivatedRoute, private router: Router) {
+  constructor(@Inject(WINDOW) private window: Window, public _commonservices:Commonservices,public modal:BsModalService,kp: FormBuilder, private cookeiservice: CookieService,public _http:HttpClient, private route: ActivatedRoute, private router: Router) {
     this.kp = kp;
 
     this.timezoneval=this.cookeiservice.get('timezone');

@@ -42,7 +42,7 @@ export class Commonservices {
         // this.nodesslurl = 'https://api.nexgentesting.com:6027/';
         // this.nodesslurl = 'http://api.nexgentesting.com:7002/';
 
-        this.nodesslurl = 'https://nodessl.influxiq.com:6005/';
+        this.nodesslurl = 'https://api.influxhostserver.com:6005/';
         //this.uploadsslurl = 'http://166.62.39.137:5005/download';
         this.uploadsslurl = 'http://192.169.196.208:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';

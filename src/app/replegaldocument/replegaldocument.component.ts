@@ -1,10 +1,11 @@
-import { Component, OnInit,ViewChild,EventEmitter,ElementRef,TemplateRef } from '@angular/core';
+import { Component, OnInit,ViewChild,EventEmitter,ElementRef,TemplateRef, Inject } from '@angular/core';
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
 import {Commonservices} from "../app.commonservices";
 import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-replegaldocument',
@@ -34,7 +35,7 @@ export class ReplegaldocumentComponent implements OnInit {
   public message:any;
   private selecteditemtype: any;
 
-  constructor(public commonservices:Commonservices,public _cookieservice:CookieService,public _http:HttpClient,public modal:BsModalService) {
+  constructor(@Inject(WINDOW) private window: Window, public commonservices:Commonservices,public _cookieservice:CookieService,public _http:HttpClient,public modal:BsModalService) {
     this.uploadInput = new EventEmitter<UploadInput>();
     this.humanizeBytes = humanizeBytes;
   }
@@ -205,6 +206,6 @@ export class ReplegaldocumentComponent implements OnInit {
     downloadfullcontract(){
         var url = 'https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id=' + this._cookieservice.get('userid');
         //"https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"
-        window.open(url, '_blank');
+        this.window.open(url, '_blank');
     }
 }

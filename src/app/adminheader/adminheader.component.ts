@@ -1,8 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Commonservices } from '../app.commonservices';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 /*h*/
 @Component({
@@ -30,7 +31,7 @@ export class AdminheaderComponent implements OnInit {
   public oldcookiedata: any;
   public gameplanButton:any = 0;
 
-  constructor(public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
+  constructor(@Inject(WINDOW) private window: Window, public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
     this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
     if (this.cookie.check('oldcookie') == true) {
       this.oldcookiedata = JSON.parse(this.cookie.get('oldcookie'));
@@ -299,7 +300,7 @@ export class AdminheaderComponent implements OnInit {
   }
 
   gotolink(link:any){
-    window.open(link);
+    this.window.open(link);
   }
 
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit, TemplateRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ElementRef, AfterViewInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Commonservices } from '../app.commonservices';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
 import { CookieService } from 'ngx-cookie-service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-rep-dashboard',
@@ -23,7 +24,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public userId: any;
   public calenderaccess:any;
   public is_consultant:any;
-  constructor(public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
+  constructor(@Inject(WINDOW) private window: Window, public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
     window.scrollTo(1000, 0);
     this._commonservice = _commonservice;

@@ -79,6 +79,9 @@ import { NotelistComponent } from './notelist/notelist.component';
 import { ManageVideoCategoryComponent } from './manage-video-category/manage-video-category.component';
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 import { AdditionalVideoComponent } from './additional-video/additional-video.component';
+import { CommonModule } from '@angular/common';
+import { TransferHttpCacheModule } from '@nguniversal/common';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
 
 @NgModule({
   declarations: [
@@ -147,7 +150,7 @@ import { AdditionalVideoComponent } from './additional-video/additional-video.co
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     routing,
@@ -162,6 +165,9 @@ import { AdditionalVideoComponent } from './additional-video/additional-video.co
     CarouselModule.forRoot(),
     CKEditorModule,
     ClipboardModule,
+    CommonModule,
+    TransferHttpCacheModule,
+    NgtUniversalModule,
   ],
   providers: [CookieService,TestresolveService,ApiService],
   bootstrap: [AppComponent]

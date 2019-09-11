@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
+import { Component, OnInit,TemplateRef, Inject } from '@angular/core';
 import {Commonservices} from "../app.commonservices";
 import {HttpClient} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 declare var moment:any;
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class DigitalcontractComponent implements OnInit {
     public filterval2;
 
 
-    constructor(public commonservice:Commonservices,public _http:HttpClient,public cookieservice:CookieService,kp:FormBuilder,public modalservices:BsModalService)
+    constructor(@Inject(WINDOW) private window: Window, public commonservice:Commonservices,public _http:HttpClient,public cookieservice:CookieService,kp:FormBuilder,public modalservices:BsModalService)
     {
         this.kp=kp;
         this.getlegaldocdata();
@@ -240,15 +241,15 @@ export class DigitalcontractComponent implements OnInit {
 
     downloadfullcontract(idis) {
         var url = this.commonservice.pdfsslurl + 'nexgenpdf.php?id=' + idis;
-        window.open(url, '_blank');
+        this.window.open(url, '_blank');
     }
     downloadexhibit1contract(idis) {
         var url = this.commonservice.pdfsslurl + 'nexgen-exhibit-a.php?id=' + idis;
-        window.open(url, '_blank');
+        this.window.open(url, '_blank');
     }
     downloadexhibit2contract(idis) {
         var url = this.commonservice.pdfsslurl + 'nexgen-exhibit-b.php?id=' + idis;
-        window.open(url, '_blank');
+        this.window.open(url, '_blank');
     }
     searchbyval() {
         this.filterval = '';

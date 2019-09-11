@@ -21,7 +21,6 @@ export class ProductsComponent implements OnInit {
   ];
   this.formdata = [
     { inputtype: 'text', name: 'productname', label: 'Product Name', placeholder: 'Enter Product Name', validationrule: { required: true }, validationerrormsg: 'is required' },
-   
     { inputtype: 'textarea', name: 'description', label: 'description', placeholder: 'Enter Description' },
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
     {inputtype:'checkbox',name:'verification_need',label:'Verification Needed',value:false},

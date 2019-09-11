@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-frontendhome',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontendhomeComponent implements OnInit {
 
-  constructor() {
+  constructor(@Inject(WINDOW) private window: Window, ) {
     window.scrollTo(0, 0);
   }
 

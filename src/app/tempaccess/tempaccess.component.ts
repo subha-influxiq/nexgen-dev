@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Commonservices } from "../app.commonservices";
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { WINDOW } from '@ng-toolkit/universal';
 declare var moment;
 
 @Component({
@@ -29,7 +30,7 @@ export class TempaccessComponent implements OnInit {
   public msgBlock: any = { flug: 'general' };
   public googleEventId: any;
 
-  constructor(public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
+  constructor(@Inject(WINDOW) private window: Window, public _commonservices:Commonservices,public  _http:HttpClient,public cookeiservice:CookieService,public  route: ActivatedRoute) {
     window.scrollTo(1000,0);
 
     // if(this.cookeiservice.get('jwttoken') == '') {

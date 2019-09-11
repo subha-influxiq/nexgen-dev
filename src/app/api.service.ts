@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable, interval, pipe } from 'rxjs';
 import { switchMap, map, takeWhile } from 'rxjs/operators';
 /*import { environment } from '../../environments/environment';*/
@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 /*import { JwtHelperService } from '@auth0/angular-jwt';
 // import { LoggedinService } from '../loggedin.service';*/
 import { CookieService } from 'ngx-cookie-service';
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
 
 @Injectable()
 export class ApiService {
@@ -13,7 +14,7 @@ export class ApiService {
   private domain =  environment["API_URL"];
   private _url = environment["API_URL"];*/
   public nodesslurl = 'https://api.nexgentesting.com:6027/';
-//  constructor(private _http: HttpClient, private _authHttp: HttpClient, public jwtHelper: JwtHelperService, private loggedinService: LoggedinService) {}
+//  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, private _http: HttpClient, private _authHttp: HttpClient, public jwtHelper: JwtHelperService, private loggedinService: LoggedinService) {}
   constructor(private _http: HttpClient,public cookie:CookieService) {}
 
 

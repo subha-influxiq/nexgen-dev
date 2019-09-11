@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
+import { Component, OnInit,TemplateRef, Inject } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Commonservices } from '../app.commonservices' ;
@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { CookieService } from 'ngx-cookie-service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 declare var moment:any;
 
@@ -47,7 +48,7 @@ export class SlotviewComponent implements OnInit {
    public modalReference : BsModalRef;
    public selectedlead:any;
 
-  constructor(public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(@Inject(WINDOW) private window: Window, public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
     this._commonservice =_commonservice;
 
@@ -70,7 +71,7 @@ export class SlotviewComponent implements OnInit {
 
   settimezone(){
       this.cookeiservice.set('timezone',this.timezoneval);
-      window.location.reload();
+      this.window.location.reload();
     }
     ngOnInit() {
         // if called as a rep

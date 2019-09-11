@@ -1,4 +1,4 @@
-import { Component, OnInit,TemplateRef } from '@angular/core';
+import { Component, OnInit,TemplateRef, Inject } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl,FormControl} from '@angular/forms';
 import {Commonservices} from "../app.commonservices";
@@ -6,6 +6,7 @@ import {CookieService} from "ngx-cookie-service";
 import {HttpClient} from "@angular/common/http";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { WINDOW } from '@ng-toolkit/universal';
 declare  var $:any;
 
 @Component({
@@ -28,7 +29,7 @@ export class UseraccountsettingComponent implements OnInit {
   public issubmitted:any=0;
     modalRef: BsModalRef;
 
-  constructor(public _commonservices:Commonservices,public cookeiservice:CookieService,public _http:HttpClient,es:FormBuilder,public modal:BsModalService, public route:ActivatedRoute)
+  constructor(@Inject(WINDOW) private window: Window, public _commonservices:Commonservices,public cookeiservice:CookieService,public _http:HttpClient,es:FormBuilder,public modal:BsModalService, public route:ActivatedRoute)
   {
     this.es=es;
     this.serverurl=_commonservices.nodesslurl;
@@ -138,7 +139,7 @@ export class UseraccountsettingComponent implements OnInit {
             })
     }
     goback(){
-        window.history.back();
+        this.window.history.back();
     }
 
     formsubmit(template:TemplateRef<any>){
