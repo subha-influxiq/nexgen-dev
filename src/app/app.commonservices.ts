@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {  HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {environment} from '../environments/environment';
 declare var moment:any;
 
 @Injectable()
@@ -11,15 +12,16 @@ export class Commonservices {
     public filedeleteurl: string;
     public filepathurl: string;
     public base64encode: any;
-    public nodesslurl: any;
+    // public nodesslurl: any;
     public siteurl: any;
     public roletypes: any;
-    public uploadsslurl: any;
+    public uploadsslurl: any= environment["download_url"];
     public fileimgsslurl: any;
     public gapisslurl: any;
     public pdfsslurl: any;
     public totaltimezone: any;
-    public serverfileurl:any;
+    public serverfileurl:any= environment["serverfileurl"] ;
+    public nodesslurl =  environment["api_url"];
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
@@ -37,16 +39,12 @@ export class Commonservices {
   
 
 
-     //   this.nodesslurl = 'http://api.nexgentesting.com:7001/';
-      //  this.nodesslurl = 'https://api.nexgentesting.com:6027/test1';
-        // this.nodesslurl = 'https://api.nexgentesting.com:6027/';
-        // this.nodesslurl = 'http://api.nexgentesting.com:7002/';
+     
 
-        this.nodesslurl = 'https://api.influxhostserver.com:6005/';
-        //this.uploadsslurl = 'http://166.62.39.137:5005/download';
-        this.uploadsslurl = 'http://192.169.196.208:5005/download';
+       // this.nodesslurl = 'https://api.influxhostserver.com:6005/';
+       // this.uploadsslurl = 'http://192.169.196.208:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
-        this.serverfileurl = 'https://www.betoparedes.com/betoparedesbackend/uploads/'
+      //  this.serverfileurl = 'https://www.betoparedes.com/betoparedesbackend/uploads/'
         this.siteurl = 'https://nexgentesting.com/';
         this.pdfsslurl = 'http://api.nexgentesting.com/testpdf/html2pdf/';
         this.gapisslurl = 'http://api.nexgentesting.com/gapi/t2.php';

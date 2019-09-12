@@ -51,6 +51,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           }
         },
@@ -62,6 +70,9 @@
           "configurations": {
             "production": {
               "browserTarget": "nexgetest:build:production"
+            },
+            "development": {
+              "browserTarget": "nexgetest:build:development"
             }
           }
         },
@@ -115,6 +126,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           }
         }
@@ -134,6 +153,8 @@
           "configurations": {
             "production": {
               "devServerTarget": "nexgetest:serve:production"
+            },"development": {
+              "devServerTarget": "nexgetest:serve:development"
             }
           }
         },
