@@ -151,7 +151,7 @@
                     aria-haspopup="true" aria-expanded="false">Additional Training</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngFor="let item of videoCategoryarry">
-                <a class="dropdown-item " [routerLink]="['/additional-video',item._id]">{{item.categoryname}}</a>
+                <a class="dropdown-item" [routerLink]="['/additional-video',item._id]" target="_blank">{{item.categoryname}}</a>
               </li>
               
           </div>

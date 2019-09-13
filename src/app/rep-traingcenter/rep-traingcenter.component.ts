@@ -79,6 +79,7 @@ export class RepTraingcenterComponent implements OnInit {
         let ndpcat:any=[]; 
         this.donecategory = [];
         this.notdonecategory = [];
+       
         const link = this._commonservice.nodesslurl+'training_category_foruser?token=' + this.cookeiservice.get('jwttoken');
         // this._http.post(link,{source:'training_category_lesson_view',condition:{type1:'Rep Trainning Table'}})
         let data={userid: this.cookeiservice.get('userid')};
@@ -189,6 +190,8 @@ export class RepTraingcenterComponent implements OnInit {
         }
 
         if(this.cid==0) this.cid='5c664284065aaf332831948c';
+        this.notdoneparentcat = [];
+        this.doneparentcat = [];
 
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,{source:'traininglesson',condition:{trainingcategory_object:this.cid}})
@@ -317,7 +320,7 @@ export class RepTraingcenterComponent implements OnInit {
 
                             if(item.trainingcategory==this.notdonecategory[b1]._id){
                                 //alert(item.trainingcategory);
-                                ccat=item.trainingcategory;
+                                ccat=item.trainingcmarkasdonetraninglessonategory;
                             }
 
                         }*/

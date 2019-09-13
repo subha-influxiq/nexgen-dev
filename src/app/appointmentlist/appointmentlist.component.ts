@@ -5,7 +5,7 @@ import { CookieService } from "ngx-cookie-service";
 //added by Chandrani
 import { BsModalService } from "ngx-bootstrap/modal";
 import { BsModalRef } from "ngx-bootstrap/modal/bs-modal-ref.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 declare var moment: any;
 declare var $: any;
 @Component({
@@ -19,21 +19,24 @@ export class AppointmentlistComponent implements OnInit {
   public googleeventsbackup: any;
   public last: string;
   public filterval;
-  // public filterval1;
-  // public filterval2;
+  public filterval3;
+  public filterval2;
+  public filterval4;
+  public filterval5;
+  public filterval6;
   public userfilterval;
   public futureevent = 1;
   //added by Chandrani
   public selectedlead: any = {};
   public modalRef2: BsModalRef;
-  public activeFlag:any = 0;
-  public selectedstatus:any;
-  public pricepoint:any;
-  public issubmitprice: any=0;
-  public optionlist:any = [{value:'Pending',name:'Pending'},{value:'Closed',name:'Closed'},{value:'No Sale',name:'No Sale'}];
-  public usertype:any;
+  public activeFlag: any = 0;
+  public selectedstatus: any;
+  public pricepoint: any;
+  public issubmitprice: any = 0;
+  public optionlist: any = [{ value: 'Pending', name: 'Pending' }, { value: 'Closed', name: 'Closed' }, { value: 'No Sale', name: 'No Sale' }];
+  public usertype: any;
 
-  constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService, public activatedroute:ActivatedRoute, public router:Router) {
+  constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService, public activatedroute: ActivatedRoute, public router: Router) {
     this.usertype = this.cookeiservice.get('usertype');
     console.log(this.router.url.indexOf('appointmentlist'));
   }
@@ -50,6 +53,8 @@ export class AppointmentlistComponent implements OnInit {
       }
     }
   }
+  //filter functions
+  //filter by firstname
   usernamesearch() {
     if (this.filterval == null || this.filterval == '') {
       this.googleevents = this.googleeventsbackup;
@@ -62,6 +67,69 @@ export class AppointmentlistComponent implements OnInit {
       }
     }
   }
+  //filter by lead name
+  searchbyleadname() {
+
+    if (this.filterval2 == null || this.filterval2 == '') {
+      this.googleevents = this.googleeventsbackup;
+    } else {
+      this.googleevents = [];
+      for (let i in this.googleeventsbackup) {
+
+        if (this.googleeventsbackup[i].leaddata.firstname != null && this.googleeventsbackup[i].leaddata.firstname.toLowerCase().indexOf(this.filterval2.toLowerCase()) > -1) {
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }else if (this.googleeventsbackup[i].leaddata.lastname != null && this.googleeventsbackup[i].leaddata.lastname.toLowerCase().indexOf(this.filterval2.toLowerCase()) > -1) {
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+  //filter by lead email
+  searchbyleademail() {
+
+    if (this.filterval3 == null || this.filterval3 == '') {
+      this.googleevents = this.googleeventsbackup;
+    } else {
+      this.googleevents = [];
+      for (let i in this.googleeventsbackup) {
+
+        if (this.googleeventsbackup[i].leaddata.email != null && this.googleeventsbackup[i].leaddata.email.toLowerCase().indexOf(this.filterval3.toLowerCase()) > -1) {
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+  //filter by closer name
+  searchbyclosername() {
+
+    if (this.filterval4 == null || this.filterval4 == '') {
+      this.googleevents = this.googleeventsbackup;
+    } else {
+      this.googleevents = [];
+      for (let i in this.googleeventsbackup) {
+
+        if (this.googleeventsbackup[i].closername != null && this.googleeventsbackup[i].closername.toLowerCase().indexOf(this.filterval4.toLowerCase()) > -1) {
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+  //filter by price point
+  searchbypricepoint() {
+
+    if (this.filterval5 == null || this.filterval5 == '') {
+      this.googleevents = this.googleeventsbackup;
+    } else {
+      this.googleevents = [];
+      for (let i in this.googleeventsbackup) {
+
+        if (this.googleeventsbackup[i].pricepoint != null && this.googleeventsbackup[i].pricepoint.toLowerCase().indexOf(this.filterval5.toLowerCase()) > -1) {
+          this.googleevents.push(this.googleeventsbackup[i]);
+        }
+      }
+    }
+  }
+
 
   ngOnInit() {
     this.getgoogleevents();
@@ -70,42 +138,46 @@ export class AppointmentlistComponent implements OnInit {
     let sourcecondition;
     if (this.cookeiservice.get('usertype') == 'admin') {
       if (this.futureevent == 1) {
-        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:{$ne:1} };
+        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') }, is_canceled: { $ne: 1 } };
       }
       else {
-        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1}};
+        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') }, is_canceled: { $ne: 1 } };
       }
-      if(this.router.url.indexOf('appointmentlist')> -1 && this.activatedroute.snapshot.params.leadid!=null){
+      if (this.router.url.indexOf('appointmentlist') > -1 && this.activatedroute.snapshot.params.leadid != null) {
         if (this.futureevent == 1) {
-          sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid };
+          sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') }, is_canceled: { $ne: 1 }, lead_id: this.activatedroute.snapshot.params.leadid };
         }
         else {
-          sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid};
+          sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') }, is_canceled: { $ne: 1 }, lead_id: this.activatedroute.snapshot.params.leadid };
         }
-       
+
       }
     } else {
       if (this.futureevent == 1) {
         sourcecondition = {
           startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}
+          eventuser_object: this.cookeiservice.get('userid'), is_canceled: { $ne: 1 }
         };
       } else {
         sourcecondition = {
           startdate: { $lt: moment().format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}
+          eventuser_object: this.cookeiservice.get('userid'), is_canceled: { $ne: 1 }
         };
       }
-      if(this.router.url.indexOf('appointmentlist')> -1 && this.activatedroute.snapshot.params.leadid!=null){
+      if (this.router.url.indexOf('appointmentlist') > -1 && this.activatedroute.snapshot.params.leadid != null) {
         if (this.futureevent == 1) {
-          sourcecondition = {startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid };
+          sourcecondition = {
+            startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },
+            eventuser_object: this.cookeiservice.get('userid'), is_canceled: { $ne: 1 }, lead_id: this.activatedroute.snapshot.params.leadid
+          };
         }
         else {
-          sourcecondition = {  startdate: { $lt: moment().format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:{$ne:1}, lead_id:this.activatedroute.snapshot.params.leadid};
+          sourcecondition = {
+            startdate: { $lt: moment().format('YYYY-MM-DD') },
+            eventuser_object: this.cookeiservice.get('userid'), is_canceled: { $ne: 1 }, lead_id: this.activatedroute.snapshot.params.leadid
+          };
         }
-       
+
       }
 
     }
@@ -114,16 +186,16 @@ export class AppointmentlistComponent implements OnInit {
 
     if (this.cookeiservice.get('usertype') == 'rep') {
       if (this.futureevent == 1) {
-        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:{$ne:1},booked_by:this.cookeiservice.get('userid') };
+        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') }, is_canceled: { $ne: 1 }, booked_by: this.cookeiservice.get('userid') };
       }
       else {
-        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:{$ne:1},booked_by:this.cookeiservice.get('userid')};
+        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') }, is_canceled: { $ne: 1 }, booked_by: this.cookeiservice.get('userid') };
       }
     }
-    if(this.router.url.indexOf('appointments') >-1 && this.activatedroute.snapshot.params.leadid!=null){
-      sourcecondition = { lead_id:this.activatedroute.snapshot.params.leadid};
+    if (this.router.url.indexOf('appointments') > -1 && this.activatedroute.snapshot.params.leadid != null) {
+      sourcecondition = { lead_id: this.activatedroute.snapshot.params.leadid };
     }
-    
+
     // sourcecondition={unique_id:35920};
     const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
     this._http.post(link, {
@@ -167,25 +239,25 @@ export class AppointmentlistComponent implements OnInit {
 
 
   }
-  getCanceledAppoint(){
+  getCanceledAppoint() {
     let sourcecondition;
     if (this.cookeiservice.get('usertype') == 'admin') {
       if (this.futureevent == 1) {
-        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },is_canceled:1 };
+        sourcecondition = { startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') }, is_canceled: 1 };
       }
       else {
-        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') } ,is_canceled:1};
+        sourcecondition = { startdate: { $lt: moment().format('YYYY-MM-DD') }, is_canceled: 1 };
       }
     } else {
       if (this.futureevent == 1) {
         sourcecondition = {
           startdate: { $gt: moment().subtract(1, 'days').format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:1
+          eventuser_object: this.cookeiservice.get('userid'), is_canceled: 1
         };
       } else {
         sourcecondition = {
           startdate: { $lt: moment().format('YYYY-MM-DD') },
-          eventuser_object: this.cookeiservice.get('userid'),is_canceled:1
+          eventuser_object: this.cookeiservice.get('userid'), is_canceled: 1
         };
       }
 
@@ -230,102 +302,104 @@ export class AppointmentlistComponent implements OnInit {
               let result2: any;
               result2 = response;
               if (result2.status == 'success') {
-              this.getgoogleevents();
-            }
+                this.getgoogleevents();
+              }
             }, error => {
               console.log('Oooops!!!');
             });
-        }else{
+        } else {
           console.log(result);
         }
       }, error => {
         console.log('Oooops!');
       });
   }
-  toggleStatusInArray(item){
+  toggleStatusInArray(item) {
     console.log('item in toggleStatusInArray');
     console.log(item);
     console.log(item.status);
-    if(item.status == null)item.status = 'Pending';
+    if (item.status == null) item.status = 'Pending';
     $('.statusspan').removeClass('hide');
     $('.statusspan').addClass('show');
     $('.selectintable').removeClass('show');
     $('.selectintable').addClass('hide');
-    $('#span'+item._id).removeClass('show');
-    $('#span'+item._id).addClass('hide');
-    $('#select'+item._id).removeClass('hide');
-    $('#select'+item._id).addClass('show');
-   
-    
-    
+    $('#span' + item._id).removeClass('show');
+    $('#span' + item._id).addClass('hide');
+    $('#select' + item._id).removeClass('hide');
+    $('#select' + item._id).addClass('show');
+
+
+
     // $('#select'+item._id).removeClass('hide');
     // $('#select'+item._id).addClass('show');
-}
+  }
 
-toggleFromSelect(event:any,item:any){
+  toggleFromSelect(event: any, item: any) {
     console.log('event');
     console.log(event);
     console.log('item');
     console.log(item);
     console.log(item.status);
     let status: any;
-    status=event;
+    status = event;
     this.selectedstatus = status;
     console.log(status);
     const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
     /* console.log('link');
      console.log(link);*/
-     let data  = { 
-        source:'googleevents',
-        data: { id: item._id, status: status}
-      };
-      console.log(data);
-    this._http.post(link, { 
-        source:'googleevents',
-        data: { id: item._id, status: status}}
-      )
-        .subscribe(res => {
-            this.getgoogleevents();
-        }, error => {
-            console.log('Oooops!');
-            this.getgoogleevents();
-        });
-}
+    let data = {
+      source: 'googleevents',
+      data: { id: item._id, status: status }
+    };
+    console.log(data);
+    this._http.post(link, {
+      source: 'googleevents',
+      data: { id: item._id, status: status }
+    }
+    )
+      .subscribe(res => {
+        this.getgoogleevents();
+      }, error => {
+        console.log('Oooops!');
+        this.getgoogleevents();
+      });
+  }
 
-openPricepointModal(item:any,template:TemplateRef<any>){
+  openPricepointModal(item: any, template: TemplateRef<any>) {
     console.log(item);
     this.selectedlead = item;
     this.modalRef2 = this.modal.show(template);
-}
-addPrice(){
+  }
+  addPrice() {
     // if(this.pricepoint==''){
     //     this.issubmitprice = 1;
     // }else{
     //     this.issubmitprice = 0;
     // }
-    
-    if(this.pricepoint == '' || this.pricepoint == null ){
-        console.log('error');
-        this.issubmitprice = 1;
-    }else{
-        const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
-        /* console.log('link');
-         console.log(link);*/
-        this._http.post(link, { 
-            source:'googleevents',
-            data: { id: this.selectedlead._id, pricepoint:this.pricepoint}}
-          )
-            .subscribe(res => {
-                this.pricepoint ='';
-                this.getgoogleevents();
-                this.modalRef2.hide();
-            }, error => {
-                console.log('Oooops!');
-                this.pricepoint ='';
-                this.getgoogleevents();
-            });
+
+    if (this.pricepoint == '' || this.pricepoint == null) {
+      console.log('error');
+      this.issubmitprice = 1;
+    } else {
+      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+      /* console.log('link');
+       console.log(link);*/
+      this._http.post(link, {
+        source: 'googleevents',
+        data: { id: this.selectedlead._id, pricepoint: this.pricepoint }
+      }
+      )
+        .subscribe(res => {
+          this.pricepoint = '';
+          this.getgoogleevents();
+          this.modalRef2.hide();
+        }, error => {
+          console.log('Oooops!');
+          this.pricepoint = '';
+          this.getgoogleevents();
+        });
     }
-    
-}
-  
+
+  }
+
 }

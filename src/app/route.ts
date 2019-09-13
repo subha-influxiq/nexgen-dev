@@ -68,7 +68,7 @@ const appRoutes: Routes = [
     { path: 'login', component:  LoginComponent},
     { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
-    { path: 'dashboard', component: DashboardComponent, resolve: {results: TestresolveService},data: { link: 'datalist',source:'users',condition:{type:'rep'} }},
+    { path: 'dashboard', component: DashboardComponent,resolve : {results: TestresolveService},data: { link: 'datalist',source:'users',condition:{type:'rep'} }},
  //   { path: 'dashboard', component: DashboardComponent},
     { path: 'admin', component: AdminmanagementComponent},
     { path: 'regional', component: RegionalRecruiterComponent},

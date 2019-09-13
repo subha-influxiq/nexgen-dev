@@ -16,6 +16,26 @@
                 <h3> <span>Search by Name: </span> <input type="text" [(ngModel)]="filterval"><button
                     (click)="usernamesearch()">search</button> </h3>
               </div>
+              <div class="search_content">
+                <!--<h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval" #listFilter (keyup)="0" ><button>search</button> </h3>-->
+                <h3> <span>Search by Lead Name: </span> <input type="text" [(ngModel)]="filterval2"><button
+                    (click)="searchbyleadname()">search</button> </h3>
+              </div>
+              <div class="search_content">
+                <!--<h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval" #listFilter (keyup)="0" ><button>search</button> </h3>-->
+                <h3> <span>Search by Lead Email: </span> <input type="text" [(ngModel)]="filterval3"><button
+                    (click)="searchbyleademail()">search</button> </h3>
+              </div>
+              <div class="search_content">
+                <!--<h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval" #listFilter (keyup)="0" ><button>search</button> </h3>-->
+                <h3> <span>Search by Closer Name: </span> <input type="text" [(ngModel)]="filterval4"><button
+                    (click)="searchbyclosername()">search</button> </h3>
+              </div>
+              <div class="search_content">
+                <!--<h3> <span>Search by Name:  </span> <input type="text"  [(ngModel)]="filterval" #listFilter (keyup)="0" ><button>search</button> </h3>-->
+                <h3> <span>Search by Pricepoint: </span> <input type="text" [(ngModel)]="filterval5"><button
+                    (click)="searchbypricepoint()">search</button> </h3>
+              </div>
             </div>
             <div class="clearfix"></div>
             <!--<input type="text" placeholder="Search..."  [(ngModel)]="filterval" #listFilter (keyup)="0" class="hide">-->
@@ -83,29 +103,34 @@
                       {{_commonservice.showdateforreplegal(item.startdate)}}</td>
                     <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for
                       {{item.timespan}} minutes)</td>
-                    <td data-title="Participate's Name" >{{item.leaddata.firstname}}
+                    <td data-title="Participate's Name">{{item.leaddata.firstname}}
                       {{item.leaddata.lastname}}</td>
-                    <td data-title="Participate's Phone No." >{{item.leaddata.phoneno}}</td>
+                    <td data-title="Participate's Phone No.">{{item.leaddata.phoneno}}</td>
                     <td data-title="Products"><span *ngIf="item.productname!=null">{{item.productname}}</span><span
                         *ngIf="item.productname==null">N/A</span></td>
                     <td data-title="Rep Name"><span *ngIf="item.leaddata">{{item.leaddata.fullname}}</span><span
                         *ngIf="item.leaddata==null">N/A</span></td>
-                      <td data-title="Lead Status">
-                        <span  *ngIf="usertype=='rep'">
-                            <span class="status"  *ngIf="item.status">{{item.status}}</span>
-                            <span class="status" *ngIf="item.status==null">Pending</span><br><br>
-                            
-                        </span>
-                        <span *ngIf="usertype!='rep'">
-                        <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}" *ngIf="item.status">{{item.status}}</span>
-                        <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}" *ngIf="item.status==null">Pending</span>
-                        <select [(ngModel)]="item.status" (change)="toggleFromSelect($event.target.value,item)" id="select{{item._id}}" class="selectintable hide" #select>
-                            <option disabled="disabled" value="">Choose An Option</option>
-                            <option *ngFor="let option of optionlist" value="{{option.value}}">{{option.name}}</option>
+                    <td data-title="Lead Status">
+                      <span *ngIf="usertype=='rep'">
+                        <span class="status" *ngIf="item.status">{{item.status}}</span>
+                        <span class="status" *ngIf="item.status==null">Pending</span><br><br>
+
+                      </span>
+                      <span *ngIf="usertype!='rep'">
+                        <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}"
+                          *ngIf="item.status">{{item.status}}</span>
+                        <span (click)="toggleStatusInArray(item)" class="statusspan show" id="span{{item._id}}"
+                          *ngIf="item.status==null">Pending</span>
+                        <select [(ngModel)]="item.status" (change)="toggleFromSelect($event.target.value,item)"
+                          id="select{{item._id}}" class="selectintable hide" #select>
+                          <option disabled="disabled" value="">Choose An Option</option>
+                          <option *ngFor="let option of optionlist" value="{{option.value}}">{{option.name}}</option>
                         </select><br><br></span>
-                        <span *ngIf=" item.status == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
-                        <span class="delete_user" *ngIf="usertype == 'admin' && item.status == 'Closed'" (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
-                      </td>
+                      <span *ngIf=" item.status == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')">Price
+                        Point:{{item.pricepoint}}</span><br><br>
+                      <span class="delete_user" *ngIf="usertype == 'admin' && item.status == 'Closed'"
+                        (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
+                    </td>
 
                     <td data-title="Manage Notes" *ngIf="item.userdata"><span class="delete_user"
                         (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span>
@@ -139,26 +164,26 @@
 </ng-template>
 <!--Put Price Point modal-->
 <ng-template #pricepointmodal>
-    <div class="modal-body brandmanagement_modal discoverycall">
-        <div class="logo_wrapper">
-            <img src="assets/images/logo.png">
-        </div>
-        <div class="brand_messagebox">
-            <div class="form-group row">
-                <label class="col-sm-12 col-form-label">Put A Closing Price</label>
-                <div class="col-sm-12">
-<input type="text" [(ngModel)]="pricepoint">
-                    <span *ngIf="pricepoint=='' && issubmitprice==1" class="error">*Closing Price Is Required</span>
-                        <div class="form-group row form-groupbtndiv">
-                            <button (click)="addPrice()">Save price</button>
-                            <button (click)="modalRef2.hide()">cancel</button>
-                            <div class="clearfix"></div>
+  <div class="modal-body brandmanagement_modal discoverycall">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="brand_messagebox">
+      <div class="form-group row">
+        <label class="col-sm-12 col-form-label">Put A Closing Price</label>
+        <div class="col-sm-12">
+          <input type="text" [(ngModel)]="pricepoint">
+          <span *ngIf="pricepoint=='' && issubmitprice==1" class="error">*Closing Price Is Required</span>
+          <div class="form-group row form-groupbtndiv">
+            <button (click)="addPrice()">Save price</button>
+            <button (click)="modalRef2.hide()">cancel</button>
+            <div class="clearfix"></div>
 
-                        </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <div>
-    </div>
+  </div>
+  <div>
+  </div>
 </ng-template>

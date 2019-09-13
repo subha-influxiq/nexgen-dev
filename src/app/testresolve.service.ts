@@ -28,6 +28,7 @@ export class TestresolveService implements Resolve<EndpointComponent> {
         let endpoint=route.data.link;
         let source=route.data.source;
         let condition=route.data.condition;
+        
 
 
             /*var result = new Promise((resolve) => {this._http.post(this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken'),
