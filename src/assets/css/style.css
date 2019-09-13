@@ -1876,6 +1876,8 @@ span.loginclass {
 
 
 /* ------------------- avijit css start ------------------- */
+.user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper{width: 92%; margin: 0 auto;}
+.user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper b {display: flex;}
 .as_newcontainer{width: 1400px; margin: 0 auto;}
 .asnewtextwrapper h2{
     margin: 0 auto;
@@ -1943,13 +1945,30 @@ span.loginclass {
     margin-right: 9px;
 }
 .notdonepcat ul li a span img{max-width: 100%;}
+@media screen and (max-width: 1790px) {
+    .user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper {width: 97%;}
+    .user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper button{padding: 5px 15px;}
+}
+@media screen and (max-width: 1540px) {
+    .user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper {width: 100%;margin: 0 0 0 auto;flex-wrap: wrap;}
+    
+}
 @media screen and (max-width: 1460px) {
     .as_newcontainer {width: 96%;}
 }
 @media screen and (max-width: 1199px) {
     .as_videosubwrapper {width: 45%;}
 }
+
 @media screen and (max-width: 767px) {
     .as_videosubwrapper {width: 100%;}
+}
+@media screen and (max-width: 580px) {
+    .user_management_wrapper .user_management_inner .inner_search_wrapper.as_inner_content_wrapper .inner_content_wrapper button {
+        padding: 5px 15px;
+        width: auto;
+        margin-bottom: 10px;
+        margin-top: 7px;
+    }
 }
 /* ------------------- avijit css end ------------------- */
