@@ -204,7 +204,7 @@ export class ReplegaldocumentComponent implements OnInit {
     this.modalRef1.hide();
   }
     downloadfullcontract(){
-        var url = 'https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id=' + this._cookieservice.get('userid');
+        var url = 'https://betoparedes.com/backoffice/generate-pdf/employment-agreement/index.php?id=' + this._cookieservice.get('userid');
         //"https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"
         this.window.open(url, '_blank');
     }
