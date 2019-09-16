@@ -167,6 +167,36 @@
                         <label>Rep’s Message To Calendar Owner/Discovery Closer</label>
                         <textarea class="form-control txt_area" type="text" [formControl]="dataForm.controls['repsmsg']"></textarea>
                     </div>
+                    <ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">
+                    <div class="form-group">
+                            <label>Total No. of Patients:</label>
+                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['totalpatients']">
+                        </div>
+                        <div class="form-group">
+                                <label>% of Medicare Patients:</label>
+                                <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['medicare_patients']">
+                            </div>
+                            <div class="form-group">
+                                    <label>% of Medicaid Patients:</label>
+                                    <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['medicaid_patients']">
+                                </div>
+                                <div class="form-group">
+                                        <label>% of Cash Payers:</label>
+                                        <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['cash_payers']">
+                                    </div>
+                                    <div class="form-group">
+                                            <label>% of Private Insuarance Patients:</label>
+                                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['pvt_insuarance_patients']">
+                                        </div>
+                                        <!-- <div class="form-group">
+                                                <label>Doctor/Practice is:</label>
+                                                <label *ngFor="let i of doctorspeciality"><input type="checkbox" value="i.value">{{i.name}}</label>
+                                            </div> -->
+                                            <div class="form-group">
+                                                    <label>Individual/Organisational NPI # *:</label>
+                                                    <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
+                                                </div>
+                                            </ng-container>
 
                     <div class="form-group">
                         <button class="btn_sv"> save</button>

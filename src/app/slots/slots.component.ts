@@ -21,6 +21,7 @@ export class SlotsComponent implements OnInit {
   public slotdata:any;
   modalRef: BsModalRef;
   public dataForm: FormGroup;
+  public medicalform:FormGroup;
   public kp;
   public leaddata:any='';
   public start_time;
@@ -37,6 +38,19 @@ export class SlotsComponent implements OnInit {
   public participantName: any;
   public participantEmail: any;
   public loader: boolean = false;
+  public selectedproduct:any;
+  public doctorspeciality:any = [
+    {name:"Family Medicine",value:"Family Medicine"},
+    {name:"Neurology",value:"Neurology"},
+    {name:"D.O. Doctor of Osteopathy",value:"D.O. Doctor of Osteopathy"},
+    {name:"General Practice",value:"General Practice"},
+    {name:"Internal Medicine",value:"Internal Medicine"},
+    {name:"Pain Mgmt (Integrated Practice)",value:"Pain Mgmt"},
+    {name:"Primary Care",value:"Primary Care"},
+    {name:"Endocrinology",value:"Endocrinology"},
+    {name:"Integrated Speciality Groups",value:"Integrated Speciality Groups"},
+    {name:"Cardiology",value:"Cardiology"}
+];
 
   bsDatepicker = {
     format: 'DD/MM/YYYY',
@@ -71,7 +85,7 @@ export class SlotsComponent implements OnInit {
 
   constructor(@Inject(WINDOW) private window: Window, public _commonservices:Commonservices,public modal:BsModalService,kp: FormBuilder, private cookeiservice: CookieService,public _http:HttpClient, private route: ActivatedRoute, private router: Router) {
     this.kp = kp;
-
+    this.selectedproduct = this.cookeiservice.get('lead-product');
     this.timezoneval=this.cookeiservice.get('timezone');
     this.dataForm = this.kp.group({
       /*  description: ['',Validators.required],*/
@@ -130,6 +144,15 @@ export class SlotsComponent implements OnInit {
     setTimeout(() => {
       this.getslot();
     },0);
+    this.medicalform = this.kp.group({
+      totalpatients:[ ""],
+      medicare_patients:[ "" ],
+      medicaid_patients:[ ""],
+      cash_payers:[ ""],
+      pvt_insuarance_patients:[ ""],
+      speciality:[""],
+      npi:[""],
+    });
    // console.log('refreshtoken');
    // console.log(this.cookeiservice.get('refreshtoken').length);
    // console.log(this.cookeiservice.get('refreshtoken'));
@@ -205,6 +228,11 @@ export class SlotsComponent implements OnInit {
     switch(this.route.snapshot.url[0].path) {
       case 'book-a-closer':
         console.log('BOOK A CLOSER');
+        // if(slotdata.userproducts.indexOf(this._commonservices.productid)>-1)
+        // {
+        //   this.selectedproduct = this._commonservices.productid;
+        // }
+         
         const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source:'leads_view', condition: { "_id": leadsId }}).subscribe(res => {
           let result: any = res;
@@ -214,7 +242,15 @@ export class SlotsComponent implements OnInit {
             participantName: [ result.res[0].fullname, Validators.required ],
             participantPhNumber: [ result.res[0].phoneno, Validators.required ],
             repsmsg: [''],
+            totalpatients:[ ""],
+            medicare_patients:[ "" ],
+            medicaid_patients:[ ""],
+            cash_payers:[ ""],
+            pvt_insuarance_patients:[ ""],
+            speciality:[""],
+            npi:[""]
           });
+          
 
             const config: ModalOptions = {
                 backdrop: 'static',

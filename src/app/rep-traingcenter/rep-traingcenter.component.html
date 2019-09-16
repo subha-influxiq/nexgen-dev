@@ -483,8 +483,8 @@
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of donecategory">
 
-                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname)"
-                    href="javascript:void(0)"> <span><img (click)="cid=item._id;getdatalist();gettraininglist();"
+                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist();gettraininglist();"
+                    href="javascript:void(0)"> <span><img 
                         src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
               </ng-container>
 

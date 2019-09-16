@@ -135,7 +135,7 @@
                             <label class="col-sm-12 col-form-label">Product</label>
                             <div class="col-sm-12">
 
-                                <select [formControl]="closerLeadForm.controls['product']" class="form-control">
+                                <select [formControl]="closerLeadForm.controls['product']" class="form-control" (change)="selectproductfunc($event)">
                                     <option value="">Select a Product</option>
                                     <option *ngFor="let i of products;" value="{{ i.product_id }}">{{ i.product_name }}
                                     </option>
@@ -146,6 +146,7 @@
                                     Required</span>
                             </div>
                         </div>
+                       
 
                         <div class="form-group row form-groupbtndiv">
 

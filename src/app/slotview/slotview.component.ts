@@ -37,6 +37,7 @@ export class SlotviewComponent implements OnInit {
    public slotView: boolean = true;
 
    public closerLeadForm: FormGroup;
+   public medicalform:FormGroup;
    public closerLeadFormSubmitFlug: boolean = false;
    public allLeads: any;
    public leadsSuggestion: any = [];
@@ -47,6 +48,8 @@ export class SlotviewComponent implements OnInit {
    public loader: boolean = false;
    public modalReference : BsModalRef;
    public selectedlead:any;
+   public selectedproduct:any;
+   
 
   constructor(@Inject(WINDOW) private window: Window, public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     window.scrollTo(1000,0);
@@ -65,8 +68,10 @@ export class SlotviewComponent implements OnInit {
     /* Agreement Form Control */
     this.closerLeadForm = this.formBuilder.group({
         leads:      [ null, [ Validators.required, Validators.maxLength(200) ] ],
-        product:    [ "", [ Validators.required, Validators.maxLength(200) ] ]
+        product:    [ "", [ Validators.required, Validators.maxLength(200) ] ],
       });
+
+     
   }
 
   settimezone(){
@@ -381,6 +386,16 @@ export class SlotviewComponent implements OnInit {
         this.leadsSuggestionFlug = false;
         this.leadsSuggestion = [];
         this.selectedlead = leadsData;
+    }
+    selectproductfunc(event:any){
+        console.log(event.target.value);
+        for(let i in this.products){
+            if(this.products[i].product_id == event.target.value){
+                this.selectedproduct = this.products[i];
+            }
+        }
+        
+
     }
 
     // added by chandrani 
