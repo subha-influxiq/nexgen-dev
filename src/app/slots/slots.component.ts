@@ -39,6 +39,7 @@ export class SlotsComponent implements OnInit {
   public participantEmail: any;
   public loader: boolean = false;
   public selectedproduct:any;
+  public specialityarray:any = [];
   public doctorspeciality:any = [
     {name:"Family Medicine",value:"Family Medicine"},
     {name:"Neurology",value:"Neurology"},
@@ -236,20 +237,31 @@ export class SlotsComponent implements OnInit {
         const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source:'leads_view', condition: { "_id": leadsId }}).subscribe(res => {
           let result: any = res;
-          this.dataForm = this.kp.group({
-            meeting_with: [ slotdata.meetingwith ],
-            participant: [ result.res[0].email, Validators.required ],
-            participantName: [ result.res[0].fullname, Validators.required ],
-            participantPhNumber: [ result.res[0].phoneno, Validators.required ],
-            repsmsg: [''],
-            totalpatients:[ ""],
-            medicare_patients:[ "" ],
-            medicaid_patients:[ ""],
-            cash_payers:[ ""],
-            pvt_insuarance_patients:[ ""],
-            speciality:[""],
-            npi:[""]
-          });
+          if(this.selectedproduct == this._commonservices.productid){
+            this.dataForm = this.kp.group({
+              meeting_with: [ slotdata.meetingwith ],
+              participant: [ result.res[0].email, Validators.required ],
+              participantName: [ result.res[0].fullname, Validators.required ],
+              participantPhNumber: [ result.res[0].phoneno, Validators.required ],
+              repsmsg: [''],
+              totalpatients:[ "",Validators.required],
+              medicare_patients:[ "" ,Validators.required],
+              medicaid_patients:[ "", Validators.required],
+              cash_payers:[ "", Validators.required],
+              pvt_insuarance_patients:[ "", Validators.required],
+              speciality:["", Validators.required],
+              npi:["",Validators.required]
+            });
+          }else{
+            this.dataForm = this.kp.group({
+              meeting_with: [ slotdata.meetingwith ],
+              participant: [ result.res[0].email, Validators.required ],
+              participantName: [ result.res[0].fullname, Validators.required ],
+              participantPhNumber: [ result.res[0].phoneno, Validators.required ],
+              repsmsg: ['']
+            });
+          }
+          
           
 
             const config: ModalOptions = {
@@ -455,6 +467,35 @@ showformat(stdt){
             // this.participantPhNumber = result.res[0].phoneno;
             console.log(this.participantPhNumber);
         })
+  }
+  speciality(event:any){
+    console.log('event.target.value');
+    console.log(event.target.value);
+    console.log(event.target.checked);
+    if(event.target.checked == true){
+      if(this.specialityarray.length==0){
+        this.specialityarray = [];
+        this.specialityarray.push(event.target.value);
+      }else{
+        this.specialityarray.push(event.target.value);
+      }
+    }
+    if(event.target.checked == false){
+      for( let i = 0; i < this.specialityarray.length; i++){ 
+        if ( this.specialityarray[i] === event.target.value) {
+          this.specialityarray.splice(i, 1); 
+          i--;
+        }
+     }
+    }
+    
+    console.log('this.specialityarray');
+    // console.log(this.specialityarray);
+    this.dataForm.controls['speciality'].setValue(this.specialityarray);
+    // 
+    
+    
+    console.log(this.dataForm.controls['speciality'].value);
   }
 
 }

@@ -1,17 +1,18 @@
 <!-- Loader start -->
 <div class="loder_body" *ngIf="loader">
     <div class="loder_wrapper">
-        <img src="assets/images/betologo.png"  alt="#" style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;"/>
-      <div class="loader"></div>
+        <img src="assets/images/betologo.png" alt="#"
+            style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+        <div class="loader"></div>
     </div>
-  </div>
-  <!-- Loader end -->
+</div>
+<!-- Loader end -->
 
 
 <p class="event_f_name">{{slotdata.meetingwith}}</p>
 <p class="event_f_date"><b>Date:</b> {{_commonservices.showdateforreplegal(slotdata.startdate)}}
     <span class="hide">
-{{_commonservices.unixtodate(slotdata.starttime)}}//{{_commonservices.unixtodate(slotdata.endtime)}}//{{(slotdata.endtime-slotdata.starttime)/60}}slots--==--{{slotdata.slots}}
+        {{_commonservices.unixtodate(slotdata.starttime)}}//{{_commonservices.unixtodate(slotdata.endtime)}}//{{(slotdata.endtime-slotdata.starttime)/60}}slots--==--{{slotdata.slots}}
     </span>
 
 </p>
@@ -49,7 +50,7 @@
         </div>
 
         <div class="content_wrapper">
-           <!-- <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
+            <!-- <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
                 <div class="form-group">
                     <label>Apppointment Tile</label>
                     &lt;!&ndash;   <input class="form-control" type="text" [formControl]="dataForm.controls['description']">
@@ -115,49 +116,71 @@
                 <form [formGroup]="dataForm" (ngSubmit)="dosubmit()">
                     <div class="form-group">
                         <label>appointment title</label>
-                        <p><span>Meeting with</span> <!--CLay Daral--> <input class="form-control" type="text" [formControl]="dataForm.controls['meeting_with']" readonly> </p>
+                        <p><span>Meeting with</span>
+                            <!--CLay Daral--> <input class="form-control" type="text"
+                                [formControl]="dataForm.controls['meeting_with']" readonly> </p>
                     </div>
                     <div class="form-group">
                         <label>participant Email</label>
-                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']" readonly *ngIf="participantEmail.length>2 ">
-                        <input class="form-control" type="text" placeholder="Please Input Your Email Here" [formControl]="dataForm.controls['participant']" *ngIf="participantEmail.length<2">
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participant']"
+                            readonly *ngIf="participantEmail.length>2 ">
+                        <input class="form-control" type="text" placeholder="Please Input Your Email Here"
+                            [formControl]="dataForm.controls['participant']" *ngIf="participantEmail.length<2">
 
-                        <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participant'].valid && dataForm.controls['participant'].touched">Email can not be blank</span>
+                        <span class="errortext" style="color:red"
+                            *ngIf="!dataForm.controls['participant'].valid && dataForm.controls['participant'].touched">Email
+                            can not be blank</span>
                     </div>
 
                     <div class="form-group">
-                            <label>participant Name</label>
-                            <input class="form-control" type="text" [formControl]="dataForm.controls['participantName']" readonly *ngIf="participantEmail.length>2 ">
-                            <input class="form-control" type="text" placeholder="Please Input Your Name Here" [formControl]="dataForm.controls['participantName']" *ngIf="participantEmail.length<2">
-    
-                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participantName'].valid && dataForm.controls['participantName'].touched">Name can not be blank</span>
-                        </div>
+                        <label>participant Name</label>
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participantName']"
+                            readonly *ngIf="participantEmail.length>2 ">
+                        <input class="form-control" type="text" placeholder="Please Input Your Name Here"
+                            [formControl]="dataForm.controls['participantName']" *ngIf="participantEmail.length<2">
 
-                        <div class="form-group">
-                            <label>participant Phone Number</label>
-                            <input class="form-control" type="text" [formControl]="dataForm.controls['participantPhNumber']" readonly *ngIf="participantEmail.length>2 ">
-                            <input class="form-control" type="text" placeholder="Please Input Your Phone Number Here" [formControl]="dataForm.controls['participantPhNumber']" *ngIf="participantEmail.length<2">
-    
-                            <span class="errortext" style="color:red" *ngIf="!dataForm.controls['participantPhNumber'].valid && dataForm.controls['participantPhNumber'].touched">Phone Number can not be blank</span>
-                        </div>
+                        <span class="errortext" style="color:red"
+                            *ngIf="!dataForm.controls['participantName'].valid && dataForm.controls['participantName'].touched">Name
+                            can not be blank</span>
+                    </div>
 
                     <div class="form-group">
-                       <label>appointment time</label>
-                        <p class="font_problm"> {{showformat(slotdata.startdate)}}<!--monday march 2009--> </p>
-                        <p *ngIf="route.snapshot.url[0].path!='customevent' " class="font_problm">{{slotvalue}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
-                        <p  *ngIf="route.snapshot.url[0].path=='customevent' " class="font_problm">{{slotvalue2}} {{_commonservices.showtimezone(timezoneshow)}} <!--8.30 - 9.00 east hawai--></p>
+                        <label>participant Phone Number</label>
+                        <input class="form-control" type="text" [formControl]="dataForm.controls['participantPhNumber']"
+                            readonly *ngIf="participantEmail.length>2 ">
+                        <input class="form-control" type="text" placeholder="Please Input Your Phone Number Here"
+                            [formControl]="dataForm.controls['participantPhNumber']" *ngIf="participantEmail.length<2">
+
+                        <span class="errortext" style="color:red"
+                            *ngIf="!dataForm.controls['participantPhNumber'].valid && dataForm.controls['participantPhNumber'].touched">Phone
+                            Number can not be blank</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>appointment time</label>
+                        <p class="font_problm"> {{showformat(slotdata.startdate)}}
+                            <!--monday march 2009-->
+                        </p>
+                        <p *ngIf="route.snapshot.url[0].path!='customevent' " class="font_problm">{{slotvalue}}
+                            {{_commonservices.showtimezone(timezoneshow)}}
+                            <!--8.30 - 9.00 east hawai-->
+                        </p>
+                        <p *ngIf="route.snapshot.url[0].path=='customevent' " class="font_problm">{{slotvalue2}}
+                            {{_commonservices.showtimezone(timezoneshow)}}
+                            <!--8.30 - 9.00 east hawai-->
+                        </p>
                     </div>
 
                     <div class="form-group" *ngIf="route.snapshot.url[0].path=='customevent' ">
-                       <label>appointment Slot</label>
+                        <label>appointment Slot</label>
                         <p class="font_problm">
 
-                        <select [(ngModel)]="slotdata.timespan" [ngModelOptions]="{standalone: true}">
+                            <select [(ngModel)]="slotdata.timespan" [ngModelOptions]="{standalone: true}">
 
-                            <option value="15">15 Minutes</option>
-                            <option value="30">30 Minutes</option>
-                            <option value="60">1 Hour</option>
-                        </select>
+                                <option value="15">15 Minutes</option>
+                                <option value="30">30 Minutes</option>
+                                <option value="60">1 Hour</option>
+                            </select>
 
                         </p>
 
@@ -165,38 +188,65 @@
 
                     <div class="form-group">
                         <label>Rep’s Message To Calendar Owner/Discovery Closer</label>
-                        <textarea class="form-control txt_area" type="text" [formControl]="dataForm.controls['repsmsg']"></textarea>
+                        <textarea class="form-control txt_area" type="text"
+                            [formControl]="dataForm.controls['repsmsg']"></textarea>
                     </div>
                     <ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">
-                    <div class="form-group">
+                        <div class="form-group">
                             <label>Total No. of Patients:</label>
-                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['totalpatients']">
+                            <input class="form-control txt_area" type="number"
+                                [formControl]="dataForm.controls['totalpatients']">
+                                <span class="error" *ngIf="dataForm.controls['totalpatients'].touched && dataForm.controls.totalpatients.errors"
+                                    >Total No. of Patients is
+                                    Required</span>
                         </div>
                         <div class="form-group">
-                                <label>% of Medicare Patients:</label>
-                                <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['medicare_patients']">
-                            </div>
-                            <div class="form-group">
-                                    <label>% of Medicaid Patients:</label>
-                                    <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['medicaid_patients']">
-                                </div>
-                                <div class="form-group">
-                                        <label>% of Cash Payers:</label>
-                                        <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['cash_payers']">
-                                    </div>
-                                    <div class="form-group">
-                                            <label>% of Private Insuarance Patients:</label>
-                                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['pvt_insuarance_patients']">
-                                        </div>
-                                        <!-- <div class="form-group">
+                            <label>% of Medicare Patients:</label>
+                            <input class="form-control txt_area" type="number"
+                                [formControl]="dataForm.controls['medicare_patients']">
+                                <span class="error" *ngIf="dataForm.controls['medicare_patients'].touched && dataForm.controls.medicare_patients.errors"
+                                    >% of Medicare Patients is
+                                    Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label>% of Medicaid Patients:</label>
+                            <input class="form-control txt_area" type="number"
+                                [formControl]="dataForm.controls['medicaid_patients']">
+                                <span class="error" *ngIf="dataForm.controls['medicaid_patients'].touched && dataForm.controls.medicaid_patients.errors"
+                                >% of Medicaid Patients is
+                                Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label>% of Cash Payers:</label>
+                            <input class="form-control txt_area" type="number"
+                                [formControl]="dataForm.controls['cash_payers']">
+                                <span class="error" *ngIf="dataForm.controls['cash_payers'].touched && dataForm.controls.cash_payers.errors"
+                                >% of Cash Payers is
+                                Required</span>
+                        </div>
+                        <div class="form-group">
+                            <label>% of Private Insuarance Patients:</label>
+                            <input class="form-control txt_area" type="number"
+                                [formControl]="dataForm.controls['pvt_insuarance_patients']">
+                                <span class="error" *ngIf="dataForm.controls['pvt_insuarance_patients'].touched && dataForm.controls.pvt_insuarance_patients.errors"
+                                >% of Private Insuarance Patients is
+                                Required</span>
+                        </div>
+                        <div class="form-group">
                                                 <label>Doctor/Practice is:</label>
-                                                <label *ngFor="let i of doctorspeciality"><input type="checkbox" value="i.value">{{i.name}}</label>
-                                            </div> -->
-                                            <div class="form-group">
-                                                    <label>Individual/Organisational NPI # *:</label>
-                                                    <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
-                                                </div>
-                                            </ng-container>
+                                                <label *ngFor="let i of doctorspeciality"><input type="checkbox" (change)="speciality($event)" value="{{i.value}}">{{i.name}}</label>
+                                                <span class="error" *ngIf="dataForm.controls['speciality'].touched && dataForm.controls.speciality.errors"
+                                >Doctor/Practice is
+                                Required</span>
+                                            </div>
+                        <div class="form-group">
+                            <label>Individual/Organisational NPI # *:</label>
+                            <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
+                            <span class="error" *ngIf="dataForm.controls['npi'].touched && dataForm.controls.npi.errors"
+                                >Individual/Organisational NPI is
+                                Required</span>
+                        </div>
+                    </ng-container>
 
                     <div class="form-group">
                         <button class="btn_sv"> save</button>
