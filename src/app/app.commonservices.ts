@@ -23,6 +23,7 @@ export class Commonservices {
     public serverfileurl:any= environment["serverfileurl"] ;
     public nodesslurl =  environment["api_url"];
     public productid =  environment["productid"];
+    public awstrainingid = environment["awstrainingid"];
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;

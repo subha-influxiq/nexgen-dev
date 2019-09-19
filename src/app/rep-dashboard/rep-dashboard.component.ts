@@ -23,6 +23,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public modalRef: BsModalRef;
   public userId: any;
   public calenderaccess:any;
+  public awstrainingpercentage:any ;
   public is_consultant:any;
   constructor(@Inject(WINDOW) private window: Window, public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
@@ -35,10 +36,23 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       this.userId = this.cookeiservice.get('userid');
       this.calenderaccess = this.cookeiservice.get('calenderaccess');
       this.is_consultant = this.cookeiservice.get('is_consultant');
+      this.trainingpercentage();
     }
-    
-    
-    
+   
+  }
+
+  trainingpercentage(){
+    let link = this._commonservice.nodesslurl + 'trainingcategorypercent' ;
+    let data = {
+      "trainingcategory" : this._commonservice.awstrainingid,
+      "user_id" : this.userId
+    };
+    this._http.post(link,data)
+    .subscribe(res=>{
+      let result:any;
+      result = res;
+      this.awstrainingpercentage = result.data[0].traininglessonpercent;
+    })
   }
   copyText(val: string){
     let selBox = document.createElement('textarea');

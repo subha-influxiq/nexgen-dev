@@ -49,6 +49,7 @@ export class RepTraingcenterComponent implements OnInit {
   public flg:any=1;
   public nextcat:any;
     modalRef1: BsModalRef;
+  public openAccordion:any = false;
 
 
     /* incpmolete lession */
@@ -102,6 +103,8 @@ export class RepTraingcenterComponent implements OnInit {
                     } 
 
                     console.log('huio before loop',this.cid);
+                    this.notdoneparentcat=[];
+                    this.doneparentcat=[]; 
 
                     for(let c in this.trainingcategory){
                         if(this.trainingcategory[c]._id==this.cid){
@@ -190,8 +193,8 @@ export class RepTraingcenterComponent implements OnInit {
         }
 
         if(this.cid==0) this.cid='5c664284065aaf332831948c';
-        this.notdoneparentcat = [];
-        this.doneparentcat = [];
+        //this.notdoneparentcat = [];
+        //this.doneparentcat = [];
 
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,{source:'traininglesson',condition:{trainingcategory_object:this.cid}})
@@ -235,12 +238,19 @@ export class RepTraingcenterComponent implements OnInit {
                         //console.log(this.sorteddatalist[i].htmleditorvalue);
                         this.sorteddatalist[i].sanitizedHtmlEditor = this.sanitizer.bypassSecurityTrustHtml(this.sorteddatalist[i].htmleditorvalue);
                     }
+                    this.sortTrainingDatalistToCheckDisabled();
 
                    
                 }
             }, error => {
                 console.log('Oooops!');
             });
+    }
+    sortTrainingDatalistToCheckDisabled(){
+        for(let i in this.sorteddatalist){
+            this.sorteddatalist[i].isDisabled = this.disableaccor(this.sorteddatalist[i],i);
+           // console.log(this.sorteddatalist[i].isDisabled);
+        }
     }
 
     getslide(val:any){
@@ -306,6 +316,7 @@ export class RepTraingcenterComponent implements OnInit {
                         this.cid=this.nextcat;
                         let result: any = res;
                         this.getdatalist(result.categoryname);
+                        this.sortTrainingDatalistToCheckDisabled();
                         let ccat:any=null;
                         /*for(let b1:any in this.notdonecategory){
                             //alert(this.notdonecategory[b1]._id);
@@ -337,7 +348,7 @@ export class RepTraingcenterComponent implements OnInit {
                     // last lesson coompleted
                     if(item._id == this.sorteddatalist[this.sorteddatalist.length-1]._id){
                         if(this.cid==null || this.cid==0){         //initial
-                            let link = this._commonservice.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken');
+                            let link = this._commonservice.nodesslurl + 'leadsignupquestionnaireupdate?token='+this.cookeiservice.get('jwttoken'); 
                             let data = {
                                 id: this.cookeiservice.get('userid'),
                                 reptraininglessonstep: 1
@@ -350,7 +361,7 @@ export class RepTraingcenterComponent implements OnInit {
                                     this.getdatalist(result.categoryname);
                                 });
                         }else{
-                            this.getdatalist(result.categoryname);
+                            //this.getdatalist(result.categoryname);
                         }/*else{      // other
                     let link = this._commonservice.nodesslurl + 'addorupdatedata?token='+this.cookeiservice.get('jwttoken');
                     let objarr=['completedtraining'];
@@ -407,20 +418,22 @@ export class RepTraingcenterComponent implements OnInit {
                 if(this.markasdonedatalist[i].traininglesson==item._id){
                     //  console.log('--===--');
                     if(this.sorteddatalist.length-1!=i1){
+                       if(this.sorteddatalist[i1+1]!=null){
                         this.sorteddatalist[i1+1].openaccordian=true;
                         this.sorteddatalist[i1].markasdone=true;
+                    }
                         //console.log('-----',i1,'true');
                         //return false;
                     }
                     //console.log('this.sorteddatalist');
                     //console.log(this.sorteddatalist);
                     
-                    return false;
+                   return false;
                 }
                 if(this.markasdonedatalist[i].traininglesson!=item._id && item.openaccordian!=null && item.openaccordian==true){
-                    //this.sorteddatalist[i+1].openaccordian=false;
+                    // this.sorteddatalist[i+1].openaccordian=false;
                      
-                    return false;
+                   return false;
                 }
             }
         }
@@ -515,6 +528,7 @@ export class RepTraingcenterComponent implements OnInit {
             this.modalRef1.hide();
             this.modalRef1 = this.modal.show(template, {class: 'quizmodal'});
             this.markasdonetraninglesson(item,0);
+            this.correctanscount = 0;
         }
 
     }
