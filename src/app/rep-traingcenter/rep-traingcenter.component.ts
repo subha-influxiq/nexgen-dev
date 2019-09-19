@@ -24,7 +24,7 @@ export class RepTraingcenterComponent implements OnInit {
   public datalist;
   public lessonid;
   public trainingcategory1;
-  public correctanscount;
+  public correctanscount:any = 0;
   public markasdonedatalist;
   public quizlistwithanswer;
   public cid:any=0;
@@ -43,7 +43,7 @@ export class RepTraingcenterComponent implements OnInit {
   public doneparentcat:any=[];
   public notdoneparentcat:any=[];
   public ngclassflag=0;
-  public currentcategoryname=0;
+  public currentcategoryname='';
   public curitem:any=null;
   public cureentcursor:any=0;
   public flg:any=1;
@@ -303,6 +303,19 @@ export class RepTraingcenterComponent implements OnInit {
         }
         this._http.post(link, {source:'donetraininglesson',data:data,sourceobj:objarr})
             .subscribe((res) => {
+
+                let lasttrainingid:any = this.sorteddatalist[this.sorteddatalist.length-1]._id;
+                console.log('lasttrainingid-'+lasttrainingid);
+                console.log('item._id-'+item._id);
+                console.log('item-');
+                console.log(item);
+                if(lasttrainingid == item._id){
+                    console.log(item.trainingcategory);
+                    let nextnotdonecategory :any = this.getNextNotDoneTrainingCategory(item.trainingcategory);
+                    console.log('nextnotdonecategory=='+nextnotdonecategory);
+                    this.cid = nextnotdonecategory._id;
+                    this.getdatalist(nextnotdonecategory.catname);
+                }
                 if((this.sorteddatalist.length-i)==1){
                     let notdonecatlen=this.notdonecategory.length;
 
@@ -313,10 +326,13 @@ export class RepTraingcenterComponent implements OnInit {
                     if(notdonecatlen>1 && this.cid!=0){
                        // alert(6);
                         //alert(this.nextcat);
-                        this.cid=this.nextcat;
-                        let result: any = res;
-                        this.getdatalist(result.categoryname);
-                        this.sortTrainingDatalistToCheckDisabled();
+
+
+                        // this.cid=this.nextcat;
+                        // let result: any = res;
+                        // this.getdatalist(result.categoryname);
+
+                       // this.sortTrainingDatalistToCheckDisabled();
                         let ccat:any=null;
                         /*for(let b1:any in this.notdonecategory){
                             //alert(this.notdonecategory[b1]._id);
@@ -531,6 +547,15 @@ export class RepTraingcenterComponent implements OnInit {
             this.correctanscount = 0;
         }
 
+    }
+
+    getNextNotDoneTrainingCategory(id:any){
+        for(let i in this.notdonecategory){
+            if(this.notdonecategory[i]._id != id){
+                return this.notdonecategory[i];
+            }
+        }
+        return id;
     }
 }
 
