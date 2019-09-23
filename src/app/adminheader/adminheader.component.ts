@@ -44,8 +44,14 @@ export class AdminheaderComponent implements OnInit {
     if (this.cookie.check('jwttoken') == false || this.cookie.check('userid') == false) {
       this.router.navigate(['/']);
     } else {
-      this.getRepDetails();
-      this.getrepdetails();
+      
+      setTimeout(()=>{
+        this.getRepDetails();
+      },500);
+      setTimeout(()=>{
+        this.getrepdetails();
+      },500);
+      
       this.getvideocatagory();
 
       this.sourceconditionval = { _id: this.idis };

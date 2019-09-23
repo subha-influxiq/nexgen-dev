@@ -76,7 +76,10 @@ export class SlotviewComponent implements OnInit {
 
   settimezone(){
       this.cookeiservice.set('timezone',this.timezoneval);
-      this.window.location.reload();
+      setTimeout(()=>{
+        this.geteventarr();
+      },1000);
+    //   this.window.location.reload();
     }
     ngOnInit() {
         // if called as a rep

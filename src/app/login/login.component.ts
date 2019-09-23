@@ -102,7 +102,13 @@ export class LoginComponent implements OnInit {
           this.cookeiservice.set('lockdornot', result.res[0].lock);
           this.cookeiservice.set('usertype', result.res[0].type);
           this.cookeiservice.set('useremail', result.res[0].email);
-          this.cookeiservice.set('calenderaccess', result.res[0].calenderaccess);
+          console.log(result.res[0].calenderaccess);
+          if(typeof(result.res[0].calenderaccess)!=undefined && result.res[0].calenderaccess!=null){
+            this.cookeiservice.set('calenderaccess', result.res[0].calenderaccess);
+          }else{
+            this.cookeiservice.set('calenderaccess', null);
+          }
+          
           this.cookeiservice.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
           if(result.res[0].type=='admin') {
             this.router.navigate(['/dashboard']);

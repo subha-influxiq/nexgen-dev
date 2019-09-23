@@ -81,7 +81,7 @@
           </div>
           <div class="table-responsive admin_table_wrapper generaltablecls">
             <div>
-              <table class="table">
+              <table class="table" *ngIf="googleevents!=null && googleevents.length>0">
                 <thead>
                   <tr>
                     <!-- <th scope="col">User ID</th> -->
@@ -146,6 +146,7 @@
                   </tr>
                 </tbody>
               </table>
+              <h1 *ngIf="googleevents==null">There is no event!</h1>
             </div>
           </div>
         </div>

@@ -254,7 +254,7 @@ showformat(stdt){
           this.message="Your Booking done successfully !!";
           this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
           setTimeout(() => {
-            window.location.reload();
+           // window.location.reload();
           },5000);
           //this.router.navigate(['/reptrainingcenter'])
         });

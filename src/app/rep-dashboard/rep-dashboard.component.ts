@@ -34,7 +34,12 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       this.getrepdetails();
       this.userReport();
       this.userId = this.cookeiservice.get('userid');
-      this.calenderaccess = this.cookeiservice.get('calenderaccess');
+      if(typeof(this.cookeiservice.get('calenderaccess'))!=undefined){
+        this.calenderaccess = this.cookeiservice.get('calenderaccess');
+
+      }else{
+        this.calenderaccess = null;
+      }
       this.is_consultant = this.cookeiservice.get('is_consultant');
       this.trainingpercentage();
     }

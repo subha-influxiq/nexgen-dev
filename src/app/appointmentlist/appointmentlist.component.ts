@@ -29,7 +29,7 @@ export class AppointmentlistComponent implements OnInit {
   //added by Chandrani
   public selectedlead: any = {};
   public modalRef2: BsModalRef;
-  public activeFlag: any = 0;
+  public activeFlag: any = 1;
   public selectedstatus: any;
   public pricepoint: any;
   public issubmitprice: any = 0;

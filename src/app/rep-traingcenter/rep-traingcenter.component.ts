@@ -52,7 +52,7 @@ export class RepTraingcenterComponent implements OnInit {
   public openAccordion:any = false;
 
 
-    /* incpmolete lession */
+    /* incomplete lesson */
     public lastLessionName: any;
     public trainingcategoryMod:any =[];
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService, public sanitizer: DomSanitizer,private route: ActivatedRoute) {
@@ -66,7 +66,7 @@ export class RepTraingcenterComponent implements OnInit {
           this.lid = params['lid'];
       });
       if(this.cid == null){            //initial training
-          this.getmarkasdonelist();
+        //   this.getmarkasdonelist();
           this.ngclassflag = 0;
       }else{                        // other
           this.gettraininglist();
@@ -105,10 +105,10 @@ export class RepTraingcenterComponent implements OnInit {
                     console.log('huio before loop',this.cid);
                     this.notdoneparentcat=[];
                     this.doneparentcat=[]; 
-
+                    this.currentcategoryname = '';
                     for(let c in this.trainingcategory){
                         if(this.trainingcategory[c]._id==this.cid){
-                            console.log('huio',this.cid,this.trainingcategory[c]);
+                        console.log('huio',this.cid,this.trainingcategory[c]);
                         this.currentcategoryname=this.trainingcategory[c].categoryname;
                         } 
                         if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1 && this.trainingcategory[c].parentcategory.length>0){  
@@ -159,7 +159,7 @@ export class RepTraingcenterComponent implements OnInit {
             this.markasdonedatalist = [];
             this.markasdonedatalist = result.res;
             this.getdatalist(result.res);
-
+// for updating the training percentage
             let link2 = this._commonservice.nodesslurl+'update_category_qualification';
             this._http.post(link2, { user_id: this.cookeiservice.get('userid') })
                 .subscribe(res => {  
@@ -315,6 +315,7 @@ export class RepTraingcenterComponent implements OnInit {
                     console.log('nextnotdonecategory=='+nextnotdonecategory);
                     this.cid = nextnotdonecategory._id;
                     this.getdatalist(nextnotdonecategory.catname);
+                    this.gettraininglist();
                 }
                 if((this.sorteddatalist.length-i)==1){
                     let notdonecatlen=this.notdonecategory.length;

@@ -58,7 +58,7 @@ export class ReplegaldocumentComponent implements OnInit {
               this.getidvalues=this.legallist[i];
             }
             // console.log(this.getidvalues);
-            // console.log(this.getw9values);
+            console.log(this.getw9values);
           }
         })
 }
@@ -124,7 +124,7 @@ export class ReplegaldocumentComponent implements OnInit {
         }
       }
 
-      const link = this.commonservices.nodesslurl+'addorupdatedata?token='+this._cookieservice.get('jwttoken');
+      const link = this.commonservices.nodesslurl+'addorupdatedata';
       this._http.post(link,{source:'legaldocuments',data:data,sourceobj:objarr})
           .subscribe(res=>{
             let result;
@@ -204,7 +204,7 @@ export class ReplegaldocumentComponent implements OnInit {
     this.modalRef1.hide();
   }
     downloadfullcontract(){
-        var url = 'https://betoparedes.com/backoffice/generate-pdf/employment-agreement/index.php?id=' + this._cookieservice.get('userid');
+        var url = 'https://betoparedes.com/generate-pdf/employment-agreement/index.php?id=' + this._cookieservice.get('userid');
         //"https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"
         this.window.open(url, '_blank');
     }

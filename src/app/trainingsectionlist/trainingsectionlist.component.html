@@ -47,6 +47,7 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Lesson Title</th>
+                  <th scope="col">Prerequisite Lesson</th>
                   <th scope="col">Description</th>
                   <th scope="col">File</th>
                   <th scope="col">Test</th>
@@ -59,6 +60,7 @@
                 <tr *ngFor="let item of traininglist; let i=index">
                   <td datalabel="ID">{{i+1}}</td>
                   <td datalabel="Lesson Title">{{item.title}}</td>
+                  <td datalabel="Prerequisite Lesson">{{item.prerequisite_lesson}}</td>
                   <td datalabel="Description">{{item.description}}</td>
                   <td class="filedetails" datalabel="File">
                     <div *ngIf="item.filetype=='file'">
@@ -224,7 +226,7 @@
 
 <ng-template #showhtmlmodal>
   <div class="modal-body modal_viewmore modal_viewmore2 successmodal_listing">
-      <h1>Hello World</h1>
+      <!-- <h1>Hello World</h1> -->
     <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(editorval)"></div>
   </div>
 </ng-template>

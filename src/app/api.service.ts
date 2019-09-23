@@ -85,33 +85,10 @@ export class ApiService {
   } //end getData
 
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   postData(endpoint:string,source,condition){
       var result =this._http.post(this.getEndpointUrl(endpoint),{source:source,condition:condition}/*JSON.stringify(data)*/).pipe(map(res => res));
       return result;
   } //end postData
-  
-  
-  
-  
   
   
   putData(endpoint:string,data,id:string,is_cache_buster=true){
@@ -134,6 +111,11 @@ export class ApiService {
 
   private getEndpointUrl(endpoint:string){
       return this.nodesslurl + endpoint+'?token='+this.cookie.get('jwttoken');
+  }
+  customRequest(requestdata: any, endpoint: any) {
+    
+    var result = this._http.post( endpoint, JSON.stringify(requestdata)).pipe(map(res => res));
+    return result;
   }
   
 
