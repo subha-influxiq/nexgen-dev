@@ -50,7 +50,7 @@
       <!--  <button class="btn" (click)="sorteddatalist[0].open = !sorteddatalist[0].open">Toggle first open</button>
       <button class="btn" (click)="sorteddatalist[1].open = !sorteddatalist[1].open">Toggle second open</button>-->
       <accordion> 
-        <accordion-group heading="{{item.title}}" *ngFor="let item of sorteddatalist; let i=index"
+        <accordion-group heading="{{item.title}} " *ngFor="let item of sorteddatalist; let i=index"
           [isDisabled]="disableaccor(item,i) !=null && disableaccor(item,i)" [isOpen]="disableaccor(item,i)!=null && !disableaccor(item,i)">  
           <!--[isOpen]="true"-->
           <div class="accordian_image">

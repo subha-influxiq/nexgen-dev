@@ -238,7 +238,7 @@ export class RepTraingcenterComponent implements OnInit {
                         //console.log(this.sorteddatalist[i].htmleditorvalue);
                         this.sorteddatalist[i].sanitizedHtmlEditor = this.sanitizer.bypassSecurityTrustHtml(this.sorteddatalist[i].htmleditorvalue);
                     }
-                    this.sortTrainingDatalistToCheckDisabled();
+                    //this.sortTrainingDatalistToCheckDisabled();
 
                    
                 }
@@ -448,7 +448,7 @@ export class RepTraingcenterComponent implements OnInit {
                    return false;
                 }
                 if(this.markasdonedatalist[i].traininglesson!=item._id && item.openaccordian!=null && item.openaccordian==true){
-                    // this.sorteddatalist[i+1].openaccordian=false;
+                    if(this.sorteddatalist[i+1] !=null ) this.sorteddatalist[i+1].openaccordian=false;
                      
                    return false;
                 }

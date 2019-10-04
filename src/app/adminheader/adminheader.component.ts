@@ -106,8 +106,12 @@ export class AdminheaderComponent implements OnInit {
           console.log('Oopss');
         } else {
           this.repDetailsNew = result.data;
-          this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
-          this.calenderaccess = this.cookie.get('calenderaccess');
+          if(this.repDetailsNew[0]!=null && this.repDetailsNew[0].calenderaccess !=null ) {
+            this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
+            this.calenderaccess = this.cookie.get('calenderaccess');
+          }else{
+            this.calenderaccess=false;
+          }
           if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
             let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
           this._http.post(link2, {
@@ -274,7 +278,8 @@ export class AdminheaderComponent implements OnInit {
             this.cookie.set('lockdornot', result.res[0].lock);
             this.cookie.set('usertype', result.res[0].type);
             this.cookie.set('useremail', result.res[0].email);
-            this.cookie.set('calenderaccess', result.res[0].calenderaccess);
+            if(result.res[0]!=null && result.res[0].calenderaccess !=null )
+              this.cookie.set('calenderaccess', result.res[0].calenderaccess);
             this.cookie.set('is_consultant', result.res[0].is_consultant);
             this.cookie.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
             if (result.res[0].type == 'admin') {
