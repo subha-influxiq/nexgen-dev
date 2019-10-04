@@ -105,6 +105,8 @@ export class RepTraingcenterComponent implements OnInit {
                     console.log('huio before loop',this.cid);
                     this.notdoneparentcat=[];
                     this.doneparentcat=[]; 
+                    this.notdonecategory=[];
+                    this.donecategory=[];
                     this.currentcategoryname = '';
                     for(let c in this.trainingcategory){
                         if(this.trainingcategory[c]._id==this.cid){
@@ -316,6 +318,8 @@ export class RepTraingcenterComponent implements OnInit {
                     this.cid = nextnotdonecategory._id;
                     this.getdatalist(nextnotdonecategory.catname);
                     this.gettraininglist();
+                    this.notdoneparentcat=[];
+                    this.doneparentcat =[];
                 }
                 if((this.sorteddatalist.length-i)==1){
                     let notdonecatlen=this.notdonecategory.length;
