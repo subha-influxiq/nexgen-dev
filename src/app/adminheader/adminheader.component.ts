@@ -30,6 +30,7 @@ export class AdminheaderComponent implements OnInit {
   public checkOldCookie: any;
   public oldcookiedata: any;
   public gameplanButton:any = 0;
+  public calenderaccess:any;
 
   constructor(@Inject(WINDOW) private window: Window, public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
     this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
@@ -106,6 +107,7 @@ export class AdminheaderComponent implements OnInit {
         } else {
           this.repDetailsNew = result.data;
           this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
+          this.calenderaccess = this.cookie.get('calenderaccess');
           if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
             let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
           this._http.post(link2, {

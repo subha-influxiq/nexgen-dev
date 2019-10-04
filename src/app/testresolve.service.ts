@@ -33,43 +33,43 @@ export class TestresolveService implements Resolve<EndpointComponent> {
         let endpoint=route.data.link;
         let source=route.data.source;
         let condition=route.data.condition;
-        // let requestData: any = route.data.requestcondition;
-        // console.log(this.userid);
-        // if(route.data.requestcondition.trainingcategory!=null){
-        //     console.log('yeah!');
-        //     requestData.trainingcategory = Object.assign(requestData.trainingcategory, route.params.cid);
-        //     requestData.userid = Object.assign(requestData.userid,this.userid);
-        // }else
-        //     requestData.condition = Object.assign(requestData.condition, route.params);
+        let requestData: any = route.data.requestcondition;
+        console.log(this.userid);
+        if(route.data.requestcondition.trainingcategory!=null){
+            console.log('yeah!');
+            requestData.trainingcategory =  route.params.cid;
+            requestData.userid =this.userid;
+        }else
+            requestData.condition = Object.assign(requestData.condition, route.params);
 
-
+//old code
             /*var result = new Promise((resolve) => {this._http.post(this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken'),
                 {source:source,condition:condition}/!*JSON.stringify(data)*!/).pipe(map(res => res));
             return result;*/
 
-        return new Promise((resolve) => { this._apiService.postData(endpoint,source,condition).subscribe(api_object => {
-            if (api_object) {
-                return resolve(api_object);
-            } else { // id not found
-              //  this.router.navigateByUrl('dashboard');
-                return true;
-            }
-        });
-        
-        });
-        // console.log('route.data.requestcondition');
-        // console.log(route.data.requestcondition);
-        // return new Promise ((resolve)=>{
-        //     this._apiService.customRequest(route.data.requestcondition, route.data.endpoint)
-        //     .subscribe(api_object =>{
-        //         if (api_object) {
-        //             return resolve(api_object);
-        //         } else { // id not found
-        //           //  this.router.navigateByUrl('dashboard');
-        //             return true;
-        //         }
-        //     })
+        // return new Promise((resolve) => { this._apiService.postData(endpoint,source,condition).subscribe(api_object => {
+        //     if (api_object) {
+        //         return resolve(api_object);
+        //     } else { // id not found
+        //       //  this.router.navigateByUrl('dashboard');
+        //         return true;
+        //     }
         // });
+        
+        // });
+        console.log('route.data.requestcondition');
+        console.log(route.data.requestcondition);
+        return new Promise ((resolve)=>{
+            this._apiService.customRequest(route.data.requestcondition, route.data.endpoint)
+            .subscribe(api_object =>{
+                if (api_object) {
+                    return resolve(api_object);
+                } else { // id not found
+                  //  this.router.navigateByUrl('dashboard');
+                    return true;
+                }
+            })
+        });
     }
 }
 

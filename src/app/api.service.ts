@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, Component } from '@angular/core';
 import { Observable, interval, pipe } from 'rxjs';
 import { switchMap, map, takeWhile } from 'rxjs/operators';
 /*import { environment } from '../../environments/environment';*/
@@ -7,13 +7,15 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 // import { LoggedinService } from '../loggedin.service';*/
 import { CookieService } from 'ngx-cookie-service';
 import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import {environment} from '../environments/environment';
 
 @Injectable()
 export class ApiService {
 /*
   private domain =  environment["API_URL"];
   private _url = environment["API_URL"];*/
-  public nodesslurl = 'https://api.nexgentesting.com:6027/';
+  // public nodesslurl = 'https://api.nexgentesting.com:6027/';
+  public nodesslurl =  environment["api_url"];
 //  constructor(@Inject(WINDOW) private window: Window, @Inject(LOCAL_STORAGE) private localStorage: any, private _http: HttpClient, private _authHttp: HttpClient, public jwtHelper: JwtHelperService, private loggedinService: LoggedinService) {}
   constructor(private _http: HttpClient,public cookie:CookieService) {}
 
@@ -113,8 +115,14 @@ export class ApiService {
       return this.nodesslurl + endpoint+'?token='+this.cookie.get('jwttoken');
   }
   customRequest(requestdata: any, endpoint: any) {
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'Authorization': this.cookie.get('jwttoken')
+    //   })
+    // };
     
-    var result = this._http.post( endpoint, JSON.stringify(requestdata)).pipe(map(res => res));
+    var result = this._http.post( this.nodesslurl+endpoint, requestdata).pipe(map(res => res));
     return result;
   }
   

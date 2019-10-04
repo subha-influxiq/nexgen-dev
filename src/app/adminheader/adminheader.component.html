@@ -166,7 +166,7 @@
         <a class="nav-link">Legal Documents</a>
       </li>
       
-      <li class="nav-item dropdown" *ngIf="cookie.get('calenderaccess')==1">
+      <li class="nav-item dropdown" *ngIf="calenderaccess!=null && calenderaccess==1">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Manage Leads</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -174,7 +174,7 @@
           <a class="dropdown-item" [routerLink]="['/appointmentlist']">Appointment Set By Me</a>
         </div>
       </li>
-      <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
+      <li class="nav-item" *ngIf="calenderaccess!=null && calenderaccess==1">
         <a [routerLink]="['/book-a-closer']" class="nav-link">Discovery Calendar</a>
       </li>
 
@@ -183,7 +183,7 @@
         <a class="nav-link" [routerLink]="['/discovery-call',idis]">Discovery Call</a>
       </li>
 
-      <li class="nav-item" *ngIf="cookie.get('calenderaccess')==1">
+      <li class="nav-item" *ngIf="calenderaccess!=null && calenderaccess==1">
         <a class="nav-link" (click)="commissionsModal.show()">Commissions</a>
       </li>
 

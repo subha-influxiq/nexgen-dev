@@ -64,7 +64,7 @@
               <h3> Appointment List</h3>
               <!-- <h3 (click)="seteventtime(1)"> Future Events</h3>
               <h3 (click)="seteventtime(0)"> Past Events </h3>-->
-              <div class="abcde">
+              <div class="abcde" >
                 <a (click)="getCanceledAppoint()"
                   [ngClass]="activeFlag === 2 ? 'addfrinderbtn s_getmybrand_savebutton slotadd active' : 'addfrinderbtn s_getmybrand_savebutton slotadd'">
                   Cancelled Events</a>
@@ -102,15 +102,20 @@
                   <tr *ngFor="let item of googleevents | orderBy:'startdate':'reverse'; let i=index">
                     <!-- <td data-title="User ID" *ngIf="item.userdata">{{item.userdata.unique_id}}</td> -->
                     <!-- <td data-title="Type" style="text-transform: capitalize;" *ngIf="item.userdata">{{item.type}}</td> -->
+                    <ng-container *ngIf="item!=null && item!=''">
                     <td data-title="Name" *ngIf="item.userdata">{{item.userdata.firstname}} {{item.userdata.lastname}}
                       ({{item.userdata.email}})</td>
                     <td data-title="Date Set" *ngIf="item.userdata">
                       {{_commonservice.showdateforreplegal(item.startdate)}}</td>
-                    <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} (for
+                    <td data-title="Time" *ngIf="item.userdata">{{_commonservice.showtime(item.start_time)}} - Timezone:{{item.timezone}} (for
                       {{item.timespan}} minutes)</td>
-                    <td data-title="Participate's Name">{{item.leaddata.firstname}}
-                      {{item.leaddata.lastname}}</td>
-                    <td data-title="Participate's Phone No.">{{item.leaddata.phoneno}}</td>
+                    <td data-title="Participate's Name">
+                      <span *ngIf="item.leaddata">{{item.leaddata.firstname}} {{item.leaddata.lastname}}</span><span
+                      *ngIf="item.leaddata==null">N/A</span></td>
+                    <td data-title="Participate's Phone No.">
+                      <span *ngIf="item.leaddata">{{item.leaddata.phoneno}}</span><span
+                      *ngIf="item.leaddata==null">N/A</span>
+                    </td>
                     <td data-title="Products"><span *ngIf="item.productname!=null">{{item.productname}}</span><span
                         *ngIf="item.productname==null">N/A</span></td>
                     <td data-title="Rep Name"><span *ngIf="item.leaddata">{{item.leaddata.fullname}}</span><span
@@ -143,10 +148,11 @@
                         (click)="cancelAppointment(item.googleevent,item.refresh_token,item._id)">Cancel</span>
                       <span class="edit_user" (click)="notesdata(item,notesmodal)">Reschedule</span>
                     </td>
+                  </ng-container>
                   </tr>
                 </tbody>
               </table>
-              <h1 *ngIf="googleevents==null">There is no event!</h1>
+              <h3 style="text-align:center" *ngIf="googleevents==null || googleevents.length==0">There is no event!</h3>
             </div>
           </div>
         </div>

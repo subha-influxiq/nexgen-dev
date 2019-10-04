@@ -86,8 +86,8 @@ const appRoutes: Routes = [
     { path:'useraccountsetting/:id', component: UseraccountsettingComponent},
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
-    { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent}, // cat id
-    // { path: 'reptrainingcenter/:cid', component: DashboardComponent,resolve : {results: TestresolveService},data: { requestcondition: { trainingcategory:{}, userid:{} }, endpoint:'traininglessonlist'}},
+    // { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent}, // cat id
+    { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent,resolve : {results: TestresolveService},data: { requestcondition: { trainingcategory:{}, userid:{} }, endpoint:'traininglessonlist'}},
     { path: 'reptrainingcenter/:cid/:lid', component: RepTraingcenterComponent}, // lesson id
     { path:'trial', component: TrialsComponent},
     { path:'trainingsectionlist', component: TrainingsectionlistComponent},
