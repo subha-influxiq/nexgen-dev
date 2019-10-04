@@ -87,7 +87,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
         if (result.status == 'error') {
         } else {
           this.repDetailsNew = result.data;
-          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage == 100 && this.repDetailsNew[0].is_discovery == false) {
+          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage >= 100 && this.repDetailsNew[0].is_discovery == false) {
             setTimeout(() => {
               this.link.nativeElement.click();
               console.log(this.link);
@@ -96,6 +96,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
           }
           else {
 
+            //alert(this.repDetailsNew[0].trainingpercentage);
             if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
               let link2 = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
             this._http.post(link2, {
@@ -105,6 +106,8 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
                 .subscribe(res => {
                   let result: any;
                   result = res;
+
+                  console.log("user_parent_category_percent",result.res);
                   // if (result.resc >0) {
                   for (let i in result.res) {
                     if (result.res[i].trainingpercent == 100) {
@@ -152,6 +155,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
               this.repDetailsNew.push(result.data[i]);
             }
           }
+          //alert(this.repDetailsNew[0].trainingpercentage);
           if(this.repDetailsNew.length>0 && this.repDetailsNew[0].trainingpercentage == 100){
             setTimeout(() => {
               this.link.nativeElement.click();

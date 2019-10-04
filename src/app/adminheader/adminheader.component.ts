@@ -123,7 +123,7 @@ export class AdminheaderComponent implements OnInit {
                 result = res;
                 // if (result.resc >0) {
                 for (let i in result.res) {
-                  if (result.res[i].trainingpercent == 100) {
+                  if (result.res[i].trainingpercent >= 100) { 
                   
                    this.gameplanButton = 1;
                   }
