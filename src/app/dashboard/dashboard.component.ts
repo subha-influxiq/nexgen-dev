@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
     trainingcenterdetails()
     {
         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'user_training'})
+        this.http.post(link,{source:'temp_user_training'})
             .subscribe(res=>{
                 let result;
                 result=res;

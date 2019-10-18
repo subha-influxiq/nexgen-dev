@@ -31,7 +31,7 @@ export class RegionalDashboardComponent implements OnInit {
 
   getreplistunderthisregion(){
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'user_training',condition:{regionalrecruiter_id_object:this.cookeiservice.get('userid')}}) //users
+    this._http.post(link,{source:'temp_user_training',condition:{regionalrecruiter_id_object:this.cookeiservice.get('userid')}}) //users
         .subscribe(res => {
           let result:any;
           result = res;

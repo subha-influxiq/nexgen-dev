@@ -120,7 +120,7 @@
                       <span class="newpanclass">Contract signed:
                         <span *ngIf="item.is_contract_signed!=null && item.is_contract_signed==1 ">Yes
                           <a target="_blank"
-                            href="https://backoffice.betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
+                            href="https://betoparedes.com/generate-pdf/employment-agreement/index.php?id={{item._id}}"><i
                               class="fa fa-download" aria-hidden="true"></i></a></span>
                         <span *ngIf="item.is_contract_signed==null || item.is_contract_signed==0 "
                           [routerLink]="['/useraccountsetting',item._id]">No</span>

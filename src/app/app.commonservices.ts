@@ -16,12 +16,14 @@ export class Commonservices {
     public siteurl: any;
     public roletypes: any;
     public uploadsslurl: any= environment["download_url"];
+    public downloadurl: any= environment["downloadurl_2"];
     public fileimgsslurl: any;
     public gapisslurl: any;
     public pdfsslurl: any;
     public totaltimezone: any;
     public serverfileurl:any= environment["serverfileurl"] ;
     public nodesslurl =  environment["api_url"];
+    public uploadurl_old = environment["download_url_old"] ;
     public productid =  environment["productid"];
     public awstrainingid = environment["awstrainingid"];
 /*    public traininglessonflag: boolean = false;

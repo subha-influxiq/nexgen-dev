@@ -759,7 +759,7 @@ export class ListingComponent implements OnInit {
         if (output.type === 'allAddedToQueue') {
             const event: UploadInput = {
                 type: 'uploadAll',
-                url: this._commonservice.nodesslurl + 'uploads',
+                url: this._commonservice.uploadurl_old + 'uploads',
                 method: 'POST',
             };
             this.uploadInput.emit(event);
