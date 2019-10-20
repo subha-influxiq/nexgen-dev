@@ -33,12 +33,12 @@ export class DashboardComponent implements OnInit {
     {
         this.trainingcenterdetails();
 
-        this.route.data.forEach((data) => {
-            console.log('resolve route data ... ');
-            console.log('json',data['results']);
-            this.repdetails=data['results'].res;
+        // this.route.data.forEach((data) => {
+        //     console.log('resolve route data ... ');
+        //     console.log('json',data['results']);
+        //     this.repdetails=data['results'].res;
 
-        });
+        // });
     }
     gettrainingsection()
     {
@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
     trainingcenterdetails()
     {
         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'temp_user_training'})
+        this.http.post(link,{source:'user_training'})
             .subscribe(res=>{
                 let result;
                 result=res;
