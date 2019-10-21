@@ -249,8 +249,10 @@ export class SlotsComponent implements OnInit {
               medicaid_patients:[ "", Validators.required],
               cash_payers:[ "", Validators.required],
               pvt_insuarance_patients:[ "", Validators.required],
+              sixteen_year_patients:["",Validators.required],
               speciality:["", Validators.required],
-              npi:["",Validators.required]
+              npi:["",Validators.required],
+              doctor_name:["",Validators.required],
             });
           }else{
             this.dataForm = this.kp.group({

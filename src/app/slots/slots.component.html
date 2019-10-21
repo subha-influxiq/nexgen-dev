@@ -193,8 +193,8 @@
                     </div>
 
                     <!--aws form fields-->
-                    <!--<ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">-->
-                    <ng-container>
+                    <ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">
+                    <!-- <ng-container> -->
 
                         <div class="containeraddblock">
 
@@ -242,9 +242,9 @@
 
                         <div class="form-group groupconblock">
                             <label>How many patients are below 16 years?  </label>
-                            <input class="form-control txt_area" type="number" >
-                            <span class="error" *ngIf="dataForm.controls['pvt_insuarance_patients'].touched && dataForm.controls.pvt_insuarance_patients.errors"
-                            >% of Private Insuarance Patients is
+                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['sixteen_year_patients']">
+                            <span class="error" *ngIf="dataForm.controls['sixteen_year_patients'].touched && dataForm.controls.sixteen_year_patients.errors"
+                            >No. of below 16 years Patients is
                                 Required</span>
                         </div>
 
@@ -271,7 +271,7 @@
                                             </div>
 
 
-                        <div class="form-group">
+                           <div class="form-group groupconblock">
                             <label>Individual/Organisational NPI # *:</label>
                             <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
                             <span class="error" *ngIf="dataForm.controls['npi'].touched && dataForm.controls.npi.errors"
@@ -279,6 +279,13 @@
                                 Required</span>
                         </div>
 
+                        <div class="form-group groupconblock">
+                            <label>Name of Doctor:</label>
+                            <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['doctor_name']">
+                            <span class="error" *ngIf="dataForm.controls['doctor_name'].touched && dataForm.controls.doctor_name.errors"
+                                >Name of Doctor is
+                                Required</span>
+                        </div>
 
                         <button class="addnewbtn2"> Add New</button>
                     </div>

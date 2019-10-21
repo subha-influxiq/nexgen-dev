@@ -41,10 +41,6 @@ export class Commonservices {
         this.filepathurl = 'https://nexgen.influxiq.com/php/uploads/';
         this.base64encode = 'https://nexgen.influxiq.com/php/index.php?encode=encodefile';
   
-
-
-     
-
        // this.nodesslurl = 'https://api.influxhostserver.com:6005/';
        // this.uploadsslurl = 'http://192.169.196.208:5005/download';
         this.fileimgsslurl = 'http://api.nexgentesting.com/';
