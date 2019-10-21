@@ -191,8 +191,15 @@
                         <textarea class="form-control txt_area" type="text"
                             [formControl]="dataForm.controls['repsmsg']"></textarea>
                     </div>
-                    <ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">
-                        <div class="form-group">
+
+                    <!--aws form fields-->
+                    <!--<ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">-->
+                    <ng-container>
+
+                        <div class="containeraddblock">
+
+                        <h2 class="modalh2text1">Doctor/Practice Information</h2>
+                        <div class="form-group groupconblock">
                             <label>Total No. of Patients:</label>
                             <input class="form-control txt_area" type="number"
                                 [formControl]="dataForm.controls['totalpatients']">
@@ -200,7 +207,7 @@
                                     >Total No. of Patients is
                                     Required</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group groupconblock">
                             <label>% of Medicare Patients:</label>
                             <input class="form-control txt_area" type="number"
                                 [formControl]="dataForm.controls['medicare_patients']">
@@ -208,7 +215,7 @@
                                     >% of Medicare Patients is
                                     Required</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group groupconblock">
                             <label>% of Medicaid Patients:</label>
                             <input class="form-control txt_area" type="number"
                                 [formControl]="dataForm.controls['medicaid_patients']">
@@ -216,7 +223,7 @@
                                 >% of Medicaid Patients is
                                 Required</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group groupconblock">
                             <label>% of Cash Payers:</label>
                             <input class="form-control txt_area" type="number"
                                 [formControl]="dataForm.controls['cash_payers']">
@@ -224,7 +231,7 @@
                                 >% of Cash Payers is
                                 Required</span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group groupconblock">
                             <label>% of Private Insuarance Patients:</label>
                             <input class="form-control txt_area" type="number"
                                 [formControl]="dataForm.controls['pvt_insuarance_patients']">
@@ -232,13 +239,38 @@
                                 >% of Private Insuarance Patients is
                                 Required</span>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group groupconblock">
+                            <label>How many patients are below 16 years?  </label>
+                            <input class="form-control txt_area" type="number" >
+                            <span class="error" *ngIf="dataForm.controls['pvt_insuarance_patients'].touched && dataForm.controls.pvt_insuarance_patients.errors"
+                            >% of Private Insuarance Patients is
+                                Required</span>
+                        </div>
+
+
+
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="form-group form-group-wrapper1">
+
+                            <div class="form-group_label1">
                                                 <label>Doctor/Practice is:</label>
+
+                            </div>
+
+                            <div class="form-group_label2">
                                                 <label *ngFor="let i of doctorspeciality"><input type="checkbox" (change)="speciality($event)" value="{{i.value}}">{{i.name}}</label>
                                                 <span class="error" *ngIf="dataForm.controls['speciality'].touched && dataForm.controls.speciality.errors"
                                 >Doctor/Practice is
                                 Required</span>
+                            </div>
+                            <div class="clearfix"></div>
                                             </div>
+
+
                         <div class="form-group">
                             <label>Individual/Organisational NPI # *:</label>
                             <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
@@ -246,6 +278,10 @@
                                 >Individual/Organisational NPI is
                                 Required</span>
                         </div>
+
+
+                        <button class="addnewbtn2"> Add New</button>
+                    </div>
                     </ng-container>
 
                     <div class="form-group">

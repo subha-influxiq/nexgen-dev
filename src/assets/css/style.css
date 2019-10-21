@@ -1728,11 +1728,11 @@ span.loginclass {
 
 .rep_dashboard_newblock6_topnew_wrapper_text{ border: solid 1px #000000; display: flex;}
 
-.rep_dashboard_newblock6_topnew_left{ width: 50%;   border-right: solid 1px #d2d8da; }
+.rep_dashboard_newblock6_topnew_left{ width: 50%;   border-right: solid 1px #000000; }
 .rep_dashboard_newblock6_topnew_right{ width: 50%;  }
 
 .rep_dashboard_newblock6_topnew_wrapper_text
-.new_subblockcon{border-bottom: solid 1px #d2d8da; padding: 15px;}
+.new_subblockcon{border-bottom: solid 1px #000000; padding: 15px;}
 
 .rep_dashboard_newblock6_topnew_left .new_subblockcon:last-of-type{ border-bottom: none;}
 .rep_dashboard_newblock6_topnew_right .new_subblockcon:last-of-type{ border-bottom: none;}

@@ -1633,7 +1633,7 @@
     font-size: 40px; padding-bottom: 10px;
 }
 .booknowmodal .content_wrapper .time_date_slot { display: flex; flex-wrap: wrap; justify-content: flex-start;}
-.booknowmodal .content_wrapper form .form-group label { text-transform: capitalize; font-family: 'OpenSansSemiBold'; font-size: 18px; }
+.booknowmodal .content_wrapper form .form-group label { text-transform: capitalize; font-family: 'OpenSansSemiBold'; font-size: 17px; }
 .time_date_slot label{ text-transform: capitalize; font-family: 'OpenSansSemiBold'; font-size: 18px; margin-bottom: 0px; padding: 5px 0; }
 .booknowmodal .content_wrapper .time_date_slot .left_slot{ display: inline-flex; width: 50%; margin-bottom: 15px;}
 .booknowmodal .content_wrapper .time_date_slot .left_slot select { width: 100px; margin-left: 14px; margin-right: 50px;!important;}
@@ -2473,3 +2473,53 @@ text-align: center;}
 
 
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section a.active{ background:  #00a8ef!important;}
+
+
+.modalh2text1 { text-transform: uppercase; font-family: 'OpenSansSemiBold'; font-size: 20px; margin: 10px 0 ; color: #00a8ef; }
+
+.groupconblock{ display: block; float:left; width: 49%;}
+
+
+
+.groupconblock:nth-child(2n+0){ float: right; }
+
+.form-group-wrapper1{ display: -webkit-flex; /* Safari */
+    display: flex;}
+
+.form-group-wrapper1 .form-group_label1 { width: 180px;}
+
+
+.form-group-wrapper1 .form-group_label2 { -webkit-flex: 1;  /* Safari 6.1+ */
+    -ms-flex: 1;  /* IE 10 */
+    flex: 1;}
+
+.form-group-wrapper1 .form-group_label2  input{ margin:8px 5px 0 10px;}
+
+
+.addnewbtn2 {
+    background: #000;
+    color: #fff;
+    font-family: 'RalewayBold';
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    padding: 3px 15px 3px 15px; margin: 0 0 10px 0;
+}
+
+.containeraddblock{  background:#eeeeee; padding: 10px; margin-bottom: 12px;}
+
+
+
+@media screen and (max-width:800px) {
+    .form-group-wrapper1{  display: block;}
+
+    .form-group-wrapper1 .form-group_label2{  display: block;}
+
+
+    .groupconblock{ display: block; float:none; width: 100%;}
+
+
+
+    .groupconblock:nth-child(2n+0){ float: none; }
+
+}
