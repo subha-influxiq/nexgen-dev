@@ -117,8 +117,13 @@
                     <div class="form-group">
                         <label>appointment title</label>
                         <p><span>Meeting with</span>
-                            <!--CLay Daral--> <input class="form-control" type="text"
-                                [formControl]="dataForm.controls['meeting_with']" readonly> </p>
+                            <!--CLay Daral--> 
+                            <ng-container *ngIf="router.url.indexOf('customevent')>-1 || router.url.indexOf('customevents')>-1" ><input class="form-control" type="text"
+                                [formControl]="dataForm.controls['meeting_with']" > </ng-container>
+                                <ng-container *ngIf="router.url.indexOf('customevent')==-1 && router.url.indexOf('customevents')==-1" >
+                               <input class="form-control" type="text"
+                                    [formControl]="dataForm.controls['meeting_with']" readonly> </ng-container>
+                            </p>
                     </div>
                     <div class="form-group">
                         <label>participant Email</label>

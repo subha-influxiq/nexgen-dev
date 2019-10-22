@@ -125,6 +125,7 @@ const appRoutes: Routes = [
     { path: 'on-boarding-call/:id', component: SlotviewComponent },
     { path: 'customevents/:slotval', component: SlotviewComponent },
     { path: 'customevent', component: SlotviewComponent }, 
+    { path: 'customevent/:slot', component: SlotviewComponent }, 
     { path: 'discovery-call/:id', component: SlotviewComponent },
     { path: 'book-a-closer/:id', component: SlotviewComponent },
     { path: 'book-a-closer/:leadid/:pid', component: SlotviewComponent },
