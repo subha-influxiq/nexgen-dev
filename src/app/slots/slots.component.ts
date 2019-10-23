@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import {Commonservices} from "../app.commonservices";
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl, FormArray } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import {ModalOptions} from "ngx-bootstrap";
@@ -145,15 +145,7 @@ export class SlotsComponent implements OnInit {
     setTimeout(() => {
       this.getslot();
     },0);
-    this.medicalform = this.kp.group({
-      totalpatients:[ ""],
-      medicare_patients:[ "" ],
-      medicaid_patients:[ ""],
-      cash_payers:[ ""],
-      pvt_insuarance_patients:[ ""],
-      speciality:[""],
-      npi:[""],
-    });
+    
    // console.log('refreshtoken');
    // console.log(this.cookeiservice.get('refreshtoken').length);
    // console.log(this.cookeiservice.get('refreshtoken'));
@@ -244,15 +236,28 @@ export class SlotsComponent implements OnInit {
               participantName: [ result.res[0].fullname, Validators.required ],
               participantPhNumber: [ result.res[0].phoneno, Validators.required ],
               repsmsg: [''],
-              totalpatients:[ "",Validators.required],
-              medicare_patients:[ "" ,Validators.required],
-              medicaid_patients:[ "", Validators.required],
-              cash_payers:[ "", Validators.required],
-              pvt_insuarance_patients:[ "", Validators.required],
-              sixteen_year_patients:["",Validators.required],
-              speciality:["", Validators.required],
-              npi:["",Validators.required],
-              doctor_name:["",Validators.required],
+              doctor_details: this.kp.array([
+                this.kp.group({
+                  totalpatients:[ "",Validators.required],
+                  medicare_patients:[ "" ,Validators.required],
+                  medicaid_patients:[ "", Validators.required],
+                  cash_payers:[ "", Validators.required],
+                  pvt_insuarance_patients:[ "", Validators.required],
+                  sixteen_year_patients:["",Validators.required],
+                  speciality:[""],
+                  npi:["",Validators.required],
+                  doctor_name:["",Validators.required]
+                })
+              ]),
+              // totalpatients:[ "",Validators.required],
+              // medicare_patients:[ "" ,Validators.required],
+              // medicaid_patients:[ "", Validators.required],
+              // cash_payers:[ "", Validators.required],
+              // pvt_insuarance_patients:[ "", Validators.required],
+              // sixteen_year_patients:["",Validators.required],
+              // speciality:["", Validators.required],
+              // npi:["",Validators.required],
+              // doctor_name:["",Validators.required],
             });
           }else{
             this.dataForm = this.kp.group({
@@ -301,7 +306,7 @@ export class SlotsComponent implements OnInit {
           // this.dataForm.patchValue({ participantPhNumber: this.participantPhNumber });
           setTimeout(()=>{
             this.dataForm.controls['participantPhNumber'].setValue( this.participantPhNumber );
-            console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
+            // console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
           }, 100);
           
         break;
@@ -312,6 +317,32 @@ export class SlotsComponent implements OnInit {
     /* this.dataForm.controls['starttime'].patchValue(this.start_time);
      this.dataForm.controls['endtime'].patchValue(this.end_time);*/
   }
+// functions to delete and add form group
+removeFormControl(i) {
+  let usersArray = this.dataForm.controls.doctor_details as FormArray;
+  usersArray.removeAt(i);
+}
+
+addFormControl() {
+  let usersArray = this.dataForm.controls.doctor_details as FormArray;
+  let arraylen = usersArray.length;
+
+  let newUsergroup: FormGroup = this.kp.group({
+    totalpatients:[ "",Validators.required],
+                  medicare_patients:[ "" ,Validators.required],
+                  medicaid_patients:[ "", Validators.required],
+                  cash_payers:[ "", Validators.required],
+                  pvt_insuarance_patients:[ "", Validators.required],
+                  sixteen_year_patients:["",Validators.required],
+                  speciality:[""],
+                  npi:["",Validators.required],
+                  doctor_name:["",Validators.required]
+  })
+
+  usersArray.insert(arraylen, newUsergroup);
+} 
+
+
 showformat(stdt){
     return moment(stdt).format('dddd MMMM DD, YYYY');
 }
@@ -323,6 +354,9 @@ showformat(stdt){
       this.dataForm.controls[x].markAsTouched();
     }
     if (!this.dataForm.valid) {
+      console.log('error in validation');
+      console.log(this.dataForm.value);
+      console.log(this.dataForm.valid);
         return;
     }
     else {
@@ -493,11 +527,20 @@ showformat(stdt){
     
     console.log('this.specialityarray');
     // console.log(this.specialityarray);
-    this.dataForm.controls['speciality'].setValue(this.specialityarray);
-    // 
+    console.log(this.dataForm.controls['doctor_details'].value);
+    // console.log(this.dataForm.controls['doctor_details'].['speciality'].value);
+    // console.log(this.dataForm.controls.doctor_details);
+    for(let i in this.dataForm.controls['doctor_details'].value){
+      console.log('dgfgdhd');
+      console.log(this.dataForm.controls['doctor_details'].value[i]['speciality'].value);
+      this.dataForm.controls['doctor_details'].value[i]['speciality'].setValue(this.specialityarray);
+      // console.log(this.dataForm.controls.doctor_details[i].controls['speciality'].value);
+    }
+    
+ 
     
     
-    console.log(this.dataForm.controls['speciality'].value);
+    
   }
 
 }

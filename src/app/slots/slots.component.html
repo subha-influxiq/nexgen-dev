@@ -198,68 +198,70 @@
                     </div>
 
                     <!--aws form fields-->
-                    <ng-container *ngIf="selectedproduct!=null && selectedproduct==_commonservices.productid">
-                    <!-- <ng-container> -->
-
+                    
+                    <ng-container *ngIf="(selectedproduct!=null && selectedproduct==_commonservices.productid) && dataForm.controls['doctor_details']">
+                    
+                        <ng-container *ngFor="let doctorForm of dataForm.controls.doctor_details.controls; let i = index">
                         <div class="containeraddblock">
 
                         <h2 class="modalh2text1">Doctor/Practice Information</h2>
                         <div class="form-group groupconblock">
                             <label>Total No. of Patients:</label>
                             <input class="form-control txt_area" type="number"
-                                [formControl]="dataForm.controls['totalpatients']">
-                                <span class="error" *ngIf="dataForm.controls['totalpatients'].touched && dataForm.controls.totalpatients.errors"
+                                [formControl]="doctorForm.controls['totalpatients']">
+                                <span class="error" *ngIf="doctorForm.controls['totalpatients'].touched && doctorForm.controls.totalpatients.errors"
                                     >Total No. of Patients is
                                     Required</span>
                         </div>
+
+
+                        <div class="form-group groupconblock">
+                            <label>How many patients are below 16 years?  </label>
+                            <input class="form-control txt_area" type="number" [formControl]="doctorForm.controls['sixteen_year_patients']">
+                            <span class="error" *ngIf="doctorForm.controls['sixteen_year_patients'].touched && doctorForm.controls.sixteen_year_patients.errors"
+                            >No. of below 16 years Patients is
+                                Required</span>
+                        </div>
+
                         <div class="form-group groupconblock">
                             <label>% of Medicare Patients:</label>
                             <input class="form-control txt_area" type="number"
-                                [formControl]="dataForm.controls['medicare_patients']">
-                                <span class="error" *ngIf="dataForm.controls['medicare_patients'].touched && dataForm.controls.medicare_patients.errors"
+                                [formControl]="doctorForm.controls['medicare_patients']">
+                                <span class="error" *ngIf="doctorForm.controls['medicare_patients'].touched && doctorForm.controls.medicare_patients.errors"
                                     >% of Medicare Patients is
                                     Required</span>
                         </div>
                         <div class="form-group groupconblock">
                             <label>% of Medicaid Patients:</label>
                             <input class="form-control txt_area" type="number"
-                                [formControl]="dataForm.controls['medicaid_patients']">
-                                <span class="error" *ngIf="dataForm.controls['medicaid_patients'].touched && dataForm.controls.medicaid_patients.errors"
+                                [formControl]="doctorForm.controls['medicaid_patients']">
+                                <span class="error" *ngIf="doctorForm.controls['medicaid_patients'].touched && doctorForm.controls.medicaid_patients.errors"
                                 >% of Medicaid Patients is
                                 Required</span>
                         </div>
                         <div class="form-group groupconblock">
                             <label>% of Cash Payers:</label>
                             <input class="form-control txt_area" type="number"
-                                [formControl]="dataForm.controls['cash_payers']">
-                                <span class="error" *ngIf="dataForm.controls['cash_payers'].touched && dataForm.controls.cash_payers.errors"
+                                [formControl]="doctorForm.controls['cash_payers']">
+                                <span class="error" *ngIf="doctorForm.controls['cash_payers'].touched && doctorForm.controls.cash_payers.errors"
                                 >% of Cash Payers is
                                 Required</span>
                         </div>
                         <div class="form-group groupconblock">
                             <label>% of Private Insuarance Patients:</label>
                             <input class="form-control txt_area" type="number"
-                                [formControl]="dataForm.controls['pvt_insuarance_patients']">
-                                <span class="error" *ngIf="dataForm.controls['pvt_insuarance_patients'].touched && dataForm.controls.pvt_insuarance_patients.errors"
+                                [formControl]="doctorForm.controls['pvt_insuarance_patients']">
+                                <span class="error" *ngIf="doctorForm.controls['pvt_insuarance_patients'].touched && doctorForm.controls.pvt_insuarance_patients.errors"
                                 >% of Private Insuarance Patients is
                                 Required</span>
                         </div>
 
-                        <div class="form-group groupconblock">
-                            <label>How many patients are below 16 years?  </label>
-                            <input class="form-control txt_area" type="number" [formControl]="dataForm.controls['sixteen_year_patients']">
-                            <span class="error" *ngIf="dataForm.controls['sixteen_year_patients'].touched && dataForm.controls.sixteen_year_patients.errors"
-                            >No. of below 16 years Patients is
-                                Required</span>
-                        </div>
-
-
-
+                        
 
                         <div class="clearfix"></div>
 
 
-                        <div class="form-group form-group-wrapper1">
+                        <!-- <div class="form-group form-group-wrapper1">
 
                             <div class="form-group_label1">
                                                 <label>Doctor/Practice is:</label>
@@ -268,32 +270,34 @@
 
                             <div class="form-group_label2">
                                                 <label *ngFor="let i of doctorspeciality"><input type="checkbox" (change)="speciality($event)" value="{{i.value}}">{{i.name}}</label>
-                                                <span class="error" *ngIf="dataForm.controls['speciality'].touched && dataForm.controls.speciality.errors"
+                                                <span class="error" *ngIf="doctorForm.controls['speciality'].touched && doctorForm.controls.speciality.errors"
                                 >Doctor/Practice is
                                 Required</span>
                             </div>
                             <div class="clearfix"></div>
-                                            </div>
+                        </div> -->
 
 
                            <div class="form-group groupconblock">
                             <label>Individual/Organisational NPI # *:</label>
-                            <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['npi']">
-                            <span class="error" *ngIf="dataForm.controls['npi'].touched && dataForm.controls.npi.errors"
+                            <input class="form-control txt_area" type="text" [formControl]="doctorForm.controls['npi']">
+                            <span class="error" *ngIf="doctorForm.controls['npi'].touched && doctorForm.controls.npi.errors"
                                 >Individual/Organisational NPI is
                                 Required</span>
                         </div>
 
                         <div class="form-group groupconblock">
                             <label>Name of Doctor:</label>
-                            <input class="form-control txt_area" type="text" [formControl]="dataForm.controls['doctor_name']">
-                            <span class="error" *ngIf="dataForm.controls['doctor_name'].touched && dataForm.controls.doctor_name.errors"
+                            <input class="form-control txt_area" type="text" [formControl]="doctorForm.controls['doctor_name']">
+                            <span class="error" *ngIf="doctorForm.controls['doctor_name'].touched && doctorForm.controls.doctor_name.errors"
                                 >Name of Doctor is
                                 Required</span>
                         </div>
-
-                        <button class="addnewbtn2"> Add New</button>
+                        <button class="addnewbtn2" *ngIf="i>0" (click)="removeFormControl(i)">remove doctor</button>
+                        <div class="clearfix"></div>
+                        <button class="addnewbtn2" (click)="addFormControl()"> Add New</button>
                     </div>
+                </ng-container>
                     </ng-container>
 
                     <div class="form-group">

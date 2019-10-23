@@ -30,6 +30,7 @@ export class RegionalRecruiterComponent implements OnInit {
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'phoneno'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
+      // {value:'viewonlyaccess',name:'View Only Access',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
     ];
     this.formdata=[
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
@@ -46,6 +47,7 @@ export class RegionalRecruiterComponent implements OnInit {
       //{inputtype:'text',name:'telephone',label:'Telephone No',placeholder:'Enter Telephone No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'phoneno',label:'Mobile No',placeholder:'Enter Mobile No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'status',label:'Status',value:false},
+      // {inputtype:'checkbox',name:'viewonlyaccess',label:'View Only Access',value:false},
     ];
     this.datasource={table:'users',objarr:[]};
   }

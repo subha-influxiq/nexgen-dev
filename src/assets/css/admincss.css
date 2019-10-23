@@ -2477,11 +2477,11 @@ text-align: center;}
 
 .modalh2text1 { text-transform: uppercase; font-family: 'OpenSansSemiBold'; font-size: 20px; margin: 10px 0 ; color: #00a8ef; }
 
-.groupconblock{ display: block; float:left; width: 49%;}
+.groupconblock{ display: block; float:right; width: 49%;}
 
 
 
-.groupconblock:nth-child(2n+0){ float: right; }
+.groupconblock:nth-child(2n+0){ float: left; }
 
 .form-group-wrapper1{ display: -webkit-flex; /* Safari */
     display: flex;}

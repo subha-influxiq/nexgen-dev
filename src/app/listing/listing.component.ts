@@ -187,7 +187,29 @@ export class ListingComponent implements OnInit {
         return "N/A";
     }
 
-
+    toggleVOaccess(item: any) {
+        console.log('item.viewonlyaccess');
+        console.log(item.viewonlyaccess);
+        let viewonlyaccess: any;
+        //      if(item.status!=null) status=1-item.status;
+        //  if(item.status==null) status=1;
+        if (item.viewonlyaccess != null && item.viewonlyaccess == true) {
+            viewonlyaccess = false;
+        }
+        if (item.viewonlyaccess == null || item.viewonlyaccess == false) viewonlyaccess = true;
+        console.log('item.viewonlyaccess');
+        console.log(item.viewonlyaccess);
+        const link = this._commonservice.nodesslurl + 'addorupdatedata';
+        /* console.log('link');
+         console.log(link);*/
+        this._http.post(link, { id: item._id, source: this.formsourceval.table, status: status })
+            .subscribe(res => {
+                this.getdatalist();
+            }, error => {
+                console.log('Oooops!');
+                this.getdatalist();
+            });
+    }
     togglestatus(item: any) {
         console.log('item.status');
         console.log(item.status);
