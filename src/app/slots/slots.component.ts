@@ -225,7 +225,8 @@ export class SlotsComponent implements OnInit {
         // {
         //   this.selectedproduct = this._commonservices.productid;
         // }
-         
+        console.log('result.res[0]---');
+        
         const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source:'leads_view', condition: { "_id": leadsId }}).subscribe(res => {
           let result: any = res;
@@ -270,6 +271,9 @@ export class SlotsComponent implements OnInit {
               // doctor_name:["",Validators.required],
             });
           }else{
+            console.log('result.res[0]');
+            console.log(result.res[0]);
+            console.log(result.res[0].fullname);
             this.dataForm = this.kp.group({
               meeting_with: [ slotdata.meetingwith ],
               participant: [ result.res[0].email, Validators.required ],
@@ -308,13 +312,15 @@ export class SlotsComponent implements OnInit {
           /*  description: [slotdata.description,Validators.required],*/
           meeting_with:         [ slotdata.meetingwith ],
           participant:          [ this.cookeiservice.get('useremail'),Validators.required],
-          participantName:      [ this.participantName, Validators.required],
-          participantPhNumber:  [ '', Validators.required],
+          participantName:      [ this.cookeiservice.get('fullname'), Validators.required],
+          participantPhNumber:  [ this.cookeiservice.get('phone'), Validators.required],
           repsmsg: [''],
           });
 
           // this.dataForm.patchValue({ participantPhNumber: this.participantPhNumber });
           setTimeout(()=>{
+            console.log(this.cookeiservice.get('fullname'));
+            console.log(this.cookeiservice.get('phone'));
             this.dataForm.controls['participantPhNumber'].setValue( this.participantPhNumber );
             // console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
           }, 100);

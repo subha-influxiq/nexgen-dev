@@ -148,7 +148,7 @@ export class ListingComponent implements OnInit {
     ngOnInit() {
         this.usertype = this.cookeiservice.get('usertype');
         this.getdatalist();
-
+        console.log('this.slotlist - '+this.slotlist);
 
         this._http.get("assets/data/timezone.json")
             .subscribe(res => {

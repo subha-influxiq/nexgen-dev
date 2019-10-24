@@ -19,8 +19,16 @@ export class EventmanagementComponent implements OnInit {
   public sourcecondition:any;
   private val: any;
   public accesstoken: any;
-  private rt: any;
+  public rt: any;
+  public slotlist :any='true';
+  
+
   constructor(public _commonservices:Commonservices,public cookieservice:CookieService,public route:ActivatedRoute, public _http:HttpClient) {
+    // if(this.cookieservice.get('viewonlyaccess')== null || this.cookieservice.get('viewonlyaccess')== 'false'){
+    //   this.slotlist = true;
+    // }else{
+    //   this.slotlist = false;
+    // }
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'meetingwith',name:'Event Title',role:0,func:'',class:'meetingwith',type:'text'},
@@ -72,7 +80,7 @@ export class EventmanagementComponent implements OnInit {
       this.accesstoken=params['at'];
       this.val=params['val'];
       this.rt=params['rt'];
-    if(this.accesstoken!=null && this.val!=null && this.rt!=null){
+    if(this.accesstoken!=null && this.rt!=null){
       const link = this._commonservices.nodesslurl+'addorupdatedata';
       let data={
         id:this.cookieservice.get('userid'),
