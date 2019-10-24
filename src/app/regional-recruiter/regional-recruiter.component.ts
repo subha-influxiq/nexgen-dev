@@ -16,14 +16,7 @@ export class RegionalRecruiterComponent implements OnInit {
   // public sourcecondition:any={type:this._commonservices.roletypes[1].type1}; //old condition
   public sourcecondition:any={};
   constructor(public _commonservices:Commonservices,public _http:HttpClient) {
-    // this._http.get('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyACPa5ojhulQS_NnMSStTKmVT2ie5BX0ZE')
-    // .subscribe(res=>{
-    //   console.log('res in test ');
-    //   console.log(res);
-    //   let result:any;
-    //   result=res;
-    //   console.log(result);
-    // })
+
 
 
     this.tabledatalis=[
