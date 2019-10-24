@@ -245,6 +245,16 @@ export class SlotsComponent implements OnInit {
                   pvt_insuarance_patients:[ "", Validators.required],
                   sixteen_year_patients:["",Validators.required],
                   speciality:[""],
+                  Family_Medicine:[""],
+                  Neurology:[""],
+                  Doctor_of_Osteopathy:[""],
+                  General_Practice:[""],
+                  Internal_Medicine:[""],
+                  Pain_Mgmt:[""],
+                  Primary_Care:[""],
+                  Endocrinology:[""],
+                  Integrated_Speciality_Groups:[""],
+                  Cardiology:[""],
                   npi:["",Validators.required],
                   doctor_name:["",Validators.required]
                 })
@@ -335,6 +345,16 @@ addFormControl() {
                   pvt_insuarance_patients:[ "", Validators.required],
                   sixteen_year_patients:["",Validators.required],
                   speciality:[""],
+                  Family_Medicine:[""],
+                  Neurology:[""],
+                  Doctor_of_Osteopathy:[""],
+                  General_Practice:[""],
+                  Internal_Medicine:[""],
+                  Pain_Mgmt:[""],
+                  Primary_Care:[""],
+                  Endocrinology:[""],
+                  Integrated_Speciality_Groups:[""],
+                  Cardiology:[""],
                   npi:["",Validators.required],
                   doctor_name:["",Validators.required]
   })
@@ -422,7 +442,7 @@ showformat(stdt){
             slots: this.slotdata.slots,
             //nslots:this.slotdata.slots.splice(ival,1),
             slot: this.slotdata.slots[this.itemidval],
-            //slotdata: this.slotdata,
+            doctor_details: this.dataForm.controls['doctor_details'].value,
             ival: this.itemidval,
             timespan: this.slotdata.timespan,
             booked_by: this.cookeiservice.get('userid'),
@@ -526,16 +546,18 @@ showformat(stdt){
     }
     
     console.log('this.specialityarray');
-    // console.log(this.specialityarray);
-    console.log(this.dataForm.controls['doctor_details'].value);
-    // console.log(this.dataForm.controls['doctor_details'].['speciality'].value);
-    // console.log(this.dataForm.controls.doctor_details);
-    for(let i in this.dataForm.controls['doctor_details'].value){
-      console.log('dgfgdhd');
-      console.log(this.dataForm.controls['doctor_details'].value[i]['speciality'].value);
-      this.dataForm.controls['doctor_details'].value[i]['speciality'].setValue(this.specialityarray);
+    console.log(this.specialityarray);
+    // console.log(this.dataForm.controls['doctor_details'].value);
+    // // console.log(this.dataForm.controls['doctor_details'].['speciality'].value);
+    // // console.log(this.dataForm.controls.doctor_details);
+    // let usersArray = this.dataForm.controls.doctor_details as FormArray;
+    // for(let i in usersArray){
+    //   console.log('dgfgdhd');
+    //   console.log(usersArray[i]['speciality'].value);
+    //   console.log(usersArray[i].speciality);
+    //   this.dataForm.controls['doctor_details'].value[i]['speciality'].setValue(this.specialityarray);
       // console.log(this.dataForm.controls.doctor_details[i].controls['speciality'].value);
-    }
+    // }
     
  
     

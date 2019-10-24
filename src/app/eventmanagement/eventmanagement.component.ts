@@ -38,7 +38,6 @@ export class EventmanagementComponent implements OnInit {
       this.sourcecondition={'userid_object':this.cookieservice.get('userid')};
     // }
 
-    console.log(this.sourcecondition);
     this.formdata=[
       {inputtype:'text',name:'meetingwith',label:'Event Title',placeholder:'Meeting WIth',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'dateis',name:'start_date',label:"Start Date",placeholder:"Enter Date",validationrule:{required:true},validationerrormsg:'is required'},
@@ -69,29 +68,29 @@ export class EventmanagementComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params =>{
+
       this.accesstoken=params['at'];
       this.val=params['val'];
       this.rt=params['rt'];
-    })
-    if(this.accesstoken!=null && this.val!+null && this.rt!=null){
+    if(this.accesstoken!=null && this.val!=null && this.rt!=null){
       const link = this._commonservices.nodesslurl+'addorupdatedata';
-      console.log(typeof(this.val));
-      console.log(typeof(this.rt));
       let data={
         id:this.cookieservice.get('userid'),
         accesstoken:this.accesstoken,
-        refreshtoken:this.val+'/'+this.rt,
+        // refreshtoken:this.val+'/'+this.rt,
+        refreshtoken:this.rt,
       };
       this._http.post(link,{source:'users',data:data})
           .subscribe(res => {
             let result:any;
-            console.log('result?????');
-            console.log(result);
             result = res;
           }, error => {
             console.log('Oooops!');
           });
+    }else{
     }
+    })
+     
   }
 
 }

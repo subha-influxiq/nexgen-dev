@@ -100,6 +100,7 @@ export class ListingComponent implements OnInit {
     public selectedstatus:any;
     public pricepoint:any='';
     public issubmitprice:any = 0;
+    public viewonlyaccess:any;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -140,6 +141,8 @@ export class ListingComponent implements OnInit {
         this.uploadInput = new EventEmitter<UploadInput>();
         this.humanizeBytes = humanizeBytes;
         // this.usertype = this.cookeiservice.get('usertype');
+        this.viewonlyaccess = this.cookeiservice.get('viewonlyaccess');
+        
     }
 
     ngOnInit() {
@@ -202,7 +205,9 @@ export class ListingComponent implements OnInit {
         const link = this._commonservice.nodesslurl + 'addorupdatedata';
         /* console.log('link');
          console.log(link);*/
-        this._http.post(link, { id: item._id, source: this.formsourceval.table, status: status })
+        this._http.post(link, { 
+            source:this.formsourceval.table,
+            data: { id: item._id, viewonlyaccess: viewonlyaccess}})
             .subscribe(res => {
                 this.getdatalist();
             }, error => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Commonservices} from '../app.commonservices' ;
-
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-regional-recruiter',
@@ -15,7 +15,17 @@ export class RegionalRecruiterComponent implements OnInit {
   public datasource:any;
   // public sourcecondition:any={type:this._commonservices.roletypes[1].type1}; //old condition
   public sourcecondition:any={};
-  constructor(public _commonservices:Commonservices) {
+  constructor(public _commonservices:Commonservices,public _http:HttpClient) {
+    // this._http.get('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyACPa5ojhulQS_NnMSStTKmVT2ie5BX0ZE')
+    // .subscribe(res=>{
+    //   console.log('res in test ');
+    //   console.log(res);
+    //   let result:any;
+    //   result=res;
+    //   console.log(result);
+    // })
+
+
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       {value:'unique_id',name:'User ID',role:0,func:'',class:'id',type:'text'},
@@ -30,7 +40,7 @@ export class RegionalRecruiterComponent implements OnInit {
       //{value:'telephone',name:'Telophone No',role:0,func:'',class:'telephone',type:'text'},
       {value:'phoneno',name:'Mobile No',role:0,func:'',class:'mobile',type:'phoneno'},
       {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
-      // {value:'viewonlyaccess',name:'View Only Access',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
+      {value:'viewonlyaccess',name:'View Only Access',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
     ];
     this.formdata=[
       {inputtype:'text',name:'firstname',label:'First Name',placeholder:'Enter First Name',validationrule:{required:true},validationerrormsg:'is required'},
@@ -47,7 +57,8 @@ export class RegionalRecruiterComponent implements OnInit {
       //{inputtype:'text',name:'telephone',label:'Telephone No',placeholder:'Enter Telephone No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'text',name:'phoneno',label:'Mobile No',placeholder:'Enter Mobile No',validationrule:{required:true},validationerrormsg:'is required'},
       {inputtype:'checkbox',name:'status',label:'Status',value:false},
-      // {inputtype:'checkbox',name:'viewonlyaccess',label:'View Only Access',value:false},
+      {inputtype:'checkbox',name:'viewonlyaccess',label:'View Only Access',value:false},
+      { inputtype: 'text', name: 'tempemail', label: 'Email', placeholder: 'Enter Email' },
     ];
     this.datasource={table:'users',objarr:[]};
   }

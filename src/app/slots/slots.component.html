@@ -261,7 +261,7 @@
                         <div class="clearfix"></div>
 
 
-                        <!-- <div class="form-group form-group-wrapper1">
+                        <div class="form-group form-group-wrapper1">
 
                             <div class="form-group_label1">
                                                 <label>Doctor/Practice is:</label>
@@ -269,13 +269,26 @@
                             </div>
 
                             <div class="form-group_label2">
-                                                <label *ngFor="let i of doctorspeciality"><input type="checkbox" (change)="speciality($event)" value="{{i.value}}">{{i.name}}</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Family_Medicine']">Family Medicine</label>
+                       <label ><input type="checkbox" [formControl]="doctorForm.controls['Neurology']">Neurology</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Doctor_of_Osteopathy']">D.O. Doctor of Osteopathy</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['General_Practice']">General Practice</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Internal_Medicine']">Internal Medicine</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Pain_Mgmt']">Pain Mgmt (Integrated Practice)</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Primary_Care']">Primary Care</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Endocrinology']">Endocrinology</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Integrated_Speciality_Groups']">Integrated Speciality Groups</label>
+                       <label><input type="checkbox" [formControl]="doctorForm.controls['Cardiology']">Cardiology</label>
+
+
+
+                                                <!-- <label *ngFor="let i of doctorspeciality"><input type="checkbox" (change)="speciality($event)" value="{{i.value}}">{{i.name}}</label>
                                                 <span class="error" *ngIf="doctorForm.controls['speciality'].touched && doctorForm.controls.speciality.errors"
                                 >Doctor/Practice is
-                                Required</span>
+                                Required</span> -->
                             </div>
                             <div class="clearfix"></div>
-                        </div> -->
+                        </div>
 
 
                            <div class="form-group groupconblock">

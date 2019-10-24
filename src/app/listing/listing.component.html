@@ -106,6 +106,8 @@
                                 <a *ngIf="slotlist=='true' " href="http://gapi.betoparedes.com/connect-calendar.php"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar
                                     settings</a>
+                                    <a *ngIf="router.url=='/calendar' && (viewonlyaccess!=null && viewonlyaccess=='true') " href="http://gapi.betoparedes.com/connect-calender-viewonly.php"
+                                    class="addfrinderbtn s_getmybrand_savebutton slotadd">Give Your Calender Availability</a>
                                 <a *ngIf="slotlist=='true' " (click)="syncgoogle()"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Sync with Google Calendar</a>
                               <!-- <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> All Leads</a>
@@ -289,14 +291,19 @@
                                                 [ngClass]="item1.class"
                                                 (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                         </td>
-                                        <td *ngIf="hideaction!=null && hideaction!='true' ">
-                                            <span class=" delete_user"
+       <td *ngIf="hideaction!=null && hideaction!='true' ">
+           <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-                                            <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
-                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span><br><br>
-                                            <span  *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0" ><a target="_blank" class="edit_user" [routerLink]="['/appointments',item._id]">Appointments({{item.appointment_count}})</a></span>
-                                            <span *ngIf="router.url==['/manage-leads'] && (usertype=='admin') && item.appointment_count>0"><a class="edit_user" target="_blank" [routerLink]="['/appointmentlist',item._id]">Appointments({{item.appointment_count}})</a>
+           <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
+            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span><br><br>
+            <span  *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0" ><a target="_blank" class="edit_user" [routerLink]="['/appointments',item._id]">Appointments({{item.appointment_count}})</a></span>
+            <span *ngIf="router.url==['/manage-leads'] && (usertype=='admin') && item.appointment_count>0"><a class="edit_user" target="_blank" [routerLink]="['/appointmentlist',item._id]">Appointments({{item.appointment_count}})</a>
                                             </span>
+             <span *ngIf="router.url==['/regional'] && item.viewonlyaccess==true">
+                                             <a href="http://gapi.betoparedes.com/connect-calendar.php">Add or update calendar
+                                                settings</a>
+                                            </span>
+
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
@@ -355,15 +362,15 @@
             <div class="form-group row rownew1" [formGroup]="dataForm" *ngFor="let item of formdataval; let i=index;">
                 <div *ngIf="(isedit==0 || (item.isaddonly==null && item.isaddonly!=true))" class="form_floating_div">
                     <!--[ngClass]="addeventclass()"-->
-                    <label *ngIf="item.inputtype!='hidden'  && item.name!='multiple_emails'"
+                    <label *ngIf="item.inputtype!='hidden'  && (item.name!='multiple_emails' && item.name!='tempemail')"
                         class="  col-form-label col-form-label-sm">{{item.label}}</label>
-                        <label *ngIf="item.inputtype!='hidden' && item.name=='multiple_emails' && inputflag==1"
+                        <label *ngIf="item.inputtype!='hidden' && (item.name=='multiple_emails' || item.name=='tempemail') && inputflag==1"
                         class="col-form-label col-form-label-sm">{{item.label}}</label>
                     <div class="col-sm-8">
 
 
                         <input
-                            *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && item.name!='multiple_emails'"
+                            *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && (item.name!='multiple_emails' && item.name!='tempemail')"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
                         <input *ngIf="item.inputtype=='number'" [name]="item.name"
@@ -371,16 +378,19 @@
                             [placeholder]="item.placeholder" (keyup)="issubmit=0">
 
                             <input
-                            *ngIf=" inputflag==1 && item.inputtype=='text' && item.name=='multiple_emails'"
+                            *ngIf=" inputflag==1 && item.inputtype=='text' && (item.name=='multiple_emails' || item.name=='tempemail')"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
                         <div class="checkboxclass" *ngIf="item.inputtype=='checkbox'">
 
-                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name!='verification_need'" [name]="item.name"
+                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && (item.name!='verification_need' && item.name!='viewonlyaccess')" [name]="item.name"
                                 [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0"
                                 [ngClass]="item.class">
 
                                 <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='verification_need'" [name]="item.name"
+                                [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0" (change)="showInputText($event)"
+                                [ngClass]="item.class">
+                                <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='viewonlyaccess'" [name]="item.name"
                                 [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0" (change)="showInputText($event)"
                                 [ngClass]="item.class">
                         </div>

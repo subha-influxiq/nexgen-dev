@@ -88,11 +88,12 @@ export class LoginComponent implements OnInit {
       let result:any;
       result = res;
       console.log(result);
+      
       if (result.resc == 1 && result.res!=null && result.res[0]!=null  ) {
         if(result.res[0].status == 1) {
           this.cookeiservice.set('jwttoken', this.cookeiservice.get('jwttoken'));
           this.cookeiservice.set('userid', result.res[0]._id);
-
+          this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
           if(result.res[0].is_contract_signed == null && result.res[0].type == 'rep') {
             this.router.navigate(['/agreement']);
             return ;
@@ -102,6 +103,7 @@ export class LoginComponent implements OnInit {
           this.cookeiservice.set('lockdornot', result.res[0].lock);
           this.cookeiservice.set('usertype', result.res[0].type);
           this.cookeiservice.set('useremail', result.res[0].email);
+          // this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
           console.log(result.res[0].calenderaccess);
           if(typeof(result.res[0].calenderaccess)!=undefined && result.res[0].calenderaccess!=null){
             this.cookeiservice.set('calenderaccess', result.res[0].calenderaccess);
@@ -176,10 +178,12 @@ export class LoginComponent implements OnInit {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
+              this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
+              console.log(result.item[0].viewonlyaccess);
               if(result.item[0].status == 1) {
                 this.cookeiservice.set('jwttoken', result.token);
                 this.cookeiservice.set('userid', result.item[0]._id);
-
+                // this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
                 if(result.item[0].is_contract_signed == null && result.item[0].type == 'rep') {
                   this.router.navigate(['/agreement']);
                   return ;
