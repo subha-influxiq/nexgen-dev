@@ -2,9 +2,22 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+/*export const environment = {
+  production: true
+};*/
+
 export const environment = {
-  production: false
+  production: true,
+  api_url : 'https://api.influxhostserver.com/',
+  download_url : 'https://api.influxhostserver.com/download',
+  download_url_old : 'https://api.influxhostserver.com/',
+  // downloadurl_2:'https://cmte4jq8y5.execute-api.us-east-1.amazonaws.com/production/api/download',
+  serverfileurl : 'https://www.betoparedes.com/betoparedesbackend/uploads/',
+  // productid: '5d45a11d0d3c2806e4528ffd',
+  productid:'5d7f16463bd1bb6d1d19359b',
+  awstrainingid:'5d7f23843bd1bb6d1d19359f'
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -374,6 +374,7 @@ showformat(stdt){
 }
   dosubmit(){
     let x: any;
+    let doctor_details: any;
       let closername:any='';
       let closeremail:any='';
     for (x in this.dataForm.controls) {
@@ -428,6 +429,12 @@ showformat(stdt){
 
         }
 
+        if(this.dataForm.controls['doctor_details']==null || this.dataForm.controls['doctor_details'].value !=null ){
+          doctor_details='';
+        }
+        else{
+          doctor_details=this.dataForm.controls['doctor_details'].value;
+        }
 
         let data = {
             refresh_token: this.cookeiservice.get('refreshtoken'),
@@ -448,7 +455,7 @@ showformat(stdt){
             slots: this.slotdata.slots,
             //nslots:this.slotdata.slots.splice(ival,1),
             slot: this.slotdata.slots[this.itemidval],
-            doctor_details: this.dataForm.controls['doctor_details'].value,
+            doctor_details: doctor_details,
             ival: this.itemidval,
             timespan: this.slotdata.timespan,
             booked_by: this.cookeiservice.get('userid'),
