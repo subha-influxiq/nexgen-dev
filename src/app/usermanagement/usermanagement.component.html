@@ -68,6 +68,10 @@
               <table class="table">
                 <thead>
                   <tr>
+                    <th scope="col">Parent Name</th>
+
+                    <th scope="col">Parent Email</th>
+
                     <th scope="col">Date Joined</th>
                     <!--<th scope="col">User Id</th>-->
                     <!--      <th scope="col">Username </th>-->
@@ -89,6 +93,18 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of singleuserdata | usersearch:listFilter.value">
+
+                    <td datalabel="Parent Name" [routerLink]="['/useraccountsetting',item._id]">
+                      <span *ngIf="item.parentname != null" >{{(item.parentname)}} </span>
+                      <span *ngIf="item.parentname == null" >N/A </span>
+                    </td>
+
+                       <td datalabel="Parent Email" [routerLink]="['/useraccountsetting',item._id]">
+                        <span  *ngIf="item.parentemail != null" >  {{(item.parentemail)}}  </span>
+                        <span  *ngIf="item.parentemail == null" >  N/A </span>
+                      </td>
+
+
                     <td datalabel="Date Joined" [routerLink]="['/useraccountsetting',item._id]">
                       {{commonservices.showunixtodate1(item.created_at)}} </td>
                     <!--<td [routerLink]="['/useraccountsetting',item._id]">{{item.unique_id}}</td>-->

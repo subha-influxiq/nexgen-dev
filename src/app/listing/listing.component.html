@@ -103,7 +103,7 @@
                                     class="addfrinderbtn s_getmybrand_savebutton"> Add {{sourcetitle}}</a>
                                 <a *ngIf="slotlist=='true' " [routerLink]="['/slotview']"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Slot View</a>
-                                <a *ngIf="slotlist=='true' && (viewonlyaccess==null || viewonlyaccess=='false') " href="http://gapi.betoparedes.com/connect-calendar.php"
+                                <a *ngIf="slotlist=='true'" href="http://gapi.betoparedes.com/connect-calendar.php"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar
                                     settings</a>
                                     <a *ngIf="router.url=='/calendar' && (viewonlyaccess!=null && viewonlyaccess=='true') " href="http://gapi.betoparedes.com/connect-calender-viewonly.php"
@@ -114,6 +114,7 @@
                               <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Product Wise Leads</a> -->
                                 <div class="clearfix"></div>
                             </div>
+                            
                         </div>
                     </div>
 

@@ -145,7 +145,7 @@ export class SlotsComponent implements OnInit {
     setTimeout(() => {
       this.getslot();
     },0);
-    
+
    // console.log('refreshtoken');
    // console.log(this.cookeiservice.get('refreshtoken').length);
    // console.log(this.cookeiservice.get('refreshtoken'));
@@ -226,7 +226,7 @@ export class SlotsComponent implements OnInit {
         //   this.selectedproduct = this._commonservices.productid;
         // }
         console.log('result.res[0]---');
-        
+
         const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source:'leads_view', condition: { "_id": leadsId }}).subscribe(res => {
           let result: any = res;
@@ -282,8 +282,8 @@ export class SlotsComponent implements OnInit {
               repsmsg: ['']
             });
           }
-          
-          
+
+
 
             const config: ModalOptions = {
                 backdrop: 'static',
@@ -324,12 +324,12 @@ export class SlotsComponent implements OnInit {
             this.dataForm.controls['participantPhNumber'].setValue( this.participantPhNumber );
             // console.log('phoneno - '+this.dataForm.controls['participantPhNumber'].value);
           }, 100);
-          
+
         break;
     }
 
     // this.modalRef = this.modal.show(template, {class: 'booknowmodal'});
-     
+
     /* this.dataForm.controls['starttime'].patchValue(this.start_time);
      this.dataForm.controls['endtime'].patchValue(this.end_time);*/
   }
@@ -366,7 +366,7 @@ addFormControl() {
   })
 
   usersArray.insert(arraylen, newUsergroup);
-} 
+}
 
 
 showformat(stdt){
@@ -375,8 +375,8 @@ showformat(stdt){
   dosubmit(){
     let x: any;
     let doctor_details: any;
-      let closername:any='';
-      let closeremail:any='';
+    let closername:any='';
+    let closeremail:any='';
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
     }
@@ -384,26 +384,26 @@ showformat(stdt){
       console.log('error in validation');
       console.log(this.dataForm.value);
       console.log(this.dataForm.valid);
-        return;
+      return;
     }
     else {
       this.loader = true;
       this.modaloff();
       console.log('=============================================================');
-        console.log('valid', this.dataForm.valid);
-        console.log('valid', this.dataForm.value, this.slotdata.timespan);
-        //console.log('valid');
-        //return;
-        let link = this._commonservices.nodesslurl + 'addtocalendar';
+      console.log('valid', this.dataForm.valid);
+      console.log('valid', this.dataForm.value, this.slotdata.timespan);
+      //console.log('valid');
+      //return;
+      let link = this._commonservices.nodesslurl + 'addtocalendar';
 
 
-        /*   {"refresh_token": "1/fkzUmqGX5zQ7Z_fn-EXa-ZM7u-DWTeiXhPJ7UiNQ3m8","start_time":"2019-05-08T10:00:00" ,"end_time":"2019-05-08T12:00:00","timezone":"America/Los_Angeles","summery":"Debasis test event !!","attendees":["debasis218@gmail.com","abc@yopmail.com"]}
+      /*   {"refresh_token": "1/fkzUmqGX5zQ7Z_fn-EXa-ZM7u-DWTeiXhPJ7UiNQ3m8","start_time":"2019-05-08T10:00:00" ,"end_time":"2019-05-08T12:00:00","timezone":"America/Los_Angeles","summery":"Debasis test event !!","attendees":["debasis218@gmail.com","abc@yopmail.com"]}
          */
-        // let attendeesarr=[this.cookeiservice.get('useremail')];
-        let attendeesarr = [this.dataForm.controls['participant'].value];
-        //  console.log('start---');
-        //  console.log(slotdata.startdate);
-        /* console.log($('.startdt').val());
+      // let attendeesarr=[this.cookeiservice.get('useremail')];
+      let attendeesarr = [this.dataForm.controls['participant'].value];
+      //  console.log('start---');
+      //  console.log(slotdata.startdate);
+      /* console.log($('.startdt').val());
          console.log($('.enddt').val());
          console.log($('.tm1').val());
          console.log($('.tm2').val());
@@ -412,103 +412,105 @@ showformat(stdt){
          console.log(moment(this.start_time).format('HH:mm'));
          console.log(moment(this.end_time).format('HH:mm'));
          console.log(this.end_time);*/
-        let tz = this.slotdata.timezone.split('|');
-        /*   console.log(this.slotdata.starttime);
+      let tz = this.slotdata.timezone.split('|');
+      /*   console.log(this.slotdata.starttime);
          console.log(this.slotdata.endtime);*/
-        let ival = this.itemidval;
-        let repmsg = '';
-        let description: any = this.slotdata.description;
+      let ival = this.itemidval;
+      let repmsg = '';
+      let description: any = this.slotdata.description;
 
-        if (this.dataForm.controls['repsmsg'].value.length > 0 && this.route.snapshot.url[0].path!='book-a-closer') {
-            description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
-        }else{
-            repmsg=this.dataForm.controls['repsmsg'].value;
-            closeremail=this.cookeiservice.get('useremail');
-            closername=this.cookeiservice.get('fullname');
-            //attendeesarr.push(this.cookeiservice.get('useremail'));
+      if (this.dataForm.controls['repsmsg'].value.length > 0 && this.route.snapshot.url[0].path!='book-a-closer') {
+        description += '<br /><br /><br />Notes from rep. <br />' + this.dataForm.controls['repsmsg'].value;
+      }else{
+        repmsg=this.dataForm.controls['repsmsg'].value;
+        closeremail=this.cookeiservice.get('useremail');
+        closername=this.cookeiservice.get('fullname');
+        //attendeesarr.push(this.cookeiservice.get('useremail'));
 
-        }
+      }
 
-        if(this.dataForm.controls['doctor_details']==null || this.dataForm.controls['doctor_details'].value !=null ){
-          doctor_details='';
-        }
-        else{
-          doctor_details=this.dataForm.controls['doctor_details'].value;
-        }
+      if(this.dataForm.controls['doctor_details']==null || this.dataForm.controls['doctor_details'].value !=null ){
+        doctor_details='';
+      }
+      else{
+        doctor_details=this.dataForm.controls['doctor_details'].value;
+      }
 
-        let data = {
-            refresh_token: this.cookeiservice.get('refreshtoken'),
-            organizerid: this.cookeiservice.get('organizerid'),
-            /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
+      let data = {
+        refresh_token: this.cookeiservice.get('refreshtoken'),
+        organizerid: this.cookeiservice.get('organizerid'),
+        /* start_time:moment($('.startdt').val()).format('YYYY-MM-DD')+'T'+moment(this.start_time).format('HH:mm:ss'),
              end_time:moment($('.enddt').val()).format('YYYY-MM-DD')+'T'+moment(this.end_time).format('HH:mm:ss'),*/
-            startdate: this.slotdata.startdate,
-            start_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').format('YYYY-MM-DDTHH:mm:ss'),
-            end_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').add(this.slotdata.timespan, 'minutes').format('YYYY-MM-DDTHH:mm:ss'),
-            timezone: tz[1],
-            summery: this.dataForm.controls['meeting_with'].value,
-            attendees: attendeesarr,
-            repsmsg: description,
-            id: this.slotdata.eventid,
-            eid: this.slotdata._id,
-            name: this.dataForm.controls['participantName'].value,
-            phoneNumber: this.dataForm.controls['participantPhNumber'].value,
-            slots: this.slotdata.slots,
-            //nslots:this.slotdata.slots.splice(ival,1),
-            slot: this.slotdata.slots[this.itemidval],
-            doctor_details: doctor_details,
-            ival: this.itemidval,
-            timespan: this.slotdata.timespan,
-            booked_by: this.cookeiservice.get('userid'),
-            custommsg: repmsg,
-            leaddata: this.leaddata,
-            closername: closername,
-            closeremail: closeremail,
-            slotdata: this.slotdata,
-            productid: this.cookeiservice.get('lead-product'),
-            type: this.route.snapshot.url[0].path
-        };
-        console.log('data--------');
-        console.log(data);
-        this._http.post(link, data)
-            .subscribe(res => {
-                let result: any = res;
-                console.log('result.... for google calendar');
-                console.log(result);
-                this.modalRef.hide();
-                this.message = "Your Booking done successfully !!";
-                //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
+        startdate: this.slotdata.startdate,
+        start_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').format('YYYY-MM-DDTHH:mm:ss'),
+        end_time: moment(this.slotdata.startdate + 'T' + this.slotdata.slots[this.itemidval].trim() + ':00').add(this.slotdata.timespan, 'minutes').format('YYYY-MM-DDTHH:mm:ss'),
+        timezone: tz[1],
+        summery: this.dataForm.controls['meeting_with'].value,
+        attendees: attendeesarr,
+        repsmsg: description,
+        id: this.slotdata.eventid,
+        eid: this.slotdata._id,
+        name: this.dataForm.controls['participantName'].value,
+        phoneNumber: this.dataForm.controls['participantPhNumber'].value,
+        slots: this.slotdata.slots,
+        //nslots:this.slotdata.slots.splice(ival,1),
+        slot: this.slotdata.slots[this.itemidval],
+        doctor_details: doctor_details,
+        ival: this.itemidval,
+        timespan: this.slotdata.timespan,
+        booked_by: this.cookeiservice.get('userid'),
+        custommsg: repmsg,
+        leaddata: this.leaddata,
+        closername: closername,
+        closeremail: closeremail,
+        slotdata: this.slotdata,
+        productid: this.cookeiservice.get('lead-product'),
+        viewonlyaccess: this.cookeiservice.get('viewonlyaccess'),
+        type: this.route.snapshot.url[0].path
+      };
+      console.log('data--------');
+      console.log(data);
+      this._http.post(link, data)
+        .subscribe(res => {
+          let result: any = res;
+          console.log('result.... for google calendar');
+          console.log(result);
+          this.modalRef.hide();
+          this.message = "Your Booking done successfully !!";
+          //this.modalRef=this.modal.show(this.mymodal, {class: 'successmodal'});
 
-                this.cookeiservice.delete('leadsId');
-                switch (this.route.snapshot.url[0].path) {
-                    case 'on-boarding-call':
-                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-                        break;
-                    case 'is_discovery':
-                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-                        break;
-                    case 'book-a-closer':
-                      this.cookeiservice.delete('lead-product');
-                        this.modalRef = this.modal.show(this.mymodal, {class: 'successmodal'});
-                        this.route.paramMap.subscribe(params => {
-                          if(!params.get("id")) {
-                            let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-                            // this.router.navigate(['/book-a-closer/' + random]);
-                            this.router.navigate(['/repdashboard']);
-                          } else {
-                            this.router.navigate(['/book-a-closer']);
-                           
-                          }
-                        });
-                      break;
-                    default:
-                        this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
-                        break;
+          this.cookeiservice.delete('leadsId');
+          this.cookeiservice.delete('viewonlyaccess');
+          switch (this.route.snapshot.url[0].path) {
+            case 'on-boarding-call':
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+              break;
+            case 'is_discovery':
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+              break;
+            case 'book-a-closer':
+              this.cookeiservice.delete('lead-product');
+              this.modalRef = this.modal.show(this.mymodal, {class: 'successmodal'});
+              this.route.paramMap.subscribe(params => {
+                if(!params.get("id")) {
+                  let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+                  // this.router.navigate(['/book-a-closer/' + random]);
+                  this.router.navigate(['/repdashboard']);
+                } else {
+                  this.router.navigate(['/book-a-closer']);
+
                 }
-                // setTimeout(() => {
-                //   window.location.reload();
-                // },5000);
-                //this.router.navigate(['/reptrainingcenter'])
-            });
+              });
+              break;
+            default:
+              this.router.navigate(['/on-boarding-call-booked/' + this.route.snapshot.url[1].path + '/' + result.gdata]);
+              break;
+          }
+          // setTimeout(() => {
+          //   window.location.reload();
+          // },5000);
+          //this.router.navigate(['/reptrainingcenter'])
+        });
     }
   }
   // }
@@ -526,16 +528,24 @@ showformat(stdt){
   getUserDetails(id) {
     const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
     this._http.post(link, { source:'users', condition: { _id_object: id }})
-        .subscribe(res => {
-            let result: any = res;
-            console.log('===== Refresh Token =====');
-            console.log(result.res[0].refreshtoken);
-            this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
-            this.cookeiservice.set('organizerid', result.res[0].email);
-            // this.participantName = result.res[0].firstname + ' ' + result.res[0].lastname;
-            // this.participantPhNumber = result.res[0].phoneno;
-            console.log(this.participantPhNumber);
-        })
+      .subscribe(res => {
+        let result: any = res;
+        console.log('===== Refresh Token =====');
+        console.log(result.res[0].refreshtoken);
+        console.log(result.res[0]);
+        this.cookeiservice.set('refreshtoken', result.res[0].refreshtoken);
+        this.cookeiservice.set('organizerid', result.res[0].email);
+        console.log('viewonlyaccess');
+        if (result.res[0] != null && result.res[0].viewonlyaccess != null && result.res[0].viewonlyaccess == true) {
+          this.cookeiservice.set('viewonlyaccess', result.res[0].viewonlyaccess);
+        } else {
+
+          this.cookeiservice.set('viewonlyaccess', 'false');
+}
+        // this.participantName = result.res[0].firstname + ' ' + result.res[0].lastname;
+        // this.participantPhNumber = result.res[0].phoneno;
+        console.log(this.participantPhNumber);
+      })
   }
   speciality(event:any){
     console.log('event.target.value');
@@ -550,14 +560,14 @@ showformat(stdt){
       }
     }
     if(event.target.checked == false){
-      for( let i = 0; i < this.specialityarray.length; i++){ 
+      for( let i = 0; i < this.specialityarray.length; i++){
         if ( this.specialityarray[i] === event.target.value) {
-          this.specialityarray.splice(i, 1); 
+          this.specialityarray.splice(i, 1);
           i--;
         }
-     }
+      }
     }
-    
+
     console.log('this.specialityarray');
     console.log(this.specialityarray);
     // console.log(this.dataForm.controls['doctor_details'].value);
@@ -569,13 +579,13 @@ showformat(stdt){
     //   console.log(usersArray[i]['speciality'].value);
     //   console.log(usersArray[i].speciality);
     //   this.dataForm.controls['doctor_details'].value[i]['speciality'].setValue(this.specialityarray);
-      // console.log(this.dataForm.controls.doctor_details[i].controls['speciality'].value);
+    // console.log(this.dataForm.controls.doctor_details[i].controls['speciality'].value);
     // }
-    
- 
-    
-    
-    
+
+
+
+
+
   }
 
 }

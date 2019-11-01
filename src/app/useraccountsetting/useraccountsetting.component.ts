@@ -49,7 +49,7 @@ export class UseraccountsettingComponent implements OnInit {
       state:[''],
       zip:['',Validators.required],
       accounttype:['',Validators.required],
-      owner:[''],
+      affid:[''],
      // status:['',Validators.required],
     })
 
@@ -113,7 +113,8 @@ export class UseraccountsettingComponent implements OnInit {
                 this.dataForm.controls['state'].patchValue(onedata[0].state);
                 this.dataForm.controls['zip'].patchValue(onedata[0].zip);
                 this.dataForm.controls['accounttype'].patchValue(onedata[0].type);
-                this.dataForm.controls['owner'].patchValue(onedata[0].regionalrecruiter_id);
+                // this.dataForm.controls['owner'].patchValue(onedata[0].regionalrecruiter_id);
+                this.dataForm.controls['affid'].patchValue(onedata[0].affid);
 
                 if(onedata[0].address!=null && onedata[0].address.length>1)this.dataForm.controls['address1'].patchValue(onedata[0].address);
 
@@ -126,7 +127,9 @@ export class UseraccountsettingComponent implements OnInit {
 
     ownerlist() {
         const link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, {source: 'users',condition:{type:'regional_recruiter'}})
+        // this._http.post(link, {source: 'users',condition:{type:'regional_recruiter'}})
+        this._http.post(link, {source: 'users',condition:{"is_consultant": 1,
+        "type": "rep"}})
             .subscribe(res => {
                 let result:any={};
                 result = res;
@@ -136,6 +139,11 @@ export class UseraccountsettingComponent implements OnInit {
                 this.ownerlists=result.res;
                 console.log('this.ownerlists');
                 console.log(this.ownerlists);
+                console.log(this.ownerlists.length);
+                this.route.params.subscribe(params => {
+          this.id=params['id'];
+          this.alluserdata();
+      })
             })
     }
     goback(){
@@ -169,7 +177,8 @@ export class UseraccountsettingComponent implements OnInit {
             data.city=this.dataForm.controls['city'].value;
             data.state=this.dataForm.controls['state'].value;
             data.zip=this.dataForm.controls['zip'].value;
-            data.regionalrecruiter_id=this.dataForm.controls['owner'].value;
+            // data.regionalrecruiter_id=this.dataForm.controls['owner'].value;
+            data.affid =this.dataForm.controls['affid'].value;
             data.emailchange=1;
             data.email=this.dataForm.controls['email'].value;
             data.olddataemail=this.olddataemail;

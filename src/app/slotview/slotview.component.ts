@@ -123,6 +123,7 @@ export class SlotviewComponent implements OnInit {
             let result: any = res;
             if(result.res.length > 0) {
                 this.refreshtoken = result.res[0].refreshtoken;
+                console.log('ddd',result.res[0]);
             }
             
             this.cookeiservice.set('refreshtoken', this.refreshtoken);
@@ -307,7 +308,7 @@ export class SlotviewComponent implements OnInit {
                 result = res;
                 this.refreshtoken=result.res[0].refreshtoken;
               //  console.log('===========================================');
-                console.log('this.refreshtoken ' + this.refreshtoken);
+                console.log('this.refreshtoken ' + this.refreshtoken, result.res[0]); 
                 this.cookeiservice.set('refreshtoken', this.refreshtoken);
             })
     }*/
