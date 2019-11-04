@@ -2523,3 +2523,29 @@ text-align: center;}
     .groupconblock:nth-child(2n+0){ float: none; }
 
 }
+
+
+/*------amitava 04-11-2019----------*/
+
+.resources_content_wrapper .inner_resources_block .main_divbanner { width: auto; background: #f7f7f7;   padding: 1%; box-shadow: 0px 0px 10px #b5b5b5;
+    border: 1px solid #cecdcd; margin: 15px; text-align: center; outline: 1px solid #ffffff;
+    position: relative;
+}
+
+
+.resources_content_wrapper .inner_resources_block .main_divbanner .for_content .img_div img {
+    width: 100%; border: 1px solid #cecdcd;
+}
+
+
+.resources_content_wrapper .inner_resources_block .main_divbanner .for_downbutton a{  background: #00a8ef; color: #fff; font-size: 20px; outline: none!important; font-family: "RalewayBold"; text-align: center; outline: none; border: none; width: 100%;
+    padding: 4px 1%; display: block;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+.resources_content_wrapper .inner_resources_block .main_divbanner .for_content { margin-bottom: 0px;}
+.resources_content_wrapper .inner_resources_block .main_divbanner .for_content p { font-family: 'RalewayMedium'; text-transform: capitalize; word-break: break-all; margin: 0px; padding: 15px;}
+.resources_content_wrapper .inner_resources_block .main_divbanner .for_downbutton button:focus{ outline: none; }
+
+
+.main_divbody:first-child .main_div{ display: none;  }

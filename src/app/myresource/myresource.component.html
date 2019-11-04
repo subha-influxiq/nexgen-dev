@@ -9,10 +9,37 @@
 
   <div>
 
-      <div *ngFor="let item of resources| orderBy:'priority';let i=index;"> <!--:'reverse'-->
+      <div class="main_divbody" *ngFor="let item of resources| orderBy:'priority';let i=index;"> <!--:'reverse'-->
        <div class="inner_resources_block_head"> {{item.categoryname}}</div>
           <div class="inner_resources_block">
+
+              <div *ngFor="let item1 of item.resource">
+
+                  <div  *ngIf="_commonservices.gettype(item1.file)=='PNG'">
+                  <div class="main_divbanner"  *ngIf="_commonservices.gettype(item1.file)=='PNG'">
+                      <div class="for_content">
+
+                          <div class="img_div">
+                              <span>   <img src="https://api.influxhostserver.com/download?file={{item1.file}}"></span>
+                          </div>
+
+                          <p>{{item1.description}}</p>
+
+                      </div>
+
+                      <div class="for_downbutton">
+                          <a href="{{_commonservices.uploadsslurl}}?file={{item1.file}}" target="_blank"> download now</a>
+                      </div>
+
+                  </div>
+                  </div>
+
+              </div>
+
+
           <div class="main_div" *ngFor="let item1 of item.resource| orderBy:'priority'"> <!--| orderBy:'priority':'reverse'-->
+
+
               <div class="for_content">
                   <div class="img_div">
                       <!--  <p>{{_commonservices.gettype(item.file)}}</p>-->
@@ -37,13 +64,14 @@
                       <span *ngIf="_commonservices.gettype(item1.file)=='JPG'">
              <img src="../../assets/images/jpgformat.png">
           </span>
-                      <span *ngIf="_commonservices.gettype(item1.file)=='PNG'">
-             <img src="../../assets/images/pngformat.png">
-          </span>
+                      <!--<span *ngIf="_commonservices.gettype(item1.file)=='PNG'">-->
+             <!--&lt;!&ndash;<img src="../../assets/images/pngformat.png">&ndash;&gt;-->
+                          <!--<img src="https://api.influxhostserver.com/download?file={{item1.file}}">-->
+          <!--</span>-->
                   </div>
-                  <p>{{item1.description}}</p>
+                  <p  *ngIf="_commonservices.gettype(item1.file)!='PNG'">{{item1.description}}</p>
               </div>
-              <div class="for_downbutton">
+              <div class="for_downbutton"  *ngIf="_commonservices.gettype(item1.file)!='PNG'">
                   <a href="{{_commonservices.uploadsslurl}}?file={{item1.file}}" target="_blank"> download now</a>
               </div>
           </div>
