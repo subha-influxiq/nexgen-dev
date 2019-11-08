@@ -63,6 +63,7 @@ export class AdditionalVideoComponent implements OnInit {
       });
   }
   iframeAutoplay(id:any){
+    // console.log('this is video id', id);
     $( ".playerspan" ).each(function( index ) {
         $( this ).removeClass( "show" );
         $( this ).addClass( "hide" );

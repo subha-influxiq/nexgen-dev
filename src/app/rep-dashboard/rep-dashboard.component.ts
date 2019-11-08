@@ -24,6 +24,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   public userId: any;
   public calenderaccess:any;
   public awstrainingpercentage:any ;
+  public mdstocktrainingpercentage:any ;
   public is_consultant:any;
   constructor(@Inject(WINDOW) private window: Window, public _commonservice: Commonservices, private router: Router, public _http: HttpClient, public modal: BsModalService, public cookeiservice: CookieService) {
 
@@ -42,6 +43,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       }
       this.is_consultant = this.cookeiservice.get('is_consultant');
       this.trainingpercentage();
+      this.trainingpercentageForMDstock();
     }
    
   }
@@ -56,7 +58,25 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
     .subscribe(res=>{
       let result:any;
       result = res;
-      this.awstrainingpercentage = result.data[0].traininglessonpercent;
+      console.log('++++++++++++++++++++++++++++++ trainingcategorypercent', res)
+      if(result.data[0] !=null && result.data[0].traininglessonpercent !=null)this.awstrainingpercentage = result.data[0].traininglessonpercent;
+    })
+  }
+
+  trainingpercentageForMDstock(){
+    let link = this._commonservice.nodesslurl + 'trainingcategorypercentmdstock' ;
+    let data = {
+      "trainingcategory" : this._commonservice.mdstocktrainingid,
+      "user_id" : this.userId
+    };
+    console.log(data);
+    console.log(this._commonservice.mdstocktrainingid);
+    this._http.post(link,data)
+    .subscribe(res=>{
+      let result:any;
+      result = res;
+      console.log('------------------- mdstocktrainingpercentage', res)
+      if(result.data[0]!=null && result.data[0].traininglessonpercent!=null )this.mdstocktrainingpercentage = result.data[0].traininglessonpercent;
     })
   }
   copyText(val: string){
@@ -84,6 +104,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       .subscribe(res => {
         let result: any;
         result = res;
+        
         if (result.status == 'error') {
         } else {
           this.repDetailsNew = result.data;

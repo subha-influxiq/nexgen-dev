@@ -26,6 +26,7 @@ export class Commonservices {
     public uploadurl_old = environment["download_url_old"] ;
     public productid =  environment["productid"];
     public awstrainingid = environment["awstrainingid"];
+    public mdstocktrainingid = environment["mdstocktrainingid"];
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;

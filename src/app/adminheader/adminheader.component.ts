@@ -90,14 +90,16 @@ export class AdminheaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.interval = setInterval(() => {
+     this.calenderaccess = this.cookie.get('calenderaccess');
+    // this.interval = setInterval(() => {
       this.getRepDetails();
       //this.getslidervalueforimage();
-    }, 35000);
+    // }, 35000);
   }
 
   getRepDetails() {
     let link = this._commonservices.nodesslurl + 'userreport';
+   
     this._http.post(link, { email: this.cookie.get('useremail') })
       .subscribe(res => {
         let result: any;
@@ -105,14 +107,16 @@ export class AdminheaderComponent implements OnInit {
         if (result.status == 'error') {
           console.log('Oopss');
         } else {
+          
           this.repDetailsNew = result.data;
           if(this.repDetailsNew[0]!=null && this.repDetailsNew[0].calenderaccess !=null ) {
             this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
-            this.calenderaccess = this.cookie.get('calenderaccess');
+            this.calenderaccess =  this.repDetailsNew[0].calenderaccess;
+            // this.calenderaccess = this.cookie.get('calenderaccess');
           }else{
-            this.calenderaccess=false;
+            //this.calenderaccess=false;
           }
-          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false){
+          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false || this.repDetailsNew.length==0){
             let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
           this._http.post(link2, {
             "condition": {"user_id_object": this.cookie.get('userid')},

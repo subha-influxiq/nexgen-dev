@@ -18,7 +18,7 @@
         <div *ngFor="let video of datalist" class="as_videosubwrapper">
           <div class="as_videowrapper">
               <span class="playerspan hide" id="iframe_span_{{video._id}}">
-                  <iframe frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="video.youtube_url"></iframe> 
+                  <iframe frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" [attr.src]="video.youtube_url"></iframe> 
               </span>
               <img class="iframgeimg" id="thumb{{video._id}}" (click)="iframeAutoplay(video._id)" [attr.src]="video.thumbnail_youtube">
           </div>

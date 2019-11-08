@@ -18,6 +18,7 @@ export class UsermanagementComponent implements OnInit {
   public filterval1;
   public filterval2;
   public selecteditem;
+  public medicaAaparchunitiValue: any = '';
   public message;
   modalRef: BsModalRef;
   public loader: any = 0;
@@ -228,6 +229,17 @@ export class UsermanagementComponent implements OnInit {
 
       })
   }
+
+  // added by himadri
+
+  getMedicaAaparchuniti(val: any, template: TemplateRef<any>){
+    console.log('template', template);
+    console.log(val)
+    this.modalRef = this.modal.show(template);
+    this.medicaAaparchunitiValue = val;
+    console.log(this.medicaAaparchunitiValue)
+  }
+
   // added by chandrani
   getUserDetails(email: any) {
     let link = this.commonservices.nodesslurl + 'datalist?token=' + this.cookieservice.get('jwttoken');
