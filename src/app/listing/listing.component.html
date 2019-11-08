@@ -39,6 +39,7 @@
                                 <h3> <span>Search by Name: </span> <input type="text" [(ngModel)]="filterval3"
                                         (keyup)="searchbyval()"><button>search</button> </h3>
                             </div>
+
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -309,6 +310,9 @@
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
                                                 (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span>
+
+                                            <span class="delete_user" *ngIf=" item.appointment_count!= null && item.appointment_count !=0">Appointment Added</span> <br><br>
+                                            <span class="delete_user" *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment Not Added</span>
                                             
                                         </td>
                                     </tr>

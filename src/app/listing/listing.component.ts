@@ -66,6 +66,7 @@ export class ListingComponent implements OnInit {
     public filterval2;
     public interv;
     public filterval3;
+    public filterval4;
     imageChangedEvent: any = [];
     // croppedImage: any = '';
     public croppedImage: any = [];
