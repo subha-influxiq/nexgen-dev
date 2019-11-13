@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -82,6 +82,7 @@ import { AdditionalVideoComponent } from './additional-video/additional-video.co
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+// import { DemoMaterialModule } from './material-module';
 
 @NgModule({
   declarations: [
@@ -168,8 +169,10 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     CommonModule,
     TransferHttpCacheModule,
     NgtUniversalModule,
+    // DemoMaterialModule,
   ],
   providers: [CookieService,TestresolveService,ApiService],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

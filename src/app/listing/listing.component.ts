@@ -11,6 +11,9 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions }
 import { routerNgProbeToken } from "@angular/router/src/router_module";
 import {ModalOptions} from "ngx-bootstrap";
 import { DomSanitizer} from '@angular/platform-browser';
+import { Condition } from 'selenium-webdriver';
+// import * as momentImported from 'moment';
+// const moment = momentImported;
 
 declare var moment: any;
 declare var $: any;
@@ -102,6 +105,8 @@ export class ListingComponent implements OnInit {
     public pricepoint:any='';
     public issubmitprice:any = 0;
     public viewonlyaccess:any;
+    public start_date: any;
+    public end_date: any;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -167,8 +172,45 @@ export class ListingComponent implements OnInit {
     ngOnDestroy() {
         clearInterval(this.interv);
     }
+    productSearchbyval() {
+        if (this.filterval4 != '' && this.filterval4 != null) {
+            this.filterval = this.filterval4;
+            let linkForproductsearch: any = this._commonservice.nodesslurl + 'productsearch';
+            this._http.post(linkForproductsearch, {'product': this.filterval}).subscribe((res: any)=>{
+                console.log(res);
+            });
+        }
+    }
+
+    dateSearch() {
+        console.log("start date");
+        console.log(this.start_date);
+        console.log(this.end_date);
+        let sd = moment(this.start_date).unix();
+        let ed = moment(this.end_date).unix();
+        console.log(moment(this.start_date).unix());
+        console.log(moment(this.end_date).unix());
+        console.log(new Date(this.end_date).getTime());
+        // let linkFordatesearch: any = this._commonservice.nodesslurl+ 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        // console.log(linkFordatesearch);
+        // if(moment(this.end_date).unix()!=null && moment(this.start_date).unix()!=null ) {
+    
+    
+        //   let source:any;
+        //   let condition: any;
+        //   condition = {};
+    
+        //   condition[val] = {
+        //     $lte: new Date(this.end_date).getTime(),
+        //         $gte: new Date(this.start_date).getTime(),
+        //   };
+        // }
+    }
 
     searchbyval() {
+
+        
+       
         this.filterval = '';
         if (this.filterval1 != '' && this.filterval1 != null) {
             this.filterval = this.filterval1 + '|';
@@ -179,6 +221,7 @@ export class ListingComponent implements OnInit {
         if (this.filterval3 != '' && this.filterval3 != null) {
             this.filterval = this.filterval3 + '|';
         }
+       
         console.log(this.filterval);
     }
     gettimezone(val) {

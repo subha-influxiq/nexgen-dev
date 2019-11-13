@@ -80,6 +80,7 @@ import { ManageVideoCategoryComponent } from './manage-video-category/manage-vid
 import { ManageVideosComponent } from './manage-videos/manage-videos.component';
 import { AdditionalVideoComponent } from './additional-video/additional-video.component';
 import { AppModule } from './app.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { AppModule } from './app.module';
     ClipboardModule,
     AppModule,
     BrowserTransferStateModule,
+    BrowserAnimationsModule,
   ],
   providers: [CookieService,TestresolveService,ApiService],
   bootstrap: [AppComponent]

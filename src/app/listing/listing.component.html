@@ -32,13 +32,42 @@
                         *ngIf="router.url!=['/tranningcategory'] && router.url!=['/addtrainings']">
                         <div class="inner_content_wrapper">
                             <div class="search_content">
-                                <h3><span>Search by Email: </span> <input type="text" [(ngModel)]="filterval2"
-                                        (keyup)="searchbyval()"><button>search</button> </h3>
+                                <h3> <input type="text" [(ngModel)]="filterval2"
+                                        (keyup)="searchbyval()" placeholder="Search by Email"><button><i class="fa fa-search" aria-hidden="true"></i></button> </h3>
                             </div>
                             <div class="search_content">
-                                <h3> <span>Search by Name: </span> <input type="text" [(ngModel)]="filterval3"
-                                        (keyup)="searchbyval()"><button>search</button> </h3>
+                                <h3> <input type="text" [(ngModel)]="filterval3"
+                                        (keyup)="searchbyval()" placeholder="Search by Name"><button><i class="fa fa-search" aria-hidden="true"></i></button> </h3>
                             </div>
+
+                            <!-- added by himadri start product search-->
+
+                            <div class="search_content">
+                                <h3> 
+                                    <!-- <span>Search by Product: </span>  -->
+                                    <input type="text" [(ngModel)]="filterval4"
+                                        (keyup)="productSearchbyval()" placeholder="Search by Product"><button><i class="fa fa-search" aria-hidden="true"></i></button></h3>
+                            </div>
+
+
+                            <div class="search_content">
+                                <h3>
+                                    <mat-form-field >
+                                        <input matInput [matDatepicker]="picker"autocomplete="off"  placeholder="Start Date"  [(ngModel)]="start_date" >
+                                        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                      <mat-form-field>
+                                        <input matInput [matDatepicker]="picker1" autocomplete="off" placeholder="End date" [(ngModel)]="end_date" >    
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1 ></mat-datepicker>
+                                      </mat-form-field>
+                                      <button mat-raised-button color="primary" class="add_button" style="margin: 0!important; margin-left: 10px!important; " (click)="dateSearch(status.field)">{{status.submit}}</button>
+                                   
+                                </h3>
+                            </div>
+
+                            <!-- added by himadri end product search-->
 
                         </div>
                         <div class="clearfix"></div>
@@ -142,6 +171,7 @@
                                                 <span *ngIf="router.url==['/manage-leads'] && item1.value == 'status' && item[item1.value]==null">Pending</span>
                                                 <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
                                             </span>
+
                                             <span *ngIf="item1.type=='number' && router.url!='/rep'"
                                                 [ngClass]="item1.class">
                                                 <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
@@ -209,6 +239,15 @@
                         </select><br><br>
                         <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
                         <span class="delete_user" *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && usertype == 'admin'" (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
+
+
+<!-- added by Himadri start -->
+
+
+<span class="delete_user" *ngIf=" item.appointment_count!= null && item.appointment_count !=0">Appointment Added</span> <br><br>
+                                            <span class="delete_user" *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment Not Added</span>
+<!-- added by Himadri end -->
+
 
                                             </span>
                                             <span *ngIf="item1.type=='showstatus'" [ngClass]="item1.class">
@@ -310,9 +349,6 @@
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
                                                 (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span>
-
-                                            <span class="delete_user" *ngIf=" item.appointment_count!= null && item.appointment_count !=0">Appointment Added</span> <br><br>
-                                            <span class="delete_user" *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment Not Added</span>
                                             
                                         </td>
                                     </tr>
