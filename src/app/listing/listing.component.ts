@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef, ViewChild, EventEmitter, ElementRef, Input } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { Commonservices } from "../app.commonservices";
 import { HttpClient } from "@angular/common/http";
 import { BsModalService } from "ngx-bootstrap/modal";
@@ -9,8 +9,8 @@ import { ImageCroppedEvent } from "ngx-image-cropper";
 import { CookieService } from "ngx-cookie-service";
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from "ngx-uploader";
 import { routerNgProbeToken } from "@angular/router/src/router_module";
-import {ModalOptions} from "ngx-bootstrap";
-import { DomSanitizer} from '@angular/platform-browser';
+import { ModalOptions } from "ngx-bootstrap";
+import { DomSanitizer } from '@angular/platform-browser';
 import { Condition } from 'selenium-webdriver';
 // import * as momentImported from 'moment';
 // const moment = momentImported;
@@ -49,14 +49,6 @@ export class ListingComponent implements OnInit {
     public dataForm: FormGroup;
     public sourceconditionval: any;
     public timezone: any = [];
-    daterangepickerOptions = {/*
-     startDate: '09/01/2017',
-     endDate: '09/02/2017',*/
-        format: 'MM/DD/YYYY',
-        minDate: moment().format("MM/DD/YYYY"),
-        noDefaultRangeSelected: true,
-        /* singleCalendar : true,*/
-    }
     bsDatepicker = {
         format: 'MM/DD/YYYY',
         minDate: moment().format("MM/DD/YYYY"),
@@ -94,19 +86,20 @@ export class ListingComponent implements OnInit {
     public nameis: any = [];
     public issubmit = 0;
     public loaderdiv = false;
-    public selectedlead:any={};
-    public inputflag:any=0;
-    public productlist:any = [];
-    public selectedproductid:any="";
-    public productSubmitFlag:any =0; 
-    public productErrorFlag:any = 0;
-    public autoplayVideo:any = [];
-    public selectedstatus:any;
-    public pricepoint:any='';
-    public issubmitprice:any = 0;
-    public viewonlyaccess:any;
+    public selectedlead: any = {};
+    public inputflag: any = 0;
+    public productlist: any = [];
+    public selectedproductid: any = "";
+    public productSubmitFlag: any = 0;
+    public productErrorFlag: any = 0;
+    public autoplayVideo: any = [];
+    public selectedstatus: any;
+    public pricepoint: any = '';
+    public issubmitprice: any = 0;
+    public viewonlyaccess: any;
     public start_date: any;
     public end_date: any;
+    public filterval5: any;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -136,11 +129,11 @@ export class ListingComponent implements OnInit {
         console.log('formdataval:');
         console.log(this.formdataval);
     }
-    
 
 
-    constructor(public _commonservice: Commonservices, public router: Router, public _http: HttpClient, public modal: BsModalService, formgroup: FormBuilder, private cookeiservice: CookieService,public sanitizer: DomSanitizer) {
-        
+
+    constructor(public _commonservice: Commonservices, public router: Router, public _http: HttpClient, public modal: BsModalService, formgroup: FormBuilder, private cookeiservice: CookieService, public sanitizer: DomSanitizer, private route: ActivatedRoute) {
+
         this.formgroup = formgroup;
         this._commonservice = _commonservice;
         // this.minDate.setDate(this.minDate.getDate() - 1);
@@ -148,13 +141,13 @@ export class ListingComponent implements OnInit {
         this.humanizeBytes = humanizeBytes;
         // this.usertype = this.cookeiservice.get('usertype');
         this.viewonlyaccess = this.cookeiservice.get('viewonlyaccess');
-        
+
     }
 
     ngOnInit() {
         this.usertype = this.cookeiservice.get('usertype');
         this.getdatalist();
-        console.log('this.slotlist - '+this.slotlist);
+        console.log('this.slotlist - ' + this.slotlist);
 
         this._http.get("assets/data/timezone.json")
             .subscribe(res => {
@@ -165,52 +158,75 @@ export class ListingComponent implements OnInit {
                 console.log('Oooops!');
                 //this.formdataval[c].sourceval = [];
             });
-      //this.interv = setInterval(() => {
-            this.getdatalist();
-     //  }, 6000)
+        //this.interv = setInterval(() => {
+        this.getdatalist();
+        //  }, 6000)
     }
     ngOnDestroy() {
         clearInterval(this.interv);
     }
     productSearchbyval() {
+        console.log(this.filterval4)
         if (this.filterval4 != '' && this.filterval4 != null) {
-            this.filterval = this.filterval4;
             let linkForproductsearch: any = this._commonservice.nodesslurl + 'productsearch';
-            this._http.post(linkForproductsearch, {'product': this.filterval}).subscribe((res: any)=>{
+            this._http.post(linkForproductsearch, { 'product': this.filterval4 }).subscribe((res: any) => {
                 console.log(res);
+                this.datalist = res.data;
             });
         }
     }
 
-    dateSearch() {
-        console.log("start date");
-        console.log(this.start_date);
-        console.log(this.end_date);
-        let sd = moment(this.start_date).unix();
-        let ed = moment(this.end_date).unix();
-        console.log(moment(this.start_date).unix());
-        console.log(moment(this.end_date).unix());
-        console.log(new Date(this.end_date).getTime());
-        // let linkFordatesearch: any = this._commonservice.nodesslurl+ 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        // console.log(linkFordatesearch);
-        // if(moment(this.end_date).unix()!=null && moment(this.start_date).unix()!=null ) {
-    
-    
-        //   let source:any;
-        //   let condition: any;
-        //   condition = {};
-    
-        //   condition[val] = {
-        //     $lte: new Date(this.end_date).getTime(),
-        //         $gte: new Date(this.start_date).getTime(),
-        //   };
-        // }
+
+
+    setdatetonull() {
+        this.filterval5 = null;
+        this.geteventarr();
     }
+    geteventarr() {
+
+        let cond: any = '';
+
+        if (this.filterval5 != null && this.filterval5 != '') {
+            this.start_date = moment(this.filterval5[0]).format('YYYY/MM/DD');
+            this.end_date = moment(this.filterval5[1]).format('YYYY/MM/DD');
+    
+            console.log(this.start_date);
+            console.log(this.end_date)
+            cond = {
+                date: {
+                    $lte: this.end_date,
+                    $gte: this.start_date
+                }
+            };
+            // console.log(cond)
+            const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+            this._http.post(link, { source: 'leads_view_for_users', condition: cond }).subscribe(res => {
+                let result: any = res;
+                console.log(res)
+                this.datalist = result.res;
+                // console.log('allslots',this.allslots,this.allslots.length);
+            });
+        } else {
+
+            const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+            this._http.post(link, { source: 'leads_view_for_users', condition: cond }).subscribe(res => {
+                let result: any = res;
+                console.log(res)
+                this.datalist = result.res;
+                // console.log('allslots',this.allslots,this.allslots.length);
+            });
+        }
+
+    }
+
+
+
+
 
     searchbyval() {
 
-        
-       
+
+
         this.filterval = '';
         if (this.filterval1 != '' && this.filterval1 != null) {
             this.filterval = this.filterval1 + '|';
@@ -221,7 +237,7 @@ export class ListingComponent implements OnInit {
         if (this.filterval3 != '' && this.filterval3 != null) {
             this.filterval = this.filterval3 + '|';
         }
-       
+
         console.log(this.filterval);
     }
     gettimezone(val) {
@@ -249,9 +265,10 @@ export class ListingComponent implements OnInit {
         const link = this._commonservice.nodesslurl + 'addorupdatedata';
         /* console.log('link');
          console.log(link);*/
-        this._http.post(link, { 
-            source:this.formsourceval.table,
-            data: { id: item._id, viewonlyaccess: viewonlyaccess}})
+        this._http.post(link, {
+            source: this.formsourceval.table,
+            data: { id: item._id, viewonlyaccess: viewonlyaccess }
+        })
             .subscribe(res => {
                 this.getdatalist();
             }, error => {
@@ -336,17 +353,17 @@ export class ListingComponent implements OnInit {
                     this.datalist = result.res;
                     console.log('datalist:');
                     console.log(this.datalist);
-                    for(let i in this.datalist){
-                        if(this.datalist[i].youtube_url!=null){
+                    for (let i in this.datalist) {
+                        if (this.datalist[i].youtube_url != null) {
                             let videourl = this.datalist[i].youtube_url.split('v=');
                             let videoid = videourl[videourl.length - 1];
                             let vurl = videoid;
                             let url = this.datalist[i].youtube_url.replace('watch?v=', 'embed/');
-                            this.datalist[i].youtube_url = this.sanitizer.bypassSecurityTrustResourceUrl(url+"?autoplay=1");
+                            this.datalist[i].youtube_url = this.sanitizer.bypassSecurityTrustResourceUrl(url + "?autoplay=1");
                             url = url.split('/');
                             let urlid = url[url.length - 1];
                             this.datalist[i].thumbnail_youtube = this.sanitizer.bypassSecurityTrustResourceUrl("https://i1.ytimg.com/vi/" + urlid + "/0.jpg");
-                            this.autoplayVideo[this.datalist[i]._id]=0;
+                            this.autoplayVideo[this.datalist[i]._id] = 0;
                         }
                     }
                 }
@@ -630,7 +647,7 @@ export class ListingComponent implements OnInit {
                 username: 'test'
             }
         };
-        this.modalRef = this.modal.show(template,config);
+        this.modalRef = this.modal.show(template, config);
         console.log(this.dataForm);
     }
 
@@ -672,7 +689,7 @@ export class ListingComponent implements OnInit {
         for (y in this.dataForm.controls) {
             this.dataForm.controls[y].markAsTouched();
         }
-        
+
         if (this.formsourceval.table == 'events') {
             var tzval = this.dataForm.controls['timezone'].value.split('|');
             tzval = tzval[1];
@@ -683,7 +700,7 @@ export class ListingComponent implements OnInit {
             this.dataForm.controls['end_date'].patchValue(moment(this.dataForm.controls['end_date'].value).format('YYYY-MM-DD'));
             this.dataForm.controls['start_time'].patchValue(moment(this.dataForm.controls['start_time'].value).format('HH:mm'));
             this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
-            
+
         }
         //  console.log($('select[name="roleaccess"]').val());
         if (this.dataForm.valid && this.submitval == 1) {
@@ -919,7 +936,7 @@ export class ListingComponent implements OnInit {
         }
     }
     showphoneno(phn) {
-        if (phn != null && phn.length>0) {
+        if (phn != null && phn.length > 0) {
             phn = phn.replace(/ /g, "");
             phn = phn.replace(/-/g, "");
             return phn.slice(0, 3) + '-' + phn.slice(3, 6) + '-' + phn.slice(6, 10);
@@ -979,106 +996,107 @@ export class ListingComponent implements OnInit {
     notesdata(val: any, template: TemplateRef<any>) {
         this.selectedlead = val;
         console.log(this.selectedlead);
-        setTimeout(()=>{
+        setTimeout(() => {
             this.modalRef2 = this.modal.show(template);
-        },2000);
-        
-        
+        }, 2000);
+
+
     }
-    openDiscoverCallModal(leadval:any,val: any, template: TemplateRef<any>) {
+    openDiscoverCallModal(leadval: any, val: any, template: TemplateRef<any>) {
         this.selectedlead = leadval;
         this.productlist = val;
         console.log(this.productlist);
-        setTimeout(()=>{
+        setTimeout(() => {
             this.modalRef2 = this.modal.show(template);
-        },2000);
-        
-        
+        }, 2000);
+
+
     }
-    productsubmit(leadid:any){
-        if(this.selectedproductid==''){
-            this.productErrorFlag = 1; 
-        }else{
-            this.productErrorFlag = 0; 
+    productsubmit(leadid: any) {
+        if (this.selectedproductid == '') {
+            this.productErrorFlag = 1;
+        } else {
+            this.productErrorFlag = 0;
             this.modalRef2.hide();
-            setTimeout(()=>{
-                this.router.navigateByUrl('/book-a-closer/'+leadid+'/'+this.selectedproductid);
-            },50);
-            
+            setTimeout(() => {
+                this.router.navigateByUrl('/book-a-closer/' + leadid + '/' + this.selectedproductid);
+            }, 50);
+
         }
-        
+
     }
-    showInputText(event:any){
-        if(event.target.checked == true){
+    showInputText(event: any) {
+        if (event.target.checked == true) {
             this.inputflag = 1;
-        }else this.inputflag = 0;
-        
+        } else this.inputflag = 0;
+
     }
 
-    iframeAutoplay(id:any){
-        $( ".playerspan" ).each(function( index ) {
-            $( this ).removeClass( "show" );
-            $( this ).addClass( "hide" );
+    iframeAutoplay(id: any) {
+        $(".playerspan").each(function (index) {
+            $(this).removeClass("show");
+            $(this).addClass("hide");
             // $( this ).html("");                  //if there is any need to reload the span
-          });
-          $( ".iframgeimg" ).each(function( index ) {
-            $( this ).removeClass( "hide" );
-            $( this ).addClass( "show" );
-            
-          });
-        
-            setTimeout(()=>{
-                $("#iframe_span_"+id).removeClass('hide');
-                $("#iframe_span_"+id).addClass('show');
-                $("#thumb"+id).addClass('hide');
-            },500);
-            
-        
-       
+        });
+        $(".iframgeimg").each(function (index) {
+            $(this).removeClass("hide");
+            $(this).addClass("show");
+
+        });
+
+        setTimeout(() => {
+            $("#iframe_span_" + id).removeClass('hide');
+            $("#iframe_span_" + id).addClass('show');
+            $("#thumb" + id).addClass('hide');
+        }, 500);
+
+
+
     }
 
-    toggleStatusInArray(item){
+    toggleStatusInArray(item) {
         console.log('item in toggleStatusInArray');
         console.log(item);
         console.log(item.status);
-        if(item.status == null)item.status = 'Pending';
+        if (item.status == null) item.status = 'Pending';
         $('.statusspan').removeClass('hide');
         $('.statusspan').addClass('show');
         $('.selectintable').removeClass('show');
         $('.selectintable').addClass('hide');
-        $('#span'+item._id).removeClass('show');
-        $('#span'+item._id).addClass('hide');
-        $('#select'+item._id).removeClass('hide');
-        $('#select'+item._id).addClass('show');
-       
-        
-        
+        $('#span' + item._id).removeClass('show');
+        $('#span' + item._id).addClass('hide');
+        $('#select' + item._id).removeClass('hide');
+        $('#select' + item._id).addClass('show');
+
+
+
         // $('#select'+item._id).removeClass('hide');
         // $('#select'+item._id).addClass('show');
     }
 
-    toggleFromSelect(event:any,item:any){
+    toggleFromSelect(event: any, item: any) {
         console.log('event');
         console.log(event);
         console.log('item');
         console.log(item);
         console.log(item.status);
         let status: any;
-        status=event;
+        status = event;
         this.selectedstatus = status;
         console.log(status);
         const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         /* console.log('link');
          console.log(link);*/
-         let data  = { 
-            source:this.formsourceval.table,
-            data: { id: item._id, status: status}
-          };
-          console.log(data);
-        this._http.post(link, { 
-            source:this.formsourceval.table,
-            data: { id: item._id, status: status}}
-          )
+        let data = {
+            source: this.formsourceval.table,
+            data: { id: item._id, status: status }
+        };
+        console.log(data);
+        this._http.post(link, {
+            source: this.formsourceval.table,
+            data: { id: item._id, status: status }
+        }
+        )
             .subscribe(res => {
                 this.getdatalist();
             }, error => {
@@ -1087,45 +1105,46 @@ export class ListingComponent implements OnInit {
             });
     }
 
-    openPricepointModal(item:any,template:TemplateRef<any>){
+    openPricepointModal(item: any, template: TemplateRef<any>) {
         console.log(item);
         this.selectedlead = item;
         this.modalRef2 = this.modal.show(template);
     }
-    addPrice(){
+    addPrice() {
         // if(this.pricepoint==''){
         //     this.issubmitprice = 1;
         // }else{
         //     this.issubmitprice = 0;
         // }
-        
-        if(this.pricepoint == '' || this.pricepoint == null ){
+
+        if (this.pricepoint == '' || this.pricepoint == null) {
             console.log('error');
             this.issubmitprice = 1;
-        }else{
+        } else {
             const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
             /* console.log('link');
              console.log(link);*/
-             let data  = { 
-                source:this.formsourceval.table,
-                data: { id: this.selectedlead._id, pricepoint:this.pricepoint}
-              };
-              console.log(data);
-            this._http.post(link, { 
-                source:this.formsourceval.table,
-                data: { id: this.selectedlead._id, pricepoint:this.pricepoint}}
-              )
+            let data = {
+                source: this.formsourceval.table,
+                data: { id: this.selectedlead._id, pricepoint: this.pricepoint }
+            };
+            console.log(data);
+            this._http.post(link, {
+                source: this.formsourceval.table,
+                data: { id: this.selectedlead._id, pricepoint: this.pricepoint }
+            }
+            )
                 .subscribe(res => {
-                    this.pricepoint ='';
+                    this.pricepoint = '';
                     this.getdatalist();
                     this.modalRef2.hide();
                 }, error => {
                     console.log('Oooops!');
-                    this.pricepoint ='';
+                    this.pricepoint = '';
                     this.getdatalist();
                 });
         }
-        
+
     }
-   
+
 }
