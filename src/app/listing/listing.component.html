@@ -42,11 +42,13 @@
 
                             <!-- added by himadri start product search-->
 
-                            <div class="search_content">
+                            <div class="search_content" *ngIf="productval != ''">
                                 <h3> 
-                                    <!-- <span>Search by Product: </span>  -->
-                                    <input type="text" [(ngModel)]="filterval4"
-                                        (keyup)="productSearchbyval()" placeholder="Search by Product"><button><i class="fa fa-search" aria-hidden="true"></i></button></h3>
+                                        <select  (click)="productSearchbyval(filterval4)" [(ngModel)]="filterval4" >
+                                            <option value="">Select Product</option>
+                                            <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">{{searchval.categoryname}}</option>
+                                          </select>
+                                    </h3>
                             </div>
 
 

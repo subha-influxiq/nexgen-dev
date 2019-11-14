@@ -100,6 +100,7 @@ export class ListingComponent implements OnInit {
     public start_date: any;
     public end_date: any;
     public filterval5: any;
+    public productval: any = '';
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -145,6 +146,21 @@ export class ListingComponent implements OnInit {
     }
 
     ngOnInit() {
+
+
+        let link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'tranningcategory' }).subscribe(res => {
+            let result: any = res;
+            console.log(res)
+            this.productval = result.res;
+            console.log('this.productval')
+            console.log(this.productval)
+            // console.log('allslots',this.allslots,this.allslots.length);
+        });
+
+
+
+
         this.usertype = this.cookeiservice.get('usertype');
         this.getdatalist();
         console.log('this.slotlist - ' + this.slotlist);
@@ -165,11 +181,12 @@ export class ListingComponent implements OnInit {
     ngOnDestroy() {
         clearInterval(this.interv);
     }
-    productSearchbyval() {
-        console.log(this.filterval4)
-        if (this.filterval4 != '' && this.filterval4 != null) {
+    productSearchbyval(filterValue: any) {
+        if (filterValue != '' && filterValue != null) {
+            // console.log(filterValue.toLowerCase())
+
             let linkForproductsearch: any = this._commonservice.nodesslurl + 'productsearch';
-            this._http.post(linkForproductsearch, { 'product': this.filterval4 }).subscribe((res: any) => {
+            this._http.post(linkForproductsearch, { 'product': filterValue }).subscribe((res: any) => {
                 console.log(res);
                 this.datalist = res.data;
             });
@@ -189,7 +206,7 @@ export class ListingComponent implements OnInit {
         if (this.filterval5 != null && this.filterval5 != '') {
             this.start_date = moment(this.filterval5[0]).format('YYYY/MM/DD');
             this.end_date = moment(this.filterval5[1]).format('YYYY/MM/DD');
-    
+
             console.log(this.start_date);
             console.log(this.end_date)
             cond = {
