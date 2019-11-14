@@ -32,23 +32,26 @@
                         *ngIf="router.url!=['/tranningcategory'] && router.url!=['/addtrainings']">
                         <div class="inner_content_wrapper">
                             <div class="search_content">
-                                <h3> <input type="text" [(ngModel)]="filterval2"
-                                        (keyup)="searchbyval()" placeholder="Search by Email"><button><i class="fa fa-search" aria-hidden="true"></i></button> </h3>
+                                <h3> <input type="text" [(ngModel)]="filterval2" (keyup)="searchbyval()"
+                                        placeholder="Search by Email"><button><i class="fa fa-search"
+                                            aria-hidden="true"></i></button> </h3>
                             </div>
                             <div class="search_content">
-                                <h3> <input type="text" [(ngModel)]="filterval3"
-                                        (keyup)="searchbyval()" placeholder="Search by Name"><button><i class="fa fa-search" aria-hidden="true"></i></button> </h3>
+                                <h3> <input type="text" [(ngModel)]="filterval3" (keyup)="searchbyval()"
+                                        placeholder="Search by Name"><button><i class="fa fa-search"
+                                            aria-hidden="true"></i></button> </h3>
                             </div>
 
                             <!-- added by himadri start product search-->
 
                             <div class="search_content" *ngIf="productval != ''">
-                                <h3> 
-                                        <select  (click)="productSearchbyval(filterval4)" [(ngModel)]="filterval4" >
-                                            <option value="">Select Product</option>
-                                            <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">{{searchval.categoryname}}</option>
-                                          </select>
-                                    </h3>
+                                <h3>
+                                <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)" [(ngModel)]="filterval4" required>
+                                        <option value="0" disabled>Select Product</option>
+                                        <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">
+                                            {{searchval.categoryname}}</option>
+                                    </select>
+                                </h3>
                             </div>
 
 
@@ -56,21 +59,22 @@
                             <form>
                                 <!-- <h3 class="timezone_class">search by date</h3> -->
                                 <div class="form-group">
-    
+
                                     <!-- <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"> -->
-    
+
                                     <input type="text" placeholder="Select Date Range" class="form-control"
                                         [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
                                         [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
                                         #drp="bsDaterangepicker" bsDaterangepicker>
-    
+
                                 </div>
                                 <div class="form-group row form-groupbtndiv">
-    
+
                                     <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
-                                    <button type="submit" class="btn_search" (click)="setdatetonull()"> show all </button>
+                                    <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
+                                    </button>
                                 </div>
-    
+
                             </form>
 
                             <!-- added by himadri end product search-->
@@ -90,7 +94,7 @@
                         <div class="clearfix"></div>
                     </div>
 
-                    
+
                     <input type="text" placeholder="Search..." [(ngModel)]="filterval" #listFilter (keyup)="0"
                         class="hide">
                 </div>
@@ -142,15 +146,17 @@
                                 <a *ngIf="slotlist=='true'" href="http://gapi.betoparedes.com/connect-calendar.php"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Add or update calendar
                                     settings</a>
-                                    <a *ngIf="router.url=='/calendar' && (viewonlyaccess!=null && viewonlyaccess=='true') " href="http://gapi.betoparedes.com/connect-calender-viewonly.php"
-                                    class="addfrinderbtn s_getmybrand_savebutton slotadd">Give Your Calender Availability</a>
+                                <a *ngIf="router.url=='/calendar' && (viewonlyaccess!=null && viewonlyaccess=='true') "
+                                    href="http://gapi.betoparedes.com/connect-calender-viewonly.php"
+                                    class="addfrinderbtn s_getmybrand_savebutton slotadd">Give Your Calender
+                                    Availability</a>
                                 <a *ngIf="slotlist=='true' " (click)="syncgoogle()"
                                     class="addfrinderbtn s_getmybrand_savebutton slotadd"> Sync with Google Calendar</a>
-                              <!-- <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> All Leads</a>
+                                <!-- <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> All Leads</a>
                               <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Product Wise Leads</a> -->
                                 <div class="clearfix"></div>
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -160,7 +166,7 @@
                                 <thead>
                                     <tr>
                                         <th [ngClass]="item.class" *ngFor="let item of tabledatalisval; index as i;"
-                                            scope="col" >{{item.name}}</th>
+                                            scope="col">{{item.name}}</th>
                                         <th *ngIf="hideaction!=null && hideaction!='true' ">Actions</th>
                                         <th *ngIf="notes!=null && notes=='true' ">Manage Notes</th>
                                     </tr>
@@ -168,14 +174,17 @@
                                 <tbody>
                                     <tr *ngFor="let item of datalist | usersearch:listFilter.value; index as i ">
                                         <td *ngFor="let item1 of tabledatalisval; let i1=index;" scope="col"
-                                            class="{{item._id}}"  [attr.datalabel]="item1.class">
+                                            class="{{item._id}}" [attr.datalabel]="item1.class">
                                             <span *ngIf="item1.type=='text' && router.url!='/rep'"
                                                 [ngClass]="item1.class">
                                                 <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
                                                 <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->
                                                 {{item[item1.value]}}<br>
-                                                <span *ngIf="router.url==['/manage-leads'] && item1.value == 'status' && item[item1.value]==null">Pending</span>
-                                                <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
+                                                <span
+                                                    *ngIf="router.url==['/manage-leads'] && item1.value == 'status' && item[item1.value]==null">Pending</span>
+                                                <span
+                                                    *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')">Price
+                                                    Point:{{item.pricepoint}}</span><br><br>
                                             </span>
 
                                             <span *ngIf="item1.type=='number' && router.url!='/rep'"
@@ -196,30 +205,42 @@
                                             <span *ngIf="item1.type=='text1'&& router.url=='/rep'" (click)="updaterecruiter(item._id)" class="edit_user lock_unlock"> Update</span>-->
 
 
-<!------------------------------------------------------------------------------------------------>
-<span *ngIf="item1.value=='verification_need' && item1.type=='checkbox' " [ngClass]="item1.class">
-    <span class="statusactive" *ngIf="item[item1.value]==true"> Required</span>
-    <span class="statusinactive" *ngIf="item[item1.value]!=true"> Not Required</span>
+                                            <!------------------------------------------------------------------------------------------------>
+                                            <span *ngIf="item1.value=='verification_need' && item1.type=='checkbox' "
+                                                [ngClass]="item1.class">
+                                                <span class="statusactive" *ngIf="item[item1.value]==true">
+                                                    Required</span>
+                                                <span class="statusinactive" *ngIf="item[item1.value]!=true"> Not
+                                                    Required</span>
 
-</span>
+                                            </span>
 
 
 
-<span *ngIf="item1.type=='img' " [ngClass]="item1.class">
-    
-    <span class="playerspan hide" id="iframe_span_{{item._id}}">
-        <iframe frameborder="0" style="height: 150px;width: 250px;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item.youtube_url"></iframe> 
-    </span>
-    <img class="iframgeimg" id="thumb{{item._id}}" style="height: 150px;width: 250px;" (click)="iframeAutoplay(item._id)" [attr.src]="item[item1.value]"> 
-</span>
-<span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
-    
-    <iframe  id="ytplayer{{item._id}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" [attr.src]="item[item1.value]"></iframe> 
-    <img (click)="iframeAutoplay(item._id)" style="height: 150px;width: 250px;" [attr.src]="item[thumbnail_youtube]"> 
-</span>
-<!------------------------------------------------------------------------------------------------>
+                                            <span *ngIf="item1.type=='img' " [ngClass]="item1.class">
 
-                                            <span *ngIf="item1.type=='checkbox' && item1.value!='verification_need'" [ngClass]="item1.class">
+                                                <span class="playerspan hide" id="iframe_span_{{item._id}}">
+                                                    <iframe frameborder="0" style="height: 150px;width: 250px;"
+                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        [attr.src]="item.youtube_url"></iframe>
+                                                </span>
+                                                <img class="iframgeimg" id="thumb{{item._id}}"
+                                                    style="height: 150px;width: 250px;"
+                                                    (click)="iframeAutoplay(item._id)" [attr.src]="item[item1.value]">
+                                            </span>
+                                            <span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
+
+                                                <iframe id="ytplayer{{item._id}}" frameborder="0"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    [attr.src]="item[item1.value]"></iframe>
+                                                <img (click)="iframeAutoplay(item._id)"
+                                                    style="height: 150px;width: 250px;"
+                                                    [attr.src]="item[thumbnail_youtube]">
+                                            </span>
+                                            <!------------------------------------------------------------------------------------------------>
+
+                                            <span *ngIf="item1.type=='checkbox' && item1.value!='verification_need'"
+                                                [ngClass]="item1.class">
                                                 <span class="statusactive" *ngIf="item[item1.value]==true"> Active
                                                     &nbsp;&nbsp; <span
                                                         *ngIf="item1.editrole !=null && item1.editrole.indexOf(usertype)>-1"
@@ -236,23 +257,39 @@
 
                                             </span>
 
-                                            <span *ngIf="item1.type=='select' " [ngClass]="item1.class" >
-                                                    <span class="statusspan show" id="span{{item._id}}"  (click)="toggleStatusInArray(item)" *ngIf="item[item1.value] == null || item[item1.value] == ''" >{{item1.defaultchoice}}</span>
-                                                    <span class="statusspan show" (click)="toggleStatusInArray(item)" id="span{{item._id}}" *ngIf="item[item1.value] != null">{{item[item1.value]}}</span>
-                        <select [(ngModel)]="item[item1.value]" (change)="toggleFromSelect($event.target.value,item)" id="select{{item._id}}" class="selectintable hide" #select>
-                            <option disabled="disabled" value="">Choose An Option</option>
-                            <option *ngFor="let option of item1.optionlist" value="{{option.value}}">{{option.name}}</option>
-                        </select><br><br>
-                        <span *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')" >Price Point:{{item.pricepoint}}</span><br><br>
-                        <span class="delete_user" *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && usertype == 'admin'" (click)="openPricepointModal(item,pricepointmodal)">put closing price point</span>
+                                            <span *ngIf="item1.type=='select' " [ngClass]="item1.class">
+                                                <span class="statusspan show" id="span{{item._id}}"
+                                                    (click)="toggleStatusInArray(item)"
+                                                    *ngIf="item[item1.value] == null || item[item1.value] == ''">{{item1.defaultchoice}}</span>
+                                                <span class="statusspan show" (click)="toggleStatusInArray(item)"
+                                                    id="span{{item._id}}"
+                                                    *ngIf="item[item1.value] != null">{{item[item1.value]}}</span>
+                                                <select [(ngModel)]="item[item1.value]"
+                                                    (change)="toggleFromSelect($event.target.value,item)"
+                                                    id="select{{item._id}}" class="selectintable hide" #select>
+                                                    <option disabled="disabled" value="">Choose An Option</option>
+                                                    <option *ngFor="let option of item1.optionlist"
+                                                        value="{{option.value}}">{{option.name}}</option>
+                                                </select><br><br>
+                                                <span
+                                                    *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')">Price
+                                                    Point:{{item.pricepoint}}</span><br><br>
+                                                <span class="delete_user"
+                                                    *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && usertype == 'admin'"
+                                                    (click)="openPricepointModal(item,pricepointmodal)">put closing
+                                                    price point</span>
 
 
-<!-- added by Himadri start -->
+                                                <!-- added by Himadri start -->
 
 
-<span class="delete_user" *ngIf=" item.appointment_count!= null && item.appointment_count !=0">Appointment Added</span> <br><br>
-                                            <span class="delete_user" *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment Not Added</span>
-<!-- added by Himadri end -->
+                                                <span class="delete_user"
+                                                    *ngIf=" item.appointment_count!= null && item.appointment_count !=0">Appointment
+                                                    Added</span> <br><br>
+                                                <span class="delete_user"
+                                                    *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment
+                                                    Not Added</span>
+                                                <!-- added by Himadri end -->
 
 
                                             </span>
@@ -338,24 +375,34 @@
                                                 [ngClass]="item1.class"
                                                 (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                         </td>
-       <td *ngIf="hideaction!=null && hideaction!='true' ">
-           <span class=" delete_user"
+                                        <td *ngIf="hideaction!=null && hideaction!='true' ">
+                                            <span class=" delete_user"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-           <span class="edit_user" (click)="editmodal(formtemplate,item)">edit</span><br><br>
-            <span class="delete_user" *ngIf="router.url==['/manage-leads']" (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery Call</span><br><br>
-            <span  *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0" ><a target="_blank" class="edit_user" [routerLink]="['/appointments',item._id]">Appointments({{item.appointment_count}})</a></span>
-            <span *ngIf="router.url==['/manage-leads'] && (usertype=='admin') && item.appointment_count>0"><a class="edit_user" target="_blank" [routerLink]="['/appointmentlist',item._id]">Appointments({{item.appointment_count}})</a>
+                                            <span class="edit_user"
+                                                (click)="editmodal(formtemplate,item)">edit</span><br><br>
+                                            <span class="delete_user" *ngIf="router.url==['/manage-leads']"
+                                                (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery
+                                                Call</span><br><br>
+                                            <span
+                                                *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0"><a
+                                                    target="_blank" class="edit_user"
+                                                    [routerLink]="['/appointments',item._id]">Appointments({{item.appointment_count}})</a></span>
+                                            <span
+                                                *ngIf="router.url==['/manage-leads'] && (usertype=='admin') && item.appointment_count>0"><a
+                                                    class="edit_user" target="_blank"
+                                                    [routerLink]="['/appointmentlist',item._id]">Appointments({{item.appointment_count}})</a>
                                             </span>
-             <span *ngIf="router.url==['/regional'] && item.viewonlyaccess==true">
-                                             <a href="http://gapi.betoparedes.com/connect-calendar.php">Add or update calendar
-                                                settings</a>
+                                            <span *ngIf="router.url==['/regional'] && item.viewonlyaccess==true">
+                                                <a href="http://gapi.betoparedes.com/connect-calendar.php">Add or update
+                                                    calendar
+                                                    settings</a>
                                             </span>
 
                                         </td>
                                         <td *ngIf="notes!=null && notes=='true' ">
                                             <span class="delete_user"
                                                 (click)="notesdata(item,notesmodal)">Notes({{item.notescount}})</span>
-                                            
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -401,8 +448,8 @@
     <div>
     </div>
 </ng-template>
-<ng-template #formtemplate data-backdrop="static" >
-    <div class="modal-body brandmanagement_modal newNexgen_modal "  [ngClass]="addeventform1class()">
+<ng-template #formtemplate data-backdrop="static">
+    <div class="modal-body brandmanagement_modal newNexgen_modal " [ngClass]="addeventform1class()">
         <h1>Add/Edit {{menuval}}</h1>
         <form novalidate (ngSubmit)="formsubmit()">
             <!--[ngClass]="addeventformclass()"-->
@@ -411,7 +458,8 @@
                     <!--[ngClass]="addeventclass()"-->
                     <label *ngIf="item.inputtype!='hidden'  && (item.name!='multiple_emails' && item.name!='tempemail')"
                         class="  col-form-label col-form-label-sm">{{item.label}}</label>
-                        <label *ngIf="item.inputtype!='hidden' && (item.name=='multiple_emails' || item.name=='tempemail') && inputflag==1"
+                    <label
+                        *ngIf="item.inputtype!='hidden' && (item.name=='multiple_emails' || item.name=='tempemail') && inputflag==1"
                         class="col-form-label col-form-label-sm">{{item.label}}</label>
                     <div class="col-sm-8">
 
@@ -424,22 +472,23 @@
                             [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control"
                             [placeholder]="item.placeholder" (keyup)="issubmit=0">
 
-                            <input
+                        <input
                             *ngIf=" inputflag==1 && item.inputtype=='text' && (item.name=='multiple_emails' || item.name=='tempemail')"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
                         <div class="checkboxclass" *ngIf="item.inputtype=='checkbox'">
 
-                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && (item.name!='verification_need' && item.name!='viewonlyaccess')" [name]="item.name"
-                                [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0"
-                                [ngClass]="item.class">
+                            <input type="checkbox"
+                                *ngIf="item.inputtype=='checkbox' && (item.name!='verification_need' && item.name!='viewonlyaccess')"
+                                [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control"
+                                (keyup)="issubmit=0" [ngClass]="item.class">
 
-                                <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='verification_need'" [name]="item.name"
-                                [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0" (change)="showInputText($event)"
-                                [ngClass]="item.class">
-                                <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='viewonlyaccess'" [name]="item.name"
-                                [formControl]="dataForm.controls[item.name]" class="form-control" (keyup)="issubmit=0" (change)="showInputText($event)"
-                                [ngClass]="item.class">
+                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='verification_need'"
+                                [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control"
+                                (keyup)="issubmit=0" (change)="showInputText($event)" [ngClass]="item.class">
+                            <input type="checkbox" *ngIf="item.inputtype=='checkbox' && item.name=='viewonlyaccess'"
+                                [name]="item.name" [formControl]="dataForm.controls[item.name]" class="form-control"
+                                (keyup)="issubmit=0" (change)="showInputText($event)" [ngClass]="item.class">
                         </div>
 
 
@@ -566,10 +615,10 @@
                     <button type="submit"> Submit</button>
                     <button type="reset" (click)="modalRef.hide()"> Cancel</button>
                 </div>
-                
+
             </div>
-            
-            
+
+
         </form>
     </div>
 </ng-template>
@@ -635,16 +684,15 @@
                         <option *ngFor="let i of productlist;" value="{{ i.product_id }}">{{ i.product_name }}
                         </option>
                     </select>
-                    <span class="error"
-                        *ngIf="productErrorFlag==1 && selectedproductid==''">Product Is
+                    <span class="error" *ngIf="productErrorFlag==1 && selectedproductid==''">Product Is
                         Required</span>
-                        <div class="form-group row form-groupbtndiv">
+                    <div class="form-group row form-groupbtndiv">
 
-                            <button (click)="productsubmit(selectedlead._id)">Book</button>
-                            <button (click)="modalRef2.hide();selectedproductid=''"> cancel</button>
-                            <div class="clearfix"></div>
+                        <button (click)="productsubmit(selectedlead._id)">Book</button>
+                        <button (click)="modalRef2.hide();selectedproductid=''"> cancel</button>
+                        <div class="clearfix"></div>
 
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -655,26 +703,26 @@
 
 <!--Put Price Point modal-->
 <ng-template #pricepointmodal>
-        <div class="modal-body brandmanagement_modal discoverycall">
-            <div class="logo_wrapper">
-                <img src="assets/images/logo.png">
-            </div>
-            <div class="brand_messagebox">
-                <div class="form-group row">
-                    <label class="col-sm-12 col-form-label">Put A Closing Price</label>
-                    <div class="col-sm-12">
-    <input type="text" [(ngModel)]="pricepoint">
-                        <span *ngIf="pricepoint=='' && issubmitprice==1" class="error">*Closing Price Is Required</span>
-                            <div class="form-group row form-groupbtndiv">
-                                <button (click)="addPrice()">Save price</button>
-                                <button (click)="modalRef2.hide()">cancel</button>
-                                <div class="clearfix"></div>
-    
-                            </div>
+    <div class="modal-body brandmanagement_modal discoverycall">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <div class="form-group row">
+                <label class="col-sm-12 col-form-label">Put A Closing Price</label>
+                <div class="col-sm-12">
+                    <input type="text" [(ngModel)]="pricepoint">
+                    <span *ngIf="pricepoint=='' && issubmitprice==1" class="error">*Closing Price Is Required</span>
+                    <div class="form-group row form-groupbtndiv">
+                        <button (click)="addPrice()">Save price</button>
+                        <button (click)="modalRef2.hide()">cancel</button>
+                        <div class="clearfix"></div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-        </div>
-    </ng-template>
+    </div>
+    <div>
+    </div>
+</ng-template>

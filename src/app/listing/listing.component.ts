@@ -24,6 +24,8 @@ declare var $: any;
     providers: [Commonservices],
 })
 export class ListingComponent implements OnInit {
+    prodSelect = 0;
+
     public start_time: any;
     public end_time: any;
     public submitval: any = 1;

@@ -2549,3 +2549,9 @@ text-align: center;}
 
 
 .main_divbody:first-child .main_div{ display: none;  }
+
+.user_management_wrapper .user_management_inner .inner_content_wrapper .search_content select{
+    height: 38px;
+    border: none;
+    padding: 0 5px!important;
+}
