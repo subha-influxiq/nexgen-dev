@@ -62,6 +62,7 @@ import { TrainingreportsComponent } from "./trainingreports/trainingreports.comp
 import {ManageVideoCategoryComponent} from "./manage-video-category/manage-video-category.component";
 import {ManageVideosComponent} from "./manage-videos/manage-videos.component";
 import { AdditionalVideoComponent } from './additional-video/additional-video.component';
+import { GoogleCalendarAutomationReportComponent } from './google-calendar-automation-report/google-calendar-automation-report.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -152,6 +153,7 @@ const appRoutes: Routes = [
     { path: 'manage-video-category', component: ManageVideoCategoryComponent },
     { path: 'manage-video', component: ManageVideosComponent },
     { path: 'additional-video/:categoryid', component: AdditionalVideoComponent },
+    {path: 'call', component: GoogleCalendarAutomationReportComponent}
 
 
 ];

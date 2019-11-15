@@ -82,6 +82,7 @@ import { AdditionalVideoComponent } from './additional-video/additional-video.co
 import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { GoogleCalendarAutomationReportComponent } from './google-calendar-automation-report/google-calendar-automation-report.component';
 // import { DemoMaterialModule } from './material-module';
 
 @NgModule({
@@ -147,7 +148,8 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     NotelistComponent,
     ManageVideoCategoryComponent,
     ManageVideosComponent,
-    AdditionalVideoComponent
+    AdditionalVideoComponent,
+    GoogleCalendarAutomationReportComponent
 
   ],
   imports: [

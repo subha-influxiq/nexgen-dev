@@ -1,3 +1,8 @@
+.search_content select, .search_content h3 select,.user_management_wrapper .user_management_inner .inner_content_wrapper h3 select{
+    height: 38px;
+    border: none; 
+    padding: 0 5px!important;
+}
 @font-face {
     font-family: 'Notera';
     src: url('../fonts/notera_personaluseonly-webfont.woff2') format('woff2'),
