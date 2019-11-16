@@ -44,7 +44,7 @@
 
                             <!-- added by himadri start product search-->
 
-                            <div class="search_content" *ngIf="productval != ''">
+                            <div class="search_content" *ngIf="productval != '' && cookeiservice.usertype == 'admin' && router.url== ['/manage-leads']">
                                 <h3>
                                 <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)" [(ngModel)]="filterval4" required>
                                         <option value="0" disabled>Select Product</option>
@@ -54,14 +54,13 @@
                                 </h3>
                             </div>
 
+                                                        <!-- added by himadri end product search-->
 
+                        <!-- added by himadri start Date Range search-->
 
+                            <span *ngIf="cookeiservice.usertype == 'admin' && router.url== ['/manage-leads']">
                             <form>
-                                <!-- <h3 class="timezone_class">search by date</h3> -->
-                                <div class="form-group">
-
-                                    <!-- <input class="form-control select_inpu2" [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"> -->
-
+                              <div class="form-group">
                                     <input type="text" placeholder="Select Date Range" class="form-control"
                                         [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
                                         [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
@@ -76,8 +75,11 @@
                                 </div>
 
                             </form>
+                            </span>
 
-                            <!-- added by himadri end product search-->
+
+                            <!-- added by himadri end Date Range search-->
+
 
                         </div>
                         <div class="clearfix"></div>
@@ -280,7 +282,7 @@
                                                     price point</span>
 
 
-                                                <!-- added by Himadri start -->
+                                                <!-- added by Himadri start Appointment Added-->
 
 
                                                 <span class="delete_user"
@@ -289,7 +291,7 @@
                                                 <span class="delete_user"
                                                     *ngIf="item.appointment_count!= null &&item.appointment_count ==0">Appointment
                                                     Not Added</span>
-                                                <!-- added by Himadri end -->
+                                                <!-- added by Himadri end Appointment Added-->
 
 
                                             </span>
