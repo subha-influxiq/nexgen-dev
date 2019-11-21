@@ -186,7 +186,28 @@
                         [routerLink]="['/useraccountsetting',item._id]">No</span>
                     </td> -->
                     <td *ngIf="usertype=='admin'" datalabel="Action">
-                      <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span><br>
+                      <span class=" delete_user" (click)="deletdata(item._id,commonconfirmmodal1)">delete</span>
+                      <br>
+<!-- Himadri  MDStock International Start -->
+
+
+                      <!-- <br>
+
+
+                      Have This User On <br> MDStock International:<span class="statusactive"
+                      *ngIf="item.calenderaccess!=null && item.calenderaccess==1 ">&nbsp;Active &nbsp;
+                      <span *ngIf="usertype=='admin'" class="ticon_active"
+                        (click)="toggleCalenderAccess(item)"></span>
+                    </span>
+                    <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
+                      <span *ngIf="usertype=='admin'" class="ticon_inactive"
+                        (click)="toggleCalenderAccess(item)"></span>
+                    </span>
+                    <br> -->
+
+
+
+
                       <!-- <span class="edit_user" (click)="getUserDetails(item.email)">Login As {{item.firstname}}
                         {{item.lastname}}</span> -->
                         <span class="loginclass" (click)="getUserDetails(item.email)">Login As {{item.firstname}}

@@ -30,7 +30,7 @@ export class AdminheaderComponent implements OnInit {
   public checkOldCookie: any;
   public oldcookiedata: any;
   public gameplanButton:any = 0;
-  public calenderaccess:any;
+  public calenderaccess: any;
 
   constructor(@Inject(WINDOW) private window: Window, public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
     this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
@@ -127,9 +127,21 @@ export class AdminheaderComponent implements OnInit {
                 result = res;
                 // if (result.resc >0) {
                 for (let i in result.res) {
-                  if (result.res[i].trainingpercent >= 100) { 
-                  
-                   this.gameplanButton = 1;
+                  if (result.res[i].trainingpercent >= 100 && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
+
+                    this.gameplanButton = 1;
+                    this.calenderaccess = 1; 
+
+                    let link = this._commonservices.nodesslurl + 'addorupdatedata?token='+this.cookie.get('jwttoken');
+        let data={
+            id: this.cookie.get('userid'),
+            calenderaccess: 1
+        }
+        console.log('+++',data);
+        this._http.post(link, {source:'users',data:data})
+            .subscribe((res) => {
+              console.log('---',res);
+             });
                   }
                 }
                 // }

@@ -8,5 +8,5 @@ export const environment = {
   // productid: '5d45a11d0d3c2806e4528ffd',
   productid:'5d7f16463bd1bb6d1d19359b',
   awstrainingid:'5d7f23843bd1bb6d1d19359f',
-  // mdstocktrainingid:'5dbc2f4e22d98f6286d2b00a',
+  mdstocktrainingid:'5dbc2f4e22d98f6286d2b00a',
 };

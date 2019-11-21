@@ -133,7 +133,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
                   for (let i in result.res) {
                     if (result.res[i].trainingpercent == 100) {
                       setTimeout(() => {
-                        this.modallink.nativeElement.click();
+                        // this.modallink.nativeElement.click();
                       }, 50);
                     }
                   }

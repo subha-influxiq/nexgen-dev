@@ -136,7 +136,6 @@ export class SlotviewComponent implements OnInit {
     geteventarr(){
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
-
             case 'on-boarding-call':
                 this.headerText.hedaerH4 = 'Select your On-Boarding Call Appointment as per your convenience.';
                 this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
@@ -249,13 +248,22 @@ export class SlotviewComponent implements OnInit {
                 break;
             default:
                 if(this.filterval5!=null && this.filterval5 != '') {
-                    let spl = this.filterval5.split('/');
-                    let spl_modified = spl[2]+'-'+spl[0]+'-'+spl[1];
+                   
+                    // let spl = this.filterval5.split('/');
+
+                    // let spl_modified = spl[2]+'-'+spl[0]+'-'+spl[1];
                     if(this.recid == null) {
-                        cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'},   startdate:spl_modified};
+                        cond = { allslotsuserid_object:this.cookeiservice.get('userid'),slots:{$type:'array'},    startdate:{
+                            $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                            $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                        }
+                    };
                     } else {
                         cond = {
-                            allslotsuserid_object:this.recid,slots:{$type:'array'},   startdate:spl_modified
+                            allslotsuserid_object:this.recid,slots:{$type:'array'},   startdate:{
+                                $lte: moment(this.filterval5[1]).format('YYYY-MM-DD'),
+                                $gt: moment(this.filterval5[0]).format('YYYY-MM-DD')
+                            }
                         };
                     }
                 } else {
