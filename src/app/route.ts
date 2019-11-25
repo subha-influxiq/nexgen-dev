@@ -69,8 +69,8 @@ const appRoutes: Routes = [
     { path: 'login', component:  LoginComponent},
     { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
-    // { path: 'dashboard', component: DashboardComponent,resolve : {results: TestresolveService},data: { requestcondition: { source: 'users', condition: {type:'rep'}}, endpoint: 'datalist'}},
-   { path: 'dashboard', component: DashboardComponent},
+    { path: 'dashboard', component: DashboardComponent,resolve : {results: TestresolveService},data: { requestcondition: { source: '', condition: {}}, endpoint: 'traning-repote'}},
+//    { path: 'dashboard', component: DashboardComponent},
     { path: 'admin', component: AdminmanagementComponent},
     { path: 'regional', component: RegionalRecruiterComponent},
     { path: 'rep', component: RepComponent},
@@ -87,7 +87,7 @@ const appRoutes: Routes = [
     { path: 'representativelist', component: RepresentativelistComponent},
     { path: 'reptrainingcenter', component: RepTraingcenterComponent},
     // { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent}, // cat id
-    { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent,resolve : {results: TestresolveService},data: { requestcondition: { trainingcategory:{}, userid:{} }, endpoint:'traininglessonlist'}},
+    { path: 'reptrainingcenter/:cid', component: RepTraingcenterComponent,resolve : {results: TestresolveService},data: { requestcondition: { trainingcategory:{}, userid:{} }, endpoint:'training_category_foruser'}},
     { path: 'reptrainingcenter/:cid/:lid', component: RepTraingcenterComponent}, // lesson id
     { path:'trial', component: TrialsComponent},
     { path:'trainingsectionlist', component: TrainingsectionlistComponent},

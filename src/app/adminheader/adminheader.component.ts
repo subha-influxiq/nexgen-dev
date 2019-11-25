@@ -117,37 +117,41 @@ export class AdminheaderComponent implements OnInit {
             //this.calenderaccess=false;
           }
           if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage < 100 && this.repDetailsNew[0].is_discovery == false || this.repDetailsNew.length==0){
+            setTimeout(() => {
+              
+
             let link2 = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
-          this._http.post(link2, {
-            "condition": {"user_id_object": this.cookie.get('userid')},
-            "source": "user_parent_category_percent"
-          })
-              .subscribe(res => {
-                let result: any;
-                result = res;
-                // if (result.resc >0) {
-                for (let i in result.res) {
-                  if (result.res[i].trainingpercent >= 100 && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
-
-                    this.gameplanButton = 1;
-                    this.calenderaccess = 1; 
-
-                    let link = this._commonservices.nodesslurl + 'addorupdatedata?token='+this.cookie.get('jwttoken');
-        let data={
-            id: this.cookie.get('userid'),
-            calenderaccess: 1
-        }
-        console.log('+++',data);
-        this._http.post(link, {source:'users',data:data})
-            .subscribe((res) => {
-              console.log('---',res);
-             });
+            this._http.post(link2, {
+              "condition": {"user_id_object": this.cookie.get('userid')},
+              "source": "user_parent_category_percent"
+            })
+                .subscribe(res => {
+                  let result: any;
+                  result = res;
+                  // if (result.resc >0) {
+                  for (let i in result.res) {
+                    if (result.res[i].trainingpercent >= 100 && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
+  
+                      this.gameplanButton = 1;
+                      this.calenderaccess = 1; 
+  
+                      let link = this._commonservices.nodesslurl + 'addorupdatedata?token='+this.cookie.get('jwttoken');
+          let data={
+              id: this.cookie.get('userid'),
+              calenderaccess: 1
+          }
+          console.log('+++',data);
+          this._http.post(link, {source:'users',data:data})
+              .subscribe((res) => {
+                console.log('---',res);
+               });
+                    }
                   }
-                }
-                // }
-              }, error => {
-                console.log('Oooops!');
-              });
+                  // }
+                }, error => {
+                  console.log('Oooops!');
+                });
+            }, 5000);
         }
         }
       })

@@ -17,15 +17,21 @@ export class DashboardComponent implements OnInit {
     public getonedetails: any;
     public totalreptraining: any;
     public totalnewhiretraining: any;
-    public traininglist: any;
+    public traininglist: any = [];
 
     constructor(public router:Router,public http:HttpClient,public cookie:CookieService,public commonservices:Commonservices, private route: ActivatedRoute)
     {
+
+
+        
+
+
+
         this.commonservices=commonservices;
         if(this.cookie.get('userid')!=null){
-            this.gettrainingsection();
+            // this.gettrainingsection();
           //  this.getreplist();
-            this.gettraininglession();
+            // this.gettraininglession();
             this.getlegaldocs();
         }
     }
@@ -33,27 +39,32 @@ export class DashboardComponent implements OnInit {
     {
         this.trainingcenterdetails();
 
-        // this.route.data.forEach((data) => {
-        //     console.log('resolve route data ... ');
-        //     console.log('json',data['results']);
-        //     this.repdetails=data['results'].res;
+        this.route.data.forEach((data) => {
+            console.log('resolve route data ... ');
+            console.log('json',data);
+            this.traininglessondeteils = data['results'].data.traininglist;
+            this.traininglist = data['results'].data.traininglist;
+            this.getonedetails = data['results'].data.user_training;
 
-        // });
+            // this.repdetails=data['results'].res;
+
+
+        });
     }
-    gettrainingsection()
-    {
-        const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'traininglesson'})
-            .subscribe(res=> {
-                    let result:any;
-                    result = res;
-                    this.traininglist=[];
-                    this.traininglist=result.res;
-                },
-                error=>{
-                    console.log("Can not get");
-                });
-    }
+    // gettrainingsection()
+    // {
+    //     const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+    //     this.http.post(link,{source:'traininglesson'})
+    //         .subscribe(res=> {
+    //                 let result:any;
+    //                 result = res;
+    //                 this.traininglist=[];
+    //                 this.traininglist=result.res;
+    //             },
+    //             error=>{
+    //                 console.log("Can not get");
+    //             });
+    // }
   /*  getreplist()
     {
         console.log('userid');
@@ -89,37 +100,41 @@ export class DashboardComponent implements OnInit {
                 }else {
                     this.legaldocs=result.res;
                     console.log('Get legaldocs Data');
-                    console.log(this.legaldocs);
+                    // console.log(this.legaldocs);
                 }
             })
     }
-    gettraininglession()
-    {
-        const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'traininglesson'})
-            .subscribe(res=>{
-                let result;
-                result=res;
-                if(result.status=='error'){
-                    console.log('Oopss');
-                }else {
-                    this.traininglessondeteils=result.res;
-                    console.log('Get traininglesson data');
-                    console.log(this.traininglessondeteils);
-                }
-            })
-}
+//     gettraininglession()
+//     {
+//         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+//         this.http.post(link,{source:'traininglesson'})
+//             .subscribe(res=>{
+//                 let result;
+//                 result=res;
+//                 if(result.status=='error'){
+//                     console.log('Oopss');
+//                 }else {
+//                     this.traininglessondeteils=result.res;
+//                     console.log('Get traininglesson data');
+//                     console.log(this.traininglessondeteils);
+// /******************* added by Himadri ***********************/
+//                     this.traininglist=result.res;
+
+
+//                 }
+//             })
+// }
     trainingcenterdetails()
     {
-        const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
-        this.http.post(link,{source:'user_training'})
-            .subscribe(res=>{
-                let result;
-                result=res;
-                this.getonedetails=result.res;
-                console.log('Get Onedetails');
-                console.log(this.getonedetails);
-            });
+        // const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
+        // this.http.post(link,{source:'user_training'})
+        //     .subscribe(res=>{
+        //         let result;
+        //         result=res;
+        //         this.getonedetails=result.res;
+        //         console.log('Get Onedetails');
+        //         console.log(this.getonedetails);
+        //     });
 
              const link1 = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
             this.http.post(link1,{source:'training_group'})

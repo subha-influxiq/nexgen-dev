@@ -61,19 +61,97 @@ export class RepTraingcenterComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.route.params.subscribe(params => {
-          this.cid = params['cid'];
-          this.lid = params['lid'];
-      });
-      if(this.cid == null){            //initial training
-        //   this.getmarkasdonelist();
-          this.ngclassflag = 0;
-      }else{                        // other
-          this.gettraininglist();
-          this.ngclassflag = 1;
-      }
-      this.getmarkasdonelist();         //delete after done
+let routeData: any;
+    this.route.data.forEach((data) => {
+        console.log('resolve route data ... ');
+        console.log('json',data);
+        routeData = data['results'];
+        console.log(routeData)
+        // this.datalist = data['results'].data.traininglist;
+        // this.traininglist = data['results'].data.traininglist;
+        // this.getonedetails = data['results'].data.user_training;
+
+        // this.repdetails=data['results'].res;
+
+        this.route.params.subscribe(params => {
+            this.cid = params['cid'];
+            this.lid = params['lid'];
+        });
+        if(this.cid == null){            //initial training
+          //   this.getmarkasdonelist();
+            this.ngclassflag = 0;
+        }else{                        // other
+            this.gettraininglistFromRoute(routeData);
+            this.ngclassflag = 1;
+        }
+        this.getmarkasdonelist();         //delete after done
+    });
+     
   }
+  gettraininglistFromRoute(result: any){
+      console.log("result++++++++++", result);
+    //   console.log(result);
+    let dpcat:any=[];
+    let ndpcat:any=[]; 
+    this.donecategory = [];
+    this.notdonecategory = [];
+    this.trainingcategory = result.res;
+    this.done_Training_lesson = result.res2;
+    this.markasdonedatalist = result.res2;
+    this.getdatalist(null);
+    this.last_lesson = result.res3;
+    for(let i in this.last_lesson){
+
+        for(let y in this.done_Training_lesson){
+
+            if(this.done_Training_lesson[y].traininglesson==this.last_lesson[i]._id){
+                this.donelesson.push(this.last_lesson[i].trainingcategory);
+            }
+        }
+    } 
+
+    console.log('huio before loop',this.cid);
+    this.notdoneparentcat=[];
+    this.doneparentcat=[]; 
+    this.notdonecategory=[];
+    this.donecategory=[];
+    this.currentcategoryname = '';
+    for(let c in this.trainingcategory){
+        if(this.trainingcategory[c]._id==this.cid){
+        console.log('huio',this.cid,this.trainingcategory[c]);
+        this.currentcategoryname=this.trainingcategory[c].categoryname;
+        } 
+        if($.inArray(this.trainingcategory[c]._id,this.donelesson)!=-1 && this.trainingcategory[c].parentcategory.length>0){  
+            //dpcat.push(this.trainingcategory[c].parentcategory);
+            console.log('dpcat...',dpcat.includes(this.trainingcategory[c].parentcategory));
+            this.donecategory.push(this.trainingcategory[c]);
+            if(dpcat.includes(this.trainingcategory[c].parentcategory)==false){
+                this.doneparentcat.push({catname:this.trainingcategory[c].parentcat,catid:this.trainingcategory[c].parentcategory});
+            }
+            dpcat.push(this.trainingcategory[c].parentcategory);
+        }else 
+        {
+            if(this.trainingcategory[c].parentcategory.length>0)
+            {
+                this.notdonecategory.push(this.trainingcategory[c]);
+                console.log('pcat in loop',this.trainingcategory[c],this.trainingcategory[c].parentcat);
+                console.log('ndcat...',ndpcat.includes(this.trainingcategory[c].parentcategory));
+                if(ndpcat.includes(this.trainingcategory[c].parentcategory)==false)
+                {
+                this.notdoneparentcat.push({catname:this.trainingcategory[c].parentcat,catid:this.trainingcategory[c].parentcategory});
+                }
+                ndpcat.push(this.trainingcategory[c].parentcategory);
+            }
+        }
+
+        if(this.trainingcategory[c]._id == this.cid) {
+            this.lastLessionName = this.trainingcategory[c].categoryname;
+        }
+    }
+    console.log(',this.doneparentcat,this.notdoneparentcat');
+    console.log(this.notdoneparentcat);
+    console.log(this.doneparentcat);
+}
 
     gettraininglist(){
         let dpcat:any=[];
@@ -177,6 +255,8 @@ export class RepTraingcenterComponent implements OnInit {
           console.log('Oooops!');
         });
   }
+
+
     dynamicSort(property) {
         var sortOrder = 1;
         if(property[0] === "-") {
