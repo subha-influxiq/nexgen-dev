@@ -65,9 +65,9 @@ export class Commonservices {
             .subscribe(res => {
                 let result;
                 this.totaltimezone=result = res;
-                console.log(result);
+               // console.log(result);
             }, error => {
-                console.log('Oooops!');
+               // console.log('Oooops!');
             });
     }
     shorten(str, maxLen, separator = '') {

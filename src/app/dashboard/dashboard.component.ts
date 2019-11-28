@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit {
         this.trainingcenterdetails();
 
         this.route.data.forEach((data) => {
-            console.log('resolve route data ... ');
-            console.log('json',data);
+           // console.log('resolve route data ... ');
+           // console.log('json',data);
             this.traininglessondeteils = data['results'].data.traininglist;
             this.traininglist = data['results'].data.traininglist;
             this.getonedetails = data['results'].data.user_training;
@@ -62,26 +62,26 @@ export class DashboardComponent implements OnInit {
     //                 this.traininglist=result.res;
     //             },
     //             error=>{
-    //                 console.log("Can not get");
+    //                // console.log("Can not get");
     //             });
     // }
   /*  getreplist()
     {
-        console.log('userid');
-        console.log(this.cookie.get('userid'));
+       // console.log('userid');
+       // console.log(this.cookie.get('userid'));
         const link = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
         this.http.post(link,{source:'users',condition:{type:'rep'}})
             .subscribe(res=>{
                 let result;
                 result=res;
-                console.log('result.......');
-                console.log(result);
+               // console.log('result.......');
+               // console.log(result);
                 if(result.status=='error'){
-                    console.log('Oopsss');
+                   // console.log('Oopsss');
                 }else {
                     this.repdetails=result.res;
-                    console.log('Get Rep Data');
-                    console.log(this.repdetails);
+                   // console.log('Get Rep Data');
+                   // console.log(this.repdetails);
                 }
             })
     }*/
@@ -93,14 +93,14 @@ export class DashboardComponent implements OnInit {
     .subscribe(res=>{
                 let result;
                 result=res;
-                console.log('result.......');
-                console.log(result);
+               // console.log('result.......');
+               // console.log(result);
                 if(result.status=='error'){
-                    console.log('Oopsss');
+                  // console.log('Oopsss');
                 }else {
                     this.legaldocs=result.res;
-                    console.log('Get legaldocs Data');
-                    // console.log(this.legaldocs);
+                   // console.log('Get legaldocs Data');
+                   // console.log(this.legaldocs);
                 }
             })
     }
@@ -112,11 +112,11 @@ export class DashboardComponent implements OnInit {
 //                 let result;
 //                 result=res;
 //                 if(result.status=='error'){
-//                     console.log('Oopss');
+//                    // console.log('Oopss');
 //                 }else {
 //                     this.traininglessondeteils=result.res;
-//                     console.log('Get traininglesson data');
-//                     console.log(this.traininglessondeteils);
+//                    // console.log('Get traininglesson data');
+//                    // console.log(this.traininglessondeteils);
 // /******************* added by Himadri ***********************/
 //                     this.traininglist=result.res;
 
@@ -132,8 +132,8 @@ export class DashboardComponent implements OnInit {
         //         let result;
         //         result=res;
         //         this.getonedetails=result.res;
-        //         console.log('Get Onedetails');
-        //         console.log(this.getonedetails);
+        //        // console.log('Get Onedetails');
+        //        // console.log(this.getonedetails);
         //     });
 
              const link1 = this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken');
@@ -141,8 +141,8 @@ export class DashboardComponent implements OnInit {
                 .subscribe(res=>{
                     let result;
                     result=res;
-                    console.log('training group  details');
-                    console.log(result);
+                   // console.log('training group  details');
+                   // console.log(result);
 
                     if(result['res']!=null && result['res'][0]!=null && result['res'][0]['_id']=='New Hire Trainning' ){
                         this.totalnewhiretraining=result['res'][0]['count'];
@@ -159,7 +159,7 @@ export class DashboardComponent implements OnInit {
                         this.totalreptraining=result['res'][1]['count'];
                     }
 
-                    console.log('this.totalreptraining-'+this.totalreptraining);
+                   // console.log('this.totalreptraining-'+this.totalreptraining);
                 });
 
 

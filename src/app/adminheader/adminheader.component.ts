@@ -71,7 +71,6 @@ export class AdminheaderComponent implements OnInit {
 
   getvideocatagory() {
     let link = this._commonservices.nodesslurl + 'datalist?token=' + this.cookie.get('jwttoken');
-    console.log(link);
     this._http.post(link, { source: "videocategory_view_with_parent", condition: { status: true } })
       .subscribe(res => {
         let result;
@@ -197,12 +196,11 @@ export class AdminheaderComponent implements OnInit {
 
   logout() {
     this.cookie.deleteAll();
-    this.cookie.deleteAll();
-    //this.cookie.deleteAll('/');
-    this.cookie.deleteAll();
+    this.cookie.deleteAll('/');  
     setTimeout(() => {
-      this.router.navigate(['/']);
-    }, 500);
+      window.location.href='/';
+      this.router.navigateByUrl('login');
+    }, 1000);
   }
 
   getrepdetails() {
