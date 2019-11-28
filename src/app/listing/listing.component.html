@@ -634,8 +634,14 @@
 
 
 <!--Youtub video modal-->
-<ng-template #youtubmodal>
-<iframe width="560" height="315" [attr.src]="youtubVideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ng-template #youtubmodal>  
+    <div class="youtubevideocls">
+        <span class="closebtn">     	
+    <i class="fa fa-times" (click)="closemodal()"></i>
+        </span>
+        
+        <iframe width="560" height="315" [attr.src]="youtubVideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 </ng-template>
 
 

@@ -35,6 +35,7 @@ export class ListingComponent implements OnInit {
     modalRef: BsModalRef;
     modalRef1: BsModalRef;
     modalRef2: BsModalRef;
+    modalRef3: BsModalRef;
     private selectedid: any;
     public showLoader: any;
     public sourceval: any;
@@ -82,6 +83,7 @@ export class ListingComponent implements OnInit {
     dragOver: boolean;
     options: UploaderOptions;
     @ViewChild('fileInput1') uploaderInput: ElementRef;
+    
     public percentageis: any = [];
     public lengthis: any = [];
     public flag: number = 0;
@@ -1058,7 +1060,10 @@ export class ListingComponent implements OnInit {
         this.youtubVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+id);
         console.log(this.youtubVideoUrl);
         // this.youtubVideoUrl = val;
-        this.modalRef2 = this.modal.show(template);
+        this.modalRef3 = this.modal.show(template);
+    }
+    closemodal() {
+        this.modalRef3.hide();
     }
 
     iframeAutoplay(id: any) {
