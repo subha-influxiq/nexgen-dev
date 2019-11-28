@@ -233,7 +233,7 @@
 
                                                     <img class="iframgeimg" id="thumb{{item._id}}"
                                                     style="height: 150px;width: 250px;"
-                                                    (click)="youtubVideoPlay(item.youtube_url, youtubmodal)" 
+                                                    (click)="youtubeVideoPlay(item.youtube_url, youtubemodal)" 
                                                     [attr.src]="item[item1.value]">
                                             </span>
                                             <span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
@@ -634,13 +634,13 @@
 
 
 <!--Youtub video modal-->
-<ng-template #youtubmodal>  
+<ng-template #youtubemodal>  
     <div class="youtubevideocls">
         <span class="closebtn">     	
-    <i class="fa fa-times" (click)="closemodal()"></i>
+    <i class="fa fa-times" (click)="modalRef3.hide()"></i>
         </span>
         
-        <iframe width="560" height="315" [attr.src]="youtubVideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" [attr.src]="youtubeVideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </ng-template>
 
