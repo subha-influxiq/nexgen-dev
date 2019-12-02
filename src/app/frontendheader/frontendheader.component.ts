@@ -57,6 +57,10 @@ public repdashboard=0;
         {
             this.router.navigate(['/regionaldashboard']);
         }
+        if(this.cookie.get('usertype')=='contact_manager')
+        {
+            this.router.navigate(['/contact/dashboard']);
+        }
 
     }
     gotorepdashboard(){

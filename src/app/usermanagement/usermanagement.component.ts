@@ -48,8 +48,6 @@ export class UsermanagementComponent implements OnInit {
     if (this.consultantrole != null && this.consultantrole == 1) { //when senior consultant accesses his reps' details
       data = { affid: this.cookieservice.get('userid') };
     }
-    console.log(data);
-    console.log('consultantrole' + this.consultantrole);
     this._http.post(link, data)
       .subscribe(res => {
         let result;
@@ -88,8 +86,6 @@ export class UsermanagementComponent implements OnInit {
         let result;
         result = res;
         this.singleuserdata = result.res;
-        console.log('singledata.......');
-        console.log(this.singleuserdata);
       })
   }
 
@@ -98,16 +94,7 @@ export class UsermanagementComponent implements OnInit {
     let status: any;
     if (item.status != null) status = 1 - item.status;
     if (item.status == null) status = 1;
-    // if (item.status != null && item.status != 1 && item.status != 0) {
-    //   status = 0;
-    // }
-    // if (item.status == null) status = 1;
-    console.log('item.status99');
-    console.log(item.status);
-    console.log('status----------' + status);
     const link = this.commonservices.nodesslurl + 'togglestatus?token=' + this.cookieservice.get('jwttoken');
-    /* console.log('link');
-     console.log(link);*/
     this._http.post(link, { id: item._id, source: 'users', status: status })
       .subscribe(res => {
         this.getUserLists();
@@ -119,16 +106,17 @@ export class UsermanagementComponent implements OnInit {
       });
   }
 
+  // added by Himadri toggleSignUpMdStock
+  toggleSignUpMdStock(item: any){
+    console.log(item)
+  }
+
   toggleCalenderAccess(item: any) {
     this.loader = 1;
     let calenderaccess: any;
     if (item.calenderaccess != null) calenderaccess = 1 - item.calenderaccess;
     if (item.calenderaccess == null) calenderaccess = 1;
-    console.log('item.calenderaccess');
-    console.log(item.calenderaccess);
     const link = this.commonservices.nodesslurl + 'addorupdatedata';
-    /* console.log('link');
-     console.log(link);*/
     this._http.post(link, { source: 'users', data: { id: item._id, calenderaccess: calenderaccess } })
       .subscribe(res => {
         this.getUserLists();
@@ -145,11 +133,7 @@ export class UsermanagementComponent implements OnInit {
     let consultantrole: any;
     if (item.is_consultant != null) consultantrole = 1 - item.consultantrole;
     if (item.is_consultant == null) consultantrole = 1;
-    console.log('item.is_consultant');
-    console.log(item.is_consultant);
     const link = this.commonservices.nodesslurl + 'addorupdatedata';
-    /* console.log('link');
-     console.log(link);*/
     this._http.post(link, { source: 'users', data: { id: item._id, is_consultant: consultantrole } })
       .subscribe(res => {
         this.getUserLists();
@@ -168,7 +152,6 @@ export class UsermanagementComponent implements OnInit {
     if (this.filterval2 != '' && this.filterval2 != null) {
       this.filterval = this.filterval2 + '|';
     }
-    console.log(this.filterval);
   }
   deletdata(val: any, template: TemplateRef<any>) {
     this.modalRef = this.modal.show(template);
@@ -196,8 +179,6 @@ export class UsermanagementComponent implements OnInit {
     this.modalRef.hide();
   }
   openModal(item: any, template: TemplateRef<any>, type: any) {
-    console.log(item);
-
     this.eventtype = type;
     this.getEventDetails(item.email, type);
     this.modalRef = this.modal.show(template, { class: 'modal-md' });
@@ -217,27 +198,19 @@ export class UsermanagementComponent implements OnInit {
       .subscribe(res => {
         let result;
         result = res;
-        console.log('result in events...');
-        console.log(result);
         for (let i in result.res) {
           if (result.res[i].eventdata != null) {
             this.eventList.push(result.res[i]);
           }
         }
-        console.log(this.eventList);
-        //  this.eventList = result.res;
-
       })
   }
 
   // added by himadri
 
   getMedicaAaparchuniti(val: any, template: TemplateRef<any>){
-    console.log('template', template);
-    console.log(val)
     this.modalRef = this.modal.show(template);
     this.medicaAaparchunitiValue = val;
-    console.log(this.medicaAaparchunitiValue)
   }
 
   // added by chandrani
@@ -249,15 +222,9 @@ export class UsermanagementComponent implements OnInit {
 
         let originalcookiedata: any;
         originalcookiedata = this.cookieservice.getAll();
-        this.cookieservice.set('oldcookie', JSON.stringify(originalcookiedata))
-        console.log('this.originalCookie.getAll()');
-        console.log(this.originalCookie.getAll());
-
-        console.log(this.cookieservice.getAll());
+        this.cookieservice.set('oldcookie', JSON.stringify(originalcookiedata));
         let result: any; //originalCookie
         result = res;
-
-        console.log(result);
         if (result.resc == 1 && result.res != null && result.res[0] != null) {
           if (result.res[0].status == 1) {
 
@@ -277,7 +244,6 @@ export class UsermanagementComponent implements OnInit {
             this.cookieservice.set('is_consultant', result.res[0].is_consultant);
             this.cookieservice.set('calenderaccess', result.res[0].calenderaccess);
             this.cookieservice.set('fullname', result.res[0].firstname + ' ' + result.res[0].lastname);
-            console.log(this.cookieservice.getAll());
             if (result.res[0].type == 'admin') {
               this.router.navigate(['/dashboard']);
             }
@@ -285,10 +251,6 @@ export class UsermanagementComponent implements OnInit {
               this.cookieservice.set('refreshtoken', result.res[0].refreshtoken);
               this.router.navigate(['/regionaldashboard']);
             }
-            /* if(result.item[0].type=='rep')
-            {
-              this.router.navigate(['/repdashboard']);
-            }*/
             if (result.res[0].type == 'rep') {
               if (result.res[0].status == 0) {
                 this.router.navigate(['/tempaccess']);
@@ -305,15 +267,7 @@ export class UsermanagementComponent implements OnInit {
               if (result.res[0].signup_step2 == 1 && result.res[0].contractstep == 1 && result.res[0].reptraininglessonstep == null) this.router.navigate(['/reptrainingcenter']);
               if (result.res[0].signup_step2 == 1 && result.res[0].contractstep == 1 && result.res[0].reptraininglessonstep == 1) this.router.navigate(['/repdashboard']);
             }
-            console.log('jwttoken');
-            console.log(this.cookieservice.get('jwttoken'));
           }
-          // else{
-          //     this.modalRef=this.modal.show(template);
-          //     setTimeout(() => {
-          //       this.modalRef.hide();
-          //     }, 4000);
-          // }
         }
       })
   }

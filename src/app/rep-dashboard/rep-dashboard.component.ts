@@ -37,7 +37,6 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
       this.userId = this.cookeiservice.get('userid');
       if(typeof(this.cookeiservice.get('calenderaccess'))!=undefined){
         this.calenderaccess = this.cookeiservice.get('calenderaccess');
-
       }else{
         this.calenderaccess = null;
       }

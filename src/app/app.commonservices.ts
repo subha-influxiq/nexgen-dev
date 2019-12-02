@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {  HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import {environment} from '../environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 declare var moment:any;
 
 @Injectable()
@@ -27,13 +28,15 @@ export class Commonservices {
     public productid =  environment["productid"];
     public awstrainingid = environment["awstrainingid"];
     public mdstocktrainingid = environment["mdstocktrainingid"];
+    public userid:any = '';
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;
     public lasttrainingid: any = 0;
     public lessonarray: any = [];
     https://nodessl.influxiq.com:6005/test1*/
 
-    constructor(private http: HttpClient, public sanitizer: DomSanitizer) {
+    constructor(private http: HttpClient, public sanitizer: DomSanitizer, public cookie: CookieService) {
+        this.userid = this.cookie.get('userid');
         this.url = 'https://nexgen.influxiq.com/php/index.php?q=';
       //  this.nodesslurl = 'https://nodessl.influxiq.com:6027/';
         this.uploadurl = 'http://nexgen.influxiq.com/php/index.php';
@@ -56,6 +59,7 @@ export class Commonservices {
             {type0:'admin'},
             {type1:'regional_recruiter'},
             {type2:'rep'},
+            {type3:'contract_manager'},
         ];
       //  console.log(this.roletypes);
         this.sanitizer=sanitizer;

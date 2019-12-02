@@ -38,7 +38,6 @@ export class AppointmentlistComponent implements OnInit {
 
   constructor(public _commonservice: Commonservices, public modal: BsModalService, public _http: HttpClient, public cookeiservice: CookieService, public activatedroute: ActivatedRoute, public router: Router) {
     this.usertype = this.cookeiservice.get('usertype');
-    console.log(this.router.url.indexOf('appointmentlist'));
   }
 
   usersearch() {
@@ -208,22 +207,11 @@ export class AppointmentlistComponent implements OnInit {
         } else {
           this.googleevents = result.res;
           this.googleeventsbackup = result.res;
-          console.log(this.googleevents);
         }
       }, error => {
         console.log('Oooops!');
       });
   }
-  // searchbyval() {
-  //   this.filterval = '';
-  //   if (this.filterval1 != '' && this.filterval1 != null) {
-  //     this.filterval = this.filterval1 + '|';
-  //   }
-  //   if (this.filterval2 != '' && this.filterval2 != null) {
-  //     this.filterval = this.filterval2 + '|';
-  //   }
-  //   console.log(this.filterval);
-  // }
   seteventtime(val) {
     this.activeFlag = val;
     this.futureevent = val;
@@ -232,7 +220,6 @@ export class AppointmentlistComponent implements OnInit {
   // added by Chandrani 
   notesdata(val: any, template: TemplateRef<any>) {
     this.selectedlead = val;
-    console.log(this.selectedlead);
     setTimeout(() => {
       this.modalRef2 = this.modal.show(template);
     }, 2000);
@@ -275,7 +262,6 @@ export class AppointmentlistComponent implements OnInit {
           this.activeFlag = 2;
           this.googleevents = result.res;
           this.googleeventsbackup = result.res;
-          console.log(this.googleevents);
         }
       }, error => {
         console.log('Oooops!');
@@ -284,7 +270,6 @@ export class AppointmentlistComponent implements OnInit {
 
   cancelAppointment(google_event_id: any, refresh_token: any, eid: any) {
     let link = 'http://gapi.betoparedes.com/deleteevent.php?event=' + google_event_id + '&refresh_token=' + refresh_token;
-    console.log(link);
     this._http.get(link)
       .subscribe(res => {
         let result: any;
@@ -296,7 +281,6 @@ export class AppointmentlistComponent implements OnInit {
               "is_canceled": 1, "id": eid
             }, sourceobj: []
           };
-          console.log(datafordb);
           this._http.post(linkfordb, datafordb)
             .subscribe(response => {
               let result2: any;
@@ -315,9 +299,6 @@ export class AppointmentlistComponent implements OnInit {
       });
   }
   toggleStatusInArray(item) {
-    console.log('item in toggleStatusInArray');
-    console.log(item);
-    console.log(item.status);
     if (item.status == null) item.status = 'Pending';
     $('.statusspan').removeClass('hide');
     $('.statusspan').addClass('show');
@@ -327,31 +308,17 @@ export class AppointmentlistComponent implements OnInit {
     $('#span' + item._id).addClass('hide');
     $('#select' + item._id).removeClass('hide');
     $('#select' + item._id).addClass('show');
-
-
-
-    // $('#select'+item._id).removeClass('hide');
-    // $('#select'+item._id).addClass('show');
   }
 
   toggleFromSelect(event: any, item: any) {
-    console.log('event');
-    console.log(event);
-    console.log('item');
-    console.log(item);
-    console.log(item.status);
     let status: any;
     status = event;
     this.selectedstatus = status;
-    console.log(status);
     const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
-    /* console.log('link');
-     console.log(link);*/
     let data = {
       source: 'googleevents',
       data: { id: item._id, status: status }
     };
-    console.log(data);
     this._http.post(link, {
       source: 'googleevents',
       data: { id: item._id, status: status }
@@ -366,19 +333,12 @@ export class AppointmentlistComponent implements OnInit {
   }
 
   openPricepointModal(item: any, template: TemplateRef<any>) {
-    console.log(item);
     this.selectedlead = item;
     this.modalRef2 = this.modal.show(template);
   }
   addPrice() {
-    // if(this.pricepoint==''){
-    //     this.issubmitprice = 1;
-    // }else{
-    //     this.issubmitprice = 0;
-    // }
 
     if (this.pricepoint == '' || this.pricepoint == null) {
-      console.log('error');
       this.issubmitprice = 1;
     } else {
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
@@ -394,7 +354,6 @@ export class AppointmentlistComponent implements OnInit {
           this.getgoogleevents();
           this.modalRef2.hide();
         }, error => {
-          console.log('Oooops!');
           this.pricepoint = '';
           this.getgoogleevents();
         });

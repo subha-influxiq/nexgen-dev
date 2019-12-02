@@ -49,6 +49,10 @@ export class LoginComponent implements OnInit {
         case 'admin':
           this.router.navigate(['/dashboard']);
           break;
+        case 'contract_manager':
+          this.router.navigate(['/contract/dashboard']);
+          console.log('contract');
+          break;
       }
     }else{
       console.log('in login','noo cookie');

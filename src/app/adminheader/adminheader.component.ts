@@ -96,6 +96,17 @@ export class AdminheaderComponent implements OnInit {
     // }, 35000);
   }
 
+
+  calanderAccessMail(email: any){
+    const link = this._commonservices.nodesslurl + 'calander_access_mail';
+    let data: any= {"email":email}
+    this._http.post(link, data)
+      .subscribe(res => {
+        console.log('Mail send successful');
+        console.log(res);
+      })
+  }
+
   getRepDetails() {
     let link = this._commonservices.nodesslurl + 'userreport';
    
@@ -111,7 +122,6 @@ export class AdminheaderComponent implements OnInit {
           if(this.repDetailsNew[0]!=null && this.repDetailsNew[0].calenderaccess !=null ) {
             this.cookie.set('calenderaccess', this.repDetailsNew[0].calenderaccess);
             this.calenderaccess =  this.repDetailsNew[0].calenderaccess;
-            // this.calenderaccess = this.cookie.get('calenderaccess');
           }else{
             //this.calenderaccess=false;
           }
@@ -127,10 +137,8 @@ export class AdminheaderComponent implements OnInit {
                 .subscribe(res => {
                   let result: any;
                   result = res;
-                  // if (result.resc >0) {
                   for (let i in result.res) {
-                    if (result.res[i].trainingpercent >= 100 && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
-  
+                    if (result.res[i].trainingpercent >= 100 && this.repDetailsNew[0]!=null && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
                       this.gameplanButton = 1;
                       this.calenderaccess = 1; 
   
@@ -142,6 +150,8 @@ export class AdminheaderComponent implements OnInit {
           console.log('+++',data);
           this._http.post(link, {source:'users',data:data})
               .subscribe((res) => {
+// added by Himadri Mail function
+                this.calanderAccessMail(this.repDetailsNew[0].email)
                 console.log('---',res);
                });
                     }
@@ -155,7 +165,6 @@ export class AdminheaderComponent implements OnInit {
         }
       })
   }
-  // http://api.nexgentesting.com:7001/modifyemptyslides
   getslidervalueforimage() {
     const link = this._commonservices.nodesslurl + 'modifyemptyslides';
     this._http.get(link)

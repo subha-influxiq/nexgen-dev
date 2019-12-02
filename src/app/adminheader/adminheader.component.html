@@ -65,13 +65,23 @@
               <li class="nav-item" [routerLink]="['/products']">
                 <a class="nav-link ">Products</a>
               </li>
-              <li class="nav-item" [routerLink]="['/appointmentlist']">
+              <li class="nav-item" [routerLink]="['/calendar']">
                 <a class="nav-link ">Calendar Manager</a>
               </li>
               <li class="nav-item" [routerLink]="['/regional']">
                 <!-- <a class="nav-link">Regional Manager</a> -->
                 <a class="nav-link">Closers</a>
               </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Contract Management</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" [routerLink]="['/contract/management']">Contract Manager List</a>
+                  <a class="dropdown-item" [routerLink]="['/resources']">Contract Report</a>
+                </div>
+              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Resource Center</a>
@@ -178,6 +188,18 @@
         <a [routerLink]="['/book-a-closer']" class="nav-link">Discovery Calendar</a>
       </li>
 
+<!-- added by Himadri -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Contract Management</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/contract/management']">Contract Manager List</a>
+        </div>
+      </li>
+
+<!-- added by Himadri -->
+
       <li class="nav-item"
         *ngIf="repDetailsNew.length>0  && repDetailsNew[0].trainingpercentage == 100 && repDetailsNew[0].is_discovery == false">
         <a class="nav-link" [routerLink]="['/discovery-call',idis]">Discovery Call</a>
@@ -272,6 +294,61 @@
               </li>
               <li class="nav-item active" [routerLink]="['/myresource']">
                 <a class="nav-link">Resources</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <!-- <div class="new_header3">
+          <h5>Regional Recruiter: &nbsp; <strong>+1 (208) 380-4589</strong></h5>
+        </div> -->
+      <div class="new_header4">
+        <div class="profile_block">
+          <ul>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">
+                <div class="user_image">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
+                </div>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" [routerLink]="['/useraccountsetting']">My Account</a>
+                <a class="dropdown-item" (click)="logout()">Log out</a>
+                <a *ngIf="checkOldCookie!=null && checkOldCookie==true" class="dropdown-item"
+                  (click)="logBackToOldProfile()">Log Back Your Account</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="new_header_bg" *ngIf="type=='contract_manager'">
+  <div class="new_header_container">
+    <div class="new_header">
+      <div class="new_header1">
+        <div class="new_h_l_wrapper" style="cursor: pointer">
+          <img src="assets/images/betologo.png" align="nexgen" [routerLink]="['/contract/dashboard']">
+        </div>
+      </div>
+      <div class="new_header2">
+
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentrec"
+            aria-controls="navbarSupportedContentrec" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContentrec">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active" [routerLink]="['/contract/dashboard']">
+                <a class="nav-link">Contract List<span class="sr-only">(current)</span></a>
               </li>
             </ul>
           </div>

@@ -1,0 +1,57 @@
+<app-adminheader></app-adminheader>
+<div class="admin_dashboard_container r_r_dashboard">
+  <div class="content_text">
+   <!-- <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco</p>-->
+    <h2>WELCOME TO THE BETO PAREDES FAMILY OF COMPANIES</h2>
+    <p>We are glad to have you as a part of a family that creates integrated technical solutions and support systems catering to a host of different industries ranging from Medicare to Music and several others. We take great pride in the companies and the quality of services on offer at our various portals, and we welcome you with open arms to be an integral part of our journey.</p>
+  </div>
+</div>
+
+<div class="dashboard_block2 r_r_dashboard_innerblock as_dashbord">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="reps_inner_block2" >
+        <h3>My Appointments</h3>
+
+        <table class="table" >
+          <thead>
+
+
+          <tr>
+          <!--  <th data scope="col">Date Added</th>-->
+            <!-- <th scope="col">User ID</th> -->
+            <!-- <th scope="col">Type</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Date Set</th>
+            <th scope="col"> Time</th>
+            <th scope="col"> Products</th>
+            <th scope="col"> Rep Name</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let item of googleevents | slice:0:5;">
+          <!--  <td data-title="Date Added" scope="row">{{item.startdate}}</td>-->
+            <!-- <td data-title="User ID">{{item.userdata.unique_id}}</td> -->
+            <!-- <td data-title="Type" style="text-transform: capitalize;">{{item.type}}</td> -->
+            <td data-title="Name">{{item.leaddata.firstname}} {{item.leaddata.lastname}} ({{item.leaddata.email}})</td>
+            <td data-title="Phone Number">{{item.leaddata.phoneno}}</td>
+            <td data-title="Date Set">{{_commonservice.showdateforreplegal(item.startdate)}}</td>
+            <td data-title="Time">{{_commonservice.showtime(item.start_time)}}</td>
+            <td data-title="Products" class="Products"><span *ngIf="item.productname">{{item.productname}}</span><span *ngIf="item.productname==null">N/A</span></td>
+            <td data-title="Products" class="Products"><span *ngIf="item.leaddata">{{item.leaddata.fullname}}</span><span *ngIf="item.leaddata==null">N/A</span></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <button [routerLink]="['/appointmentlist']">View Calendar</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<app-footer></app-footer>

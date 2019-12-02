@@ -63,6 +63,8 @@ import {ManageVideoCategoryComponent} from "./manage-video-category/manage-video
 import {ManageVideosComponent} from "./manage-videos/manage-videos.component";
 import { AdditionalVideoComponent } from './additional-video/additional-video.component';
 import { GoogleCalendarAutomationReportComponent } from './google-calendar-automation-report/google-calendar-automation-report.component';
+import { ContactManagementComponent } from './contact-management/contact-management.component';
+import { ContactManagementDashboardComponent } from './contact-management-dashboard/contact-management-dashboard.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -74,12 +76,14 @@ const appRoutes: Routes = [
     { path: 'admin', component: AdminmanagementComponent},
     { path: 'regional', component: RegionalRecruiterComponent},
     { path: 'rep', component: RepComponent},
+    { path: 'contract/dashboard', component: ContactManagementDashboardComponent},
+    { path: 'contract/management', component: ContactManagementComponent},
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
     { path: 'signup/:id', component: SignupComponent},
    /* { path: '', component: HomeComponent},*/
     { path: 'contract', component: ContractComponent},
-    {path: 'regionaldashboard', component: RegionalRecruiterComponent},
+    // {path: 'regionaldashboard', component: RegionalRecruiterComponent},
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
     {path: 'addtrainings', component: TranningcategorymanagementComponent},
     { path:'useraccountsetting', component: UseraccountsettingComponent},

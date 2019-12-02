@@ -159,7 +159,6 @@ export class ListingComponent implements OnInit {
             .subscribe(res => {
                 let result;
                 this.timezone = result = res;
-                console.log(result);
             }, error => {
                 console.log('Oooops!');
                
@@ -536,7 +535,6 @@ geteventarr() {
             }
         };
         this.modalRef = this.modal.show(template,config);
-        console.log(this.dataForm);
     }
 
     equalToPass(fieldname): ValidatorFn {                                 //password match custom function
@@ -587,6 +585,7 @@ geteventarr() {
             
         }
         if (this.dataForm.valid && this.submitval == 1) {
+            console.log(this.dataForm.value)
             const link = this._commonservice.nodesslurl + 'addorupdatedata';
             this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
                 .subscribe(res => {

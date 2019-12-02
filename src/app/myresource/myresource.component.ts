@@ -41,8 +41,6 @@ export class MyresourceComponent implements OnInit {
           }else{
             this.resources = [];
             this.resources = result.res;
-            console.log('resources??????????????????:');
-            console.log(this.resources);
           }
         }, error => {
           console.log('Oooops!');
