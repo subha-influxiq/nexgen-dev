@@ -1,0 +1,22 @@
+<!-- <app-adminheader></app-adminheader>
+<div>
+  <form (ngSubmit)="formsubmit()" [formGroup]="dataForm">
+
+    <textarea type="text" class="form-control" placeholder="Enter Your Note's"
+      [formControl]="dataForm.controls['notes']" (keyup)="issubmit=0"></textarea>
+    <select formControlName="product" class="form-control">
+      <option value="">Select a Product</option>
+      <option *ngFor="let i of productlist;" value="{{ i._id }}">{{ i.productname }}
+      </option>
+    </select>
+    <select formControlName="state" class="form-control">
+        <option value="">Select a State</option>
+        <option *ngFor="let i of statelist;" value="{{ i._id }}">{{ i.productname }}
+        </option>
+      </select>
+    <input type="text" class="form-control" placeholder="Address" formControlName="address" (keyup)="issubmit=0">
+    <input type="text" class="form-control" placeholder="Zip" formControlName="zip" (keyup)="issubmit=0">
+    <button type="submit"> Submit</button>
+  </form>
+</div>
+<app-footer></app-footer> -->

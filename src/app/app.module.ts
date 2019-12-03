@@ -85,6 +85,7 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
 import { GoogleCalendarAutomationReportComponent } from './google-calendar-automation-report/google-calendar-automation-report.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 import { ContactManagementDashboardComponent } from './contact-management-dashboard/contact-management-dashboard.component';
+import { ContractManagerAddComponent } from './contract-manager-add/contract-manager-add.component';
 // import { DemoMaterialModule } from './material-module';
 
 @NgModule({
@@ -153,7 +154,8 @@ import { ContactManagementDashboardComponent } from './contact-management-dashbo
     AdditionalVideoComponent,
     GoogleCalendarAutomationReportComponent,
     ContactManagementComponent,
-    ContactManagementDashboardComponent
+    ContactManagementDashboardComponent,
+    ContractManagerAddComponent
 
   ],
   imports: [

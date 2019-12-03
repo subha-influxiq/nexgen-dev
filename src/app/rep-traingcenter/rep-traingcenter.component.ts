@@ -394,12 +394,23 @@ let routeData: any;
                 if(lasttrainingid == item._id){
                     console.log(item.trainingcategory);
                     let nextnotdonecategory :any = this.getNextNotDoneTrainingCategory(item.trainingcategory);
-                    console.log('nextnotdonecategory=='+nextnotdonecategory);
+                    console.log('nextnotdonecategory==',nextnotdonecategory);
                     this.cid = nextnotdonecategory._id;
                     this.getdatalist(nextnotdonecategory.catname);
                     this.gettraininglist();
                     this.notdoneparentcat=[];
                     this.doneparentcat =[];
+                    console.log('cid', this.cid);
+                    let link1 = this._commonservice.nodesslurl + 'traningcompletewebinarsignup';
+                    let data1: any = {
+                        "trainingcategory":this.cid,
+                        "userid":this.cookeiservice.get('userid')
+                    }
+                    console.log(data1,'data1');
+                    this._http.post(link1, data1).subscribe((res: any)=>{
+                        console.log('traningcompletewebinarsignup');
+                        console.log('data1', data1);
+                    })
                 }
                 if((this.sorteddatalist.length-i)==1){
                     let notdonecatlen=this.notdonecategory.length;

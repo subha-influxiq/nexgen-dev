@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {Commonservices} from '../app.commonservices' ;
-import { HttpClient } from "@angular/common/http";
+  import { Component, OnInit } from '@angular/core';
+  import {Commonservices} from '../app.commonservices' ;
+  import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-contact-management',

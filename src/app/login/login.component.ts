@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 
 
     if(this.cookeiservice.check('userid')){
-      console.log('in login','got cookie');
       switch(this.cookeiservice.get('usertype')) {
         case 'rep':
           this.router.navigate(['/repdashboard']);
@@ -51,7 +50,6 @@ export class LoginComponent implements OnInit {
           break;
         case 'contract_manager':
           this.router.navigate(['/contract/dashboard']);
-          console.log('contract');
           break;
       }
     }else{
@@ -91,7 +89,7 @@ export class LoginComponent implements OnInit {
     .subscribe(res=>{
       let result:any;
       result = res;
-      console.log(result);
+      // console.log(result);
       
       if (result.resc == 1 && result.res!=null && result.res[0]!=null  ) {
         if(result.res[0].status == 1) {
@@ -108,7 +106,7 @@ export class LoginComponent implements OnInit {
           this.cookeiservice.set('usertype', result.res[0].type);
           this.cookeiservice.set('useremail', result.res[0].email);
           // this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
-          console.log(result.res[0].calenderaccess);
+          // console.log(result.res[0].calenderaccess);
           if(typeof(result.res[0].calenderaccess)!=undefined && result.res[0].calenderaccess!=null){
             this.cookeiservice.set('calenderaccess', result.res[0].calenderaccess);
           }else{
@@ -144,8 +142,8 @@ export class LoginComponent implements OnInit {
           if(result.res[0].signup_step2==1 && result.res[0].contractstep==1 && result.res[0].reptraininglessonstep==null) this.router.navigate(['/reptrainingcenter']);
           if(result.res[0].signup_step2==1 && result.res[0].contractstep==1 && result.res[0].reptraininglessonstep==1) this.router.navigate(['/repdashboard']);
         }
-        console.log('jwttoken');
-        console.log(this.cookeiservice.get('jwttoken'));
+        // console.log('jwttoken');
+        // console.log(this.cookeiservice.get('jwttoken'));
       }
       else{
           this.modalRef=this.modal.show(template);
@@ -164,7 +162,7 @@ export class LoginComponent implements OnInit {
     let x: any;
     for (x in this.dataForm.controls) {
       this.dataForm.controls[x].markAsTouched();
-      console.log(this.dataForm.controls[x].valid);
+      // console.log(this.dataForm.controls[x].valid);
     }
     if (this.dataForm.valid) {
       const link = this.nodesslurl + 'login';
@@ -183,7 +181,7 @@ export class LoginComponent implements OnInit {
             }
             if (result.status == 'success') {
               this.cookeiservice.set('viewonlyaccess', result.item[0].viewonlyaccess);
-              console.log(result.item[0].viewonlyaccess);
+              // console.log(result.item[0].viewonlyaccess);
               if(result.item[0].status == 1) {
                 this.cookeiservice.set('jwttoken', result.token);
                 this.cookeiservice.set('userid', result.item[0]._id);
@@ -234,8 +232,8 @@ export class LoginComponent implements OnInit {
                 if(result.item[0].signup_step2==1 && result.item[0].contractstep==1 && result.item[0].reptraininglessonstep==null) this.router.navigate(['/reptrainingcenter']);
                 if(result.item[0].signup_step2==1 && result.item[0].contractstep==1 && result.item[0].reptraininglessonstep==1) this.router.navigate(['/repdashboard']);
               }
-              console.log('jwttoken');
-              console.log(this.cookeiservice.get('jwttoken'));
+              // console.log('jwttoken');
+              // console.log(this.cookeiservice.get('jwttoken'));
             }
             else{
                 this.modalRef=this.modal.show(template);
