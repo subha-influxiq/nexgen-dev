@@ -20,6 +20,7 @@ public sourcecondition:any={};
     {value:'description',name:'Description',role:0,func:'',class:'description',type:'text'},
     {value:'priority',name:'Priority',role:0,func:'',class:'priority',type:'text'},
     {value:'type1',name:'Type',role:0,func:'',class:'type',type:'text'},
+    // { value: 'only_productname', name: 'Products ', role: 0, func: '', class: 'productname', type: 'text' },
     // {value:'roleaccess',name:'Role Access',role:0,func:'',class:'roleaccess',type:'text'},
     {value:'status',name:'Status',role:0,func:'',class:'status',type:'checkbox',editrole:['admin']},
   ];
@@ -32,6 +33,7 @@ public sourcecondition:any={};
 
     // {inputtype:'select',name:'roleaccess',label:'Roles can Access',defaultchoice:'Select Roles',sourceview:'roles',sourcetype:'static',selectvalue:'name',selectid:'id',validationrule:{required:true},validationerrormsg:'is required',multiple:true},
     // {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
+    {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
   ];
     this.datasource={table:'tranningcategory',objarr:['parentcategory']};

@@ -472,10 +472,10 @@
                     <div class="col-sm-8">
 
 
-                        <input
-                            *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && (item.name!='multiple_emails' && item.name!='tempemail')"
+                        <input *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && (item.name!='multiple_emails' && item.name!='tempemail')"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
+
                         <input *ngIf="item.inputtype=='number'" [name]="item.name"
                             [formControl]="dataForm.controls[item.name]" [type]="item.inputtype" class="form-control"
                             [placeholder]="item.placeholder" (keyup)="issubmit=0">

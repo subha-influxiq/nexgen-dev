@@ -20,9 +20,9 @@ export class ContactManagementDashboardComponent implements OnInit {
   constructor(public _commonservice:Commonservices,private router: Router,public _http:HttpClient,public modal:BsModalService,private cookeiservice: CookieService)
   {
     this._commonservice=_commonservice;
-    if(this.cookeiservice.get('userid')!=null){
-      this.getreplistunderthisregion();
-      this.getgoogleevents();
+    if(this.cookeiservice.get('userid')!=null ){
+      // this.getreplistunderthisregion();
+      // this.getgoogleevents();
     }
   }
 

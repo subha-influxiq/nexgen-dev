@@ -1,0 +1,48 @@
+<app-adminheader></app-adminheader>
+<div class="page-wrapper admin_training_center_manage_popup">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="content_header_block">
+        <h3> {{formName}} a Contract</h3>
+        <form novalidate [formGroup]="contractForm" (ngSubmit)="contractFormSubmit()">
+          <br>
+          <div class="form-group email_div">
+            <label>Product Name :</label>
+            <select class="form-control" formControlName="product_id" (keyup)="issubmit=0">
+              <option value="">Select Product</option>
+              <option *ngFor="let product of productList" value="{{product._id}}">
+                {{product.productname}}</option>
+            </select>
+            <span class="error"
+              *ngIf="!contractForm.controls['product_id'].valid && contractForm.controls['product_id'].touched  && issubmit==1">Product
+              is required</span>
+          </div>
+          <ck-editor formControlName="htmleditorvalue" [config]="editorconfig" (keyup)="issubmit=0">
+          </ck-editor>
+          <span class="error"
+            *ngIf="!contractForm.controls['htmleditorvalue'].valid && contractForm.controls['htmleditorvalue'].touched  && issubmit==1">This
+            is required</span>
+
+            <br>
+
+          <ck-editor formControlName="htmleditorvalue1" [config]="editorconfig" (keyup)="issubmit=0">
+          </ck-editor>
+          <span class="error"
+            *ngIf="!contractForm.controls['htmleditorvalue1'].valid && contractForm.controls['htmleditorvalue1'].touched  && issubmit==1">This
+            is required</span>
+            
+            <br>
+
+          <textarea [attr.readonly]= "isReadOnly" formControlName="notes" class="form-control" placeholder="Notes" (keyup)="issubmit=0"></textarea>
+          <br>
+
+          <div class="box-footer" style="background:none; height:auto; padding-bottom:0px; padding-top:0px;">
+            <button type="submit">Submit</button>
+            <button type="reset" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

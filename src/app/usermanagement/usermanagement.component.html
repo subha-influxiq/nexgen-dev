@@ -166,13 +166,14 @@
                     <span class="statusinactive" *ngIf="item.calenderaccess==null || item.calenderaccess==0 ">Inactive
                       <span *ngIf="usertype=='admin'" class="ticon_inactive"
                         (click)="toggleCalenderAccess(item)"></span>
-                    </span><br>
-                    Senior Consulting Director:<span class="statusactive" *ngIf="item.is_consultant!=null && item.is_consultant==1 ">&nbsp;Active
+                    </span>
+                    <br>
+                    Senior Consulting Director:<span class="statusactive" *ngIf="mdstockToggle!=null && mdstockToggle==1 ">&nbsp;Active
                         &nbsp;
                         <span *ngIf="usertype=='admin'" class="ticon_active"
                           (click)="toggleConsultantRole(item)"></span>
                       </span>
-                      <span class="statusinactive" *ngIf="item.is_consultant==null || item.is_consultant==0 ">Inactive
+                      <span class="statusinactive" *ngIf="mdstockToggle == null || mdstockToggle==0 ">Inactive
                         <span *ngIf="usertype=='admin'" class="ticon_inactive"
                           (click)="toggleConsultantRole(item)"></span>
                       </span>
@@ -191,18 +192,18 @@
 <!-- Himadri  MDStock International Start -->
 
 
-                      <!-- <br>
+                      <br>
 
 
-                      Have This User On <br> MDStock International:<span class="statusactive">&nbsp;Active &nbsp;
+                      Have This User On <br> MDStock International:<span *ngIf=" item.ismdstoc !=null && item.ismdstoc == 1" class="statusactive">&nbsp;Active &nbsp;
                       <span *ngIf="usertype=='admin'" class="ticon_active"
-                        (click)="toggleSignUpMdStock(item)"></span>
+                        (click)="inActiveToggleSignUpMdStock(item)"></span>
                     </span>
-                    <span class="statusinactive" >Inactive
+                    <span *ngIf="item.ismdstoc ==null || item.ismdstoc == 0" class="statusinactive" >Inactive
                       <span *ngIf="usertype=='admin'" class="ticon_inactive"
-                        (click)="toggleSignUpMdStock(item)"></span>
+                        (click)="activeToggleSignUpMdStock(item)"></span>
                     </span>
-                    <br> -->
+                    <br>
 
 
 

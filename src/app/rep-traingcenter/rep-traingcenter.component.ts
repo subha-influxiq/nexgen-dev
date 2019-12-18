@@ -403,7 +403,7 @@ let routeData: any;
                     console.log('cid', this.cid);
                     let link1 = this._commonservice.nodesslurl + 'traningcompletewebinarsignup';
                     let data1: any = {
-                        "trainingcategory":this.cid,
+                        "trainingcategory":item.trainingcategory,
                         "userid":this.cookeiservice.get('userid')
                     }
                     console.log(data1,'data1');

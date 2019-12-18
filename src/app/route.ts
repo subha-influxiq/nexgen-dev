@@ -66,9 +66,19 @@ import { GoogleCalendarAutomationReportComponent } from './google-calendar-autom
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 import { ContactManagementDashboardComponent } from './contact-management-dashboard/contact-management-dashboard.component';
 import { ContractManagerAddComponent } from './contract-manager-add/contract-manager-add.component';
+import { ContractListComponent } from './contract-list/contract-list.component';
+import { ContractAddEditComponent } from './contract-add-edit/contract-add-edit.component';
+import { ContractManagerListComponent } from './contract-manager-list/contract-manager-list.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
+    {path: 'add-contract', component: ContractAddEditComponent},
+    {path: 'edit-contract/:id', component: ContractAddEditComponent},
+     {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added
+     {path: 'edit-contract-manager/:id', component: ContractManagerAddComponent},            // new added
+     {path: 'contract-list', component: ContractListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contractDetails_view', condition: {}}, endpoint: 'datalist'}},
+     
+     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {}}, endpoint: 'datalist'}},
     { path: 'login', component:  LoginComponent},
     { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},
@@ -77,14 +87,12 @@ const appRoutes: Routes = [
     { path: 'admin', component: AdminmanagementComponent},
     { path: 'regional', component: RegionalRecruiterComponent},
     { path: 'rep', component: RepComponent},
-    { path: 'contract/dashboard', component: ContactManagementDashboardComponent},
+    { path: 'contract/dashboard', component: ContactManagementDashboardComponent},            // new added
     { path: 'contract/management', component: ContactManagementComponent},
     { path: 'regionaldashboard', component: RegionalDashboardComponent},
     { path: 'repdashboard', component: RepDashboardComponent},
     { path: 'signup/:id', component: SignupComponent},
-   /* { path: '', component: HomeComponent},*/
     { path: 'contract', component: ContractComponent},
-    // {path: 'regionaldashboard', component: RegionalRecruiterComponent},
     {path: 'tranningcategory', component: TranningcategorymanagementComponent},
     {path: 'addtrainings', component: TranningcategorymanagementComponent},
     { path:'useraccountsetting', component: UseraccountsettingComponent},
@@ -159,7 +167,7 @@ const appRoutes: Routes = [
     { path: 'manage-video', component: ManageVideosComponent },
     { path: 'additional-video/:categoryid', component: AdditionalVideoComponent },
     {path: 'call', component: GoogleCalendarAutomationReportComponent},
-    {path: 'add-contract', component: ContractManagerAddComponent}
+   
 
 
 ];

@@ -86,6 +86,9 @@ import { GoogleCalendarAutomationReportComponent } from './google-calendar-autom
 import { ContactManagementComponent } from './contact-management/contact-management.component';
 import { ContactManagementDashboardComponent } from './contact-management-dashboard/contact-management-dashboard.component';
 import { ContractManagerAddComponent } from './contract-manager-add/contract-manager-add.component';
+import { ContractListComponent } from './contract-list/contract-list.component';
+import { ContractAddEditComponent } from './contract-add-edit/contract-add-edit.component';
+import { ContractManagerListComponent } from './contract-manager-list/contract-manager-list.component';
 // import { DemoMaterialModule } from './material-module';
 
 @NgModule({
@@ -155,7 +158,10 @@ import { ContractManagerAddComponent } from './contract-manager-add/contract-man
     GoogleCalendarAutomationReportComponent,
     ContactManagementComponent,
     ContactManagementDashboardComponent,
-    ContractManagerAddComponent
+    ContractManagerAddComponent,
+    ContractListComponent,
+    ContractAddEditComponent,
+    ContractManagerListComponent
 
   ],
   imports: [

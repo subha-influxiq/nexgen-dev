@@ -1,0 +1,95 @@
+<app-adminheader></app-adminheader>
+
+<div class="nextGen_admin_mainwrapper" style="margin-top: 25px;">
+
+  <div class="nexgen_admin_table">
+    <div class="table-responsive admin_table_wrapper">
+
+
+          <div class="action_section action_sectionnew">
+        <a *ngIf="cookeiservice.get('usertype') == 'rep'" class="addfrinderbtn addfrinderbtnupd" routerLink="/add-contract-manager">Request Contract</a>
+      </div>
+      <table mdbTable class="table">
+
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of datalist; let i = index">
+            <td datalabel="Id" scope="row">{{i + 1}}</td>
+            <td datalabel="Data">{{el.date}}</td>
+            <td datalabel="Product Name">{{el.product}}</td>
+            <td datalabel="Rep Name">{{el.created_by}}</td>
+            <td datalabel="Status">{{el.status}}</td>
+            <td datalabel="Notes">{{el.notes}}</td>
+            <!-- <td  *ngIf="cookeiservice.get('usertype') == 'contract_manager'" datalabel="edit"> -->
+                <td datalabel="edit">
+              <span class="edit_user" (click)="editRow(el)">Edit</span>
+              <span *ngIf="el.status == 'request'"  class="edit_user" (click)="makeContract(el)">Create Contract</span>
+
+              <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el,commonconfirmmodal)">Delete</span>
+              <!-- <span (click)="openModalData(el)"><i class="fa fa-eye"></i></span> -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+<!--Common confirmation modal-->
+<ng-template #commonconfirmmodal>
+  <div class="modal-body brandmanagement_modal successmodal_listing">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="brand_messagebox">
+      <h3>Are you sure that you want to delete this record ?</h3>
+      <div class="btn_cnt">
+        <button class="message_allow" (click)="confirmdelete(messagemodal)">Yes</button>
+        <button class="message_deny" (click)="nodelete()">No</button>
+      </div>
+    </div>
+  </div>
+  <div>
+  </div>
+</ng-template>
+
+
+
+<!--Common message modal-->
+<ng-template #messagemodal>
+  <div class="modal-body brandmanagement_modal">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <div class="message_success">{{message}}</div>
+
+  </div>
+</ng-template>
+
+
+
+<!--Common message modal-->
+<!-- <ng-template #showmodal> -->
+  <!-- <div class="modal-body brandmanagement_modal"> -->
+    <!-- <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div> -->
+    
+      <!-- <label style="display: inline-block; padding-right: 5px; font-weight: bold; color: #00a8ef; margin-bottom: 0px;">Htmleditorvalue: </label>
+      <span  style="display: inline-block;" [innerHTML]="safeHtml(selecteditem.htmleditorvalue)"></span>
+       <br>
+      <label style="display: inline-block; padding-right: 5px; font-weight: bold; color: #00a8ef; margin-bottom: 0px;">Htmleditorvalue1: </label>
+      <span style="display: inline-block;" [innerHTML]="safeHtml(selecteditem.htmleditorvalue1)"></span> -->
+   
+
+  <!-- </div> -->
+<!-- </ng-template> -->

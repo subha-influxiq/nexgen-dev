@@ -1858,6 +1858,12 @@ span.loginclass {
 .form-groupbtndiv button:nth-child(1){ background: #00c0ff; }
 .form-groupbtndiv button:nth-child(2){ background: #000; margin-left: 10px; }
 
+.form-groupbtndiv button:nth-child(3){  margin-left: 10px; }
+
+.notestextarea{ width: 96%; margin-left: 2%; margin-right: 2%; margin-bottom: 15px; resize: none; padding: 10px; color: #495057;
+    background-color: #fff; 
+    border: 1px solid #ced4da;     height: 100px;}
+
 .main_inner_contentnew .form-group label {
     font-family: 'RalewaySemiBold';
 

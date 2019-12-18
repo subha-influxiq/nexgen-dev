@@ -28,6 +28,7 @@ export class Commonservices {
     public productid =  environment["productid"];
     public awstrainingid = environment["awstrainingid"];
     public mdstocktrainingid = environment["mdstocktrainingid"];
+    public mdstockServerUrl = environment["mdstockServerUrl"];
     public userid:any = '';
 /*    public traininglessonflag: boolean = false;
     public traininglessoncount: any = 0;

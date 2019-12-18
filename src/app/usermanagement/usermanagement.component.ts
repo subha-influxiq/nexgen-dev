@@ -27,6 +27,7 @@ export class UsermanagementComponent implements OnInit {
   public consultantrole: any;
   public usertype: any;
   public fileurl: any;
+  // public mdstockToggle = 0; 
 
   constructor(public commonservices: Commonservices, public cookieservice: CookieService, public originalCookie: CookieService, public _http: HttpClient, private router: Router, public modal: BsModalService) {
 
@@ -107,9 +108,102 @@ export class UsermanagementComponent implements OnInit {
   }
 
   // added by Himadri toggleSignUpMdStock
-  toggleSignUpMdStock(item: any){
-    console.log(item)
+
+
+
+
+  inActiveToggleSignUpMdStock(item: any){
+
+
+             this.loader = 1;
+                if (item.ismdstoc != null && item.ismdstoc == 1){
+                   item.ismdstoc = 1 - item.ismdstoc;
+                }
+                console.log('mdstock',item);
+                let link = this.commonservices.nodesslurl + 'addorupdatedata?token=' + this.cookieservice.get('jwttoken');
+                var linkMdstoc = this.commonservices.mdstockServerUrl + 'betoparedesbackendsignup';
+                let dataMdstoc:any;
+                dataMdstoc = {
+                        "email":item.email,
+                        "status":0
+                      }
+
+                 this._http.post(linkMdstoc, { source: 'users', data: dataMdstoc}).subscribe(res=>{
+                  console.log(res);
+                    let result: any;
+                      result = res;
+                  if (result.status == 'success') {
+
+                          this._http.post(link,{ source: 'users', data: { id: item._id, ismdstoc: 0 } }).subscribe(res=>{
+                          console.log(res);
+                             this.getUserLists();
+                            this.loader = 0;
+                      }, error => {
+                          console.log('Oooops!');
+                          this.getUserLists();
+                          this.loader = 0;
+                      });
+
+                    }
+              });
   }
+
+
+  activeToggleSignUpMdStock(item: any){
+    console.log('mdstock',item);
+    this.loader = 1; 
+    if (item.ismdstoc == null || item.ismdstoc == 0) {
+      item.ismdstoc = 1;
+    }
+      let link = this.commonservices.nodesslurl + 'addorupdatedata?token=' + this.cookieservice.get('jwttoken');
+      var linkMdstoc = this.commonservices.mdstockServerUrl + 'betoparedesbackendsignup';
+      let showLink = this.commonservices.nodesslurl + 'datalist?token=' + this.cookieservice.get('jwttoken');
+
+      this._http.post(showLink, {source: 'user_view', condition:{_id_object:item._id}}).subscribe(res=>{
+        let result: any;
+        result = res;
+        console.log(result.res[0],'++++++') 
+
+    let dataMdstoc:any;
+    dataMdstoc = {
+          
+            "firstname":result.res[0].firstname,
+            "lastname":result.res[0].lastname ,
+            "phone":result.res[0].telephone ,
+            "email":result.res[0].email,
+            "state":result.res[0].state,
+            "password": "admin",
+            "status":1,
+            "type":"salesrep" ,
+            "city" :result.res[0].city,
+            "zip":result.res[0].zip,
+            "address":result.res[0].address
+    }
+
+     this._http.post(linkMdstoc, { source: 'users', data: dataMdstoc}).subscribe(res=>{
+      console.log(res);
+        let result: any;
+          result = res;
+      if (result.status == 'success') {
+
+              this._http.post(link,{ source: 'users', data: { id: item._id, ismdstoc: 1 } }).subscribe(res=>{
+              console.log(res);
+                 this.getUserLists();
+                this.loader = 0;
+          }, error => {
+              console.log('Oooops!');
+              this.getUserLists();
+              this.loader = 0;
+          });
+
+    }
+   });
+
+})
+   
+  
+    
+}
 
   toggleCalenderAccess(item: any) {
     this.loader = 1;

@@ -45,6 +45,7 @@
     "domino": "^2.1.3",
     "express": "^4.15.2",
     "hammerjs": "^2.0.8",
+    "listing-angular7": "0.0.94",
     "moment": "^2.24.0",
     "mongodb": "^2.2.36",
     "ngx-accordion": "0.0.17",

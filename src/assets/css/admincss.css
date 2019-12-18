@@ -297,9 +297,19 @@
     margin: 0 auto;
     display: block;
 }
+
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_sectionnew { width: 100%;
+    margin: 0 auto;
+    display: block; margin-bottom: 10px;
+}
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_sectionnew a{ float: none!important; display: block!important;
+    width: 186px!important;}
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_sectionnew a.addfrinderbtnupd {
+        width: 235px !important;
+    }
 .nextGen_admin_mainwrapper .nexgen_admin_table .action_section h3{ display: inline-block;   font-size: 24px; font-family: 'OpenSansSemiBold';    margin-top: 6px;
     margin-bottom: 0;}
-.nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ background: #000; font-size: 20px; font-family: 'RalewaySemiBold'; text-decoration: none;
+.nextGen_admin_mainwrapper .nexgen_admin_table .action_section a{ background: #00a8ef; font-size: 20px; font-family: 'RalewaySemiBold'; text-decoration: none;
     float: right;
     padding: 5px 15px 4px 15px;
     text-align: center;
@@ -418,6 +428,8 @@
     cursor: pointer;
 
 }
+.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td span:last-child{margin-left: 10px;}
+
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .edit_user:hover{color: #fff !important; text-decoration: none;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .delete_user{
     background: #000;

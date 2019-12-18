@@ -87,7 +87,7 @@ export class ApiService {
   } //end getData
 
   
-  postData(endpoint:string,source,condition){
+  postData(endpoint:string, source, condition){
       var result =this._http.post(this.getEndpointUrl(endpoint),{source:source,condition:condition}/*JSON.stringify(data)*/).pipe(map(res => res));
       return result;
   } //end postData
@@ -121,9 +121,14 @@ export class ApiService {
     //     'Authorization': this.cookie.get('jwttoken')
     //   })
     // };
-    
-    var result = this._http.post( this.nodesslurl+endpoint, requestdata).pipe(map(res => res));
+    if (this.cookie.get('jwttoken') !=null && this.cookie.get('jwttoken') !='') {
+      var result = this._http.post( this.nodesslurl+endpoint+'?token='+this.cookie.get('jwttoken'), requestdata).pipe(map(res => res));
     return result;
+    }else{
+      var result = this._http.post( this.nodesslurl+endpoint, requestdata).pipe(map(res => res));
+      return result;
+    }
+   
   }
   
 
