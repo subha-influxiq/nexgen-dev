@@ -1,0 +1,85 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Commonservices } from '../app.commonservices';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-make-contract',
+  templateUrl: './make-contract.component.html',
+  styleUrls: ['./make-contract.component.css'],
+  providers: [Commonservices]
+})
+export class MakeContractComponent implements OnInit {
+  public makeContentForm:FormGroup;
+  public datalist: any;
+  public recid: any;
+
+  constructor(
+    public route: ActivatedRoute,
+    public router: Router,
+    protected _sanitizer: DomSanitizer,
+    private formBuilder: FormBuilder,
+    public _commonservice:Commonservices,
+    public cookeiservice:CookieService,
+    public _http: HttpClient 
+  ) {
+    this.makeContentForm = this.formBuilder.group({
+      notes: ['']
+    })
+    this.route.params.subscribe(params => {
+      this.recid = params['_id'];
+      console.log(this.recid);
+    });
+   }
+
+  ngOnInit() {
+
+    this.route.data.forEach((data:any ) => {
+      console.log('json',data.results.res);
+      this.datalist = data.results.res[0];
+
+      this.makeContentForm.controls['notes'].patchValue(this.datalist.notes);
+
+
+   });
+  }
+
+
+  safeHtml(html) {
+    return this._sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  makeContentFormSubmit() {
+    console.log('sdf',this.makeContentForm.value)
+
+    if (this.datalist != null && this.datalist != '') {
+      let data:any= {
+        id:this.recid,
+        notes: this.makeContentForm.value.notes,
+        status: 'sent_to_rep',
+        rep_id: this.datalist.rep_id,
+        product: this.datalist.product,
+        product_id: this.datalist.product_id,
+        lead_id: this.datalist.lead_id,
+        contentTop: this.datalist.contentTop,
+        contentBottiom: this.datalist.contentBottiom,
+        contract_content_notes: this.datalist.contract_content_notes
+      }
+      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
+          if (res.status == "success") {
+            this.router.navigateByUrl('/contract-manager-list')
+          }
+        });
+    }
+  }
+
+
+// contractRepote(id){
+  
+// }
+
+}

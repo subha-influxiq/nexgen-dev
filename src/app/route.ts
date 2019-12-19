@@ -69,6 +69,7 @@ import { ContractManagerAddComponent } from './contract-manager-add/contract-man
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractAddEditComponent } from './contract-add-edit/contract-add-edit.component';
 import { ContractManagerListComponent } from './contract-manager-list/contract-manager-list.component';
+import { MakeContractComponent } from './make-contract/make-contract.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -76,9 +77,13 @@ const appRoutes: Routes = [
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
      {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added
      {path: 'edit-contract-manager/:id', component: ContractManagerAddComponent},            // new added
+
      {path: 'contract-list', component: ContractListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contractDetails_view', condition: {}}, endpoint: 'datalist'}},
      
      {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {}}, endpoint: 'datalist'}},
+
+     {path: 'make-contract/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'make_contract_view', condition: {"_id":'_id'}}, endpoint: 'datalist'}},
+
     { path: 'login', component:  LoginComponent},
     { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},

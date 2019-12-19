@@ -1,0 +1,46 @@
+<app-adminheader></app-adminheader>
+
+
+ 
+<div class="user_management_wrapper">
+  
+     <div class="user_management_inner">
+
+      <h2> <span>Product: </span>{{datalist.product}}</h2>
+       
+
+
+   </div>
+</div>
+
+
+
+<div class="admin_inner_wrapper admin_inner_wrappernewcon">
+
+  <div class="newconleft">
+    
+
+
+    <form [formGroup]="makeContentForm" (ngSubmit)="makeContentFormSubmit()">
+              
+      <div class="newconleft_con1 newconleft_con1html"> <p [innerHTML]="safeHtml(datalist.contentTop)"></p> </div>
+        <div class="newconleft_con1"> <textarea type="text" formControlName="notes"> </textarea></div>
+          <div class="newconleft_con1 newconleft_con1html"><p [innerHTML]="safeHtml(datalist.contentBottiom)"></p> </div>
+            <div class="newconleft_con1"> <button type="submit" class="sendbtnnewcon">Send For Rep</button> </div>
+    </form>
+    
+
+
+  </div>
+
+  <div class="newconright">
+   <h4>Note</h4>
+
+     <p>{{datalist.contract_content_notes}}</p>
+
+  </div>
+
+  <div class="clearfix"></div>
+</div>
+
+<app-footer></app-footer>

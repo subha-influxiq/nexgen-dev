@@ -20,7 +20,7 @@ export class ContractManagerListComponent implements OnInit {
 public datalist: any;
 public selecteditem;
 public message;
- headElements = ['ID', 'Date', 'Product Name', 'Rep Name', 'Status', 'Notes'];
+ headElements = ['ID', 'Date', 'Product Name', 'Rep Name', 'Lead Name', 'Status', 'Notes'];
 
 
 
@@ -63,7 +63,8 @@ public message;
 }
 
 makeContract(item: any) {
-  console.log(item)
+  console.log(item);
+  this.router.navigateByUrl('/make-contract/'+item._id);
 }
 
 confirmdelete(template: TemplateRef<any>) {

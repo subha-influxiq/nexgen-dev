@@ -89,6 +89,7 @@ import { ContractManagerAddComponent } from './contract-manager-add/contract-man
 import { ContractListComponent } from './contract-list/contract-list.component';
 import { ContractAddEditComponent } from './contract-add-edit/contract-add-edit.component';
 import { ContractManagerListComponent } from './contract-manager-list/contract-manager-list.component';
+import { MakeContractComponent } from './make-contract/make-contract.component';
 // import { DemoMaterialModule } from './material-module';
 
 @NgModule({
@@ -161,7 +162,8 @@ import { ContractManagerListComponent } from './contract-manager-list/contract-m
     ContractManagerAddComponent,
     ContractListComponent,
     ContractAddEditComponent,
-    ContractManagerListComponent
+    ContractManagerListComponent,
+    MakeContractComponent
 
   ],
   imports: [

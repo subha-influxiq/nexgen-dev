@@ -21,16 +21,16 @@ export class ContractAddEditComponent implements OnInit {
   public id: any;
   public editid: any;
   public formName: string;
-  public isReadOnly:boolean = false;
+  public isReadOnly:boolean;
   constructor(formBuilder: FormBuilder, public _commonservices: Commonservices, public _cookieservice: CookieService, public _http: HttpClient, public route: ActivatedRoute, public router: Router) {
-    if(this._cookieservice.get('usertype') != 'contract_manager'){
+    if(this._cookieservice.get('usertype') == 'contract_manager'){
       this.isReadOnly = true;
     }
     this.formBuilder = formBuilder;
 
     this.contractForm = this.formBuilder.group({
-      htmleditorvalue: ['', Validators.required],
-      htmleditorvalue1: ['', Validators.required],
+      contentTop: ['', Validators.required],
+      contentBottiom: ['', Validators.required],
       product_id: ['', Validators.required],
       notes: ['']
     });
@@ -109,12 +109,11 @@ export class ContractAddEditComponent implements OnInit {
           let datalist2=[];
           datalist2=res.res;
           // this.dataForm.controls['id'].patchValue(datalist2[0]._id);
-          this.contractForm.controls['htmleditorvalue'].patchValue(datalist2[0].htmleditorvalue);
-          this.contractForm.controls['htmleditorvalue1'].patchValue(datalist2[0].htmleditorvalue1);
+          this.contractForm.controls['contentTop'].patchValue(datalist2[0].contentTop);
+          this.contractForm.controls['contentBottiom'].patchValue(datalist2[0].contentBottiom);
           this.contractForm.controls['product_id'].patchValue(datalist2[0].product_id);
           this.contractForm.controls['notes'].patchValue(datalist2[0].notes);
           this.editid = datalist2[0]._id;
-          // this.lengthis=datalist2.length;
         })
 
   }
