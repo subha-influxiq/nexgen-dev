@@ -24,7 +24,10 @@
     <form [formGroup]="makeContentForm" (ngSubmit)="makeContentFormSubmit()">
               
       <div class="newconleft_con1 newconleft_con1html"> <p [innerHTML]="safeHtml(datalist.contentTop)"></p> </div>
-        <div class="newconleft_con1"> <textarea type="text" formControlName="notes"> </textarea></div>
+        <div class="newconleft_con1"> <textarea type="text" formControlName="clauses" (keyup)="issubmit=0"> </textarea>
+          <span class="error" style="color:red"
+          *ngIf="!makeContentForm.controls['clauses'].valid && makeContentForm.controls['clauses'].touched  && issubmit==1">Clauses
+          are required</span></div>
           <div class="newconleft_con1 newconleft_con1html"><p [innerHTML]="safeHtml(datalist.contentBottiom)"></p> </div>
             <div class="newconleft_con1"> <button type="submit" class="sendbtnnewcon">Send For Rep</button> </div>
     </form>
@@ -36,7 +39,7 @@
   <div class="newconright">
    <h4>Note</h4>
 
-     <p>{{datalist.contract_content_notes}}</p>
+     <p>{{datalist.notes}}</p>
 
   </div>
 

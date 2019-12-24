@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
+declare var moment: any;
+declare var $: any;
 
 @Component({
   selector: 'app-contract-manager-list',
@@ -14,7 +16,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ContractManagerListComponent implements OnInit {
 
-
+  daterangepickerOptions = {
+    format: 'MM/DD/YYYY',
+    minDate: moment().format("MM/DD/YYYY"),
+    noDefaultRangeSelected: true
+}
+bsDatepicker = {
+    format: 'MM/DD/YYYY',
+    minDate: moment().format("MM/DD/YYYY"),
+    noDefaultRangeSelected: true
+}
   modalRef1: BsModalRef;
 
 public datalist: any;
@@ -61,6 +72,10 @@ public message;
     this.modalRef1 = this.modal.show(template);
     this.selecteditem = val;
 }
+openModalData(val: any, template: TemplateRef<any>) {
+  this.modalRef1 = this.modal.show(template);
+    this.selecteditem = val;
+}
 
 makeContract(item: any) {
   console.log(item);
@@ -88,6 +103,24 @@ confirmdelete(template: TemplateRef<any>) {
   }
   nodelete() {
     this.modalRef1.hide();
+  }
+
+
+  showdetails(val: any, value: string) {
+console.log(val, value);
+let source1: string;
+    if (value == 'lead') {
+      source1: 'leads'
+    } else{
+      source1: 'users'
+    }
+    const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+    if (source1 != null) {
+      this._http.post(link,{source:source1, condition: {"_id":val}}).subscribe(res => {
+          let result: any = res;
+          console.log(result.res);
+      });  
+    }
   }
 
 }

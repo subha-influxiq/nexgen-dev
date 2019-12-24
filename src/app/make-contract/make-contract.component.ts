@@ -16,6 +16,7 @@ export class MakeContractComponent implements OnInit {
   public makeContentForm:FormGroup;
   public datalist: any;
   public recid: any;
+  public issubmit = 0;
 
   constructor(
     public route: ActivatedRoute,
@@ -27,7 +28,7 @@ export class MakeContractComponent implements OnInit {
     public _http: HttpClient 
   ) {
     this.makeContentForm = this.formBuilder.group({
-      notes: ['']
+      clauses: ['', Validators.required]
     })
     this.route.params.subscribe(params => {
       this.recid = params['_id'];
@@ -40,8 +41,9 @@ export class MakeContractComponent implements OnInit {
     this.route.data.forEach((data:any ) => {
       console.log('json',data.results.res);
       this.datalist = data.results.res[0];
-
-      this.makeContentForm.controls['notes'].patchValue(this.datalist.notes);
+    if (this.datalist.clauses != null && this.datalist.clauses != '') {
+      this.makeContentForm.controls['clauses'].patchValue(this.datalist.clauses);
+    }
 
 
    });
@@ -53,14 +55,22 @@ export class MakeContractComponent implements OnInit {
   }
 
   makeContentFormSubmit() {
+    this.issubmit = 1;
+    let x: any;
+    for (x in this.makeContentForm.controls) {
+      this.makeContentForm.controls[x].markAsTouched();
+      console.log(this.makeContentForm.controls[x].valid);
+    }
     console.log('sdf',this.makeContentForm.value)
 
-    if (this.datalist != null && this.datalist != '') {
+    if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '') {
       let data:any= {
         id:this.recid,
-        notes: this.makeContentForm.value.notes,
+        notes: this.datalist.notes,
+        clauses: this.makeContentForm.value.clauses,
         status: 'sent_to_rep',
         rep_id: this.datalist.rep_id,
+        rep_email: this.datalist.rep_email,
         product: this.datalist.product,
         product_id: this.datalist.product_id,
         lead_id: this.datalist.lead_id,
@@ -71,12 +81,18 @@ export class MakeContractComponent implements OnInit {
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
           if (res.status == "success") {
+            this.sendEmail(data);
             this.router.navigateByUrl('/contract-manager-list')
           }
         });
     }
   }
-
+  sendEmail(item: any) {
+    const link = this._commonservice.nodesslurl + 'send_for_rep_mail';
+    this._http.post(link,  {data: item}).subscribe((res:any)=>{
+      console.log(res);
+  });
+  }
 
 // contractRepote(id){
   

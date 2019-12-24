@@ -137,7 +137,7 @@ export class AdminheaderComponent implements OnInit {
                 .subscribe(res => {
                   let result: any;
                   result = res;
-                  console.log('user_parent_category_percent',result)
+                  // console.log('user_parent_category_percent',result)
                   for (let i in result.res) {
                     if (result.res[i].trainingpercent >= 100 && this.repDetailsNew[0]!=null && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
                       this.gameplanButton = 1;

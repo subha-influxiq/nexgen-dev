@@ -87,7 +87,6 @@ export class ContractManagerAddComponent implements OnInit {
             id: this.isedit_id,
          notes: val.notes,
          status:'request',
-         rep_id:this.cookeiservice.get('userid'),
          product: this.contractForm.value.product,
          product_id: this.cookeiservice.get('product_id'),
          lead_id: this.contractForm.value.lead,
@@ -125,7 +124,6 @@ export class ContractManagerAddComponent implements OnInit {
           id: this.isedit_id,
           notes: val.notes,
           status:'asDraft',
-          rep_id:this.cookeiservice.get('userid'),
           product: this.contractForm.value.product,
           product_id: this.cookeiservice.get('product_id'),
           lead_id: this.contractForm.value.lead,
@@ -243,9 +241,13 @@ export class ContractManagerAddComponent implements OnInit {
 
     selectcontract(contractData) {
         console.log(contractData);
-        if( this.recid == null && this.recid == '') {
+        if( this.recid == null || this.recid == '') {
             this.contractForm.patchValue({    
             product: contractData.product_name
+        });
+    }else {
+        this.contractForm.patchValue({    
+            product: contractData.product
         });
     }
 
@@ -257,9 +259,7 @@ export class ContractManagerAddComponent implements OnInit {
                 this.selectproductfunc(contractData.product_id );
             }
         });
-        // this.contractForm.patchValue({    
-        //     product: contractData.product_name
-        // });
+        
         this.cookeiservice.set('product_id', contractData.product_id);
         // this.leadname = contractData.firstname + contractData.lastname;
         this.contractSuggestionFlug = false;

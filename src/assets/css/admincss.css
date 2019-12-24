@@ -419,13 +419,13 @@
     background: #00a8ef;
     font-family: 'RalewaySemiBold';
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     /*padding: 5px 5px 4px 5px;*/
     padding: 5px 5px 3px 5px;
     margin-bottom: 10px;
     margin-left: 10px;
     text-transform: uppercase;
-    cursor: pointer;
+    cursor: pointer; display: inline-block; text-align: center;
 
 }
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td span:last-child{margin-left: 10px;}
@@ -2608,6 +2608,8 @@ text-align: center;}
 
         .newconleft_con1html{ border: 1px solid #d8d8d8; clear: both; overflow: hidden; margin-bottom: 5px;}
 
+
+.tdfixedtext{ height: 58px; overflow: hidden; display: block; margin: 0px!important;}
 
         @media screen and (max-width:1360px) {
 
