@@ -1,4 +1,4 @@
-<!--rep header 1-->
+ <!--rep header 1-->
 <!--rep header 2-->
 <div class="new_header_bg" *ngIf="type=='admin'">
   <div class="new_header_container">
@@ -358,12 +358,23 @@
           <!-- added by Himadri -->
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
+                <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">Contract Management</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" [routerLink]="['/contract-manager-list']"> Contract Request List</a>
-                  <a class="dropdown-item" [routerLink]="['/contract-list']"> Manage Contract Content</a>
-                </div>
+                </div> -->
+              </li>
+              <li class="nav-item active" [routerLink]="['/contract-manager-list']">
+                <a class="nav-link">Contract Request List<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/contract-list']">manage contract content<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link">pending contracts<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link">closed contract list<span class="sr-only"></span></a>
               </li>
 
             <!-- added by Himadri -->

@@ -37,6 +37,7 @@ export class ContractManagerAddComponent implements OnInit {
    public contractSuggestion: any = [];
    public contractSuggestionFlug: boolean = false;
    public leadname: any = [];
+   public contract_manager_list: any = [];
    public timeSpanView: boolean = false;
    public timeSpanVal: any = "15";
    public loader: boolean = false;
@@ -55,6 +56,7 @@ export class ContractManagerAddComponent implements OnInit {
     this.contractForm = this.formBuilder.group({
         product:      [ null, [ Validators.required, Validators.maxLength(200) ] ],
         lead:    [ "", [ Validators.required, Validators.maxLength(200) ] ],
+        contract_manager:['',Validators.required]
       });
     this.noticeForm = this.formBuilder.group({
       notes: ['', Validators.required]
@@ -90,6 +92,7 @@ export class ContractManagerAddComponent implements OnInit {
          product: this.contractForm.value.product,
          product_id: this.cookeiservice.get('product_id'),
          lead_id: this.contractForm.value.lead,
+         contract_manager_id: this.contractForm.value.contract_manager,
          updated_by: this.cookeiservice.get('userid')
           }})
             .subscribe((res: any) => { 
@@ -106,7 +109,8 @@ export class ContractManagerAddComponent implements OnInit {
          product: this.contractForm.value.product,
          product_id: this.cookeiservice.get('product_id'),
          lead_id: this.contractForm.value.lead,
-          created_by: this.cookeiservice.get('userid')
+         contract_manager_id: this.contractForm.value.contract_manager,
+         created_by: this.cookeiservice.get('userid')
           }})
             .subscribe((res: any) => { 
                 if (res.status == 'success') {
@@ -143,6 +147,7 @@ export class ContractManagerAddComponent implements OnInit {
               product: this.contractForm.value.product,
               product_id: this.cookeiservice.get('product_id'),
               lead_id: this.contractForm.value.lead,
+              contract_manager_id: this.contractForm.value.contract_manager,
               created_by: this.cookeiservice.get('userid')
               }})
                 .subscribe((res: any) => {
@@ -156,6 +161,8 @@ export class ContractManagerAddComponent implements OnInit {
    
 
     geteventarr(){
+
+        console.log(this.recid)
       console.log('geteventarr')
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
@@ -190,8 +197,10 @@ export class ContractManagerAddComponent implements OnInit {
           const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
           this._http.post(link, {source: 'contract_repote', condition: {_id_object: id}})
               .subscribe((res:any) => {
+                  console.log('-----',res)
                   this.contractForm.controls['product'].patchValue(res.res[0].product);
                   this.contractForm.controls['lead'].patchValue(res.res[0].lead_id);
+                  this.contractForm.controls['contract_manager'].patchValue(res.res[0].contract_manager_id);
                   this.noticeForm.controls['notes'].patchValue(res.res[0].notes);
                   this.selectcontract(res.res[0]);
                   this.isedit_id = res.res[0]._id;
@@ -251,12 +260,14 @@ export class ContractManagerAddComponent implements OnInit {
         });
     }
 
-        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source:'leades_for_product_search', condition: { "product": contractData.product_id }}).subscribe((res:any) => {
+        const link = this._commonservice.nodesslurl + 'lead_and_product';
+        this._http.post(link, {  "product_id": contractData.product_id }).subscribe((res:any) => {
             console.log(res.res,'++++++++++++++');
-            this.leadname = res.res;
+            this.leadname = res.data.lead_list;
+            this.contract_manager_list = res.data.contract_manager_list;
             if (res.res =="success" && this.recid !=null && this.recid !='') {
                 this.selectproductfunc(contractData.product_id );
+                this.selectcontractmanagerfunc(contractData.product_id );
             }
         });
         
@@ -274,8 +285,15 @@ export class ContractManagerAddComponent implements OnInit {
                 this.selectedproduct = this.leadname[i];
             }
         }
-        
-
+    }
+    selectcontractmanagerfunc(event:any){
+        console.log(event.target.value);
+        console.log(this.contract_manager_list)
+        for(let i in this.contract_manager_list){
+            if(this.contract_manager_list[i].product_id == event.target.value){
+                this.selectedproduct = this.leadname[i];
+            }
+        }
     }
 
     // added by chandrani 

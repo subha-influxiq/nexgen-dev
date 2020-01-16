@@ -13,10 +13,12 @@
 <!-- Loader end -->
 
 
+
 <div class="user_account_setting_wrapper user_account_setting_wrappernew">
     <div class="account_inner_wrapper">
         <div class=" account_inner_wrapper1 ">
-            <div class="listevent_inner_wrapper" *ngIf="slotView">
+            <!-- added by himadri  -->
+            <div class="listevent_inner_wrapper">
                 <div class="inner_head_wrapper">
                     <h4 [innerHtml]="headerText.hedaerH4"></h4>
                     <span>{{ headerText.span }}</span>
@@ -24,11 +26,96 @@
 
                 <div class="event_content_wrapper ">
                     <div class="main_inner_content main_inner_contentnew ">
-                        <form [formGroup]="noticeForm">
-                            <h3 class="timezone_class">Notes</h3>
+
+
+
+
+                        <!-- This block for book-a-closer start -->
+<div class="listevent_inner_wrapper" *ngIf="slotView == false || recid != null">
+
+
+    <div class="main_inner_content main_inner_contentnew ngcontainerdivwrapper">
+        <form novalidate [formGroup]="contractForm" (ngSubmit)="contractFormSubmit();">
+
+            <div class="form-group row">
+                <label class="col-sm-12 col-form-label">Product:</label>
+
+                <div class="col-sm-12">
+                    <input [ngClass]="{disabledfield:recid != null}" type="text" class="form-control" [formControl]="contractForm.controls['product']"
+                        (keyup)="contractSuggest($event);" placeholder="Type Product name..." />
+                        
+
+                    <div class="col-sm-12 ngcontainerdiv" *ngIf="contractSuggestionFlug" >
+                        <ng-container *ngFor="let l of contractSuggestion;let i = index;" >
+                            <p *ngIf="l.traininglessonpercent != null" (click)="selectcontract(l);" class="contract-option">{{l.product_name}}</p>
+                        </ng-container>
+                    </div>
+                    <span class="error"
+                        *ngIf="contractFormSubmitFlug && contractForm.controls.product.errors">product
+                        Required</span>
+                </div>
+            </div>
+
+            <div class="form-group row" *ngIf="leadname.length > 0">
+                <label class="col-sm-12 col-form-label">Lead: </label>
+                <div  [ngClass]="{disabledfield:recid != null}" class="col-sm-12">
+
+                    <select [formControl]="contractForm.controls['lead']" class="form-control" (change)="selectproductfunc($event)">
+                        <option value="">Select a Lead</option>
+                        <option *ngFor="let i of leadname;" value="{{ i._id }}">{{ i.firstname }} {{ i.lastname }}
+                        </option>
+                    </select>
+                    <!-- <a class="helpwrapper" (click)="openLeadDetailsModal(i,leaddetails)"><i
+                            class="fa fa-info-circle" aria-hidden="true"></i></a> -->
+
+                    <span class="error"
+                        *ngIf="contractFormSubmitFlug && contractForm.controls.lead.errors">lead
+                        Required</span>
+                </div>
+            </div>
+
+
+            <div class="form-group row" *ngIf="contract_manager_list.length > 0">
+                <label class="col-sm-12 col-form-label">Contract Manager: </label>
+                <div  [ngClass]="{disabledfield:recid != null}" class="col-sm-12">
+
+                    <select [formControl]="contractForm.controls['contract_manager']" class="form-control" (change)="selectcontractmanagerfunc($event)">
+                        <option value="">Select a Contract Manager</option>
+                        <option *ngFor="let i of contract_manager_list;" value="{{ i._id }}">{{ i.firstname }} {{ i.lastname }}
+                        </option>
+                    </select>
+                    <!-- <a class="helpwrapper" (click)="openLeadDetailsModal(i,leaddetails)"><i
+                            class="fa fa-info-circle" aria-hidden="true"></i></a> -->
+
+                    <span class="error"
+                        *ngIf="contractFormSubmitFlug && contractForm.controls.contract_manager.errors">Contract Manager Required</span>
+                </div>
+            </div>
+
+           
+
+            <div *ngIf="recid == null" class="form-group row form-groupbtndiv">
+
+                <button> Next</button>
+                <button type="button" (click)="goback()"> cancel</button>
+                <div class="clearfix"></div>
+
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+<!-- This block for book-a-closer end -->
+<span *ngIf="slotView || recid != null">
+                      
+                            <h3 class="timezone_class" style="text-align: center;">Notes</h3>
                             
 
+ 
 
+<form [formGroup]="noticeForm">
 <!-- added by himadri -->
 
   <textarea type="text" class="notestextarea" formControlName="notes"></textarea>
@@ -48,75 +135,13 @@
                             </div>
 
                         </form>
+                    </span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- This block for book-a-closer start -->
-            <div class="listevent_inner_wrapper" *ngIf="slotView == false">
-                <div class="inner_head_wrapper">
-                    <h4>{{ headerText.hedaerH4 }}</h4>
-                    <span>{{ headerText.span }}</span>
-                </div>
-
-                <div class="main_inner_content main_inner_contentnew ngcontainerdivwrapper">
-                    <form novalidate [formGroup]="contractForm" (ngSubmit)="contractFormSubmit();">
-
-                        <div class="form-group row">
-                            <label class="col-sm-12 col-form-label">Product:</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" [formControl]="contractForm.controls['product']"
-                                    (keyup)="contractSuggest($event);" placeholder="Type Product name..." />
-                                    
-
-                                <div class="col-sm-12 ngcontainerdiv" *ngIf="contractSuggestionFlug" >
-                                    <ng-container *ngFor="let l of contractSuggestion;let i = index;" >
-                                        <p *ngIf="l.traininglessonpercent != null" (click)="selectcontract(l);" class="contract-option">{{l.product_name}}</p>
-                                    </ng-container>
-                                </div>
-                                <span class="error"
-                                    *ngIf="contractFormSubmitFlug && contractForm.controls.product.errors">product
-                                    Required</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group row" *ngIf="leadname.length > 0">
-                            <label class="col-sm-12 col-form-label">Lead: </label>
-                            <div class="col-sm-12">
-
-                                <select [formControl]="contractForm.controls['lead']" class="form-control" (change)="selectproductfunc($event)">
-                                    <option value="">Select a Lead</option>
-                                    <option *ngFor="let i of leadname;" value="{{ i._id }}">{{ i.firstname }} {{ i.lastname }}
-                                    </option>
-                                </select>
-                                <!-- <a class="helpwrapper" (click)="openLeadDetailsModal(i,leaddetails)"><i
-                                        class="fa fa-info-circle" aria-hidden="true"></i></a> -->
-
-                                <span class="error"
-                                    *ngIf="contractFormSubmitFlug && contractForm.controls.lead.errors">lead
-                                    Required</span>
-                            </div>
-                        </div>
-
-
-
-                       
-
-                        <div class="form-group row form-groupbtndiv">
-
-                            <button> Book</button>
-                            <button type="button" (click)="goback()"> cancel</button>
-                            <div class="clearfix"></div>
-
-                        </div>
-                        <div class="clearfix"></div>
-                    </form>
-                </div>
-
-                <div class="clearfix"></div>
-            </div>
-            <!-- This block for book-a-closer end -->
+            
         </div>
     </div>
 

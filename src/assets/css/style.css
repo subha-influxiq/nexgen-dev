@@ -1978,3 +1978,16 @@ span.loginclass {
     }
 }
 /* ------------------- avijit css end ------------------- */
+
+.contract-list-divblock{ height: 300px; overflow-y: scroll; margin: 5px 0; border: solid 1px #ccc; padding: 0px; position: relative;}
+.modal-dialog < .brandmanagement_modal{
+    max-width: 90%!important;}
+
+
+    @media (min-width: 576px){
+        .modal-dialog < .brandmanagement_modal{
+    max-width: 90%!important;
+      
+}
+
+}

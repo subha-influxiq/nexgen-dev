@@ -31,8 +31,21 @@ export class AdminheaderComponent implements OnInit {
   public oldcookiedata: any;
   public gameplanButton:any = 0;
   public calenderaccess: any;
+  private currentUrl: string;
 
   constructor(@Inject(WINDOW) private window: Window, public cookie: CookieService, public old_cookie: CookieService, public router: Router, private _commonservices: Commonservices, private _http: HttpClient) {
+
+
+    const body = document.getElementsByTagName('body')[0];
+    this.currentUrl = this.router.url;
+    if (this.currentUrl == '/contract-list') {
+      body.classList.add('contactlist')
+    } else{
+      body.classList.remove('contactlist')
+    }
+
+
+
     this.checkOldCookie = this.cookie.check('oldcookie'); //check if oldcookie exists or not;returns boolean data
     if (this.cookie.check('oldcookie') == true) {
       this.oldcookiedata = JSON.parse(this.cookie.get('oldcookie'));

@@ -1,8 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, Renderer2 } from '@angular/core';
 import {Commonservices} from '../app.commonservices' ;
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -16,6 +16,7 @@ export class ContractListComponent implements OnInit {
 
 
   modalRef1: BsModalRef;
+  public classList: any;
 
 public datalist: any;
 public selecteditem;
@@ -23,24 +24,30 @@ public message;
  headElements = ['ID', 'Data', 'Product Name', 'Created_by', 'Notes'];
 
 
-
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
     public _http:HttpClient,
     public router: Router,
+    private renderer: Renderer2,
     public route: ActivatedRoute,
     public modal: BsModalService,
-    protected _sanitizer: DomSanitizer) { }
+    protected _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
       console.log('json',data.results.res);
       this.datalist = data.results.res;
+      
 
 
    });
     // this.getdata();
+    // if (router.) {
+      
+    // }
+
+    
   }
 
   safeHtml(html) {

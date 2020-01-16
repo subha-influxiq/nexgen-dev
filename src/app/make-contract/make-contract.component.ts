@@ -17,6 +17,7 @@ export class MakeContractComponent implements OnInit {
   public datalist: any;
   public recid: any;
   public issubmit = 0;
+  public editorconfig: any = {};
 
   constructor(
     public route: ActivatedRoute,
@@ -27,9 +28,13 @@ export class MakeContractComponent implements OnInit {
     public cookeiservice:CookieService,
     public _http: HttpClient 
   ) {
+
+    this.editorconfig.extraAllowedContent = '*[class](*),span;ul;li;table;td;style;*[id];*(*);*{*}';
+
     this.makeContentForm = this.formBuilder.group({
-      clauses: ['', Validators.required]
-    })
+      clauses: ['', Validators.required],
+      notesMsg:['']
+    });
     this.route.params.subscribe(params => {
       this.recid = params['_id'];
       console.log(this.recid);
@@ -44,8 +49,6 @@ export class MakeContractComponent implements OnInit {
     if (this.datalist.clauses != null && this.datalist.clauses != '') {
       this.makeContentForm.controls['clauses'].patchValue(this.datalist.clauses);
     }
-
-
    });
   }
 
@@ -53,6 +56,7 @@ export class MakeContractComponent implements OnInit {
   safeHtml(html) {
     return this._sanitizer.bypassSecurityTrustHtml(html);
   }
+
 
   makeContentFormSubmit() {
     this.issubmit = 1;
@@ -64,9 +68,11 @@ export class MakeContractComponent implements OnInit {
     console.log('sdf',this.makeContentForm.value)
 
     if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '') {
+     
       let data:any= {
         id:this.recid,
         notes: this.datalist.notes,
+        notesByCM:this.makeContentForm.value.notesMsg,
         clauses: this.makeContentForm.value.clauses,
         status: 'sent_to_rep',
         rep_id: this.datalist.rep_id,
@@ -74,6 +80,7 @@ export class MakeContractComponent implements OnInit {
         product: this.datalist.product,
         product_id: this.datalist.product_id,
         lead_id: this.datalist.lead_id,
+        contract_manager_id: this.datalist.contract_manager_id,
         contentTop: this.datalist.contentTop,
         contentBottiom: this.datalist.contentBottiom,
         contract_content_notes: this.datalist.contract_content_notes

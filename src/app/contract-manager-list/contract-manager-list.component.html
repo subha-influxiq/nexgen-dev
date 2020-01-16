@@ -1,30 +1,33 @@
 <app-adminheader></app-adminheader>
 
-<div class="nextGen_admin_mainwrapper" style="margin-top: 25px;">
+<div class="nextGen_admin_mainwrapper">
 
-
+<div class="user_management_wrapper">
   <div class="user_management_inner">
+
+    <h2> Contract Request List</h2>
 
     <div class="inner_search_wrapper">
         <div class="inner_content_wrapper">
-            <div class="search_content">
+            <!-- <div class="search_content">
                 <h3> <input type="text"
                         placeholder="Search by Email"><button><i class="fa fa-search"
                             aria-hidden="true"></i></button> </h3>
-            </div>
+            </div> -->
             <div class="search_content">
-                <h3> <input type="text" placeholder="Search by Name"><button><i class="fa fa-search"
-                            aria-hidden="true"></i></button> </h3>
+                <h3> 
+                  <input type="text" placeholder="Search by Name" (keyup)="searchbyname($event.target.value)">
+                </h3>
             </div>
 
             <!-- added by himadri start product search-->
 
             <div class="search_content">
                 <h3>
-                <select  required>
+                <select [(ngModel)]='prodSelect' (click)="productSearchbyval(prodSelect)" placeholder="Select Product" required>
                         <option value="0" disabled>Select Product</option>
-                        <!-- <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">
-                            {{searchval.categoryname}}</option> -->
+                        <option *ngFor="let productval of productList" value="{{productval.productname}}">
+                            {{productval.productname}}</option>
                     </select>
                 </h3>
             </div>
@@ -36,16 +39,16 @@
             <span>
             <form>
               <div class="form-group">
-                    <input type="text" placeholder="Select Date Range" class="form-control"
-                        
-                        [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
-                        #drp="bsDaterangepicker" bsDaterangepicker>
+                <input type="text" placeholder="Select Date Range" class="form-control"
+                [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
+                [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
+                #drp="bsDaterangepicker" bsDaterangepicker>
 
                 </div>
                 <div class="form-group row form-groupbtndiv">
 
-                    <button type="submit" class="btn_search" > search </button>
-                    <button type="submit" class="btn_search"> show all
+                    <button type="submit" class="btn_search"  (click)="geteventarr()" > search </button>
+                    <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
                     </button>
                 </div>
 
@@ -64,7 +67,7 @@
     <div class="table-responsive admin_table_wrapper">
 
 
-          <div class="action_section action_sectionnew">
+          <div class="action_section action_sectionnew aminewsearch">
         <a *ngIf="cookeiservice.get('usertype') == 'rep'" class="addfrinderbtn addfrinderbtnupd" routerLink="/add-contract-manager">Request Contract</a>
       </div>
       <table mdbTable class="table">
@@ -82,11 +85,14 @@
             <td datalabel="Product Name">{{el.product}}</td>
             <td datalabel="Rep Name" (click)="showdetails(el.rep_id, 'rep')">{{el.created_by}}</td>
             <td datalabel="Lead Name" (click)="showdetails(el.lead_id, 'lead')">{{el.lead_fullName}}</td>
+            <td datalabel="Contract Manager Name" (click)="showdetails(el.contract_manager_id, 'contract_manager')">{{el.contract_manager_name}}</td>
             <td datalabel="Status">{{el.status}}</td>
             <td datalabel="Notes" (click)="openModalData(el,showmodal)"><span class="tdfixedtext">{{el.notes}}</span></td>
             <!-- <td  *ngIf="cookeiservice.get('usertype') == 'contract_manager'" datalabel="edit"> -->
                 <td datalabel="edit">
               <span class="edit_user" (click)="editRow(el)">Edit</span>
+              <span class="edit_user" *ngIf="el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
+              <span class="edit_user" (click)="editRow(el)">Ask For Modification</span>
               <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el)">Create Contract</span>
 
               <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el,commonconfirmmodal)">Delete</span>
@@ -98,6 +104,7 @@
     </div>
 
   </div>
+</div>
 </div>
 <app-footer></app-footer>
 

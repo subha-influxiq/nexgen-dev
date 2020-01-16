@@ -17,22 +17,24 @@
               *ngIf="!contractForm.controls['product_id'].valid && contractForm.controls['product_id'].touched  && issubmit==1">Product
               is required</span>
           </div>
+          <div>
+            <label>Content Top :</label>
           <ck-editor formControlName="contentTop" [config]="editorconfig" (keyup)="issubmit=0">
           </ck-editor>
           <span class="error"
             *ngIf="!contractForm.controls['contentTop'].valid && contractForm.controls['contentTop'].touched  && issubmit==1">This
             is required</span>
-
+          </div>
             <br>
-
+            <div>
+              <label>Content Bottiom :</label>
           <ck-editor formControlName="contentBottiom" [config]="editorconfig" (keyup)="issubmit=0">
           </ck-editor>
           <span class="error"
             *ngIf="!contractForm.controls['contentBottiom'].valid && contractForm.controls['contentBottiom'].touched  && issubmit==1">This
             is required</span>
-            
+            </div>
             <br>
-<p>{{isReadOnly}}</p>
           <textarea [attr.readonly]= "isReadOnly" formControlName="notes" class="form-control" placeholder="Notes" (keyup)="issubmit=0"></textarea>
           <br>
 
