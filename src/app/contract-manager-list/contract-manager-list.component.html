@@ -85,15 +85,15 @@
             <td datalabel="Product Name">{{el.product}}</td>
             <td datalabel="Rep Name" (click)="showdetails(el.rep_id, 'rep')">{{el.created_by}}</td>
             <td datalabel="Lead Name" (click)="showdetails(el.lead_id, 'lead')">{{el.lead_fullName}}</td>
-            <td datalabel="Contract Manager Name" (click)="showdetails(el.contract_manager_id, 'contract_manager')">{{el.contract_manager_name}}</td>
+            <td datalabel="Contract Manager Name">{{el.contract_manager_name}}</td>
             <td datalabel="Status">{{el.status}}</td>
-            <td datalabel="Notes" (click)="openModalData(el,showmodal)"><span class="tdfixedtext">{{el.notes}}</span></td>
+            <td datalabel="Notes" (click)="openModalData(el, showmodal)"><span class="tdfixedtext">{{el.notes}}</span></td>
             <!-- <td  *ngIf="cookeiservice.get('usertype') == 'contract_manager'" datalabel="edit"> -->
                 <td datalabel="edit">
-              <span class="edit_user" (click)="editRow(el)">Edit</span>
+              <span class="edit_user" *ngIf="el.status == 'request' || el.status =='ask_for_modification'"  (click)="editRow(el)">Edit</span>
               <span class="edit_user" *ngIf="el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
-              <span class="edit_user" (click)="editRow(el)">Ask For Modification</span>
-              <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el)">Create Contract</span>
+              <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span>
+              <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
 
               <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el,commonconfirmmodal)">Delete</span>
             </td>
@@ -137,6 +137,8 @@
     </div>
     <div class="message_success">{{message}}</div>
 
+    
+
   </div>
 </ng-template>
 
@@ -144,11 +146,38 @@
 
 <!--Common message modal-->
 <ng-template #showmodal>
+  <!-- <div class="modal-body brandmanagement_modal"> -->
+    <div class="newconright" style="width: 100%;">
+      <h4>Note</h4>
+   
+      <p><strong>Notes By Rep: </strong>{{selecteditem.rep_name}}</p>
+        <p><strong>Notes: </strong>{{selecteditem.notes}}</p>
+        <p><strong>Date: </strong> {{selecteditem.date}}</p>
+        <hr>
+        
+        <p *ngIf="selecteditem.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{selecteditem.contract_manager_name}}</p>
+        <p *ngIf="selecteditem.contract_content_notes !=null"><strong>Notes: </strong>{{selecteditem.contract_content_notes}}</p>
+        <p *ngIf="selecteditem.CM_added_by !=null"><strong>Date: </strong>{{selecteditem.CM_added_by}}</p>
+       <hr>
+        
+        <p *ngIf="selecteditem.ModifiedNotesByRep !=null && selecteditem.rep_name !=null"><strong>Modified By Rep: </strong>{{selecteditem.rep_name}}</p>
+        <p *ngIf="selecteditem.ModifiedNotesByRep !=null"><strong>Notes: </strong>{{selecteditem.ModifiedNotesByRep}}</p>
+        <p *ngIf="selecteditem.ModifiedByRep_date !=null"><strong>Date: </strong>{{selecteditem.ModifiedByRep_date}}</p>
+     </div>
+    <!-- <p>{{selecteditem.notes}}</p>
+    <div class="btn_cnt">
+      <button class="message_deny" (click)="modalRef1.hide()">close</button>
+    </div> -->
+  <!-- </div> -->
+</ng-template>
+
+<!--Common message modal-->
+<ng-template #showmodalfornotes>
   <div class="modal-body brandmanagement_modal">
     <!-- <div class="logo_wrapper">
       <img src="assets/images/logo.png">
     </div> -->
-    <p>{{selecteditem.notes}}</p>
+    <p>{{notes_list.notesByCM}}</p>
     <div class="btn_cnt">
       <button class="message_deny" (click)="modalRef1.hide()">close</button>
     </div>

@@ -48,6 +48,7 @@ export class MakeContractComponent implements OnInit {
       this.datalist = data.results.res[0];
     if (this.datalist.clauses != null && this.datalist.clauses != '') {
       this.makeContentForm.controls['clauses'].patchValue(this.datalist.clauses);
+      this.makeContentForm.controls['notesMsg'].patchValue(this.datalist.notesByCM);
     }
    });
   }
@@ -67,20 +68,46 @@ export class MakeContractComponent implements OnInit {
     }
     console.log('sdf',this.makeContentForm.value)
 
-    if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '') {
+    if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '' && this.datalist.status == 'request') {
      
       let data:any= {
         id:this.recid,
         notes: this.datalist.notes,
         notesByCM:this.makeContentForm.value.notesMsg,
+        notesByCM_date: Date.now(),
         clauses: this.makeContentForm.value.clauses,
-        status: 'sent_to_rep',
+        status: 'send_to_rep',
         rep_id: this.datalist.rep_id,
         rep_email: this.datalist.rep_email,
         product: this.datalist.product,
         product_id: this.datalist.product_id,
         lead_id: this.datalist.lead_id,
-        contract_manager_id: this.datalist.contract_manager_id,
+        contract_manager_id: this.cookeiservice.get('userid'),
+        contentTop: this.datalist.contentTop,
+        contentBottiom: this.datalist.contentBottiom,
+        contract_content_notes: this.datalist.contract_content_notes
+      }
+      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
+          if (res.status == "success") {
+            this.sendEmail(data);
+            this.router.navigateByUrl('/contract-manager-list')
+          }
+        });
+    }else {
+      let data:any= {
+        id:this.recid,
+        notes: this.datalist.notes,
+        ModifiedNotesByRep:this.makeContentForm.value.notesMsg,
+        ModifiedByRep_date: Date.now(),
+        clauses: this.makeContentForm.value.clauses,
+        status: 'ask_for_modification',
+        rep_id: this.datalist.rep_id,
+        rep_email: this.datalist.rep_email,
+        product: this.datalist.product,
+        product_id: this.datalist.product_id,
+        lead_id: this.datalist.lead_id,
+        // contract_manager_id: this.cookeiservice.get('userid'),
         contentTop: this.datalist.contentTop,
         contentBottiom: this.datalist.contentBottiom,
         contract_content_notes: this.datalist.contract_content_notes

@@ -23,8 +23,8 @@ export class ContactManagementComponent implements OnInit {
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
       // {value:'unique_id',name:'User ID',role:0,func:'',class:'id',type:'text'},
    /*   {value:'username',name:'Username',role:0,func:'',class:'username',type:'text'},*/
-      {value:'firstname',name:'First Name',role:0,func:'',class:'firstname',type:'text'},
-      {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
+      {value:'fullname',name:'Name',role:0,func:'',class:'fullname',type:'text'},
+      // {value:'lastname',name:'Last Name',role:0,func:'',class:'lastname',type:'text'},
       {value:'email',name:'Email Id',role:0,func:'',class:'email',type:'text'},
 
     {value:'address',name:'Address',role:0,func:'',class:'address',type:'text'},

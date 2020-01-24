@@ -38,6 +38,7 @@ public filterValForName: any;
 public filterval5: any = '';
 public start_date: any = '';
 public end_date: any = '';
+public notes_list: any = '';
 
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
@@ -45,13 +46,17 @@ public end_date: any = '';
     public router: Router,
     public route: ActivatedRoute,
     public modal: BsModalService,
-    protected _sanitizer: DomSanitizer) { }
+    protected _sanitizer: DomSanitizer) {
+     }
 
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
       this.datalist = data.results.res;
    });
+  //  console.log((this.datalist[0].contentTop));
+
+   
 
    this.getproduct();
   }
@@ -161,9 +166,14 @@ console.log(val)
     }})
       .subscribe((res: any) => { 
           if (res.status == 'success') {
-          this.router.navigateByUrl('/contract-manager-list');
+          // this.router.navigateByUrl('/contract-manager-list');
       }
       });
+}
+shownotes(val: any, template: TemplateRef<any>){
+  console.log(val);
+  this.modalRef1 = this.modal.show(template);
+  this.notes_list = val;
 }
 
   editRow(val: any) {
@@ -180,9 +190,13 @@ openModalData(val: any, template: TemplateRef<any>) {
     this.selecteditem = val;
 }
 
-makeContract(item: any) {
+makeContract(item: any, val:string) {
   console.log(item);
-  this.router.navigateByUrl('/make-contract/'+item._id);
+  if (val == 'edit') {
+    this.router.navigateByUrl('/make-contract-edit/'+item._id);
+  }else{
+    this.router.navigateByUrl('/make-contract/'+item._id);
+  }
 }
 
 confirmdelete(template: TemplateRef<any>) {

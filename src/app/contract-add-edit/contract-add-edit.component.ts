@@ -32,7 +32,8 @@ export class ContractAddEditComponent implements OnInit {
       contentTop: ['', Validators.required],
       contentBottiom: ['', Validators.required],
       product_id: ['', Validators.required],
-      notes: ['']
+      notes: [''],
+      status:['']
     });
 
     this.editorconfig.extraAllowedContent = '*[class](*),span;ul;li;table;td;style;*[id];*(*);*{*}';
@@ -60,6 +61,10 @@ export class ContractAddEditComponent implements OnInit {
         }
     
   }
+
+  togglestatus(item: any) {
+    let status: any;
+}
 
 
   contractFormSubmit() {
@@ -113,6 +118,7 @@ export class ContractAddEditComponent implements OnInit {
           this.contractForm.controls['contentBottiom'].patchValue(datalist2[0].contentBottiom);
           this.contractForm.controls['product_id'].patchValue(datalist2[0].product_id);
           this.contractForm.controls['notes'].patchValue(datalist2[0].notes);
+          this.contractForm.controls['status'].patchValue(datalist2[0].status);
           this.editid = datalist2[0]._id;
         })
 

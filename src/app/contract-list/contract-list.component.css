@@ -1,0 +1,53 @@
+.messagenewbtn{background: #00a8ef;
+    font-family: 'RalewaySemiBold';
+    color: #fff;
+    font-size: 15px;
+    /* padding: 5px 5px 4px 5px; */
+    padding: 5px 8px;
+    margin: 2px;
+    
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center; border: none;}
+
+    .messagenewbtnwrapper{ text-align: center;}
+
+
+    .search_content_wrapper{ display: block; width:370px; margin: 10px auto; margin-top: -33px;}
+
+    .search_content_wrapper select{ width: 180px; float: left;     background: #efefef;     border: 1px solid #d8d8d8; width: 195px;
+        float: left;
+        height: 33px;}
+
+    .search_content_wrapper button{ width: 170px; display: block; float: right; background: #00a8ef;
+        font-size: 16px;
+        font-family: 'RalewaySemiBold';
+        text-decoration: none;
+        
+        padding: 5px 5px 4px 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #fff;
+        text-transform: uppercase; border: none; cursor: pointer;}
+        
+
+    .clear{ clear:both; overflow: hidden;}
+
+    @media screen and (max-width: 1280px){
+        .search_content_wrapper{   margin-top: -44px;}
+    }
+
+    @media screen and (max-width: 991px){
+        .search_content_wrapper{  margin: 0px;  margin-top: 10px;  }
+    }
+
+    @media screen and (max-width: 400px){
+        .search_content_wrapper{ margin: 0px;  width:90%;  margin-top: 10px; }
+
+        .search_content_wrapper select{ width: 100%; margin: 0 auto;  float: none;}
+
+        .search_content_wrapper button{ width: 148px; margin: 0 auto; float: none; margin-top: 5px;}
+
+         
+    }

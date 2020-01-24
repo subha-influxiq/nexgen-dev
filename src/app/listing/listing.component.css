@@ -33,3 +33,22 @@
 modal-container .modal-content {
     border: 0 !important;
 }
+
+
+
+.ami_opn_new_block{ display: block; width: 100%;}
+
+.ami_opn_new_block .ami_opn_new_wrap{ display: block; padding: 5px 0; border-bottom: solid 1px #f6f0f0;}
+
+.ami_opn_new_block .ami_opn_new_wrap:last-child{ border: none;}
+
+.ami_opn_new_block .ami_opn_new_wrap .labelclass{ display:block; width: 40%; float: left;     margin: 0px;}
+
+.ami_opn_new_block .ami_opn_new_wrap select{ width: 58%; float: right; border: solid 1px #ccc;     background: #d9d3d3;
+    padding: 5px;}
+
+.clear{ clear:both; overflow: hidden; display: block;}
+
+.ami_opn_new_block form{margin: 0px;}
+
+.asbuttonwrapper button{ margin: 2px;}

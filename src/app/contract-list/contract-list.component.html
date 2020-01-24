@@ -1,5 +1,13 @@
+<div class="loder_body" *ngIf="loader==1">
+  <div class="loder_wrapper">
+    <img src="assets/images/betologo.png" alt="#"
+      style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+    <div class="loader"></div>
+  </div>
+</div>
+
 <app-adminheader></app-adminheader>
- 
+
 
 
 
@@ -8,8 +16,22 @@
   <div class="nexgen_admin_table">
     <div class="table-responsive admin_table_wrapper">
 
-          <div class="action_section action_sectionnew">
+      <div class="action_section action_sectionnew">
         <a class="addfrinderbtn " style="width: 286px!important" routerLink="/add-contract"> Add Contract Content</a>
+        <div class="search_content_wrapper">
+
+          <select [(ngModel)]='prodSelect' (click)="searchProduct(filterval4)" [(ngModel)]="filterval4" required>
+            <option value="0" disabled>Select Product</option>
+            <option *ngFor="let searchval of product_list" value="{{searchval.product_name}}">
+              {{searchval.product_name}}</option>
+          </select>
+
+
+          <button type="button" (click)="getdata()" class="addfrinderbtn "> Show All Records</button>
+
+          <div class="clear"></div>
+        </div>
+
       </div>
       <table mdbTable class="table">
 
@@ -22,14 +44,24 @@
         <tbody>
           <tr mdbTableCol *ngFor="let el of datalist; let i = index">
             <td datalabel="Id" scope="row">{{i + 1}}</td>
-            <td datalabel="Data">{{el.date}}</td>
+            <td datalabel="Date">{{el.date}}</td>
             <td datalabel="Product Name">{{el.product_name}}</td>
             <td datalabel="Created_by">{{el.created_by}}</td>
             <td datalabel="Notes">{{el.notes}}</td>
-                <td  datalabel="edit" >
-              <span class="edit_user" (click)="editRow(el)">Edit</span>
 
-              <span class="edit_user" *ngIf="cookeiservice.get('usertype') != 'contract_manager'" (click)="deletdata(el,commonconfirmmodal)">Delete</span>
+            <td datalabel="Status">
+
+              <span class="statusactive" *ngIf="el.status==true"> Active
+                &nbsp;&nbsp; <span (click)="togglestatus(el)" class="ticon_active"></span></span>
+              <span class="statusinactive" *ngIf="el.status!=true"> Inactive
+                <span (click)="togglestatus(el)" class="ticon_inactive"></span>
+              </span></td>
+
+            <td datalabel="edit">
+              <span class="edit_user" (click)="editRow(el,0)">Edit</span>
+
+              <span class="edit_user" *ngIf="cookeiservice.get('usertype') != 'contract_manager'"
+                (click)="deletdata(el,commonconfirmmodal)">Delete</span>
               <span (click)="openModalData(el,showmodal)"><i class="fa fa-eye"></i></span>
             </td>
           </tr>
@@ -82,16 +114,23 @@
     <!-- <div class="logo_wrapper">
       <img src="assets/images/logo.png">
     </div> -->
-    <label style="display: block; font-weight: bold; background-color: #00a8ef; color: #333;   padding: 5px 1%; width: 100%;">Content Top: </label>
-      <div class="contract-list-divblock">
-       
-      <span  style="display:  block; padding: 5px;  " [innerHTML]="safeHtml(selecteditem.contentTop)"></span>
-    </div>
-    <label style="display: block; font-weight: bold; background-color: #00a8ef; color: #333; padding: 5px 1%; width: 100%;">Content Bottom: </label>
+    <label
+      style="display: block; font-weight: bold; background-color: #00a8ef; color: #333;   padding: 5px 1%; width: 100%;">Content
+      Top: </label>
     <div class="contract-list-divblock">
-     
-      <span  style="display:  block; padding: 5px; " [innerHTML]="safeHtml(selecteditem.contentBottiom)"></span>
-    </div>
 
+      <span style="display:  block; padding: 5px;  " [innerHTML]="safeHtml(selecteditem.contentTop)"></span>
+    </div>
+    <label
+      style="display: block; font-weight: bold; background-color: #00a8ef; color: #333; padding: 5px 1%; width: 100%;">Content
+      Bottom: </label>
+    <div class="contract-list-divblock">
+
+      <span style="display:  block; padding: 5px; " [innerHTML]="safeHtml(selecteditem.contentBottiom)"></span>
+    </div>
+    <div class="messagenewbtnwrapper">
+      <button class="message_allow messagenewbtn" (click)="editRow(selecteditem,1)">Edit</button>
+      <button class="message_deny messagenewbtn" (click)="modalRef1.hide();">Cancel</button>
+    </div>
   </div>
 </ng-template>

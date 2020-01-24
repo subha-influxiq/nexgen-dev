@@ -44,9 +44,11 @@
 
                             <!-- added by himadri start product search-->
 
-                            <div class="search_content" *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] ">
+                            <div class="search_content"
+                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] ">
                                 <h3>
-                                <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)" [(ngModel)]="filterval4" required>
+                                    <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)"
+                                        [(ngModel)]="filterval4" required>
                                         <option value="0" disabled>Select Product</option>
                                         <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">
                                             {{searchval.categoryname}}</option>
@@ -54,27 +56,28 @@
                                 </h3>
                             </div>
 
-                                                        <!-- added by himadri end product search-->
+                            <!-- added by himadri end product search-->
 
-                        <!-- added by himadri start Date Range search-->
+                            <!-- added by himadri start Date Range search-->
 
                             <span *ngIf="router.url== ['/manage-leads'] || router.url== ['/appointmentlist']">
-                            <form>
-                              <div class="form-group">
-                                    <input type="text" placeholder="Select Date Range" class="form-control"
-                                        [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
-                                        [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
-                                        #drp="bsDaterangepicker" bsDaterangepicker>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Select Date Range" class="form-control"
+                                            [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
+                                            [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
+                                            #drp="bsDaterangepicker" bsDaterangepicker>
 
-                                </div>
-                                <div class="form-group row form-groupbtndiv">
+                                    </div>
+                                    <div class="form-group row form-groupbtndiv">
 
-                                    <button type="submit" class="btn_search" (click)="geteventarr()"> search </button>
-                                    <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
-                                    </button>
-                                </div>
+                                        <button type="submit" class="btn_search" (click)="geteventarr()"> search
+                                        </button>
+                                        <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
+                                        </button>
+                                    </div>
 
-                            </form>
+                                </form>
                             </span>
 
 
@@ -231,9 +234,9 @@
                                                     (click)="iframeAutoplay(item)" 
                                                     [attr.src]="item[item1.value]"> -->
 
-                                                    <img class="iframgeimg" id="thumb{{item._id}}"
+                                                <img class="iframgeimg" id="thumb{{item._id}}"
                                                     style="height: 150px;width: 250px;"
-                                                    (click)="youtubeVideoPlay(item.youtube_url, youtubemodal)" 
+                                                    (click)="youtubeVideoPlay(item.youtube_url, youtubemodal)"
                                                     [attr.src]="item[item1.value]">
                                             </span>
                                             <span class="hide" *ngIf="item1.type=='iframe' " [ngClass]="hide">
@@ -472,7 +475,8 @@
                     <div class="col-sm-8">
 
 
-                        <input *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && (item.name!='multiple_emails' && item.name!='tempemail')"
+                        <input
+                            *ngIf="(item.inputtype=='text'  || item.inputtype=='password' || item.inputtype=='hidden') && (item.name!='multiple_emails' && item.name!='tempemail')"
                             [name]="item.name" [formControl]="dataForm.controls[item.name]" [type]="item.inputtype"
                             class="form-control" [placeholder]="item.placeholder" (keyup)="issubmit=0">
 
@@ -622,6 +626,7 @@
                 <div class="asbuttonwrapper">
                     <button type="submit"> Submit</button>
                     <button type="reset" (click)="modalRef.hide()"> Cancel</button>
+                    <button *ngIf="router.url==['/belk-upload']" type="button" (click)="openCsvMach(csv)">Next</button>
                 </div>
 
             </div>
@@ -634,13 +639,14 @@
 
 
 <!--Youtub video modal-->
-<ng-template #youtubemodal>  
+<ng-template #youtubemodal>
     <div class="youtubevideocls">
-        <span class="closebtn">     	
-    <i class="fa fa-times" (click)="modalRef3.hide()"></i>
+        <span class="closebtn">
+            <i class="fa fa-times" (click)="modalRef3.hide()"></i>
         </span>
-        
-        <iframe width="560" height="315" [attr.src]="youtubeVideoUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <iframe width="560" height="315" [attr.src]="youtubeVideoUrl" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </ng-template>
 
@@ -748,5 +754,51 @@
         </div>
     </div>
     <div>
+    </div>
+</ng-template>
+
+<ng-template #csv>
+    <div class="modal-body brandmanagement_modal">
+
+        <div class="ami_opn_new_block">
+
+            
+        <form [formGroup]="productForm">
+
+            <input type="text" required [formGroupName]="firstName" />
+
+            <span class="ami_opn_new_wrap" *ngFor="let item of staticHeader" >
+                <label class="labelclass">{{item}}: </label>
+                <!-- <input [**name]="item" type="text" required [formGroupName]="item" />
+                <select required>
+                    <option value="0" disabled>Select Header</option>
+                    <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
+                        {{searchval}}</option>
+                </select> -->
+             
+
+                <span class="clear"></span>
+                
+            </span>
+
+            <div formArrayName="selling_points">
+                <div *ngFor="let item of sellingPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                <label>
+                  Selling Point: <input formControlName="point" /> 
+                  <select required>
+                    <option value="0" disabled>Select Header</option>
+                    <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
+                        {{searchval}}</option>
+                </select>
+                </label>
+                <button type="button" (click)="deleteSellingPoint(pointIndex)">Delete Selling Point</button>
+                </div>
+                <button type="button" (click)="addSellingPoint()">Add Selling Point</button>
+              </div>
+             
+        </form>
+
+    </div>
+
     </div>
 </ng-template>

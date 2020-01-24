@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild, EventEmitter, ElementRef, Input } from "@angular/core";
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormControl } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormControl, FormArray } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Commonservices } from "../app.commonservices";
 import { HttpClient } from "@angular/common/http";
@@ -20,6 +20,9 @@ declare var $: any;
     providers: [Commonservices],
 })
 export class ListingComponent implements OnInit {
+    public csvHeader: any;
+    public csvHeaderAllData: any = '';
+    public staticHeader = ["FirstName", "LastName", "CompanyName", "Address", "City", "County", "State", "Zip", "Phone","Email", "Web"];
     public start_time: any;
     public end_time: any;
     public submitval: any = 1;
@@ -128,7 +131,7 @@ export class ListingComponent implements OnInit {
         this.editsourceval = editsourcev;
     }
     
-
+    productForm: FormGroup;
 
     constructor(public _commonservice: Commonservices, public router: Router, public _http: HttpClient, public modal: BsModalService, formgroup: FormBuilder, private cookeiservice: CookieService,public sanitizer: DomSanitizer, public route: ActivatedRoute) {
         
@@ -141,6 +144,15 @@ export class ListingComponent implements OnInit {
     }
 
     ngOnInit() {
+
+         /* Initiate the form structure */
+    this.productForm = this.formgroup.group({
+        title: [],
+        selling_points: this.formgroup.array([this.formgroup.group({point:''})]),
+        // FirstName: this.
+        // .patchValue(this.end_time)
+      })
+
 
         // added by Himadri Using Product list search
         let link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
@@ -687,14 +699,49 @@ geteventarr() {
     }
     gotorepdetails(idis) {
     }
+
+    get sellingPoints() {
+        return this.productForm.get('selling_points') as FormArray;
+      }
+    
+      /////// This is new /////////////////
+    
+      addSellingPoint() {
+        this.sellingPoints.push(this.formgroup.group({point:''}));
+      }
+    
+      deleteSellingPoint(index) {
+        this.sellingPoints.removeAt(index);
+      }
+    
+
+    openCsvMach(template: TemplateRef<any>){
+        if (this.csvHeaderAllData != '') {
+            this.csvHeader = this.csvHeaderAllData.data;
+            setTimeout(()=>{
+                this.modalRef2 = this.modal.show(template);
+            },2000);
+        }
+       
+    }
     onUploadOutput(control: any, i, output: UploadOutput): void {
         if (output.type === 'allAddedToQueue') {
-            const event: UploadInput = {
-                type: 'uploadAll',
-                url: this._commonservice.uploadurl_old + 'uploads',
-                method: 'POST',
+            if (this.router.url == '/belk-upload') {
+                const event: UploadInput = {
+                    type: 'uploadAll',
+                    url: this._commonservice.nodesslurl + 'uploads-csv',
+                    method: 'POST',
+                };
+                this.uploadInput.emit(event);
+            } 
+            if(this.router.url != '/belk-upload') {
+                const event: UploadInput = {
+                    type: 'uploadAll',
+                    url: this._commonservice.uploadurl_old + 'uploads',
+                    method: 'POST',
+                };
+                this.uploadInput.emit(event);
             };
-            this.uploadInput.emit(event);
         } else if (output.type === 'addedToQueue' && typeof output.file !== 'undefined') {
             if (output.file.response != "") {
                 this.files = [];
@@ -723,10 +770,14 @@ geteventarr() {
     }
     addtodataform(control: any, i) {
         this.nameis[i] = this.files[0].name;
+        if (this.files[0].response !=undefined && this.router.url == '/belk-upload') {
+            this.csvHeaderAllData = this.files[0].response;
+        }
         let filelocalname = control.name + 'localname';
         this.dataForm.controls[control.name].patchValue(this.files[0].response);
         this.dataForm.controls[filelocalname].patchValue(this.files[0].name);
         this.formdataval[i].filename = this.files[0].name;
+        
     }
     showstatusofrep(item) {
         if (item.noofclinics == null && (item.password == null || item.password == '')) return 'Not Qualified';

@@ -1,0 +1,55 @@
+
+
+<div class="s_getmyoffer_adminpanel_inner_content_right myadminlist">
+  <app-listing class="myadmin" templatetype="table" sourcetitle="CRM lead upload" source="csv_upload" [sourcecondition]="" [tabledatalis]="tabledatalis" menuval="CRM lead upload " [formdata]="formdata" [formsource]="datasource">
+  </app-listing>
+</div>
+<!-- 
+
+
+<input style="display: none" type="file" accept=".csv" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" #fileInput1 >
+
+<button (click)="fileInput1.click()" type="button" class="deletebtn">Upload</button> -->
+
+
+<!-- <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" /> 
+
+
+<input type="file" name="Upload CSV" (change)="upload($event)" accept=".csv" />     -->
+<!-- 
+<table class="minimalistBlack" *ngIf="records.length > 0">    
+  <thead>    
+    <tr>       
+      <th>Id </th>    
+      <th>FirstName </th>    
+      <th>LastName </th>    
+      <th>Company Name </th>    
+      <th>Address </th>    
+      <th>City </th>    
+      <th>County </th>    
+      <th>State </th>    
+      <th>Zip </th>    
+      <th>Phone 1 </th>    
+      <th>Phone 2 </th>    
+      <th>Email </th>    
+      <th>Web </th>     
+    </tr>    
+  </thead>    
+  <tbody>    
+    <tr *ngFor="let record of records;let i = index;">    
+      <td> <span>{{record.id}}</span> </td>    
+      <td> <span>{{record.firstName}}</span> </td>    
+      <td> <span>{{record.lastName}}</span> </td>    
+      <td> <span>{{record.company_name}}</span> </td>    
+      <td> <span>{{record.address}}</span> </td>    
+      <td> <span>{{record.city}}</span> </td>    
+      <td> <span>{{record.county}}</span> </td>    
+      <td> <span>{{record.state}}</span> </td>    
+      <td> <span>{{record.zip}}</span> </td>    
+      <td> <span>{{record.phone1}}</span> </td>    
+      <td> <span>{{record.phone2}}</span> </td>    
+      <td> <span>{{record.email}}</span> </td>    
+      <td> <span>{{record.web}}</span> </td>      
+    </tr>    
+  </tbody>    
+</table> -->

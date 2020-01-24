@@ -441,7 +441,7 @@
     text-transform: uppercase;
     cursor: pointer;
     margin-bottom: 10px;
-    white-space: nowrap;
+    white-space: nowrap; display: inline-block;
 }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination .pagination{ justify-content: center;  margin-bottom: 0;}
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination ul span{ font-family: 'RalewaySemiBold'; }
