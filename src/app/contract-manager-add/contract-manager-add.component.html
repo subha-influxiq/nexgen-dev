@@ -125,8 +125,8 @@
                             <div class="form-group row form-groupbtndiv">
 
                                 <button type="submit" class="btn_search" (click)="requestContract(noticeForm.value)"> Request </button>
-                                <button type="submit" class="btn_search" (click)="saveAsDraft(noticeForm.value)"> Save as draft </button>
-                                <button type="submit" class="btn_search" (click)="cancelContract()">Cancel </button>
+                                <button type="submit" class="btn_search" *ngIf="allcontract!='' && (recid == null || allcontract.status =='asDraft')" (click)="saveAsDraft(noticeForm.value)"> Save as draft </button>
+                                <button type="submit" class="btn_search" style="background-color: red;" (click)="cancelContract()">Cancel </button>
                             </div>
 
                         </form>

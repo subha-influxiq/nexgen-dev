@@ -16,6 +16,7 @@ declare var $: any;
 })
 export class ContractManagerListComponent implements OnInit {
 
+  public loader = 0;
   daterangepickerOptions = {
     format: 'MM/DD/YYYY',
     minDate: moment().format("MM/DD/YYYY"),
@@ -30,15 +31,17 @@ bsDatepicker = {
 
 public datalist: any;
 public selecteditem;
+public placeholderforselect = 0; 
 public message;
  headElements = ['ID', 'Date', 'Product Name', 'Rep Name', 'Lead Name', 'Contract Manager Name', 'Status', 'Notes'];
 public productList: any = [];
-public prodSelect: any;
+public prodSelect: any = 0;
 public filterValForName: any;
 public filterval5: any = '';
 public start_date: any = '';
 public end_date: any = '';
 public notes_list: any = '';
+public indexCount: number;
 
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
@@ -62,6 +65,7 @@ public notes_list: any = '';
   }
 
   productSearchbyval(val: any){
+    this.loader = 1;
     console.log(val);
     if (val != undefined && val != null && val.length > 0) {
       let data: any = {
@@ -72,20 +76,19 @@ public notes_list: any = '';
       }
 
       const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-          this._http.post(link,data).subscribe(res => {
-              let result: any = res;
-              console.log(result.res);
-              this.datalist = result.res;
+          this._http.post(link,data).subscribe((res:any) => {
+              this.loader =0;
+              this.datalist = res.res;
           });
     }
   }
 
   getdata() {
+    this.loader = 1;
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'contract_repote_view'}).subscribe(res => {
-        let result: any = res;
-        console.log(result.res);
-        this.datalist = result.res;
+    this._http.post(link,{source:'contract_repote_view'}).subscribe((res:any) => {
+      this.loader =0;
+      this.datalist = res.res;
     });
   }
 
@@ -122,7 +125,7 @@ public notes_list: any = '';
 }
 
   geteventarr() {
-
+    this.loader = 1;
     let cond: any = '';
 
     if (this.filterval5 != null && this.filterval5 != '') {
@@ -135,16 +138,16 @@ public notes_list: any = '';
             }
         };
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe(res => {
-            let result: any = res;
-            this.datalist = result.res;
+        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe((res:any) => {
+          this.loader = 0;
+          this.datalist = res.res;
         });
     } else {
 
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe(res => {
-            let result: any = res;
-            this.datalist = result.res;
+        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe((res:any) => {
+          this.loader = 0;
+          this.datalist = res.res;
         });
     }
 
@@ -181,14 +184,17 @@ shownotes(val: any, template: TemplateRef<any>){
     this.router.navigateByUrl('/edit-contract-manager/'+val._id);
   }
 
-  deletdata(val: any, template: TemplateRef<any>) {
-    this.modalRef1 = this.modal.show(template);
-    this.selecteditem = val;
-}
+  
 openModalData(val: any, template: TemplateRef<any>) {
   this.modalRef1 = this.modal.show(template);
     this.selecteditem = val;
 }
+
+
+safeHtml(html) {
+  return this._sanitizer.bypassSecurityTrustHtml(html);
+}
+
 
 makeContract(item: any, val:string) {
   console.log(item);
@@ -198,6 +204,12 @@ makeContract(item: any, val:string) {
     this.router.navigateByUrl('/make-contract/'+item._id);
   }
 }
+deletdata(val: any, x, template: TemplateRef<any>) {
+  this.modalRef1 = this.modal.show(template);
+  this.selecteditem = val;
+  this.indexCount = x;
+  // console.log(x)
+}
 
 confirmdelete(template: TemplateRef<any>) {
     this.modalRef1.hide();
@@ -205,9 +217,10 @@ confirmdelete(template: TemplateRef<any>) {
     const link = this._commonservice.nodesslurl + 'deletesingledata?token=' + this.cookeiservice.get('jwttoken');
       this._http.post(link, { source:'contract_repote', id: this.selecteditem._id})
           .subscribe((res:any) => {
-            console.log(res);
+            // console.log(res);
             if (res.status == "success") {
-              this.getdata();
+              // this.getdata();
+              this.datalist.splice(this.indexCount);
               this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
             setTimeout(() => {
                 this.modalRef1.hide();

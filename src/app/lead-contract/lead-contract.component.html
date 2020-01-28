@@ -17,7 +17,7 @@
 
 
   <div class="new_signupdiv">
-    <!-- <input type="button" value="Sign Here" (click)="openModal(contentmodal)"> -->
+    <input type="button" value="Sign Here" (click)="openModal(contentmodal)">
   </div>
 </div>
 
@@ -38,6 +38,7 @@
               <h2>Digitally Signed By:</h2>
               <h3 id="fullnamesignature">{{ degitalSignForm.value.fullName }}</h3>
               <h4>{{ today | date: 'longDate' }} {{ today | date : 'shortTime'}}</h4>
+             
           </div>
 
           <h5>By selecting “agree”, the parties agree that this agreement may be electronically signed. The parties agree that the electronic signatures appearing on this agreement are the same as handwritten signatures for the purposes of validity, enforceability, and admissibility.</h5>

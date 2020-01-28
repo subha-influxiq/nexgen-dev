@@ -45,7 +45,7 @@
                             <!-- added by himadri start product search-->
 
                             <div class="search_content"
-                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] ">
+                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] ">
                                 <h3>
                                     <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)"
                                         [(ngModel)]="filterval4" required>
@@ -763,25 +763,34 @@
         <div class="ami_opn_new_block">
 
             
-        <form [formGroup]="productForm">
-
-            <input type="text" required [formGroupName]="firstName" />
+        <form [formGroup]="productForm" novalidate (ngSubmit)="productFormsubmit()">
 
             <span class="ami_opn_new_wrap" *ngFor="let item of staticHeader" >
                 <label class="labelclass">{{item}}: </label>
-                <!-- <input [**name]="item" type="text" required [formGroupName]="item" />
+                 <select [name]="item"
+                    [formControl]="productForm.controls[item]" class="form-control" (keyup)="issubmit=0">
+                    <option value="" selected>Select a field</option>
+                    <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
+                        {{searchval}}</option>
+                 </select>
+                 <span class="clear"></span>
+            </span>
+            <button type="submit"> Submit</button>
+            <!-- <span class="ami_opn_new_wrap" *ngFor="let item of staticHeader" >
+                <label class="labelclass">{{item}}: </label>
+                <input [name]="item" type="text"  [formGroupName]="item" />
                 <select required>
                     <option value="0" disabled>Select Header</option>
                     <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
                         {{searchval}}</option>
-                </select> -->
+                </select>
              
 
                 <span class="clear"></span>
                 
-            </span>
+            </span> -->
 
-            <div formArrayName="selling_points">
+            <!-- <div formArrayName="selling_points">
                 <div *ngFor="let item of sellingPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
                 <label>
                   Selling Point: <input formControlName="point" /> 
@@ -794,7 +803,7 @@
                 <button type="button" (click)="deleteSellingPoint(pointIndex)">Delete Selling Point</button>
                 </div>
                 <button type="button" (click)="addSellingPoint()">Add Selling Point</button>
-              </div>
+              </div> -->
              
         </form>
 

@@ -1,3 +1,14 @@
+
+<div class="loder_body" *ngIf="loader==1">
+  <div class="loder_wrapper">
+    <img src="assets/images/betologo.png" alt="#"
+      style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+    <div class="loader"></div>
+  </div>
+</div>
+
+
+
 <app-adminheader></app-adminheader>
 
 <div class="nextGen_admin_mainwrapper">
@@ -24,7 +35,8 @@
 
             <div class="search_content">
                 <h3>
-                <select [(ngModel)]='prodSelect' (click)="productSearchbyval(prodSelect)" placeholder="Select Product" required>
+                    <select [(ngModel)]='placeholderforselect' (click)="productSearchbyval(prodSelect)"
+                        [(ngModel)]="prodSelect" required>
                         <option value="0" disabled>Select Product</option>
                         <option *ngFor="let productval of productList" value="{{productval.productname}}">
                             {{productval.productname}}</option>
@@ -85,17 +97,19 @@
             <td datalabel="Product Name">{{el.product}}</td>
             <td datalabel="Rep Name" (click)="showdetails(el.rep_id, 'rep')">{{el.created_by}}</td>
             <td datalabel="Lead Name" (click)="showdetails(el.lead_id, 'lead')">{{el.lead_fullName}}</td>
-            <td datalabel="Contract Manager Name">{{el.contract_manager_name}}</td>
+            <td datalabel="Contract Manager Name" *ngIf="el.contract_manager_name != null">{{el.contract_manager_name}}</td>
+            <td datalabel="Contract Manager Name" *ngIf="el.contract_manager_name == null">N/A</td>
             <td datalabel="Status">{{el.status}}</td>
             <td datalabel="Notes" (click)="openModalData(el, showmodal)"><span class="tdfixedtext">{{el.notes}}</span></td>
             <!-- <td  *ngIf="cookeiservice.get('usertype') == 'contract_manager'" datalabel="edit"> -->
                 <td datalabel="edit">
-              <span class="edit_user" *ngIf="el.status == 'request' || el.status =='ask_for_modification'"  (click)="editRow(el)">Edit</span>
-              <span class="edit_user" *ngIf="el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
-              <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span>
+              <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'rep' && (el.status == 'request' || el.status =='ask_for_modification')"  (click)="editRow(el)">Edit</span>
+              <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
+              <!-- <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span> -->
               <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
+              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="openModalData(el,showmodalforcontract)"><i class="fa fa-eye" style="cursor: pointer;"></i></span>
 
-              <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el,commonconfirmmodal)">Delete</span>
+              <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el, i,commonconfirmmodal)">Delete</span>
             </td>
           </tr>
         </tbody>
@@ -180,6 +194,35 @@
     <p>{{notes_list.notesByCM}}</p>
     <div class="btn_cnt">
       <button class="message_deny" (click)="modalRef1.hide()">close</button>
+    </div>
+  </div>
+</ng-template>
+
+
+<!--Common message modal-->
+<ng-template #showmodalforcontract>
+  <div class="modal-body brandmanagement_modal">
+    <!-- <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div> -->
+    <label
+      style="display: block; font-weight: bold; background-color: #00a8ef; color: #333;   padding: 5px 1%; width: 100%;">Content
+      Top: </label>
+    <div class="contract-list-divblock">
+
+      <span style="display:  block; padding: 5px;  " [innerHTML]="safeHtml(selecteditem.contentTop)"></span>
+    </div>
+    <label
+      style="display: block; font-weight: bold; background-color: #00a8ef; color: #333; padding: 5px 1%; width: 100%;">Content
+      Bottom: </label>
+    <div class="contract-list-divblock">
+
+      <span style="display:  block; padding: 5px; " [innerHTML]="safeHtml(selecteditem.contentBottiom)"></span>
+    </div>
+    <div class="messagenewbtnwrapper">
+      <button class="message_allow messagenewbtn" (click)="editRow(selecteditem,1)">Edit</button>
+      <button class="message_allow messagenewbtn" (click)="sendToLead(selecteditem)">Send To Lead</button>
+      <button class="message_deny messagenewbtn" (click)="modalRef1.hide();">Cancel</button>
     </div>
   </div>
 </ng-template>

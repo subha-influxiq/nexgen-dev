@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
@@ -94,6 +93,14 @@ import { CrmBelkUploadComponent } from './crm-belk-upload/crm-belk-upload.compon
 import { LeadContractComponent } from './lead-contract/lead-contract.component';
 // import { DemoMaterialModule } from './material-module';
 
+
+
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './loader.service';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoaderInterceptor } from './loader.interceptor';
+import { Router } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -167,7 +174,8 @@ import { LeadContractComponent } from './lead-contract/lead-contract.component';
     ContractManagerListComponent,
     MakeContractComponent,
     CrmBelkUploadComponent,
-    LeadContractComponent
+    LeadContractComponent,
+    LoaderComponent
 
   ],
   imports: [
@@ -191,8 +199,17 @@ import { LeadContractComponent } from './lead-contract/lead-contract.component';
     NgtUniversalModule,
     // DemoMaterialModule,
   ],
-  providers: [CookieService,TestresolveService,ApiService],
+  providers: [
+    CookieService,TestresolveService,ApiService, LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+// export class AppModule { }
+export class AppModule {
+  constructor(public http: HttpClient, public router: Router) {
+  //  this.router.navigateByUrl('/')
+  }
+
+}

@@ -33,7 +33,7 @@ export class ContractManagerAddComponent implements OnInit {
    public noticeForm: FormGroup;
    public medicalform:FormGroup;
    public contractFormSubmitFlug: boolean = false;
-   public allcontract: any;
+   public allcontract: any = '';
    public contractSuggestion: any = [];
    public contractSuggestionFlug: boolean = false;
    public leadname: any = [];
@@ -45,6 +45,7 @@ export class ContractManagerAddComponent implements OnInit {
    public selectedlead:any;
    public selectedproduct:any;
    public isedit_id:any ;
+   all_data:any;
    
 
   constructor(@Inject(WINDOW) private window: Window, public _commonservice:Commonservices, private router: Router, public _http:HttpClient, public modal:BsModalService, public cookeiservice: CookieService, private route: ActivatedRoute, private formBuilder: FormBuilder) {
@@ -197,7 +198,8 @@ export class ContractManagerAddComponent implements OnInit {
           const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
           this._http.post(link, {source: 'contract_repote', condition: {_id_object: id}})
               .subscribe((res:any) => {
-                  console.log('-----',res)
+                  console.log('-----',res.res[0])
+                  this.allcontract = res.res[0];
                   this.contractForm.controls['product'].patchValue(res.res[0].product);
                   this.contractForm.controls['lead'].patchValue(res.res[0].lead_id);
                 //   this.contractForm.controls['contract_manager'].patchValue(res.res[0].contract_manager_id);
@@ -249,7 +251,7 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
     selectcontract(contractData) {
-        console.log(contractData);
+        this.loader = true;
         if( this.recid == null || this.recid == '') {
             this.contractForm.patchValue({    
             product: contractData.product_name
@@ -262,7 +264,7 @@ export class ContractManagerAddComponent implements OnInit {
 
         const link = this._commonservice.nodesslurl + 'lead_and_product';
         this._http.post(link, {  "product_id": contractData.product_id }).subscribe((res:any) => {
-            console.log(res.res,'++++++++++++++');
+            this.loader = false;
             this.leadname = res.data.lead_list;
             // this.contract_manager_list = res.data.contract_manager_list;
             if (res.res =="success" && this.recid !=null && this.recid !='') {
@@ -304,14 +306,18 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
     goback(){
+        this.router.navigateByUrl('/contract-manager-list');
         this.contractForm.reset();
         this.noticeForm.reset();
     }
     cancelContract() {
-        console.log("cancelContract is work");
+        if (this.slotView == false) {
+            this.router.navigateByUrl('/contract-manager-list');
+        } else{
         this.contractForm.reset();
         this.noticeForm.reset();
         this.slotView = false;
+    }
       }
   
 

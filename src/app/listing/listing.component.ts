@@ -146,12 +146,6 @@ export class ListingComponent implements OnInit {
     ngOnInit() {
 
          /* Initiate the form structure */
-    this.productForm = this.formgroup.group({
-        title: [],
-        selling_points: this.formgroup.array([this.formgroup.group({point:''})]),
-        // FirstName: this.
-        // .patchValue(this.end_time)
-      })
 
 
         // added by Himadri Using Product list search
@@ -179,6 +173,44 @@ export class ListingComponent implements OnInit {
     ngOnDestroy() {
         clearInterval(this.interv);
     }
+
+ 
+        
+
+    openCsvMach(template: TemplateRef<any>){
+        let formgrp: any = [];
+        for (let c in this.staticHeader) {
+            let tempdefault = [];
+            console.log(c, this.staticHeader[c],'+++++');
+            formgrp[this.staticHeader[c]] = [tempdefault, Validators.required];
+        }
+        this.productForm = this.formgroup.group(formgrp);
+
+
+        if (this.csvHeaderAllData != '') {
+            this.csvHeader = this.csvHeaderAllData.data;
+
+            setTimeout(()=>{
+                this.modalRef2 = this.modal.show(template);
+            },2000);
+        }
+       
+    }
+
+    productFormsubmit(){
+        console.log(this.productForm.value);
+        var link = this._commonservice.nodesslurl + 'write-csv';
+        // var data: any = {
+        //     data: [this.productForm.value],
+        //     "filename":this.csvHeaderAllData.filename
+        // }
+        this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
+        }).subscribe((res)=>{
+            console.log(res);
+        })
+    }
+
+
 // added by Himadri Using for Open Youtube Modal
 youtubeVideoPlay(val: any, template: TemplateRef<any>){
     let value: any = val.changingThisBreaksApplicationSecurity;
@@ -191,11 +223,26 @@ youtubeVideoPlay(val: any, template: TemplateRef<any>){
     productSearchbyval(filterValue: any) {
         if (filterValue != '' && filterValue != null) {
             // // console.log(filterValue.toLowerCase())
+            let linkForproductsearch: any ;
+            if (this.router.url == '/contract/management') {
+                linkForproductsearch  = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
 
-            let linkForproductsearch: any = this._commonservice.nodesslurl + 'productsearch';
-            this._http.post(linkForproductsearch, { 'product': filterValue }).subscribe((res: any) => {
-                this.datalist = res.data;
-            });
+                this._http.post(linkForproductsearch, {
+                     "source": "contract_view",
+                    "condition": {
+                        "productname":filterValue
+                    } 
+                }).subscribe((res: any) => {
+                    this.datalist = res.res;
+                });
+            }else {
+                linkForproductsearch = this._commonservice.nodesslurl + 'productsearch';
+                this._http.post(linkForproductsearch, { 'product': filterValue }).subscribe((res: any) => {
+                    this.datalist = res.data;
+                });
+            }
+            
+            
         }
     }
     //  added by Himadri Using date search
@@ -707,23 +754,13 @@ geteventarr() {
       /////// This is new /////////////////
     
       addSellingPoint() {
-        this.sellingPoints.push(this.formgroup.group({point:''}));
+        // this.sellingPoints.push(this.formgroup.group({point:''}));
       }
     
       deleteSellingPoint(index) {
         this.sellingPoints.removeAt(index);
       }
-    
 
-    openCsvMach(template: TemplateRef<any>){
-        if (this.csvHeaderAllData != '') {
-            this.csvHeader = this.csvHeaderAllData.data;
-            setTimeout(()=>{
-                this.modalRef2 = this.modal.show(template);
-            },2000);
-        }
-       
-    }
     onUploadOutput(control: any, i, output: UploadOutput): void {
         if (output.type === 'allAddedToQueue') {
             if (this.router.url == '/belk-upload') {

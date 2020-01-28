@@ -106,10 +106,17 @@ export class ContractListComponent implements OnInit {
     const link = this._commonservice.nodesslurl + 'togglestatus?token=' + this.cookeiservice.get('jwttoken');
     this._http.post(link, { id: item._id, source: "contractDetails", status: status })
       .subscribe(res => {
-        this.getdata();
+        this.showdata();
       }, error => {
-        this.getdata();
+        this.showdata();
       });
+  }
+  showdata() {
+    const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+    this._http.post(link, { source: 'contractDetails_view' }).subscribe(res => {
+      let result: any = res;
+      this.datalist = result.res;
+    });
   }
 
   openModalData(val: any, template: TemplateRef<any>) {
