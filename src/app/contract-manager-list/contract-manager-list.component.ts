@@ -181,9 +181,14 @@ shownotes(val: any, template: TemplateRef<any>){
 
   editRow(val: any) {
     console.log(val);
+    // this.modalRef1.hide();
     this.router.navigateByUrl('/edit-contract-manager/'+val._id);
   }
-
+  modification(val: any){
+    console.log(val);
+    this.modalRef1.hide();
+    this.router.navigateByUrl('/make-contract/'+val._id)
+  }
   
 openModalData(val: any, template: TemplateRef<any>) {
   this.modalRef1 = this.modal.show(template);

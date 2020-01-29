@@ -90,7 +90,7 @@ export class MakeContractComponent implements OnInit {
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
           if (res.status == "success") {
-            this.sendEmail(data);
+            // this.sendEmail(data);
             this.router.navigateByUrl('/contract-manager-list')
           }
         });
@@ -115,18 +115,21 @@ export class MakeContractComponent implements OnInit {
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
           if (res.status == "success") {
-            this.sendEmail(data);
+            // this.sendEmail(data);
             this.router.navigateByUrl('/contract-manager-list')
           }
         });
     }
   }
-  sendEmail(item: any) {
-    const link = this._commonservice.nodesslurl + 'send_for_rep_mail';
-    this._http.post(link,  {data: item}).subscribe((res:any)=>{
-      console.log(res);
-  });
+  send_to_lead(val){
+    console.log(val.value)
   }
+  // sendEmail(item: any) {
+  //   const link = this._commonservice.nodesslurl + 'send_for_rep_mail';
+  //   this._http.post(link,  {data: item}).subscribe((res:any)=>{
+  //     console.log(res);
+  // });
+  // }
 
 // contractRepote(id){
   

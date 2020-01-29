@@ -107,7 +107,7 @@
               <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
               <!-- <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span> -->
               <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
-              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="openModalData(el,showmodalforcontract)"><i class="fa fa-eye" style="cursor: pointer;"></i></span>
+              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)"><i class="fa fa-eye" style="cursor: pointer;"></i></span>
 
               <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el, i,commonconfirmmodal)">Delete</span>
             </td>
@@ -213,14 +213,21 @@
       <span style="display:  block; padding: 5px;  " [innerHTML]="safeHtml(selecteditem.contentTop)"></span>
     </div>
     <label
+      style="display: block; font-weight: bold; background-color: #00a8ef; color: #333;   padding: 5px 1%; width: 100%;">Content
+      Body: </label>
+    <div class="contract-list-divblock">
+
+      <span style="display:  block; padding: 5px;  " [innerHTML]="safeHtml(selecteditem.clauses)"></span>
+    </div>
+    <label
       style="display: block; font-weight: bold; background-color: #00a8ef; color: #333; padding: 5px 1%; width: 100%;">Content
       Bottom: </label>
     <div class="contract-list-divblock">
 
       <span style="display:  block; padding: 5px; " [innerHTML]="safeHtml(selecteditem.contentBottiom)"></span>
     </div>
-    <div class="messagenewbtnwrapper">
-      <button class="message_allow messagenewbtn" (click)="editRow(selecteditem,1)">Edit</button>
+    <div class="messagenewbtnwrapper" style="text-align: center;">
+      <button class="message_allow messagenewbtn" (click)="modification(selecteditem,1)">Ask For Modification</button>
       <button class="message_allow messagenewbtn" (click)="sendToLead(selecteditem)">Send To Lead</button>
       <button class="message_deny messagenewbtn" (click)="modalRef1.hide();">Cancel</button>
     </div>

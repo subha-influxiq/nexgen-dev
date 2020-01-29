@@ -33,7 +33,7 @@
           *ngIf="!makeContentForm.controls['clauses'].valid && makeContentForm.controls['clauses'].touched  && issubmit==1">Clauses
           are required</span></div> -->
           <label>Clauses :</label>
-          <div>
+          <div *ngIf="cookeiservice.get('usertype') == 'contract_manager'">
            
           <ck-editor formControlName="clauses" [config]="editorconfig" (keyup)="issubmit=0">
           </ck-editor>
@@ -41,6 +41,14 @@
             *ngIf="!makeContentForm.controls['clauses'].valid && makeContentForm.controls['clauses'].touched  && issubmit==1">Clauses
             are required</span>
           </div>
+
+          <span *ngIf="cookeiservice.get('usertype') != 'contract_manager'">
+          <label>Content Main :</label>
+          <div class="newconleft_con1 newconleft_con1html">
+           
+            <p [innerHTML]="safeHtml(datalist.clauses)"></p>
+           </div>
+          </span>
           <label>Content Footer :</label>
           <div class="newconleft_con1 newconleft_con1html">
            
@@ -51,7 +59,11 @@
             <textarea formControlName="notesMsg" placeholder="Notes" type="text"></textarea>
                </div>
 
-            <div class="newconleft_con1"> <button type="submit" class="sendbtnnewcon">Send For Rep</button> </div>
+            <div class="newconleft_con1 newconleft_con1_bar">
+               <button *ngIf="datalist.status == 'request' && cookeiservice.get('usertype') != 'rep'" type="submit" class="sendbtnnewcon">Send For Rep</button>
+               <button *ngIf="cookeiservice.get('usertype') != 'contract_manager'" type="submit" class="sendbtnnewcon">Ask For Modification </button>
+               <button *ngIf="datalist.status == 'send_to_rep'" type="button" class="sendbtnnewcon" (click)="send_to_lead(makeContentForm)">Send To Lead</button>
+               </div>
     </form>
     
 
@@ -71,15 +83,15 @@
      <button type="submit">Reply</button>
    </form> -->
 
-   <p *ngIf="datalist.rep_name !=null"><strong>Notes By Rep: </strong>{{datalist.rep_name}}</p>
+   <p *ngIf="datalist.rep_fullname !=null"><strong>Notes By Rep: </strong>{{datalist.rep_fullname}}</p>
         <p *ngIf="datalist.notes !=null"><strong>Notes: </strong>{{datalist.notes}}</p>
         <p *ngIf="datalist.date !=null"><strong>Date: </strong> {{datalist.date}}</p>
         <hr>
         
-        <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p>
+        <!-- <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p>
         <p *ngIf="datalist.contract_content_notes !=null"><strong>Notes: </strong>{{datalist.contract_content_notes}}</p>
         <p *ngIf="datalist.CM_added_by !=null"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
-       <hr>
+       <hr> -->
         
         <p *ngIf="datalist.ModifiedNotesByRep !=null && datalist.rep_name !=null"><strong>Modified By Rep: </strong>{{datalist.rep_name}}</p>
         <p *ngIf="datalist.ModifiedNotesByRep !=null"><strong>Notes: </strong>{{datalist.ModifiedNotesByRep}}</p>
