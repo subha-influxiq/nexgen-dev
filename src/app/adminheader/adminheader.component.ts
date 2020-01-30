@@ -64,7 +64,7 @@ export class AdminheaderComponent implements OnInit {
       },500);
       setTimeout(()=>{
         this.getrepdetails();
-      },500);
+      },1000);
       
       this.getvideocatagory();
 

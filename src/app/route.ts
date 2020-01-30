@@ -76,7 +76,7 @@ import { LeadContractComponent } from './lead-contract/lead-contract.component';
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     {path: 'belk-upload', component: CrmBelkUploadComponent},
-    {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
+    {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
      {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added

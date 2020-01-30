@@ -186,7 +186,7 @@ shownotes(val: any, template: TemplateRef<any>){
   }
   modification(val: any){
     console.log(val);
-    this.modalRef1.hide();
+    // this.modalRef1.hide();
     this.router.navigateByUrl('/make-contract/'+val._id)
   }
   

@@ -110,7 +110,8 @@ export class MakeContractComponent implements OnInit {
         // contract_manager_id: this.cookeiservice.get('userid'),
         contentTop: this.datalist.contentTop,
         contentBottiom: this.datalist.contentBottiom,
-        contract_content_notes: this.datalist.contract_content_notes
+        contract_content_notes: this.datalist.contract_content_notes,
+        contract_manager_id: this.datalist.contract_manager_id
       }
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
@@ -121,9 +122,31 @@ export class MakeContractComponent implements OnInit {
         });
     }
   }
-  send_to_lead(val){
-    console.log(val.value)
-  }
+  // send_to_lead(val){
+  //   console.log(val.value)
+  // }
+  sendToLead(){
+    console.log(this.datalist)
+      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+      this._http.post(link,  { source: 'contract_repote', data: {
+       id: this.datalist._id,
+       notes: this.datalist.notes,
+       notesByCM:this.datalist.notesByCM,
+       status:'send_to_lead',
+       product: this.datalist.product,
+       product_id: this.datalist.product_id,
+       lead_id:this.datalist.lead_id,
+       contract_manager_id: this.datalist.contract_manager_id,
+       rep_id:this.datalist.rep_id,
+       updated_by: this.cookeiservice.get('userid')
+        }})
+          .subscribe((res: any) => { 
+              if (res.status == 'success') {
+                console.log('+++++++++')
+              this.router.navigateByUrl('/contract-manager-list');
+          }
+          });
+    }
   // sendEmail(item: any) {
   //   const link = this._commonservice.nodesslurl + 'send_for_rep_mail';
   //   this._http.post(link,  {data: item}).subscribe((res:any)=>{

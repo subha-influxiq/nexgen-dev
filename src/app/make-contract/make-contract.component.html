@@ -62,7 +62,8 @@
             <div class="newconleft_con1 newconleft_con1_bar">
                <button *ngIf="datalist.status == 'request' && cookeiservice.get('usertype') != 'rep'" type="submit" class="sendbtnnewcon">Send For Rep</button>
                <button *ngIf="cookeiservice.get('usertype') != 'contract_manager'" type="submit" class="sendbtnnewcon">Ask For Modification </button>
-               <button *ngIf="datalist.status == 'send_to_rep'" type="button" class="sendbtnnewcon" (click)="send_to_lead(makeContentForm)">Send To Lead</button>
+               <button *ngIf="datalist.status == 'send_to_rep' && cookeiservice.get('usertype') == 'rep'" type="button" class="sendbtnnewcon" (click)="sendToLead()">Send To Lead</button>
+               <button type="button" class="sendbtnnewcon" routerLink="/contract-manager-list">Cancel</button>
                </div>
     </form>
     

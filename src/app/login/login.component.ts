@@ -36,25 +36,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
 
-
-    if(this.cookeiservice.check('userid')){
-      switch(this.cookeiservice.get('usertype')) {
-        case 'rep':
-          this.router.navigate(['/repdashboard']);
-          break;
-        case 'regional_recruiter':
-          this.router.navigate(['/regionaldashboard']);
-          break;
-        case 'admin':
-          this.router.navigate(['/dashboard']);
-          break;
-        case 'contract_manager':
-          this.router.navigate(['/contract/dashboard']);
-          break;
-      }
-    }else{
-      console.log('in login','noo cookie');
+setTimeout(() => {
+  if(this.cookeiservice.get('userid')){
+    switch(this.cookeiservice.get('usertype')) {
+      case 'rep':
+        this.router.navigate(['/repdashboard']);
+        break;
+      case 'regional_recruiter':
+        this.router.navigate(['/regionaldashboard']);
+        break;
+      case 'admin':
+        this.router.navigate(['/dashboard']);
+        break;
+      case 'contract_manager':
+        this.router.navigate(['/contract/dashboard']);
+        break;
     }
+  }else{
+    console.log('in login','noo cookie');
+  }
+}, 500);
+  
 
 
     this.dataForm = this.kp.group({

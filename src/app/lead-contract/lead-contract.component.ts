@@ -1,9 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BsModalService } from 'ngx-bootstrap';
 import { Commonservices } from '../app.commonservices';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-lead-contract',
@@ -23,7 +25,11 @@ public agreementFormSubmitFlug: boolean = false;
     public route: ActivatedRoute,
     protected _sanitizer: DomSanitizer,
     public modalservices: BsModalService,
-    public formBuilder: FormBuilder) { }
+    public formBuilder: FormBuilder,
+    public _http:HttpClient,
+    public router: Router,
+    public cookeiservice: CookieService,
+    public _commonservice:Commonservices) { }
 
   ngOnInit() {
     this.route.data.forEach((data:any ) => {
@@ -47,10 +53,29 @@ public agreementFormSubmitFlug: boolean = false;
     this.degitalSignFormSubmitFlug = true;
     if(this.degitalSignForm.valid) {
       /* Set Default Value */
-      this.agreementForm.patchValue({
-        signature: this.degitalSignForm.value.fullName
-      });
       console.log(this.degitalSignForm.value.fullName)
+
+      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+      this._http.post(link,  { source: 'contract_repote', data: {
+       id: this.all_data._id,
+       notes: this.all_data.notes,
+       notesByCM:this.all_data.notesByCM,
+       status:'sends_Signed_Contract_to_Rep',
+       product: this.all_data.product,
+       product_id: this.all_data.product_id,
+       lead_id:this.all_data.lead_id,
+       lead_digital_signature:this.degitalSignForm.value.fullName,
+       lead_digital_signature_date:new Date().getTime(),
+       contract_manager_id: this.all_data.contract_manager_id,
+       rep_id:this.all_data.rep_id,
+       updated_by: this.cookeiservice.get('userid')
+        }})
+          .subscribe((res: any) => { 
+              if (res.status == 'success') {
+              this.router.navigateByUrl('/contract-manager-list');
+          }
+          });
+
       this.modalref.hide();
       this.degitalSignForm.reset();
     }
