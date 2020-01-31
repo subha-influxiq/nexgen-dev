@@ -187,7 +187,7 @@ shownotes(val: any, template: TemplateRef<any>){
   modification(val: any){
     console.log(val);
     // this.modalRef1.hide();
-    this.router.navigateByUrl('/make-contract/'+val._id)
+    this.router.navigateByUrl('/make-contract-edit/'+val._id)
   }
   
 openModalData(val: any, template: TemplateRef<any>) {
@@ -225,7 +225,7 @@ confirmdelete(template: TemplateRef<any>) {
             // console.log(res);
             if (res.status == "success") {
               // this.getdata();
-              this.datalist.splice(this.indexCount);
+              this.datalist.splice(this.indexCount, this.indexCount + 1);
               this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
             setTimeout(() => {
                 this.modalRef1.hide();

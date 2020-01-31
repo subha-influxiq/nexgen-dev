@@ -50,6 +50,8 @@ export class MakeContractComponent implements OnInit {
       this.makeContentForm.controls['clauses'].patchValue(this.datalist.clauses);
       this.makeContentForm.controls['notesMsg'].patchValue(this.datalist.notesByCM);
     }
+
+    console.log('json',this.datalist.contentTop);
    });
   }
 
@@ -68,7 +70,7 @@ export class MakeContractComponent implements OnInit {
     }
     console.log('sdf',this.makeContentForm.value)
 
-    if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '' && this.datalist.status == 'request') {
+    if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '' &&( this.datalist.status == 'request' || this.datalist.status == 'ask_for_modification')) {
      
       let data:any= {
         id:this.recid,
@@ -90,7 +92,6 @@ export class MakeContractComponent implements OnInit {
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link,  { source: 'contract_repote', data: data}).subscribe((res:any)=>{
           if (res.status == "success") {
-            // this.sendEmail(data);
             this.router.navigateByUrl('/contract-manager-list')
           }
         });

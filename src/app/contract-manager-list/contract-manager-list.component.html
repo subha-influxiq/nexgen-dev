@@ -103,11 +103,13 @@
             <td datalabel="Notes" (click)="openModalData(el, showmodal)"><span class="tdfixedtext">{{el.notes}}</span></td>
             <!-- <td  *ngIf="cookeiservice.get('usertype') == 'contract_manager'" datalabel="edit"> -->
                 <td datalabel="edit">
-              <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'rep' && (el.status == 'request' || el.status =='ask_for_modification')"  (click)="editRow(el)">Edit</span>
-              <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span>
+              <!-- <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'rep' && (el.status == 'request' || el.status =='ask_for_modification')"  (click)="editRow(el)">Edit</span> -->
+              <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'contract_manager' && el.status =='ask_for_modification'"  (click)="modification(el)">Edit</span>
+              <!-- <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span> -->
               <!-- <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span> -->
+              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)">View</span>
               <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
-              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)"><i class="fa fa-eye" style="cursor: pointer;"></i></span>
+              <!-- <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)"><i class="fa fa-eye" style="cursor: pointer;"></i></span> -->
 
               <span *ngIf="cookeiservice.get('usertype') == 'admin'" class="edit_user" (click)="deletdata(el, i,commonconfirmmodal)">Delete</span>
             </td>

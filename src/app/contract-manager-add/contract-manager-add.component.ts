@@ -171,7 +171,7 @@ export class ContractManagerAddComponent implements OnInit {
             case 'add-contract-manager':
 
                 if(!this.contractForm.valid) {
-                    this.getcontract();
+                    // this.getcontract();
                     this.slotView = false;
                     return ;
                 }else{
