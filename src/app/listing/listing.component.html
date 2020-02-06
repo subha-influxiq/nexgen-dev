@@ -624,7 +624,7 @@
             </div>
             <div class="form-group btn_submit">
                 <div class="asbuttonwrapper">
-                    <button type="submit"> Submit</button>
+                    <button type="submit" *ngIf="router.url!=['/belk-upload']"> Submit</button>
                     <button type="reset" (click)="modalRef.hide()"> Cancel</button>
                     <button *ngIf="router.url==['/belk-upload']" type="button" (click)="openCsvMach(csv)">Next</button>
                 </div>
@@ -775,39 +775,39 @@
                  </select>
                  <span class="clear"></span>
             </span>
-            <button type="submit"> Submit</button>
-            <!-- <span class="ami_opn_new_wrap" *ngFor="let item of staticHeader" >
-                <label class="labelclass">{{item}}: </label>
-                <input [name]="item" type="text"  [formGroupName]="item" />
-                <select required>
-                    <option value="0" disabled>Select Header</option>
-                    <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
-                        {{searchval}}</option>
-                </select>
-             
-
-                <span class="clear"></span>
-                
-            </span> -->
-
-            <!-- <div formArrayName="selling_points">
-                <div *ngFor="let item of sellingPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
-                <label>
-                  Selling Point: <input formControlName="point" /> 
-                  <select required>
-                    <option value="0" disabled>Select Header</option>
-                    <option *ngFor="let searchval of csvHeader" value="{{searchval}}">
-                        {{searchval}}</option>
-                </select>
-                </label>
-                <button type="button" (click)="deleteSellingPoint(pointIndex)">Delete Selling Point</button>
-                </div>
-                <button type="button" (click)="addSellingPoint()">Add Selling Point</button>
-              </div> -->
-             
+            <button class="edit_user" type="submit"  > Submit</button>
+            <button class="edit_user" type="button" *ngIf="preview" (click)="preview_button(prev)"> Preview</button>
         </form>
 
     </div>
 
+    </div>
+</ng-template>
+
+<ng-template #prev>
+    <div class="modal-body brandmanagement_modal">
+    <div class="table-responsive admin_table_wrapper">
+        <div class="previewtable">
+            <table class="table" *ngIf="tab1.length>0">
+                <thead>
+                    <tr>
+                        <th [ngClass]="item.class" *ngFor="let item of tab_header; index as i;"
+                            scope="col">{{item}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of tab1; index as i ">
+                        <td *ngFor="let item1 of tab_header; let i1=index;" scope="col">
+                            <span >
+                                {{item[item1]}}<br>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="edit_user" type="button">Submit</button>
+        <button class="edit_user" type="button"  (click)="modalRef3.hide()">Cancel</button>
+    </div>
     </div>
 </ng-template>

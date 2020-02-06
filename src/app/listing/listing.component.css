@@ -52,3 +52,21 @@ modal-container .modal-content {
 .ami_opn_new_block form{margin: 0px;}
 
 .asbuttonwrapper button{ margin: 2px;}
+
+
+.edit_user{
+    background: #00a8ef;
+    font-size: 20px;
+    font-family: 'RalewaySemiBold';
+    text-decoration: none;
+    float: right;
+    padding: 5px 15px 4px 15px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase; border: none!important; margin:10px 1px 0 1px;
+   
+}
+
+.previewtable{ margin-bottom: 10px; height: 280px; overflow: hidden;      overflow-y: scroll;
+    overflow-x: scroll; }

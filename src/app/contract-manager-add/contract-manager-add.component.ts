@@ -37,7 +37,7 @@ export class ContractManagerAddComponent implements OnInit {
    public contractSuggestion: any = [];
    public contractSuggestionFlug: boolean = false;
    public leadname: any = [];
-//    public contract_manager_list: any = [];
+   public contract_manager_list: any = [];
    public timeSpanView: boolean = false;
    public timeSpanVal: any = "15";
    public loader: boolean = false;
@@ -90,6 +90,7 @@ export class ContractManagerAddComponent implements OnInit {
             id: this.isedit_id,
          notes: val.notes,
          status:'request',
+         rep_id: this.allcontract.rep_id,
          product: this.contractForm.value.product,
          product_id: this.cookeiservice.get('product_id'),
          lead_id: this.contractForm.value.lead,
@@ -171,7 +172,7 @@ export class ContractManagerAddComponent implements OnInit {
             case 'add-contract-manager':
 
                 if(!this.contractForm.valid) {
-                    // this.getcontract();
+                    this.getcontract();
                     this.slotView = false;
                     return ;
                 }else{
@@ -226,6 +227,7 @@ export class ContractManagerAddComponent implements OnInit {
 
     /* contract auto complete */
     contractSuggest(event:any) {
+        console.log(event.target.value)
         this.contractSuggestion = [];
         let keyword: any = event.target.value;
         if(keyword.length > 0) {
@@ -269,7 +271,7 @@ export class ContractManagerAddComponent implements OnInit {
             // this.contract_manager_list = res.data.contract_manager_list;
             if (res.res =="success" && this.recid !=null && this.recid !='') {
                 this.selectproductfunc(contractData.product_id );
-                // this.selectcontractmanagerfunc(contractData.product_id );
+                this.selectcontractmanagerfunc(contractData.product_id );
             }
         });
         
@@ -288,15 +290,15 @@ export class ContractManagerAddComponent implements OnInit {
             }
         }
     }
-    // selectcontractmanagerfunc(event:any){
-    //     console.log(event.target.value);
-    //     console.log(this.contract_manager_list)
-    //     for(let i in this.contract_manager_list){
-    //         if(this.contract_manager_list[i].product_id == event.target.value){
-    //             this.selectedproduct = this.leadname[i];
-    //         }
-    //     }
-    // }
+    selectcontractmanagerfunc(event:any){
+        console.log(event.target.value);
+        console.log(this.contract_manager_list)
+        for(let i in this.contract_manager_list){
+            if(this.contract_manager_list[i].product_id == event.target.value){
+                this.selectedproduct = this.leadname[i];
+            }
+        }
+    }
 
     // added by chandrani 
     openLeadDetailsModal(item:any,template:TemplateRef<any>){

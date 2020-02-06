@@ -23,7 +23,7 @@ export class ContractAddEditComponent implements OnInit {
   public formName: string;
   public isReadOnly:boolean;
   constructor(formBuilder: FormBuilder, public _commonservices: Commonservices, public _cookieservice: CookieService, public _http: HttpClient, public route: ActivatedRoute, public router: Router) {
-    if(this._cookieservice.get('usertype') == 'contract_manager'){
+    if(this._cookieservice.get('usertype') == 'rep'){
       this.isReadOnly = true;
     }
     this.formBuilder = formBuilder;

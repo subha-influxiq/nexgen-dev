@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {
-    HttpErrorResponse,
-    HttpResponse,
+    HttpInterceptor,
     HttpRequest,
+    HttpResponse,
     HttpHandler,
     HttpEvent,
-    HttpInterceptor
+    HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
@@ -21,6 +22,49 @@ export class LoaderInterceptor implements HttpInterceptor {
         this.loaderService.isLoading.next(this.requests.length > 0);
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+
+            // remove request from queue when cancelled
+            // catchError((error: HttpErrorResponse) => {
+            //     let data = {};
+            //     data = {
+            //         reason: error && error.error.reason ? error.error.reason : '',
+            //         status: error.status
+            //     };
+            //     // this.errorDialogService.openDialog(data);
+            //     console.log(data,'++++++')
+            //     return throwError(error);
+            // })
+    // pass along non-cacheable requests and invalidate cache  
+        // if(req.method !== 'GET') {  
+        //     console.log(`Invalidating cache: ${req.method} ${req.url}`);  
+        //     this.loaderService.invalidateCache();  
+        //     return next.handle(req);  
+        // } 
+         // attempt to retrieve a cached response  
+    // const cachedResponse: HttpResponse<any> = this.loaderService.get(req.url);  
+  
+    // return cached response  
+    // if (cachedResponse) {  
+    //   console.log(`++ Returning a cached response: ${cachedResponse.url}`);  
+    //   console.log(cachedResponse);  
+    //   return of(cachedResponse);  
+    // }      
+  
+  // send request to server and add response to cache  
+//   return next.handle(req)  
+//   .pipe(  
+//     tap(event => {  
+//       if (event instanceof HttpResponse) {  
+//         console.log(`+++++ Adding item to cache: ${req.url}`);  
+//         // this.loaderService.put(req.url, event);  
+//       }  
+//     })  
+//   );  
+
+// }  
+// }  
+
         this.requests.push(req);
         this.loaderService.isLoading.next(true);
         return Observable.create(observer => {
@@ -41,11 +85,12 @@ export class LoaderInterceptor implements HttpInterceptor {
                         this.removeRequest(req);
                         observer.complete();
                     });
-            // remove request from queue when cancelled
             return () => {
                 this.removeRequest(req);
                 subscription.unsubscribe();
             };
         });
     }
+
+    
 }

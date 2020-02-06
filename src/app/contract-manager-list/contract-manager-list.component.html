@@ -48,16 +48,16 @@
 
         <!-- added by himadri start Date Range search-->
 
-            <span>
+            <span class="spanformnew">
             <form>
-              <div class="form-group">
+              <div class="form-group form-groupnew1">
                 <input type="text" placeholder="Select Date Range" class="form-control"
                 [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
                 [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
                 #drp="bsDaterangepicker" bsDaterangepicker>
 
                 </div>
-                <div class="form-group row form-groupbtndiv">
+                <div class="form-group row form-groupbtndiv form-groupnew1">
 
                     <button type="submit" class="btn_search"  (click)="geteventarr()" > search </button>
                     <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
@@ -105,9 +105,14 @@
                 <td datalabel="edit">
               <!-- <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'rep' && (el.status == 'request' || el.status =='ask_for_modification')"  (click)="editRow(el)">Edit</span> -->
               <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'contract_manager' && el.status =='ask_for_modification'"  (click)="modification(el)">Edit</span>
+
+
+              <span class="edit_user" *ngIf=" cookeiservice.get('usertype') == 'rep' && el.status =='asDraft' && el.rep_id == cookeiservice.get('userid')"  (click)="editRow(el)">Edit</span>
+
+
               <!-- <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span> -->
               <!-- <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span> -->
-              <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)">View</span>
+              <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && el.status !='asDraft' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)">View</span>
               <span *ngIf=" cookeiservice.get('usertype') != 'rep'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
               <!-- <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)"><i class="fa fa-eye" style="cursor: pointer;"></i></span> -->
 

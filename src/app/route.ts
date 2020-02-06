@@ -88,9 +88,9 @@ const appRoutes: Routes = [
 
      {path: 'contract-manager-list-pending', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {"status":"request"}}, endpoint: 'datalist'}},
 
-     {path: 'make-contract/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view_product', condition: {"_id":'_id'}}, endpoint: 'datalist'}},
+     {path: 'make-contract/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'test_contract', condition: {"_id":'_id'}}, endpoint: 'datalist'}},
      {path: 'make-contract-edit/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {"_id":'_id'}}, endpoint: 'datalist'}},
-
+    //  contract_repote_view_product
     { path: 'login', component:  LoginComponent},
     { path: 'login/:type', component:  LoginComponent},
     { path: 'funnel', component: FunnelComponent},

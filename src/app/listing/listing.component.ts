@@ -48,6 +48,8 @@ export class ListingComponent implements OnInit {
     public dataForm: FormGroup;
     public sourceconditionval: any;
     public timezone: any = [];
+    public tab1: any = '';
+    public tab_header: any ='';
     daterangepickerOptions = {
         format: 'MM/DD/YYYY',
         minDate: moment().format("MM/DD/YYYY"),
@@ -106,6 +108,7 @@ export class ListingComponent implements OnInit {
     public end_date: any = '';
     public youtubeVideoUrl: any = '';
     public editsourceval: any = '';
+    public preview: any = false;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -181,7 +184,6 @@ export class ListingComponent implements OnInit {
         let formgrp: any = [];
         for (let c in this.staticHeader) {
             let tempdefault = [];
-            console.log(c, this.staticHeader[c],'+++++');
             formgrp[this.staticHeader[c]] = [tempdefault, Validators.required];
         }
         this.productForm = this.formgroup.group(formgrp);
@@ -205,9 +207,25 @@ export class ListingComponent implements OnInit {
         //     "filename":this.csvHeaderAllData.filename
         // }
         this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
-        }).subscribe((res)=>{
+        }).subscribe((res: any)=>{
+            this.preview = true;
+            // this.modalRef2.hide();
             console.log(res);
+            this.tab1 = res.result;
+            this.tab_header = Object.keys(this.tab1[0]);
+            console.log(this.tab_header)
+            console.log(this.tab1)
+           
+
         })
+    }
+    preview_button(template: TemplateRef<any>){
+        console.log('preview_button')
+        
+        setTimeout(()=>{
+            
+            this.modalRef3 = this.modal.show(template);
+        },2000);
     }
 
 
