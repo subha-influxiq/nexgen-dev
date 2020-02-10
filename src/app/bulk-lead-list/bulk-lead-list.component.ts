@@ -33,7 +33,7 @@ public datalist: any;
 public selecteditem;
 public placeholderforselect = 0; 
 public message;
- headElements = ['ID', 'Date', 'Full Name', 'Web', 'Email', 'Company Name', 'Address', 'Batch Name', 'Created By', 'Product Name'];
+ headElements = ['ID', 'Date', 'Full Name', 'Web', 'Email', 'Phone', 'Company Name', 'Address', 'Batch Name', 'Created By', 'Product Name'];
 public productList: any = [];
 public prodSelect: any = 0;
 public filterValForName: any;
