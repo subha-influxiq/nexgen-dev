@@ -38,7 +38,7 @@ export class AdminheaderComponent implements OnInit {
 
     const body = document.getElementsByTagName('body')[0];
     this.currentUrl = this.router.url;
-    if (this.router.url == '/contract-list' || this.router.url == '/belk-upload') {
+    if (this.router.url == '/contract-list') {
       body.classList.add('contactlist')
     } else{
       body.classList.remove('contactlist')

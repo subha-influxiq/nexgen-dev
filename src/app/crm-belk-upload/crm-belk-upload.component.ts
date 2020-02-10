@@ -31,6 +31,7 @@ uploadInput:EventEmitter<UploadInput>;
       {value:'created_by',name:'Full Name',role:0,func:'',class:'created_by',type:'text'},
       {value:'productname',name:'Products',role:0,func:'',class:'productname',type:'text'},
       {value:'batch_name',name:'Batch Name',role:0,func:'',class:'batch_name',type:'text'},
+      {value:'resc',name:'Number Of Lead',role:0,func:'',class:'resc',type:'text'},
     ];
     this.formdata=[
     { inputtype: 'textarea', name: 'batch_name', label: 'Batch Name', placeholder: 'Enter Batch Name' ,validationrule:{required:true},validationerrormsg:'is required'},
