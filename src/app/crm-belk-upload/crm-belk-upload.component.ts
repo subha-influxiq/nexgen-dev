@@ -28,7 +28,8 @@ uploadInput:EventEmitter<UploadInput>;
 
     this.tabledatalis=[
       {value:'id',name:'ID',role:0,func:'',class:'id',type:'#'},
-      {value:'Products',name:'Products',role:0,func:'',class:'lastname',type:'text'},
+      {value:'created_by',name:'Full Name',role:0,func:'',class:'created_by',type:'text'},
+      {value:'productname',name:'Products',role:0,func:'',class:'productname',type:'text'},
       {value:'batch_name',name:'Batch Name',role:0,func:'',class:'batch_name',type:'text'},
     ];
     this.formdata=[

@@ -100,6 +100,7 @@ import { LoaderService } from './loader.service';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoaderInterceptor } from './loader.interceptor';
 import { Router } from '@angular/router';
+import { BulkLeadListComponent } from './bulk-lead-list/bulk-lead-list.component';
 
 @NgModule({
   declarations: [
@@ -175,7 +176,8 @@ import { Router } from '@angular/router';
     MakeContractComponent,
     CrmBelkUploadComponent,
     LeadContractComponent,
-    LoaderComponent
+    LoaderComponent,
+    BulkLeadListComponent
 
   ],
   imports: [

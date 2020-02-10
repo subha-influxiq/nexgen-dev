@@ -48,7 +48,7 @@ export class ListingComponent implements OnInit {
     public dataForm: FormGroup;
     public sourceconditionval: any;
     public timezone: any = [];
-    public tab1: any = '';
+    public leads_list: any = '';
     public tab_header: any ='';
     daterangepickerOptions = {
         format: 'MM/DD/YYYY',
@@ -211,10 +211,10 @@ export class ListingComponent implements OnInit {
             this.preview = true;
             // this.modalRef2.hide();
             console.log(res);
-            this.tab1 = res.result;
-            this.tab_header = Object.keys(this.tab1[0]);
+            this.leads_list = res.result;
+            this.tab_header = Object.keys(this.leads_list[0]);
             console.log(this.tab_header)
-            console.log(this.tab1)
+            console.log(this.leads_list)
            
 
         })
@@ -226,6 +226,10 @@ export class ListingComponent implements OnInit {
             
             this.modalRef3 = this.modal.show(template);
         },2000);
+    }
+    submit_leads(){
+        this.formsubmit();
+        console.log('data')
     }
 
 
@@ -253,7 +257,20 @@ youtubeVideoPlay(val: any, template: TemplateRef<any>){
                 }).subscribe((res: any) => {
                     this.datalist = res.res;
                 });
-            }else {
+            } else if(this.router.url == '/belk-upload'){
+                linkForproductsearch  = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+
+                this._http.post(linkForproductsearch, {
+                     "source": "csv_upload_list",
+                    "condition": {
+                        "productname":filterValue
+                    } 
+                }).subscribe((res: any) => {
+                    this.datalist = res.res;
+                });
+            }
+            
+            else {
                 linkForproductsearch = this._commonservice.nodesslurl + 'productsearch';
                 this._http.post(linkForproductsearch, { 'product': filterValue }).subscribe((res: any) => {
                     this.datalist = res.data;
@@ -282,18 +299,34 @@ geteventarr() {
                 $gte: this.start_date
             }
         };
+        if (this.router.url== '/belk-upload') {
+            const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'csv_upload_list', condition: cond }).subscribe(res => {
+            let result: any = res;
+            this.datalist = result.res;
+        });
+        } else{
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'leads_view_for_users', condition: cond }).subscribe(res => {
             let result: any = res;
             this.datalist = result.res;
         });
+    }
     } else {
 
+        if (this.router.url== '/belk-upload') {
+        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'csv_upload_list', condition: cond }).subscribe(res => {
+            let result: any = res;
+            this.datalist = result.res;
+        });
+    } else{
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'leads_view_for_users', condition: cond }).subscribe(res => {
             let result: any = res;
             this.datalist = result.res;
         });
+    }
     }
 
 }
@@ -373,7 +406,10 @@ geteventarr() {
             });
     }
 
-
+    go_to_lead_list(val:any){
+        console.log(val)
+        this.router.navigate(['/lead-list/',val._id]);
+    }
     getdatalist() {
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: this.sourceval, condition: this.sourceconditionval })
@@ -661,7 +697,7 @@ geteventarr() {
             this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
             
         }
-        if (this.dataForm.valid && this.submitval == 1) {
+        if (this.dataForm.valid && this.submitval == 1 && this.router.url !='/belk-upload') {
             console.log(this.dataForm.value)
             const link = this._commonservice.nodesslurl + 'addorupdatedata';
             this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
@@ -676,6 +712,33 @@ geteventarr() {
                             this.imageChangedEvent = [];
                             this.croppedImage = [];
                             this.modalRef.hide();
+                            this.dataForm.reset();
+                        }, 2000);
+
+                    }
+                }, error => {
+                    console.log('Oooops!');
+                });
+        }
+        if (this.dataForm.valid && this.submitval == 1 && this.router.url =='/belk-upload') {
+            this.dataForm.value.file = this.leads_list;
+            this.dataForm.value.created_by = this.cookeiservice.get('userid');
+            console.log(this.dataForm.value)
+            const link = this._commonservice.nodesslurl + 'addorupdatedata';
+            this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
+                .subscribe(res => {
+                    let result: any;
+                    result = res;
+                    this.issubmit = 0;
+                    if (result.status == 'success') {
+                        this.isedit = 0;
+                        setTimeout(() => {
+                            this.getdatalist();
+                            this.imageChangedEvent = [];
+                            this.croppedImage = [];
+                            this.modalRef1.hide();
+                            this.modalRef2.hide();
+                            this.modalRef3.hide();
                             this.dataForm.reset();
                         }, 2000);
 

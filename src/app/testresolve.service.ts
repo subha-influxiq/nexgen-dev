@@ -29,7 +29,11 @@ export class TestresolveService implements Resolve<EndpointComponent> {
             requestData.trainingcategory =  route.params.cid;
             requestData.userid =this.userid;
         }else if(route.data.requestcondition.condition!=null){
+            console.log(route.data.requestcondition.condition)
+            if (route.data.requestcondition.condition == 'id_object') {
             requestData.condition._id =  route.params._id;
+            }
+            requestData.condition.id_object =  route.params._id;
             // requestData.userid =this.userid;
         }else
             requestData.condition = Object.assign(requestData.condition, route.params);

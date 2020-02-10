@@ -72,11 +72,13 @@ import { ContractManagerListComponent } from './contract-manager-list/contract-m
 import { MakeContractComponent } from './make-contract/make-contract.component';
 import { CrmBelkUploadComponent } from './crm-belk-upload/crm-belk-upload.component';
 import { LeadContractComponent } from './lead-contract/lead-contract.component';
+import { BulkLeadListComponent } from './bulk-lead-list/bulk-lead-list.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     {path: 'belk-upload', component: CrmBelkUploadComponent},
     {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
+    {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"_id"}}, endpoint: 'datalist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
      {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added

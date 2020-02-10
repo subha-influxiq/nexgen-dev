@@ -31,12 +31,12 @@
                     <div class="inner_search_wrapper"
                         *ngIf="router.url!=['/tranningcategory'] && router.url!=['/addtrainings']">
                         <div class="inner_content_wrapper">
-                            <div class="search_content">
+                            <div class="search_content" *ngIf="router.url!=['/belk-upload']">
                                 <h3> <input type="text" [(ngModel)]="filterval2" (keyup)="searchbyval()"
                                         placeholder="Search by Email"><button><i class="fa fa-search"
                                             aria-hidden="true"></i></button> </h3>
                             </div>
-                            <div class="search_content">
+                            <div class="search_content" *ngIf="router.url !=['/belk-upload']">
                                 <h3> <input type="text" [(ngModel)]="filterval3" (keyup)="searchbyval()"
                                         placeholder="Search by Name"><button><i class="fa fa-search"
                                             aria-hidden="true"></i></button> </h3>
@@ -45,7 +45,7 @@
                             <!-- added by himadri start product search-->
 
                             <div class="search_content"
-                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] ">
+                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] || router.url== ['/belk-upload'] ">
                                 <h3>
                                     <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)"
                                         [(ngModel)]="filterval4" required>
@@ -60,7 +60,7 @@
 
                             <!-- added by himadri start Date Range search-->
 
-                            <span *ngIf="router.url== ['/manage-leads'] || router.url== ['/appointmentlist']">
+                            <span *ngIf="router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/belk-upload']">
                                 <form>
                                     <div class="form-group">
                                         <input type="text" placeholder="Select Date Range" class="form-control"
@@ -387,13 +387,17 @@
                                                 (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                         </td>
                                         <td *ngIf="hideaction!=null && hideaction!='true' ">
-                                            <span class=" delete_user"
+                                            <span class=" delete_user" *ngIf="router.url!=['/belk-upload']"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-                                            <span class="edit_user"
-                                                (click)="editmodal(formtemplate,item)">edit</span><br><br>
+                                            <span class=" delete_user" *ngIf="router.url==['/belk-upload']"
+                                                (click)="deletdata(item,commonconfirmmodal)">delete all</span>
+                                            <span class="edit_user"  *ngIf="router.url!=['/belk-upload']"
+                                                (click)="editmodal(formtemplate,item)">edit</span>
+                                            <span class="edit_user"  *ngIf="router.url==['/belk-upload']"
+                                                (click)="go_to_lead_list(item)">View Leads</span>
                                             <span class="delete_user" *ngIf="router.url==['/manage-leads']"
                                                 (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery
-                                                Call</span><br><br>
+                                                Call</span>
                                             <span
                                                 *ngIf="router.url==['/manage-leads'] && usertype=='rep' && item.appointment_count>0"><a
                                                     target="_blank" class="edit_user"
@@ -775,8 +779,11 @@
                  </select>
                  <span class="clear"></span>
             </span>
-            <button class="edit_user" type="submit"  > Submit</button>
+            <!-- <button class="edit_user" type="submit" > Submit</button> -->
+            <button class="edit_user" type="submit" *ngIf="!preview"> Submit</button>
+            <button class="edit_user" type="button" *ngIf="preview" (click)="submit_leads()"> Submit</button>
             <button class="edit_user" type="button" *ngIf="preview" (click)="preview_button(prev)"> Preview</button>
+            <button class="edit_user" type="button"  (click)="modalRef2.hide()">Cancel</button>
         </form>
 
     </div>
@@ -788,7 +795,7 @@
     <div class="modal-body brandmanagement_modal">
     <div class="table-responsive admin_table_wrapper">
         <div class="previewtable">
-            <table class="table" *ngIf="tab1.length>0">
+            <table class="table" *ngIf="leads_list.length>0">
                 <thead>
                     <tr>
                         <th [ngClass]="item.class" *ngFor="let item of tab_header; index as i;"
@@ -796,7 +803,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of tab1; index as i ">
+                    <tr *ngFor="let item of leads_list; index as i ">
                         <td *ngFor="let item1 of tab_header; let i1=index;" scope="col">
                             <span >
                                 {{item[item1]}}<br>
@@ -806,7 +813,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="edit_user" type="button">Submit</button>
+        <button class="edit_user" type="button" (click)="submit_leads()">Submit</button>
         <button class="edit_user" type="button"  (click)="modalRef3.hide()">Cancel</button>
     </div>
     </div>

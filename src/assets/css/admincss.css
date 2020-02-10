@@ -422,7 +422,7 @@
     font-size: 15px;
     /*padding: 5px 5px 4px 5px;*/
     padding: 5px 5px 3px 5px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     margin-left: 10px;
     text-transform: uppercase;
     cursor: pointer; display: inline-block; text-align: center;
@@ -440,7 +440,7 @@
     padding: 5px 5px 3px 5px;
     text-transform: uppercase;
     cursor: pointer;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     white-space: nowrap; display: inline-block;
 }
 .nextGen_admin_mainwrapper .s_getmybrand_adminlist .row .admin_inner_wrapper .admin_table_pagination .pagination{ justify-content: center;  margin-bottom: 0;}
