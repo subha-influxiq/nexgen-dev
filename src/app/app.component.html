@@ -1,5 +1,11 @@
 
+<div class="loder_body" *ngIf="loading">
+    <div class="loder_wrapper">
+      <img src="assets/images/betologo.png" alt="#"
+        style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+      <div class="loader"></div>
+    </div>
+  </div>
 
-
-<app-loader></app-loader>
+<!-- <app-loader></app-loader> -->
 <router-outlet></router-outlet>

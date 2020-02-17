@@ -28,15 +28,17 @@ export class TestresolveService implements Resolve<EndpointComponent> {
         if(route.data.requestcondition.trainingcategory!=null){
             requestData.trainingcategory =  route.params.cid;
             requestData.userid =this.userid;
-        }else if(route.data.requestcondition.condition!=null){
-            console.log(route.data.requestcondition.condition)
-            if (route.data.requestcondition.condition == 'id_object') {
-            requestData.condition._id =  route.params._id;
-            }
+        }
+        else if(route.data.requestcondition.condition.id_object == 'id_object'){
+            // console.log(route.data.requestcondition)
             requestData.condition.id_object =  route.params._id;
+            delete requestData.condition._id
+        }
+        else if(route.data.requestcondition.condition!=null){
+                // console.log(route.data.requestcondition)
+            requestData.condition._id =  route.params._id;
             // requestData.userid =this.userid;
-        }else
-            requestData.condition = Object.assign(requestData.condition, route.params);
+        }else requestData.condition = Object.assign(requestData.condition, route.params);
 
 //old code
             /*var result = new Promise((resolve) => {this._http.post(this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken'),

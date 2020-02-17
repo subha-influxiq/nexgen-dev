@@ -24,3 +24,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .contactlist .modal-dialog .brandmanagement_modal label[style]:first-child{
     margin-top: 0px;
 }
+
+.paginationnew{margin-top: 10px;}
+.paginationnew .next .page-link{background-color: #00a8ef; color:#fff;border-radius: 0px !important; margin-left: 5px;}
+.paginationnew .next .page-link:hover{color:#fff;}
+.paginationnew .prev .page-link{background-color: #000;color:#fff;border-radius: 0px !important;}
+.paginationnew .prev .page-link:hover{color:#fff;}
+.paginationnew .disable .page-link{background-color: #cccccc;color:#666666; border-radius: 0px !important;cursor: not-allowed;
+        pointer-events: none;}
+.paginationnew .disable .page-link{color:#666666; }

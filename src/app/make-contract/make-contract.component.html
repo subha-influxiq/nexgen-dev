@@ -83,20 +83,25 @@
         </div>
      <button type="submit">Reply</button>
    </form> -->
-
-   <p *ngIf="datalist.rep_fullname !=null"><strong>Notes By Rep: </strong>{{datalist.rep_fullname}}</p>
+<!-- <span *ngIf="datalist.contract_content_notes !=null || datalist.ModifiedNotesByRep !=null "> -->
+   <!-- <p *ngIf="datalist.rep_fullname !=null"><strong>Notes By Rep: </strong>{{datalist.rep_fullname}}</p>
         <p *ngIf="datalist.notes !=null"><strong>Notes: </strong>{{datalist.notes}}</p>
         <p *ngIf="datalist.date !=null"><strong>Date: </strong> {{datalist.date}}</p>
-        <hr>
+        <hr> -->
         
-        <!-- <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p>
+        <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p>
         <p *ngIf="datalist.contract_content_notes !=null"><strong>Notes: </strong>{{datalist.contract_content_notes}}</p>
         <p *ngIf="datalist.CM_added_by !=null"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
-       <hr> -->
+       <hr>
         
         <p *ngIf="datalist.ModifiedNotesByRep !=null && datalist.rep_name !=null"><strong>Modified By Rep: </strong>{{datalist.rep_name}}</p>
         <p *ngIf="datalist.ModifiedNotesByRep !=null"><strong>Notes: </strong>{{datalist.ModifiedNotesByRep}}</p>
         <p *ngIf="datalist.ModifiedByRep_date !=null"><strong>Date: </strong>{{datalist.ModifiedByRep_date}}</p>
+
+      <!-- </span> -->
+      <!-- <span *ngIf="datalist.contract_content_notes ==null && datalist.ModifiedNotesByRep ==null ">
+        <h5 style="text-align: center; padding-top: 10px;"> Note's Are Not Aavailable</h5>
+      </span> -->
   </div>
 
   <div class="clearfix"></div>

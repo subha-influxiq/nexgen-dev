@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, AfterViewInit, ViewChild } from '@angular/core';
 import {Commonservices} from '../app.commonservices' ;
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,9 @@ declare var $: any;
   styleUrls: ['./bulk-lead-list.component.css'],
   providers : [Commonservices]
 })
-export class BulkLeadListComponent implements OnInit {
+export class BulkLeadListComponent implements OnInit, AfterViewInit {
+  elements: any = [];
+  previous: any = [];
 
   public loader = 0;
   daterangepickerOptions = {
@@ -42,6 +44,13 @@ public start_date: any = '';
 public end_date: any = '';
 public notes_list: any = '';
 public indexCount: number;
+public skipCount: number = 25;
+masterSelected:boolean = false;
+public check_true = false;
+checkedList:any;
+public checked_ids: any = [];
+public allChecked_ids: any = [];
+public rep_list: any = '';
 
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
@@ -50,19 +59,100 @@ public indexCount: number;
     public route: ActivatedRoute,
     public modal: BsModalService,
     protected _sanitizer: DomSanitizer) {
+      console.log(this.route.snapshot.params._id)
      }
 
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
       this.datalist = data.results.res;
+      // this.skipCount = data.results.resc;
       // this.headElements = Object.keys(data.results.res[0]);
    });
   //  console.log((this.datalist[0].contentTop));
-
-   
-
    this.getproduct();
+  }
+
+
+  // for_rep
+
+  isAllSelected(event: any) {
+    this.checked_ids = [];
+    console.log(event.target.name);
+    console.log(event.target.checked);
+    console.log(event.target.value);
+    console.log(event.target.value.length)
+    if (event.target.checked == true) {
+      for (var i = 0; i < 24; i++ ) {
+        console.log(this.datalist[i], i);
+        this.allChecked_ids.push(this.datalist[i].id);
+        this.check_true = true;
+      }
+    } else {
+      this.check_true = false;
+      this.allChecked_ids = [];
+    }
+    console.log(this.allChecked_ids)
+  }
+  checkUncheck(event: any) {
+    this.allChecked_ids = [];
+    console.log(event.target.name);
+    console.log(event.target.checked);
+    if (event.target.checked == true) {
+      // this.check_true = true;
+      this.checked_ids.push(event.target.value);
+    } else {
+      this.check_true = false;
+      this.checked_ids.splice(event.target.value, 1);
+    }
+    console.log(event.target.value, this.checked_ids);
+  }
+  assen_to_rep(template: TemplateRef<any>){
+    console.log(this.checked_ids)
+    this.modalRef1 = this.modal.show(template);
+    const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'for_rep'}).subscribe((res:any) => {
+          // this.datalist = res.res;
+          console.log(res);
+          this.rep_list = res.res;
+        });
+  }
+  ngAfterViewInit() {
+  }
+  previouspage(){
+
+    let count = this.skipCount - 25;
+    this.skipCount = count;
+    console.log(count,'-')
+    let cond = {
+      "_id": this.route.snapshot.params._id,
+      "skip":count
+    }
+if (count>=25) {
+  
+
+    const link = this._commonservice.nodesslurl + 'leadlist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
+          this.loader = 0;
+          this.datalist = res.res;
+        });
+  }
+}
+
+  nextpage(){
+    let count = this.skipCount + 25;
+    this.skipCount = count;
+    console.log(count,'+');
+    let cond = {
+      "_id": this.route.snapshot.params._id,
+      "skip":count
+    }
+
+    const link = this._commonservice.nodesslurl + 'leadlist?token=' + this.cookeiservice.get('jwttoken');
+        this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
+          this.loader = 0;
+          this.datalist = res.res;
+        });
   }
 
   productSearchbyval(val: any){
@@ -94,15 +184,19 @@ public indexCount: number;
   }
 
   searchbyname(val: any) {
+
+    console.log(val)
     let datalistVal: any = [];
-    let allData = this.datalist;
+    var allData: any;
+    allData = this.datalist;
+    console.log(allData)
     if (val == null || val == '') {
       this.datalist = allData;
     } else {
       datalistVal = [];
       for (let i in this.datalist) {
 
-        if (this.datalist[i].lead_fullName != null && this.datalist[i].lead_fullName.toLowerCase().indexOf(val.toLowerCase()) > -1) {
+        if (this.datalist[i].fullName != null && this.datalist[i].fullName.toLowerCase().indexOf(val.toLowerCase()) > -1) {
           datalistVal.push(this.datalist[i]);
         }
       } 
@@ -233,7 +327,7 @@ confirmdelete(template: TemplateRef<any>) {
         });
   }
   nodelete() {
-    // this.modalRef1.hide();
+    this.modalRef1.hide();
   }
 
 

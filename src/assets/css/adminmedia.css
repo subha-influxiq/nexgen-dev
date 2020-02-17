@@ -31,7 +31,7 @@
         font-size: 14px;
     }
     .new_header_container { width: 100%; }
-    .new_header .new_header4 .profile_block ul li .dropdown-menu.show{ left: -53px!important; padding: 10px!important;}
+    .new_header .new_header4 .profile_block ul li .dropdown-menu.show{padding: 10px!important;}
 }
 @media screen  and  (max-width: 1680px){
     .representative_list_wrapper {
@@ -538,7 +538,6 @@
 @media screen and (max-width: 992px) {
 
     .new_header .new_header4 .profile_block ul li .dropdown-menu.show {
-        left: -53px!important;
         padding: 0px!important;
         background: #fff!important; border-radius: 5px!important; border: solid 1px #ccc!important;
     }
@@ -1590,6 +1589,10 @@
 
 @media screen and (max-width: 480px) {
     .rep_dashboard_newblock6_topnew h2{ font-size: 38px;}
+    .new_header .new_header4 .profile_block li .dropdown-menu a {
+        line-height: normal;
+        font-size: 14px;
+    }
 
 }
 

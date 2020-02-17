@@ -78,7 +78,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     {path: 'belk-upload', component: CrmBelkUploadComponent},
     {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
-    {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"_id"}}, endpoint: 'datalist'}},
+    {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"id_object", "skip":0}}, endpoint: 'leadlist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
      {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added
@@ -86,9 +86,9 @@ const appRoutes: Routes = [
 
      {path: 'contract-list', component: ContractListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contractDetails_view', condition: {}}, endpoint: 'datalist'}},
      
-     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {}}, endpoint: 'datalist'}},
+     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {}}, endpoint: 'datalist'}},
 
-     {path: 'contract-manager-list-pending', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {"status":"request"}}, endpoint: 'datalist'}},
+     {path: 'contract-manager-list-pending', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"status":"request"}}, endpoint: 'datalist'}},
 
      {path: 'make-contract/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'test_contract', condition: {"_id":'_id'}}, endpoint: 'datalist'}},
      {path: 'make-contract-edit/:_id', component: MakeContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_repote_view', condition: {"_id":'_id'}}, endpoint: 'datalist'}},

@@ -55,7 +55,19 @@ public indexCount: number;
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
-      this.datalist = data.results.res;
+      // this.datalist = data.results.res;
+      // console.log(this.datalist);
+      let dataall: any = [];
+      for (let item in data.results.res) {
+        if (data.results.res[item].status == 'asDraft' && data.results.res[item].rep_id != this.cookeiservice.get('userid')) {
+          data.results.res.splice(item,1)
+          // console.log('asDraft', item)
+        } else{
+          dataall.push(data.results.res[item])
+        }
+        
+      }
+      this.datalist = dataall;
    });
   //  console.log((this.datalist[0].contentTop));
 
@@ -69,7 +81,7 @@ public indexCount: number;
     console.log(val);
     if (val != undefined && val != null && val.length > 0) {
       let data: any = {
-        "source":"contract_repote_view",
+        "source":"contract_manager_list",
         "condition":{
           "product":val
         }
@@ -78,7 +90,18 @@ public indexCount: number;
       const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
           this._http.post(link,data).subscribe((res:any) => {
               this.loader =0;
-              this.datalist = res.res;
+              // this.datalist = res.res;
+              let dataall: any = [];
+              for (let item in res.res) {
+                if (res.res[item].status == 'asDraft' && res.res[item].rep_id != this.cookeiservice.get('userid')) {
+                  res.res.splice(item,1)
+                  // console.log('asDraft', item)
+                } else{
+                  dataall.push(res.res[item])
+                }
+                
+              }
+              this.datalist = dataall;
           });
     }
   }
@@ -86,9 +109,24 @@ public indexCount: number;
   getdata() {
     this.loader = 1;
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'contract_repote_view'}).subscribe((res:any) => {
+    this._http.post(link,{source:'contract_manager_list'}).subscribe((res:any) => {
       this.loader =0;
       this.datalist = res.res;
+      this.route.data.forEach((data:any ) => {
+        // this.datalist = data.results.res;
+        // console.log(this.datalist);
+        let dataall: any = [];
+        for (let item in data.results.res) {
+          if (data.results.res[item].status == 'asDraft' && data.results.res[item].rep_id != this.cookeiservice.get('userid')) {
+            data.results.res.splice(item,1)
+            // console.log('asDraft', item)
+          } else{
+            dataall.push(data.results.res[item])
+          }
+          
+        }
+        this.datalist = dataall;
+     });
     });
   }
 
@@ -138,16 +176,46 @@ public indexCount: number;
             }
         };
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe((res:any) => {
+        this._http.post(link, { source: 'contract_manager_list', condition: cond }).subscribe((res:any) => {
           this.loader = 0;
           this.datalist = res.res;
+          this.route.data.forEach((data:any ) => {
+            // this.datalist = data.results.res;
+            let dataall: any = [];
+            for (let item in data.results.res) {
+              if (data.results.res[item].status == 'asDraft' && data.results.res[item].rep_id != this.cookeiservice.get('userid')) {
+                data.results.res.splice(item,1)
+                // console.log('asDraft', item)
+              } else{
+                dataall.push(data.results.res[item])
+              }
+              
+            }
+            this.datalist = dataall;
+            // console.log('asDraft1', this.datalist)
+         });
         });
     } else {
 
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'contract_repote_view', condition: cond }).subscribe((res:any) => {
+        this._http.post(link, { source: 'contract_manager_list', condition: cond }).subscribe((res:any) => {
           this.loader = 0;
           this.datalist = res.res;
+          this.route.data.forEach((data:any ) => {
+            // this.datalist = data.results.res;
+            let dataall: any = [];
+            for (let item in data.results.res) {
+              if (data.results.res[item].status == 'asDraft' && data.results.res[item].rep_id != this.cookeiservice.get('userid')) {
+                data.results.res.splice(item,1)
+                // console.log('asDraft', item)
+              } else{
+                dataall.push(data.results.res[item])
+              }
+              
+            }
+            this.datalist = dataall;
+            // console.log('asDraft1', this.datalist)
+         });
         });
     }
 

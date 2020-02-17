@@ -10,7 +10,7 @@
     <div style="width: 100vw; height: 100vh; display: table-cell; vertical-align: middle; ">
 
         <img src="assets/images/logo.png" alt="#"
-            style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+            style="margin:0 auto;  margin-bottom:30px; max-width: 280px;" />
 
         <div class="loader"></div>
         <p class="sync_data">Synchronizing Data ...</p>
@@ -676,7 +676,7 @@
 </ng-template>
 
 
-
+<!-- sucessmodal -->
 
 <!--Common message modal-->
 <ng-template #messagemodal>
@@ -778,10 +778,17 @@
                         {{searchval}}</option>
                  </select>
                  <span class="clear"></span>
-            </span>
-            <!-- <button class="edit_user" type="submit" > Submit</button> -->
-            <button class="edit_user" type="submit" *ngIf="!preview"> Submit</button>
-            <button class="edit_user" type="button" *ngIf="preview" (click)="submit_leads()"> Submit</button>
+            </span> 
+            <!-- <span class="submitloader" > -->
+                <button class="edit_user spinner" *ngIf="submit_loaderbar">
+                    <i class="fa fa-spinner fa-spin"></i>Loading
+                </button>
+                <!-- </span> -->
+            <button class="edit_user" type="submit" *ngIf="preview ==false && submit_loaderbar == false"> Submit</button>
+        
+                <button class="edit_user" type="button" *ngIf="preview" (click)="submit_leads(sucessmodalflag,'1')"> Submit</button>
+           
+
             <button class="edit_user" type="button" *ngIf="preview" (click)="preview_button(prev)"> Preview</button>
             <button class="edit_user" type="button"  (click)="modalRef2.hide()">Cancel</button>
         </form>
@@ -813,8 +820,37 @@
                 </tbody>
             </table>
         </div>
-        <button class="edit_user" type="button" (click)="submit_leads()">Submit</button>
+        <button class="edit_user spinner" *ngIf="submit_loaderbar1">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+        <button *ngIf="!submit_loaderbar1" class="edit_user" type="button" (click)="submit_leads(sucessmodalflag,'0')">Finish Import</button>
         <button class="edit_user" type="button"  (click)="modalRef3.hide()">Cancel</button>
     </div>
     </div>
 </ng-template>
+
+<ng-template #sucessmodalflag>
+    <div class="modal-body brandmanagement_modal successmodal_listing">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <h3>CSV Successfully Added</h3>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
+<!-- 
+<ng-template *ngIf="submit_loaderbar">
+    <div class="loaderbarwrapper" >
+        <div class="loaderbar">
+            <div class="loaderbar__bar"></div>
+            <div class="loaderbar__bar"></div>
+            <div class="loaderbar__bar"></div>
+            <div class="loaderbar__bar"></div>
+            <div class="loaderbar__bar"></div>
+            <div class="loaderbar__ball"></div>
+        </div>
+    </div>
+</ng-template> -->

@@ -61,6 +61,7 @@
     width: 50px;
     padding: 0;
     padding-left: 10px;
+    white-space: normal;
 }
 
 
@@ -85,8 +86,13 @@
     display: block;
     /*change*/
     /*top: 0px!important;*/
-    top: 0px!important;
-    left: -30px!important;
+    /* top: 0px!important; */
+    /* left: -30px!important; */
+    left: inherit !important;
+    padding: 10px!important;
+    right: 0 !important;
+    top: inherit !important;
+    transform: inherit !important;
 }
 
 /*ADMIN NEW HEADER END*/
@@ -423,12 +429,12 @@
     /*padding: 5px 5px 4px 5px;*/
     padding: 5px 5px 3px 5px;
     /* margin-bottom: 10px; */
-    margin-left: 10px;
+    margin: 5px;
     text-transform: uppercase;
     cursor: pointer; display: inline-block; text-align: center;
 
 }
-.nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td span:last-child{margin-left: 10px;}
+/* .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td span:last-child{margin-left: 10px;} */
 
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .edit_user:hover{color: #fff !important; text-decoration: none;}
 .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table td .delete_user{
@@ -440,6 +446,7 @@
     padding: 5px 5px 3px 5px;
     text-transform: uppercase;
     cursor: pointer;
+    margin: 5px !important;
     /* margin-bottom: 10px; */
     white-space: nowrap; display: inline-block;
 }
@@ -2524,6 +2531,10 @@ text-align: center;}
 }
 
 .containeraddblock{  background:#eeeeee; padding: 10px; margin-bottom: 12px;}
+
+
+
+
 
 
 

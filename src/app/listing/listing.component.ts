@@ -50,6 +50,7 @@ export class ListingComponent implements OnInit {
     public timezone: any = [];
     public leads_list: any = '';
     public tab_header: any ='';
+    public sucessmodalflag: boolean = false;
     daterangepickerOptions = {
         format: 'MM/DD/YYYY',
         minDate: moment().format("MM/DD/YYYY"),
@@ -109,6 +110,8 @@ export class ListingComponent implements OnInit {
     public youtubeVideoUrl: any = '';
     public editsourceval: any = '';
     public preview: any = false;
+    public submit_loaderbar: boolean = false;
+    public submit_loaderbar1: boolean = false;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -200,6 +203,7 @@ export class ListingComponent implements OnInit {
     }
 
     productFormsubmit(){
+        this.submit_loaderbar = true;
         console.log(this.productForm.value);
         var link = this._commonservice.nodesslurl + 'write-csv';
         // var data: any = {
@@ -208,13 +212,11 @@ export class ListingComponent implements OnInit {
         // }
         this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
         }).subscribe((res: any)=>{
+            this.submit_loaderbar = false;
             this.preview = true;
             // this.modalRef2.hide();
-            console.log(res);
             this.leads_list = res.result;
             this.tab_header = Object.keys(this.leads_list[0]);
-            console.log(this.tab_header)
-            console.log(this.leads_list)
            
 
         })
@@ -222,14 +224,53 @@ export class ListingComponent implements OnInit {
     preview_button(template: TemplateRef<any>){
         console.log('preview_button')
         
-        setTimeout(()=>{
-            
+        // setTimeout(()=>{
             this.modalRef3 = this.modal.show(template);
-        },2000);
+        // },2000);
     }
-    submit_leads(){
-        this.formsubmit();
-        console.log('data')
+    submit_leads(template: TemplateRef<any>, val: any){
+        this.submit_loaderbar1 = true;
+        this.issubmit = 1;
+        let y: any;
+        for (y in this.dataForm.controls) {
+            this.dataForm.controls[y].markAsTouched();
+        }
+        if (this.dataForm.valid && this.submitval == 1) {
+            this.dataForm.value.file = this.leads_list;
+            this.dataForm.value.created_by = this.cookeiservice.get('userid');
+            const link = this._commonservice.nodesslurl + 'addorupdatedata';
+            this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
+                .subscribe(res => {
+                    let result: any;
+                    result = res;
+                    this.issubmit = 0;
+                    if (result.status == 'success') {
+
+                        this.submit_loaderbar1 = false;
+                        // this.sucessmodalflag = true;
+                        console.log('****')
+                        this.isedit = 0;
+                        this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
+                        setTimeout(() => {
+                            this.modalRef1.hide();
+                            this.modalRef2.hide();
+                            this.modalRef.hide();
+                            if (val == '0') {
+                             this.modalRef3.hide();
+                            }
+                            this.isedit = 0;
+                        }, 4000);
+                            this.getdatalist();
+                            this.dataForm.reset();
+
+
+                    }
+                }, error => {
+                    console.log('Oooops!');
+                });
+        }
+        // this.formsubmit();
+      
     }
 
 
@@ -697,7 +738,7 @@ geteventarr() {
             this.dataForm.controls['end_time'].patchValue(moment(this.dataForm.controls['end_time'].value).format('HH:mm'));/*.tz(tzval)*/
             
         }
-        if (this.dataForm.valid && this.submitval == 1 && this.router.url !='/belk-upload') {
+        if (this.dataForm.valid && this.submitval == 1) {
             console.log(this.dataForm.value)
             const link = this._commonservice.nodesslurl + 'addorupdatedata';
             this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
@@ -720,38 +761,10 @@ geteventarr() {
                     console.log('Oooops!');
                 });
         }
-        if (this.dataForm.valid && this.submitval == 1 && this.router.url =='/belk-upload') {
-            this.dataForm.value.file = this.leads_list;
-            this.dataForm.value.created_by = this.cookeiservice.get('userid');
-            console.log(this.dataForm.value)
-            const link = this._commonservice.nodesslurl + 'addorupdatedata';
-            this._http.post(link, { source: this.formsourceval.table, data: this.dataForm.value, sourceobj: this.formsourceval.objarr })
-                .subscribe(res => {
-                    let result: any;
-                    result = res;
-                    this.issubmit = 0;
-                    if (result.status == 'success') {
-                        this.isedit = 0;
-                        setTimeout(() => {
-                            this.getdatalist();
-                            this.imageChangedEvent = [];
-                            this.croppedImage = [];
-                            this.modalRef1.hide();
-                            this.modalRef2.hide();
-                            this.modalRef3.hide();
-                            this.dataForm.reset();
-                        }, 2000);
-
-                    }
-                }, error => {
-                    console.log('Oooops!');
-                });
-        }
     }
 
     rangeSelected($event, controlname: any) {
         let dval = moment.unix($event.start).unix() + '|' + moment.unix($event.end).unix();
-        //hidden field value : startdate|enddate -- it will be inserted to db
         this.dataForm.controls[controlname].patchValue(dval);
     }
 

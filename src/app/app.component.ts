@@ -1,7 +1,14 @@
 
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {
+  Event,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router
+} from '@angular/router';
 import { Component } from '@angular/core';
-declare  var $: any;
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -13,13 +20,33 @@ export class AppComponent {
   /*title = 'nexgetest';*/
 
   public url;
-  constructor(private router: Router) {}
+  public loading: boolean = false;
+  constructor(private router: Router) {
+    /* Universal Loader for Reslove */
+    this.router.events.subscribe((event: Event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         let curUrlTree = this.router.parseUrl(this.router.url);
-      //  console.info(this.router.url);
+        //  console.info(this.router.url);
         this.url = this.router.url;
 
         if (this.url == '/') {

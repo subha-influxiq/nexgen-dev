@@ -37,21 +37,21 @@ export class MakeContractComponent implements OnInit {
     });
     this.route.params.subscribe(params => {
       this.recid = params['_id'];
-      console.log(this.recid);
+      // console.log(this.recid);
     });
    }
 
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
-      console.log('json',data.results.res);
+      // console.log('json',data.results.res);
       this.datalist = data.results.res[0];
     if (this.datalist.clauses != null && this.datalist.clauses != '') {
       this.makeContentForm.controls['clauses'].patchValue(this.datalist.clauses);
       this.makeContentForm.controls['notesMsg'].patchValue(this.datalist.notesByCM);
     }
 
-    console.log('json',this.datalist.contentTop);
+    // console.log('json',this.datalist.contentTop);
    });
   }
 
@@ -66,9 +66,9 @@ export class MakeContractComponent implements OnInit {
     let x: any;
     for (x in this.makeContentForm.controls) {
       this.makeContentForm.controls[x].markAsTouched();
-      console.log(this.makeContentForm.controls[x].valid);
+      // console.log(this.makeContentForm.controls[x].valid);
     }
-    console.log('sdf',this.makeContentForm.value)
+    // console.log('sdf',this.makeContentForm.value)
 
     if (this.makeContentForm.controls[x].valid && this.datalist != null && this.datalist != '' &&( this.datalist.status == 'request' || this.datalist.status == 'ask_for_modification')) {
      
@@ -127,7 +127,7 @@ export class MakeContractComponent implements OnInit {
   //   console.log(val.value)
   // }
   sendToLead(){
-    console.log(this.datalist)
+    // console.log(this.datalist)
       const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
       this._http.post(link,  { source: 'contract_repote', data: {
        id: this.datalist._id,
