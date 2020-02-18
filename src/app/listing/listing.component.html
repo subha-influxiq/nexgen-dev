@@ -161,9 +161,13 @@
                               <a (click)="syncgoogle()" class="addfrinderbtn s_getmybrand_savebutton slotadd"> Product Wise Leads</a> -->
                                 <div class="clearfix"></div>
                             </div>
-
                         </div>
                     </div>
+                    <div *ngIf="table_loader" class="progressbarwrapper">
+                        <div class="progressbar">
+                          <div class="stylization"></div>
+                        </div>
+                      </div>
 
                     <div class="table-responsive admin_table_wrapper">
                         <div *ngIf="templatetype=='table'">

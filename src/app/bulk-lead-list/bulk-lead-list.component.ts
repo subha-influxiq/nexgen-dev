@@ -51,6 +51,8 @@ checkedList:any;
 public checked_ids: any = [];
 public allChecked_ids: any = [];
 public rep_list: any = '';
+public selectedrep:any ='';
+public selectedrepflag:boolean = false;
 
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
@@ -74,7 +76,6 @@ public rep_list: any = '';
   }
 
 
-  // for_rep
 
   isAllSelected(event: any) {
     this.checked_ids = [];
@@ -85,7 +86,7 @@ public rep_list: any = '';
     if (event.target.checked == true) {
       for (var i = 0; i < 24; i++ ) {
         console.log(this.datalist[i], i);
-        this.allChecked_ids.push(this.datalist[i].id);
+        this.allChecked_ids.push(this.datalist[i].u_id);
         this.check_true = true;
       }
     } else {
@@ -107,7 +108,7 @@ public rep_list: any = '';
     }
     console.log(event.target.value, this.checked_ids);
   }
-  assen_to_rep(template: TemplateRef<any>){
+  assign_to_rep(template: TemplateRef<any>){
     console.log(this.checked_ids)
     this.modalRef1 = this.modal.show(template);
     const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
@@ -116,6 +117,38 @@ public rep_list: any = '';
           console.log(res);
           this.rep_list = res.res;
         });
+  }
+
+  repAssign(template: TemplateRef<any>){
+    this.message = "Record Assign successfully!!";
+    let data: any;
+    console.log(this.selectedrep);
+    if (this.checked_ids.length !=0) {
+      data= {
+        added_by: this.cookeiservice.get('userid'),
+        rep_id: this.selectedrep,
+        leads_id: this.checked_ids
+         }
+    } else {
+      data= {
+      added_by: this.cookeiservice.get('userid'),
+      rep_id: this.selectedrep,
+      leads_id: this.allChecked_ids
+       }
+    }
+    const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+  this._http.post(link,  { source: 'assigned_to_rep', data:data})
+      .subscribe((res: any) => {
+        console.log(res);
+        this.modalRef1.hide();
+        this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
+        setTimeout(() => {
+            this.modalRef1.hide();
+        }, 4000);
+    }, error => {
+        console.log('Oooops!');
+    });
+      
   }
   ngAfterViewInit() {
   }
@@ -299,18 +332,29 @@ shownotes(val: any, template: TemplateRef<any>){
 //   //   this.router.navigateByUrl('/make-contract/'+item._id);
 //   // }
 // }
+
+// deleteLead(val: any){
+
+//   let link = this._commonservice.nodesslurl + 'deletelead?token=' + this.cookeiservice.get('jwttoken');
+//         this._http.post(link, { 
+//         "id":val._id,
+//         "u_id":val.u_id}).subscribe((res:any) => {
+//           console.log('success',res)
+//         })
+// }
 deletdata(val: any, x, template: TemplateRef<any>) {
-  // this.modalRef1 = this.modal.show(template);
-  // this.selecteditem = val;
-  // this.indexCount = x;
-  // console.log(x)
+  this.modalRef1 = this.modal.show(template);
+  this.selecteditem = val;
+  this.indexCount = x;
+  console.log(val)
+  console.log(x)
 }
 
 confirmdelete(template: TemplateRef<any>) {
     this.modalRef1.hide();
     this.message = "Record deleted successfully!!";
-    const link = this._commonservice.nodesslurl + 'deletesingledata?token=' + this.cookeiservice.get('jwttoken');
-      this._http.post(link, { source:'csv_upload', id: this.selecteditem._id})
+    const link = this._commonservice.nodesslurl + 'deletelead?token=' + this.cookeiservice.get('jwttoken');
+      this._http.post(link, {"u_id":this.selecteditem.u_id, id: this.selecteditem._id})
           .subscribe((res:any) => {
             // console.log(res);
             if (res.status == "success") {

@@ -180,6 +180,9 @@ setTimeout(() => {
               this.errormg = result.msg;
             }
             if (result.status == 'success') {
+              this.cookeiservice.set('userid', result.item[0]._id);
+              this.cookeiservice.set('usertype', result.item[0].type);
+
               if(result.item[0].type=="contract_manager")
                   {
                     this.router.navigate(['/contract/dashboard']);
@@ -188,6 +191,9 @@ setTimeout(() => {
               console.log(result.item[0]);
               if(result.item[0].status == 1 || result.item[0].status == true) {
                 if(result.item[0].is_contract_signed == null && result.item[0].type == 'rep') {
+                  setTimeout(() => {
+                  this.cookeiservice.set('userid', result.item[0]._id);
+                  },200);
                   this.router.navigate(['/agreement']);
                   return ;
                 }
@@ -213,6 +219,7 @@ setTimeout(() => {
                   this.router.navigate(['/dashboard']);
                 }
                 if(result.item[0].type=='regional_recruiter') {
+                  // this.cookeiservice.set('userid', result.item[0]._id);
                   this.cookeiservice.set('refreshtoken', result.item[0].refreshtoken);
                   this.router.navigate(['/regionaldashboard']);
                 }

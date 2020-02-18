@@ -112,6 +112,7 @@ export class ListingComponent implements OnInit {
     public preview: any = false;
     public submit_loaderbar: boolean = false;
     public submit_loaderbar1: boolean = false;
+    public table_loader: boolean = false;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -452,11 +453,13 @@ geteventarr() {
         this.router.navigate(['/lead-list/',val._id]);
     }
     getdatalist() {
+        this.table_loader = true; // for bable loader start
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: this.sourceval, condition: this.sourceconditionval })
-            .subscribe(res => {
-                let result;
-                result = res;
+            .subscribe((result:any) => {
+                this.table_loader = false;    // for bable loader end
+                // let result;
+                // result = res;
                 if (result.status == 'error') {
                     this.router.navigate(['/']);
                 } else {
@@ -487,11 +490,13 @@ geteventarr() {
         if (this.router.url ==='/manage-leads') {
            sourcevalue = this.editsourceval
         } else {
+        this.table_loader = true; // for bable loader start
             sourcevalue = this.sourceval
         }
         this._http.post(link, { source: sourcevalue, condition: { _id: this.selecteditem._id } })
             .subscribe(res => {
-                let result;
+                this.table_loader = false;       // for bable loader end
+                let result: any;
                 result = res;
                 if (result.status == 'error') {
                     this.router.navigate(['/']);
