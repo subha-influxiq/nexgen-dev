@@ -11,6 +11,37 @@
     padding: 5px 30px;}
 
 
+    table.fixed-table
+    {
+    width:100%; 
+    table-layout:fixed;
+    margin-top: 20px;
+    }
+
+    table.fixed-table td
+        {
+        white-space: normal;
+        word-break: break-all;
+        }
+        
+        /*Don't forget to set the width for td or th (should apply to the first row) */
+        table.fixed-table th:nth-child(1)
+        {
+        width:2%;
+        }
+
+        table.fixed-table th:nth-child(2)
+        {
+        width:2%;
+        }
+
+        table.fixed-table th:nth-child(8),
+        table.fixed-table th:nth-child(9)
+        {
+        width:12%;
+        }
+
+
     /* .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td.addresswidth{
         width: 200px;
         white-space: normal;
