@@ -35,7 +35,7 @@ public datalist: any;
 public selecteditem;
 public placeholderforselect = 0; 
 public message;
- headElements = ['ID', 'Date', 'Full Name', 'Phone', 'Company Name', 'Address', 'Web', 'Email', 'Batch Name', 'Created By', 'Product Name'];
+ headElements = ['ID', 'Date', 'Full Name', 'Phone', 'Company Name', 'Address', 'Web', 'Email', 'Rep Assigned', 'Batch Name', 'Created By', 'Product Name'];
 public productList: any = [];
 public prodSelect: any = 0;
 public filterValForName: any;
@@ -54,6 +54,7 @@ public rep_list: any = '';
 public selectedrep:any ='';
 public selectedrepflag:boolean = false;
 
+public allData: any;
   constructor(public _commonservice:Commonservices,
    public cookeiservice: CookieService,
     public _http:HttpClient,
@@ -71,6 +72,8 @@ public selectedrepflag:boolean = false;
       // this.skipCount = data.results.resc;
       // this.headElements = Object.keys(data.results.res[0]);
    });
+
+this.allData = this.datalist;
   //  console.log((this.datalist[0].contentTop));
    this.getproduct();
   }
@@ -220,16 +223,50 @@ if (count>=25) {
 
     console.log(val)
     let datalistVal: any = [];
-    var allData: any;
-    allData = this.datalist;
-    console.log(allData)
+    this.allData = this.datalist;
+    console.log(this.allData)
     if (val == null || val == '') {
-      this.datalist = allData;
+      this.datalist = this.allData;
     } else {
       datalistVal = [];
       for (let i in this.datalist) {
 
         if (this.datalist[i].fullName != null && this.datalist[i].fullName.toLowerCase().indexOf(val.toLowerCase()) > -1) {
+          datalistVal.push(this.datalist[i]);
+        }
+      } 
+      this.datalist = datalistVal;
+    }
+  }
+
+  searchbybatchname(val: any){
+    console.log(val)
+    let datalistVal: any = [];
+    console.log(this.allData)
+    if (val == null || val == '') {
+      this.datalist = this.allData;
+    } else {
+      datalistVal = [];
+      for (let i in this.datalist) {
+
+        if (this.datalist[i].batch_name != null && this.datalist[i].batch_name.toLowerCase().indexOf(val.toLowerCase()) > -1) {
+          datalistVal.push(this.datalist[i]);
+        }
+      } 
+      this.datalist = datalistVal;
+    }
+  }
+  searchbyleademail(val: any){
+    console.log(val)
+    let datalistVal: any = [];
+    console.log(this.allData)
+    if (val == null || val == '') {
+      this.datalist = this.allData;
+    } else {
+      datalistVal = [];
+      for (let i in this.datalist) {
+
+        if (this.datalist[i].Email != null && this.datalist[i].Email.toLowerCase().indexOf(val.toLowerCase()) > -1) {
           datalistVal.push(this.datalist[i]);
         }
       } 

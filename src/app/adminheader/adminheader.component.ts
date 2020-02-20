@@ -102,12 +102,19 @@ export class AdminheaderComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.calenderaccess = this.cookie.get('calenderaccess');
     // this.interval = setInterval(() => {
       this.getRepDetails();
       //this.getslidervalueforimage();
     // }, 35000);
+    setTimeout(() => {
+      this.calenderaccessSet();
+    }, 1000);
   }
+
+  calenderaccessSet(){
+    this.calenderaccess = this.cookie.get('calenderaccess');
+  }
+
 
 
   calanderAccessMail(email: any){
@@ -152,7 +159,7 @@ export class AdminheaderComponent implements OnInit {
                   result = res;
                   // console.log('user_parent_category_percent',result)
                   for (let i in result.res) {
-                    if (result.res[i].trainingpercent >= 100 && this.repDetailsNew[0]!=null && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
+                    if (result.res[i].trainingpercent >= 75 && this.repDetailsNew[0]!=null && (this.repDetailsNew[0].calenderaccess == 0 || this.repDetailsNew[0].calenderaccess == undefined) ) {
                       this.gameplanButton = 1;
                       this.calenderaccess = 1; 
   
@@ -221,7 +228,7 @@ export class AdminheaderComponent implements OnInit {
     this.cookie.deleteAll();
     this.cookie.deleteAll('/');  
     setTimeout(() => {
-      window.location.href='/';
+      // window.location.href='/';
       this.router.navigateByUrl('login');
     }, 1000);
   }

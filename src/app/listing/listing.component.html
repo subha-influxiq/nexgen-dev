@@ -31,12 +31,12 @@
                     <div class="inner_search_wrapper"
                         *ngIf="router.url!=['/tranningcategory'] && router.url!=['/addtrainings']">
                         <div class="inner_content_wrapper">
-                            <div class="search_content" *ngIf="router.url!=['/belk-upload']">
+                            <div class="search_content" *ngIf="router.url!=['/bulk-upload']">
                                 <h3> <input type="text" [(ngModel)]="filterval2" (keyup)="searchbyval()"
                                         placeholder="Search by Email"><button><i class="fa fa-search"
                                             aria-hidden="true"></i></button> </h3>
                             </div>
-                            <div class="search_content" *ngIf="router.url !=['/belk-upload']">
+                            <div class="search_content" *ngIf="router.url !=['/bulk-upload']">
                                 <h3> <input type="text" [(ngModel)]="filterval3" (keyup)="searchbyval()"
                                         placeholder="Search by Name"><button><i class="fa fa-search"
                                             aria-hidden="true"></i></button> </h3>
@@ -45,7 +45,7 @@
                             <!-- added by himadri start product search-->
 
                             <div class="search_content"
-                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] || router.url== ['/belk-upload'] ">
+                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] || router.url== ['/bulk-upload'] ">
                                 <h3>
                                     <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)"
                                         [(ngModel)]="filterval4" required>
@@ -60,7 +60,7 @@
 
                             <!-- added by himadri start Date Range search-->
 
-                            <span *ngIf="router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/belk-upload']">
+                            <span *ngIf="router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/bulk-upload']">
                                 <form>
                                     <div class="form-group">
                                         <input type="text" placeholder="Select Date Range" class="form-control"
@@ -391,13 +391,13 @@
                                                 (click)="gotorepdetails(item._id)">{{showrealdate(item[item1.value])}}</span>
                                         </td>
                                         <td *ngIf="hideaction!=null && hideaction!='true' ">
-                                            <span class=" delete_user" *ngIf="router.url!=['/belk-upload']"
+                                            <span class=" delete_user" *ngIf="router.url!=['/bulk-upload']"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete</span>
-                                            <span class=" delete_user" *ngIf="router.url==['/belk-upload']"
+                                            <span class=" delete_user" *ngIf="router.url==['/bulk-upload']"
                                                 (click)="deletdata(item,commonconfirmmodal)">delete all</span>
-                                            <span class="edit_user"  *ngIf="router.url!=['/belk-upload']"
+                                            <span class="edit_user"  *ngIf="router.url!=['/bulk-upload']"
                                                 (click)="editmodal(formtemplate,item)">edit</span>
-                                            <span class="edit_user"  *ngIf="router.url==['/belk-upload']"
+                                            <span class="edit_user"  *ngIf="router.url==['/bulk-upload']"
                                                 (click)="go_to_lead_list(item)">View Leads</span>
                                             <span class="delete_user" *ngIf="router.url==['/manage-leads']"
                                                 (click)="openDiscoverCallModal(item,item.productname,discoverycallmodal)">Discovery
@@ -632,9 +632,9 @@
             </div>
             <div class="form-group btn_submit">
                 <div class="asbuttonwrapper">
-                    <button type="submit" *ngIf="router.url!=['/belk-upload']"> Submit</button>
+                    <button type="submit" *ngIf="router.url!=['/bulk-upload']"> Submit</button>
                     <button type="reset" (click)="modalRef.hide()"> Cancel</button>
-                    <button *ngIf="router.url==['/belk-upload']" type="button" (click)="openCsvMach(csv)">Next</button>
+                    <button *ngIf="router.url==['/bulk-upload']" type="button" (click)="openCsvMach(csv)">Next</button>
                 </div>
 
             </div>
@@ -766,12 +766,16 @@
 </ng-template>
 
 <ng-template #csv>
-    <div class="modal-body brandmanagement_modal">
+    <div class="modal-body brandmanagement_modal brandmanagement_modal_new">
+        <h2> Assign Fields With CSV Columns</h2>
 
         <div class="ami_opn_new_block">
-
+            <div class="headerclsCSV">
+                <div class="headerclsCSVleft"><h4>Filed Name</h4></div>
+                <div class="headerclsCSVright"><h4>CSV Columns</h4></div>
+            </div>
             
-        <form [formGroup]="productForm" novalidate (ngSubmit)="productFormsubmit()">
+        <form [formGroup]="productForm" novalidate (ngSubmit)="productFormsubmit(prev)">
 
             <span class="ami_opn_new_wrap" *ngFor="let item of staticHeader" >
                 <label class="labelclass">{{item}}: </label>
@@ -782,13 +786,15 @@
                         {{searchval}}</option>
                  </select>
                  <span class="clear"></span>
+            <span class="error" *ngIf="productErrorFlag==1 && selectedproductid==''">Is
+                Required</span>
             </span> 
             <!-- <span class="submitloader" > -->
                 <button class="edit_user spinner" *ngIf="submit_loaderbar">
                     <i class="fa fa-spinner fa-spin"></i>Loading
                 </button>
                 <!-- </span> -->
-            <button class="edit_user" type="submit" *ngIf="preview ==false && submit_loaderbar == false"> Submit</button>
+            <button class="edit_user" type="submit" *ngIf="preview ==false && submit_loaderbar == false"> Next</button>
         
                 <button class="edit_user" type="button" *ngIf="preview" (click)="submit_leads(sucessmodalflag,'1')"> Submit</button>
            

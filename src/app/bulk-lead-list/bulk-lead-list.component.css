@@ -1,0 +1,29 @@
+.assignclass{font-size: 18px;
+    color: #fff;
+    font-family: 'RalewaySemiBold';
+    background: #00c0ff;
+    border: none; margin: 10px;
+       
+    height: 38px;
+    text-transform: uppercase;
+    margin-left: 2.5%;
+    cursor: pointer;
+    padding: 5px 30px;}
+
+
+    /* .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td.addresswidth{
+        width: 200px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td.webwidth{
+        width: 200px;
+        white-space: normal;
+        word-break: break-word;
+    }
+    .nextGen_admin_mainwrapper .nexgen_admin_table .admin_table_wrapper table tr td.emailwidth{
+        width: 200px;
+        white-space: normal;
+        word-break: break-word;
+    } */

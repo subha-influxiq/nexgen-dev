@@ -187,7 +187,7 @@ export class ListingComponent implements OnInit {
     openCsvMach(template: TemplateRef<any>){
         let formgrp: any = [];
         for (let c in this.staticHeader) {
-            let tempdefault = [];
+            let tempdefault = '';
             formgrp[this.staticHeader[c]] = [tempdefault, Validators.required];
         }
         this.productForm = this.formgroup.group(formgrp);
@@ -203,30 +203,42 @@ export class ListingComponent implements OnInit {
        
     }
 
-    productFormsubmit(){
-        this.submit_loaderbar = true;
-        console.log(this.productForm.value);
-        var link = this._commonservice.nodesslurl + 'write-csv';
-        // var data: any = {
-        //     data: [this.productForm.value],
-        //     "filename":this.csvHeaderAllData.filename
-        // }
-        this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
-        }).subscribe((res: any)=>{
-            this.submit_loaderbar = false;
-            this.preview = true;
-            // this.modalRef2.hide();
-            this.leads_list = res.result;
-            this.tab_header = Object.keys(this.leads_list[0]);
-           
+    productFormsubmit(template: TemplateRef<any>){
 
-        })
+        let y: any;
+        for ( y in this.productForm.controls) {
+            this.productForm.controls[y].markAsTouched();
+            console.log(this.productForm.controls[y])
+        }
+        if (this.productForm.valid) {
+            this.submit_loaderbar = true;
+            console.log(this.productForm.value);
+            var link = this._commonservice.nodesslurl + 'write-csv';
+            // var data: any = {
+            //     data: [this.productForm.value],
+            //     "filename":this.csvHeaderAllData.filename
+            // }
+            this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
+            }).subscribe((res: any)=>{
+                this.submit_loaderbar = false;
+                this.preview = true;
+                this.modalRef2.hide();
+                this.leads_list = res.result;
+                this.tab_header = Object.keys(this.leads_list[0]);
+                this.modalRef3 = this.modal.show(template);
+    
+            })
+        }else {
+            this.productErrorFlag=1 ;
+             this.selectedproductid='';
+        }
+      
     }
     preview_button(template: TemplateRef<any>){
         console.log('preview_button')
         
         // setTimeout(()=>{
-            this.modalRef3 = this.modal.show(template);
+            // this.modalRef3 = this.modal.show(template);
         // },2000);
     }
     submit_leads(template: TemplateRef<any>, val: any){
@@ -251,14 +263,14 @@ export class ListingComponent implements OnInit {
                         // this.sucessmodalflag = true;
                         console.log('****')
                         this.isedit = 0;
+                            // this.modalRef2.hide();
+                            this.modalRef.hide();
+                            // this.dataForm.reset();
+                            this.modalRef3.hide();
                         this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
                         setTimeout(() => {
                             this.modalRef1.hide();
-                            this.modalRef2.hide();
                             this.modalRef.hide();
-                            if (val == '0') {
-                             this.modalRef3.hide();
-                            }
                             this.isedit = 0;
                         }, 4000);
                             this.getdatalist();
@@ -299,7 +311,7 @@ youtubeVideoPlay(val: any, template: TemplateRef<any>){
                 }).subscribe((res: any) => {
                     this.datalist = res.res;
                 });
-            } else if(this.router.url == '/belk-upload'){
+            } else if(this.router.url == '/bulk-upload'){
                 linkForproductsearch  = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
 
                 this._http.post(linkForproductsearch, {
@@ -341,7 +353,7 @@ geteventarr() {
                 $gte: this.start_date
             }
         };
-        if (this.router.url== '/belk-upload') {
+        if (this.router.url== '/bulk-upload') {
             const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'csv_upload_list', condition: cond }).subscribe(res => {
             let result: any = res;
@@ -356,7 +368,7 @@ geteventarr() {
     }
     } else {
 
-        if (this.router.url== '/belk-upload') {
+        if (this.router.url== '/bulk-upload') {
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'csv_upload_list', condition: cond }).subscribe(res => {
             let result: any = res;
@@ -862,7 +874,7 @@ geteventarr() {
 
     onUploadOutput(control: any, i, output: UploadOutput): void {
         if (output.type === 'allAddedToQueue') {
-            if (this.router.url == '/belk-upload') {
+            if (this.router.url == '/bulk-upload') {
                 const event: UploadInput = {
                     type: 'uploadAll',
                     url: this._commonservice.nodesslurl + 'uploads-csv',
@@ -870,7 +882,7 @@ geteventarr() {
                 };
                 this.uploadInput.emit(event);
             } 
-            if(this.router.url != '/belk-upload') {
+            if(this.router.url != '/bulk-upload') {
                 const event: UploadInput = {
                     type: 'uploadAll',
                     url: this._commonservice.uploadurl_old + 'uploads',
@@ -906,7 +918,7 @@ geteventarr() {
     }
     addtodataform(control: any, i) {
         this.nameis[i] = this.files[0].name;
-        if (this.files[0].response !=undefined && this.router.url == '/belk-upload') {
+        if (this.files[0].response !=undefined && this.router.url == '/bulk-upload') {
             this.csvHeaderAllData = this.files[0].response;
         }
         let filelocalname = control.name + 'localname';

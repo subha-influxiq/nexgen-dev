@@ -47,6 +47,16 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
    
   }
 
+
+
+  calenderaccessSet(){
+    if(typeof(this.cookeiservice.get('calenderaccess'))!=undefined){
+      this.calenderaccess = this.cookeiservice.get('calenderaccess');
+    }else{
+      this.calenderaccess = null;
+    }
+  }
+
   trainingpercentage(){
     let link = this._commonservice.nodesslurl + 'trainingcategorypercent' ;
     let data = {
@@ -107,7 +117,7 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
         if (result.status == 'error') {
         } else {
           this.repDetailsNew = result.data;
-          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage >= 100 && this.repDetailsNew[0].is_discovery == false) {
+          if (this.repDetailsNew.length > 0 && this.repDetailsNew[0].trainingpercentage >= 75 && this.repDetailsNew[0].is_discovery == false) {
             setTimeout(() => {
               this.link.nativeElement.click();
               console.log(this.link);
@@ -157,6 +167,9 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // this.getrepdetails();
     // this.getRepDetails();
+    setTimeout(() => {
+      this.calenderaccessSet();
+    }, 1000);
   }
   getRepDetails() {
     let link = this._commonservice.nodesslurl + 'trainingreport';

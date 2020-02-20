@@ -76,7 +76,7 @@ import { BulkLeadListComponent } from './bulk-lead-list/bulk-lead-list.component
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
-    {path: 'belk-upload', component: CrmBelkUploadComponent},
+    {path: 'bulk-upload', component: CrmBelkUploadComponent},
     {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
     {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"id_object", "skip":0}}, endpoint: 'leadlist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
