@@ -72,7 +72,7 @@ public agreementFormSubmitFlug: boolean = false;
         }})
           .subscribe((res: any) => { 
               if (res.status == 'success') {
-              this.router.navigateByUrl('/contract-manager-list');
+              // this.router.navigateByUrl('/contract-manager-list');
           }
           });
 

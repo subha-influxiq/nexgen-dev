@@ -69,8 +69,6 @@ export class ContractManagerAddComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.recid = params['id'];
-
-
             if(this.cookeiservice.get('userid')) {
                 if( this.recid != null) {
                     
@@ -253,6 +251,7 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
     selectcontract(contractData) {
+        console.log('_________________________-----------------------------------')
         this.loader = true;
         if( this.recid == null || this.recid == '') {
             this.contractForm.patchValue({    

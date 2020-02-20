@@ -82,24 +82,22 @@ this.allData = this.datalist;
 
   isAllSelected(event: any) {
     this.checked_ids = [];
-    console.log(event.target.name);
-    console.log(event.target.checked);
-    console.log(event.target.value);
-    console.log(event.target.value.length)
     if (event.target.checked == true) {
       for (var i = 0; i < 24; i++ ) {
         console.log(this.datalist[i], i);
-        this.allChecked_ids.push(this.datalist[i].u_id);
+        this.checked_ids.push(this.datalist[i].u_id);
         this.check_true = true;
       }
     } else {
+      // this.check_true = false;
+      // this.allChecked_ids = [];
       this.check_true = false;
-      this.allChecked_ids = [];
+      this.checked_ids.splice(event.target.value, 1);
     }
-    console.log(this.allChecked_ids)
+    console.log(this.checked_ids)
   }
   checkUncheck(event: any) {
-    this.allChecked_ids = [];
+    // this.allChecked_ids = [];
     console.log(event.target.name);
     console.log(event.target.checked);
     if (event.target.checked == true) {
