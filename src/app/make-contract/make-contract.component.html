@@ -90,9 +90,13 @@
         <hr> -->
         
         <!-- <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p> -->
-        <p *ngIf="datalist.contract_manager_name !=null"><strong>{{datalist.contract_manager_name}} </strong> : {{datalist.notesByCM}}</p>
+        <div class="messageblockcls">
+          <p *ngIf="datalist.contract_manager_name !=null"><span class="managernamecls"><strong>{{datalist.contract_manager_name}} </strong> :</span> {{datalist.notesByCM}}</p>
+          <p *ngIf="datalist.CM_added_by !=null" class="dateclsnw"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
+        </div>
+        
         <!-- <p *ngIf="datalist.notesByCM !=null"><strong>Notes: </strong>{{datalist.notesByCM}}</p> -->
-        <p *ngIf="datalist.CM_added_by !=null"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
+        
        <hr>
         
         <p *ngIf="datalist.ModifiedNotesByRep !=null && datalist.rep_name !=null"><strong>Modified By Rep: </strong>{{datalist.rep_name}}</p>

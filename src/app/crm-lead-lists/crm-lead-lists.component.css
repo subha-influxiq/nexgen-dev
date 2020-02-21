@@ -59,18 +59,40 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .crmleadlistblock .leftdiv .card-footer {padding: 10px 0 0px;background-color: transparent;border-top: 1px solid rgba(0,0,0,.125);display: flex;align-items: center;justify-content: space-between;}
 .crmleadlistblock .leftdiv .mt-4 {margin-top: .5rem!important;}
 .crmleadlistblock .leftdiv input.form-check-input {width: 30px;height: 30px;} 
-.custom-control-label:before{
-    background-color:red;
-  }
-  .custom-checkbox .custom-control-input:checked~::before{
-    background-color:black;
-  }
-  
+
 .crmleadlistblock .leftdiv .card-footer .btnviewdetail {background-color: #00a8ef;border-color: #00a8ef;font-family: 'RalewaySemiBold';color: #fff;font-size: 15px;padding: 8px 8px 6px 8px;margin: 5px;text-transform: uppercase;cursor: pointer;display: inline-block;text-align: center;border-radius: 0px;}
 
-.user_management_wrapper .user_management_inner .inner_content_wrapper {display: flex;justify-content: center;align-items: center;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper {display: flex;justify-content: center;align-items: center;flex-wrap: wrap;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew .form-group{margin-bottom: 0 !important;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew form {margin-bottom: 0px!important;padding-bottom: 0px!important;display: flex;align-items: center;justify-content: flex-start;}
-.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button{margin: 0 0 0 10px;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper button{padding: 5px 8px;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button{margin: 0 0 0 10px;padding: 5px 30px;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button:nth-child(1){margin-left: 0px;}
+.form-groupbtndiv {width: auto !important;margin-left: 10px !important;}
+
+@media screen and (max-width: 1366px){
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;margin-bottom: 10px;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content {margin-bottom: 10px !important;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper input {margin-bottom: 0px;margin-top: 0px;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button {margin: 0 0 0 10px;padding: 5px 30px !important;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper button {width: auto;}
+}
+
+@media screen and (max-width: 991px){
+    .crmleadlistblock .col-8.leftdiv{flex: 0 0 100% !important;max-width: 100% !important;}
+    .crmleadlistblock .col-8.leftdiv .col{padding: 0 !important;}
+    .crmleadlistblock .col-4.rightdiv{flex: 0 0 100% !important;max-width: 100% !important; margin-top: 20px;}
+}
+
+@media screen and (max-width: 540px){
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content {margin-right: 10!important;}
+}
+@media screen and (max-width: 480px){
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .search_content {display: flex;justify-content: center;margin-right: auto;margin-right: auto!important;width: 96%;margin-left: auto !important;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper select {width: 100%;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew form {justify-content: center;flex-wrap: wrap;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper input{width: 96%;margin: 0 auto;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew .form-group {width: 100%;}
+    .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button:nth-child(1) {margin-top: 10px;}
+}

@@ -5,3 +5,44 @@
     display: inline-block;
     margin: 0 2px;
 }
+
+.managernamecls{display: block;font-size: 14px;}
+.messageblockcls p.dateclsnw{color: #35bfea;}
+.messageblockcls p.dateclsnw strong{font-weight: 500;}
+.messageblockcls{    display: block;
+    background-color: #fff;
+    position: relative;
+    width: 92%;
+    margin: 12px auto;
+    border-radius: 10px;
+}
+.messageblockcls p{font-size: 14px;}
+.messageblockcls::after{
+    content:'';
+    position: absolute;
+    bottom:0;
+    left: -14px;
+    width: 0;
+height: 0;
+border-style: solid;
+border-width: 0 0 20px 20px;
+border-color: transparent transparent #fff transparent;
+line-height: 0px;
+_border-color: #000000 #000000 #fff #000000;
+_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+}
+
+.messageblockcls::before{
+    content:'';
+    position: absolute;
+    bottom:0;
+    left: -14px;
+    width: 0;
+height: 0;
+border-style: solid;
+border-width: 0 0 20px 20px;
+border-color: transparent transparent #000 transparent;
+line-height: 0px;
+_border-color: #000000 #000000 #000 #000000;
+_filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+}
