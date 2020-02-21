@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crm-lead-lists',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrmLeadListsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+  }
+
+
+  leaddetailurl(val:any){
+    this.router.navigateByUrl('/crm-lead-details');
   }
 
 }
