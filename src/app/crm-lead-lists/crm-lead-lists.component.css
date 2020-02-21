@@ -1,0 +1,76 @@
+a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
+.crmleadlistblock .container{max-width: 94.8%;margin: 0 auto;display: block;}
+.crmleadlistblock .leftdiv{margin: 0; padding: 0;}
+.crmleadlistblock .rightdiv{margin: 0; padding: 0;}
+
+.crmleadlistblock{margin: 30px 0;}
+
+.searchblock{padding:0; margin: 0;}
+.searchblock .headercls{padding:0px; margin: 0; background-color: #1e9ada; display: block;}
+.searchblock .headercls h2{font-size: 20px;font-family: 'RalewayBold';padding: 15px 10px 12px;text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
+.searchblock .input-group{background: #2577ba;padding: 10px;}
+.searchblock .form-control {border-radius: 0 !important;}
+.searchblock .has-search .form-control {padding-left: 2.375rem;border-radius: 0 !important;}
+.searchblock .has-search .form-control-feedback {position: absolute;z-index: 2; display: block;width: 2.375rem;height: 2.375rem;line-height: 2.375rem;text-align: center;pointer-events: none;color: #aaa;}
+.searchblock .input-group-append .btn-secondary {color: #fff;background-color: #413e3e;border-color: #413e3e; border-radius: 0;}
+
+.Actionlistsblock{padding:0; margin: 10px 0 0 0;}
+.Actionlistsblock .headercls{padding:0px; margin: 0; background-color: #1e9ada; display: block;}
+.Actionlistsblock .headercls h2{font-size: 20px;font-family: 'RalewayBold';padding: 15px 10px 12px;text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
+.Actionlistswrapper .list-group{padding:0px; margin: 0;border-radius: 0 !important;}
+.Actionlistswrapper .list-group .list-group-item{padding:0px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important; border-color:#25363c;background: rgba(58,84,94,1);
+    background: -moz-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(58,84,94,1)), color-stop(100%, rgba(46,68,76,1)));
+    background: -webkit-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
+    background: -o-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
+    background: -ms-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
+    background: linear-gradient(to bottom, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a545e', endColorstr='#2e444c', GradientType=0 );}
+.Actionlistswrapper .list-group .list-group-item:hover{ border-bottom:1px solid #25363c;
+    background: rgba(46,68,76,1);
+    background: -moz-linear-gradient(top, rgba(46,68,76,1) 0%, rgba(58,84,94,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(46,68,76,1)), color-stop(100%, rgba(58,84,94,1)));
+    background: -webkit-linear-gradient(top, rgba(46,68,76,1) 0%, rgba(58,84,94,1) 100%);
+    background: -o-linear-gradient(top, rgba(46,68,76,1) 0%, rgba(58,84,94,1) 100%);
+    background: -ms-linear-gradient(top, rgba(46,68,76,1) 0%, rgba(58,84,94,1) 100%);
+    background: linear-gradient(to bottom, rgba(46,68,76,1) 0%, rgba(58,84,94,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e444c', endColorstr='#3a545e', GradientType=0 );
+}
+.Actionlistswrapper .list-group .list-group-item a{padding: 10px;display: block;}
+.Actionlistswrapper .list-group .list-group-item a{color:#fff !important;}
+.Actionlistswrapper .list-group .list-group-item a:hover{color:#fff !important;}
+
+
+.crmleadlistblock .leftdiv{padding:0; margin: 0;}
+.crmleadlistblock .leftdiv .headercls{padding:10px; margin: 0; background-color: #2577ba;display: flex;align-items: center;justify-content: space-between;}
+.crmleadlistblock .leftdiv .headercls h2{font-size: 20px;font-family: 'RalewayBold';text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
+.crmleadlistblock .leftdiv .actionlistcount{font-size: 20px;font-family: 'RalewayBold';color: #fff;}
+.crmleadlistblock .leftdiv .list-group-item{margin-top: 5px;}
+.crmleadlistblock .leftdiv .list-group-item.active {z-index: 2;color: #000;background-color: #bee9ff !important;border-color: #bee9ff !important;}
+.crmleadlistblock .leftdiv .list-group-item:nth-child(odd){background-color: #dfdfdf;border-color: #dfdfdf;}
+.crmleadlistblock .leftdiv .list-group-item:nth-child(even){background-color: #f0efef;border-color: #f0efef;}
+.crmleadlistblock .leftdiv .list-group-item .card.card-outline-secondary{background-color: transparent;background-clip: border-box;border: none;border-radius: 0;}
+.crmleadlistblock .leftdiv .list-group-item .card.card-outline-secondary .card-body{padding: 0 0 0.25rem;}
+.crmleadlistblock .leftdiv .list-group-item form{margin-bottom: 0;}
+
+.crmleadlistblock .leftdiv .form-inline .form-group {margin-right: 30px;margin-bottom: 15px;}
+.crmleadlistblock .leftdiv .form-inline label {margin-right: 10px; color:#000;font-weight: 500;text-transform: uppercase;}
+.crmleadlistblock .leftdiv .form-inline span {margin-right: 10px;}
+.crmleadlistblock .leftdiv .card-footer {padding: 10px 0 0px;background-color: transparent;border-top: 1px solid rgba(0,0,0,.125);display: flex;align-items: center;justify-content: space-between;}
+.crmleadlistblock .leftdiv .mt-4 {margin-top: .5rem!important;}
+.crmleadlistblock .leftdiv input.form-check-input {width: 30px;height: 30px;} 
+.custom-control-label:before{
+    background-color:red;
+  }
+  .custom-checkbox .custom-control-input:checked~::before{
+    background-color:black;
+  }
+  
+.crmleadlistblock .leftdiv .card-footer .btnviewdetail {background-color: #00a8ef;border-color: #00a8ef;font-family: 'RalewaySemiBold';color: #fff;font-size: 15px;padding: 8px 8px 6px 8px;margin: 5px;text-transform: uppercase;cursor: pointer;display: inline-block;text-align: center;border-radius: 0px;}
+
+.user_management_wrapper .user_management_inner .inner_content_wrapper {display: flex;justify-content: center;align-items: center;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew .form-group{margin-bottom: 0 !important;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew form {margin-bottom: 0px!important;padding-bottom: 0px!important;display: flex;align-items: center;justify-content: flex-start;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button{margin: 0 0 0 10px;}
+.user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button:nth-child(1){margin-left: 0px;}

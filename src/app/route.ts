@@ -73,6 +73,8 @@ import { MakeContractComponent } from './make-contract/make-contract.component';
 import { CrmBelkUploadComponent } from './crm-belk-upload/crm-belk-upload.component';
 import { LeadContractComponent } from './lead-contract/lead-contract.component';
 import { BulkLeadListComponent } from './bulk-lead-list/bulk-lead-list.component';
+import { CrmLeadListsComponent } from './crm-lead-lists/crm-lead-lists.component';
+import { CrmLeadDetailsComponent } from './crm-lead-details/crm-lead-details.component';
 
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
@@ -181,6 +183,8 @@ const appRoutes: Routes = [
     { path: 'manage-video', component: ManageVideosComponent },
     { path: 'additional-video/:categoryid', component: AdditionalVideoComponent },
     {path: 'call', component: GoogleCalendarAutomationReportComponent},
+    {path: 'crm-lead-details', component: CrmLeadDetailsComponent},
+    {path: 'crm-lead-list', component: CrmLeadListsComponent},
    
 
 
