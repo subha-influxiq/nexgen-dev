@@ -1,0 +1,226 @@
+<div class="loder_body" *ngIf="loader==1">
+  <div class="loder_wrapper">
+    <img src="assets/images/betologo.png" alt="#"
+      style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
+    <div class="loader"></div>
+  </div>
+</div>
+
+
+
+<app-adminheader></app-adminheader>
+
+<div class="nextGen_admin_mainwrapper">
+    <div class="user_management_wrapper">
+      <div class="user_management_inner">
+        <h2>crm lead Detail</h2>
+        <div class="inner_search_wrapper">
+          <div class="inner_content_wrapper">  
+
+              <!-- added by Koushik start Email search--> 
+              <div class="search_content">
+                  <input type="text" placeholder="Search by Email"><button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+              <!-- added by Koushik start Email search--> 
+              <!-- added by Koushik start Name search--> 
+              <div class="search_content">
+                <input type="text" placeholder="Search by Name"><button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div> 
+              <!-- added by Koushik start Name search--> 
+              <!-- added by Koushik start Phone search--> 
+              <div class="search_content">
+                <input type="text" placeholder="Search by Phone"><button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+              <!-- added by Koushik start Phone search-->
+              <!-- added by himadri start product search-->  
+              <div class="search_content">
+                      <select required>
+                          <option value="0" disabled>Select Product</option>
+                          <option value="">Product 1</option>
+                      </select>
+              </div>  
+              <!-- added by himadri end product search-->  
+              <!-- added by himadri start Date Range search-->  
+                <span class="spanformnew">
+                  <form>
+                    <div class="form-group form-groupnew1">
+                      <input type="text" placeholder="Select Date Range" name="daterange" class="form-control">
+                    </div>
+                    <div class="form-group row form-groupbtndiv form-groupnew1">
+                      <button type="submit" class="btn_search" > search </button>
+                      <button type="submit" class="btn_search"> show all </button>
+                      </div>  
+                  </form>
+                </span>   
+              <!-- added by himadri end Date Range search-->
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      </div>
+    </div>  
+    <div class="crmleadlistblock">
+      <div class="container">
+        <div class="row">
+            <div class="col-8 leftdiv">
+              <div class="col"> 
+                <div class="headercls">
+                  <h2>Lead Name</h2> 
+                </div>
+                <div class="Actionlists">
+                  <ul class="list-group">
+                    <!-- Single List -->
+                    <li class="list-group-item active">
+                      <form action="" method="POST">                        
+                        <div class="card card-outline-secondary"> 
+                          <div class="card-body">
+                            <div class="row mt-4 form-inline">                              
+                              <div class="form-group">
+                                <label for="exampleFirst">Name:</label> 
+                                <span>Webel IT park</span>
+                              </div>                              
+                              <div class="form-group">
+                                <label for="exampleLast">Phone:</label> 
+                                <span>1234567890</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Email:</label>
+                                <span>loremipsum@yopmail.com</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Address:</label>
+                                <span>Barrackpore - Kalyani Expy, Block B,   </span>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleCity">City:</label> 
+                                <span>Kalyani</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleSt">State:</label>   
+                                <span>West Bengal</span>                              
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleZip">Zip Code:</label> 
+                                <span>741235</span>
+                              </div> 
+                              <div class="form-group">
+                                <label for="inputAddress">Website:</label>
+                                <span>www.loremipsum.com</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Company:</label>
+                                <span>Lorem Ipsum & Co.</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleZip">Product:</label> 
+                                <span>Lorem ipsum dolor sit amet</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer">                            
+                            <div class="float-right">
+                              <button type="submit" class="btn btn-primary btnviewdetail">Edit</button>
+                            </div>
+                          </div>
+                        </div>                        
+                      </form>
+                    </li>   
+                    <!-- End Single List -->  
+                    <!-- <li class="list-group-item active">
+                      <form action="" method="POST">                        
+                        <div class="card card-outline-secondary"> 
+                          <div class="card-body">
+                            <div class="row mt-4 form-inline">                              
+                              <div class="form-group">
+                                <label for="exampleFirst">Name:</label> 
+                                <input class="form-control" type="text" value="Webel IT park">
+                              </div>                              
+                              <div class="form-group">
+                                <label for="exampleLast">Phone:</label> 
+                                <input class="form-control" type="text" value="1234567890">
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Email:</label> 
+                                <input class="form-control" type="email" value="loremipsum@yopmail.com">
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Address:</label>
+                                <input class="form-control" type="text" value="Barrackpore - Kalyani Expy, Block B">                                
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleCity">City:</label>   
+                                <input class="form-control" type="text" value="Kalyani"> 
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleSt">State:</label>   
+                                <input class="form-control" type="text" value="West Bengal">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleZip">Zip Code:</label> 
+                                <input class="form-control" type="number" value="741235">
+                              </div> 
+                              <div class="form-group">
+                                <label for="inputAddress">Website:</label> 
+                                <input class="form-control" type="text" value="www.loremipsum.com">
+                              </div>
+                              <div class="form-group">
+                                <label for="inputAddress">Company:</label>
+                                <input class="form-control" type="text" value="Lorem Ipsum & Co.">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleZip">Product:</label>
+                                <input class="form-control" type="text" value="Lorem ipsum dolor sit amet">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer">                            
+                            <div class="float-right">
+                              <button type="submit" class="btn btn-primary btnviewdetail">UPDATE</button>
+                            </div>
+                          </div>
+                        </div>                        
+                      </form>
+                    </li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4 rightdiv">
+              <div class="col searchblock">
+                <div class="headercls">
+                  <h2>Search</h2>
+                </div>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search by action">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col Actionlistsblock">
+                <div class="headercls">
+                  <h2>Action Lists</h2>
+                </div>
+                <div class="Actionlistswrapper">
+                  <ul class="list-group">
+                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
+                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
+                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
+        </div>        
+      </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
