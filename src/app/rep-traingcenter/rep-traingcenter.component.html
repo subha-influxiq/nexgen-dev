@@ -451,9 +451,10 @@
       <div class="inner_training_list" *ngIf="trainingcategory?.length>0">
         <h1>Incomplete Trainings</h1>
         <ul>
-          <li class="notdonepcat" *ngFor="let itemp of notdoneparentcat" (click)="selpcat=itemp.catid"><a
+          <li class="notdonepcat" *ngFor="let itemp of notdoneparentcat" (click)="selpcat=itemp.catid">
+            <!-- <a
               href="javascript:void(0)"> <span><img src="assets/images/filemanager_icon.png"></span>
-              {{itemp.catname}}</a>
+              {{itemp.catname}}</a> -->
             <ul>
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of notdonecategory">
@@ -476,9 +477,11 @@
         <h1>Completed Trainings</h1>
 
         <ul>
-          <li class="notdonepcat" *ngFor="let itemp of doneparentcat" (click)="selpcat=itemp.catid"><a
+          <li class="notdonepcat" *ngFor="let itemp of doneparentcat" (click)="selpcat=itemp.catid">
+            <!-- <a
               href="javascript:void(0)"> <span><img src="assets/images/filemanager_icon.png"></span>
-              {{itemp.catname}}</a>
+              {{itemp.catname}}</a> -->
+
             <ul>
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of donecategory">

@@ -29,7 +29,7 @@
 
       <h4>Digital Signature</h4>
 
-      <form [formGroup]="degitalSignForm" (ngSubmit)="degitalSignFormSubmit()" autocomplete="off">
+      <form [formGroup]="degitalSignForm" (ngSubmit)="degitalSignFormSubmit(sucessmodalflag)">
           <label>Full name</label>
           <input type="text" id="fullname" formControlName="fullName" />
           <span class="has-error" *ngIf="degitalSignFormSubmitFlug && degitalSignForm.controls.fullName.errors">Name is required.</span>
@@ -49,5 +49,20 @@
               <div class="clearfix"></div>
           </div>
       </form>
+  </div>
+</ng-template>
+
+
+<ng-template #sucessmodalflag>
+  <div class="modal-body brandmanagement_modal successmodal_listing">
+      <div class="logo_wrapper">
+          <img src="assets/images/logo.png">
+      </div>
+      <div class="brand_messagebox">
+          <h3>Successfully Signed</h3> <br>
+          <h4>Thank You</h4>
+      </div>
+  </div>
+  <div>
   </div>
 </ng-template>

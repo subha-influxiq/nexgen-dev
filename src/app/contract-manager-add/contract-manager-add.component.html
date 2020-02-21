@@ -41,13 +41,14 @@
                 <label class="col-sm-12 col-form-label">Product:</label>
 
                 <div class="col-sm-12">
-                    <input [ngClass]="{disabledfield:recid != null}" type="text" class="form-control" [formControl]="contractForm.controls['product']"
+                    <h3 *ngIf="pending_data">Please wait....</h3>
+                    <input *ngIf="!pending_data" [ngClass]="{disabledfield:recid != null}" type="text" class="form-control" [formControl]="contractForm.controls['product']"
                         (keyup)="contractSuggest($event);" placeholder="Type Product name..." />
                         
 
                     <div class="col-sm-12 ngcontainerdiv" *ngIf="contractSuggestionFlug" >
                         <ng-container *ngFor="let l of contractSuggestion;let i = index;" >
-                            <p *ngIf="l.traininglessonpercent != null" (click)="selectcontract(l);" class="contract-option">{{l.product_name}}</p>
+                            <p *ngIf="l.productname != null" (click)="selectcontract(l);" class="contract-option">{{l.productname}}</p>
                         </ng-container>
                     </div>
                     <span class="error"

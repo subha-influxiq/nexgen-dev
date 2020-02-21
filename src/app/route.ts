@@ -77,7 +77,7 @@ import { BulkLeadListComponent } from './bulk-lead-list/bulk-lead-list.component
 const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     {path: 'bulk-upload', component: CrmBelkUploadComponent},
-    {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist'}},
+    {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist_for_lead'}},
     {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"id_object", "skip":0}}, endpoint: 'leadlist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
@@ -86,7 +86,9 @@ const appRoutes: Routes = [
 
      {path: 'contract-list', component: ContractListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contractDetails_view', condition: {}}, endpoint: 'datalist'}},
      
-     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"rep_id_object":"rep_id"}}, endpoint: 'datalist'}},
+     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {}}, endpoint: 'datalist'}},
+
+     {path: 'contract-manager-list-rep', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"rep_id_object":"rep_id_object"}}, endpoint: 'datalist'}},
 
      {path: 'contract-manager-list-pending', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"status":"request"}}, endpoint: 'datalist'}},
 

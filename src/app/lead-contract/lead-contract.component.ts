@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { BsModalService } from 'ngx-bootstrap';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { Commonservices } from '../app.commonservices';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class LeadContractComponent implements OnInit {
 public all_data: any;
 public modalref: any
+modalRef1: BsModalRef;
 public today: any = new Date;
 public degitalSignForm: FormGroup;
 public degitalSignFormSubmitFlug: boolean = false;
@@ -49,13 +50,13 @@ public agreementFormSubmitFlug: boolean = false;
     this.modalref = this.modalservices.show(template, {class: 'signmodal'});
   }
 
-  degitalSignFormSubmit() {
+  degitalSignFormSubmit(template: TemplateRef<any>) {
     this.degitalSignFormSubmitFlug = true;
     if(this.degitalSignForm.valid) {
       /* Set Default Value */
       console.log(this.degitalSignForm.value.fullName)
 
-      const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
+      const link = this._commonservice.nodesslurl + 'addorupdate_for_lead';
       this._http.post(link,  { source: 'contract_repote', data: {
        id: this.all_data._id,
        notes: this.all_data.notes,
@@ -72,7 +73,11 @@ public agreementFormSubmitFlug: boolean = false;
         }})
           .subscribe((res: any) => { 
               if (res.status == 'success') {
-              // this.router.navigateByUrl('/contract-manager-list');
+
+                this.modalRef1 = this.modalservices.show(template, { class: 'successmodal' });
+                setTimeout(() => {
+                    this.modalRef1.hide();
+                }, 4000);
           }
           });
 

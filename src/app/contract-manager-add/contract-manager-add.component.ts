@@ -24,6 +24,7 @@ export class ContractManagerAddComponent implements OnInit {
   public refreshtoken:any;
   public timezone:any=[];
   public filterval5:any;
+  public pending_data: boolean = false;
   public blockHeaderFooterBlock: boolean = true;
    public headerText: any = {};
    public slotval: any ;
@@ -211,9 +212,12 @@ export class ContractManagerAddComponent implements OnInit {
 
     /* Get contract */
     getcontract() {
+        this.pending_data = true;
         let userId: any = this.cookeiservice.get('userid');
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source:'traning_management_view', condition: { "user_id_object": userId }}).subscribe(res => {
+        // this._http.post(link, { source:'traning_management_view', condition: { "user_id_object": userId }}).subscribe(res => {
+            this._http.post(link, { source:'products_name', condition: { }}).subscribe(res => {
+            this.pending_data = false;
             // this._http.post(link, { source:'traning_management_view'}).subscribe(res => {
             let result: any = res;
             this.allcontract = result.res;
@@ -231,9 +235,9 @@ export class ContractManagerAddComponent implements OnInit {
         if(keyword.length > 0) {
             this.contractSuggestionFlug = true;
             for(let c in this.allcontract) {
-                if(this.allcontract[c].product_name != null && this.allcontract[c].product_name.toLowerCase().indexOf(keyword.toLowerCase())>-1) {
+                if(this.allcontract[c].productname != null && this.allcontract[c].productname.toLowerCase().indexOf(keyword.toLowerCase())>-1) {
                     this.contractSuggestion.push(this.allcontract[c]);
-                    console.log('call firstname');
+                    console.log('call firstname',this.contractSuggestion);
                 }
             }
         } else {
@@ -255,7 +259,7 @@ export class ContractManagerAddComponent implements OnInit {
         this.loader = true;
         if( this.recid == null || this.recid == '') {
             this.contractForm.patchValue({    
-            product: contractData.product_name
+            product: contractData.productname
         });
     }else {
         this.contractForm.patchValue({    
