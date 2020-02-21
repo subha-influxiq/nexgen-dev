@@ -1,11 +1,12 @@
 
-<div class="loder_body" *ngIf="loader==1">
+<!-- <div class="loder_body" *ngIf="loader==1">
   <div class="loder_wrapper">
     <img src="assets/images/betologo.png" alt="#"
       style="margin:0 auto; display: block; margin-bottom:30px; max-width: 280px;" />
     <div class="loader"></div>
   </div>
-</div>
+</div> -->
+
 
 
 
@@ -85,6 +86,11 @@
         <button *ngIf="checked_ids.length != 0 || allChecked_ids.length !=0" type="button" class="edit_user assignclass" (click)="assign_to_rep(replistmodal)"   > Assign To Rep </button>
     </div>
 
+    <div *ngIf="loader==1" class="progressbarwrapper">
+      <div class="progressbar">
+        <div class="stylization"></div>
+      </div>
+    </div>
   <div class="nexgen_admin_table">
     <div class="table-responsive admin_table_wrapper">
       <table class="table fixed-table">
@@ -101,7 +107,7 @@
         <tbody>
           <tr *ngFor="let el of datalist ;  let i = index">
             <td>
-              <input type="checkbox" [value]=el.u_id [checked]="check_true" (change)="checkUncheck($event)"/>
+              <input *ngIf="el.rep_name == null" type="checkbox" [value]=el.u_id [checked]="check_true" (change)="checkUncheck($event)"/>
             </td>
             <td datalabel="Id" scope="row">{{i + 1}}</td>
             <td datalabel="Data">{{el.date_added}}</td>
@@ -111,8 +117,8 @@
             <td datalabel="Address" class="addresswidth">{{el.Address}},{{el.City}},{{el.Zip}},{{el.State}}</td>
             <td datalabel="Web" class="webwidth">{{el.Web}}</td>
             <td datalabel="Email" class="emailwidth">{{el.Email}}</td>
-            <td datalabel="Rep Assigned" *ngIf="el.rep_assigned != null">{{el.rep_assigned}}</td>
-            <td datalabel="Rep Assigned" *ngIf="el.rep_assigned == null">Unassigned</td>
+            <td datalabel="Rep Assigned" *ngIf="el.rep_name != null">{{el.rep_name}}</td>
+            <td datalabel="Rep Assigned" *ngIf="el.rep_name == null">Unassigned</td>
             <td datalabel="Batch Name">{{el.batch_name}}</td>
             <td datalabel="Created By">{{el.created_by}}</td>
             <td datalabel="Product Name">{{el.productName}}</td>

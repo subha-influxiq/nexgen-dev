@@ -88,7 +88,7 @@ const appRoutes: Routes = [
 
      {path: 'contract-list', component: ContractListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contractDetails_view', condition: {}}, endpoint: 'datalist'}},
      
-     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {}}, endpoint: 'datalist'}},
+     {path: 'contract-manager-list', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"rep_id_object":"rep_id"}}, endpoint: 'datalist'}},
 
      {path: 'contract-manager-list-pending', component: ContractManagerListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'contract_manager_list', condition: {"status":"request"}}, endpoint: 'datalist'}},
 

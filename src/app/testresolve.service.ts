@@ -29,16 +29,23 @@ export class TestresolveService implements Resolve<EndpointComponent> {
             requestData.trainingcategory =  route.params.cid;
             requestData.userid =this.userid;
         }
-        else if(route.data.requestcondition.condition.id_object == 'id_object'){
-            // console.log(route.data.requestcondition)
-            requestData.condition.id_object =  route.params._id;
-            delete requestData.condition._id
-        }
-        else if(route.data.requestcondition.condition!=null){
+        if(route.data.requestcondition.condition.id_object == 'id_object'){
+           // console.log(route.data.requestcondition)
+           requestData.condition.id_object =  route.params._id;
+           delete requestData.condition._id
+       }
+       if(route.data.requestcondition.condition.rep_id_object == 'rep_id'){
+          // console.log(route.data.requestcondition)
+          requestData.condition.rep_id_object = this.userid;
+          delete requestData.condition._id
+      }
+         if(route.data.requestcondition.condition!=null){
                 // console.log(route.data.requestcondition)
             requestData.condition._id =  route.params._id;
             // requestData.userid =this.userid;
-        }else requestData.condition = Object.assign(requestData.condition, route.params);
+        }
+        
+        requestData.condition = Object.assign(requestData.condition, route.params);
 
 //old code
             /*var result = new Promise((resolve) => {this._http.post(this.commonservices.nodesslurl+'datalist?token='+this.cookie.get('jwttoken'),
