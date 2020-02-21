@@ -84,7 +84,7 @@ this.allData = this.datalist;
     this.checked_ids = [];
     if (event.target.checked == true) {
       for (var i = 0; i < 24; i++ ) {
-        console.log(this.datalist[i], i);
+        // console.log(this.datalist[i], i);
         this.checked_ids.push(this.datalist[i].u_id);
         this.check_true = true;
       }
@@ -196,7 +196,7 @@ if (count>=25) {
       let data: any = {
         "source":"csv_upload_view",
         "condition":{
-          "product":val
+          "productName":val
         }
       }
 

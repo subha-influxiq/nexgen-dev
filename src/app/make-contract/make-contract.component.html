@@ -89,8 +89,9 @@
         <p *ngIf="datalist.date !=null"><strong>Date: </strong> {{datalist.date}}</p>
         <hr> -->
         
-        <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p>
-        <p *ngIf="datalist.contract_content_notes !=null"><strong>Notes: </strong>{{datalist.contract_content_notes}}</p>
+        <!-- <p *ngIf="datalist.contract_manager_name !=null"><strong>Notes By Contract Manager: </strong>{{datalist.contract_manager_name}}</p> -->
+        <p *ngIf="datalist.contract_manager_name !=null"><strong>{{datalist.contract_manager_name}} </strong> : {{datalist.notesByCM}}</p>
+        <!-- <p *ngIf="datalist.notesByCM !=null"><strong>Notes: </strong>{{datalist.notesByCM}}</p> -->
         <p *ngIf="datalist.CM_added_by !=null"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
        <hr>
         
