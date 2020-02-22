@@ -18,7 +18,8 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .Actionlistsblock .headercls{padding:0px; margin: 0; background-color: #1e9ada; display: block;}
 .Actionlistsblock .headercls h2{font-size: 20px;font-family: 'RalewayBold';padding: 15px 10px 12px;text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
 .Actionlistswrapper .list-group{padding:0px; margin: 0;border-radius: 0 !important;}
-.Actionlistswrapper .list-group .list-group-item{padding:0px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important; border-color:#25363c;background: rgba(58,84,94,1);
+.Actionlistswrapper .list-group span{padding:0px; margin: 0;}
+.Actionlistswrapper .list-group .list-group-item{padding:10px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important; border-color:#25363c;background: rgba(58,84,94,1);
     background: -moz-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(58,84,94,1)), color-stop(100%, rgba(46,68,76,1)));
     background: -webkit-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
@@ -39,8 +40,10 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .Actionlistswrapper .list-group .list-group-item a{padding: 10px;display: block;}
 .Actionlistswrapper .list-group .list-group-item a{color:#fff !important;}
 .Actionlistswrapper .list-group .list-group-item a:hover{color:#fff !important;}
-
-
+.Actionlistswrapper .list-group .list-group-item ul{color: #fff;background-color: #25363c;border: 2px solid #25363c;border-radius: 0;padding: 10px;list-style: none;margin-top: 5px;}
+.Actionlistswrapper .list-group .list-group-item ul li{padding:2px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important;}
+.Actionlistswrapper .list-group .list-group-item ul span{border-bottom: 1px solid #000;display: block;}
+.Actionlistswrapper .list-group .list-group-item ul span:last-child{border-bottom: none;}
 .crmleadlistblock .leftdiv{padding:0; margin: 0;}
 .crmleadlistblock .leftdiv .headercls{padding:10px; margin: 0; background-color: #2577ba;display: flex;align-items: center;justify-content: space-between;}
 .crmleadlistblock .leftdiv .headercls h2{font-size: 20px;font-family: 'RalewayBold';text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
@@ -53,7 +56,7 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .crmleadlistblock .leftdiv .list-group-item .card.card-outline-secondary .card-body{padding: 0 0 0.25rem;}
 .crmleadlistblock .leftdiv .list-group-item form{margin-bottom: 0;}
 
-.crmleadlistblock .leftdiv .form-inline .form-group {margin-right: 30px;margin-bottom: 15px;}
+.crmleadlistblock .leftdiv .form-inline .form-group {margin-right: 15px;margin-bottom: 15px;}
 .crmleadlistblock .leftdiv .form-inline label {margin-right: 10px; color:#000;font-weight: 500;text-transform: uppercase;}
 .crmleadlistblock .leftdiv .form-inline span {margin-right: 10px;}
 .crmleadlistblock .leftdiv .card-footer {padding: 10px 0 0px;background-color: transparent;border-top: 1px solid rgba(0,0,0,.125);display: flex;align-items: center;justify-content: space-between;}
@@ -70,6 +73,9 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button{margin: 0 0 0 10px;padding: 5px 30px;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button:nth-child(1){margin-left: 0px;}
 .form-groupbtndiv {width: auto !important;margin-left: 10px !important;}
+
+
+.active{background-color: #000; display: block;}
 
 @media screen and (max-width: 1366px){
     .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;margin-bottom: 10px;}

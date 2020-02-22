@@ -18,7 +18,8 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .Actionlistsblock .headercls{padding:0px; margin: 0; background-color: #1e9ada; display: block;}
 .Actionlistsblock .headercls h2{font-size: 20px;font-family: 'RalewayBold';padding: 15px 10px 12px;text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
 .Actionlistswrapper .list-group{padding:0px; margin: 0;border-radius: 0 !important;}
-.Actionlistswrapper .list-group .list-group-item{padding:0px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important; border-color:#25363c;background: rgba(58,84,94,1);
+.Actionlistswrapper .list-group span{padding:0px; margin: 0;}
+.Actionlistswrapper .list-group .list-group-item{padding:10px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important; border-color:#25363c;background: rgba(58,84,94,1);
     background: -moz-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(58,84,94,1)), color-stop(100%, rgba(46,68,76,1)));
     background: -webkit-linear-gradient(top, rgba(58,84,94,1) 0%, rgba(46,68,76,1) 100%);
@@ -39,8 +40,10 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .Actionlistswrapper .list-group .list-group-item a{padding: 10px;display: block;}
 .Actionlistswrapper .list-group .list-group-item a{color:#fff !important;}
 .Actionlistswrapper .list-group .list-group-item a:hover{color:#fff !important;}
-
-
+.Actionlistswrapper .list-group .list-group-item ul{color: #fff;background-color: #25363c;border: 2px solid #25363c;border-radius: 0;padding: 10px;list-style: none;margin-top: 5px;}
+.Actionlistswrapper .list-group .list-group-item ul li{padding:2px; margin: 0;color: #fff;text-transform: uppercase;border-radius: 0 !important;}
+.Actionlistswrapper .list-group .list-group-item ul span{border-bottom: 1px solid #000;display: block;}
+.Actionlistswrapper .list-group .list-group-item ul span:last-child{border-bottom: none;}
 .crmleadlistblock .leftdiv{padding:0; margin: 0;}
 .crmleadlistblock .leftdiv .headercls{padding:10px; margin: 0; background-color: #2577ba;display: flex;align-items: center;justify-content: space-between;}
 .crmleadlistblock .leftdiv .headercls h2{font-size: 20px;font-family: 'RalewayBold';text-align: left;margin-bottom: 0;color: #fff;text-transform: uppercase;}
@@ -53,14 +56,17 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .crmleadlistblock .leftdiv .list-group-item .card.card-outline-secondary .card-body{padding: 0 0 0.25rem;}
 .crmleadlistblock .leftdiv .list-group-item form{margin-bottom: 0;}
 
-.crmleadlistblock .leftdiv .form-inline .form-group {margin-right: 30px;margin-bottom: 15px;}
+.crmleadlistblock .leftdiv .form-inline .form-group {margin-right: 15px;margin-bottom: 15px;}
 .crmleadlistblock .leftdiv .form-inline label {margin-right: 10px; color:#000;font-weight: 500;text-transform: uppercase;}
 .crmleadlistblock .leftdiv .form-inline span {margin-right: 10px;}
 .crmleadlistblock .leftdiv .card-footer {padding: 10px 0 0px;background-color: transparent;border-top: 1px solid rgba(0,0,0,.125);display: flex;align-items: center;justify-content: space-between;}
 .crmleadlistblock .leftdiv .mt-4 {margin-top: .5rem!important;}
 .crmleadlistblock .leftdiv input.form-check-input {width: 30px;height: 30px;} 
 
-.crmleadlistblock .leftdiv .card-footer .btnviewdetail {background-color: #00a8ef;border-color: #00a8ef;font-family: 'RalewaySemiBold';color: #fff;font-size: 15px;padding: 8px 8px 6px 8px;margin: 5px;text-transform: uppercase;cursor: pointer;display: inline-block;text-align: center;border-radius: 0px;}
+
+.btnviewdetail {background-color: #00a8ef;border-color: #00a8ef;font-family: 'RalewaySemiBold';color: #fff;font-size: 15px;padding: 8px 8px 6px 8px;margin: 5px;text-transform: uppercase;cursor: pointer;display: inline-block;text-align: center;border-radius: 0px;}
+.btnviewdetail:last-child{margin-right: 0;}
+
 
 .user_management_wrapper .user_management_inner .inner_content_wrapper {display: flex;justify-content: center;align-items: center;flex-wrap: wrap;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;}
@@ -69,7 +75,59 @@ a, a:link, a:hover, a.active{cursor: pointer; text-decoration: none;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper button{padding: 5px 8px;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button{margin: 0 0 0 10px;padding: 5px 30px;}
 .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew button:nth-child(1){margin-left: 0px;}
+
+
+
+.notesblock{margin: 0; padding: 0 15px;}
+.crmleadlistblock .leftdiv .notesblock .headercls{justify-content: space-between;flex-wrap: wrap;background-color: #90bed5 !important;border-color: #90bed5 !important;}
+.crmleadlistblock .leftdiv .notesblock .headercls h2{flex: 1 1 100%; color:#333; margin-bottom: 10px;}
+.crmleadlistblock .leftdiv .notesblock .noteblocktextarea{flex: 1 1 100%;}
+.crmleadlistblock .leftdiv textarea{resize: none;width: 100%;}
+.crmleadlistblock .leftdiv .noteblockwrapper{width: 100%;}
+
+.addiconcls{margin: 0;padding: 8px;background-color: #25363c; cursor: pointer;}
+.addiconcls i{color: #fff;font-size: 20px;}
+
+.deliconcls{margin: 0;padding: 8px;background-color: #ff0000; cursor: pointer;}
+.deliconcls i{color: #fff;font-size: 20px;}
+
+.btnmargin{margin: 0 1px !important;}
+.btnmargin:last{margin-right: 10px !important;}
+
+.crmleadlistblock .leftdiv .form-inline .form-control {border-radius: 0px;}
 .form-groupbtndiv {width: auto !important;margin-left: 10px !important;}
+.cancelcls{background-color: #464646 !important;border-color: #464646 !important;}
+
+
+.emailblock{margin: 0; padding: 0 15px;}
+.crmleadlistblock .leftdiv .emailblock .headercls{justify-content: space-between;flex-wrap: wrap;background-color: #bee9ff !important;border-color: #bee9ff !important;}
+.crmleadlistblock .leftdiv .emailblock .headercls h2{flex: 1 1 100%; color:#333; margin-bottom: 10px;}
+.crmleadlistblock .leftdiv .emailblock .emailblockwrapper{flex: 1 1 100%;}
+.crmleadlistblock .leftdiv .noteblockwrapper{width: 100%;}
+
+
+.crmleadlistblock .leftdiv .emailblock .form-inline.emailtopblock .form-group{flex: 1 1 48%; margin: 0 1% 1%;}
+.crmleadlistblock .leftdiv .emailblock .form-inline.emailtopblock .form-group.subjectblock{flex: 1 1 100%;margin: 0 1% 0%;}
+.crmleadlistblock .leftdiv .emailblock .form-inline.emailtopblock .form-group.emailinputblock{flex: 1 1 100%;margin: 1% 1% 0;}
+.crmleadlistblock .leftdiv .emailblock .form-inline.emailtopblock .form-control {width: 100%;}
+
+.crmleadlistblock .leftdiv .emailblock .notebuttoncls{width: 100%;margin-top: 15px;}
+.Personalinfoblock .headercls .form-inline .form-group{margin-right: 0;margin-bottom: 0;}
+.Personalinfoblock .headercls .form-inline .form-group label{color:#fff;}
+.Personalinfoblock .headercls .form-inline .form-group .nccls{color: #ff9c9c;}
+/* .Personalinfoblock .headercls .form-inline .form-group .cls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .dmrcls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .opcls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .dcscls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .dcscls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .crcls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .ctccls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .pocls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .wcls{color: #ff9c9c;}
+.Personalinfoblock .headercls .form-inline .form-group .kcls{color: #ff9c9c;} */
+
+.active{background-color: #000; display: block;}
+
 
 @media screen and (max-width: 1366px){
     .user_management_wrapper .user_management_inner .inner_content_wrapper .spanformnew{display: flex;margin-bottom: 10px;}
