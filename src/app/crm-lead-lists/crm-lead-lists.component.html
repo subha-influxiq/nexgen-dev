@@ -42,15 +42,13 @@
               <!-- added by himadri end product search-->  
               <!-- added by himadri start Date Range search-->  
                 <span class="spanformnew">
-                  <form>
                     <div class="form-group form-groupnew1">
                       <input type="text" placeholder="Select Date Range" name="daterange" class="form-control">
                     </div>
                     <div class="form-group row form-groupbtndiv form-groupnew1">
                       <button type="submit" class="btn_search" > search </button>
                       <button type="submit" class="btn_search"> show all </button>
-                      </div>  
-                  </form>
+                      </div> 
                 </span>   
               <!-- added by himadri end Date Range search-->
           </div>
@@ -70,8 +68,7 @@
                 <div class="Actionlists">
                   <ul class="list-group">
                     <!-- Single List -->
-                    <li class="list-group-item active">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item active">                    
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -119,13 +116,11 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>     
                     </li>   
                     <!-- End Single List -->  
 
-                    <li class="list-group-item">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item">                       
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -173,12 +168,10 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>  
                     </li>
 
-                    <li class="list-group-item">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item">                     
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -226,12 +219,10 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>    
                     </li>
 
-                    <li class="list-group-item">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item">                  
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -279,12 +270,10 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>  
                     </li>
 
-                    <li class="list-group-item">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item">                        
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -332,12 +321,10 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>    
                     </li>
 
-                    <li class="list-group-item">
-                      <form action="" method="POST">                        
+                    <li class="list-group-item">                    
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -385,8 +372,7 @@
                               <button type="submit" class="btn btn-primary btnviewdetail" (click)="leaddetailurl()">View Detail</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
+                        </div>  
                     </li>
                                  
                   </ul>
@@ -415,12 +401,18 @@
                 </div>
                 <div class="Actionlistswrapper">
                   <ul class="list-group">
-                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
-                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
+                    <span class="activecls" *ngFor="let item of ActionLists; let $index=index;">
+                      <li class="list-group-item" (click)="Collaps($index)">
+                        {{item.name}}                      
+                        <span *ngIf="$index === expandedIndex">
+                          <ul>
+                            <span *ngFor="let subActionList of subActionLists;let i=index">
+                              <li>{{subActionList.subitem}}</li>
+                            </span>                          
+                          </ul>
+                        </span>
+                      </li>
+                    </span>                    
                   </ul>
                 </div>
               </div>

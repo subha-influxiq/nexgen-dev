@@ -8,11 +8,22 @@ import { Router } from '@angular/router';
 })
 export class CrmLeadListsComponent implements OnInit {
 
+  public expandedIndex:any;
+  public ActionLists:any;
+  public subActionLists:any;
+
   constructor(public router: Router) { }
 
   ngOnInit() {
+    this.expandedIndex = -1  
+    this.ActionLists = [{name:"Status"},{name:"Hipster Ipsum"},{name:"Corporate Ipsum"},{name:"Legal Ipsum"}]
   }
 
+  Collaps(index: number) {  
+    this.expandedIndex = index === this.expandedIndex ? -1 : index;
+    //some values  
+    this.subActionLists = [{subitem:"subth1"},{subitem:"subth2"},{subitem:"subth3"}];    
+  }
 
   leaddetailurl(){
     this.router.navigateByUrl('/crm-lead-details');

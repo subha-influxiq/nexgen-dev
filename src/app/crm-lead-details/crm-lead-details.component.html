@@ -42,7 +42,6 @@
               <!-- added by himadri end product search-->  
               <!-- added by himadri start Date Range search-->  
                 <span class="spanformnew">
-                  <form>
                     <div class="form-group form-groupnew1">
                       <input type="text" placeholder="Select Date Range" name="daterange" class="form-control">
                     </div>
@@ -50,7 +49,6 @@
                       <button type="submit" class="btn_search" > search </button>
                       <button type="submit" class="btn_search"> show all </button>
                       </div>  
-                  </form>
                 </span>   
               <!-- added by himadri end Date Range search-->
           </div>
@@ -62,15 +60,20 @@
       <div class="container">
         <div class="row">
             <div class="col-8 leftdiv">
-              <div class="col"> 
+              <div class="col Personalinfoblock"> 
                 <div class="headercls">
-                  <h2>Lead Name</h2> 
+                  <h2>Lead Name</h2>
+                  <div class="form-inline">                              
+                    <div class="form-group">
+                      <label for="exampleFirst">Status:</label> 
+                      <span class="nccls">Not Contacted</span>
+                    </div>
+                  </div> 
                 </div>
                 <div class="Actionlists">
                   <ul class="list-group">
-                    <!-- Single List -->
-                    <li class="list-group-item active">
-                      <form action="" method="POST">                        
+
+                    <li class="list-group-item active">                      
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -118,15 +121,13 @@
                           </div>
                           <div class="card-footer">                            
                             <div class="float-right">
-                              <button type="submit" class="btn btn-primary btnviewdetail">Edit</button>
+                              <button type="submit" class="btn btn-primary btnviewdetail" (click)="showMyInfoUpdateBox=!showMyInfoBox">Edit</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
-                    </li>   
-                    <!-- End Single List -->  
-                    <!-- <li class="list-group-item active">
-                      <form action="" method="POST">                        
+                        </div>   
+                    </li> 
+                    <!--Update crm Info Block-------->
+                   <li class="list-group-item active" *ngIf="showMyInfoUpdateBox">           
                         <div class="card card-outline-secondary"> 
                           <div class="card-body">
                             <div class="row mt-4 form-inline">                              
@@ -137,14 +138,54 @@
                               <div class="form-group">
                                 <label for="exampleLast">Phone:</label> 
                                 <input class="form-control" type="text" value="1234567890">
+                                <span class="addiconcls">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleLast">Another Phone:</label> 
+                                <input class="form-control" type="text" value="">
+                                <span class="addiconcls btnmargin">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <span class="deliconcls btnmargin">
+                                  <i class="fa fa-close" aria-hidden="true"></i>
+                                </span>
                               </div>
                               <div class="form-group">
                                 <label for="inputAddress">Email:</label> 
                                 <input class="form-control" type="email" value="loremipsum@yopmail.com">
+                                <span class="addiconcls">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
                               </div>
                               <div class="form-group">
+                                <label for="inputAddress">Another Email:</label> 
+                                <input class="form-control" type="email" value="loremipsum@yopmail.com">
+                                <span class="addiconcls btnmargin">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <span class="deliconcls btnmargin">
+                                  <i class="fa fa-close" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                              
+                              <div class="form-group">
                                 <label for="inputAddress">Address:</label>
-                                <input class="form-control" type="text" value="Barrackpore - Kalyani Expy, Block B">                                
+                                <input class="form-control" type="text" value="Barrackpore - Kalyani Expy, Block B"> 
+                                <span class="addiconcls">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>                               
+                              </div>
+                             <div class="form-group">
+                                <label for="inputAddress">Address 1:</label>
+                                <input class="form-control" type="text" value="Barrackpore - Kalyani Expy, Block B"> 
+                                <span class="addiconcls btnmargin">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </span>
+                                <span class="deliconcls btnmargin">
+                                  <i class="fa fa-close" aria-hidden="true"></i>
+                                </span>                               
                               </div>
                               <div class="form-group">
                                 <label for="exampleCity">City:</label>   
@@ -156,7 +197,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="exampleZip">Zip Code:</label> 
-                                <input class="form-control" type="number" value="741235">
+                                <input class="form-control" type="text" value="741235">
                               </div> 
                               <div class="form-group">
                                 <label for="inputAddress">Website:</label> 
@@ -175,12 +216,109 @@
                           <div class="card-footer">                            
                             <div class="float-right">
                               <button type="submit" class="btn btn-primary btnviewdetail">UPDATE</button>
+                              <button type="submit" class="btn btn-primary btnviewdetail cancelcls">Cancel</button>
                             </div>
                           </div>
-                        </div>                        
-                      </form>
-                    </li> -->
+                        </div>   
+                    </li> 
+                    <!--End Update crm Info Block-------->
                   </ul>
+                </div>
+              </div>
+              <div class="col notesblock"> 
+                <div class="headercls">
+                  <h2>Personal Notes</h2> 
+                  <div class="noteblockwrapper">
+                    <span class="noteblocktextarea">
+                      <textarea placeholder="Write notes here" rows="4"></textarea>
+                      <div class="notebuttoncls">
+                        <div class="float-right">
+                          <span>
+                            <button type="submit" class="btn btn-primary btnviewdetail" (click)="showSaveNote=!showSaveNote">Add Notes</button>
+                          </span>
+                          <span *ngIf="showSaveNote">
+                            <button type="submit" class="btn btn-primary btnviewdetail" (click)="showEditNote=!showEditNote">Save</button>
+                            <button type="submit" class="btn btn-primary btnviewdetail cancelcls">Cancel</button>
+                          </span>
+                          <span *ngIf="showEditNote">
+                            <button type="submit" class="btn btn-primary btnviewdetail" (click)="showUpdateNotes=!showUpdateNotes">Edit Notes</button>
+                          </span>
+                        </div>
+                      </div>                     
+                    </span>
+                    <span class="noteblocktextarea" *ngIf="showUpdateNotes">
+                      <textarea placeholder="Edit notes" rows="4"></textarea>
+                      <div class="notebuttoncls">
+                        <div class="float-right">
+                          <button type="submit" class="btn btn-primary btnviewdetail">Update Changes</button>
+                          <button type="submit" class="btn btn-primary btnviewdetail cancelcls" >Cancel</button>
+                        </div>
+                      </div>                     
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col emailblock"> 
+                <div class="headercls">
+                  <h2>Email Communication</h2> 
+                  <div class="emailblockwrapper">                     
+                      <div class="card card-outline-secondary"> 
+                        <div class="card-body">
+                          <div class="row form-inline emailtopblock">                              
+                            <div class="form-group">
+                              <label for="exampleFirst">Product:</label> 
+                              <select title="Select your spell" class="form-control">
+                                <option>Select...</option>
+                                <!-- <option data-icon="fa fa-codepen" data-subtext="petrification">Eye of Medusa</option> -->
+                                <option data-icon="fa fa-codepen">Picksum Ipsum</option>
+                                <option data-icon="fa fa-codepen">Lorizzle</option>
+                                <option data-icon="fa fa-codepen">Samuel L. Ipsum</option>
+                                <option data-icon="fa fa-codepen">Cupcake Ipsum</option>
+                              </select>
+                            </div>                              
+                            <div class="form-group">
+                              <label for="inputAddress">Email:</label> 
+                              <input class="form-control" type="text" value="">
+                            </div>      
+                            <div class="form-group subjectblock">
+                              <label for="inputAddress">Subject:</label> 
+                              <input class="form-control" type="text" value="">
+                            </div>  
+                            <div class="form-group emailinputblock">                              
+
+                              <div style="max-width: 600px; margin: 0 auto; border: solid 1px #ccc; background: #a4b1b3; padding: 3px;">
+
+                                <div style="width: auto; padding: 0; border: solid 5px #fff; background: #0aa098;">
+                                
+                                    <img src="http://www.betoparedes.com/images/betologo.png" style="display: block; margin: 15px auto; max-width: 90%;">
+                                
+                                
+                                    <img src="http://www.betoparedes.com/images/new_mail_bg1.jpg" style="display: block; margin: 0 auto; width: 100%;">
+                                
+                                
+                                    <div style="background: #0aa098; padding: 2px; font-family:Arial; font-size: 18px; color: #fff; ">
+                                    </div>
+                                
+                                    <div style="background: #fff; padding: 15px; font-family:Arial; font-size: 16px; color: #000; ">
+                                      <textarea placeholder="Email Text here" rows="6"></textarea>
+                                    </div>
+                                
+                                </div>
+                                
+                              </div>
+                             
+                            </div>
+                            <div class="notebuttoncls">
+                              <div class="text-center">
+                                <button type="submit" class="btn btn-primary btnviewdetail">Send Email</button>
+                                <button type="submit" class="btn btn-primary btnviewdetail cancelcls" >Cancel</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>  
+                  </div>
                 </div>
               </div>
             </div>
@@ -206,12 +344,18 @@
                 </div>
                 <div class="Actionlistswrapper">
                   <ul class="list-group">
-                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
-                    <li class="list-group-item active"><a href="javascript:void(0)">Bacon Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Hipster Ipsum</a></li>
-                    <li class="list-group-item"><a href="javascript:void(0)">Corporate Ipsum</a></li>
+                    <span class="activecls" *ngFor="let item of ActionLists; let $index=index;">
+                      <li class="list-group-item" (click)="Collaps($index)">
+                        {{item.name}}                      
+                        <span *ngIf="$index === expandedIndex">
+                          <ul>
+                            <span *ngFor="let subActionList of subActionLists;let i=index">
+                              <li>{{subActionList.subitem}}</li>
+                            </span>                          
+                          </ul>
+                        </span>
+                      </li>
+                    </span>                    
                   </ul>
                 </div>
               </div>
