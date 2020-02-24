@@ -14,7 +14,7 @@ export class CrmLeadListsComponent implements OnInit {
   }
 
 
-  leaddetailurl(val:any){
+  leaddetailurl(){
     this.router.navigateByUrl('/crm-lead-details');
   }
 

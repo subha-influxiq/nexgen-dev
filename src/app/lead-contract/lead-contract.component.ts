@@ -63,18 +63,22 @@ public agreementFormSubmitFlug: boolean = false;
        notesByCM:this.all_data.notesByCM,
        status:'sends_Signed_Contract_to_Rep',
        product: this.all_data.product,
+       contentTop:this.all_data.contentTop,
+       clauses:this.all_data.clauses,
+       contentBottiom:this.all_data.contentBottiom,
        product_id: this.all_data.product_id,
        lead_id:this.all_data.lead_id,
        lead_digital_signature:this.degitalSignForm.value.fullName,
        lead_digital_signature_date:new Date().getTime(),
        contract_manager_id: this.all_data.contract_manager_id,
        rep_id:this.all_data.rep_id,
-       updated_by: this.cookeiservice.get('userid')
+      //  updated_by: this.cookeiservice.get('userid')
         }})
           .subscribe((res: any) => { 
               if (res.status == 'success') {
 
                 this.modalRef1 = this.modalservices.show(template, { class: 'successmodal' });
+                window.open('https://api.influxhostserver.com/download?file='+res.filename);
                 setTimeout(() => {
                     this.modalRef1.hide();
                 }, 4000);

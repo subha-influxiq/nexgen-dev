@@ -119,6 +119,7 @@
               <!-- <span class="edit_user" *ngIf="cookeiservice.get('usertype') == 'rep' && el.status == 'send_to_rep'" (click)="sendToLead(el)">Send To Lead</span> -->
               <!-- <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="makeContract(el,'edit')">Ask For Modification</span> -->
               <span class="edit_user" *ngIf="el.status != 'request' && el.status !='ask_for_modification' && el.status !='asDraft' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)">View</span>
+              <span class="edit_user" *ngIf="el.status =='sends_Signed_Contract_to_Rep' && (el.pdf_url != null || el.pdf_url != undefined)" (click)="downloadpdf(el)"><i class="fa fa-download" aria-hidden="true"></i></span>
               <span *ngIf=" cookeiservice.get('usertype') == 'contract_manager'  && el.status == 'request'"  class="edit_user" (click)="makeContract(el,'add')">Create Contract</span>
               <!-- <span *ngIf="el.status != 'request' && el.status !='ask_for_modification' && cookeiservice.get('usertype') != 'contract_manager'" (click)="modification(el)"><i class="fa fa-eye" style="cursor: pointer;"></i></span> -->
 
