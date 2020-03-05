@@ -81,7 +81,7 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
     requestContract(val: any) {
-      console.log('requestContract is work', val);
+    //   console.log('requestContract is work', val);
 
       if (this.recid != null && this.isedit_id != null ) {
         const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
@@ -122,7 +122,7 @@ export class ContractManagerAddComponent implements OnInit {
 
     }
     saveAsDraft(val: any){
-     console.log('saveAsDraft',val);
+    //  console.log('saveAsDraft',val);
      if (this.recid != null && this.isedit_id != null ) {
         const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'contract_repote', data: {
@@ -157,14 +157,14 @@ export class ContractManagerAddComponent implements OnInit {
                     }
           });
         }
-      console.log("saveAsDraft is work");
+    //   console.log("saveAsDraft is work");
     }
    
 
     geteventarr(){
 
-        console.log(this.recid)
-      console.log('geteventarr')
+    //     console.log(this.recid)
+    //   console.log('geteventarr')
         let cond: any;
         switch(this.route.snapshot.url[0].path) {
             
@@ -177,9 +177,9 @@ export class ContractManagerAddComponent implements OnInit {
                 }else{
                     this.slotView=true;
                 }
-                console.log('slotview',this.slotView);
-                this.headerText.hedaerH4 = 'Select your Closer Call Appointment as per your convenience.';
-                this.headerText.span = 'Please select your Time Zone carefully to eliminate any confusion. Your scheduled appointment will be confirmed and mailed to you accordingly.';
+                // console.log('slotview',this.slotView);
+                this.headerText.hedaerH4 = 'Add Notes for Contract Manager.';
+                this.headerText.span = '';
                 // this.cookeiservice.set('lead-product',this.contractForm.value.product);
                
                 break;
@@ -198,7 +198,7 @@ export class ContractManagerAddComponent implements OnInit {
           const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
           this._http.post(link, {source: 'contract_repote', condition: {_id_object: id}})
               .subscribe((res:any) => {
-                  console.log('-----',res.res[0])
+                //   console.log('-----',res.res[0])
                   this.allcontract = res.res[0];
                   this.contractForm.controls['product'].patchValue(res.res[0].product);
                   this.contractForm.controls['lead'].patchValue(res.res[0].lead_id);
@@ -216,12 +216,12 @@ export class ContractManagerAddComponent implements OnInit {
         let userId: any = this.cookeiservice.get('userid');
         const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         // this._http.post(link, { source:'traning_management_view', condition: { "user_id_object": userId }}).subscribe(res => {
-            this._http.post(link, { source:'products_name', condition: { }}).subscribe(res => {
+            this._http.post(link, { source:'products_name', condition: {"status":true}}).subscribe(res => {
             this.pending_data = false;
             // this._http.post(link, { source:'traning_management_view'}).subscribe(res => {
             let result: any = res;
             this.allcontract = result.res;
-            console.log(this.allcontract,'++++++++++++++');
+            // console.log(this.allcontract,'++++++++++++++');
         });
 
        
@@ -229,7 +229,7 @@ export class ContractManagerAddComponent implements OnInit {
 
     /* contract auto complete */
     contractSuggest(event:any) {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         this.contractSuggestion = [];
         let keyword: any = event.target.value;
         if(keyword.length > 0) {
@@ -237,7 +237,7 @@ export class ContractManagerAddComponent implements OnInit {
             for(let c in this.allcontract) {
                 if(this.allcontract[c].productname != null && this.allcontract[c].productname.toLowerCase().indexOf(keyword.toLowerCase())>-1) {
                     this.contractSuggestion.push(this.allcontract[c]);
-                    console.log('call firstname',this.contractSuggestion);
+                    // console.log('call firstname',this.contractSuggestion);
                 }
             }
         } else {
@@ -255,7 +255,7 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
     selectcontract(contractData) {
-        console.log('_________________________-----------------------------------')
+        // console.log('_________________________-----------------------------------',contractData)
         this.loader = true;
         if( this.recid == null || this.recid == '') {
             this.contractForm.patchValue({    
@@ -268,36 +268,36 @@ export class ContractManagerAddComponent implements OnInit {
     }
 
         const link = this._commonservice.nodesslurl + 'lead_and_product';
-        this._http.post(link, {  "product_id": contractData.product_id }).subscribe((res:any) => {
+        this._http.post(link, {  "product_id": contractData._id }).subscribe((res:any) => {
             this.loader = false;
             this.leadname = res.data.lead_list;
             // this.contract_manager_list = res.data.contract_manager_list;
             if (res.res =="success" && this.recid !=null && this.recid !='') {
-                this.selectproductfunc(contractData.product_id );
-                this.selectcontractmanagerfunc(contractData.product_id );
+                this.selectproductfunc(contractData._id );
+                this.selectcontractmanagerfunc(contractData._id );
             }
         });
         
-        this.cookeiservice.set('product_id', contractData.product_id);
+        this.cookeiservice.set('product_id', contractData._id);
         // this.leadname = contractData.firstname + contractData.lastname;
         this.contractSuggestionFlug = false;
         this.contractSuggestion = [];
         // this.selectedlead = contractData;
     }
     selectproductfunc(event:any){
-        console.log(event.target.value);
-        console.log(this.leadname)
+        // console.log(event.target.value);
+        // console.log(this.leadname)
         for(let i in this.leadname){
-            if(this.leadname[i].product_id == event.target.value){
+            if(this.leadname[i]._id == event.target.value){
                 this.selectedproduct = this.leadname[i];
             }
         }
     }
     selectcontractmanagerfunc(event:any){
-        console.log(event.target.value);
-        console.log(this.contract_manager_list)
+        // console.log(event.target.value);
+        // console.log(this.contract_manager_list)
         for(let i in this.contract_manager_list){
-            if(this.contract_manager_list[i].product_id == event.target.value){
+            if(this.contract_manager_list[i]._id == event.target.value){
                 this.selectedproduct = this.leadname[i];
             }
         }
@@ -306,7 +306,7 @@ export class ContractManagerAddComponent implements OnInit {
     // added by chandrani 
     openLeadDetailsModal(item:any,template:TemplateRef<any>){
         this.selectedlead = item;
-        console.log(item)
+        // console.log(item)
         this.modalReference = this.modal.show(template);
     }
 

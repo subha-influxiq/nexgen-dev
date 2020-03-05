@@ -6,11 +6,9 @@
 </div>
 <div class="resources_content_wrapper">
     <div class="m_wrapper">
-
   <div>
-
       <div class="main_divbody" *ngFor="let item of resources| orderBy:'priority';let i=index;"> <!--:'reverse'-->
-       <div class="inner_resources_block_head"> {{item.categoryname}}</div>
+       <div class="inner_resources_block_head" id={{item.categoryname}}> {{item.categoryname}}</div>
           <div class="inner_resources_block">
 
               <div *ngFor="let item1 of item.resource">

@@ -94,6 +94,11 @@
           <p *ngIf="datalist.contract_manager_name !=null"><span class="managernamecls"><strong>{{datalist.contract_manager_name}} </strong> :</span> {{datalist.notesByCM}}</p>
           <p *ngIf="datalist.CM_added_by !=null" class="dateclsnw"><strong>Date: </strong>{{datalist.CM_added_by}}</p>
         </div>
+
+        <div class="messageblockcls">
+          <p *ngIf="datalist.rep_name !=null"><span class="managernamecls"><strong>{{datalist.rep_name}} </strong> :</span> {{datalist.notes}}</p>
+          <p *ngIf="datalist.CM_added_by !=null" class="dateclsnw"><strong>Date: </strong>{{datalist.date}}</p>
+        </div>
         
         <!-- <p *ngIf="datalist.notesByCM !=null"><strong>Notes: </strong>{{datalist.notesByCM}}</p> -->
         

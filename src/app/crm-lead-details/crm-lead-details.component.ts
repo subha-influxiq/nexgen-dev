@@ -11,6 +11,7 @@ export class CrmLeadDetailsComponent implements OnInit {
   showUpdateNotes: boolean = false;
   showSaveNote: boolean = false;
   showEditNote: boolean = false;
+  showMyInfoBox: boolean = false;
   public expandedIndex:any;
   public ActionLists:any;
   public subActionLists:any;

@@ -5,7 +5,7 @@
       <div class="user_management_wrapper">
         <div class="user_management_inner">
           <h2>Legal Documents</h2>
-          <a class="w_9_download_btn" href="https://www.irs.gov/pub/irs-pdf/f1099msc.pdf" target="_blank">Click Here To Download 1099</a>
+          <a class="w_9_download_btn" href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank">Click Here To Download W-9</a>
           <div class="clearfix"></div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                       <span *ngIf="getw9values==null">-</span>
                       <span *ngIf="getw9values!=null">{{commonservices.showdateforreplegal(getw9values.created_at)}}</span>
                     </td>
-                    <td>1099</td>
+                    <td>W-9</td>
                     <td>
                       <span *ngIf="getw9values!=null">Submitted</span>
                       <span *ngIf="getw9values==null">Not Submitted</span></td>

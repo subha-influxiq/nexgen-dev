@@ -16,13 +16,43 @@
 
 /*---koushik modification for table---*/
 
-table.fixed-table {width: 100%;table-layout: fixed;margin-top: 20px;}
+table.fixed-table {width: 100%;table-layout: fixed;margin-top: 5px;margin-bottom: 5px;}
 table.fixed-table td {white-space: normal;word-break: break-all;}
 table.fixed-table th:nth-child(1) {width: 2%;}
 table.fixed-table th:nth-child(2) {width: 2%;}
 table.fixed-table th:nth-child(8),table.fixed-table th:nth-child(9) {width: 12%;}
 
 /*---End koushik modification for table---*/
+
+/*---Footer Pagination css --*/
+.footerpaginationblock .footerpaginationblock_wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+.footerpaginationblock_inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  padding: 0 15px;
+  color: #fff;
+}
+.footerpaginationblock{margin-top: 10px;margin-bottom: 5px;}
+.footerpaginationblock .pagecountblockcls label{margin-right: 10px;margin-left: 15px;}
+.footerpaginationblock .pagecountblockcls input[type="number"], .footerpaginationblock .pagecountblockcls input[type="text"]{
+  background: #585a5b;
+  padding: 5px;
+  color: rgb(255, 255, 255);
+  max-width: 69px;
+  text-align: center;
+  border: 1px solid #4b4b4b;
+}
+
+@media screen  and  (max-width: 991px) {
+  .footerpaginationblock_inner {flex-wrap: wrap;justify-content: center;padding-top: 10px;}
+  .footerpaginationblock .pagecountblockcls {padding-top: 10px;}
+}
+/*---End of Footer Pagination css --*/
 
 
 

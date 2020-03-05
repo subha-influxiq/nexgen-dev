@@ -36,7 +36,7 @@ uploadInput:EventEmitter<UploadInput>;
     this.formdata=[
     { inputtype: 'textarea', name: 'batch_name', label: 'Batch Name', placeholder: 'Enter Batch Name' ,validationrule:{required:true},validationerrormsg:'is required'},
 
-    {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
+    {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:{source:'products','condition':{'status':true}},multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
 
     { inputtype: 'file', name: 'file', label: 'File', placeholder: 'Select File', buttonname: 'Upload CSV', validationrule: { required: true }, validationerrormsg: 'is required', imagefolder: 'resource' },
 

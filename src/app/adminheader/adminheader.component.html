@@ -87,7 +87,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" [routerLink]="['/contract-manager-list']"> Contract Request List</a>
               <a class="dropdown-item" [routerLink]="['/contract-list']"> Manage Contract Content</a>
-              <a class="dropdown-item" [routerLink]="['/contract/management']"> Manage Contract Manager</a>
+              <a class="dropdown-item" [routerLink]="['/contract/management']"> Contract Manager</a>
             </div>
           </li>
 
@@ -102,7 +102,7 @@
                 </div>
               </li>
 
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown crm">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">CRM</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -353,7 +353,7 @@
   </div>
 </div>
 
-<div class="new_header_bg" *ngIf="type=='contract_manager'">
+<div class="new_header_bg contract_manager" *ngIf="type=='contract_manager'">
   <div class="new_header_container">
     <div class="new_header">
       <div class="new_header1">

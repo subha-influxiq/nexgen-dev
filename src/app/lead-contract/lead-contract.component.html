@@ -5,20 +5,33 @@
     <span>Consulting Director Program (Beto Paredes Family of Companies Rep)</span>
   </h2>
 
-  <div>
+  <div class="paracls">
     <p [innerHTML]="safeHtml(all_data.contentTop)"></p>
     <p [innerHTML]="safeHtml(all_data.clauses)"></p>
     <p [innerHTML]="safeHtml(all_data.contentBottiom)"></p>
   </div>
-
-  <span>Date:</span>
-  <input readonly="readonly" name="agreement_person_agreement_date" value="{{ today | date: 'longDate' }}" type="text"
-    class="agr_input6" />
-
-
-  <div class="new_signupdiv">
-    <input type="button" value="Sign Here" (click)="openModal(contentmodal)">
+  <div class="paraclsbottom">
+    <div class="paraclsbtmtop">
+      <span>Date:</span>
+      <input readonly="readonly" name="agreement_person_agreement_date" value="{{ today | date: 'longDate' }}" type="text" class="agr_input6" />
+      <span *ngIf="degitalSignForm.value.fullName != ''">
+      <span>Name:</span>
+      <input readonly="readonly" name="agreement_person_agreement_date" [value]="degitalSignForm.value.fullName" type="text" class="agr_input6" />
+    </span>
+    </div>
+    
+    <div class="new_signupdiv">
+      <input type="button" value="Sign Here" (click)="openModal(contentmodal)">
+      <span class="error">Sign Is Required</span>
+    </div>
+    <div class="new_successbtn">
+      <button type="button" class="btn btn-default popbtn1new" (click)="submitSign(sucessmodalflag,1)">Agree</button>
+      <button type="button" class="btn btn-default popbtn1new popbtn1newred" (click)="submitSign(sucessmodalflag, 0)">Decline</button>
+      <button type="button" class="btn btn-default popbtn2new" (click)="modalRef1.hide()" >Cancel</button>
+      <div class="clearfix"></div>
+    </div>
   </div>
+  
 </div>
 
 
@@ -29,7 +42,7 @@
 
       <h4>Digital Signature</h4>
 
-      <form [formGroup]="degitalSignForm" (ngSubmit)="degitalSignFormSubmit(sucessmodalflag)">
+      <form [formGroup]="degitalSignForm" (ngSubmit)="degitalSignFormSubmit()">
           <label>Full name</label>
           <input type="text" id="fullname" formControlName="fullName" />
           <span class="has-error" *ngIf="degitalSignFormSubmitFlug && degitalSignForm.controls.fullName.errors">Name is required.</span>

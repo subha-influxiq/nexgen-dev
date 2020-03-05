@@ -32,10 +32,13 @@ bsDatepicker = {
 public datalist: any;
 public selecteditem;
 public placeholderforselect = 0; 
+public placeholderforselectStatus = 0; 
 public message;
  headElements = ['ID', 'Date', 'Product Name', 'Rep Name', 'Lead Name', 'Contract Manager Name', 'Status', 'Notes'];
 public productList: any = [];
+public statusList: any = [{val:'send_to_rep', name:"Send To Rep"},{val:'ask_for_modification',name:'Ask For Modification'},{val:'send_to_lead',name:'Send To Lead'},{val:'sends_Signed_Contract_to_Rep',name:'Signed'},{val:'request',name:'Request'}];
 public prodSelect: any = 0;
+public statusSelect: any = 0;
 public filterValForName: any;
 public filterval5: any = '';
 public start_date: any = '';
@@ -75,7 +78,35 @@ public indexCount: number;
 
    this.getproduct();
   }
+  statusSearchbyval(val: any){
+    this.loader = 1;
+    console.log(val);
+    if (val != undefined && val != null && val.length > 0) {
+      let data: any = {
+        "source":"contract_manager_list",
+        "condition":{
+          "status":val
+        }
+      }
 
+      const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
+          this._http.post(link,data).subscribe((res:any) => {
+              this.loader =0;
+              // this.datalist = res.res;
+              let dataall: any = [];
+              for (let item in res.res) {
+                if (res.res[item].status == 'asDraft' && res.res[item].rep_id != this.cookeiservice.get('userid')) {
+                  res.res.splice(item,1)
+                  // console.log('asDraft', item)
+                } else{
+                  dataall.push(res.res[item])
+                }
+                
+              }
+              this.datalist = dataall;
+          });
+    }
+  }
   productSearchbyval(val: any){
     this.loader = 1;
     console.log(val);
@@ -150,10 +181,7 @@ public indexCount: number;
   getproduct() {
 
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'products'}).subscribe((res:any) => {
-        // let result: any = res;
-        // console.log(result.res);
-        // this.datalist = result.res;
+    this._http.post(link,{source:'products',"condition": {"status":true}}).subscribe((res:any) => {
       this.productList = res.res;
     });
   }

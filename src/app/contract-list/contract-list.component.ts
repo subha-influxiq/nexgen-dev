@@ -35,24 +35,21 @@ export class ContractListComponent implements OnInit {
     private renderer: Renderer2,
     public route: ActivatedRoute,
     public modal: BsModalService,
-    protected _sanitizer: DomSanitizer) { }
+    protected _sanitizer: DomSanitizer) {
+    let link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+    this._http.post(link, { source: 'products',"condition": {"status":true}  })
+      .subscribe((res: any) => {
+        this.product_list = res.res;
+        console.log(this.product_list);
+      });
+
+     }
 
   ngOnInit() {
-
     this.route.data.forEach((data: any) => {
       console.log('json', data.results.res);
       this.datalist = data.results.res;
-      this.product_list = data.results.res;
-
-
-
     });
-    // this.getdata();
-    // if (router.) {
-
-    // }
-
-
   }
 
   safeHtml(html) {

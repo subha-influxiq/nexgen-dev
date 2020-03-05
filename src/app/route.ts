@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo:'/login', pathMatch: 'full' },
     {path: 'bulk-upload', component: CrmBelkUploadComponent},
     {path: 'lead-contract/:_id', component: LeadContractComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'send_to_lead', condition: {"_id":"_id"}}, endpoint: 'datalist_for_lead'}},
-    {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: 'csv_upload_view', condition: {"id_object":"id_object", "skip":0}}, endpoint: 'leadlist'}},
+    {path: 'lead-list/:_id', component: BulkLeadListComponent, resolve : {results: TestresolveService},data: { requestcondition: { source: '', condition: {"id_object":"id_object"}, "skip":0, "limit":50}, endpoint: 'lead-datalist'}},
     {path: 'add-contract', component: ContractAddEditComponent},
     {path: 'edit-contract/:id', component: ContractAddEditComponent},
      {path: 'add-contract-manager', component: ContractManagerAddComponent},            // new added
@@ -147,6 +147,7 @@ const appRoutes: Routes = [
     { path:'resourcecategory', component: ResourcecategoryComponent},
     { path:'resources', component: ResourcesComponent},
     { path:'myresource', component: MyresourceComponent},
+    { path:'myresource/:catid/:catname', component: MyresourceComponent},
     { path:'myresource/:catid', component: MyresourceComponent},
     { path:'managequiz/:lessonid', component: ManagequizComponent},
     { path: 'tempaccess', component: TempaccessComponent},

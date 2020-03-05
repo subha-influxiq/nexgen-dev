@@ -1,0 +1,115 @@
+.newconright1wrapper{
+    margin: 30px auto;
+    padding: 0;
+    position: relative;
+    margin-bottom: 45px;
+    height: 100vh;
+    position: fixed;
+}
+.newcon1right{
+    position: fixed;
+    padding: 110px 0px;
+    top: 0%;
+    -webkit-transform: translateX(0px);
+    transform: translateX(-10px);
+    width: 24%;
+    float: right;
+    border: 0;
+    background: none;
+}
+.newcon1rightinner{
+    background: #efefef;
+}
+
+.messageblockcls .table-scrollable > .table {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-bottom: 0;
+    background-color: #fff3a0;
+}
+
+.newcon1right h4 {
+    background: #f4a8a3;
+    padding: 15px 10px;
+    font-family: 'RalewayBold';
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.messageblockcls .table td, .messageblockcls .table th {
+    border-top: 0px solid #fff;
+}
+.messageblockcls .table td, .messageblockcls .table th {
+    padding: 5px;
+}
+.messageblockcls .table-bordered td, .messageblockcls .table-bordered th {
+    border: 0px solid #dee2e6;
+}
+.admin_training_center_manage_popup {
+    width: 100%;
+}
+
+/***
+Responsive & Scrollable Tables
+***/
+
+.messageblockcls .table-scrollable .table td, .messageblockcls .table-scrollable .table th {
+    padding-left: 10px !important;
+    font-weight: 400;
+}
+
+.table-scrollable {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+    margin: 3px 0 !important;
+  }
+  
+  .table-scrollable > .table {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+  
+  .table-scrollable > .table > thead > tr > th,
+  .table-scrollable > .table > tbody > tr > th,
+  .table-scrollable > .table > tfoot > tr > th,
+  .table-scrollable > .table > thead > tr > td,
+  .table-scrollable > .table > tbody > tr > td,
+  .table-scrollable > .table > tfoot > tr > td {
+    white-space: nowrap;
+  }
+  
+  .table-scrollable > .table-bordered {
+    border: 0;
+  }
+  
+  .table-scrollable > .table-bordered > thead > tr > th:first-child,
+  .table-scrollable > .table-bordered > tbody > tr > th:first-child,
+  .table-scrollable > .table-bordered > tfoot > tr > th:first-child,
+  .table-scrollable > .table-bordered > thead > tr > td:first-child,
+  .table-scrollable > .table-bordered > tbody > tr > td:first-child,
+  .table-scrollable > .table-bordered > tfoot > tr > td:first-child {
+    border-left: 0;
+  }
+  
+  .table-scrollable > .table-bordered > thead > tr > th:last-child,
+  .table-scrollable > .table-bordered > tbody > tr > th:last-child,
+  .table-scrollable > .table-bordered > tfoot > tr > th:last-child,
+  .table-scrollable > .table-bordered > thead > tr > td:last-child,
+  .table-scrollable > .table-bordered > tbody > tr > td:last-child,
+  .table-scrollable > .table-bordered > tfoot > tr > td:last-child {
+    border-right: 0;
+  }
+  
+  .table-scrollable > .table-bordered > thead > tr:last-child > th,
+  .table-scrollable > .table-bordered > tbody > tr:last-child > th,
+  .table-scrollable > .table-bordered > tfoot > tr:last-child > th,
+  .table-scrollable > .table-bordered > thead > tr:last-child > td,
+  .table-scrollable > .table-bordered > tbody > tr:last-child > td,
+  .table-scrollable > .table-bordered > tfoot > tr:last-child > td {
+    border-bottom: 0;
+  }

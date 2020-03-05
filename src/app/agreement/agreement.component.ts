@@ -33,14 +33,7 @@ export class AgreementComponent implements OnInit {
                 public modalservices: BsModalService, public cookeiservice: CookieService,
                 public sanitizer: DomSanitizer, private formBuilder: FormBuilder ) {
     
-    /* Geting User Data */
-    this.activateRoute.params.subscribe(params => {
-      if(params['userId']) {
-        this.getUserDetails(params['userId']);
-      } else {
-        this.getUserDetails(this.cookeiservice.get('userid'));
-      }
-    });
+   
 
     /* Digital Sign Form Control */
     this.degitalSignForm = this.formBuilder.group({
@@ -57,6 +50,15 @@ export class AgreementComponent implements OnInit {
   }
 
   ngOnInit() {
+     /* Geting User Data */
+     this.activateRoute.params.subscribe(params => {
+      if(params['userId']) {
+        this.getUserDetails(params['userId']);
+      } 
+      if(this.cookeiservice.get('userid') != null && this.cookeiservice.get('userid') != 'undefined') {
+        this.getUserDetails(this.cookeiservice.get('userid'));
+      }
+    });
   }
 
   /* Get User Details by userID */

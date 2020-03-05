@@ -47,7 +47,10 @@ export class RepDashboardComponent implements OnInit, AfterViewInit {
    
   }
 
-
+  goToMyResource(val:any){
+    console.log(val);
+    this.router.navigateByUrl('/myresource/'+this.cookeiservice.get('userid')+'/'+val)
+  }
 
   calenderaccessSet(){
     if(typeof(this.cookeiservice.get('calenderaccess'))!=undefined){

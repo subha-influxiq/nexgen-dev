@@ -113,6 +113,8 @@ export class ListingComponent implements OnInit {
     public submit_loaderbar: boolean = false;
     public submit_loaderbar1: boolean = false;
     public table_loader: boolean = false;
+    public csvFilterData:number;
+    public csvTotalData:number;
     @Input()
     set source(source: string) {
         this.sourceval = (source && source.trim()) || '<no name set>';
@@ -157,7 +159,7 @@ export class ListingComponent implements OnInit {
 
         // added by Himadri Using Product list search
         let link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'tranningcategory' }).subscribe(res => {
+        this._http.post(link, { source: 'tranningcategory',"condition": {"status":true}}).subscribe(res => {
             let result: any = res;
             this.productval = result.res;
         });
@@ -208,25 +210,28 @@ export class ListingComponent implements OnInit {
         let y: any;
         for ( y in this.productForm.controls) {
             this.productForm.controls[y].markAsTouched();
-            console.log(this.productForm.controls[y])
+            // console.log(this.productForm.controls[y])
         }
         if (this.productForm.valid) {
             this.submit_loaderbar = true;
-            console.log(this.productForm.value);
+            // console.log(this.productForm.value);
             var link = this._commonservice.nodesslurl + 'write-csv';
-            // var data: any = {
-            //     data: [this.productForm.value],
-            //     "filename":this.csvHeaderAllData.filename
-            // }
             this._http.post(link, {data: [this.productForm.value], "filename":this.csvHeaderAllData.filename
             }).subscribe((res: any)=>{
+                // console.log(res)
                 this.submit_loaderbar = false;
                 this.preview = true;
                 this.modalRef2.hide();
+                this.csvFilterData = res.count;
+                this.csvTotalData = res.totaldata;
                 this.leads_list = res.result;
+                // alert(this.csvTotalData)
+                // this.modalRef1 = this.modal.show(template1, { class: 'successmodal' });
+                // setTimeout(() => {
+                //     this.modalRef1.hide();
+                // }, 2000);
                 this.tab_header = Object.keys(this.leads_list[0]);
                 this.modalRef3 = this.modal.show(template);
-    
             })
         }else {
             this.productErrorFlag=1 ;
@@ -235,13 +240,10 @@ export class ListingComponent implements OnInit {
       
     }
     preview_button(template: TemplateRef<any>){
-        console.log('preview_button')
-        
-        // setTimeout(()=>{
-            // this.modalRef3 = this.modal.show(template);
-        // },2000);
+        this.preview = false;
     }
     submit_leads(template: TemplateRef<any>, val: any){
+        this.modalRef.hide();
         this.submit_loaderbar1 = true;
         this.issubmit = 1;
         let y: any;
@@ -249,6 +251,7 @@ export class ListingComponent implements OnInit {
             this.dataForm.controls[y].markAsTouched();
         }
         if (this.dataForm.valid && this.submitval == 1) {
+            this.preview = false;
             this.dataForm.value.file = this.leads_list;
             this.dataForm.value.created_by = this.cookeiservice.get('userid');
             const link = this._commonservice.nodesslurl + 'addorupdatedata';
@@ -263,6 +266,7 @@ export class ListingComponent implements OnInit {
                         // this.sucessmodalflag = true;
                         console.log('****')
                         this.isedit = 0;
+                        this.preview = false;
                             // this.modalRef2.hide();
                             this.modalRef.hide();
                             // this.dataForm.reset();
@@ -275,15 +279,11 @@ export class ListingComponent implements OnInit {
                         }, 4000);
                             this.getdatalist();
                             this.dataForm.reset();
-
-
                     }
                 }, error => {
                     console.log('Oooops!');
                 });
         }
-        // this.formsubmit();
-      
     }
 
 
@@ -396,7 +396,7 @@ geteventarr() {
         if (this.filterval3 != '' && this.filterval3 != null) {
             this.filterval = this.filterval3 + '|';
         }
-        console.log(this.filterval);
+        // console.log(this.filterval);
     }
     gettimezone(val) {
         for (let v in this.timezone) {
@@ -582,9 +582,9 @@ geteventarr() {
             });
     }
     getselectdata(source: any, c: any) {
-        if (this.formdataval[c].sourcetype == null || this.formdataval[c].sourcetype != 'static') {
+        if (source.source != 'null' && (this.formdataval[c].sourcetype == null || this.formdataval[c].sourcetype != 'static')) {
             const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-            this._http.post(link, { source: source })
+            this._http.post(link, source)
                 .subscribe(res => {
                     let result;
                     result = res;
@@ -596,7 +596,37 @@ geteventarr() {
                 }, error => {
                     this.formdataval[c].sourceval = [];
                 });
-        } else {
+        } else if(source.source == 'null' && this.formdataval[c].sourcetype != 'static'){
+console.log('hihihhhih');
+let link = this._commonservice.nodesslurl + 'complete_traning_catagory_by_user';
+this._http.post(link, source)
+                .subscribe((res:any) => {
+                    console.log(res,'===')
+                    if (res.status == 'error') {
+                        this.router.navigate(['/']);
+                    } else {
+                        console.log(res.data,"++")
+                        let training_lesson_count_val: any = res.data.training_lesson_count;
+                        let complete_traning_catagory_by_user_val: any = res.data.complete_traning_catagory_by_user;
+                        let alldata: any = [];
+
+
+                        for (const item of training_lesson_count_val) {
+                            // console.log(item);
+                            for (const complete_traning of complete_traning_catagory_by_user_val) {
+                                // console.log(complete_traning);
+                                if (item._id == complete_traning.trainingcategory && item.count >= complete_traning.lessondone ) {
+                                    console.log('test success')
+                                    alldata.push(item)
+                                }
+                            }
+                        }
+                        console.log(alldata)
+                        this.formdataval[c].sourceval = alldata;
+                    }
+                });
+        }
+         else {
             this._http.get("assets/data/" + source + ".json")
                 .subscribe(res => {
                     let result;

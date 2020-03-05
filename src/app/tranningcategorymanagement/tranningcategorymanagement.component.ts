@@ -29,11 +29,11 @@ public sourcecondition:any={};
     {inputtype:'textarea',name:'description',label:'Description',placeholder:'Enter Description',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'text',name:'priority',label:'Priority',placeholder:'Enter Priority',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'select',name:'type1',label:'Training Type',defaultchoice:'Select Training',sourceview:'tranning',sourcetype:'static',selectvalue:'name',selectid:'name',validationrule:{required:true},validationerrormsg:'is required'},
-    {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select Category',sourceview:'tranningcategory_view_new',sourcetype:'',selectvalue:'categoryname',selectid:'_id'},
+    {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select Category',sourceview:{source:'tranningcategory_view_new','condition':{'status':true}},sourcetype:'',selectvalue:'categoryname',selectid:'_id'},
 
     // {inputtype:'select',name:'roleaccess',label:'Roles can Access',defaultchoice:'Select Roles',sourceview:'roles',sourcetype:'static',selectvalue:'name',selectid:'id',validationrule:{required:true},validationerrormsg:'is required',multiple:true},
     // {inputtype:'hidden',name:'type',label:"type",value:'tranning'},
-    {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:'products',multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
+    {inputtype:'select',name:'product',label:'Products',defaultchoice:'Select a Product',sourceview:{source:'products','condition':{'status':true}},multiple:true,selectvalue:'productname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},
     {inputtype:'checkbox',name:'status',label:'Status',value:false},
   ];
     this.datasource={table:'tranningcategory',objarr:['parentcategory']};

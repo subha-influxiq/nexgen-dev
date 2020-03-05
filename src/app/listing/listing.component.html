@@ -42,6 +42,14 @@
                                             aria-hidden="true"></i></button> </h3>
                             </div>
 
+
+
+                            <div class="search_content" *ngIf="router.url ==['/bulk-upload']">
+                                <h3> <input type="text" [(ngModel)]="filterval3" (keyup)="searchbyval()"
+                                        placeholder="Search by Batch Name"><button><i class="fa fa-search"
+                                            aria-hidden="true"></i></button> </h3>
+                            </div>
+
                             <!-- added by himadri start product search-->
 
                             <div class="search_content"
@@ -57,6 +65,24 @@
                             </div>
 
                             <!-- added by himadri end product search-->
+
+
+                            <!-- added by himadri start status search-->
+
+                            <!-- <div class="search_content"
+                                *ngIf="productval != '' && router.url== ['/manage-leads'] || router.url== ['/appointmentlist'] || router.url== ['/products'] || router.url == ['/contract/management'] || router.url== ['/bulk-upload'] ">
+                                <h3>
+                                    <select [(ngModel)]='prodSelect' (click)="productSearchbyval(filterval4)"
+                                        [(ngModel)]="filterval4" required>
+                                        <option value="0" disabled>Select Product</option>
+                                        <option *ngFor="let searchval of productval" value="{{searchval.categoryname}}">
+                                            {{searchval.categoryname}}</option>
+                                    </select>
+                                </h3>
+                            </div> -->
+
+                            <!-- added by himadri end stasus search-->
+
 
                             <!-- added by himadri start Date Range search-->
 
@@ -190,6 +216,8 @@
                                                 <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->
                                                 {{item[item1.value]}}<br>
                                                 <span
+                                                    *ngIf="item[item1.value]==null || item[item1.value]==''">N/A</span>
+                                                <span
                                                     *ngIf="router.url==['/manage-leads'] && item1.value == 'status' && item[item1.value]==null">Pending</span>
                                                 <span
                                                     *ngIf="router.url==['/manage-leads'] && item[item1.value] == 'Closed' && (item.pricepoint!=null && item.pricepoint!='')">Price
@@ -200,11 +228,17 @@
                                                 [ngClass]="item1.class">
                                                 <!-- <span *ngIf="item1.selectvalue=='show'">{{showname(item[item1.value])}}</span>-->
                                                 <!-- <span *ngIf="item1.selectvalue!='show'">{{item[item1.value]}}</span>-->
-                                                {{item[item1.value]}}
+                                                {{item[item1.value]}} <br>
+                                                <span
+                                                *ngIf="item[item1.value]==null || item[item1.value]==''">N/A</span>
                                             </span>
                                             <span *ngIf="item1.type=='text'&& router.url=='/rep'" class="pointerbtn"
                                                 [ngClass]="item1.class"
-                                                (click)="gotorepdetails(item._id)">{{item[item1.value]}}</span>
+                                                (click)="gotorepdetails(item._id)">{{item[item1.value]}}
+                                            <br>
+                                            <span
+                                            *ngIf="item[item1.value]==null || item[item1.value]==''">N/A</span>
+                                            </span>
 
                                             <!--<span *ngIf="item1.type=='text1'&& router.url=='/rep'" class="pointerbtn" [ngClass]="item1.class" (click)="updaterecruiter(item._id)">{{item[item1.value]}}</span>
 
@@ -810,9 +844,15 @@
 
 <ng-template #prev>
     <div class="modal-body brandmanagement_modal">
+        <span style="display: block; background: #333;">
+        <p style="text-align: center; color: #fff; margin:0; padding: 5px;">Total record: {{csvTotalData}}</p>
+        <p style="text-align: center; color: #fff;  margin:0; padding: 5px; 
+        border-top: solid 1px #ccc; border-bottom: solid 1px #ccc;">No. Of Unique record: {{csvFilterData}}</p>
+        <p style="text-align: center; color: #fff;   margin:0; padding: 5px; ">Number of Existing record: {{csvTotalData - csvFilterData}}</p>
+    </span>
     <div class="table-responsive admin_table_wrapper">
         <div class="previewtable">
-            <table class="table" *ngIf="leads_list.length>0">
+            <table class="table">
                 <thead>
                     <tr>
                         <th [ngClass]="item.class" *ngFor="let item of tab_header; index as i;"
@@ -851,6 +891,23 @@
     <div>
     </div>
 </ng-template>
+
+
+<ng-template #filtervalue>
+    <div class="modal-body brandmanagement_modal successmodal_listing">
+        <div class="logo_wrapper">
+            <img src="assets/images/logo.png">
+        </div>
+        <div class="brand_messagebox">
+            <h3>Total record: </h3>
+            <h3>Filter record: </h3>
+        </div>
+    </div>
+    <div>
+    </div>
+</ng-template>
+
+<!-- filtervalue -->
 <!-- 
 <ng-template *ngIf="submit_loaderbar">
     <div class="loaderbarwrapper" >

@@ -459,9 +459,24 @@
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of notdonecategory">
 
-                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist(item.categoryname);gettraininglist()"
-                    href="javascript:void(0)"> <span><img (click)="cid=item._id;getdatalist()"
-                        src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+                <li *ngIf="itemp.catid==item.parentcategory">
+                  <ng-container *ngIf="initial >= 100">
+                  <a (click)="cid=item._id;getdatalist(item.categoryname);gettraininglist()"
+                    href="javascript:void(0)"> 
+                    <span>
+                      <img (click)="cid=item._id;getdatalist()"
+                        src="assets/images/filemanager_icon.png">
+                      </span> {{item.categoryname}}</a>
+                    </ng-container>
+                    <ng-container *ngIf="initial != 100">
+                      <a (click)="showmodal(initialTraning)"
+                        href="javascript:void(0)"> 
+                        <span>
+                          <img (click)="cid=item._id;getdatalist()"
+                            src="assets/images/filemanager_icon.png">
+                          </span> {{item.categoryname}}</a>
+                        </ng-container>
+                      </li>
               </ng-container>
 
 
@@ -486,9 +501,18 @@
               <!--  *ngIf="selpcat==itemp.catid"-->
               <ng-container *ngFor="let item of donecategory">
 
-                <li *ngIf="itemp.catid==item.parentcategory"><a (click)="cid=item._id;getdatalist();gettraininglist();"
+                <li *ngIf="itemp.catid==item.parentcategory">
+                  <ng-container *ngIf="initial >= 100">
+                  <a (click)="cid=item._id;getdatalist();gettraininglist();"
                     href="javascript:void(0)"> <span><img 
-                        src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a></li>
+                        src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a>
+                  </ng-container>
+                  <ng-container *ngIf="initial != 100">
+                    <a (click)="showmodal(initialTraning)"
+                      href="javascript:void(0)"> <span><img 
+                          src="assets/images/filemanager_icon.png"></span> {{item.categoryname}}</a>
+                    </ng-container>
+                      </li>
               </ng-container>
 
 
@@ -577,5 +601,15 @@
       <img src="assets/images/logo.png">
     </div>
     <h6>Successfully completed.</h6>
+  </div>
+</ng-template>
+
+
+<ng-template #initialTraning>
+  <div class="modal-body successmodal_listing">
+    <div class="logo_wrapper">
+      <img src="assets/images/logo.png">
+    </div>
+    <h6>Please complete the Onboarding Training to unlock this Sales Opportunity Training.</h6>
   </div>
 </ng-template>

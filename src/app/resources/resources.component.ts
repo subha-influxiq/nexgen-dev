@@ -28,7 +28,7 @@ export class ResourcesComponent implements OnInit {
       {inputtype:'textarea',name:'description',label:'Description',placeholder:'Description',validationrule:{required:true},validationerrormsg:'is required'},
      /* {inputtype:'select',name:'categoryname',label:'Category Name',defaultchoice:'Select Category',sourceview:'resourcecategory',sourcetype:'static',selectvalue:'categoryname',selectid:'_id',validationrule:{required:true},validationerrormsg:'is required'},*/
 
-      {inputtype:'select',name:'category',label:'Category Name',placeholder:'Select Category',validationrule:{required:true},validationerrormsg:'is required',sourceview:'resourcecategory',defaultchoice:'Select a category',selectvalue:'categoryname',multiple:null,selectid:'_id'},
+      {inputtype:'select',name:'category',label:'Category Name',placeholder:'Select Category',validationrule:{required:true},validationerrormsg:'is required',sourceview:{source:'resourcecategory','condition':{'status':true}},defaultchoice:'Select a category',selectvalue:'categoryname',multiple:null,selectid:'_id'},
 
 
       {inputtype:'file',name:'file',label:'File',placeholder:'Select File',buttonname:'Upload Resource File',validationrule:{required:true},validationerrormsg:'is required',imagefolder:'resource'},

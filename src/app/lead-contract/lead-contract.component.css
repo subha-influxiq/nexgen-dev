@@ -1,0 +1,14 @@
+.paracls{display: block; background-color: #f5f5f5; padding: 0 20px;}
+.paraclsbottom{display: block; background-color: #fafafa; padding: 20px;}
+.paraclsbottom .agr_input6 {margin-top: 0;}
+.paraclsbtmtop{margin-bottom: 10px;}
+.popbtn1new{background-color: #02a0db; color:#fff; border-radius: 0;text-transform: uppercase;margin-top: 5px;}
+.popbtn2new{background-color: #333; color:#fff; border-radius: 0;text-transform: uppercase;margin-top: 5px;}
+.new_signupdiv input[type='button']{background-color: #02a0db; color:#fff; border-radius: 0;border: 0px;border: 1px solid transparent;
+    padding: .375rem .75rem;font-size: 1rem;line-height: 1.5;text-transform: uppercase;margin-top: 5px;}
+.paraclsbottom input[type="text"] {background: transparent;}
+.paraclsbtmtop span{color:#000;}
+.new_successbtn{text-align: center;}
+.new_successbtn button{margin-right: 5px;}
+.popbtn1newred{background-color:#ff0000}
+.error{color:#ff0000; display: block;}

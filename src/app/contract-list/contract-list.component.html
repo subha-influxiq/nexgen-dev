@@ -22,8 +22,8 @@
 
           <select [(ngModel)]='prodSelect' (click)="searchProduct(filterval4)" [(ngModel)]="filterval4" required>
             <option value="0" disabled>Select Product</option>
-            <option *ngFor="let searchval of product_list" value="{{searchval.product_name}}">
-              {{searchval.product_name}}</option>
+            <option *ngFor="let searchval of product_list" value="{{searchval.productname}}">
+              {{searchval.productname}}</option>
           </select>
 
 

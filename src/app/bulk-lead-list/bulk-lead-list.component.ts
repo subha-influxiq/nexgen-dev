@@ -44,7 +44,7 @@ public start_date: any = '';
 public end_date: any = '';
 public notes_list: any = '';
 public indexCount: number;
-public skipCount: number = 25;
+public skipCount: number = 50;
 masterSelected:boolean = false;
 public check_true = false;
 checkedList:any;
@@ -53,6 +53,25 @@ public allChecked_ids: any = [];
 public rep_list: any = '';
 public selectedrep:any ='';
 public selectedrepflag:boolean = false;
+public total_count: any = 0;
+public total_page: any;
+isNonTrade: boolean = false
+checkAllNonTrades: boolean = false
+
+public page: any = {
+  "page_count": 50,
+  "page_no": 1
+};
+
+public search: any = {
+  "Email": "",
+  "batch_name": "",
+  "rep_name": "",
+  "fullName": "",
+  "prodSelect": "",
+  "date_added": "",
+};
+public lastsearchcond:any={};
 
 public allData: any;
   constructor(public _commonservice:Commonservices,
@@ -62,15 +81,16 @@ public allData: any;
     public route: ActivatedRoute,
     public modal: BsModalService,
     protected _sanitizer: DomSanitizer) {
-      console.log(this.route.snapshot.params._id)
+      this.getPageCount();
      }
 
   ngOnInit() {
 
     this.route.data.forEach((data:any ) => {
-      this.datalist = data.results.res;
+      this.datalist = data.results.data;
+      // console.log(this.datalist,'resolve data')
       // this.skipCount = data.results.resc;
-      // this.headElements = Object.keys(data.results.res[0]);
+      // this.headElements = Object.keys(data.results.data[0]);
    });
 
 this.allData = this.datalist;
@@ -79,43 +99,89 @@ this.allData = this.datalist;
   }
 
 
+  getPageCount(){
+    let repostSignCond: any = {
+      'condition':this.lastsearchcond
+    };
+    let link = this._commonservice.nodesslurl + 'lead-datalist-page-count';
+    this._http.post(link, repostSignCond).subscribe((res:any) => {
+      console.log('count',res.data);
+      this.total_count = res.data;
+      this.total_page = Math.round(this.total_count / this.page.page_count)
+      console.log(this.total_page,'++++')
+    });
+  }
+
 
   isAllSelected(event: any) {
-    this.checked_ids = [];
-    if (event.target.checked == true) {
-      for (var i = 0; i < 24; i++ ) {
-        // console.log(this.datalist[i], i);
-        this.checked_ids.push(this.datalist[i].u_id);
-        this.check_true = true;
-      }
+
+    const checked = event.target.checked;
+    if(checked == true){
+      this.checked_ids=[];
+      this.datalist.forEach((item:any) =>{
+       item.selected = checked;
+       console.log(item)
+       this.checked_ids.push(item.u_id.toString());
+       });
+      console.log(this.checked_ids)
     } else {
-      // this.check_true = false;
-      // this.allChecked_ids = [];
-      this.check_true = false;
-      this.checked_ids.splice(event.target.value, 1);
+      this.datalist.forEach((item:any) =>{
+       item.selected = false;
+       console.log(item.u_id)
+      this.checked_ids=[];
+       });
+      console.log(this.checked_ids)
     }
-    console.log(this.checked_ids)
+    
+    // this.checked_ids = [];
+    // if (event.target.checked == true) {
+    //   for (var i = 0; i < this.page.page_count; i++ ) {
+    //     console.log(this.datalist[i], i);
+    //     this.checked_ids.push(this.datalist[i].u_id);
+    //     this.check_true = true;
+    //   }
+    // } else {
+    //   for( var i = 0; i < this.checked_ids.length; i++){ 
+    //     if ( this.checked_ids[i] === event.target.value) {
+    //       this.checked_ids.splice(i, 1);
+    //     }
+    //  }
+    //   this.check_true = false;
+    //   // this.checked_ids.splice(event.target.value, 1);
+    // }
+    // console.log(this.checked_ids)
   }
   checkUncheck(event: any) {
-    // this.allChecked_ids = [];
-    console.log(event.target.name);
-    console.log(event.target.checked);
-    if (event.target.checked == true) {
-      // this.check_true = true;
+
+
+
+    if (event.target.checked ==true) {
+      this.isNonTrade = true
       this.checked_ids.push(event.target.value);
+      console.log(this.checked_ids)
     } else {
-      this.check_true = false;
       this.checked_ids.splice(event.target.value, 1);
+      console.log(this.checked_ids)
     }
-    console.log(event.target.value, this.checked_ids);
+    // this.allChecked_ids = [];
+    // console.log(event.target.name);
+    // console.log(event.target.checked);
+    // if (event.target.checked == true) {
+    //   this.check_true = true;
+    //   this.checked_ids.push(event.target.value);
+    // } else {
+    //   this.check_true = false;
+    //   this.checked_ids.splice(event.target.value, 1);
+    // }
+    // console.log(event.target.value, this.checked_ids);
   }
   assign_to_rep(template: TemplateRef<any>){
-    console.log(this.checked_ids)
+    // console.log(this.checked_ids)
     this.modalRef1 = this.modal.show(template);
     const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
         this._http.post(link, { source: 'for_rep'}).subscribe((res:any) => {
           // this.datalist = res.res;
-          console.log(res);
+          // console.log(res);
           this.rep_list = res.res;
         });
   }
@@ -123,7 +189,7 @@ this.allData = this.datalist;
   repAssign(template: TemplateRef<any>){
     this.message = "Record Assign successfully!!";
     let data: any;
-    console.log(this.selectedrep);
+    // console.log(this.selectedrep);
     if (this.checked_ids.length !=0) {
       data= {
         added_by: this.cookeiservice.get('userid'),
@@ -140,7 +206,7 @@ this.allData = this.datalist;
     const link = this._commonservice.nodesslurl + 'addorupdatedata?token=' + this.cookeiservice.get('jwttoken');
   this._http.post(link,  { source: 'assigned_to_rep', data:data})
       .subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         this.modalRef1.hide();
         this.modalRef1 = this.modal.show(template, { class: 'successmodal' });
         setTimeout(() => {
@@ -153,45 +219,117 @@ this.allData = this.datalist;
   }
   ngAfterViewInit() {
   }
-  previouspage(){
+//   previouspage(){
 
-    let count = this.skipCount - 25;
-    this.skipCount = count;
-    console.log(count,'-')
-    let cond = {
-      "_id": this.route.snapshot.params._id,
-      "skip":count
-    }
-if (count>=25) {
+//     let count = this.skipCount - 50;
+//     this.skipCount = count;
+//     // console.log(count,'-')
+//     let cond = {
+//       "_id": this.route.snapshot.params._id,
+//       "skip": (parseInt(this.page.page_no)-1) * parseInt(this.page.page_count),
+//       "limit": parseInt(this.page.page_count),
+      
+//     }
+// if (count>=50) {
+  
+//   // lead-datalist-page-count
+//     const link = this._commonservice.nodesslurl + 'lead-datalist';
+//         this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
+//           this.loader = 0;
+//           this.datalist = res.res;
+//         });
+//   }
+// }
+
+  // nextpage(){
+  //   let count = this.skipCount + 50;
+  //   this.skipCount = count;
+  //   // console.log(count,'+');
+  //   let cond = {
+  //     "_id": this.route.snapshot.params._id,
+  //     "skip":count
+  //   }
+
+  //   const link = this._commonservice.nodesslurl + 'lead-datalist';
+  //       this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
+  //         this.loader = 0;
+  //         this.datalist = res.res;
+  //       });
+  // }
+
+  getPageData() {
+    let searchcond:any = {};
+    let serachval = this.search;
+    let searcharr = Object.keys(serachval).map(function (key) { 
+      // Using Number() to convert key to number type 
+      // Using obj[key] to retrieve key value 
+      console.log(searcharr,'searcharr')
+      return {key:key, val:serachval[key]};   
+  });
+
+
   
 
-    const link = this._commonservice.nodesslurl + 'leadlist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
-          this.loader = 0;
-          this.datalist = res.res;
-        });
-  }
-}
+  // console.log(searcharr,'search arr+++++',Object.keys(searcharr.key));
+  // if (searcharr.key == "date_added") {
+  // }
 
-  nextpage(){
-    let count = this.skipCount + 25;
-    this.skipCount = count;
-    console.log(count,'+');
-    let cond = {
-      "_id": this.route.snapshot.params._id,
-      "skip":count
+  for(let k in searcharr){
+    console.log(searchcond.date_added,'++++')
+    if(searcharr[k].val!=null && searcharr[k].val!=''){
+      if (this.search.date_added != '' && this.search.date_added != null) {
+        this.start_date = moment(this.search.date_added[0]).format('YYYY/MM/DD');
+        this.end_date = moment(this.search.date_added[1]).format('YYYY/MM/DD');
+        searchcond.date_added = {
+          date_added: {
+                $lte: this.end_date,
+                $gte: this.start_date
+            }
+        }; 
+        searchcond[searcharr[k].key]={$regex:searcharr[k].val};
+      
+        console.log(searcharr[k].val)
+      } else{
+        searchcond[searcharr[k].key]={$regex:searcharr[k].val};
+      } 
     }
+  }
+  searchcond={$and:[searchcond]}; 
+  this.lastsearchcond=searchcond;
+  console.log(searchcond,'cond');
 
-    const link = this._commonservice.nodesslurl + 'leadlist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
-          this.loader = 0;
-          this.datalist = res.res;
-        });
+    let repostSignCond: any = {
+      "source": "data_pece",
+      "condition": searchcond,
+      "skip": (parseInt(this.page.page_no)-1) * parseInt(this.page.page_count),
+      "limit": parseInt(this.page.page_count),
+    };
+    const link = this._commonservice.nodesslurl + 'lead-datalist';
+    this._http.post(link, repostSignCond).subscribe((response:any) => {
+      if(response.status == 'success') {
+        this.total_count=0;
+        this.datalist = response.data;
+        console.log(response);
+        this.getPageCount();
+      } else {
+        console.log(response);
+      }
+    });
+  }
+  nextPage(flag: string = null) {
+    if(flag == 'prev' && this.page.page_no > 1) {
+      this.page.page_no--;
+    } 
+
+    if(flag == null && this.page.page_no < this.total_count / this.page.page_no) {
+      this.page.page_no++;
+    }
+    this.getPageData();
   }
 
   productSearchbyval(val: any){
     this.loader = 1;
-    console.log(val);
+    // console.log(val);
     if (val != undefined && val != null && val.length > 0) {
       let data: any = {
         "source":"csv_upload_view",
@@ -199,11 +337,19 @@ if (count>=25) {
           "productName":val
         }
       }
+      let repostSignCond: any = {
+        "condition": {
+          "productName":val
+        },
+        "skip": (parseInt(this.page.page_no)-1) * parseInt(this.page.page_count),
+        "limit": parseInt(this.page.page_count),
+      };
 
-      const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-          this._http.post(link,data).subscribe((res:any) => {
+      const link = this._commonservice.nodesslurl+'lead-datalist';
+          this._http.post(link,repostSignCond).subscribe((res:any) => {
               this.loader =0;
-              this.datalist = res.res;
+              this.datalist = res.data;
+              this.getPageCount()
           });
     }
   }
@@ -219,10 +365,10 @@ if (count>=25) {
 
   searchbyname(val: any) {
 
-    console.log(val)
+    // console.log(val)
     let datalistVal: any = [];
     this.allData = this.datalist;
-    console.log(this.allData)
+    // console.log(this.allData)
     if (val == null || val == '') {
       this.datalist = this.allData;
     } else {
@@ -236,11 +382,28 @@ if (count>=25) {
       this.datalist = datalistVal;
     }
   }
+  searchbyrepname(val: any){
+    // console.log(val)
+    let datalistVal: any = [];
+    // console.log(this.allData)
+    if (val == null || val == '') {
+      this.datalist = this.allData;
+    } else {
+      datalistVal = [];
+      for (let i in this.datalist) {
+
+        if (this.datalist[i].rep_name != null && this.datalist[i].rep_name.toLowerCase().indexOf(val.toLowerCase()) > -1) {
+          datalistVal.push(this.datalist[i]);
+        }
+      } 
+      this.datalist = datalistVal;
+    }
+  }
 
   searchbybatchname(val: any){
-    console.log(val)
+    // console.log(val)
     let datalistVal: any = [];
-    console.log(this.allData)
+    // console.log(this.allData)
     if (val == null || val == '') {
       this.datalist = this.allData;
     } else {
@@ -255,9 +418,9 @@ if (count>=25) {
     }
   }
   searchbyleademail(val: any){
-    console.log(val)
+    // console.log(val)
     let datalistVal: any = [];
-    console.log(this.allData)
+    // console.log(this.allData)
     if (val == null || val == '') {
       this.datalist = this.allData;
     } else {
@@ -275,16 +438,13 @@ if (count>=25) {
   getproduct() {
 
     const link = this._commonservice.nodesslurl+'datalist?token='+this.cookeiservice.get('jwttoken');
-    this._http.post(link,{source:'products'}).subscribe((res:any) => {
-        // let result: any = res;
-        // console.log(result.res);
-        // this.datalist = result.res;
+    this._http.post(link,{source:'products', condition: {"status":true}}).subscribe((res:any) => {
       this.productList = res.res;
     });
   }
   setdatetonull() {
     this.filterval5 = null;
-    this.geteventarr();
+    this.getPageData();
 }
 
   geteventarr() {
@@ -306,12 +466,12 @@ if (count>=25) {
           this.datalist = res.res;
         });
     } else {
-
-        const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
-        this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
-          this.loader = 0;
-          this.datalist = res.res;
-        });
+      this.getPageData();
+        // const link = this._commonservice.nodesslurl + 'datalist?token=' + this.cookeiservice.get('jwttoken');
+        // this._http.post(link, { source: 'csv_upload_view', condition: cond }).subscribe((res:any) => {
+        //   this.loader = 0;
+        //   this.datalist = res.res;
+        // });
     }
 
 }
@@ -381,8 +541,8 @@ deletdata(val: any, x, template: TemplateRef<any>) {
   this.modalRef1 = this.modal.show(template);
   this.selecteditem = val;
   this.indexCount = x;
-  console.log(val)
-  console.log(x)
+  // console.log(val)
+  // console.log(x)
 }
 
 confirmdelete(template: TemplateRef<any>) {

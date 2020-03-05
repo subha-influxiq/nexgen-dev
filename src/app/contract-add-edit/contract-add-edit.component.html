@@ -1,52 +1,110 @@
 <app-adminheader></app-adminheader>
-<div class="page-wrapper admin_training_center_manage_popup">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="content_header_block">
-        <h3> {{formName}} a Contract</h3>
-        <form novalidate [formGroup]="contractForm" (ngSubmit)="contractFormSubmit()">
-          <br>
-          <div class="form-group email_div">
-            <label>Product Name :</label>
-            <select class="form-control" formControlName="product_id" (keyup)="issubmit=0">
-              <option value="">Select Product</option>
-              <option *ngFor="let product of productList" value="{{product._id}}">
-                {{product.productname}}</option>
-            </select>
-            <span class="error" style="color: red;"
-              *ngIf="!contractForm.controls['product_id'].valid && contractForm.controls['product_id'].touched  && issubmit==1">Product
-              is required</span>
+<div class="row">
+  <div class="col-lg-9">
+    <div class="page-wrapper admin_training_center_manage_popup">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="content_header_block">
+            <h3> {{formName}} a Contract</h3>
+            <form novalidate [formGroup]="contractForm" (ngSubmit)="contractFormSubmit()">
+              <br>
+              <div class="form-group email_div">
+                <label>Product Name :</label>
+                <select class="form-control" formControlName="product_id" (keyup)="issubmit=0">
+                  <option value="">Select Product</option>
+                  <option *ngFor="let product of productList" value="{{product._id}}">
+                    {{product.productname}}</option>
+                </select>
+                <span class="error" style="color: red;"
+                  *ngIf="!contractForm.controls['product_id'].valid && contractForm.controls['product_id'].touched  && issubmit==1">Product
+                  is required</span>
+              </div>
+              <div>
+                <label>Content Top :</label>
+              <ck-editor formControlName="contentTop" [config]="editorconfig" (keyup)="issubmit=0">
+              </ck-editor>
+              <span class="error" style="color: red;"
+                *ngIf="!contractForm.controls['contentTop'].valid && contractForm.controls['contentTop'].touched  && issubmit==1">Content Top is required</span>
+              </div>
+                <br>
+                <div>
+                  <label>Content Bottom :</label>
+              <ck-editor formControlName="contentBottiom" [config]="editorconfig" (keyup)="issubmit=0">
+              </ck-editor>
+              <span class="error" style="color: red;"
+                *ngIf="!contractForm.controls['contentBottiom'].valid && contractForm.controls['contentBottiom'].touched  && issubmit==1">Content Bottom is required</span>
+                </div>
+                <br>
+              <textarea [attr.readonly]= "isReadOnly" formControlName="notes" class="form-control" placeholder="Notes" (keyup)="issubmit=0"></textarea>
+              <br>
+              <label>Active</label>
+              <input type="checkbox" checked formControlName="status">
+    
+              <div class="box-footer" style="background:none; height:auto; padding-bottom:0px; padding-top:0px;">
+                <button type="submit">Submit</button>
+                <button type="reset" (click)="cancel()">Cancel</button>
+              </div>
+            </form>
           </div>
-          <div>
-            <label>Content Top :</label>
-          <ck-editor formControlName="contentTop" [config]="editorconfig" (keyup)="issubmit=0">
-          </ck-editor>
-          <span class="error" style="color: red;"
-            *ngIf="!contractForm.controls['contentTop'].valid && contractForm.controls['contentTop'].touched  && issubmit==1">This
-            is required</span>
-          </div>
-            <br>
-            <div>
-              <label>Content Bottiom :</label>
-          <ck-editor formControlName="contentBottiom" [config]="editorconfig" (keyup)="issubmit=0">
-          </ck-editor>
-          <span class="error" style="color: red;"
-            *ngIf="!contractForm.controls['contentBottiom'].valid && contractForm.controls['contentBottiom'].touched  && issubmit==1">This
-            is required</span>
-            </div>
-            <br>
-          <textarea [attr.readonly]= "isReadOnly" formControlName="notes" class="form-control" placeholder="Notes" (keyup)="issubmit=0"></textarea>
-          <br>
-          <label>Active</label>
-          <input type="checkbox" checked formControlName="status">
-
-          <div class="box-footer" style="background:none; height:auto; padding-bottom:0px; padding-top:0px;">
-            <button type="submit">Submit</button>
-            <button type="reset" (click)="cancel()">Cancel</button>
-          </div>
-        </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="newconright1wrapper">
+      <div class="newcon1right">
+        <h4>help</h4>
+        <div class="messageblockcls">
+          <div class="table-scrollable">
+            <table class="table table-bordered table-hover table-item-details">
+              <tr>
+                <th>For Full Name</th>
+                <td>[[fullName]]</td>
+              </tr>
+              <tr>
+                <th>For First Name</th>
+                <td>[[firstName]]</td>
+              </tr>
+              <tr>
+                <th>For Address</th>
+                <td>[[fullAddress]]</td>
+              </tr>
+  
+              <tr>
+                <th>For Mobile Number </th>
+                <td>[[mobileNumber]]</td>
+              </tr>
+  
+              <tr>
+                <th>For Website</th>
+                <td>[[websiteUrl]]</td>
+              </tr>
+  
+              <tr>
+                <th>For Product Name</th>
+                <td>[[productName]]</td>
+              </tr>
+  
+              <tr>
+                <th>For Date to be signed</th>
+                <td>[[dateForLeadSignature]]</td>
+              </tr>
+  
+              <tr>
+                <th>For email</th>
+                <td>[[emailId]]</td>
+              </tr>
+  
+              <tr>
+                <th>For Company Name</th>
+                <td>[[companyName]]</td>
+              </tr>
+            </table>
+          </div>          
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>

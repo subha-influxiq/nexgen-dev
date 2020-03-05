@@ -1,1 +1,8 @@
 /*hi*/
+
+.new_header .new_header2 .navbar-nav{width: 100%;-webkit-box-pack: justify;justify-content: space-between;align-items: center;}
+.navbar-nav .crm .dropdown-menu{    left: -75px;}
+
+
+.contract_manager .new_header .new_header2 .navbar-nav{width: 77%;-webkit-box-pack: justify;justify-content: space-between;align-items: center;}
+.navbar-nav .crm .dropdown-menu{    left: -75px;}

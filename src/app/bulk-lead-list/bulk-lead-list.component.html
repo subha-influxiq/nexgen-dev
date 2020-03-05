@@ -28,54 +28,70 @@
             </div> -->
             <div class="search_content">
                 <h3> 
-                  <input type="text" placeholder="Search by Name" (keyup)="searchbyname($event.target.value)">
+                  <!-- <input type="text" placeholder="Search by Name" (keyup)="searchbyname($event.target.value)"> -->
+                  <input type="text" placeholder="Search by Name" [(ngModel)]="search.fullName">
                 </h3>
             </div>
 
             <div class="search_content">
               <h3> 
-                <input type="text" placeholder="Search By Batch Name" (keyup)="searchbybatchname($event.target.value)">
+                <!-- <input type="text" placeholder="Search by Rep Name" (keyup)="searchbyrepname($event.target.value)"> -->
+                <input type="text" placeholder="Search by Rep Name" [(ngModel)]="search.rep_name">
+              </h3>
+          </div>
+
+            <div class="search_content">
+              <h3> 
+                <!-- <input type="text" placeholder="Search By Batch Name" (keyup)="searchbybatchname($event.target.value)"> -->
+                <input type="text" placeholder="Search By Batch Name" [(ngModel)]="search.batch_name">
               </h3>
           </div>
 
           <div class="search_content">
             <h3> 
-              <input type="text" placeholder="Search By Email" (keyup)="searchbyleademail($event.target.value)">
+              <!-- <input type="text" placeholder="Search By Email" (keyup)="searchbyleademail($event.target.value)"> -->
+              <input type="text" placeholder="Search By Email" [(ngModel)]="search.Email">
             </h3>
         </div>
+
+
 
             <!-- added by himadri start product search-->
 
             <div class="search_content">
                 <h3>
-                    <select [(ngModel)]='placeholderforselect' (click)="productSearchbyval(prodSelect)"
-                        [(ngModel)]="prodSelect" required>
+                    <select [(ngModel)]='placeholderforselect'
+                        [(ngModel)]="search.prodSelect" required>
                         <option value="0" disabled>Select Product</option>
                         <option *ngFor="let productval of productList" value="{{productval.productname}}">
                             {{productval.productname}}</option>
                     </select>
                 </h3>
             </div>
+
+<button type="button" (click)="getPageData();">Search</button>
+<!-- <button type="button" class="btn_search" (click)="setdatetonull()"> show all
+</button> -->
                                         <!-- added by himadri end product search-->
 
         <!-- added by himadri start Date Range search-->
 
-            <span class="spanformnew">
+            <!-- <span class="spanformnew">
             <form>
               <div class="form-group form-groupnew1">
                 <input type="text" placeholder="Select Date Range" class="form-control"
-                [(ngModel)]="filterval5" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="search.date_added" [ngModelOptions]="{standalone: true}"
                 [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY',  selectFromOtherMonth: false }"
                 #drp="bsDaterangepicker" bsDaterangepicker>
                 </div>
                 <div class="form-group row form-groupbtndiv form-groupnew1">
-                    <button type="submit" class="btn_search"  (click)="geteventarr()" > search </button>
+                    <button type="submit" class="btn_search"  (click)="getPageData()" > search </button>
                     <button type="submit" class="btn_search" (click)="setdatetonull()"> show all
                     </button>
                 </div>
 
             </form>
-            </span>
+            </span> -->
 
 
             <!-- added by himadri end Date Range search-->
@@ -83,7 +99,7 @@
 
         </div>
         <div class="clearfix"></div>
-        <button *ngIf="checked_ids.length != 0 || allChecked_ids.length !=0" type="button" class="edit_user assignclass" (click)="assign_to_rep(replistmodal)"   > Assign To Rep </button>
+        <button *ngIf="checked_ids.length != 0" type="button" class="edit_user assignclass" (click)="assign_to_rep(replistmodal)"> Assign To Rep </button>
     </div>
 
     <div *ngIf="loader==1" class="progressbarwrapper">
@@ -91,7 +107,47 @@
         <div class="stylization"></div>
       </div>
     </div>
+    
   <div class="nexgen_admin_table">
+    <div class="footerpaginationblock">
+      <div class="footerpaginationblock_wrapper">
+        <div class="footerpaginationblock_inner">
+          <div class="pagecountblock">
+            <span role="listitem">Showing {{page.page_count}} result from
+                <ng-container *ngIf="total_count == 0">Many.</ng-container>
+                <ng-container *ngIf="total_count > 0">{{ total_count }}.</ng-container>
+            </span>
+        
+            
+          </div>
+          <div class="pagecountblockcls">
+            <span class="example-full-width">
+              <label> Current page {{ page.page_no }} Total page {{ total_page }}</label>
+              <input type="number" placeholder="Total page {{ total_page }}"
+                  (keyup)="getPageData();" [(ngModel)]="page.page_no">
+            </span>
+      
+          <span class="example-full-width">
+              <label>Page Count</label>
+              <input type="number" placeholder="Page data {{ page.page_count }}" (keyup)="getPageData();"
+                  [(ngModel)]="page.page_count">
+          </span>
+          </div>
+          <ul class="pagination paginationnew justify-content-center">
+            <!-- <label> Current page {{ page.page_no }} Total page {{ total_count / page.page_count }}</label> -->
+            <li class="page-item prev">
+              <a class="page-link" (click)="nextPage('prev');">Previous</a>
+            </li>
+            <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+            <li class="page-item next">
+              <a class="page-link" (click)="nextPage()">Next</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="table-responsive admin_table_wrapper">
       <table class="table fixed-table">
 
@@ -107,7 +163,7 @@
         <tbody>
           <tr *ngFor="let el of datalist ;  let i = index">
             <td>
-              <input *ngIf="el.rep_name == null" type="checkbox" [value]=el.u_id [checked]="check_true" (change)="checkUncheck($event)"/>
+              <input name="nontrades" *ngIf="el.rep_name == null" type="checkbox" [value]=el.u_id  [checked]="el.selected" (change)="checkUncheck($event)"/>
             </td>
             <td datalabel="Id" scope="row">{{i + 1}}</td>
             <td datalabel="Data">{{el.date_added}}</td>
@@ -134,18 +190,45 @@
       <!-- </nav> -->
 
     </div>
-    <ul class="pagination paginationnew justify-content-center">
-      <li [ngClass]="{disable: skipCount <= 26}" class="page-item prev">
-        <a class="page-link" (click)="previouspage()">Previous</a>
-      </li>
-      <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-      <li class="page-item next">
-        <a class="page-link" (click)="nextpage()">Next</a>
-      </li>
-    </ul>
-
+    <div class="footerpaginationblock">
+      <div class="footerpaginationblock_wrapper">
+        <div class="footerpaginationblock_inner">
+          <div class="pagecountblock">
+            <span role="listitem">Showing {{page.page_count}} result from
+                <ng-container *ngIf="total_count == 0">Many.</ng-container>
+                <ng-container *ngIf="total_count > 0">{{ total_count }}.</ng-container>
+            </span>
+        
+            
+          </div>
+          <div class="pagecountblockcls">
+            <span class="example-full-width">
+              <label> Current page {{ page.page_no }} Total page {{ total_page }}</label>
+              <input type="number" placeholder="Total page {{ total_page }}"
+                  (keyup)="getPageData();" [(ngModel)]="page.page_no">
+          </span>
+      
+          <span class="example-full-width">
+              <label>Page Count</label>
+              <input type="number" placeholder="Page data {{ page.page_count }}" (keyup)="getPageData();"
+                  [(ngModel)]="page.page_count">
+          </span>
+          </div>
+          <ul class="pagination paginationnew justify-content-center">
+            <!-- <label> Current page {{ page.page_no }} Total page {{ total_count / page.page_count }}</label> -->
+            <li class="page-item prev">
+              <a class="page-link" (click)="nextPage('prev');">Previous</a>
+            </li>
+            <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+            <li class="page-item next">
+              <a class="page-link" (click)="nextPage()">Next</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </div>

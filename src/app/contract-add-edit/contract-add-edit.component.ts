@@ -47,7 +47,7 @@ export class ContractAddEditComponent implements OnInit {
     });
 
     const link = this._commonservices.nodesslurl + 'datalist?token=' + this._cookieservice.get('jwttoken');
-    this._http.post(link, { source: 'products' })
+    this._http.post(link, { source: 'products',"condition": {"status":true}  })
       .subscribe((res: any) => {
         this.productList = res.res;
         console.log(this.productList);

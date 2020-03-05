@@ -22,6 +22,8 @@ public degitalSignForm: FormGroup;
 public degitalSignFormSubmitFlug: boolean = false;
 public agreementForm: FormGroup;
 public agreementFormSubmitFlug: boolean = false;
+public isSubmit:number;
+
   constructor(
     public route: ActivatedRoute,
     protected _sanitizer: DomSanitizer,
@@ -39,7 +41,7 @@ public agreementFormSubmitFlug: boolean = false;
    });
 
    this.degitalSignForm = this.formBuilder.group({
-    fullName:   [ null, [ Validators.required, Validators.maxLength(150) ] ],
+    fullName:   [ '', [ Validators.required, Validators.maxLength(150) ] ],
   });
   }
   safeHtml(html) {
@@ -50,18 +52,28 @@ public agreementFormSubmitFlug: boolean = false;
     this.modalref = this.modalservices.show(template, {class: 'signmodal'});
   }
 
-  degitalSignFormSubmit(template: TemplateRef<any>) {
+  degitalSignFormSubmit() {
     this.degitalSignFormSubmitFlug = true;
     if(this.degitalSignForm.valid) {
-      /* Set Default Value */
-      console.log(this.degitalSignForm.value.fullName)
-
-      const link = this._commonservice.nodesslurl + 'addorupdate_for_lead';
+      this.isSubmit = 1;
+      this.modalref.hide();
+      this.degitalSignForm.reset();
+    }
+  }
+  submitSign(template: TemplateRef<any>, val: any){
+    let status1: any;
+    if (val == 1) {
+      status1 = 'sends_Signed_Contract_to_Rep';
+    } else {
+      status1 = 'decline'
+    }
+    if (this.isSubmit == 1 ) {
+    const link = this._commonservice.nodesslurl + 'addorupdate_for_lead';
       this._http.post(link,  { source: 'contract_repote', data: {
        id: this.all_data._id,
        notes: this.all_data.notes,
        notesByCM:this.all_data.notesByCM,
-       status:'sends_Signed_Contract_to_Rep',
+       status: status1,
        product: this.all_data.product,
        contentTop:this.all_data.contentTop,
        clauses:this.all_data.clauses,
@@ -75,7 +87,8 @@ public agreementFormSubmitFlug: boolean = false;
       //  updated_by: this.cookeiservice.get('userid')
         }})
           .subscribe((res: any) => { 
-              if (res.status == 'success') {
+            this.isSubmit == 0;
+              if (res.status == 'success' && val == 1) {
 
                 this.modalRef1 = this.modalservices.show(template, { class: 'successmodal' });
                 window.open('https://api.influxhostserver.com/download?file='+res.filename);
@@ -83,10 +96,7 @@ public agreementFormSubmitFlug: boolean = false;
                     this.modalRef1.hide();
                 }, 4000);
           }
-          });
-
-      this.modalref.hide();
-      this.degitalSignForm.reset();
+          });   
     }
   }
   hideDigitalSignModal() {

@@ -18,7 +18,7 @@ export class ManageVideoCategoryComponent implements OnInit {
       // category name
       { inputtype: 'text', name: 'categoryname', label: 'Category Name', placeholder: 'Enter Category Name', validationrule: { required: true }, validationerrormsg: 'is required' },
       // parent category
-      {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select a Category',sourceview:'videocategory',selectvalue:'categoryname',selectid:'_id'},
+      {inputtype:'select',name:'parentcategory',label:'Parent Category',defaultchoice:'Select a Category',sourceview:{source:'videocategory','condition':{'status':true}},selectvalue:'categoryname',selectid:'_id'},
       // description
       { inputtype: 'textarea', name: 'description', label: 'Description', placeholder: 'Enter Description' },
       // priority

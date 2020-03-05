@@ -14,18 +14,18 @@
     .messagenewbtnwrapper{ text-align: center;}
 
 
-    .search_content_wrapper{ display: block; width:370px; margin: 10px auto; margin-top: -33px;}
+    /* .search_content_wrapper{ display: block; width:370px; margin: 10px auto; margin-top: -33px;} */
 
     .search_content_wrapper select{ width: 180px; float: left;     background: #efefef;     border: 1px solid #d8d8d8; width: 195px;
         float: left;
-        height: 33px;}
+        height: 40px;}
 
     .search_content_wrapper button{ width: 173px; display: block; float: right; background: #00a8ef;
         font-size: 16px;
         font-family: 'RalewaySemiBold';
         text-decoration: none;
         
-        padding: 5px 5px 4px 5px;
+        padding: 8px 5px 8px 5px;
         text-align: center;
         cursor: pointer;
         color: #fff;
@@ -33,6 +33,25 @@
         
 
     .clear{ clear:both; overflow: hidden;}
+
+    .nextGen_admin_mainwrapper .nexgen_admin_table .action_sectionnew {
+        display: flex;
+        margin-bottom: 10px;
+        justify-content: space-between;
+    }
+   
+    .action_section action_sectionnew .search_content_wrapper select {
+        height: inherit;
+    }
+    .search_content_wrapper button {
+        margin-left: 5px;
+    }
+    .action_section action_sectionnew .search_content_wrapper {
+        display: inherit !important;
+        width: auto !important;
+        margin: inherit !important;
+        margin-top: inherit !important;
+    }
 
     @media screen and (max-width: 1280px){
         .search_content_wrapper{   margin-top: -44px;}

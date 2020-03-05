@@ -20,7 +20,7 @@ export class ManageVideosComponent implements OnInit {
       // title
       { inputtype: 'text', name: 'video_title', label: 'Title', placeholder: 'Enter Title', validationrule: { required: true }, validationerrormsg: 'is required' },
       // category
-      {inputtype:'select',name:'category',label:'Category',defaultchoice:'Select a Category',sourceview:'videocategory',selectvalue:'categoryname',selectid:'_id'},
+      {inputtype:'select',name:'category',label:'Category',defaultchoice:'Select a Category',sourceview:{source:'videocategory','condition':{'status':true}},selectvalue:'categoryname',selectid:'_id'},
       // description
       { inputtype: 'textarea', name: 'description', label: 'Description', placeholder: 'Enter Description' },
       // youtube url
